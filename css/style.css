@@ -540,21 +540,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--navy-dark);
   border-radius: calc(var(--radius) * 2);
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid rgba(255,255,255,.1);
 }
-.about__photo-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255,255,255,.25);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.about__photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 .about__badge {
   position: absolute;
