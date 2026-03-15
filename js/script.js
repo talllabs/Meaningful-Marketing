@@ -63,7 +63,7 @@ contactForm.addEventListener('submit', (e) => {
   const org     = document.getElementById('cf-org').value.trim();
   const message = document.getElementById('cf-message').value.trim();
   const body    = `Name: ${name}\nEmail: ${email}\nOrg: ${org}\n\n${message}`;
-  window.location.href = `mailto:hello@meaningfulmarketinghouse.com?subject=New%20Inquiry%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(body)}`;
+  window.location.href = `mailto:ally.labriola@gmail.com?subject=New%20Inquiry%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(body)}`;
 
   // Show success state
   contactForm.hidden = true;
