@@ -87,7 +87,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && contactModal.classList.contains('is-open')) closeContactModal();
 });
 
-// Form submission via FormSubmit.co (no registration required)
+// Form submission via Formspree
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -108,10 +108,10 @@ contactForm.addEventListener('submit', async (e) => {
   submitBtn.disabled = true;
 
   try {
-    const res = await fetch('https://formsubmit.co/ajax/ally.labriola@gmail.com', {
+    const res = await fetch('https://formspree.io/f/xykndqdn', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(Object.fromEntries(new FormData(contactForm))),
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(contactForm),
     });
 
     if (res.ok) {
