@@ -27,7 +27,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#ai">AI</a></li>
     </ul>
-    <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener" class="btn btn--nav">Schedule a Call</a>
+    <button class="btn btn--nav js-open-contact">Schedule a Call</button>
     <button class="nav__burger" id="burger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
@@ -41,7 +41,7 @@
     <li><a href="#work">Work</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#ai">AI</a></li>
-    <li><a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener">Schedule a Call →</a></li>
+    <li><button class="nav__mobile-link js-open-contact">Schedule a Call →</button></li>
   </ul>
 </div>
 
@@ -60,7 +60,7 @@
         with their unique and important message.
       </p>
       <div class="hero__ctas reveal-up" style="--delay:.3s">
-        <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener" class="btn btn--primary">Schedule an Intro Call</a>
+        <button class="btn btn--primary js-open-contact">Schedule an Intro Call</button>
         <a href="#work" class="btn btn--ghost">See Our Work ↓</a>
       </div>
     </div>
@@ -179,7 +179,7 @@
         <p class="about__hello reveal-up">Hello!</p>
         <p class="about__body reveal-up">We're Ally and Brad, a husband-and-wife team with over 15 years of experience supporting non-profits. Our approach is to blend seamlessly into your team, collaborating every step of the way.</p>
         <p class="about__body reveal-up" style="--delay:.1s">Our strengths include website development, AI consulting and training, video production, social media management, working with budgets of all shapes and sizes, changing a diaper while responding to an email, and (sometimes successfully) negotiating with our toddler.</p>
-        <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener" class="btn btn--dark reveal-up" style="--delay:.2s">Let's Talk →</a>
+        <button class="btn btn--dark reveal-up js-open-contact" style="--delay:.2s">Let's Talk →</button>
       </div>
     </div>
   </div>
@@ -307,7 +307,7 @@
           <p class="cs__label">Case Study 03</p>
           <h3 class="cs__title">Engaged &amp;<br>Inspired</h3>
           <p class="cs__client">The Lobiko Initiative</p>
-          <p class="cs__desc">A 3-month project lifecycle for an Australia-based non-profit dedicated to advancing the wholistic development of children in the Congo.</p>
+          <p class="cs__desc">A 3-month project lifecycle for a US-based non-profit dedicated to advancing the wholistic development of children in the Congo.</p>
           <div class="cs__tags">
             <span>Website Enhancement</span>
             <span>Brand Rebuilding</span>
@@ -571,11 +571,11 @@
         <span class="stamp stamp--light-fill">LET'S MAKE SOMETHING MEANINGFUL</span>
       </h2>
       <p class="cta__sub reveal-up">Find a date and time that works for you.</p>
-      <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener" class="btn btn--gold btn--lg reveal-up" style="--delay:.1s">Schedule an Intro Call →</a>
+      <button class="btn btn--gold btn--lg reveal-up js-open-contact" style="--delay:.1s">Schedule an Intro Call →</button>
       <div class="cta__or reveal-up" style="--delay:.15s"><span>or</span></div>
       <p class="cta__alt reveal-up" style="--delay:.2s">
         Not ready for a call?
-        <a href="mailto:hello@meaningfulmarketinghouse.com">Send us a message →</a>
+        <button class="cta__alt-link js-open-contact">Send us a message →</button>
       </p>
     </div>
   </div>
@@ -597,7 +597,7 @@
         <a href="#work">Work</a>
         <a href="#about">About</a>
         <a href="#ai">AI</a>
-        <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener">Schedule a Call</a>
+        <button class="footer__nav-link js-open-contact">Schedule a Call</button>
         <a href="mailto:hello@meaningfulmarketinghouse.com">Contact</a>
       </nav>
     </div>
@@ -609,5 +609,42 @@
 </footer>
 
 <script src="js/script.js"></script>
+
+<!-- ============ CONTACT MODAL ============ -->
+<div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <button class="modal__close" id="modalClose" aria-label="Close contact form">✕</button>
+    <span class="eyebrow eyebrow--light">Get in Touch</span>
+    <h2 class="modal__heading" id="modalTitle">Let's Make Something Meaningful</h2>
+    <p class="modal__sub">Tell us a little about your project and we'll be in touch shortly.</p>
+    <form class="contact-form" id="contactForm" novalidate>
+      <div class="contact-form__row">
+        <div class="contact-form__field">
+          <label for="cf-name">Name <span aria-hidden="true">*</span></label>
+          <input type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name" />
+        </div>
+        <div class="contact-form__field">
+          <label for="cf-email">Email <span aria-hidden="true">*</span></label>
+          <input type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+        </div>
+      </div>
+      <div class="contact-form__field">
+        <label for="cf-org">Organization</label>
+        <input type="text" id="cf-org" name="organization" placeholder="Your organization" autocomplete="organization" />
+      </div>
+      <div class="contact-form__field">
+        <label for="cf-message">Message <span aria-hidden="true">*</span></label>
+        <textarea id="cf-message" name="message" rows="5" placeholder="Tell us about your project or goals…" required></textarea>
+      </div>
+      <button type="submit" class="btn btn--gold btn--lg contact-form__submit">Send Message →</button>
+      <p class="contact-form__alt">Prefer a call? <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener">Schedule on Calendly →</a></p>
+    </form>
+    <div class="contact-form__success" id="formSuccess" hidden>
+      <div class="contact-form__success-icon">✓</div>
+      <h3>Message sent!</h3>
+      <p>Thanks for reaching out — we'll be in touch within one business day.</p>
+    </div>
+  </div>
+</div>
 </body>
 </html>

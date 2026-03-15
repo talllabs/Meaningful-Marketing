@@ -3,6 +3,74 @@
    ===================================================== */
 
 /* --------------------------------------------------
+   CONTACT MODAL
+   -------------------------------------------------- */
+const contactModal = document.getElementById('contactModal');
+const modalClose   = document.getElementById('modalClose');
+const contactForm  = document.getElementById('contactForm');
+const formSuccess  = document.getElementById('formSuccess');
+
+function openContactModal() {
+  contactModal.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+  // Reset to form view if previously submitted
+  contactForm.hidden = false;
+  formSuccess.hidden = true;
+  contactForm.reset();
+}
+
+function closeContactModal() {
+  contactModal.classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+
+// All "open contact" triggers
+document.querySelectorAll('.js-open-contact').forEach(el => {
+  el.addEventListener('click', openContactModal);
+});
+
+// Close button
+modalClose.addEventListener('click', closeContactModal);
+
+// Close on backdrop click
+contactModal.addEventListener('click', (e) => {
+  if (e.target === contactModal) closeContactModal();
+});
+
+// Close on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && contactModal.classList.contains('is-open')) closeContactModal();
+});
+
+// Form submission (mailto fallback — swap for fetch/API as needed)
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  let valid = true;
+
+  contactForm.querySelectorAll('[required]').forEach(field => {
+    field.classList.remove('is-error');
+    if (!field.value.trim()) {
+      field.classList.add('is-error');
+      valid = false;
+    }
+  });
+
+  if (!valid) return;
+
+  // Build mailto href as a simple fallback
+  const name    = document.getElementById('cf-name').value.trim();
+  const email   = document.getElementById('cf-email').value.trim();
+  const org     = document.getElementById('cf-org').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+  const body    = `Name: ${name}\nEmail: ${email}\nOrg: ${org}\n\n${message}`;
+  window.location.href = `mailto:hello@meaningfulmarketinghouse.com?subject=New%20Inquiry%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(body)}`;
+
+  // Show success state
+  contactForm.hidden = true;
+  formSuccess.hidden = false;
+});
+
+/* --------------------------------------------------
    NAV: scroll state
    -------------------------------------------------- */
 const nav = document.getElementById('nav');

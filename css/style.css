@@ -1448,6 +1448,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.cta__alt-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--teal);
+  font-weight: 600;
+  font-size: inherit;
+  font-family: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 /* --------------------------------------------------
    18. FOOTER
@@ -1490,6 +1502,29 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: color 0.2s;
 }
 .footer__nav a:hover { color: var(--white); }
+.footer__nav-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: rgba(255,255,255,.5);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-family: inherit;
+  transition: color 0.2s;
+}
+.footer__nav-link:hover { color: var(--white); }
+.nav__mobile-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  font-weight: inherit;
+}
 .footer__bottom {
   display: flex;
   justify-content: space-between;
@@ -1501,7 +1536,160 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* --------------------------------------------------
-   19. SCROLL ANIMATIONS
+   19. CONTACT MODAL
+   -------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal {
+  background: var(--black);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  padding: 48px;
+  max-width: 580px;
+  width: 100%;
+  position: relative;
+  transform: translateY(24px);
+  transition: transform 0.28s ease;
+  max-height: 90svh;
+  overflow-y: auto;
+}
+.modal-overlay.is-open .modal {
+  transform: translateY(0);
+}
+.modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255,255,255,.08);
+  border: none;
+  color: rgba(255,255,255,.6);
+  font-size: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.modal__close:hover {
+  background: rgba(255,255,255,.16);
+  color: var(--white);
+}
+.modal__heading {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--white);
+  margin-block: 8px 6px;
+  line-height: 1.15;
+}
+.modal__sub {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 28px;
+}
+
+/* Form */
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.contact-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.contact-form__field { display: flex; flex-direction: column; gap: 6px; }
+.contact-form__field label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,.6);
+  text-transform: uppercase;
+}
+.contact-form__field label span { color: var(--gold); }
+.contact-form__field input,
+.contact-form__field textarea {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: var(--white);
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  resize: vertical;
+}
+.contact-form__field input::placeholder,
+.contact-form__field textarea::placeholder { color: rgba(255,255,255,.3); }
+.contact-form__field input:focus,
+.contact-form__field textarea:focus {
+  border-color: var(--gold);
+  background: rgba(255,255,255,.09);
+}
+.contact-form__field input.is-error,
+.contact-form__field textarea.is-error { border-color: #e05c5c; }
+.contact-form__submit { align-self: flex-start; margin-top: 4px; }
+.contact-form__alt {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,.4);
+  text-align: center;
+}
+.contact-form__alt a {
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Success state */
+.contact-form__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 0 8px;
+  gap: 12px;
+  color: var(--white);
+}
+.contact-form__success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--black);
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-form__success h3 { font-size: 1.4rem; margin: 0; }
+.contact-form__success p { color: rgba(255,255,255,.55); margin: 0; }
+
+@media (max-width: 520px) {
+  .modal { padding: 32px 24px; }
+  .contact-form__row { grid-template-columns: 1fr; }
+  .contact-form__submit { align-self: stretch; text-align: center; }
+}
+
+/* --------------------------------------------------
+   20. SCROLL ANIMATIONS
    -------------------------------------------------- */
 .reveal-up {
   opacity: 0;
