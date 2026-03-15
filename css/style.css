@@ -267,7 +267,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .nav__links a:hover { opacity: 1; }
 .nav.light-bg .nav__links a { color: var(--black); }
-.nav.light-bg .nav__logo .logo-mark__top { background: var(--black); }
+.nav__logo .logo-mark__top { background: var(--white); color: var(--black); }
+.nav__logo .logo-mark__bot { color: var(--white); border-color: var(--white); }
+.nav.light-bg .nav__logo .logo-mark__top { background: var(--black); color: var(--white); }
 .nav.light-bg .nav__logo .logo-mark__bot { color: var(--black); border-color: var(--black); }
 
 .nav__burger {
@@ -1651,7 +1653,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: var(--white);
+  color: var(--black);
+  background: var(--white);
+  display: inline-block;
+  padding: 0.05em 0.15em;
   margin-bottom: clamp(32px, 5vw, 56px);
 }
 .cta__schedule {
