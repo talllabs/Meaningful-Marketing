@@ -326,9 +326,31 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: relative;
   min-height: 100svh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   background: var(--black);
   overflow: hidden;
+}
+.hero__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  min-height: 100svh;
+}
+.hero__split .hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero__image {
+  position: relative;
+  overflow: hidden;
+}
+.hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 /* Subtle noise texture overlay */
@@ -341,20 +363,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   pointer-events: none;
 }
 
-/* Large decorative background text */
-.hero::before {
+/* Large decorative background text (left panel only) */
+.hero__content::before {
   content: 'MM';
   position: absolute;
   right: -5vw;
   bottom: -10vh;
-  font-size: clamp(200px, 35vw, 500px);
+  font-size: clamp(120px, 20vw, 320px);
   font-weight: 700;
   letter-spacing: -.05em;
   color: rgba(255,255,255,.025);
   line-height: 1;
   pointer-events: none;
   user-select: none;
+  z-index: 0;
 }
+.hero__content > * { position: relative; z-index: 1; }
 
 .hero__content {
   position: relative;
@@ -1504,6 +1528,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 @media (max-width: 900px) {
   .nav__links, .btn--nav { display: none; }
   .nav__burger { display: flex; }
+
+  .hero__split    { grid-template-columns: 1fr; min-height: auto; }
+  .hero__image    { min-height: 55vw; }
 
   .about__grid    { grid-template-columns: 1fr; }
   .about__visual  { max-width: 400px; margin-inline: auto; }
