@@ -687,6 +687,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .cs { padding-block: clamp(60px, 8vw, 100px); }
 .cs--dark  { background: var(--black); color: var(--white); }
 .cs--light { background: var(--white); color: var(--text-body); }
+.cs--photo {
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,.72) 50%, rgba(0,0,0,.35) 100%),
+    url('https://images.pexels.com/photos/29142946/pexels-photo-29142946.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop');
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+}
 .cs--mid   { background: var(--off-white); color: var(--text-body); }
 
 .cs__grid {
@@ -798,7 +806,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--gold);
   font-size: 14px;
 }
-.cs--dark .cs__checklist li { color: rgba(255,255,255,.6); }
+.cs--dark .cs__checklist li,
+.cs--photo .cs__checklist li { color: rgba(255,255,255,.6); }
 
 .cs__metrics {
   display: flex;
@@ -1668,7 +1677,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1;
   letter-spacing: -0.02em;
   color: var(--white);
-  text-transform: lowercase;
   margin-bottom: clamp(32px, 5vw, 56px);
 }
 .cta__schedule {
