@@ -14,6 +14,13 @@
   --navy-dark:   #0F1F3D;
   --gold:        #D4A020;
   --gold-light:  #E8C547;
+
+  --teal:        #4DBDB8;
+  --teal-dark:   #1E8A86;
+  --coral:       #D4635A;
+  --coral-light: #E8837A;
+  --forest:      #2D7A55;
+  --amber:       #E8972A;
   --gray-light:  #E8E6E1;
   --gray-mid:    #B0ADA7;
   --text-body:   #2A2825;
@@ -176,8 +183,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-color: var(--black);
 }
 .btn--primary:hover {
-  background: var(--navy);
-  border-color: var(--navy);
+  background: var(--teal-dark);
+  border-color: var(--teal-dark);
 }
 .btn--ghost {
   background: transparent;
@@ -192,15 +199,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--black);
   color: var(--white);
 }
-.btn--dark:hover { background: var(--navy); }
+.btn--dark:hover { background: var(--teal-dark); }
 .btn--gold {
-  background: var(--gold);
-  color: var(--black);
-  border-color: var(--gold);
+  background: var(--coral);
+  color: var(--white);
+  border-color: var(--coral);
 }
 .btn--gold:hover {
-  background: var(--gold-light);
-  border-color: var(--gold-light);
+  background: var(--coral-light);
+  border-color: var(--coral-light);
 }
 .btn--lg { font-size: 15px; padding: 18px 36px; }
 .btn--nav {
@@ -210,7 +217,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 10px 20px;
   border-radius: var(--radius);
 }
-.btn--nav:hover { background: var(--navy); }
+.btn--nav:hover { background: var(--teal-dark); }
 .btn--outline-dark {
   background: transparent;
   color: var(--black);
@@ -446,7 +453,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-shrink: 0;
 }
 .ticker-inner .dot {
-  color: var(--gold);
+  color: var(--teal);
   font-size: 16px;
 }
 @keyframes ticker {
@@ -474,22 +481,32 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--white);
   padding: clamp(32px, 4vw, 52px);
   position: relative;
-  transition: background 0.3s var(--ease), color 0.3s;
+  transition: filter 0.2s;
   cursor: default;
 }
-.svc-card:hover { background: var(--navy); }
-.svc-card:hover .svc-card__num,
-.svc-card:hover .svc-card__title,
-.svc-card:hover .svc-card__body { color: var(--white); }
+.svc-card:hover { filter: brightness(0.93); }
+
+/* Permanent card colors */
+.svc-card:nth-child(1) { background: #8DD8D3; }
+.svc-card:nth-child(2) { background: #E8A820; }
+.svc-card:nth-child(3) { background: var(--forest); color: var(--white); }
+.svc-card:nth-child(4) { background: var(--coral); color: var(--white); }
+.svc-card:nth-child(5) { background: #454565; color: var(--white); }
+.svc-card:nth-child(6) { background: #8875C0; color: var(--white); }
+
 .svc-card__num {
   font-size: clamp(2.5rem, 4vw, 4rem);
   font-weight: 700;
   line-height: 1;
-  color: var(--gray-light);
+  color: rgba(0,0,0,.15);
   margin-bottom: 24px;
-  transition: color 0.3s;
   letter-spacing: -0.02em;
 }
+.svc-card:nth-child(3) .svc-card__num,
+.svc-card:nth-child(4) .svc-card__num,
+.svc-card:nth-child(5) .svc-card__num,
+.svc-card:nth-child(6) .svc-card__num { color: rgba(255,255,255,.2); }
+
 .svc-card__title {
   font-size: clamp(1.1rem, 1.8vw, 1.35rem);
   font-weight: 700;
@@ -497,15 +514,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   text-transform: uppercase;
   margin-bottom: 16px;
   line-height: 1.2;
-  transition: color 0.3s;
 }
 .svc-card__body {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: rgba(0,0,0,.55);
   line-height: 1.7;
-  transition: color 0.3s;
 }
-.svc-card:hover .svc-card__body { color: rgba(255,255,255,.65); }
+.svc-card:nth-child(3) .svc-card__body,
+.svc-card:nth-child(4) .svc-card__body,
+.svc-card:nth-child(5) .svc-card__body,
+.svc-card:nth-child(6) .svc-card__body { color: rgba(255,255,255,.75); }
 
 .services__footer {
   margin-top: 48px;
@@ -514,7 +532,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   text-align: center;
 }
 .services__footer a {
-  color: var(--navy);
+  color: var(--teal-dark);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -524,7 +542,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    12. ABOUT
    -------------------------------------------------- */
 .about {
-  background: var(--navy);
+  background: var(--forest);
   padding-block: var(--section-v);
   color: var(--white);
 }
@@ -548,7 +566,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: absolute;
   bottom: -20px;
   right: -20px;
-  background: var(--gold);
+  background: var(--amber);
   color: var(--black);
   padding: 20px 24px;
   border-radius: var(--radius);
@@ -578,7 +596,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 20px;
-  color: var(--gold);
+  color: var(--teal);
 }
 .about__body {
   font-size: 1rem;
@@ -588,11 +606,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   max-width: 540px;
 }
 .about__text .btn--dark {
-  background: var(--gold);
-  color: var(--black);
+  background: var(--coral);
+  color: var(--white);
   margin-top: 12px;
 }
-.about__text .btn--dark:hover { background: var(--gold-light); }
+.about__text .btn--dark:hover { background: var(--coral-light); }
 
 /* --------------------------------------------------
    13. WORK / CASE STUDIES
@@ -1227,11 +1245,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   justify-content: center;
 }
-.vid-card__thumb--1 { background: linear-gradient(160deg, #1a3464, #0C0C0C); }
-.vid-card__thumb--2 { background: linear-gradient(160deg, #2d4a22, #0C0C0C); }
-.vid-card__thumb--3 { background: linear-gradient(160deg, #3d1a1a, #0C0C0C); }
-.vid-card__thumb--4 { background: linear-gradient(160deg, #1a2d4a, #0C0C0C); }
-.vid-card__thumb--5 { background: linear-gradient(160deg, #2d2a1a, #0C0C0C); }
+.vid-card__thumb--1 { background: linear-gradient(160deg, #1E8A86, #0C2E2C); }
+.vid-card__thumb--2 { background: linear-gradient(160deg, #2D7A55, #0C2A1E); }
+.vid-card__thumb--3 { background: linear-gradient(160deg, #8B3A32, #0C0C0C); }
+.vid-card__thumb--4 { background: linear-gradient(160deg, #5A4A90, #150C2A); }
+.vid-card__thumb--5 { background: linear-gradient(160deg, #B87820, #2A1A00); }
 .vid-card__play {
   width: 44px;
   height: 44px;
@@ -1268,7 +1286,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--navy);
+  color: var(--teal-dark);
 }
 .vid-card__title {
   font-size: 0.85rem;
@@ -1300,8 +1318,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 .testi:hover {
-  border-color: var(--navy);
-  box-shadow: 0 12px 36px rgba(26,52,100,.08);
+  border-color: var(--teal);
+  box-shadow: 0 12px 36px rgba(77,189,184,.12);
 }
 .testi > p {
   font-size: 1rem;
@@ -1314,14 +1332,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--navy);
+  color: var(--teal-dark);
 }
 
 /* --------------------------------------------------
    17. CTA
    -------------------------------------------------- */
 .cta {
-  background: var(--navy);
+  background: var(--teal-dark);
   padding-block: var(--section-v);
   color: var(--white);
   text-align: center;
@@ -1361,7 +1379,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: rgba(255,255,255,.45);
 }
 .cta__alt a {
-  color: var(--gold);
+  color: var(--teal);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 3px;
