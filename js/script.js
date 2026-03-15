@@ -9,8 +9,20 @@ const videoOverlay = document.getElementById('videoOverlay');
 const videoClose   = document.getElementById('videoClose');
 const videoFrame   = document.getElementById('videoFrame');
 
-function openVideo(vimeoId) {
-  videoFrame.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`;
+const videoNative = document.getElementById('videoNative');
+
+function openVideo(el) {
+  const mp4 = el.dataset.mp4;
+  if (mp4) {
+    videoFrame.hidden = true;
+    videoNative.src = mp4;
+    videoNative.hidden = false;
+    videoNative.play();
+  } else {
+    videoNative.hidden = true;
+    videoFrame.hidden = false;
+    videoFrame.src = `https://player.vimeo.com/video/${el.dataset.vimeo}?autoplay=1&title=0&byline=0&portrait=0`;
+  }
   videoOverlay.classList.add('is-open');
   document.body.style.overflow = 'hidden';
 }
@@ -18,11 +30,13 @@ function openVideo(vimeoId) {
 function closeVideo() {
   videoOverlay.classList.remove('is-open');
   videoFrame.src = '';
+  videoNative.pause();
+  videoNative.src = '';
   document.body.style.overflow = '';
 }
 
 document.querySelectorAll('.js-open-video').forEach(el => {
-  el.addEventListener('click', () => openVideo(el.dataset.vimeo));
+  el.addEventListener('click', () => openVideo(el));
 });
 
 videoClose.addEventListener('click', closeVideo);
