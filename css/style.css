@@ -542,9 +542,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    12. ABOUT
    -------------------------------------------------- */
 .about {
-  background: var(--forest);
+  background: var(--white);
   padding-block: var(--section-v);
-  color: var(--white);
+  color: var(--text-body);
 }
 .about__grid {
   display: grid;
@@ -590,8 +590,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .about__text .eyebrow { color: rgba(255,255,255,.4); }
 .about__text .section-heading { margin-bottom: 32px; }
-.about__text .stamp--fill { background: var(--white); color: var(--black); }
-.about__text .stamp--stroke { border-color: var(--white); color: var(--white); }
+.about__text .stamp--fill { background: var(--black); color: var(--white); }
+.about__text .stamp--stroke { border-color: var(--black); color: var(--black); }
 .about__hello {
   font-size: 2rem;
   font-weight: 700;
@@ -601,7 +601,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .about__body {
   font-size: 1rem;
   line-height: 1.75;
-  color: rgba(255,255,255,.7);
+  color: var(--text-muted);
   margin-bottom: 20px;
   max-width: 540px;
 }
