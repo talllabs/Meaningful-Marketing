@@ -1266,8 +1266,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--black);
 }
 .ai-card--light {
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.12);
+  background: #8875C0;
   color: var(--white);
 }
 .ai-card__icon {
