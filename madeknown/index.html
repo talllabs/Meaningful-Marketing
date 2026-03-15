@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Made Known Pictures — Video Production</title>
+  <meta name="description" content="Made Known Pictures — Filmmakers, designers, and content strategists who love storytelling. Commercials, mini-docs, founder profiles, and branded content.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#home" class="nav__logo">
+      <span class="logo__made">MADE</span>
+      <span class="logo__div"></span>
+      <span class="logo__known">KNOWN</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn--nav">Get in Touch</a>
+    <button class="nav__burger" id="burger" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu__close" id="mobileClose">✕</button>
+  <ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero__bg"></div>
+  <div class="hero__content">
+    <div class="hero__eyebrow">Est. 2007 &mdash; Los Angeles, CA</div>
+    <h1 class="hero__title">
+      <span class="hero__line">MADE</span>
+      <span class="hero__line hero__line--italic">KNOWN</span>
+    </h1>
+    <p class="hero__tagline">We craft films that tell real human stories<br>and move people to action.</p>
+    <div class="hero__actions">
+      <a href="#work" class="btn btn--primary">View Our Work</a>
+      <a href="#about" class="btn btn--ghost">Our Story</a>
+    </div>
+  </div>
+  <div class="hero__scroll">
+    <span>SCROLL</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- WORK / PORTFOLIO -->
+<section class="work-section" id="work">
+  <div class="work-section__inner">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__sticky">
+
+        <div class="sidebar__search">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search projects...">
+          <button class="search-clear" id="searchClear" aria-label="Clear">✕</button>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group__header">
+            <span class="filter-group__label">CATEGORY</span>
+            <button class="filter-group__clear" data-group="category">Clear</button>
+          </div>
+          <div class="filter-group__options" id="categoryFilters"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group__header">
+            <span class="filter-group__label">TAGS</span>
+            <button class="filter-group__clear" data-group="tags">Clear</button>
+          </div>
+          <div class="filter-group__options" id="tagFilters"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group__header">
+            <span class="filter-group__label">CLIENT</span>
+            <button class="filter-group__clear" data-group="client">Clear</button>
+          </div>
+          <div class="filter-group__options" id="clientFilters"></div>
+        </div>
+
+        <button class="sidebar__reset" id="resetFilters">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          Reset All Filters
+        </button>
+
+      </div>
+    </aside>
+
+    <!-- Portfolio Grid -->
+    <main class="portfolio">
+      <div class="portfolio__header">
+        <h2 class="portfolio__title">Our Work</h2>
+        <div class="portfolio__meta">
+          <span class="portfolio__count" id="portfolioCount">18 projects</span>
+          <button class="sidebar-toggle" id="sidebarToggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="9" y2="18"/></svg>
+            Filters
+          </button>
+        </div>
+        <div class="active-filters" id="activeFilters"></div>
+      </div>
+      <div class="portfolio__grid" id="videoGrid"></div>
+      <div class="portfolio__empty" id="emptyState" style="display:none">
+        <p>No projects match your filters.</p>
+        <button class="btn btn--ghost" id="emptyReset">Reset Filters</button>
+      </div>
+    </main>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about__inner container">
+
+    <div class="about__intro">
+      <div class="section-eyebrow">ABOUT US</div>
+      <h2 class="about__title">Made Known Pictures</h2>
+      <div class="about__body">
+        <p>Made Known is comprised of filmmakers, designers, and content strategists who love storytelling. We make commercials, mini-docs, founder profiles, explainer videos, and branded content. We love helping people tell their unique and personal stories, extending their reach through the power of video.</p>
+        <p>Made Known Pictures was founded in 2007 by Scott Blanding and Brad LaBriola with the mission to produce hidden stories that should be made known to a wider audience. They have made commercials, mini-documentaries and promotional films for apparel companies, cooking apps, and non-profits supporting coffee farmers in Kenya. Made Known's filmmaking has helped organizations tell their unique story and gain recognition with their key audiences.</p>
+      </div>
+    </div>
+
+    <div class="about__stats">
+      <div class="stat"><span class="stat__num">18+</span><span class="stat__label">Years of Storytelling</span></div>
+      <div class="stat"><span class="stat__num">4</span><span class="stat__label">Continents Filmed</span></div>
+      <div class="stat"><span class="stat__num">5</span><span class="stat__label">Languages</span></div>
+      <div class="stat"><span class="stat__num">∞</span><span class="stat__label">Stories to Tell</span></div>
+    </div>
+
+    <div class="founders">
+      <div class="section-eyebrow">MEET THE FOUNDERS</div>
+      <div class="founders__grid">
+
+        <div class="founder-card">
+          <div class="founder-card__photo">
+            <!-- Place scott-blanding.jpg in madeknown/images/ -->
+            <img src="images/scott-blanding.jpg" alt="Scott Blanding" onerror="this.parentNode.classList.add('founder-card__photo--empty')">
+          </div>
+          <div class="founder-card__info">
+            <div class="founder-card__role">DP, Writer, Director</div>
+            <h3 class="founder-card__name">Scott Blanding</h3>
+            <p class="founder-card__bio">A life-long film lover, Scott gradually combined his concern for social justice with his passion for film. Most notably, <em>Women in War Zones</em> (Best Documentary, 2009 Philadelphia Film Festival) — a documentary he shot and directed with Brad about two victims of sexual violence treated at Panzi Hospital in the DRC. After growing up in Roanoke, VA, Scott pursued filmmaking in Nicaragua, the Czech Republic and the USA, graduating from Temple University in Philadelphia. He now lives in LA, serves as a reservist in the Marines, and continues working with Women In War Zones International and Made Known Pictures.</p>
+          </div>
+        </div>
+
+        <div class="founder-card">
+          <div class="founder-card__photo">
+            <!-- Place brad-labriola.jpg in madeknown/images/ -->
+            <img src="images/brad-labriola.jpg" alt="Brad LaBriola" onerror="this.parentNode.classList.add('founder-card__photo--empty')">
+          </div>
+          <div class="founder-card__info">
+            <div class="founder-card__role">Producer, Writer, Editor</div>
+            <h3 class="founder-card__name">Brad LaBriola</h3>
+            <p class="founder-card__bio">Brad's love for storytelling started with books. With the mentorship of Robert Pledge, CEO of Contact Press Images, Brad has produced films on four continents in five languages. From 2010&ndash;2012, Brad earned his MFA at the distinguished UCLA Producers Program, mentored by Oscar-winning producers including Peter Guber, David Hoberman, Barbara Boyle, Bobby Moresco, and Tom Nunan. His commitment: to produce deeply-felt stories that bring meaning to the confusion of our lives and renew a sense of wonder in humanity. <em>What's your story?</em></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact__inner container">
+    <div class="contact__left">
+      <div class="section-eyebrow">GET IN TOUCH</div>
+      <h2 class="contact__title">From concept to<br><em>final frame.</em></h2>
+      <p class="contact__sub">Ready to tell your story? Let's talk about your next project.</p>
+      <p class="contact__tagline">Make it Made Known.</p>
+    </div>
+    <form class="contact__form" id="contactForm" action="https://formspree.io/f/mreyawdn" method="POST" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">Your Name</label>
+          <input type="text" id="fname" name="name" placeholder="Jane Smith" required>
+        </div>
+        <div class="form-group">
+          <label for="fcompany">Organization</label>
+          <input type="text" id="fcompany" name="company" placeholder="Your Company">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="femail">Email</label>
+        <input type="email" id="femail" name="email" placeholder="jane@company.com" required>
+      </div>
+      <div class="form-group">
+        <label for="fproject">Tell us about your project</label>
+        <textarea id="fproject" name="project" placeholder="What's your story?" rows="4"></textarea>
+      </div>
+      <button type="submit" class="btn btn--primary btn--full">Request a Quote &rarr;</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner container">
+    <div class="footer__logo">
+      <span class="logo__made">MADE</span>
+      <span class="logo__div"></span>
+      <span class="logo__known">KNOWN</span>
+    </div>
+    <p class="footer__copy">&copy; 2024 Made Known Pictures. All rights reserved.</p>
+    <p class="footer__tag">Est. 2007 &mdash; Los Angeles, CA</p>
+  </div>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="modal" id="videoModal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal__backdrop" id="modalBackdrop"></div>
+  <div class="modal__content">
+    <button class="modal__close" id="modalClose" aria-label="Close video">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="modal__player-wrap">
+      <div class="modal__player" id="modalPlayer"></div>
+    </div>
+    <div class="modal__info">
+      <div class="modal__tags" id="modalTags"></div>
+      <h3 class="modal__title" id="modalTitle"></h3>
+      <p class="modal__client" id="modalClient"></p>
+      <p class="modal__blurb" id="modalBlurb"></p>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
