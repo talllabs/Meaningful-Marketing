@@ -135,11 +135,12 @@ contactForm.addEventListener('submit', async (e) => {
 const nav = document.getElementById('nav');
 
 function updateNav() {
-  if (window.scrollY > 40) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
-  }
+  const hero = document.getElementById('home');
+  const heroBottom = hero ? hero.offsetHeight : window.innerHeight;
+  const pastHero = window.scrollY >= heroBottom - 20;
+
+  nav.classList.toggle('nav--visible', pastHero);
+  nav.classList.toggle('scrolled', pastHero);
 }
 
 window.addEventListener('scroll', updateNav, { passive: true });
