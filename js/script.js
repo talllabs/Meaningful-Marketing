@@ -12,12 +12,17 @@ const videoFrame   = document.getElementById('videoFrame');
 const videoNative = document.getElementById('videoNative');
 
 function openVideo(el) {
-  const mp4 = el.dataset.mp4;
+  const mp4     = el.dataset.mp4;
+  const youtube = el.dataset.youtube;
   if (mp4) {
     videoFrame.hidden = true;
     videoNative.src = mp4;
     videoNative.hidden = false;
     videoNative.play();
+  } else if (youtube) {
+    videoNative.hidden = true;
+    videoFrame.hidden = false;
+    videoFrame.src = `https://www.youtube-nocookie.com/embed/${youtube}?autoplay=1&rel=0`;
   } else {
     videoNative.hidden = true;
     videoFrame.hidden = false;
