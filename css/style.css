@@ -1240,120 +1240,94 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: rgba(255,255,255,.45);
 }
 
-/* AI intro block */
-.ai__intro {
-  margin-bottom: clamp(48px, 6vw, 72px);
+/* AI cards */
+.ai__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 56px;
 }
-.ai__intro-text h3 {
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  font-weight: 700;
+.ai-card {
+  border-radius: 12px;
+  padding: clamp(28px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ai-card--teal {
+  background: var(--teal-dark);
   color: var(--white);
-  margin-bottom: 8px;
 }
-.ai__intro-text > p {
-  color: rgba(255,255,255,.55);
-  font-size: 1rem;
-  margin-bottom: 24px;
+.ai-card--gold {
+  background: var(--gold);
+  color: var(--black);
 }
-.ai__services-label {
-  font-size: 0.85rem;
+.ai-card--light {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--white);
+}
+.ai-card__icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  opacity: .7;
+}
+.ai-card__title {
+  font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 12px;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  letter-spacing: 0.01em;
 }
-.ai__services-list {
+.ai-card__desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  opacity: .8;
+  flex: 1;
+}
+.ai-card__list {
   list-style: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 28px;
-  padding-left: 0;
+  border-top: 1px solid rgba(0,0,0,.1);
+  padding-top: 16px;
+  margin-top: 4px;
 }
-.ai__services-list li {
-  color: rgba(255,255,255,.7);
-  font-size: 0.95rem;
-  line-height: 1.55;
-  padding-left: 18px;
-  position: relative;
+.ai-card--teal .ai-card__list,
+.ai-card--light .ai-card__list {
+  border-color: rgba(255,255,255,.15);
 }
-.ai__services-list li::before {
-  content: '·';
-  position: absolute;
-  left: 4px;
-  color: var(--teal);
-  font-weight: 700;
+.ai-card__list li {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: .85;
 }
-.ai__cta-line {
-  color: rgba(255,255,255,.8);
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.55;
-}
-.ai__discuss-link {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: var(--teal);
-  font-weight: 700;
-  font-size: inherit;
-  font-family: inherit;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.ai-card__list li::before {
+  content: '— ';
+  opacity: .5;
 }
 
-/* AI 3-col services grid */
-.ai__services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  background: rgba(255,255,255,.06);
-  border-radius: var(--radius);
-  overflow: hidden;
-  margin-bottom: 60px;
-}
-.ai-col {
-  background: rgba(255,255,255,.03);
-  padding: 36px 28px;
-}
-.ai-col__title {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--white);
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid rgba(255,255,255,.15);
-}
-.ai-col ul {
-  list-style: none;
-  padding: 0;
+/* AI bottom CTA strip */
+.ai__bottom {
   display: flex;
-  flex-direction: column;
-  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px 40px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  margin-bottom: 16px;
 }
-.ai-col li {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,.55);
-  padding-left: 16px;
-  position: relative;
+.ai__bottom p {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 600;
+  color: var(--white);
 }
-.ai-col li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--teal);
-  opacity: .7;
+.ai__bottom em {
+  color: var(--teal);
+  font-style: normal;
 }
 
 /* AAA Case Study */
@@ -1979,7 +1953,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .testi-grid     { grid-template-columns: 1fr; }
   .ai__services   { grid-template-columns: repeat(2, 1fr); }
-  .ai__services-grid { grid-template-columns: 1fr; }
+  .ai__cards { grid-template-columns: 1fr; }
 
   .ai-case__inner { grid-template-columns: 1fr; }
   .ai-case__visual { display: none; }
@@ -1989,7 +1963,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .services__grid { grid-template-columns: 1fr; }
   .video-grid     { grid-template-columns: repeat(2, 1fr); }
   .ai__services   { grid-template-columns: 1fr; }
-  .ai__services-grid { grid-template-columns: 1fr; }
+  .ai__cards { grid-template-columns: 1fr; }
+  .ai__bottom { flex-direction: column; text-align: center; }
   .cta__schedule  { flex-direction: column; gap: 8px; }
   .testi-grid     { grid-template-columns: 1fr; }
   .hero__ctas     { flex-direction: column; align-items: flex-start; }
