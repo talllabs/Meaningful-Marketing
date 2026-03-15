@@ -87,9 +87,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && contactModal.classList.contains('is-open')) closeContactModal();
 });
 
-// Form submission via Formspree
-const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'; // ← replace with your ID from formspree.io
-
+// Form submission via FormSubmit.co (no registration required)
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -110,19 +108,17 @@ contactForm.addEventListener('submit', async (e) => {
   submitBtn.disabled = true;
 
   try {
-    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+    const res = await fetch('https://formsubmit.co/ajax/ally.labriola@gmail.com', {
       method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: new FormData(contactForm),
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(contactForm))),
     });
 
     if (res.ok) {
       contactForm.hidden = true;
       formSuccess.hidden = false;
     } else {
-      const data = await res.json();
-      const msg = data?.errors?.map(e => e.message).join(', ') || 'Something went wrong. Please try again.';
-      alert(msg);
+      alert('Something went wrong. Please try again.');
       submitBtn.textContent = originalText;
       submitBtn.disabled = false;
     }
