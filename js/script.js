@@ -87,11 +87,14 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && contactModal.classList.contains('is-open')) closeContactModal();
 });
 
-// Form submission (mailto fallback — swap for fetch/API as needed)
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  let valid = true;
+// Form submission via Formspree
+const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'; // ← replace with your ID from formspree.io
 
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  // Validate required fields
+  let valid = true;
   contactForm.querySelectorAll('[required]').forEach(field => {
     field.classList.remove('is-error');
     if (!field.value.trim()) {
@@ -99,20 +102,35 @@ contactForm.addEventListener('submit', (e) => {
       valid = false;
     }
   });
-
   if (!valid) return;
 
-  // Build mailto href as a simple fallback
-  const name    = document.getElementById('cf-name').value.trim();
-  const email   = document.getElementById('cf-email').value.trim();
-  const org     = document.getElementById('cf-org').value.trim();
-  const message = document.getElementById('cf-message').value.trim();
-  const body    = `Name: ${name}\nEmail: ${email}\nOrg: ${org}\n\n${message}`;
-  window.location.href = `mailto:ally.labriola@gmail.com?subject=New%20Inquiry%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(body)}`;
+  const submitBtn = contactForm.querySelector('[type="submit"]');
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = 'Sending…';
+  submitBtn.disabled = true;
 
-  // Show success state
-  contactForm.hidden = true;
-  formSuccess.hidden = false;
+  try {
+    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(contactForm),
+    });
+
+    if (res.ok) {
+      contactForm.hidden = true;
+      formSuccess.hidden = false;
+    } else {
+      const data = await res.json();
+      const msg = data?.errors?.map(e => e.message).join(', ') || 'Something went wrong. Please try again.';
+      alert(msg);
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  } catch {
+    alert('Network error — please check your connection and try again.');
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  }
 });
 
 /* --------------------------------------------------
