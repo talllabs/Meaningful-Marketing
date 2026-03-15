@@ -377,16 +377,13 @@
             <span>On-Location Filming</span>
             <span>Final Delivery</span>
           </div>
-          <a href="#videos" class="btn btn--outline-dark">Watch the Video →</a>
+          <button class="btn btn--outline-dark js-open-video" data-vimeo="221464315">Watch the Video →</button>
         </div>
         <div class="cs__visual reveal-up" style="--delay:.15s">
-          <div class="video-mock">
-            <div class="video-mock__screen">
-              <div class="video-mock__play">▶</div>
-              <div class="video-mock__time">02:34</div>
-            </div>
-            <div class="video-mock__caption">Lutheran World Relief — Farmers Market Coffee</div>
-          </div>
+          <button class="cs__video-thumb js-open-video" data-vimeo="221464315" aria-label="Play Lutheran World Relief video">
+            <img src="images/lwr%20case.png" alt="Lutheran World Relief — Farmers Market Coffee video thumbnail" />
+            <span class="cs__play-btn" aria-hidden="true">▶</span>
+          </button>
         </div>
       </div>
     </div>
@@ -609,6 +606,14 @@
 </footer>
 
 <script src="js/script.js"></script>
+
+<!-- ============ VIDEO LIGHTBOX ============ -->
+<div class="video-overlay" id="videoOverlay" role="dialog" aria-modal="true" aria-label="Video player">
+  <button class="video-overlay__close" id="videoClose" aria-label="Close video">✕</button>
+  <div class="video-overlay__frame">
+    <iframe id="videoFrame" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>
+  </div>
+</div>
 
 <!-- ============ CONTACT MODAL ============ -->
 <div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">

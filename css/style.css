@@ -1049,6 +1049,90 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   box-shadow: 0 20px 60px rgba(0,0,0,.1);
   border: 1px solid var(--gray-light);
 }
+
+/* Video thumbnail (replaces mock for CS05) */
+.cs__video-thumb {
+  display: block;
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: 0 20px 60px rgba(0,0,0,.15);
+}
+.cs__video-thumb img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.cs__video-thumb:hover img { transform: scale(1.03); }
+.cs__play-btn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  color: var(--white);
+  background: rgba(0,0,0,.35);
+  transition: background 0.25s;
+}
+.cs__video-thumb:hover .cs__play-btn { background: rgba(0,0,0,.55); }
+
+/* Video lightbox */
+.video-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 1100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.video-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.video-overlay__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,.12);
+  border: none;
+  color: var(--white);
+  font-size: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.video-overlay__close:hover { background: rgba(255,255,255,.25); }
+.video-overlay__frame {
+  width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+}
+.video-overlay__frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
 .video-mock__screen {
   aspect-ratio: 16/9;
   background: linear-gradient(135deg, #1a3464 0%, #0C0C0C 100%);

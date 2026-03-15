@@ -3,6 +3,37 @@
    ===================================================== */
 
 /* --------------------------------------------------
+   VIDEO LIGHTBOX
+   -------------------------------------------------- */
+const videoOverlay = document.getElementById('videoOverlay');
+const videoClose   = document.getElementById('videoClose');
+const videoFrame   = document.getElementById('videoFrame');
+
+function openVideo(vimeoId) {
+  videoFrame.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`;
+  videoOverlay.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideo() {
+  videoOverlay.classList.remove('is-open');
+  videoFrame.src = '';
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.js-open-video').forEach(el => {
+  el.addEventListener('click', () => openVideo(el.dataset.vimeo));
+});
+
+videoClose.addEventListener('click', closeVideo);
+videoOverlay.addEventListener('click', (e) => {
+  if (e.target === videoOverlay) closeVideo();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && videoOverlay.classList.contains('is-open')) closeVideo();
+});
+
+/* --------------------------------------------------
    CONTACT MODAL
    -------------------------------------------------- */
 const contactModal = document.getElementById('contactModal');
