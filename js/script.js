@@ -95,8 +95,20 @@ if (tickerInner) {
 }
 
 /* --------------------------------------------------
-   SERVICE CARDS: stagger on reveal
+   SERVICE CARDS: stagger on reveal + click-to-open on touch
    -------------------------------------------------- */
 document.querySelectorAll('.svc-card').forEach((card, i) => {
   card.style.setProperty('--delay', `${i * 0.07}s`);
+});
+
+// On touch devices hover doesn't fire, so toggle via click
+document.querySelectorAll('.svc-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const isTouchDevice = window.matchMedia('(hover: none)').matches;
+    if (!isTouchDevice) return;
+    const isOpen = card.classList.contains('is-open');
+    // Close any other open card
+    document.querySelectorAll('.svc-card.is-open').forEach(c => c.classList.remove('is-open'));
+    if (!isOpen) card.classList.add('is-open');
+  });
 });
