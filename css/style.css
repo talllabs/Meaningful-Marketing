@@ -1336,9 +1336,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--white);
 }
 .ai-card__icon {
-  font-size: 1.4rem;
+  font-size: 2.8rem;
   line-height: 1;
-  opacity: .7;
+  opacity: 1;
+  display: inline-block;
+}
+.ai-card:nth-child(1) .ai-card__icon { animation: icon-pulse 2.4s ease-in-out infinite; }
+.ai-card:nth-child(2) .ai-card__icon { animation: icon-spin-slow 8s linear infinite; }
+.ai-card:nth-child(3) .ai-card__icon { animation: icon-spin-slow 6s linear infinite reverse; }
+
+@keyframes icon-pulse {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.2); opacity: 0.7; }
+}
+@keyframes icon-spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 .ai-card__title {
   font-size: 1.05rem;
