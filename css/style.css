@@ -499,6 +499,32 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* --------------------------------------------------
+   LOGO WALL
+   -------------------------------------------------- */
+.logowall {
+  background: var(--off-white);
+  padding: clamp(40px, 6vw, 72px) 0;
+  text-align: center;
+}
+.logowall__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray-mid);
+  margin-bottom: 32px;
+}
+.logowall__img {
+  max-width: 860px;
+  width: 100%;
+  height: auto;
+  opacity: 0.75;
+  filter: grayscale(1);
+  transition: opacity 0.3s, filter 0.3s;
+}
+.logowall__img:hover { opacity: 1; filter: grayscale(0); }
+
+/* --------------------------------------------------
    11. SERVICES
    -------------------------------------------------- */
 .services {
@@ -670,10 +696,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .about__text .stamp--fill { background: var(--black); color: var(--white); }
 .about__text .stamp--stroke { border-color: var(--black); color: var(--black); }
 .about__hello {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 20px;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 16px;
   color: var(--teal);
+  line-height: 1;
 }
 .about__body {
   font-size: 1rem;
@@ -681,6 +708,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--text-muted);
   margin-bottom: 20px;
   max-width: 540px;
+}
+.about__body--lead {
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--black);
+}
+.about__body--lead strong {
+  font-weight: 800;
+}
+.about__squiggle {
+  margin-top: 4px;
+  margin-bottom: 20px;
+  width: clamp(140px, 28vw, 280px);
+  height: auto;
+  opacity: 0.65;
 }
 .about__text .btn--dark {
   background: var(--coral);
@@ -1214,10 +1257,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 32px;
 }
 .ai__sub {
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  color: rgba(255,255,255,.5);
-  line-height: 1.65;
-  max-width: 600px;
+  font-size: clamp(1.75rem, 4vw, 3.5rem);
+  font-weight: 300;
+  color: rgba(255,255,255,.85);
+  line-height: 1.25;
+  max-width: 900px;
+  letter-spacing: -0.01em;
+}
+.ai__sub strong {
+  font-weight: 800;
+  color: var(--white);
+}
+.ai__squiggle {
+  margin-top: 28px;
+  width: clamp(200px, 40vw, 480px);
+  height: auto;
+  opacity: 0.7;
 }
 .ai__services {
   display: grid;
@@ -1799,12 +1854,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border: 1px solid rgba(255,255,255,.1);
   border-radius: 16px;
   padding: 48px;
-  max-width: 580px;
+  max-width: 760px;
   width: 100%;
   position: relative;
   transform: translateY(24px);
   transition: transform 0.28s ease;
-  max-height: 90svh;
+  max-height: 92svh;
   overflow-y: auto;
 }
 .modal-overlay.is-open .modal {
@@ -1900,24 +1955,24 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 24px 0 8px;
-  gap: 12px;
+  padding: 48px 24px 40px;
+  gap: 16px;
   color: var(--white);
 }
 .contact-form__success-icon {
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   background: var(--teal);
   color: var(--black);
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.contact-form__success h3 { font-size: 1.4rem; margin: 0; }
-.contact-form__success p { color: rgba(255,255,255,.55); margin: 0; }
+.contact-form__success h3 { font-size: 1.75rem; margin: 0; font-weight: 800; }
+.contact-form__success p { font-size: 1.05rem; color: rgba(255,255,255,.6); margin: 0; max-width: 380px; line-height: 1.6; }
 
 @media (max-width: 520px) {
   .modal { padding: 32px 24px; }
