@@ -1036,15 +1036,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .lifecycle-outputs { display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .lifecycle-out {
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.08);
+  background: var(--white);
+  border: 1px solid rgba(255,255,255,.3);
   border-radius: 4px;
   padding: 10px 16px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.6);
+  color: var(--black);
 }
 .lifecycle-out--gold {
   background: var(--gold);
