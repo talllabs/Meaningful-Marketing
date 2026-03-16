@@ -886,6 +886,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--text-muted);
 }
 
+/* ------ CASE STUDY VIDEO ------ */
+.cs__video-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,.45);
+  line-height: 0;
+}
+.cs__video {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
 /* ------ CASE STUDY VISUAL MOCKS ------ */
 .cs-mock {
   border-radius: 12px;
