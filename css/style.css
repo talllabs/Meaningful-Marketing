@@ -182,10 +182,29 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--black);
   color: var(--white);
   border-color: var(--black);
+  overflow: visible;
 }
 .btn--primary:hover {
-  background: var(--teal-dark);
-  border-color: var(--teal-dark);
+  background: var(--black);
+  border-color: var(--black);
+}
+/* Gold pen-draw ring */
+.btn-ring {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  pointer-events: none;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.btn-ring rect {
+  transition: stroke-dashoffset 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn--primary:hover .btn-ring rect {
+  stroke-dashoffset: 0 !important;
 }
 .btn--ghost {
   background: transparent;
