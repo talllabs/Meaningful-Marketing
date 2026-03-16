@@ -290,30 +290,3 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
   line.style.strokeDashoffset = len;
   squiggleObserver.observe(svg);
 });
-
-/* --------------------------------------------------
-   HERO BUTTON — pen-draw gold ring on hover
-   -------------------------------------------------- */
-const heroBtn = document.querySelector('.btn--primary');
-if (heroBtn) {
-  const w = heroBtn.offsetWidth;
-  const h = heroBtn.offsetHeight;
-  const rx = 6;
-  const perimeter = 2 * (w + h) - 8 * rx + 2 * Math.PI * rx;
-  const ns = 'http://www.w3.org/2000/svg';
-  const svg = document.createElementNS(ns, 'svg');
-  svg.setAttribute('class', 'btn-ring');
-  svg.setAttribute('aria-hidden', 'true');
-  svg.setAttribute('width',  w + 10);
-  svg.setAttribute('height', h + 10);
-  const rect = document.createElementNS(ns, 'rect');
-  rect.setAttribute('x', '1');
-  rect.setAttribute('y', '1');
-  rect.setAttribute('width',  w + 8);
-  rect.setAttribute('height', h + 8);
-  rect.setAttribute('rx', rx);
-  rect.style.strokeDasharray  = perimeter;
-  rect.style.strokeDashoffset = perimeter;
-  svg.appendChild(rect);
-  heroBtn.appendChild(svg);
-}
