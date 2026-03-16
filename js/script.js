@@ -44,6 +44,21 @@ document.querySelectorAll('.js-open-video').forEach(el => {
   el.addEventListener('click', () => openVideo(el));
 });
 
+/* --------------------------------------------------
+   VIMEO THUMBNAIL LOADER
+   -------------------------------------------------- */
+document.querySelectorAll('.vid-card__thumb[data-vimeo-id]').forEach(thumb => {
+  const id = thumb.dataset.vimeoId;
+  fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}&width=640`)
+    .then(r => r.json())
+    .then(d => {
+      if (d.thumbnail_url) {
+        thumb.style.backgroundImage = `url('${d.thumbnail_url}')`;
+      }
+    })
+    .catch(() => {});
+});
+
 videoClose.addEventListener('click', closeVideo);
 videoOverlay.addEventListener('click', (e) => {
   if (e.target === videoOverlay) closeVideo();
