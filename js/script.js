@@ -16,12 +16,17 @@ function openVideo(el) {
   const youtube = el.dataset.youtube;
   if (mp4) {
     videoFrame.hidden = true;
-    videoNative.hidden = false;
-    videoNative.src = mp4;
-    videoNative.load();
+    videoNative.muted = true;
     videoNative.addEventListener('canplay', () => {
-      videoNative.play().catch(() => {});
+      videoNative.play().then(() => {
+        videoNative.muted = false;
+      }).catch(() => {
+        videoNative.muted = false;
+      });
     }, { once: true });
+    videoNative.src = mp4;
+    videoNative.hidden = false;
+    videoNative.load();
   } else if (youtube) {
     videoNative.hidden = true;
     videoFrame.hidden = false;
