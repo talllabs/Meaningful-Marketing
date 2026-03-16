@@ -747,7 +747,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .cs--photo {
   background-image:
     linear-gradient(to right, rgba(0,0,0,.75) 45%, rgba(0,0,0,.35) 100%),
-    url('../images/andean case.png');
+    url('https://images.pexels.com/photos/29142946/pexels-photo-29142946.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

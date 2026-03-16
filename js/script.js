@@ -16,10 +16,12 @@ function openVideo(el) {
   const youtube = el.dataset.youtube;
   if (mp4) {
     videoFrame.hidden = true;
-    videoNative.src = mp4;
     videoNative.hidden = false;
+    videoNative.src = mp4;
     videoNative.load();
-    videoNative.play().catch(() => {});
+    videoNative.addEventListener('canplay', () => {
+      videoNative.play().catch(() => {});
+    }, { once: true });
   } else if (youtube) {
     videoNative.hidden = true;
     videoFrame.hidden = false;
