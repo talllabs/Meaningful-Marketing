@@ -1746,7 +1746,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 500;
   line-height: 1.3;
   color: var(--white);
-  margin-bottom: -4px;
+  margin-bottom: clamp(16px, 2.5vw, 28px);
 }
 .cta__prelude-teal {
   color: var(--teal);
@@ -1760,7 +1760,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--white);
   display: inline-block;
   padding: 0.05em 0.15em;
-  margin-bottom: clamp(20px, 3vw, 32px);
+  margin-bottom: clamp(32px, 5vw, 56px);
 }
 .cta__schedule {
   display: flex;
@@ -1771,11 +1771,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 0;
 }
 .cta__here {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
   color: var(--white);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-color: var(--teal);
+  cursor: pointer;
 }
 .cta__here:hover { color: var(--teal); }
 .cta__arrow {
@@ -2074,7 +2079,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .ai__services   { grid-template-columns: 1fr; }
   .ai__cards { grid-template-columns: 1fr; }
   .ai__bottom { flex-direction: column; text-align: center; }
-  .cta__schedule  { flex-direction: column; gap: 8px; }
+  .cta__arrow { display: none; }
   .testi-grid     { grid-template-columns: 1fr; }
   .hero__ctas     { flex-direction: column; align-items: flex-start; }
   .cs__stats      { gap: 20px; }
