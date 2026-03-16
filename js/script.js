@@ -263,3 +263,30 @@ document.querySelectorAll('.svc-card').forEach(card => {
     if (!isOpen) card.classList.add('is-open');
   });
 });
+
+/* --------------------------------------------------
+   SQUIGGLE DRAW-ON ANIMATION
+   -------------------------------------------------- */
+const squiggleObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const line = entry.target.querySelector('polyline, path');
+      if (!line) return;
+      const len = line.getTotalLength();
+      line.style.strokeDasharray = len;
+      line.style.strokeDashoffset = '0';
+      squiggleObserver.unobserve(entry.target);
+    });
+  },
+  { threshold: 0.3 }
+);
+
+document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
+  const line = svg.querySelector('polyline, path');
+  if (!line) return;
+  const len = line.getTotalLength();
+  line.style.strokeDasharray = len;
+  line.style.strokeDashoffset = len;
+  squiggleObserver.observe(svg);
+});

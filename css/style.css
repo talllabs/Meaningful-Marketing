@@ -727,6 +727,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   height: auto;
   opacity: 0.65;
 }
+.about__squiggle polyline,
+.ai__squiggle polyline {
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
 .about__text .btn--dark {
   background: var(--coral);
   color: var(--white);
