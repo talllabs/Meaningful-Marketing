@@ -18,7 +18,8 @@ function openVideo(el) {
     videoFrame.hidden = true;
     videoNative.src = mp4;
     videoNative.hidden = false;
-    videoNative.play();
+    videoNative.load();
+    videoNative.play().catch(() => {});
   } else if (youtube) {
     videoNative.hidden = true;
     videoFrame.hidden = false;
