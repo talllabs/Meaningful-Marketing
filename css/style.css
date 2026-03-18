@@ -45,7 +45,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  zoom: 0.75;
+  zoom: 1.25;
   -webkit-text-size-adjust: 100%;
 }
 
