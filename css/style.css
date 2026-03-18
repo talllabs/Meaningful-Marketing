@@ -367,6 +367,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Carousel */
 .hero__carousel {
   position: relative;
+  max-height: 600px;
 }
 .hero__slide {
   position: absolute;
