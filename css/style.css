@@ -1422,18 +1422,39 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-bottom: 1px solid rgba(255,255,255,.06);
   margin-bottom: clamp(60px, 6vw, 80px);
 }
+.ai__header-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
+}
+.ai__header-image {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ai__header-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
 .ai__heading {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+}
+/* Smaller stamps just in the AI header */
+.ai__heading .stamp {
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
 }
 .ai__sub {
-  font-size: clamp(1.75rem, 4vw, 3.5rem);
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
   font-weight: 300;
   color: rgba(255,255,255,.85);
-  line-height: 1.25;
-  max-width: 900px;
+  line-height: 1.5;
+  max-width: 560px;
   letter-spacing: -0.01em;
 }
 .ai__sub strong {
@@ -2256,6 +2277,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .testi--featured { grid-column: span 2; }
   .ai__services   { grid-template-columns: repeat(2, 1fr); }
   .ai__cards { grid-template-columns: 1fr; }
+  .ai__header-inner { grid-template-columns: 1fr; }
+  .ai__header-image { order: -1; max-height: 300px; }
 
   .ai-case__inner { grid-template-columns: 1fr; }
   .ai-case__visual { display: none; }
