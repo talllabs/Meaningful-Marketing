@@ -60,7 +60,7 @@
         with their unique and important message.
       </p>
       <div class="hero__ctas reveal-up" style="--delay:.3s">
-        <button class="btn btn--primary js-open-contact">Schedule an Intro Call</button>
+        <button class="btn btn--primary js-open-calendly">Schedule an Intro Call</button>
         <a href="#work" class="btn btn--ghost">See Our Work ↓</a>
       </div>
     </div>
@@ -796,6 +796,23 @@
 </div>
 
 <!-- ============ CONTACT MODAL ============ -->
+<div class="modal-overlay" id="calendlyModal" role="dialog" aria-modal="true" aria-labelledby="calendlyTitle">
+  <div class="modal modal--calendly">
+    <button class="modal__close" id="calendlyClose" aria-label="Close">✕</button>
+    <span class="eyebrow eyebrow--light">Book a Time</span>
+    <h2 class="modal__heading" id="calendlyTitle">Schedule an Intro Call</h2>
+    <p class="modal__sub">Pick a time that works for you — no pressure, just a friendly conversation about your goals.</p>
+    <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener" class="btn btn--gold btn--lg calendly-cta">Open Calendly to Book →</a>
+    <iframe
+      src="https://calendly.com/ally-labriola?embed_type=Inline&hide_landing_page_details=1&hide_gdpr_banner=1"
+      class="calendly-iframe"
+      frameborder="0"
+      title="Schedule a call with Meaningful Marketing"
+      loading="lazy"
+    ></iframe>
+  </div>
+</div>
+
 <div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal">
     <button class="modal__close" id="modalClose" aria-label="Close contact form">✕</button>

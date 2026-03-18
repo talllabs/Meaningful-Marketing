@@ -73,6 +73,30 @@ document.addEventListener('keydown', (e) => {
 /* --------------------------------------------------
    CONTACT MODAL
    -------------------------------------------------- */
+// Calendly modal
+const calendlyModal = document.getElementById('calendlyModal');
+const calendlyClose = document.getElementById('calendlyClose');
+
+function openCalendlyModal() {
+  calendlyModal.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCalendlyModal() {
+  calendlyModal.classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.js-open-calendly').forEach(el => {
+  el.addEventListener('click', openCalendlyModal);
+});
+calendlyClose.addEventListener('click', closeCalendlyModal);
+calendlyModal.addEventListener('click', (e) => {
+  if (e.target === calendlyModal) closeCalendlyModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && calendlyModal.classList.contains('is-open')) closeCalendlyModal();
+});
+
+// Contact modal
 const contactModal = document.getElementById('contactModal');
 const modalClose   = document.getElementById('modalClose');
 const contactForm  = document.getElementById('contactForm');
