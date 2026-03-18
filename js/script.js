@@ -296,11 +296,21 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
    -------------------------------------------------- */
 (function () {
   const slides = document.querySelectorAll('.hero__slide');
+  const dots   = document.querySelectorAll('.hero__dot');
   if (slides.length < 2) return;
   let current = 0;
-  setInterval(() => {
+
+  function goTo(index) {
     slides[current].classList.remove('hero__slide--active');
-    current = (current + 1) % slides.length;
+    dots[current].classList.remove('hero__dot--active');
+    current = index;
     slides[current].classList.add('hero__slide--active');
-  }, 4000);
+    dots[current].classList.add('hero__dot--active');
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => goTo(Number(dot.dataset.index)));
+  });
+
+  setInterval(() => goTo((current + 1) % slides.length), 4000);
 })();
