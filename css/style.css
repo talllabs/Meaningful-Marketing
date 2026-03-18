@@ -413,7 +413,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: flex-start;
   margin-bottom: 40px;
 }
-.hero__headline .stamp--fill { color: var(--white); background: rgba(255,255,255,.1); border: 2px solid rgba(255,255,255,.15); }
+.hero__headline .stamp--fill { color: var(--black); background: var(--white); border: 2px solid var(--white); }
 .hero__headline .stamp--stroke { border-color: rgba(255,255,255,.9); color: var(--white); }
 
 .hero__sub {
