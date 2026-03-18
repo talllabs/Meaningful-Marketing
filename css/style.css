@@ -336,7 +336,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    -------------------------------------------------- */
 .hero {
   position: relative;
-  min-height: 100svh;
+  height: 600px;
   display: flex;
   flex-direction: column;
   background: var(--black);
@@ -345,8 +345,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero__split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  flex: 1;
-  min-height: 100svh;
+  height: 600px;
 }
 .hero__split .hero__content {
   display: flex;
@@ -356,6 +355,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero__image {
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
 .hero__image img {
   width: 100%;
@@ -367,7 +367,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Carousel */
 .hero__carousel {
   position: relative;
-  max-height: 600px;
+  height: 100%;
 }
 .hero__slide {
   position: absolute;
@@ -380,7 +380,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: opacity 1s ease;
 }
 .hero__slide--active {
-  position: relative;
   opacity: 1;
 }
 .hero__dots {
