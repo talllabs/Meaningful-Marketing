@@ -290,3 +290,17 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
   line.style.strokeDashoffset = len;
   squiggleObserver.observe(svg);
 });
+
+/* --------------------------------------------------
+   HERO CAROUSEL — auto-advance every 4 s
+   -------------------------------------------------- */
+(function () {
+  const slides = document.querySelectorAll('.hero__slide');
+  if (slides.length < 2) return;
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove('hero__slide--active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('hero__slide--active');
+  }, 4000);
+})();
