@@ -228,6 +228,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--black);
   color: var(--white);
 }
+.btn--yellow {
+  background: var(--gold-light);
+  color: var(--black);
+  border-color: var(--gold-light);
+}
+.btn--yellow:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+}
 .btn--outline-light {
   background: transparent;
   color: var(--white);
