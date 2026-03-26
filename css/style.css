@@ -2248,6 +2248,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* Success state */
+.contact-form__success[hidden] { display: none; }
 .contact-form__success {
   display: flex;
   flex-direction: column;
