@@ -228,6 +228,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--black);
   color: var(--white);
 }
+.btn--outline-light {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid rgba(255,255,255,.5);
+}
+.btn--outline-light:hover {
+  border-color: var(--white);
+  background: rgba(255,255,255,.1);
+}
 
 /* --------------------------------------------------
    8. NAVIGATION
@@ -863,6 +872,34 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-color: var(--gray-light);
   color: var(--text-muted);
 }
+
+.cs__ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.cs__live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,.7);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .2s;
+}
+.cs__live-link:hover { color: var(--white); }
 
 .cs__stats {
   display: flex;
