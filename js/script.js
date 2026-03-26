@@ -71,32 +71,8 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* --------------------------------------------------
-   CONTACT MODAL
+   CONTACT MODAL (unified — form + Calendly side by side)
    -------------------------------------------------- */
-// Calendly modal
-const calendlyModal = document.getElementById('calendlyModal');
-const calendlyClose = document.getElementById('calendlyClose');
-
-function openCalendlyModal() {
-  calendlyModal.classList.add('is-open');
-  document.body.style.overflow = 'hidden';
-}
-function closeCalendlyModal() {
-  calendlyModal.classList.remove('is-open');
-  document.body.style.overflow = '';
-}
-document.querySelectorAll('.js-open-calendly').forEach(el => {
-  el.addEventListener('click', openCalendlyModal);
-});
-calendlyClose.addEventListener('click', closeCalendlyModal);
-calendlyModal.addEventListener('click', (e) => {
-  if (e.target === calendlyModal) closeCalendlyModal();
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && calendlyModal.classList.contains('is-open')) closeCalendlyModal();
-});
-
-// Contact modal
 const contactModal = document.getElementById('contactModal');
 const modalClose   = document.getElementById('modalClose');
 const contactForm  = document.getElementById('contactForm');
@@ -105,7 +81,6 @@ const formSuccess  = document.getElementById('formSuccess');
 function openContactModal() {
   contactModal.classList.add('is-open');
   document.body.style.overflow = 'hidden';
-  // Reset to form view if previously submitted
   contactForm.hidden = false;
   formSuccess.hidden = true;
   contactForm.reset();
@@ -116,20 +91,14 @@ function closeContactModal() {
   document.body.style.overflow = '';
 }
 
-// All "open contact" triggers
-document.querySelectorAll('.js-open-contact').forEach(el => {
+document.querySelectorAll('.js-open-contact, .js-open-calendly').forEach(el => {
   el.addEventListener('click', openContactModal);
 });
 
-// Close button
 modalClose.addEventListener('click', closeContactModal);
-
-// Close on backdrop click
 contactModal.addEventListener('click', (e) => {
   if (e.target === contactModal) closeContactModal();
 });
-
-// Close on Escape
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && contactModal.classList.contains('is-open')) closeContactModal();
 });
