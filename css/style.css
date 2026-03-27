@@ -179,9 +179,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border: 2px solid transparent;
 }
 .btn--primary {
-  background: var(--black);
+  background: var(--teal);
   color: var(--white);
-  border-color: var(--black);
+  border-color: var(--teal);
 }
 .btn--primary:hover {
   background: var(--teal-dark);
@@ -2450,13 +2450,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
   .hero__headline { margin-bottom: 16px; }
 
-  /* Sub: single line, tighter */
-  .hero__sub {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 24px;
-  }
-
   /* CTAs: stack, primary full-width */
   .hero__ctas {
     flex-direction: column;
@@ -2486,16 +2479,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     color: rgba(255,255,255,.65);
   }
 
-  /* Subtle glow-pulse on primary CTA after it reveals */
-  .hero__ctas.visible .btn--primary {
-    animation: cta-glow 2.4s ease-out 0.5s 1 both;
-  }
-}
-
-@keyframes cta-glow {
-  0%   { box-shadow: 0 0 0 0 rgba(77,189,184,0); }
-  45%  { box-shadow: 0 0 0 10px rgba(77,189,184,0.22); }
-  100% { box-shadow: 0 0 0 0 rgba(77,189,184,0); }
 }
 
 /* Image: sits below content, correct height for context not distraction */
@@ -2709,4 +2692,34 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .modal--split .modal__panel--calendly,
   .modal--split .modal__panel--form,
   .modal--split .modal__or { display: flex !important; }
+}
+
+/* --- HERO ROTATING WORD --- */
+.hero__rotate {
+  display: inline-block;
+  color: var(--teal);
+  font-weight: 700;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.hero__rotate.is-changing {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+/* --- NAV LOGO: 90% width on mobile --- */
+@media (max-width: 768px) {
+  .nav__inner { gap: 8px; }
+  .nav__logo { flex: 1; }
+  .nav__logo .logo-mark { width: 100%; }
+  .nav__logo .logo-mark__top,
+  .nav__logo .logo-mark__bot {
+    width: 100%;
+    font-size: clamp(11px, 3.2vw, 15px);
+    text-align: center;
+    letter-spacing: 0.16em;
+    padding-left: 6px;
+    padding-right: 6px;
+    box-sizing: border-box;
+  }
+  .nav__logo .logo-mark__bot { margin-left: 0; }
 }
