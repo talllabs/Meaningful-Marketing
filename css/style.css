@@ -2724,13 +2724,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* --- NAV LOGO: centered, 30% bigger on mobile --- */
 @media (max-width: 768px) {
-  .nav__inner { position: relative; justify-content: center; gap: 0; }
-  .nav__burger { position: absolute; right: 0; top: 50%; transform: translateY(-50%); margin-left: 0; }
-  .nav__logo { flex: none; width: 80%; }
-  .nav__logo .logo-mark { width: 100%; }
+  .nav__inner {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+    gap: 0;
+  }
+  .nav__logo { grid-column: 2; text-align: center; }
+  .nav__logo .logo-mark { display: inline-flex; width: auto; max-width: 100%; }
+  .nav__burger { grid-column: 3; justify-self: end; margin-left: 0; }
   .nav__logo .logo-mark__top,
   .nav__logo .logo-mark__bot {
-    width: 100%;
     font-size: clamp(14px, 4.2vw, 20px);
     text-align: center;
     letter-spacing: 0.16em;
