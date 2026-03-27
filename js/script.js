@@ -355,3 +355,21 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
     modalBox.classList.remove('show-panel', 'show-calendly', 'show-form');
   });
 })();
+
+/* --------------------------------------------------
+   HERO: rotating sub-text
+   -------------------------------------------------- */
+(function () {
+  const el = document.querySelector('.hero__rotate');
+  if (!el) return;
+  const words = ['AI', 'websites', 'design', 'branding', 'video', 'research'];
+  let i = 0;
+  setInterval(() => {
+    el.classList.add('is-changing');
+    setTimeout(() => {
+      i = (i + 1) % words.length;
+      el.textContent = words[i];
+      el.classList.remove('is-changing');
+    }, 350);
+  }, 2400);
+})();
