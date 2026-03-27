@@ -237,7 +237,6 @@
             <span>Immersive Design</span>
             <span>Live Integration</span>
           </div>
-          <button class="btn btn--yellow js-open-video" data-vimeo="1177514573">▶ Watch the Live Event Recording</button>
         </div>
         <div class="cs__visual reveal-up" style="--delay:.15s">
           <div class="cc-card">
@@ -270,14 +269,40 @@
           </div>
         </div>
       </div>
+      <div class="cs__watch-row reveal-up" style="--delay:.3s">
+        <button class="btn btn--yellow js-open-video" data-vimeo="1177514573">▶ Watch the Live Event Recording</button>
+      </div>
     </div>
   </div>
 
   <!-- CS 02 -->
   <div class="cs cs--light" id="cs02">
     <div class="container">
-      <div class="cs__grid cs__grid--rev">
-        <div class="cs__visual reveal-up">
+      <div class="cs02-layout">
+        <div class="cs__info reveal-up">
+          <p class="cs__label">Case Study 02</p>
+          <h3 class="cs__title">AI Degree<br>Navigator</h3>
+          <p class="cs__client">Webster University</p>
+          <p class="cs__desc">Webster University offers freedom for students to build a degree that reflects who they are. We brought this to life through a warm, intuitive AI experience that turns academic jargon into a conversation.</p>
+          <ul class="cs__checklist">
+            <li>Custom-fit degree recommendations</li>
+            <li>Clear explanations of "why" matches fit</li>
+            <li>Career pathways and salary insights</li>
+            <li>Spotlight on "Build Your Own Major"</li>
+          </ul>
+          <div class="cs__metrics">
+            <div class="cs__metric">
+              <span class="cs__metric-label">Engagement</span>
+              <span class="cs__metric-val">Longer time on site &amp; higher differentiation</span>
+            </div>
+            <div class="cs__metric">
+              <span class="cs__metric-label">Feature</span>
+              <span class="cs__metric-val">10-question thoughtful journey</span>
+            </div>
+          </div>
+          <a href="https://degree-match-connect139.replit.app/" target="_blank" rel="noopener" class="cs__demo-link reveal-up" style="--delay:.15s">✦ Try it for yourself — Live Demo →</a>
+        </div>
+        <div class="cs__visual reveal-up" style="--delay:.2s">
           <div class="cs-mock cs-mock--chat">
             <div class="chat-header">
               <div class="chat-avatar-icon"></div>
@@ -299,28 +324,6 @@
                 <div class="chat-match__label">MATCH FOUND</div>
                 <div class="chat-match__val">BA in Interdisciplinary Studies</div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="cs__info reveal-up" style="--delay:.15s">
-          <p class="cs__label">Case Study 02</p>
-          <h3 class="cs__title">AI Degree<br>Navigator</h3>
-          <p class="cs__client">Webster University</p>
-          <p class="cs__desc">Webster University offers freedom for students to build a degree that reflects who they are. We brought this to life through a warm, intuitive AI experience that turns academic jargon into a conversation.</p>
-          <ul class="cs__checklist">
-            <li>Custom-fit degree recommendations</li>
-            <li>Clear explanations of "why" matches fit</li>
-            <li>Career pathways and salary insights</li>
-            <li>Spotlight on "Build Your Own Major"</li>
-          </ul>
-          <div class="cs__metrics">
-            <div class="cs__metric">
-              <span class="cs__metric-label">Engagement</span>
-              <span class="cs__metric-val">Longer time on site &amp; higher differentiation</span>
-            </div>
-            <div class="cs__metric">
-              <span class="cs__metric-label">Feature</span>
-              <span class="cs__metric-val">10-question thoughtful journey</span>
             </div>
           </div>
         </div>
@@ -674,6 +677,9 @@
         </div>
       </div>
     </div>
+    <div class="videos__show-more">
+      <button class="btn btn--outline-dark" id="videoShowMore">Show More Videos ↓</button>
+    </div>
   </div>
 </section>
 
@@ -802,6 +808,28 @@
 <div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal modal--split">
     <button class="modal__close" id="modalClose" aria-label="Close">✕</button>
+
+    <!-- Mobile chooser screen (shown first on mobile) -->
+    <div class="modal__chooser" id="modalChooser">
+      <h2 class="modal__heading">Let's connect!</h2>
+      <p class="modal__sub">How would you like to reach us?</p>
+      <div class="modal__choice-grid">
+        <button class="modal__choice-btn" id="chooseCalendly">
+          <span class="modal__choice-icon">📅</span>
+          <span class="modal__choice-title">Schedule a Call</span>
+          <span class="modal__choice-desc">Pick a time that works for you — no pressure</span>
+        </button>
+        <button class="modal__choice-btn" id="chooseForm">
+          <span class="modal__choice-icon">✉️</span>
+          <span class="modal__choice-title">Send a Message</span>
+          <span class="modal__choice-desc">We'll reply within one business day</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Back button (mobile panel mode only) -->
+    <button class="modal__back-btn" id="modalBack">← Back</button>
+
     <div class="modal__split">
 
       <!-- LEFT: Calendly -->
@@ -816,7 +844,7 @@
       <div class="modal__or"><span>or</span></div>
 
       <!-- RIGHT: Contact Form -->
-      <div class="modal__panel">
+      <div class="modal__panel modal__panel--form">
         <span class="eyebrow eyebrow--light">Send a Message</span>
         <h2 class="modal__heading" id="modalTitle">Let's Make Something Meaningful</h2>
         <p class="modal__sub">Tell us a little about your project and we'll be in touch shortly.</p>
