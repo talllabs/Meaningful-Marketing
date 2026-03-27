@@ -2590,6 +2590,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 12px;
   }
 }
 
