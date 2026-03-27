@@ -1892,9 +1892,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: #0d0d0d;
   padding-block: var(--section-v);
 }
-.testimonials .section-intro .eyebrow { color: var(--gold); }
-.testimonials .section-heading .stamp--fill  { background: var(--gold); color: var(--black); }
-.testimonials .section-heading .stamp--stroke { color: var(--white); -webkit-text-stroke-color: var(--white); }
 .testi-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
