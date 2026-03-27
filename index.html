@@ -73,7 +73,6 @@
       <img class="hero__slide" src="images/hero6.jpg" alt="Meaningful Marketing" />
       <img class="hero__slide" src="images/hero7.jpg" alt="Meaningful Marketing" />
       <img class="hero__slide" src="images/hero8.jpg" alt="Meaningful Marketing" />
-      <img class="hero__slide" src="images/hero9.png" alt="Meaningful Marketing" />
       <div class="hero__dots" role="tablist" aria-label="Slide indicators">
         <button class="hero__dot hero__dot--active" data-index="0"></button>
         <button class="hero__dot" data-index="1"></button>
@@ -83,7 +82,6 @@
         <button class="hero__dot" data-index="5"></button>
         <button class="hero__dot" data-index="6"></button>
         <button class="hero__dot" data-index="7"></button>
-        <button class="hero__dot" data-index="8"></button>
       </div>
     </div>
   </div>
@@ -801,55 +799,55 @@
 </div>
 
 <!-- ============ CONTACT MODAL ============ -->
-<div class="modal-overlay" id="calendlyModal" role="dialog" aria-modal="true" aria-labelledby="calendlyTitle">
-  <div class="modal modal--calendly">
-    <button class="modal__close" id="calendlyClose" aria-label="Close">✕</button>
-    <span class="eyebrow eyebrow--light">Book a Time</span>
-    <h2 class="modal__heading" id="calendlyTitle">Schedule an Intro Call</h2>
-    <p class="modal__sub">Pick a time that works for you — no pressure, just a friendly conversation about your goals.</p>
-    <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener" class="btn btn--gold btn--lg calendly-cta">Open Calendly to Book →</a>
-    <iframe
-      src="https://calendly.com/ally-labriola?embed_type=Inline&hide_landing_page_details=1&hide_gdpr_banner=1"
-      class="calendly-iframe"
-      frameborder="0"
-      title="Schedule a call with Meaningful Marketing"
-      loading="lazy"
-    ></iframe>
-  </div>
-</div>
-
 <div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal">
-    <button class="modal__close" id="modalClose" aria-label="Close contact form">✕</button>
-    <span class="eyebrow eyebrow--light">Get in Touch</span>
-    <h2 class="modal__heading" id="modalTitle">Let's Make Something Meaningful</h2>
-    <p class="modal__sub">Tell us a little about your project and we'll be in touch shortly.</p>
-    <form class="contact-form" id="contactForm" novalidate>
-      <div class="contact-form__row">
-        <div class="contact-form__field">
-          <label for="cf-name">Name <span aria-hidden="true">*</span></label>
-          <input type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name" />
+  <div class="modal modal--split">
+    <button class="modal__close" id="modalClose" aria-label="Close">✕</button>
+    <div class="modal__split">
+
+      <!-- LEFT: Calendly -->
+      <div class="modal__panel modal__panel--calendly">
+        <span class="eyebrow eyebrow--light">Book a Time</span>
+        <h2 class="modal__heading">Schedule an Intro Call</h2>
+        <p class="modal__sub">Pick a time that works for you — no pressure, just a friendly conversation about your goals.</p>
+        <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener" class="btn btn--gold btn--lg">Open Calendly to Book →</a>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="modal__or"><span>or</span></div>
+
+      <!-- RIGHT: Contact Form -->
+      <div class="modal__panel">
+        <span class="eyebrow eyebrow--light">Send a Message</span>
+        <h2 class="modal__heading" id="modalTitle">Let's Make Something Meaningful</h2>
+        <p class="modal__sub">Tell us a little about your project and we'll be in touch shortly.</p>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label for="cf-name">Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="contact-form__field">
+              <label for="cf-email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="contact-form__field">
+            <label for="cf-org">Organization</label>
+            <input type="text" id="cf-org" name="organization" placeholder="Your organization" autocomplete="organization" />
+          </div>
+          <div class="contact-form__field">
+            <label for="cf-message">Message <span aria-hidden="true">*</span></label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Tell us about your project or goals…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold btn--lg contact-form__submit">Send Message →</button>
+        </form>
+        <div class="contact-form__success is-hidden" id="formSuccess">
+          <div class="contact-form__success-icon">✓</div>
+          <h3>Message sent!</h3>
+          <p>Thanks for reaching out — we'll be in touch within one business day.</p>
         </div>
-        <div class="contact-form__field">
-          <label for="cf-email">Email <span aria-hidden="true">*</span></label>
-          <input type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email" />
-        </div>
       </div>
-      <div class="contact-form__field">
-        <label for="cf-org">Organization</label>
-        <input type="text" id="cf-org" name="organization" placeholder="Your organization" autocomplete="organization" />
-      </div>
-      <div class="contact-form__field">
-        <label for="cf-message">Message <span aria-hidden="true">*</span></label>
-        <textarea id="cf-message" name="message" rows="5" placeholder="Tell us about your project or goals…" required></textarea>
-      </div>
-      <button type="submit" class="btn btn--gold btn--lg contact-form__submit">Send Message →</button>
-      <p class="contact-form__alt">Prefer a call? <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener">Schedule on Calendly →</a></p>
-    </form>
-    <div class="contact-form__success" id="formSuccess" hidden>
-      <div class="contact-form__success-icon">✓</div>
-      <h3>Message sent!</h3>
-      <p>Thanks for reaching out — we'll be in touch within one business day.</p>
+
     </div>
   </div>
 </div>
