@@ -2101,6 +2101,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: inherit;
   font-weight: inherit;
 }
+.mobile-menu .nav__mobile-link {
+  color: var(--teal);
+  opacity: 1;
+}
 .footer__bottom {
   display: flex;
   justify-content: space-between;
@@ -2431,11 +2435,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Kill the decorative "MM" ghost text on mobile */
   .hero__content::before { display: none; }
 
-  /* Eyebrow: tighter */
+  /* Eyebrow: tighter + centered */
   .hero__eyebrow {
     font-size: 10px;
     margin-bottom: 14px;
     letter-spacing: 0.18em;
+    text-align: center;
   }
 
   /* Stamps: ~25% smaller, less padding, tighter offset */
@@ -2714,15 +2719,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transform: translateY(-6px);
 }
 
-/* --- NAV LOGO: 90% width on mobile --- */
+/* --- NAV LOGO: centered, 30% bigger on mobile --- */
 @media (max-width: 768px) {
-  .nav__inner { gap: 8px; }
-  .nav__logo { flex: 1; }
+  .nav__inner { gap: 8px; justify-content: center; position: relative; }
+  .nav__burger { position: absolute; right: 0; }
+  .nav__logo { flex: 0 1 90%; }
   .nav__logo .logo-mark { width: 100%; }
   .nav__logo .logo-mark__top,
   .nav__logo .logo-mark__bot {
     width: 100%;
-    font-size: clamp(11px, 3.2vw, 15px);
+    font-size: clamp(14px, 4.2vw, 20px);
     text-align: center;
     letter-spacing: 0.16em;
     padding-left: 6px;
