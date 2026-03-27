@@ -2576,19 +2576,23 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   #cs04 .cs__visual { order: 2; }
 }
 
-/* --- AI SECTION: image below text on mobile only --- */
+/* --- AI SECTION: mobile — hide header image, show full image below CTA --- */
+.ai__chat-mobile { display: none; }
+
 @media (max-width: 900px) {
   .ai__header-inner { display: block; }
   .ai__header-text { max-width: 100%; }
-  .ai__header-image {
-    order: unset;
+  .ai__header-image { display: none; }
+
+  .ai__chat-mobile {
+    display: block;
     margin-top: 40px;
-    max-height: 360px;
-    overflow: hidden;
+    width: 100%;
   }
-  .ai__header-image img {
+  .ai__chat-mobile img {
+    width: 100%;
     height: auto;
-    max-height: 360px;
+    display: block;
   }
 }
 
