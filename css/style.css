@@ -1892,9 +1892,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: #0d0d0d;
   padding-block: var(--section-v);
 }
-.testimonials .section-intro .eyebrow { color: var(--gold); }
-.testimonials .section-heading .stamp--fill  { background: var(--gold); color: var(--black); }
-.testimonials .section-heading .stamp--stroke { color: var(--white); -webkit-text-stroke-color: var(--white); }
 .testi-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2100,6 +2097,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-family: inherit;
   color: inherit;
   font-weight: inherit;
+}
+.mobile-menu .nav__mobile-link {
+  color: var(--teal);
+  opacity: 1;
 }
 .footer__bottom {
   display: flex;
@@ -2431,11 +2432,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Kill the decorative "MM" ghost text on mobile */
   .hero__content::before { display: none; }
 
-  /* Eyebrow: tighter */
+  /* Eyebrow: tighter + centered */
   .hero__eyebrow {
     font-size: 10px;
     margin-bottom: 14px;
     letter-spacing: 0.18em;
+    text-align: center;
   }
 
   /* Stamps: ~25% smaller, less padding, tighter offset */
@@ -2571,19 +2573,23 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   #cs04 .cs__visual { order: 2; }
 }
 
-/* --- AI SECTION: image below text on mobile only --- */
+/* --- AI SECTION: mobile — hide header image, show full image below CTA --- */
+.ai__chat-mobile { display: none; }
+
 @media (max-width: 900px) {
   .ai__header-inner { display: block; }
   .ai__header-text { max-width: 100%; }
-  .ai__header-image {
-    order: unset;
+  .ai__header-image { display: none; }
+
+  .ai__chat-mobile {
+    display: block;
     margin-top: 40px;
-    max-height: 360px;
-    overflow: hidden;
+    width: 100%;
   }
-  .ai__header-image img {
+  .ai__chat-mobile img {
+    width: 100%;
     height: auto;
-    max-height: 360px;
+    display: block;
   }
 }
 
@@ -2714,15 +2720,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transform: translateY(-6px);
 }
 
-/* --- NAV LOGO: 90% width on mobile --- */
+/* --- NAV LOGO: centered, 30% bigger on mobile --- */
 @media (max-width: 768px) {
-  .nav__inner { gap: 8px; }
-  .nav__logo { flex: 1; }
+  .nav__inner { gap: 8px; justify-content: center; position: relative; }
+  .nav__burger { position: absolute; right: 0; }
+  .nav__logo { flex: 0 1 90%; }
   .nav__logo .logo-mark { width: 100%; }
   .nav__logo .logo-mark__top,
   .nav__logo .logo-mark__bot {
     width: 100%;
-    font-size: clamp(11px, 3.2vw, 15px);
+    font-size: clamp(14px, 4.2vw, 20px);
     text-align: center;
     letter-spacing: 0.16em;
     padding-left: 6px;
