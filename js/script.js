@@ -89,6 +89,9 @@ function openContactModal() {
 function closeContactModal() {
   contactModal.classList.remove('is-open');
   document.body.style.overflow = '';
+  // Reset mobile panel state
+  const modalBox = contactModal.querySelector('.modal--split');
+  if (modalBox) modalBox.classList.remove('show-panel', 'show-calendly', 'show-form');
 }
 
 document.querySelectorAll('.js-open-contact, .js-open-calendly').forEach(el => {
@@ -306,4 +309,49 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
   });
 
   setInterval(() => goTo((current + 1) % slides.length), 4000);
+})();
+
+/* --------------------------------------------------
+   VIDEO GRID: mark extras + show-more on mobile
+   -------------------------------------------------- */
+(function () {
+  // Mark cards 5+ as extra (hidden on mobile by default)
+  document.querySelectorAll('.vid-card').forEach((card, i) => {
+    if (i >= 4) card.classList.add('vid-card--extra-mobile');
+  });
+
+  const showMoreBtn = document.getElementById('videoShowMore');
+  if (!showMoreBtn) return;
+
+  let expanded = false;
+  showMoreBtn.addEventListener('click', () => {
+    expanded = !expanded;
+    document.querySelectorAll('.vid-card--extra-mobile').forEach(card => {
+      card.classList.toggle('is-expanded', expanded);
+    });
+    showMoreBtn.textContent = expanded ? 'Show Less ↑' : 'Show More Videos ↓';
+  });
+})();
+
+/* --------------------------------------------------
+   CONTACT MODAL: mobile chooser flow
+   -------------------------------------------------- */
+(function () {
+  const chooseCalendlyBtn = document.getElementById('chooseCalendly');
+  const chooseFormBtn     = document.getElementById('chooseForm');
+  const modalBackBtn      = document.getElementById('modalBack');
+  const modalBox          = document.querySelector('#contactModal .modal--split');
+  if (!modalBox) return;
+
+  chooseCalendlyBtn.addEventListener('click', () => {
+    modalBox.classList.add('show-panel', 'show-calendly');
+  });
+
+  chooseFormBtn.addEventListener('click', () => {
+    modalBox.classList.add('show-panel', 'show-form');
+  });
+
+  modalBackBtn.addEventListener('click', () => {
+    modalBox.classList.remove('show-panel', 'show-calendly', 'show-form');
+  });
 })();

@@ -2405,6 +2405,209 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 @media (max-width: 480px) {
-  .video-grid { grid-template-columns: 1fr; }
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
   .stamp { font-size: clamp(2rem, 8vw, 3rem); }
+}
+
+/* ======================================================
+   MOBILE UX — ADDITIONAL STYLES
+   ====================================================== */
+
+/* --- HERO: restore carousel image on mobile --- */
+@media (max-width: 900px) {
+  .hero { height: auto; }
+  .hero__split { height: auto; }
+  .hero__image,
+  .hero__carousel { height: 62vw; min-height: 240px; max-height: 420px; }
+}
+
+/* --- ABOUT: text above photo on mobile --- */
+@media (max-width: 900px) {
+  .about__text { order: -1; }
+}
+
+/* --- CS01: watch button as own grid row; visual spans rows on desktop --- */
+.cs__watch-row { padding-top: 4px; }
+#cs01 .cs__visual { grid-row: 1 / span 2; }
+@media (max-width: 900px) {
+  #cs01 .cs__visual { grid-row: auto; }
+}
+
+/* --- CS02: stacked layout (info above, visual below) --- */
+.cs02-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.cs02-layout .cs__info { max-width: 640px; }
+.cs02-layout .cs__visual {
+  max-width: 480px;
+  width: 100%;
+  margin-inline: auto;
+}
+/* "Try it for yourself" demo link */
+.cs__demo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 14px 24px;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: background 0.2s, transform 0.15s;
+}
+.cs__demo-link:hover {
+  background: var(--teal-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* --- CS03: single-column need/give on mobile --- */
+@media (max-width: 700px) {
+  .cs__need-give { grid-template-columns: 1fr; }
+}
+
+/* --- CS04: move visual to bottom on mobile --- */
+@media (max-width: 900px) {
+  #cs04 .cs__grid { display: flex; flex-direction: column; }
+  #cs04 .cs__info { order: 1; }
+  #cs04 .cs__visual { order: 2; }
+}
+
+/* --- AI SECTION: image below text (desktop + mobile) --- */
+.ai__header-inner { display: block; }
+.ai__header-text { max-width: 760px; }
+.ai__header-image {
+  margin-top: 40px;
+  max-height: 460px;
+  overflow: hidden;
+}
+.ai__header-image img {
+  height: auto;
+  max-height: 460px;
+}
+/* Undo the mobile order:–1 (no longer needed with block layout) */
+@media (max-width: 900px) {
+  .ai__header-image { order: unset; }
+}
+
+/* --- VIDEO GRID: show-more on mobile --- */
+.videos__show-more {
+  display: none;
+  justify-content: center;
+  margin-top: 28px;
+}
+@media (max-width: 700px) {
+  .vid-card--extra-mobile { display: none; }
+  .vid-card--extra-mobile.is-expanded { display: flex; }
+  .videos__show-more { display: flex; }
+}
+
+/* --- CTA: 80% width on mobile --- */
+@media (max-width: 700px) {
+  .cta__inner { width: 80%; max-width: 80%; padding-inline: 0; }
+  .cta__word { font-size: clamp(2rem, 11vw, 5rem); }
+}
+
+/* --- CONTACT MODAL: mobile chooser screen --- */
+.modal__chooser {
+  display: none;
+  flex-direction: column;
+}
+.modal__chooser .modal__heading { margin-top: 0; font-size: 1.45rem; }
+.modal__choice-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+.modal__choice-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 22px 24px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  background: rgba(255,255,255,.05);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  width: 100%;
+  transition: background 0.2s, border-color 0.2s;
+}
+.modal__choice-btn:hover, .modal__choice-btn:focus {
+  background: rgba(255,255,255,.1);
+  border-color: var(--teal);
+  outline: none;
+}
+.modal__choice-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 2px;
+  line-height: 1;
+}
+.modal__choice-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  display: block;
+}
+.modal__choice-desc {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,.5);
+  display: block;
+}
+.modal__back-btn {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.5);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0 0 20px 0;
+  font-family: inherit;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.modal__back-btn:hover { color: var(--white); }
+
+@media (max-width: 700px) {
+  /* Default mobile: show chooser, hide panels */
+  .modal--split .modal__split { display: none; }
+  .modal--split .modal__chooser { display: flex; }
+
+  /* Panel selected: hide chooser, show back + one panel */
+  .modal--split.show-panel .modal__chooser { display: none; }
+  .modal--split.show-panel .modal__back-btn { display: flex; }
+  .modal--split.show-panel .modal__split {
+    display: flex !important;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .modal--split.show-panel .modal__or { display: none; }
+  .modal--split.show-calendly .modal__panel--form { display: none; }
+  .modal--split.show-form .modal__panel--calendly { display: none; }
+
+  /* Tighten modal padding on small screens */
+  .modal { padding: 28px 20px; }
+}
+
+@media (min-width: 701px) {
+  /* Desktop: always show full split, never chooser */
+  .modal__chooser { display: none !important; }
+  .modal__back-btn { display: none !important; }
+  .modal--split .modal__split { display: grid !important; }
+  .modal--split .modal__panel--calendly,
+  .modal--split .modal__panel--form,
+  .modal--split .modal__or { display: flex !important; }
 }
