@@ -81,8 +81,8 @@ const formSuccess  = document.getElementById('formSuccess');
 function openContactModal() {
   contactModal.classList.add('is-open');
   document.body.style.overflow = 'hidden';
-  contactForm.hidden = false;
-  formSuccess.hidden = true;
+  contactForm.classList.remove('is-hidden');
+  formSuccess.classList.add('is-hidden');
   contactForm.reset();
 }
 
@@ -131,8 +131,8 @@ contactForm.addEventListener('submit', async (e) => {
     });
 
     if (res.ok) {
-      contactForm.hidden = true;
-      formSuccess.hidden = false;
+      contactForm.classList.add('is-hidden');
+      formSuccess.classList.remove('is-hidden');
     } else {
       alert('Something went wrong. Please try again.');
       submitBtn.textContent = originalText;
