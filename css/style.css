@@ -2722,25 +2722,40 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transform: translateY(-6px);
 }
 
-/* --- NAV LOGO: centered, 30% bigger on mobile --- */
+/* --- NAV LOGO: hidden on mobile (logo appears over hero image instead) --- */
 @media (max-width: 768px) {
-  .nav__inner {
-    display: grid;
-    grid-template-columns: 40px 1fr 40px;
+  .nav__logo { display: none; }
+  .nav__inner { justify-content: flex-end; gap: 0; }
+  .nav__burger { margin-left: 0; }
+}
+
+/* --- HERO LOGO OVERLAY: centered over carousel on mobile --- */
+.hero__logo-overlay {
+  display: none;
+}
+@media (max-width: 768px) {
+  .hero__logo-overlay {
+    display: flex;
     align-items: center;
-    gap: 0;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
   }
-  .nav__logo { grid-column: 2; text-align: center; }
-  .nav__logo .logo-mark { display: inline-flex; width: auto; max-width: 100%; }
-  .nav__burger { grid-column: 3; justify-self: end; margin-left: 0; }
-  .nav__logo .logo-mark__top,
-  .nav__logo .logo-mark__bot {
-    font-size: clamp(14px, 4.2vw, 20px);
-    text-align: center;
-    letter-spacing: 0.16em;
-    padding-left: 6px;
-    padding-right: 6px;
-    box-sizing: border-box;
+  .hero__logo-overlay .logo-mark__top {
+    background: var(--white);
+    color: var(--black);
+    font-size: clamp(18px, 5.5vw, 28px);
+    padding: 6px 14px 5px;
+    letter-spacing: 0.18em;
   }
-  .nav__logo .logo-mark__bot { margin-left: 0; }
+  .hero__logo-overlay .logo-mark__bot {
+    color: var(--white);
+    border-color: var(--white);
+    font-size: clamp(18px, 5.5vw, 28px);
+    padding: 5px 14px 6px;
+    margin-left: 0;
+    letter-spacing: 0.18em;
+  }
 }
