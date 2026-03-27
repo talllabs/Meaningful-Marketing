@@ -2508,24 +2508,33 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .about__text { order: -1; }
 }
 
-/* --- CS01: watch button as own grid row; visual spans rows on desktop --- */
-.cs__watch-row { padding-top: 4px; }
-#cs01 .cs__visual { grid-row: 1 / span 2; }
-@media (max-width: 900px) {
-  #cs01 .cs__visual { grid-row: auto; }
+/* --- CS01: watch button spans full width below both columns --- */
+.cs__watch-row {
+  grid-column: 1 / -1;
+  padding-top: 24px;
+  display: flex;
+  justify-content: flex-start;
 }
 
-/* --- CS02: stacked layout (info above, visual below) --- */
+/* --- CS02: side-by-side on desktop, stacked on mobile --- */
 .cs02-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: start;
 }
-.cs02-layout .cs__info { max-width: 640px; }
-.cs02-layout .cs__visual {
-  max-width: 480px;
-  width: 100%;
-  margin-inline: auto;
+@media (max-width: 900px) {
+  .cs02-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .cs02-layout .cs__info { max-width: 640px; }
+  .cs02-layout .cs__visual {
+    max-width: 480px;
+    width: 100%;
+    margin-inline: auto;
+  }
 }
 /* "Try it for yourself" demo link */
 .cs__demo-link {
@@ -2562,21 +2571,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   #cs04 .cs__visual { order: 2; }
 }
 
-/* --- AI SECTION: image below text (desktop + mobile) --- */
-.ai__header-inner { display: block; }
-.ai__header-text { max-width: 760px; }
-.ai__header-image {
-  margin-top: 40px;
-  max-height: 460px;
-  overflow: hidden;
-}
-.ai__header-image img {
-  height: auto;
-  max-height: 460px;
-}
-/* Undo the mobile order:–1 (no longer needed with block layout) */
+/* --- AI SECTION: image below text on mobile only --- */
 @media (max-width: 900px) {
-  .ai__header-image { order: unset; }
+  .ai__header-inner { display: block; }
+  .ai__header-text { max-width: 100%; }
+  .ai__header-image {
+    order: unset;
+    margin-top: 40px;
+    max-height: 360px;
+    overflow: hidden;
+  }
+  .ai__header-image img {
+    height: auto;
+    max-height: 360px;
+  }
 }
 
 /* --- VIDEO GRID: show-more on mobile --- */
