@@ -1476,11 +1476,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .ai__header-image {
   border-radius: 12px;
   overflow: hidden;
+  width: 70%;
+  margin-left: auto;
 }
 .ai__header-image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
   border-radius: 12px;
 }
@@ -2590,6 +2591,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 12px;
   }
 }
 
@@ -2722,9 +2724,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* --- NAV LOGO: centered, 30% bigger on mobile --- */
 @media (max-width: 768px) {
-  .nav__inner { gap: 8px; justify-content: center; position: relative; }
-  .nav__burger { position: absolute; right: 0; }
-  .nav__logo { flex: 0 1 90%; }
+  .nav__inner { position: relative; justify-content: center; gap: 0; }
+  .nav__burger { position: absolute; right: 0; top: 50%; transform: translateY(-50%); margin-left: 0; }
+  .nav__logo { flex: none; width: 80%; }
   .nav__logo .logo-mark { width: 100%; }
   .nav__logo .logo-mark__top,
   .nav__logo .logo-mark__bot {
