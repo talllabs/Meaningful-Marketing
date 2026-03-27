@@ -2759,3 +2759,33 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     letter-spacing: 0.18em;
   }
 }
+/* ===== MOBILE HERO CLEANUP ===== */
+@media (max-width: 768px) {
+
+  /* Hide the image carousel */
+  .hero__image,
+  .hero__carousel {
+    display: none !important;
+  }
+
+  /* Hide the overlay logo */
+  .hero__logo-overlay {
+    display: none !important;
+  }
+
+  /* Make hero full width + tighter */
+  .hero__split {
+    display: block;
+  }
+
+  .hero__content {
+    padding-top: 100px; /* adjust if needed */
+    text-align: center;
+  }
+
+  /* Optional: tighten headline spacing */
+  .hero__headline {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+}
