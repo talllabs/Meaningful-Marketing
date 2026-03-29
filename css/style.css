@@ -2887,11 +2887,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     display: flex;
     position: absolute;
     inset: 0;
-    /* Anchor to upper portion, left-aligned with the logo block */
+    /* Anchor to upper portion, full-width black band */
     align-items: flex-start;
     justify-content: flex-start;
     padding-top: 24%;
-    padding-left: 5vw;
     z-index: 3;
     pointer-events: none;
     perspective: 600px;
@@ -2900,15 +2899,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Remove "See Our Work" from mobile hero */
   .hero__ctas .btn--ghost { display: none; }
 
-  /* Logo + tagline: black container wraps tagline AND both stamp lines */
+  /* Logo + tagline: full-width black band */
   .hero__logo-group {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
-    width: 90vw;
+    width: 100%;
     background: var(--black);
-    padding: 3px; /* exactly 3px black outside logo on all sides */
+    padding: 10px 0; /* 10px top & bottom, edge-to-edge width */
   }
 
   /* Tagline: gold text inside the black container, above the stamp lines */
