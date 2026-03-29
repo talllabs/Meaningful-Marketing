@@ -25,7 +25,7 @@ function openVideo(el) {
   } else if (youtube) {
     videoNative.hidden = true;
     videoFrame.hidden = false;
-    videoFrame.src = `https://www.youtube-nocookie.com/embed/${youtube}?autoplay=1&rel=0`;
+    videoFrame.src = `https://www.youtube-nocookie.com/embed/${youtube}?autoplay=1&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3`;
   } else {
     videoNative.hidden = true;
     videoFrame.hidden = false;
