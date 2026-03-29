@@ -2022,6 +2022,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size: 1.0625rem;
   color: rgba(255,255,255,.9);
 }
+.testi--large-quote > p {
+  font-size: 1.4rem;
+  color: rgba(255,255,255,.9);
+}
 .testi footer {
   display: flex;
   align-items: center;
