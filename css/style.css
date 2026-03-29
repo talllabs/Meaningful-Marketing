@@ -644,11 +644,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    -------------------------------------------------- */
 .logowall {
   background: var(--white);
-  padding: clamp(48px, 7vw, 88px) 0;
+  padding: clamp(48px, 7vw, 88px) 0 clamp(24px, 4vw, 48px); /* tighter bottom — About follows */
   text-align: center;
 }
 .logowall__label {
-  font-size: 11px;
+  font-size: clamp(16px, 2vw, 22px); /* 2× bigger than before */
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -789,7 +789,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    -------------------------------------------------- */
 .about {
   background: var(--white);
-  padding-block: var(--section-v);
+  padding-top: clamp(24px, 4vw, 48px); /* logowall flows directly in above */
+  padding-bottom: var(--section-v);
   color: var(--text-body);
 }
 .about__grid {
