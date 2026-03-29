@@ -2423,49 +2423,90 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero__split { height: auto; }
 }
 
-/* Tighten the content panel so CTA lands well above the fold */
+/* Mobile hero: full-bleed carousel with overlaid logo + CTAs */
 @media (max-width: 768px) {
-  .hero__content {
-    padding-top: 52px;
-    padding-bottom: 28px;
+
+  /* Give the hero a solid viewport-relative height */
+  .hero {
+    height: 80vh;       /* fallback */
+    height: 88svh;      /* preferred: excludes browser chrome */
+    min-height: 480px;
+    max-height: 680px;
   }
 
-  /* Kill the decorative "MM" ghost text on mobile */
+  /* Stack children and use positioning to layer them */
+  .hero__split {
+    position: relative;
+    display: block;
+    height: 100%;
+  }
+
+  /* Carousel fills the entire hero as a full-bleed background */
+  .hero__image,
+  .hero__carousel {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    min-height: unset;
+    max-height: unset;
+    z-index: 0;
+    display: block;
+  }
+
+  /* Gradient scrim so text stays legible over the image */
+  .hero__carousel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(12,12,12,0.15) 0%,
+      rgba(12,12,12,0.40) 50%,
+      rgba(12,12,12,0.76) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Content overlaid at the bottom of the hero */
+  .hero__content {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding-top: 0;
+    padding-bottom: 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+  }
+
+  /* MM ghost text hidden */
   .hero__content::before { display: none; }
 
-  /* Eyebrow: tighter + centered */
+  /* Hide the stamp headline — the logo overlay handles the brand mark */
+  .hero__headline { display: none; }
+
+  /* Eyebrow */
   .hero__eyebrow {
     font-size: 10px;
-    margin-bottom: 14px;
+    margin-bottom: 18px;
     letter-spacing: 0.18em;
     text-align: center;
   }
-
-  /* Stamps: ~25% smaller, less padding, tighter offset */
-  .hero__headline .stamp {
-    font-size: clamp(1.7rem, 7vw, 2.5rem);
-    padding: 0.09em 0.25em;
-    letter-spacing: 0.03em;
-  }
-  .hero__headline .stamp--stroke {
-    margin-left: clamp(8px, 2vw, 16px);
-    margin-top: -3px;
-  }
-  .hero__headline { margin-bottom: 16px; }
 
   /* CTAs: stack, primary full-width */
   .hero__ctas {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
+    width: 100%;
   }
   .hero__ctas .btn--primary {
     width: 100%;
     justify-content: center;
     text-align: center;
   }
-
-  /* "See Our Work" becomes a subtle text link, not a button */
   .hero__ctas .btn--ghost {
     background: none;
     border: none;
@@ -2482,18 +2523,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     color: rgba(255,255,255,.65);
   }
 
-}
-
-/* Image: sits below content, correct height for context not distraction */
-@media (max-width: 768px) {
-  .hero__image,
-  .hero__carousel {
-    height: 52vw;
-    min-height: 200px;
-    max-height: 320px;
+  /* Dots: between logo and CTAs — clear of the content overlay */
+  .hero__dots {
+    z-index: 4;
+    bottom: 38%;
+    gap: 5px;
   }
-  /* Dots centered, small */
-  .hero__dots { gap: 5px; }
   .hero__dot { width: 20px; }
   .hero__dot--active { width: 32px; }
 }
@@ -2722,70 +2757,44 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transform: translateY(-6px);
 }
 
-/* --- NAV LOGO: hidden on mobile (logo appears over hero image instead) --- */
+/* --- NAV LOGO: hidden on mobile (brand appears via hero logo overlay) --- */
 @media (max-width: 768px) {
   .nav__logo { display: none; }
   .nav__inner { justify-content: flex-end; gap: 0; }
   .nav__burger { margin-left: 0; }
 }
 
-/* --- HERO LOGO OVERLAY: centered over carousel on mobile --- */
+/* --- HERO LOGO OVERLAY: brand mark centered over the carousel image --- */
+/* Desktop: hidden — right panel image needs no overlay */
 .hero__logo-overlay {
   display: none;
 }
 @media (max-width: 768px) {
   .hero__logo-overlay {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* Fill the carousel, then use padding to push logo into the upper-center zone */
     position: absolute;
     inset: 0;
-    z-index: 2;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 26%;
+    z-index: 3;
     pointer-events: none;
   }
   .hero__logo-overlay .logo-mark__top {
     background: var(--white);
     color: var(--black);
-    font-size: clamp(18px, 5.5vw, 28px);
-    padding: 6px 14px 5px;
+    font-size: clamp(20px, 6vw, 32px);
+    padding: 7px 16px 6px;
     letter-spacing: 0.18em;
   }
   .hero__logo-overlay .logo-mark__bot {
     color: var(--white);
     border-color: var(--white);
-    font-size: clamp(18px, 5.5vw, 28px);
-    padding: 5px 14px 6px;
+    border-width: 2.5px;
+    font-size: clamp(20px, 6vw, 32px);
+    padding: 6px 16px 7px;
     margin-left: 0;
     letter-spacing: 0.18em;
-  }
-}
-/* ===== MOBILE HERO CLEANUP ===== */
-@media (max-width: 768px) {
-
-  /* Hide the image carousel */
-  .hero__image,
-  .hero__carousel {
-    display: none !important;
-  }
-
-  /* Hide the overlay logo */
-  .hero__logo-overlay {
-    display: none !important;
-  }
-
-  /* Make hero full width + tighter */
-  .hero__split {
-    display: block;
-  }
-
-  .hero__content {
-    padding-top: 100px; /* adjust if needed */
-    text-align: center;
-  }
-
-  /* Optional: tighten headline spacing */
-  .hero__headline {
-    font-size: 32px;
-    line-height: 1.1;
   }
 }
