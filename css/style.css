@@ -2841,6 +2841,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* --- NAV LOGO: hidden on mobile (brand appears via hero logo overlay) --- */
 @media (max-width: 768px) {
+  /* Nav always visible on mobile — hero is full-screen so JS never triggers nav--visible */
+  .nav {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    background: transparent;
+  }
+  /* Keep dark bg once scrolled */
+  .nav.scrolled { background: var(--black); }
+
   .nav__logo { display: none; }
   .nav__inner { justify-content: flex-end; gap: 0; }
   .nav__burger { margin-left: 0; }
