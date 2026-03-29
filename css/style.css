@@ -2887,10 +2887,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     display: flex;
     position: absolute;
     inset: 0;
-    /* Vertically center logo+tagline, nudge up to leave room for CTA bar */
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 15%;
+    /* Anchor to upper portion, left-aligned with the logo block */
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 24%;
+    padding-left: 5vw;
     z-index: 3;
     pointer-events: none;
     perspective: 600px;
@@ -2899,16 +2900,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Remove "See Our Work" from mobile hero */
   .hero__ctas .btn--ghost { display: none; }
 
-  /* Logo + tagline grouped as one unit, centred */
+  /* Logo + tagline: left-aligned column */
   .hero__logo-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    text-align: center;
+    align-items: flex-start;
+    gap: 10px;
+    width: 90vw;
   }
 
-  /* Tagline: clean floating gold text, no background */
+  /* Tagline: gold text, left-aligned above the logo block */
   .hero__logo-tagline {
     font-size: 9px;
     font-weight: 600;
@@ -2920,34 +2921,39 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     animation: origami-unfold-top 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) 0.15s both;
   }
 
-  /* Logo mark: clean flat text — no boxes, no borders, no backgrounds */
+  /* Logo mark: black outer frame containing both stamp lines */
   .hero__logo-overlay .logo-mark {
-    width: auto;
+    width: 100%;
+    background: var(--black);
+    padding: 8px 10px 16px 8px; /* black frame visible below & right of MARKETING */
   }
   .hero__logo-overlay .logo-mark__top {
     display: block;
-    background: none;
-    color: var(--white);
+    width: 100%;
+    background: var(--white);
+    color: var(--black);
     border: none;
-    font-size: clamp(38px, 11.5vw, 58px);
-    padding: 0;
-    letter-spacing: 0.06em;
-    text-align: center;
-    text-shadow: 0 2px 28px rgba(0,0,0,0.5);
+    font-size: clamp(36px, 10.5vw, 54px);
+    padding: 10px 16px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    text-shadow: none;
     transform-origin: center bottom;
     animation: origami-unfold-top 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s both;
   }
   .hero__logo-overlay .logo-mark__bot {
     display: block;
-    background: none;
+    width: calc(100% - 12px); /* slightly narrower for stagger effect */
+    background: var(--black);
     color: var(--white);
-    border: none;
-    font-size: clamp(38px, 11.5vw, 58px);
-    padding: 0;
-    margin-left: 0;
-    letter-spacing: 0.06em;
-    text-align: center;
-    text-shadow: 0 2px 28px rgba(0,0,0,0.5);
+    border: 2.5px solid var(--white);
+    font-size: clamp(36px, 10.5vw, 54px);
+    padding: 10px 16px;
+    margin-left: 12px; /* stagger right, matching reference */
+    margin-top: -2px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    text-shadow: none;
     transform-origin: center top;
     animation: origami-unfold-bot 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.55s both;
   }
