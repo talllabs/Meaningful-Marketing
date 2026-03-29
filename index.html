@@ -35,14 +35,47 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">✕</button>
+  <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">
+    <span class="mobile-menu__close-label">CLOSE MENU</span>
+    <span class="mobile-menu__close-x">✕</span>
+  </button>
   <ul>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#ai">AI</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><button class="nav__mobile-link js-open-contact">Schedule a Call →</button></li>
+    <li>
+      <a href="#services" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">OUR</span>
+        <span class="mobile-nav-stamp__main">SERVICES</span>
+      </a>
+    </li>
+    <li>
+      <a href="#work" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">OUR</span>
+        <span class="mobile-nav-stamp__main">WORK</span>
+      </a>
+    </li>
+    <li>
+      <a href="#about" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">ABOUT THE</span>
+        <span class="mobile-nav-stamp__main">FOUNDERS</span>
+      </a>
+    </li>
+    <li>
+      <a href="#ai" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">AI</span>
+        <span class="mobile-nav-stamp__main">TOOLS</span>
+      </a>
+    </li>
+    <li>
+      <a href="#contact" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">GET IN</span>
+        <span class="mobile-nav-stamp__main">TOUCH</span>
+      </a>
+    </li>
+    <li>
+      <button class="nav__mobile-link js-open-contact mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">BOOK</span>
+        <span class="mobile-nav-stamp__main mobile-nav-stamp__main--cta">A CALL →</span>
+      </button>
+    </li>
   </ul>
 </div>
 
@@ -123,14 +156,6 @@
   </div>
 </div>
 
-<!-- ============ LOGO WALL ============ -->
-<section class="logowall">
-  <div class="container">
-    <p class="logowall__label">Trusted by mission-driven organizations worldwide</p>
-    <img src="images/logowall.png" alt="Client logos: United Nations Foundation, Lutheran World Relief, World Vision, Webster University, and more" class="logowall__img" />
-  </div>
-</section>
-
 <!-- ============ SERVICES ============ -->
 <section class="services" id="services">
   <div class="container">
@@ -179,6 +204,14 @@
       Don't see what you're looking for?
       <a href="#" class="js-open-contact">Drop us a line →</a>
     </p>
+  </div>
+</section>
+
+<!-- ============ LOGO WALL ============ -->
+<section class="logowall">
+  <div class="container">
+    <p class="logowall__label">Trusted by mission-driven organizations worldwide</p>
+    <img src="images/logowall.png" alt="Client logos: United Nations Foundation, Lutheran World Relief, World Vision, Webster University, and more" class="logowall__img" />
   </div>
 </section>
 
