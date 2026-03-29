@@ -2900,16 +2900,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Remove "See Our Work" from mobile hero */
   .hero__ctas .btn--ghost { display: none; }
 
-  /* Logo + tagline: left-aligned column */
+  /* Logo + tagline: black container wraps tagline AND both stamp lines */
   .hero__logo-group {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 0;
     width: 90vw;
+    background: var(--black);
+    padding: 3px; /* exactly 3px black outside logo on all sides */
   }
 
-  /* Tagline: gold text, left-aligned above the logo block */
+  /* Tagline: gold text inside the black container, above the stamp lines */
   .hero__logo-tagline {
     font-size: 9px;
     font-weight: 600;
@@ -2918,14 +2920,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     color: var(--gold-light);
     text-shadow: 0 0 16px rgba(212,160,32,.5);
     margin: 0;
+    padding: 8px 4px 8px; /* breathing room within the black frame */
     animation: origami-unfold-top 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) 0.15s both;
   }
 
-  /* Logo mark: black outer frame containing both stamp lines */
+  /* Logo mark: no own background or padding — group handles the black frame */
   .hero__logo-overlay .logo-mark {
     width: 100%;
-    background: var(--black);
-    padding: 8px 10px 16px 8px; /* black frame visible below & right of MARKETING */
+    background: none;
+    padding: 0;
   }
   .hero__logo-overlay .logo-mark__top {
     display: block;
