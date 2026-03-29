@@ -644,11 +644,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    -------------------------------------------------- */
 .logowall {
   background: var(--white);
-  padding: clamp(48px, 7vw, 88px) 0;
+  padding: clamp(48px, 7vw, 88px) 0 clamp(24px, 4vw, 48px); /* tighter bottom — About follows */
   text-align: center;
 }
 .logowall__label {
-  font-size: 11px;
+  font-size: clamp(16px, 2vw, 22px); /* 2× bigger than before */
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -789,7 +789,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    -------------------------------------------------- */
 .about {
   background: var(--white);
-  padding-block: var(--section-v);
+  padding-top: clamp(24px, 4vw, 48px); /* logowall flows directly in above */
+  padding-bottom: var(--section-v);
   color: var(--text-body);
 }
 .about__grid {
@@ -2569,8 +2570,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Hide the stamp headline — the logo overlay handles the brand mark */
   .hero__headline { display: none; }
 
-  /* Eyebrow */
+  /* Eyebrow: no background — image/gradient shows through */
   .hero__eyebrow {
+    background: transparent;
     font-size: 10px;
     margin-bottom: 18px;
     letter-spacing: 0.18em;
@@ -2864,46 +2866,71 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 @media (max-width: 768px) {
+  /* Hide the eyebrow from hero__content — it lives inside the overlay instead */
+  .hero__content .hero__eyebrow { display: none; }
+
   .hero__logo-overlay {
     display: flex;
     position: absolute;
     inset: 0;
-    align-items: flex-start;
+    /* Vertically center logo+tagline, nudge up to leave room for CTA bar */
+    align-items: center;
     justify-content: center;
-    padding-top: 22%;
+    padding-bottom: 15%;
     z-index: 3;
     pointer-events: none;
     perspective: 600px;
   }
-  /* Logo mark: 90% screen width, both lines solid black */
+
+  /* Logo + tagline grouped as one unit */
+  .hero__logo-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  /* Tagline above the logo mark */
+  .hero__logo-tagline {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    text-shadow: 0 0 16px rgba(212,160,32,.5);
+    margin: 0;
+    padding-left: 2px;
+    animation: origami-unfold-top 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) 0.15s both;
+  }
+
+  /* Logo mark: 90% wide, same colours & shape as desktop nav */
   .hero__logo-overlay .logo-mark {
     width: 90vw;
     max-width: 420px;
-    perspective: 600px;
   }
   .hero__logo-overlay .logo-mark__top {
     display: block;
     width: 100%;
-    background: var(--black);
-    color: var(--white);
+    background: var(--white);
+    color: var(--black);
     font-size: clamp(22px, 7.5vw, 38px);
     padding: 10px 20px 9px;
     letter-spacing: 0.15em;
-    text-align: center;
+    text-align: left;
     transform-origin: center bottom;
     animation: origami-unfold-top 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s both;
   }
   .hero__logo-overlay .logo-mark__bot {
     display: block;
     width: 100%;
-    background: var(--black);
+    background: transparent;
     color: var(--white);
     border: 2.5px solid var(--white);
     font-size: clamp(22px, 7.5vw, 38px);
     padding: 9px 20px 10px;
-    margin-left: 0;
+    margin-left: 10px; /* signature stagger matching desktop */
     letter-spacing: 0.15em;
-    text-align: center;
+    text-align: left;
     transform-origin: center top;
     animation: origami-unfold-bot 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.55s both;
   }
