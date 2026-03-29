@@ -1574,9 +1574,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: flex-start;
   margin-bottom: 24px;
 }
-/* Smaller stamps just in the AI header */
+/* AI header stamps — 1.5× the previous size */
 .ai__heading .stamp {
-  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-size: clamp(2.7rem, 5.25vw, 4.5rem);
 }
 .ai__sub {
   font-size: clamp(1rem, 1.5vw, 1.3rem);
