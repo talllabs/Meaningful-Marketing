@@ -84,7 +84,7 @@
 
     /* ── Overview ── */
     .cs-overview {
-      background: var(--off-white);
+      background: #fef9eb;
       padding: var(--section-v) 0;
     }
     .cs-overview__grid {
@@ -216,7 +216,7 @@
 
     /* ── Video section ── */
     .cs-video-section {
-      background: var(--navy-dark);
+      background: var(--black);
       padding: var(--section-v) 0;
       color: var(--white);
       text-align: center;
@@ -243,50 +243,40 @@
       margin-inline: auto;
       line-height: 1.7;
     }
-    .cs-video-thumb {
-      position: relative;
-      max-width: 800px;
+    .cs-video-embed {
+      max-width: 900px;
       margin-inline: auto;
       border-radius: 8px;
       overflow: hidden;
-      cursor: pointer;
-      box-shadow: 0 40px 100px rgba(0,0,0,.55);
-      transition: transform 0.3s var(--ease-out);
+      box-shadow: 0 40px 100px rgba(0,0,0,.6);
+      aspect-ratio: 16 / 9;
     }
-    .cs-video-thumb:hover { transform: scale(1.02); }
-    .cs-video-thumb img {
+    .cs-video-embed iframe {
       width: 100%;
+      height: 100%;
       display: block;
+      border: none;
     }
-    .cs-video-thumb__overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,.35);
-      display: flex;
+
+    /* ── Watch Demo button ── */
+    .btn--demo {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-    }
-    .cs-video-thumb:hover .cs-video-thumb__overlay { background: rgba(0,0,0,.2); }
-    .cs-video-thumb__play {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      color: var(--black);
-      padding-left: 4px;
-      box-shadow: 0 8px 32px rgba(0,0,0,.4);
-      transition: transform 0.2s, background 0.2s;
-    }
-    .cs-video-thumb:hover .cs-video-thumb__play {
-      transform: scale(1.1);
-      background: var(--teal);
+      gap: 8px;
+      background: var(--black);
       color: var(--white);
+      border: 2px solid var(--black);
+      padding: 13px 26px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
     }
+    .btn--demo:hover { background: var(--teal-dark); border-color: var(--teal-dark); transform: translateY(-1px); }
 
     /* ── Solution features ── */
     .cs-solution {
@@ -556,9 +546,10 @@
         <p class="cs-overview__body">They didn&rsquo;t want complicated software. They needed something simple that parents could trust and use easily.</p>
       </div>
       <div class="reveal-up" style="--delay:.15s">
-        <div class="cs-mock" style="box-shadow:0 24px 64px rgba(0,0,0,.18);border-radius:8px;overflow:hidden;">
-          <img src="images/90s.png" alt="90's Summer Day Camp — site preview" style="width:100%;display:block;" />
+        <div class="cs-mock" style="box-shadow:0 24px 64px rgba(0,0,0,.18);border-radius:8px;overflow:hidden;max-height:260px;">
+          <img src="images/90s.png" alt="90's Summer Day Camp — site preview" style="width:100%;display:block;height:260px;object-fit:cover;object-position:top;" />
         </div>
+        <a href="#demo" class="btn--demo">▶ Watch The Demo</a>
       </div>
     </div>
   </div>
@@ -587,41 +578,19 @@
   </div>
 </section>
 
-<!-- ============ THE APPROACH ============ -->
-<section class="cs-section cs-section--dark">
-  <div class="container">
-    <div class="cs-section__grid cs-section__grid--rev">
-      <div class="reveal-up">
-        <p class="cs-section__eyebrow">The Approach</p>
-        <h2 class="cs-section__heading">Built around<br>how they actually work.</h2>
-        <p class="cs-section__body">Instead of reaching for a bulky summer camp platform, we created a lightweight, custom website focused on clarity and ease&mdash;designed around how Mia &amp; Ashleigh actually operate.</p>
-      </div>
-      <div class="reveal-up" style="--delay:.15s">
-        <ul class="cs-section__list">
-          <li>A simple homepage that communicates the vibe (90s-style, outdoors, creative play)</li>
-          <li>Clear weekly structure&mdash;7 weeks, Monday&ndash;Friday, 9&ndash;5</li>
-          <li>Straightforward pricing: $500/week or $3,000 for all 7 (discounted)</li>
-          <li>Visual cues to show limited availability, including pre-filled spots</li>
-          <li>Personal touches with photos of Mia &amp; Ashleigh</li>
-          <li>Visual &ldquo;feel&rdquo; inspired by their reference site and vision board</li>
-          <li>Mobile-first design for busy parents</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ VIDEO DEMO ============ -->
-<section class="cs-video-section">
+<section class="cs-video-section" id="demo">
   <div class="container">
     <p class="cs-video-section__eyebrow reveal-up">See It In Action</p>
     <h2 class="cs-video-section__heading reveal-up">Watch the Site Demo</h2>
     <p class="cs-video-section__sub reveal-up">A walkthrough of the full registration experience&mdash;from the homepage through the parent portal and admin dashboard.</p>
-    <div class="cs-video-thumb js-open-video reveal-up" data-youtube="AbkpN4V90IE" style="--delay:.1s" role="button" tabindex="0" aria-label="Play 90s Summer Day Camp demo video">
-      <img src="https://img.youtube.com/vi/AbkpN4V90IE/hqdefault.jpg" alt="90's Summer Day Camp — site demo video thumbnail" />
-      <div class="cs-video-thumb__overlay">
-        <div class="cs-video-thumb__play">▶</div>
-      </div>
+    <div class="cs-video-embed reveal-up" style="--delay:.1s">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/AbkpN4V90IE?rel=0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        title="90's Summer Day Camp — Site Demo"
+        loading="lazy"></iframe>
     </div>
   </div>
 </section>
