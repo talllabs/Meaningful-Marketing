@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dream of the 90s — Case Study | Meaningful Marketing</title>
+  <meta name="description" content="How we built a fully functional summer camp registration system for 90's Summer Day Camp — Mia & Ashleigh's nostalgic, small-batch camp experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Case Study Page — Page-level overrides ── */
+    .cs-page-hero {
+      background: var(--black);
+      padding-top: calc(var(--nav-h) + clamp(60px, 8vw, 120px));
+      padding-bottom: clamp(60px, 8vw, 120px);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(77,189,184,.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cs-page-hero__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 40px;
+      transition: color 0.2s;
+    }
+    .cs-page-hero__back:hover { color: var(--teal); }
+    .cs-page-hero__eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .cs-page-hero__title {
+      font-size: clamp(2.6rem, 6vw, 5.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .cs-page-hero__title .line-teal { color: var(--teal); }
+    .cs-page-hero__sub {
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: rgba(255,255,255,.65);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+    .cs-page-hero__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .cs-page-hero__pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 100px;
+      padding: 7px 16px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+    }
+    .cs-page-hero__pill--gold { border-color: var(--gold); color: var(--gold); }
+
+    /* ── Overview ── */
+    .cs-overview {
+      background: var(--off-white);
+      padding: var(--section-v) 0;
+    }
+    .cs-overview__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+    .cs-overview__label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      margin-bottom: 16px;
+    }
+    .cs-overview__heading {
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .cs-overview__body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+    .cs-overview__body + .cs-overview__body { margin-top: 16px; }
+    .cs-overview__body em {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--text-body);
+    }
+    .cs-overview__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .cs-overview__stat {
+      background: var(--white);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cs-overview__stat-num {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--teal-dark);
+      line-height: 1;
+    }
+    .cs-overview__stat-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* ── Challenge / Approach sections (alternating) ── */
+    .cs-section {
+      padding: var(--section-v) 0;
+    }
+    .cs-section--white { background: var(--white); }
+    .cs-section--off { background: var(--off-white); }
+    .cs-section--dark {
+      background: var(--black);
+      color: var(--white);
+    }
+    .cs-section__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+    .cs-section__grid--rev { direction: rtl; }
+    .cs-section__grid--rev > * { direction: ltr; }
+    .cs-section__eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .cs-section--white .cs-section__eyebrow,
+    .cs-section--off .cs-section__eyebrow { color: var(--teal-dark); }
+    .cs-section__heading {
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .cs-section__body {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .cs-section--dark .cs-section__body { color: rgba(255,255,255,.65); }
+    .cs-section__list {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cs-section__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+    .cs-section--dark .cs-section__list li { color: rgba(255,255,255,.65); }
+    .cs-section__list li::before {
+      content: '✦';
+      color: var(--teal);
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 0.65rem;
+    }
+
+    /* ── Video section ── */
+    .cs-video-section {
+      background: var(--navy-dark);
+      padding: var(--section-v) 0;
+      color: var(--white);
+      text-align: center;
+    }
+    .cs-video-section__eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .cs-video-section__heading {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .cs-video-section__sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 40px;
+      max-width: 500px;
+      margin-inline: auto;
+      line-height: 1.7;
+    }
+    .cs-video-thumb {
+      position: relative;
+      max-width: 800px;
+      margin-inline: auto;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 40px 100px rgba(0,0,0,.55);
+      transition: transform 0.3s var(--ease-out);
+    }
+    .cs-video-thumb:hover { transform: scale(1.02); }
+    .cs-video-thumb img {
+      width: 100%;
+      display: block;
+    }
+    .cs-video-thumb__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .cs-video-thumb:hover .cs-video-thumb__overlay { background: rgba(0,0,0,.2); }
+    .cs-video-thumb__play {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--black);
+      padding-left: 4px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+      transition: transform 0.2s, background 0.2s;
+    }
+    .cs-video-thumb:hover .cs-video-thumb__play {
+      transform: scale(1.1);
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    /* ── Solution features ── */
+    .cs-solution {
+      background: var(--off-white);
+      padding: var(--section-v) 0;
+    }
+    .cs-solution__intro {
+      max-width: 640px;
+      margin-bottom: clamp(40px, 6vw, 80px);
+    }
+    .cs-solution__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .cs-solution__card {
+      background: var(--white);
+      padding: clamp(28px, 4vw, 48px);
+    }
+    .cs-solution__card-num {
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1;
+      color: rgba(0,0,0,.08);
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .cs-solution__card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+    .cs-solution__card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cs-solution__card-list li {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      padding-left: 16px;
+      position: relative;
+    }
+    .cs-solution__card-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: 0.8rem;
+    }
+
+    /* ── Outcome ── */
+    .cs-outcome {
+      background: var(--black);
+      color: var(--white);
+      padding: var(--section-v) 0;
+    }
+    .cs-outcome__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+    .cs-outcome__heading {
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .cs-outcome__list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cs-outcome__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      background: rgba(255,255,255,.05);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .cs-outcome__item p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,.75);
+    }
+    .cs-outcome__takeaway {
+      background: var(--navy-dark);
+      border-radius: 8px;
+      padding: clamp(28px, 4vw, 48px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .cs-outcome__takeaway-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .cs-outcome__takeaway-quote {
+      font-size: clamp(1.15rem, 2vw, 1.4rem);
+      font-weight: 500;
+      line-height: 1.6;
+      color: var(--white);
+      font-style: italic;
+    }
+    .cs-outcome__takeaway-quote em {
+      font-style: normal;
+      color: var(--teal);
+      font-weight: 700;
+    }
+    .cs-outcome__takeaway-sub {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,.5);
+      line-height: 1.7;
+    }
+
+    /* ── CTA strip ── */
+    .cs-cta {
+      background: var(--teal-dark);
+      padding: clamp(48px, 7vw, 96px) 0;
+      text-align: center;
+      color: var(--white);
+    }
+    .cs-cta__heading {
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .cs-cta__sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,.75);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    .btn--white {
+      background: var(--white);
+      color: var(--teal-dark);
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn--white:hover { background: var(--off-white); transform: translateY(-1px); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .cs-overview__grid,
+      .cs-section__grid,
+      .cs-outcome__grid { grid-template-columns: 1fr; }
+      .cs-section__grid--rev { direction: ltr; }
+      .cs-solution__grid { grid-template-columns: 1fr; }
+      .cs-overview__stats { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      .cs-overview__stats { grid-template-columns: 1fr 1fr; }
+      .cs-page-hero__meta { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav" id="nav">
+  <div class="nav__inner container">
+    <a href="index.html" class="nav__logo">
+      <div class="logo-mark">
+        <span class="logo-mark__top">MEANINGFUL</span>
+        <span class="logo-mark__bot">MARKETING</span>
+      </div>
+    </a>
+    <ul class="nav__links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#ai">AI</a></li>
+    </ul>
+    <button class="btn btn--nav js-open-contact">Schedule a Call</button>
+    <button class="nav__burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">
+    <span class="mobile-menu__close-label">CLOSE MENU</span>
+    <span class="mobile-menu__close-x">✕</span>
+  </button>
+  <ul>
+    <li>
+      <a href="index.html#services" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">OUR</span>
+        <span class="mobile-nav-stamp__main">SERVICES</span>
+      </a>
+    </li>
+    <li>
+      <a href="index.html#work" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">OUR</span>
+        <span class="mobile-nav-stamp__main">WORK</span>
+      </a>
+    </li>
+    <li>
+      <a href="index.html#about" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">ABOUT</span>
+        <span class="mobile-nav-stamp__main">US</span>
+      </a>
+    </li>
+    <li>
+      <a href="index.html#ai" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">ARTIFICIAL</span>
+        <span class="mobile-nav-stamp__main">INTELLIGENCE</span>
+      </a>
+    </li>
+    <li>
+      <a href="index.html#contact" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">CONTACT</span>
+        <span class="mobile-nav-stamp__main">US</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- ============ CASE STUDY HERO ============ -->
+<section class="cs-page-hero">
+  <div class="container">
+    <a href="index.html#work" class="cs-page-hero__back reveal-up">← Back to Work</a>
+    <p class="cs-page-hero__eyebrow reveal-up">Case Study — Website &amp; Registration System</p>
+    <h1 class="cs-page-hero__title reveal-up">
+      90's Summer<br>
+      <span class="line-teal">Day Camp</span>
+    </h1>
+    <p class="cs-page-hero__sub reveal-up">Turning a simple idea into a fully functional registration system for a small, private summer camp.</p>
+    <div class="cs-page-hero__meta reveal-up" style="--delay:.15s">
+      <span class="cs-page-hero__pill cs-page-hero__pill--gold">Client: Mia &amp; Ashleigh</span>
+      <span class="cs-page-hero__pill">Custom Website</span>
+      <span class="cs-page-hero__pill">Registration Flow</span>
+      <span class="cs-page-hero__pill">Parent Portal</span>
+      <span class="cs-page-hero__pill">Admin Dashboard</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="cs-overview">
+  <div class="container">
+    <div class="cs-overview__grid">
+      <div class="reveal-up">
+        <p class="cs-overview__label">Overview</p>
+        <h2 class="cs-overview__heading">A nostalgic vision,<br>made real.</h2>
+        <p class="cs-overview__body">Mia &amp; Ashleigh came with a clear vision: create a small, nostalgic &ldquo;90s kid summer&rdquo; camp&mdash;slow, playful, outdoorsy&mdash;and make it feel <em>legit from day one</em>.</p>
+        <p class="cs-overview__body">They didn&rsquo;t want complicated software. They needed something simple that parents could trust and use easily.</p>
+      </div>
+      <div class="reveal-up" style="--delay:.15s">
+        <div class="cs-overview__stats">
+          <div class="cs-overview__stat">
+            <span class="cs-overview__stat-num">8</span>
+            <span class="cs-overview__stat-label">Total Spots<br>Available</span>
+          </div>
+          <div class="cs-overview__stat">
+            <span class="cs-overview__stat-num">7</span>
+            <span class="cs-overview__stat-label">Weeks of<br>Programming</span>
+          </div>
+          <div class="cs-overview__stat">
+            <span class="cs-overview__stat-num">1</span>
+            <span class="cs-overview__stat-label">Simple Step<br>to Register</span>
+          </div>
+          <div class="cs-overview__stat">
+            <span class="cs-overview__stat-num">0</span>
+            <span class="cs-overview__stat-label">Ongoing<br>Subscriptions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE CHALLENGE ============ -->
+<section class="cs-section cs-section--white">
+  <div class="container">
+    <div class="cs-section__grid">
+      <div class="reveal-up">
+        <p class="cs-section__eyebrow">The Challenge</p>
+        <h2 class="cs-section__heading">Simple on the outside.<br>Solid on the inside.</h2>
+        <p class="cs-section__body">They needed a site that could do a lot of things well&mdash;without feeling heavy or complicated to anyone using it.</p>
+        <p class="cs-section__body">At the same time, they were running this summer camp <em style="font-style:normal;font-weight:600;color:var(--text-body);">themselves</em>&mdash;so it had to be easy to manage behind the scenes too.</p>
+      </div>
+      <div class="reveal-up" style="--delay:.15s">
+        <ul class="cs-section__list" style="margin-top:8px;">
+          <li>Clearly explain the summer camp concept and weekly structure</li>
+          <li>Show limited availability (only 8 spots total)</li>
+          <li>Allow parents to register their child and select weeks</li>
+          <li>Encourage commitment with upfront payment options</li>
+          <li>Feel polished and real&mdash;without overbuilding</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE APPROACH ============ -->
+<section class="cs-section cs-section--dark">
+  <div class="container">
+    <div class="cs-section__grid cs-section__grid--rev">
+      <div class="reveal-up">
+        <p class="cs-section__eyebrow">The Approach</p>
+        <h2 class="cs-section__heading">Built around<br>how they actually work.</h2>
+        <p class="cs-section__body">Instead of reaching for a bulky summer camp platform, we created a lightweight, custom website focused on clarity and ease&mdash;designed around how Mia &amp; Ashleigh actually operate.</p>
+      </div>
+      <div class="reveal-up" style="--delay:.15s">
+        <ul class="cs-section__list">
+          <li>A simple homepage that communicates the vibe (90s-style, outdoors, creative play)</li>
+          <li>Clear weekly structure&mdash;7 weeks, Monday&ndash;Friday, 9&ndash;5</li>
+          <li>Straightforward pricing: $500/week or $3,000 for all 7 (discounted)</li>
+          <li>Visual cues to show limited availability, including pre-filled spots</li>
+          <li>Personal touches with photos of Mia &amp; Ashleigh</li>
+          <li>Visual &ldquo;feel&rdquo; inspired by their reference site and vision board</li>
+          <li>Mobile-first design for busy parents</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO DEMO ============ -->
+<section class="cs-video-section">
+  <div class="container">
+    <p class="cs-video-section__eyebrow reveal-up">See It In Action</p>
+    <h2 class="cs-video-section__heading reveal-up">Watch the Site Demo</h2>
+    <p class="cs-video-section__sub reveal-up">A walkthrough of the full registration experience&mdash;from the homepage through the parent portal and admin dashboard.</p>
+    <div class="cs-video-thumb js-open-video reveal-up" data-youtube="AbkpN4V90IE" style="--delay:.1s" role="button" tabindex="0" aria-label="Play 90s Summer Day Camp demo video">
+      <img src="https://img.youtube.com/vi/AbkpN4V90IE/hqdefault.jpg" alt="90's Summer Day Camp — site demo video thumbnail" />
+      <div class="cs-video-thumb__overlay">
+        <div class="cs-video-thumb__play">▶</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE SOLUTION ============ -->
+<section class="cs-solution">
+  <div class="container">
+    <div class="cs-solution__intro reveal-up">
+      <p class="cs-section__eyebrow" style="color:var(--teal-dark);">The Solution</p>
+      <h2 class="cs-overview__heading">Four things that<br>make it work.</h2>
+      <p class="cs-overview__body">The final summer camp website gives both parents and organizers exactly what they need&mdash;no more, no less.</p>
+    </div>
+    <div class="cs-solution__grid">
+
+      <div class="cs-solution__card reveal-up">
+        <div class="cs-solution__card-num">01</div>
+        <h3 class="cs-solution__card-title">Registration Flow</h3>
+        <ul class="cs-solution__card-list">
+          <li>Enter their child&rsquo;s details</li>
+          <li>Select individual weeks or the full summer</li>
+          <li>Submit everything in one step</li>
+        </ul>
+      </div>
+
+      <div class="cs-solution__card reveal-up" style="--delay:.07s">
+        <div class="cs-solution__card-num">02</div>
+        <h3 class="cs-solution__card-title">Parent Portal</h3>
+        <ul class="cs-solution__card-list">
+          <li>Look up registration by email</li>
+          <li>View booked weeks</li>
+          <li>See payment status and next steps</li>
+        </ul>
+      </div>
+
+      <div class="cs-solution__card reveal-up" style="--delay:.14s">
+        <div class="cs-solution__card-num">03</div>
+        <h3 class="cs-solution__card-title">Admin Dashboard</h3>
+        <ul class="cs-solution__card-list">
+          <li>View all registrations</li>
+          <li>Confirm bookings</li>
+          <li>Track payments</li>
+          <li>Export lists when needed</li>
+        </ul>
+      </div>
+
+      <div class="cs-solution__card reveal-up" style="--delay:.21s">
+        <div class="cs-solution__card-num">04</div>
+        <h3 class="cs-solution__card-title">Live Availability</h3>
+        <ul class="cs-solution__card-list">
+          <li>Spots update dynamically</li>
+          <li>Only 8 total spots, with some already reserved</li>
+          <li>Creates urgency and avoids overbooking</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUTCOME ============ -->
+<section class="cs-outcome">
+  <div class="container">
+    <div class="cs-outcome__grid">
+      <div class="reveal-up">
+        <p class="cs-section__eyebrow" style="color:var(--gold);">The Outcome</p>
+        <h2 class="cs-outcome__heading">Simple works,<br>when it&rsquo;s right.</h2>
+        <div class="cs-outcome__list" style="margin-top: 8px;">
+          <div class="cs-outcome__item">
+            <p>A clean, trustworthy summer camp website that makes a small program feel established.</p>
+          </div>
+          <div class="cs-outcome__item">
+            <p>Parents can self-serve instead of texting and emailing back and forth.</p>
+          </div>
+          <div class="cs-outcome__item">
+            <p>Organizers have one place to manage everything&mdash;registrations, payments, and availability.</p>
+          </div>
+          <div class="cs-outcome__item">
+            <p>No ongoing software subscriptions or complex systems to maintain.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-up" style="--delay:.15s">
+        <div class="cs-outcome__takeaway">
+          <span class="cs-outcome__takeaway-label">Key Takeaway</span>
+          <p class="cs-outcome__takeaway-quote">
+            &ldquo;You don&rsquo;t need a heavy platform to run a summer camp well. When the system matches how you <em>actually work</em>, simple is better.&rdquo;
+          </p>
+          <p class="cs-outcome__takeaway-sub">Most importantly, it supports what they actually wanted: a simple, joyful summer camp experience&mdash;without operational chaos behind the scenes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cs-cta">
+  <div class="container reveal-up">
+    <h2 class="cs-cta__heading">Have a simple idea that needs to feel real?</h2>
+    <p class="cs-cta__sub">We build systems that match how you actually work&mdash;without the overhead.</p>
+    <button class="btn btn--white js-open-contact">Let&rsquo;s Talk →</button>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="logo-mark logo-mark--sm">
+          <span class="logo-mark__top">MEANINGFUL</span>
+          <span class="logo-mark__bot">MARKETING</span>
+        </div>
+        <p>Serving mission-driven organizations since 2009.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#ai">AI</a>
+        <button class="footer__nav-link js-open-contact">Schedule a Call</button>
+        <button class="footer__nav-link js-open-contact">Contact</button>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2009&ndash;2026 Meaningful Marketing House. All rights reserved.</span>
+      <span>meaningfulmarketinghouse.com</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ VIDEO LIGHTBOX ============ -->
+<div class="video-overlay" id="videoOverlay" role="dialog" aria-modal="true" aria-label="Video player">
+  <button class="video-overlay__close" id="videoClose" aria-label="Close video">✕</button>
+  <div class="video-overlay__frame">
+    <iframe id="videoFrame" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>
+    <video id="videoNative" controls hidden playsinline muted></video>
+  </div>
+</div>
+
+<!-- ============ CONTACT MODAL ============ -->
+<div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal modal--split">
+    <button class="modal__close" id="modalClose" aria-label="Close">✕</button>
+    <div class="modal__chooser" id="modalChooser">
+      <h2 class="modal__heading">Let&rsquo;s connect!</h2>
+      <p class="modal__sub">How would you like to reach us?</p>
+      <div class="modal__choice-grid">
+        <button class="modal__choice-btn" id="chooseCalendly">
+          <span class="modal__choice-icon">📅</span>
+          <span class="modal__choice-label">Schedule a Call</span>
+        </button>
+        <button class="modal__choice-btn" id="chooseForm">
+          <span class="modal__choice-icon">✉️</span>
+          <span class="modal__choice-label">Send a Message</span>
+        </button>
+      </div>
+    </div>
+    <div class="modal__form-pane" id="modalFormPane">
+      <h2 class="modal__heading" id="modalTitle">Say hello.</h2>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <label class="form-label" for="cf-name">Name</label>
+          <input class="form-input" id="cf-name" name="name" type="text" placeholder="Your name" required />
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="cf-email">Email</label>
+          <input class="form-input" id="cf-email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="cf-msg">Message</label>
+          <textarea class="form-input form-textarea" id="cf-msg" name="message" placeholder="Tell us about your project…" required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary" style="width:100%;">Send Message →</button>
+      </form>
+    </div>
+    <div class="modal__cal-pane" id="modalCalPane">
+      <iframe src="https://calendly.com/meaningful-marketing/intro" title="Schedule a call" loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
