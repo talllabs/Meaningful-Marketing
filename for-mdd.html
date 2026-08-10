@@ -114,6 +114,13 @@
     .mdd-card:hover .mdd-thumb::after {
       background: rgba(0, 0, 0, 0.08);
     }
+    .mdd-thumb__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
     .mdd-play {
       position: absolute;
@@ -316,7 +323,7 @@
       </div>
     </article>
 
-    <article class="mdd-card mdd-card--wide">
+    <article class="mdd-card">
       <div class="mdd-thumb" data-vimeo-thumb="109343274">
         <button class="mdd-play js-open-video" type="button" data-vimeo="109343274" aria-label="Play Papua New Guinea Tourism video">▶</button>
       </div>
@@ -324,6 +331,18 @@
         <span class="mdd-client">Papua New Guinea Tourism</span>
         <span class="mdd-title">Papua New Guinea</span>
         <p class="mdd-explain"><strong>Why we selected it:</strong> It shows our ability to tell the story of a place through people, culture, and atmosphere. For State of the Region, that same approach can make Arkansas, Mississippi, and Tennessee feel tangible and connected, rather than relying only on statistics and presentation slides. This video uses no actors — it simply follows the PNG tourism rep around New York City, with the script built entirely from his own words.</p>
+      </div>
+    </article>
+
+    <article class="mdd-card mdd-card--wide">
+      <div class="mdd-thumb mdd-thumb--video">
+        <video class="mdd-thumb__video" src="images/Untitled design (1).mp4" muted autoplay loop playsinline aria-hidden="true"></video>
+        <button class="mdd-play js-open-video" type="button" data-mp4="images/Untitled design (1).mp4" aria-label="Play Courageous Conversations video">▶</button>
+      </div>
+      <div class="mdd-meta">
+        <span class="mdd-client">U.S. Tour Operators Association (USTOA)</span>
+        <span class="mdd-title">Courageous Conversations</span>
+        <p class="mdd-explain"><strong>Why we selected it:</strong> Tasked with a creative concept for the conference theme "Courage," we reanimated historical icons — many with no original source audio or video — bringing them back to life to inspire a new generation of explorers. It shows the range of what we can do when a story calls for something bolder than a standard interview format, from concept and scripting through voice synthesis and immersive design.</p>
       </div>
     </article>
 
