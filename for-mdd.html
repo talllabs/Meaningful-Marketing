@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRDL74J04V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZRDL74J04V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Portfolio for MDD | Meaningful Marketing</title>
+  <meta name="description" content="Selected video work from Meaningful Marketing, prepared for the MDD State of the Region pitch." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ============ MDD VIDEO PORTFOLIO PAGE ============ */
+    .mdd-hero {
+      padding: calc(var(--nav-h) + 72px) 0 56px;
+      text-align: center;
+      background: var(--off-white);
+    }
+    .mdd-hero .eyebrow {
+      display: inline-block;
+      margin: 0 0 18px;
+      color: var(--teal-dark);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .mdd-hero h1 {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(42px, 7vw, 88px);
+      line-height: 0.94;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+    }
+    .mdd-hero p.lede {
+      max-width: 680px;
+      margin: 26px auto 0;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+
+    .mdd-why {
+      max-width: 850px;
+      margin: 0 auto 46px;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .mdd-why h2 {
+      margin: 0 0 16px;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: -0.03em;
+      font-weight: 700;
+    }
+    .mdd-why p {
+      margin: 0 auto;
+      max-width: 720px;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    .mdd-section {
+      padding: 10px 0 var(--section-v);
+    }
+
+    .mdd-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+      align-items: start;
+    }
+
+    .mdd-card {
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 18px 50px rgba(12, 12, 12, 0.09);
+      border: 1px solid rgba(12, 12, 12, 0.06);
+    }
+
+    .mdd-card--wide {
+      grid-column: 1 / -1;
+      width: calc(50% - 15px);
+      justify-self: center;
+    }
+
+    .mdd-thumb {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background-position: center;
+      background-size: cover;
+      background-color: #171717;
+      overflow: hidden;
+    }
+    .mdd-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.18);
+      transition: background 0.2s ease;
+    }
+    .mdd-card:hover .mdd-thumb::after {
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    .mdd-play {
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: 50%;
+      width: 84px;
+      height: 84px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.78);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      padding-left: 6px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .mdd-play:hover {
+      transform: translate(-50%, -50%) scale(1.06);
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .mdd-meta {
+      padding: 26px 28px 29px;
+    }
+    .mdd-client {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--teal-dark);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .mdd-title {
+      display: block;
+      font-size: clamp(22px, 3vw, 32px);
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .mdd-explain {
+      margin: 14px 0 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+    .mdd-explain strong {
+      color: var(--text-body);
+    }
+
+    @media (max-width: 760px) {
+      .mdd-hero {
+        padding: calc(var(--nav-h) + 40px) 0 36px;
+      }
+      .mdd-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+      .mdd-card--wide {
+        grid-column: auto;
+        width: 100%;
+      }
+      .mdd-meta {
+        padding: 22px;
+      }
+      .mdd-play {
+        width: 70px;
+        height: 70px;
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav light-bg" id="nav">
+  <div class="nav__inner container">
+    <a href="index.html" class="nav__logo">
+      <div class="logo-mark">
+        <span class="logo-mark__top">MEANINGFUL</span>
+        <span class="logo-mark__bot">MARKETING</span>
+      </div>
+    </a>
+    <ul class="nav__links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#ai">AI</a></li>
+    </ul>
+    <button class="btn btn--nav js-open-contact">Schedule a Call</button>
+    <button class="nav__burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">
+    <span class="mobile-menu__close-label">CLOSE MENU</span>
+    <span class="mobile-menu__close-x">✕</span>
+  </button>
+  <ul>
+    <li>
+      <a href="index.html#services" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">OUR</span>
+        <span class="mobile-nav-stamp__main">SERVICES</span>
+      </a>
+    </li>
+    <li>
+      <a href="index.html#work" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">OUR</span>
+        <span class="mobile-nav-stamp__main">WORK</span>
+      </a>
+    </li>
+    <li>
+      <a href="index.html#about" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">ABOUT</span>
+        <span class="mobile-nav-stamp__main">US</span>
+      </a>
+    </li>
+    <li>
+      <a href="index.html#ai" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">ARTIFICIAL</span>
+        <span class="mobile-nav-stamp__main">INTELLIGENCE</span>
+      </a>
+    </li>
+    <li>
+      <a href="#contact" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">CONTACT</span>
+        <span class="mobile-nav-stamp__main">US</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="mdd-hero">
+  <div class="container">
+    <span class="eyebrow">Prepared for MDD — State of the Region</span>
+    <h1>VIDEOS THAT CONNECT.</h1>
+    <p class="lede">A selection of our video work, chosen specifically to show the storytelling approach we'd bring to the State of the Region bid.</p>
+  </div>
+</section>
+
+<!-- ============ WHY THESE / VIDEO GRID ============ -->
+<section class="mdd-section" aria-label="Selected video work">
+  <div class="mdd-why">
+    <h2>Why these examples</h2>
+    <p>We selected these pieces because they show the kind of storytelling we believe will work best for State of the Region: real people, real places, clear ideas, and an emotional connection to issues that can otherwise feel highly technical.</p>
+  </div>
+
+  <div class="container mdd-grid">
+
+    <article class="mdd-card">
+      <div class="mdd-thumb" data-vimeo-thumb="109343274">
+        <button class="mdd-play js-open-video" type="button" data-vimeo="109343274" aria-label="Play Papua New Guinea Tourism video">▶</button>
+      </div>
+      <div class="mdd-meta">
+        <span class="mdd-client">Papua New Guinea Tourism</span>
+        <span class="mdd-title">Papua New Guinea</span>
+        <p class="mdd-explain"><strong>Why we selected it:</strong> It shows our ability to tell the story of a place through people, culture, and atmosphere. For State of the Region, that same approach can make Arkansas, Mississippi, and Tennessee feel tangible and connected, rather than relying only on statistics and presentation slides.</p>
+      </div>
+    </article>
+
+    <article class="mdd-card">
+      <div class="mdd-thumb" data-vimeo-thumb="822827038">
+        <button class="mdd-play js-open-video" type="button" data-vimeo="822827038" aria-label="Play Andean Health and Development video">▶</button>
+      </div>
+      <div class="mdd-meta">
+        <span class="mdd-client">Andean Health &amp; Development</span>
+        <span class="mdd-title">What We Do Every Day</span>
+        <p class="mdd-explain"><strong>Why we selected it:</strong> It shows how we take a complex organization and explain its work through real people and everyday moments. That's especially relevant to infrastructure, workforce, and regional development, where the challenge is making large issues understandable and meaningful.</p>
+      </div>
+    </article>
+
+    <article class="mdd-card">
+      <div class="mdd-thumb" style="background-image: url('https://img.youtube.com/vi/eTsmhJHWClQ/maxresdefault.jpg');">
+        <button class="mdd-play js-open-video" type="button" data-youtube="eTsmhJHWClQ" aria-label="Play Inspire 20th Anniversary video">▶</button>
+      </div>
+      <div class="mdd-meta">
+        <span class="mdd-client">Inspire</span>
+        <span class="mdd-title">20th Anniversary</span>
+        <p class="mdd-explain"><strong>Why we selected it:</strong> This is interview-led storytelling with people who are not professional actors. The strength comes from authentic voices and personal experiences — the same style we'd bring to regional leaders, residents, employers, and community partners.</p>
+      </div>
+    </article>
+
+    <article class="mdd-card">
+      <div class="mdd-thumb" data-vimeo-thumb="221464315">
+        <button class="mdd-play js-open-video" type="button" data-vimeo="221464315" aria-label="Play Lutheran World Relief Coffee Is Life video">▶</button>
+      </div>
+      <div class="mdd-meta">
+        <span class="mdd-client">Lutheran World Relief</span>
+        <span class="mdd-title">Coffee Is Life</span>
+        <p class="mdd-explain"><strong>Why we selected it:</strong> It demonstrates our full documentary process, from concept and scripting through interviews, filming, music, and editing. It also shows how a broad economic and development story can become personal by focusing on the people behind it.</p>
+      </div>
+    </article>
+
+    <article class="mdd-card mdd-card--wide">
+      <div class="mdd-thumb" style="background-image: url('https://img.youtube.com/vi/B3wrnDvipnE/maxresdefault.jpg');">
+        <button class="mdd-play js-open-video" type="button" data-youtube="B3wrnDvipnE" aria-label="Play AHD Cotopaxi video">▶</button>
+      </div>
+      <div class="mdd-meta">
+        <span class="mdd-client">Andean Health &amp; Development</span>
+        <span class="mdd-title">AHD Cotopaxi</span>
+        <p class="mdd-explain"><strong>Why we selected it:</strong> It demonstrates place-based impact storytelling around healthcare and community development. It shows how interviews, environmental footage, and a clear narrative can help an audience understand why a major regional investment matters to the people it serves.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="contact">
+  <div class="cta__inner">
+    <p class="cta__prelude reveal-up">Let's make<br><span class="cta__prelude-teal">something</span></p>
+    <h2 class="cta__word reveal-up">MEANINGFUL.</h2>
+    <div class="cta__schedule reveal-up">
+      <p>Schedule a time that works for you <button class="cta__here js-open-contact">here</button></p>
+      <svg class="cta__arrow" viewBox="0 0 180 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 170 8 Q 185 40 140 55 Q 100 68 30 52" stroke="#D4A020" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M 38 45 L 28 53 L 40 58" stroke="#D4A020" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="logo-mark logo-mark--sm">
+          <span class="logo-mark__top">MEANINGFUL</span>
+          <span class="logo-mark__bot">MARKETING</span>
+        </div>
+        <p>Serving mission-driven organizations since 2009.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#ai">AI</a>
+        <button class="footer__nav-link js-open-contact">Schedule a Call</button>
+        <button class="footer__nav-link js-open-contact">Contact</button>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2009–2026 Meaningful Marketing House. All rights reserved.</span>
+      <span>meaningfulmarketinghouse.com</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ VIDEO LIGHTBOX ============ -->
+<div class="video-overlay" id="videoOverlay" role="dialog" aria-modal="true" aria-label="Video player">
+  <button class="video-overlay__close" id="videoClose" aria-label="Close video">✕</button>
+  <div class="video-overlay__frame">
+    <iframe id="videoFrame" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>
+    <video id="videoNative" controls hidden playsinline muted></video>
+  </div>
+</div>
+
+<!-- ============ CONTACT MODAL ============ -->
+<div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal modal--split">
+    <button class="modal__close" id="modalClose" aria-label="Close">✕</button>
+
+    <!-- Mobile chooser screen (shown first on mobile) -->
+    <div class="modal__chooser" id="modalChooser">
+      <h2 class="modal__heading">Let's connect!</h2>
+      <p class="modal__sub">How would you like to reach us?</p>
+      <div class="modal__choice-grid">
+        <button class="modal__choice-btn" id="chooseCalendly">
+          <span class="modal__choice-icon">📅</span>
+          <span class="modal__choice-title">Schedule a Call</span>
+          <span class="modal__choice-desc">Pick a time that works for you — no pressure</span>
+        </button>
+        <button class="modal__choice-btn" id="chooseForm">
+          <span class="modal__choice-icon">✉️</span>
+          <span class="modal__choice-title">Send a Message</span>
+          <span class="modal__choice-desc">We'll reply within one business day</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Back button (mobile panel mode only) -->
+    <button class="modal__back-btn" id="modalBack">← Back</button>
+
+    <div class="modal__split">
+
+      <!-- LEFT: Calendly -->
+      <div class="modal__panel modal__panel--calendly">
+        <span class="eyebrow eyebrow--light">Book a Time</span>
+        <h2 class="modal__heading">Schedule an Intro Call</h2>
+        <p class="modal__sub">Pick a time that works for you — no pressure, just a friendly conversation about your goals.</p>
+        <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener" class="btn btn--gold btn--lg">Open Calendly to Book →</a>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="modal__or"><span>or</span></div>
+
+      <!-- RIGHT: Contact Form -->
+      <div class="modal__panel modal__panel--form">
+        <span class="eyebrow eyebrow--light">Send a Message</span>
+        <h2 class="modal__heading" id="modalTitle">Let's Make Something Meaningful</h2>
+        <p class="modal__sub">Tell us a little about your project and we'll be in touch shortly.</p>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label for="cf-name">Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="contact-form__field">
+              <label for="cf-email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="contact-form__field">
+            <label for="cf-org">Organization</label>
+            <input type="text" id="cf-org" name="organization" placeholder="Your organization" autocomplete="organization" />
+          </div>
+          <div class="contact-form__field">
+            <label for="cf-message">Message <span aria-hidden="true">*</span></label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Tell us about your project or goals…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold btn--lg contact-form__submit">Send Message →</button>
+        </form>
+        <div class="contact-form__success is-hidden" id="formSuccess">
+          <div class="contact-form__success-icon">✓</div>
+          <h3>Message sent!</h3>
+          <p>Thanks for reaching out — we'll be in touch within one business day.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="js/script.js"></script>
+<script>
+  (function () {
+    document.querySelectorAll('[data-vimeo-thumb]').forEach(function (thumb) {
+      var id = thumb.dataset.vimeoThumb;
+      fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/' + id)
+        .then(function (response) {
+          if (!response.ok) throw new Error('Thumbnail request failed');
+          return response.json();
+        })
+        .then(function (data) {
+          if (data.thumbnail_url) {
+            var largeThumb = data.thumbnail_url.replace(/_\d+x\d+/, '_1280x720');
+            thumb.style.backgroundImage = "url('" + largeThumb + "')";
+          }
+        })
+        .catch(function () {
+          thumb.style.backgroundImage = 'linear-gradient(135deg, #1E8A86, #0C0C0C)';
+        });
+    });
+  })();
+</script>
+</body>
+</html>
