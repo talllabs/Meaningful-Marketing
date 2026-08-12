@@ -76,24 +76,22 @@
     }
 
     .mdd-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 30px;
-      align-items: start;
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      padding-bottom: 14px;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
     }
 
     .mdd-card {
+      flex: 0 0 320px;
+      scroll-snap-align: start;
       overflow: hidden;
       border-radius: var(--radius);
       background: var(--white);
       box-shadow: 0 18px 50px rgba(12, 12, 12, 0.09);
       border: 1px solid rgba(12, 12, 12, 0.06);
-    }
-
-    .mdd-card--wide {
-      grid-column: 1 / -1;
-      width: calc(50% - 15px);
-      justify-self: center;
     }
 
     .mdd-thumb {
@@ -110,6 +108,7 @@
       inset: 0;
       background: rgba(0, 0, 0, 0.18);
       transition: background 0.2s ease;
+      pointer-events: none;
     }
     .mdd-card:hover .mdd-thumb::after {
       background: rgba(0, 0, 0, 0.08);
@@ -120,6 +119,16 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+    .mdd-thumb__embed {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 130%;
+      height: 130%;
+      transform: translate(-50%, -50%);
+      border: 0;
+      pointer-events: none;
     }
 
     .mdd-play {
@@ -160,7 +169,7 @@
     }
     .mdd-title {
       display: block;
-      font-size: clamp(22px, 3vw, 32px);
+      font-size: 24px;
       line-height: 1.12;
       font-weight: 700;
       letter-spacing: -0.02em;
@@ -174,18 +183,20 @@
     .mdd-explain strong {
       color: var(--text-body);
     }
+    .mdd-explain + .mdd-explain {
+      margin-top: 12px;
+    }
 
     @media (max-width: 760px) {
       .mdd-hero {
         padding: calc(var(--nav-h) + 40px) 0 36px;
       }
       .mdd-grid {
-        grid-template-columns: 1fr;
-        gap: 22px;
+        flex-direction: column;
+        overflow-x: visible;
       }
-      .mdd-card--wide {
-        grid-column: auto;
-        width: 100%;
+      .mdd-card {
+        flex: 1 1 auto;
       }
       .mdd-meta {
         padding: 22px;
@@ -280,7 +291,8 @@
   <div class="container mdd-grid">
 
     <article class="mdd-card">
-      <div class="mdd-thumb" style="background-image: url('https://img.youtube.com/vi/B3wrnDvipnE/maxresdefault.jpg');">
+      <div class="mdd-thumb">
+        <iframe class="mdd-thumb__embed" src="https://www.youtube-nocookie.com/embed/B3wrnDvipnE?autoplay=1&mute=1&loop=1&playlist=B3wrnDvipnE&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay; encrypted-media"></iframe>
         <button class="mdd-play js-open-video" type="button" data-youtube="B3wrnDvipnE" aria-label="Play AHD Cotopaxi video">▶</button>
       </div>
       <div class="mdd-meta">
@@ -291,7 +303,8 @@
     </article>
 
     <article class="mdd-card">
-      <div class="mdd-thumb" style="background-image: url('https://img.youtube.com/vi/eTsmhJHWClQ/maxresdefault.jpg');">
+      <div class="mdd-thumb">
+        <iframe class="mdd-thumb__embed" src="https://www.youtube-nocookie.com/embed/eTsmhJHWClQ?autoplay=1&mute=1&loop=1&playlist=eTsmhJHWClQ&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay; encrypted-media"></iframe>
         <button class="mdd-play js-open-video" type="button" data-youtube="eTsmhJHWClQ" aria-label="Play Inspire 20th Anniversary video">▶</button>
       </div>
       <div class="mdd-meta">
@@ -302,7 +315,8 @@
     </article>
 
     <article class="mdd-card">
-      <div class="mdd-thumb" data-vimeo-thumb="221464315">
+      <div class="mdd-thumb">
+        <iframe class="mdd-thumb__embed" src="https://player.vimeo.com/video/221464315?background=1&autoplay=1&loop=1&muted=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay"></iframe>
         <button class="mdd-play js-open-video" type="button" data-vimeo="221464315" aria-label="Play Lutheran World Relief Coffee Is Life video">▶</button>
       </div>
       <div class="mdd-meta">
@@ -313,7 +327,8 @@
     </article>
 
     <article class="mdd-card">
-      <div class="mdd-thumb" data-vimeo-thumb="822827038">
+      <div class="mdd-thumb">
+        <iframe class="mdd-thumb__embed" src="https://player.vimeo.com/video/822827038?background=1&autoplay=1&loop=1&muted=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay"></iframe>
         <button class="mdd-play js-open-video" type="button" data-vimeo="822827038" aria-label="Play Andean Health and Development video">▶</button>
       </div>
       <div class="mdd-meta">
@@ -324,7 +339,8 @@
     </article>
 
     <article class="mdd-card">
-      <div class="mdd-thumb" data-vimeo-thumb="109343274">
+      <div class="mdd-thumb">
+        <iframe class="mdd-thumb__embed" src="https://player.vimeo.com/video/109343274?background=1&autoplay=1&loop=1&muted=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay"></iframe>
         <button class="mdd-play js-open-video" type="button" data-vimeo="109343274" aria-label="Play Papua New Guinea Tourism video">▶</button>
       </div>
       <div class="mdd-meta">
@@ -334,15 +350,15 @@
       </div>
     </article>
 
-    <article class="mdd-card mdd-card--wide">
+    <article class="mdd-card">
       <div class="mdd-thumb mdd-thumb--video">
         <video class="mdd-thumb__video" src="images/Untitled design (1).mp4" muted autoplay loop playsinline aria-hidden="true"></video>
-        <button class="mdd-play js-open-video" type="button" data-mp4="images/Untitled design (1).mp4" aria-label="Play Courageous Conversations video">▶</button>
       </div>
       <div class="mdd-meta">
         <span class="mdd-client">U.S. Tour Operators Association (USTOA)</span>
-        <span class="mdd-title">Courageous Conversations</span>
-        <p class="mdd-explain"><strong>Why we selected it:</strong> Tasked with a creative concept for the conference theme "Courage," we reanimated historical icons — many with no original source audio or video — bringing them back to life to inspire a new generation of explorers. It shows the range of what we can do when a story calls for something bolder than a standard interview format, from concept and scripting through voice synthesis and immersive design.</p>
+        <span class="mdd-title">Courageous Conversations, 2025</span>
+        <p class="mdd-explain"><strong>Why we selected it:</strong> For USTOA's 2025 annual conference, we were tasked with developing a creative concept around the theme of "Courage." We reanimated historical icons, many with no original source audio or video, bringing their stories to life for a new generation of explorers. The project spanned concept development, scripting, voice synthesis, visual storytelling and immersive presentation design.</p>
+        <p class="mdd-explain"><strong>Why it's relevant:</strong> This work shows our ability to take a broad conference theme and turn it into a memorable, cohesive audience experience. For MDD, we would bring that same approach to the State of the Region, connecting complex topics like housing, transportation, workforce and infrastructure through a clear narrative, strong visuals and compelling storytelling that carries across the stage, screen and speaker content.</p>
       </div>
     </article>
 
@@ -476,26 +492,5 @@
   </div>
 </div>
 <script src="js/script.js"></script>
-<script>
-  (function () {
-    document.querySelectorAll('[data-vimeo-thumb]').forEach(function (thumb) {
-      var id = thumb.dataset.vimeoThumb;
-      fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/' + id)
-        .then(function (response) {
-          if (!response.ok) throw new Error('Thumbnail request failed');
-          return response.json();
-        })
-        .then(function (data) {
-          if (data.thumbnail_url) {
-            var largeThumb = data.thumbnail_url.replace(/_\d+x\d+/, '_1280x720');
-            thumb.style.backgroundImage = "url('" + largeThumb + "')";
-          }
-        })
-        .catch(function () {
-          thumb.style.backgroundImage = 'linear-gradient(135deg, #1E8A86, #0C0C0C)';
-        });
-    });
-  })();
-</script>
 </body>
 </html>
