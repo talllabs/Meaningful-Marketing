@@ -76,17 +76,17 @@
     }
 
     .mdd-grid {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 24px;
-      overflow-x: auto;
-      padding-bottom: 14px;
-      scroll-snap-type: x proximity;
-      -webkit-overflow-scrolling: touch;
+    }
+
+    .mdd-grid--ustoa {
+      margin-top: 24px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .mdd-card {
-      flex: 0 0 320px;
-      scroll-snap-align: start;
       overflow: hidden;
       border-radius: var(--radius);
       background: var(--white);
@@ -131,30 +131,6 @@
       pointer-events: none;
     }
 
-    .mdd-play {
-      position: absolute;
-      z-index: 2;
-      left: 50%;
-      top: 50%;
-      width: 84px;
-      height: 84px;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      border: 4px solid rgba(255, 255, 255, 0.78);
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--white);
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      font-size: 30px;
-      padding-left: 6px;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-    .mdd-play:hover {
-      transform: translate(-50%, -50%) scale(1.06);
-      background: rgba(255, 255, 255, 0.18);
-    }
-
     .mdd-meta {
       padding: 26px 28px 29px;
     }
@@ -191,20 +167,12 @@
       .mdd-hero {
         padding: calc(var(--nav-h) + 40px) 0 36px;
       }
-      .mdd-grid {
-        flex-direction: column;
-        overflow-x: visible;
-      }
-      .mdd-card {
-        flex: 1 1 auto;
+      .mdd-grid,
+      .mdd-grid--ustoa {
+        grid-template-columns: 1fr;
       }
       .mdd-meta {
         padding: 22px;
-      }
-      .mdd-play {
-        width: 70px;
-        height: 70px;
-        font-size: 26px;
       }
     }
   </style>
@@ -293,7 +261,6 @@
     <article class="mdd-card">
       <div class="mdd-thumb">
         <iframe class="mdd-thumb__embed" src="https://www.youtube-nocookie.com/embed/B3wrnDvipnE?autoplay=1&mute=1&loop=1&playlist=B3wrnDvipnE&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay; encrypted-media"></iframe>
-        <button class="mdd-play js-open-video" type="button" data-youtube="B3wrnDvipnE" aria-label="Play AHD Cotopaxi video">▶</button>
       </div>
       <div class="mdd-meta">
         <span class="mdd-client">Andean Health &amp; Development</span>
@@ -305,7 +272,6 @@
     <article class="mdd-card">
       <div class="mdd-thumb">
         <iframe class="mdd-thumb__embed" src="https://www.youtube-nocookie.com/embed/eTsmhJHWClQ?autoplay=1&mute=1&loop=1&playlist=eTsmhJHWClQ&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay; encrypted-media"></iframe>
-        <button class="mdd-play js-open-video" type="button" data-youtube="eTsmhJHWClQ" aria-label="Play Inspire 20th Anniversary video">▶</button>
       </div>
       <div class="mdd-meta">
         <span class="mdd-client">Inspire</span>
@@ -317,7 +283,6 @@
     <article class="mdd-card">
       <div class="mdd-thumb">
         <iframe class="mdd-thumb__embed" src="https://player.vimeo.com/video/221464315?background=1&autoplay=1&loop=1&muted=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay"></iframe>
-        <button class="mdd-play js-open-video" type="button" data-vimeo="221464315" aria-label="Play Lutheran World Relief Coffee Is Life video">▶</button>
       </div>
       <div class="mdd-meta">
         <span class="mdd-client">Lutheran World Relief</span>
@@ -329,7 +294,6 @@
     <article class="mdd-card">
       <div class="mdd-thumb">
         <iframe class="mdd-thumb__embed" src="https://player.vimeo.com/video/822827038?background=1&autoplay=1&loop=1&muted=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay"></iframe>
-        <button class="mdd-play js-open-video" type="button" data-vimeo="822827038" aria-label="Play Andean Health and Development video">▶</button>
       </div>
       <div class="mdd-meta">
         <span class="mdd-client">Andean Health &amp; Development</span>
@@ -341,7 +305,6 @@
     <article class="mdd-card">
       <div class="mdd-thumb">
         <iframe class="mdd-thumb__embed" src="https://player.vimeo.com/video/109343274?background=1&autoplay=1&loop=1&muted=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay"></iframe>
-        <button class="mdd-play js-open-video" type="button" data-vimeo="109343274" aria-label="Play Papua New Guinea Tourism video">▶</button>
       </div>
       <div class="mdd-meta">
         <span class="mdd-client">Papua New Guinea Tourism</span>
@@ -349,6 +312,10 @@
         <p class="mdd-explain"><strong>Why we selected it:</strong> It shows our ability to tell the story of a place through people, culture, and atmosphere. For State of the Region, that same approach can make Arkansas, Mississippi, and Tennessee feel tangible and connected, rather than relying only on statistics and presentation slides. This video uses no actors — it simply follows the PNG tourism rep around New York City, with the script built entirely from his own words.</p>
       </div>
     </article>
+
+  </div>
+
+  <div class="container mdd-grid mdd-grid--ustoa">
 
     <article class="mdd-card">
       <div class="mdd-thumb">
