@@ -594,7 +594,7 @@
           <p class="cs-outcome__takeaway-quote">
             &ldquo;I really appreciate that I didn&rsquo;t have to worry about it, that <em>you had it covered</em>. That was exactly what we wanted.&rdquo;
           </p>
-          <p class="cs-outcome__takeaway-sub">Sarah, MidSouth Development District</p>
+          <p class="cs-outcome__takeaway-sub">MidSouth Development District</p>
         </div>
       </div>
     </div>
@@ -651,44 +651,77 @@
 <div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal modal--split">
     <button class="modal__close" id="modalClose" aria-label="Close">✕</button>
+
+    <!-- Mobile chooser screen (shown first on mobile) -->
     <div class="modal__chooser" id="modalChooser">
-      <h2 class="modal__heading">Let&rsquo;s connect!</h2>
+      <h2 class="modal__heading">Let's connect!</h2>
       <p class="modal__sub">How would you like to reach us?</p>
       <div class="modal__choice-grid">
         <button class="modal__choice-btn" id="chooseCalendly">
           <span class="modal__choice-icon">📅</span>
-          <span class="modal__choice-label">Schedule a Call</span>
+          <span class="modal__choice-title">Schedule a Call</span>
+          <span class="modal__choice-desc">Pick a time that works for you — no pressure</span>
         </button>
         <button class="modal__choice-btn" id="chooseForm">
           <span class="modal__choice-icon">✉️</span>
-          <span class="modal__choice-label">Send a Message</span>
+          <span class="modal__choice-title">Send a Message</span>
+          <span class="modal__choice-desc">We'll reply within one business day</span>
         </button>
       </div>
     </div>
-    <div class="modal__form-pane" id="modalFormPane">
-      <h2 class="modal__heading" id="modalTitle">Say hello.</h2>
-      <form class="contact-form" id="contactForm" novalidate>
-        <div class="form-row">
-          <label class="form-label" for="cf-name">Name</label>
-          <input class="form-input" id="cf-name" name="name" type="text" placeholder="Your name" required />
+
+    <!-- Back button (mobile panel mode only) -->
+    <button class="modal__back-btn" id="modalBack">← Back</button>
+
+    <div class="modal__split">
+
+      <!-- LEFT: Calendly -->
+      <div class="modal__panel modal__panel--calendly">
+        <span class="eyebrow eyebrow--light">Book a Time</span>
+        <h2 class="modal__heading">Schedule an Intro Call</h2>
+        <p class="modal__sub">Pick a time that works for you — no pressure, just a friendly conversation about your goals.</p>
+        <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener" class="btn btn--gold btn--lg">Open Calendly to Book →</a>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="modal__or"><span>or</span></div>
+
+      <!-- RIGHT: Contact Form -->
+      <div class="modal__panel modal__panel--form">
+        <span class="eyebrow eyebrow--light">Send a Message</span>
+        <h2 class="modal__heading" id="modalTitle">Let's Make Something Meaningful</h2>
+        <p class="modal__sub">Tell us a little about your project and we'll be in touch shortly.</p>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label for="cf-name">Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="contact-form__field">
+              <label for="cf-email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="contact-form__field">
+            <label for="cf-org">Organization</label>
+            <input type="text" id="cf-org" name="organization" placeholder="Your organization" autocomplete="organization" />
+          </div>
+          <div class="contact-form__field">
+            <label for="cf-message">Message <span aria-hidden="true">*</span></label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Tell us about your project or goals…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold btn--lg contact-form__submit">Send Message →</button>
+        </form>
+        <div class="contact-form__success is-hidden" id="formSuccess">
+          <div class="contact-form__success-icon">✓</div>
+          <h3>Message sent!</h3>
+          <p>Thanks for reaching out — we'll be in touch within one business day.</p>
         </div>
-        <div class="form-row">
-          <label class="form-label" for="cf-email">Email</label>
-          <input class="form-input" id="cf-email" name="email" type="email" placeholder="you@example.com" required />
-        </div>
-        <div class="form-row">
-          <label class="form-label" for="cf-msg">Message</label>
-          <textarea class="form-input form-textarea" id="cf-msg" name="message" placeholder="Tell us about your project…" required></textarea>
-        </div>
-        <button type="submit" class="btn btn--primary" style="width:100%;">Send Message →</button>
-      </form>
-    </div>
-    <div class="modal__cal-pane" id="modalCalPane">
-      <iframe src="https://calendly.com/meaningful-marketing/intro" title="Schedule a call" loading="lazy"></iframe>
+      </div>
+
     </div>
   </div>
 </div>
-
 <script src="js/script.js"></script>
 </body>
 </html>
