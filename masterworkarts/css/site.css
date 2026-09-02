@@ -36,11 +36,12 @@ body{
 }
 h1,h2,h3,h4{
   font-family:'Cormorant Garamond', Georgia, serif;
-  font-weight:600;
+  font-weight:700;
   color:var(--midnight);
-  line-height:1.08;
+  line-height:1.05;
   margin:0 0 0.45em;
   text-wrap:balance;
+  letter-spacing:-0.01em;
 }
 p{margin:0 0 1em; color:var(--ink-soft); max-width:60ch;}
 a{color:var(--cobalt); text-decoration:none;}
@@ -99,7 +100,7 @@ img{max-width:100%; display:block;}
 }
 .page-hero .wrap{position:relative;}
 .eyebrow{font-size:0.76rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--lavender); font-weight:600; margin-bottom:14px; display:block; font-family:'DM Sans',sans-serif;}
-.page-hero h1{color:var(--white); font-size:clamp(2.2rem,4.8vw,3.4rem); max-width:18ch; font-weight:600;}
+.page-hero h1{color:var(--white); font-size:clamp(2.2rem,4.8vw,3.4rem); max-width:18ch; font-weight:700;}
 .page-hero p.lede{color:#C9CFEF; font-size:1.1rem; max-width:56ch; font-family:'DM Sans',sans-serif;}
 
 .hero-home{padding:34px 0 0;}
@@ -133,7 +134,7 @@ img{max-width:100%; display:block;}
 .stat-strip .wrap{display:grid; grid-template-columns:repeat(3,1fr); gap:0;}
 .stat-strip .stat{padding:20px 24px; border-right:1px solid var(--line);}
 .stat-strip .stat:last-child{border-right:none;}
-.stat .num{font-family:'Cormorant Garamond',serif; font-size:2.3rem; color:var(--violet); font-weight:600;}
+.stat .num{font-family:'Cormorant Garamond',serif; font-size:2.3rem; color:var(--violet); font-weight:700;}
 .stat .lbl{color:var(--ink-soft); font-size:0.9rem; margin-top:2px;}
 
 /* ---------- Sections ---------- */
@@ -152,7 +153,7 @@ img{max-width:100%; display:block;}
 .card.gold{border-top-color:var(--violet);}
 .card.navy{border-top-color:var(--midnight);}
 .card h3{font-size:1.3rem; margin-bottom:8px;}
-.card .amount{font-family:'Cormorant Garamond',serif; color:var(--violet); font-weight:600; font-size:1.6rem; margin-bottom:4px;}
+.card .amount{font-family:'Cormorant Garamond',serif; color:var(--violet); font-weight:700; font-size:1.6rem; margin-bottom:4px;}
 .card p{font-size:0.95rem;}
 
 /* ---------- Post list (journal) ---------- */
@@ -185,7 +186,7 @@ img{max-width:100%; display:block;}
 .board-cols h4{font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--violet); margin-bottom:14px; font-family:'DM Sans',sans-serif; font-weight:600;}
 .board-cols ul{list-style:none; margin:0; padding:0;}
 .board-cols li{padding:9px 0; border-bottom:1px solid var(--line); font-size:0.95rem; color:var(--ink);}
-.board-cols li strong{display:block; color:var(--midnight); font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:600;}
+.board-cols li strong{display:block; color:var(--midnight); font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:700;}
 @media (max-width:800px){.board-cols{grid-template-columns:1fr;}}
 
 /* ---------- Form ---------- */
@@ -202,7 +203,7 @@ input:focus, textarea:focus{outline:2px solid var(--cobalt); outline-offset:1px;
 
 /* ---------- Mail block ---------- */
 .mail-block{background:var(--midnight); color:var(--white); border-radius:var(--radius); padding:32px;}
-.mail-block .addr{font-family:'Cormorant Garamond',serif; font-size:1.3rem; margin-top:10px; line-height:1.5; font-weight:600;}
+.mail-block .addr{font-family:'Cormorant Garamond',serif; font-size:1.3rem; margin-top:10px; line-height:1.5; font-weight:700;}
 .mail-block .addr strong{display:block; color:var(--lavender); font-size:1rem; font-family:'DM Sans',sans-serif; text-transform:uppercase; letter-spacing:0.06em; font-weight:600;}
 
 /* ---------- Footer ---------- */
