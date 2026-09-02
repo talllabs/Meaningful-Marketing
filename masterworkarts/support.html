@@ -9,6 +9,11 @@
 </head>
 <body>
 
+<div class="top-banner" id="topBanner">
+  <span>We're redesigning this site &mdash; read the <a href="/masterworkarts/journal.html">RFP announcement</a> in the journal.</span>
+  <button class="close-banner" aria-label="Dismiss">&times;</button>
+</div>
+
 <header class="site-header">
   <div class="wrap">
     <a href="/masterworkarts/" class="brand">
@@ -18,6 +23,7 @@
       <a href="/masterworkarts/">Home</a>
       <a href="/masterworkarts/about.html">About</a>
       <a href="/masterworkarts/awards.html">Awards</a>
+      <a href="/masterworkarts/life-in-the-arts.html">Life in the Arts</a>
       <a href="/masterworkarts/journal.html">Journal</a>
       <a href="/masterworkarts/support.html" class="nav-cta active">Support Artists</a>
     </nav>
@@ -34,6 +40,20 @@
 </section>
 
 <section class="section">
+  <div class="wrap">
+    <div class="donate-panel">
+      <span class="eyebrow" style="color:var(--violet);">Give online</span>
+      <h3 style="margin-bottom:6px;">Donate securely through Aplos</h3>
+      <p>Every online gift goes directly to our grant programs. We accept major credit cards, Apple Pay, Google Pay, and Venmo.</p>
+      <a href="#" class="btn btn-primary" style="margin-top:8px;">Give now &rarr;</a>
+      <div class="pay-methods">
+        <span>Visa</span><span>Mastercard</span><span>Amex</span><span>Apple Pay</span><span>Google Pay</span><span>Venmo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
   <div class="wrap grid-2">
     <div class="mail-block">
       <h3 style="color:#fff;">Give by check</h3>
@@ -54,7 +74,7 @@
   </div>
 </section>
 
-<section class="section alt">
+<section class="section">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Send a message</span>
@@ -90,10 +110,15 @@
       <div class="footer-brand">
         <img class="footer-logo" src="/masterworkarts/images/mf-logo.png" alt="The Masterwork Music and Art Foundation" />
         <p>When you support Masterwork, 100% of your gift benefits artists. #LovetheArtist #LovetheArts</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Email address" required aria-label="Email address" />
+          <button type="submit">Sign up</button>
+        </form>
+        <p class="newsletter-note">Get grant deadlines and awardee news in your inbox.</p>
       </div>
       <div>
         <h5>Explore</h5>
-        <ul><li><a href="/masterworkarts/about.html">About</a></li><li><a href="/masterworkarts/awards.html">Awards</a></li><li><a href="/masterworkarts/journal.html">Journal</a></li><li><a href="/masterworkarts/support.html">Support</a></li></ul>
+        <ul><li><a href="/masterworkarts/about.html">About</a></li><li><a href="/masterworkarts/awards.html">Awards</a></li><li><a href="/masterworkarts/life-in-the-arts.html">Life in the Arts</a></li><li><a href="/masterworkarts/journal.html">Journal</a></li><li><a href="/masterworkarts/support.html">Support</a></li><li><a href="/masterworkarts/board.html">Board Access</a></li></ul>
       </div>
       <div>
         <h5>Contact</h5>
@@ -101,7 +126,7 @@
       </div>
       <div>
         <h5>Follow</h5>
-        <div class="social"><a href="#">Facebook</a><a href="#">Twitter</a><a href="#">Instagram</a></div>
+        <div class="social"><a href="https://www.youtube.com/@masterworkarts5965" target="_blank" rel="noopener">YouTube</a><a href="#" target="_blank" rel="noopener">Facebook</a><a href="#" target="_blank" rel="noopener">Instagram</a></div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -109,6 +134,15 @@
     </div>
   </div>
 </footer>
+<div class="lightbox-overlay" id="lightbox">
+  <div class="lightbox-box">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <span class="eyebrow">Save the date</span>
+    <h3>Our 65th Anniversary Celebration</h3>
+    <p>Join us later this year as we celebrate 65 years of funding artists. Details are coming soon in the journal.</p>
+    <a href="/masterworkarts/journal.html" class="btn btn-outline dark">See the announcement</a>
+  </div>
+</div>
 <script src="/masterworkarts/js/site.js"></script>
 </body>
 </html>
