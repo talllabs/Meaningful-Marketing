@@ -312,25 +312,70 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
 })();
 
 /* --------------------------------------------------
-   VIDEO GRID: mark extras + show-more on mobile
+   VIDEO GRID: filter and show-more on mobile
    -------------------------------------------------- */
 (function () {
-  // Mark cards 5+ as extra (hidden on mobile by default)
-  document.querySelectorAll('.vid-card').forEach((card, i) => {
-    if (i >= 4) card.classList.add('vid-card--extra-mobile');
-  });
+  const grid = document.getElementById('videoGrid');
+  if (!grid) return;
 
+  const cards = Array.from(grid.querySelectorAll('.vid-card'));
+  const filterBtns = document.querySelectorAll('.video-filter');
+  const countEl = document.getElementById('videoCount');
+  const emptyEl = document.getElementById('videoEmpty');
   const showMoreBtn = document.getElementById('videoShowMore');
-  if (!showMoreBtn) return;
 
+  let activeFilter = 'all';
   let expanded = false;
-  showMoreBtn.addEventListener('click', () => {
-    expanded = !expanded;
-    document.querySelectorAll('.vid-card--extra-mobile').forEach(card => {
-      card.classList.toggle('is-expanded', expanded);
+
+  function applyMobileExtras() {
+    const visible = cards.filter(card => !card.classList.contains('is-hidden'));
+    cards.forEach(card => card.classList.remove('vid-card--extra-mobile', 'is-expanded'));
+    visible.forEach((card, i) => {
+      if (i >= 4) card.classList.add('vid-card--extra-mobile');
     });
-    showMoreBtn.textContent = expanded ? 'Show Less ↑' : 'Show More Videos ↓';
+    if (expanded) {
+      visible.forEach(card => card.classList.add('is-expanded'));
+    }
+    if (showMoreBtn) {
+      showMoreBtn.style.display = visible.length > 4 ? '' : 'none';
+    }
+  }
+
+  function applyFilter() {
+    let visibleCount = 0;
+    cards.forEach(card => {
+      const categories = (card.dataset.categories || '').split(',');
+      const matches = activeFilter === 'all' || categories.includes(activeFilter);
+      card.classList.toggle('is-hidden', !matches);
+      if (matches) visibleCount++;
+    });
+    if (countEl) {
+      countEl.textContent = visibleCount + (visibleCount === 1 ? ' project' : ' projects');
+    }
+    if (emptyEl) {
+      emptyEl.hidden = visibleCount !== 0;
+    }
+    applyMobileExtras();
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      activeFilter = btn.dataset.filter;
+      applyFilter();
+    });
   });
+
+  if (showMoreBtn) {
+    showMoreBtn.addEventListener('click', () => {
+      expanded = !expanded;
+      applyMobileExtras();
+      showMoreBtn.textContent = expanded ? 'Show Less ↑' : 'Show More Videos ↓';
+    });
+  }
+
+  applyMobileExtras();
 })();
 
 /* --------------------------------------------------

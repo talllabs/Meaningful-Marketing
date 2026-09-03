@@ -584,170 +584,281 @@
         <span class="stamp stamp--stroke">SAMPLES</span>
       </h2>
     </div>
-    <div class="video-grid">
-      <div class="vid-card reveal-up" style="--delay:.00s">
+
+    <div class="video-filters reveal-up">
+      <p class="video-filters__label">Filter by Type</p>
+      <div class="video-filters__list" role="group" aria-label="Filter videos by type">
+        <button type="button" class="video-filter is-active" data-filter="all">All</button>
+        <button type="button" class="video-filter" data-filter="Commercial">Commercial</button>
+        <button type="button" class="video-filter" data-filter="Brand Launch">Brand Launch</button>
+        <button type="button" class="video-filter" data-filter="Documentary">Documentary</button>
+        <button type="button" class="video-filter" data-filter="Event Video">Event Video</button>
+        <button type="button" class="video-filter" data-filter="Product Demo">Product Demo</button>
+        <button type="button" class="video-filter" data-filter="Travel">Travel</button>
+        <button type="button" class="video-filter" data-filter="Social Impact">Social Impact</button>
+        <button type="button" class="video-filter" data-filter="Lifestyle">Lifestyle</button>
+        <button type="button" class="video-filter" data-filter="Music">Music</button>
+      </div>
+    </div>
+
+    <div class="video-toolbar reveal-up">
+      <span class="video-toolbar__count" id="videoCount">18 projects</span>
+    </div>
+
+    <div class="video-grid" id="videoGrid">
+      <div class="vid-card reveal-up" style="--delay:.00s" data-categories="Commercial,Event Video">
         <div class="vid-card__thumb" style="background-image:url('https://img.youtube.com/vi/eTsmhJHWClQ/hqdefault.jpg')">
           <button class="vid-card__play js-open-video" data-youtube="eTsmhJHWClQ" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Inspire</span>
           <span class="vid-card__title">20th Anniversary</span>
+          <p class="vid-card__desc">A cinematic celebration of two decades of Inspire — honoring legacy, community, and the stories that endure.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Commercial</span>
+            <span class="vid-card__tag">Event Video</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.05s">
+      <div class="vid-card reveal-up" style="--delay:.05s" data-categories="Documentary,Social Impact">
         <div class="vid-card__thumb" style="background-image:url('https://img.youtube.com/vi/B3wrnDvipnE/hqdefault.jpg')">
           <button class="vid-card__play js-open-video" data-youtube="B3wrnDvipnE" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Andean Health &amp; Development</span>
           <span class="vid-card__title">AHD Cotopaxi</span>
+          <p class="vid-card__desc">A powerful documentary following Andean communities and the mission-driven work of AHD at the base of Cotopaxi volcano.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Documentary</span>
+            <span class="vid-card__tag">Social Impact</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.10s">
+      <div class="vid-card reveal-up" style="--delay:.10s" data-categories="Commercial,Product Demo">
         <div class="vid-card__thumb" data-vimeo-id="146186425">
           <button class="vid-card__play js-open-video" data-vimeo="146186425" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">SideChef</span>
           <span class="vid-card__title">Brand Video</span>
+          <p class="vid-card__desc">Brand commercial introducing SideChef's guided, step-by-step cooking experience inside the kitchen.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Commercial</span>
+            <span class="vid-card__tag">Product Demo</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.15s">
+      <div class="vid-card reveal-up" style="--delay:.15s" data-categories="Commercial,Lifestyle">
         <div class="vid-card__thumb" data-vimeo-id="221464315">
           <button class="vid-card__play js-open-video" data-vimeo="221464315" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Lutheran World Relief</span>
           <span class="vid-card__title">Coffee Is Life</span>
+          <p class="vid-card__desc">Lifestyle commercial centered on coffee culture and the ritual of daily coffee consumption — a love letter to the morning cup.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Commercial</span>
+            <span class="vid-card__tag">Lifestyle</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.20s">
+      <div class="vid-card reveal-up" style="--delay:.20s" data-categories="Brand Launch">
         <div class="vid-card__thumb" data-vimeo-id="137018485">
           <button class="vid-card__play js-open-video" data-vimeo="137018485" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Stone + Cloth</span>
           <span class="vid-card__title">Brand Story</span>
+          <p class="vid-card__desc">Kickstarter campaign video for the Stone &amp; Cloth apparel launch — brand storytelling meets product showcase for a purpose-driven startup.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Brand Launch</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.25s">
+      <div class="vid-card reveal-up" style="--delay:.25s" data-categories="Documentary,Social Impact">
         <div class="vid-card__thumb" data-vimeo-id="221464023">
           <button class="vid-card__play js-open-video" data-vimeo="221464023" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Lutheran World Relief</span>
           <span class="vid-card__title">Coffee Farmer</span>
+          <p class="vid-card__desc">Documentary-style piece showing the coffee farming process and community stories in Kenya — from seed to cup.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Documentary</span>
+            <span class="vid-card__tag">Social Impact</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.30s">
+      <div class="vid-card reveal-up" style="--delay:.30s" data-categories="Commercial,Social Impact">
         <div class="vid-card__thumb" data-vimeo-id="638855073">
           <button class="vid-card__play js-open-video" data-vimeo="638855073" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Outpatch</span>
           <span class="vid-card__title">Give Where You Live</span>
+          <p class="vid-card__desc">Commercial highlighting Outpatch's mission to support community impact through travel-linked giving. Every trip becomes a contribution.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Commercial</span>
+            <span class="vid-card__tag">Social Impact</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.35s">
+      <div class="vid-card reveal-up" style="--delay:.35s" data-categories="Brand Launch,Lifestyle">
         <div class="vid-card__thumb" data-vimeo-id="561585470">
           <button class="vid-card__play js-open-video" data-vimeo="561585470" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Sigmund</span>
           <span class="vid-card__title">The Power of Collaboration</span>
+          <p class="vid-card__desc">Launching Sigmund — a global platform supporting entrepreneurs in tourism with free resources and industry opportunities.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Brand Launch</span>
+            <span class="vid-card__tag">Lifestyle</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.40s">
+      <div class="vid-card reveal-up" style="--delay:.40s" data-categories="Documentary,Lifestyle">
         <div class="vid-card__thumb" data-vimeo-id="384909934">
           <button class="vid-card__play js-open-video" data-vimeo="384909934" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Lutheran World Relief</span>
           <span class="vid-card__title">Coffee Couple</span>
+          <p class="vid-card__desc">An intimate documentary portrait of a couple bound together by their shared passion for coffee and craft.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Documentary</span>
+            <span class="vid-card__tag">Lifestyle</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.45s">
+      <div class="vid-card reveal-up" style="--delay:.45s" data-categories="Documentary,Social Impact">
         <div class="vid-card__thumb" data-vimeo-id="822827038">
           <button class="vid-card__play js-open-video" data-vimeo="822827038" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Andean Health &amp; Development</span>
           <span class="vid-card__title">What We Do Every Day</span>
+          <p class="vid-card__desc">A compelling look inside Andean Health's mission — bringing healthcare and hope to remote communities across the Andes.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Documentary</span>
+            <span class="vid-card__tag">Social Impact</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.50s">
+      <div class="vid-card reveal-up" style="--delay:.50s" data-categories="Documentary,Travel">
         <div class="vid-card__thumb" data-vimeo-id="109343274">
           <button class="vid-card__play js-open-video" data-vimeo="109343274" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Papua New Guinea Tourism</span>
           <span class="vid-card__title">Papua New Guinea</span>
+          <p class="vid-card__desc">A documentary portrait of Fabian Paino experiencing America for the first time — told through the eyes of someone seeing it all fresh from Papua New Guinea.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Documentary</span>
+            <span class="vid-card__tag">Travel</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.55s">
+      <div class="vid-card reveal-up" style="--delay:.55s" data-categories="Commercial,Brand Launch">
         <div class="vid-card__thumb" data-vimeo-id="282919808">
           <button class="vid-card__play js-open-video" data-vimeo="282919808" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Novo</span>
           <span class="vid-card__title">Impact Report</span>
+          <p class="vid-card__desc">Brand launch film for Novo — a story of fresh beginnings, bold vision, and the courage to start something new.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Commercial</span>
+            <span class="vid-card__tag">Brand Launch</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.60s">
+      <div class="vid-card reveal-up" style="--delay:.60s" data-categories="Documentary,Social Impact">
         <div class="vid-card__thumb" style="background-image:url('https://img.youtube.com/vi/FmfJgx94u7Q/hqdefault.jpg')">
           <button class="vid-card__play js-open-video" data-youtube="FmfJgx94u7Q" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Lutheran World Relief</span>
           <span class="vid-card__title">VR Doc</span>
+          <p class="vid-card__desc">An immersive VR documentary for Lutheran World Relief placing viewers inside the human story of global aid and transformation.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Documentary</span>
+            <span class="vid-card__tag">Social Impact</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.65s">
+      <div class="vid-card reveal-up" style="--delay:.65s" data-categories="Documentary,Travel">
         <div class="vid-card__thumb" data-vimeo-id="77809770">
           <button class="vid-card__play js-open-video" data-vimeo="77809770" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Lutheran World Relief</span>
           <span class="vid-card__title">Mini Doc — Daisy, Peru</span>
+          <p class="vid-card__desc">A moving mini-documentary following Daisy in Peru — her story, her community, and the ripple effect of compassionate aid.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Documentary</span>
+            <span class="vid-card__tag">Travel</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.70s">
+      <div class="vid-card reveal-up" style="--delay:.70s" data-categories="Documentary,Event Video">
         <div class="vid-card__thumb" data-vimeo-id="132164108">
           <button class="vid-card__play js-open-video" data-vimeo="132164108" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Papua New Guinea Tourism</span>
           <span class="vid-card__title">PNG Media Lunch</span>
+          <p class="vid-card__desc">Event video following the Papua New Guinea Tourism Board to NYC where they hosted a media lunch at the famed Explorers Club.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Documentary</span>
+            <span class="vid-card__tag">Event Video</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.75s">
+      <div class="vid-card reveal-up" style="--delay:.75s" data-categories="Documentary,Travel">
         <div class="vid-card__thumb" data-vimeo-id="71029708">
           <button class="vid-card__play js-open-video" data-vimeo="71029708" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Galapagos Conservancy</span>
           <span class="vid-card__title">Galapagos</span>
+          <p class="vid-card__desc">A breathtaking documentary immersion into the Galapagos Islands — wildlife, wonder, and the fragile beauty of our world.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Documentary</span>
+            <span class="vid-card__tag">Travel</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.80s">
+      <div class="vid-card reveal-up" style="--delay:.80s" data-categories="Documentary,Social Impact">
         <div class="vid-card__thumb" data-vimeo-id="301280352">
           <button class="vid-card__play js-open-video" data-vimeo="301280352" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Lutheran World Relief</span>
           <span class="vid-card__title">Mini Doc — Champa, India</span>
+          <p class="vid-card__desc">Mini documentary following Champa's journey in rural India — a story of resilience, community, and transformative support.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Documentary</span>
+            <span class="vid-card__tag">Social Impact</span>
+          </div>
         </div>
       </div>
-      <div class="vid-card reveal-up" style="--delay:.85s">
+      <div class="vid-card reveal-up" style="--delay:.85s" data-categories="Commercial,Music">
         <div class="vid-card__thumb" data-vimeo-id="115654417">
           <button class="vid-card__play js-open-video" data-vimeo="115654417" aria-label="Play video">▶</button>
         </div>
         <div class="vid-card__meta">
-          <span class="vid-card__client">Live Event</span>
+          <span class="vid-card__client">The Collection</span>
           <span class="vid-card__title">Live Recording</span>
+          <p class="vid-card__desc">A kinetic live recording capture — raw energy, real artistry, and the electricity of performance preserved on film.</p>
+          <div class="vid-card__tags">
+            <span class="vid-card__tag">Commercial</span>
+            <span class="vid-card__tag">Music</span>
+          </div>
         </div>
       </div>
     </div>
+    <p class="video-empty" id="videoEmpty" hidden>No videos match this filter yet — try another type.</p>
     <div class="videos__show-more">
       <button class="btn btn--outline-dark" id="videoShowMore">Show More Videos ↓</button>
     </div>
