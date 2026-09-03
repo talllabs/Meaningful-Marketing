@@ -373,3 +373,57 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
     }, 350);
   }, 2400);
 })();
+
+// ============ TESTIMONIALS PARALLAX ============
+(function () {
+  const section = document.querySelector(".mm-testimonials");
+
+  if (!section) return;
+
+  const cards = section.querySelectorAll(".mm-testimonial");
+
+  let ticking = false;
+
+  function updateTestimonials() {
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    const progress =
+      (windowHeight - rect.top) /
+      (windowHeight + rect.height);
+
+    cards.forEach(function (card) {
+      if (window.innerWidth <= 800) {
+        card.style.transform = "";
+        return;
+      }
+
+      const speed = parseFloat(card.dataset.speed || "0.1");
+
+      const movement =
+        (progress - 0.5) *
+        240 *
+        speed;
+
+      card.style.transform =
+        "translate3d(0," + movement + "px,0)";
+    });
+
+    ticking = false;
+  }
+
+  function requestTick() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateTestimonials);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener("scroll", requestTick, {
+    passive: true
+  });
+
+  window.addEventListener("resize", requestTick);
+
+  updateTestimonials();
+})();
