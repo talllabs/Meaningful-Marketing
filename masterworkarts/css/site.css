@@ -179,13 +179,13 @@ img{max-width:100%; display:block;}
 .section-head{max-width:640px; margin-bottom:40px;}
 .section-head h2{font-size:clamp(1.9rem,3.6vw,2.6rem);}
 
-/* ---------- News panel (illustrated stand-in for a photo) ---------- */
+/* ---------- News panel ---------- */
 .news-grid{display:grid; grid-template-columns:0.95fr 1.05fr; gap:48px; align-items:center;}
 .news-panel{
   aspect-ratio:5/4; border-radius:12px; overflow:hidden; position:relative;
-  background:var(--midnight);
+  background:var(--midnight); box-shadow:0 24px 48px -28px rgba(7,29,99,0.4);
 }
-.news-panel svg{width:100%; height:100%; display:block;}
+.news-panel img{width:100%; height:100%; object-fit:cover; display:block;}
 @media (max-width:860px){.news-grid{grid-template-columns:1fr;}}
 
 /* ---------- Cards / grid ---------- */
@@ -294,7 +294,18 @@ input:focus, textarea:focus{outline:2px solid var(--cobalt); outline-offset:1px;
 .feature-card{
   background:var(--white); border-radius:12px; padding:26px 24px; display:flex; flex-direction:column; gap:10px;
   text-decoration:none; box-shadow:0 18px 36px -26px rgba(7,29,99,0.28); border:1px solid rgba(223,226,237,0.7);
+  overflow:hidden;
 }
+.feature-card.has-thumb{padding:0 0 24px;}
+.feature-card .card-thumb{
+  height:104px; margin:0 0 4px; position:relative; background:var(--violet); overflow:hidden;
+}
+.feature-card .card-thumb .loita-shape{position:absolute; display:block;}
+.feature-card.has-thumb .feature-eyebrow,
+.feature-card.has-thumb h4,
+.feature-card.has-thumb p,
+.feature-card.has-thumb .card-link{margin-left:24px; margin-right:24px;}
+.feature-card.has-thumb .feature-eyebrow{margin-top:2px;}
 .feature-card:hover{text-decoration:none; box-shadow:0 22px 40px -22px rgba(7,29,99,0.32);}
 .feature-card:hover h4{color:var(--cobalt);}
 .feature-card .feature-eyebrow{font-size:0.68rem; letter-spacing:0.09em; text-transform:uppercase; color:var(--violet); font-weight:600; font-family:'DM Sans',sans-serif;}
@@ -352,6 +363,43 @@ input:focus, textarea:focus{outline:2px solid var(--cobalt); outline-offset:1px;
 .gate-error.show{display:block;}
 #boardContent{display:none;}
 #boardContent.show{display:block;}
+
+/* ---------- Life in the Arts carousel ---------- */
+.loita-carousel{
+  position:relative; border-radius:14px; overflow:hidden; aspect-ratio:16/9;
+  box-shadow:0 30px 60px -32px rgba(7,29,99,0.45); background:var(--midnight);
+}
+.loita-track{display:flex; height:100%; width:100%; transition:transform .5s cubic-bezier(.4,0,.2,1);}
+.loita-slide{flex:0 0 100%; height:100%; position:relative; display:flex; align-items:flex-end; overflow:hidden;}
+.loita-slide img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;}
+.loita-slide .abstract-bg{position:absolute; inset:0;}
+.loita-slide .scrim{position:absolute; inset:0; background:rgba(7,17,54,0.5);}
+.loita-content{position:relative; z-index:2; padding:clamp(24px,4vw,48px); color:#fff; max-width:560px;}
+.loita-content .eyebrow{color:var(--lavender); margin-bottom:10px;}
+.loita-content h3{color:#fff; font-size:clamp(1.5rem,3vw,2.1rem); margin-bottom:8px;}
+.loita-content p{color:#E4E1F0; font-size:0.95rem; max-width:48ch;}
+.loita-content .card-link{color:#fff; border-bottom:1px solid rgba(255,255,255,0.5); padding-bottom:2px; display:inline-block; margin-top:4px;}
+.loita-content .card-link:hover{border-bottom-color:#fff; text-decoration:none;}
+
+.loita-arrow{
+  position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%;
+  background:rgba(255,255,255,0.14); color:#fff; border:1px solid rgba(255,255,255,0.4); z-index:3; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; font-size:1.2rem; line-height:1; backdrop-filter:blur(2px);
+}
+.loita-arrow:hover{background:rgba(255,255,255,0.26);}
+.loita-arrow.prev{left:16px;}
+.loita-arrow.next{right:16px;}
+
+.loita-dots{position:absolute; bottom:18px; right:20px; display:flex; gap:8px; z-index:3;}
+.loita-dot{width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.4); border:none; cursor:pointer; padding:0;}
+.loita-dot.active{background:#fff;}
+
+.loita-shape{position:absolute; display:block;}
+
+@media (max-width:700px){
+  .loita-carousel{aspect-ratio:4/5;}
+  .loita-content{max-width:none;}
+}
 
 /* ---------- Lightbox ---------- */
 .lightbox-overlay{

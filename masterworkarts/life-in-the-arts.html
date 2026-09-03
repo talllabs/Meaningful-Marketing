@@ -16,17 +16,8 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a href="/masterworkarts/" class="brand-lockup">
-      <svg class="brand-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M20 3 C10 3 4 11 4 20 C4 28 11 33 20 37 C29 33 36 28 36 20 C36 11 30 3 20 3Z" fill="var(--midnight, #071D63)"/>
-        <path d="M20 8 C13 8 9 14 9 20 C9 26 14 30 20 33 L20 8Z" fill="var(--cobalt, #4774E8)"/>
-        <path d="M20 8 C27 8 31 14 31 20 C31 26 26 30 20 33 L20 8Z" fill="var(--violet, #6430C9)" opacity="0.9"/>
-      </svg>
-      <span class="brand-text">
-        <span class="brand-title">MASTERWORK</span>
-        <span class="brand-title sub">FOUNDATION</span>
-        <span class="brand-tag">Supporting Excellence in the Arts</span>
-      </span>
+    <a href="/masterworkarts/" class="brand">
+      <img class="brand-mark" src="/masterworkarts/images/mf-logo.png" alt="The Masterwork Music and Art Foundation" />
     </a>
     <nav class="main-nav" id="mainNav">
       <a href="/masterworkarts/">Home</a>
@@ -40,7 +31,7 @@
   </div>
 </header>
 
-<section class="page-hero">
+<section class="page-hero" style="padding-bottom:0;">
   <div class="wrap">
     <span class="eyebrow">The interview series</span>
     <h1>A Life in the Arts</h1>
@@ -48,31 +39,69 @@
   </div>
 </section>
 
+<section class="section" style="padding-top:36px;">
+  <div class="wrap">
+    <div class="loita-carousel" id="loitaCarousel">
+      <div class="loita-track" id="loitaTrack">
+
+        <div class="loita-slide">
+          <div class="abstract-bg" aria-hidden="true" style="background:var(--violet);">
+            <div class="loita-shape" style="background:var(--midnight); top:-10%; right:-8%; width:60%; height:70%; border-radius:50%; opacity:0.55;"></div>
+            <div class="loita-shape" style="background:var(--lavender); left:-6%; bottom:-14%; width:44%; height:50%; opacity:0.6;"></div>
+          </div>
+          <div class="scrim"></div>
+          <div class="loita-content">
+            <span class="eyebrow">July 2026</span>
+            <h3>Hadiza Dockeray, Singer-Songwriter</h3>
+            <p>A conversation with advisory board member and singer-songwriter Hadiza Dockeray on a career built one song at a time.</p>
+            <a href="/masterworkarts/journal.html" class="card-link">Read the full interview &rarr;</a>
+          </div>
+        </div>
+
+        <div class="loita-slide">
+          <div class="abstract-bg" aria-hidden="true" style="background:var(--midnight);">
+            <div class="loita-shape" style="background:var(--cobalt); top:-14%; left:8%; width:38%; height:130%; transform:rotate(10deg); opacity:0.7;"></div>
+            <div class="loita-shape" style="background:var(--cobalt); top:-14%; left:26%; width:38%; height:130%; transform:rotate(10deg); opacity:0.45;"></div>
+          </div>
+          <div class="scrim"></div>
+          <div class="loita-content">
+            <span class="eyebrow">June 2026</span>
+            <h3>R. Wayne Walters</h3>
+            <p>Recognizing a lifetime of contribution to the arts, our A Life in the Arts honoree for 2026.</p>
+            <a href="/masterworkarts/journal.html" class="card-link">Read the full interview &rarr;</a>
+          </div>
+        </div>
+
+        <div class="loita-slide">
+          <img src="https://images.pexels.com/photos/37634508/pexels-photo-37634508.jpeg?cs=srgb&dl=pexels-wal_-172619-2156618639-37634508.jpg&fm=jpg" alt="" loading="lazy" />
+          <div class="scrim"></div>
+          <div class="loita-content">
+            <span class="eyebrow">June 2026</span>
+            <h3>Laurie Kenagy, Ridgefield Symphony Orchestra</h3>
+            <p>Laurie Kenagy on leading a regional orchestra and what sustained arts leadership looks like.</p>
+            <a href="/masterworkarts/journal.html" class="card-link">Read the full interview &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+      <button class="loita-arrow prev" id="loitaPrev" aria-label="Previous">&#8249;</button>
+      <button class="loita-arrow next" id="loitaNext" aria-label="Next">&#8250;</button>
+      <div class="loita-dots" id="loitaDots">
+        <button class="loita-dot active" data-index="0" aria-label="Slide 1"></button>
+        <button class="loita-dot" data-index="1" aria-label="Slide 2"></button>
+        <button class="loita-dot" data-index="2" aria-label="Slide 3"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section">
-  <div class="wrap grid-2">
-    <div class="card">
-      <span class="feature-eyebrow">July 2026</span>
-      <h3>Hadiza Dockeray, Singer-Songwriter</h3>
-      <p>A conversation with advisory board member and singer-songwriter Hadiza Dockeray on a career built one song at a time.</p>
-      <a href="/masterworkarts/journal.html">Read the full interview &rarr;</a>
-    </div>
-    <div class="card gold">
-      <span class="feature-eyebrow">June 2026</span>
-      <h3>R. Wayne Walters</h3>
-      <p>Recognizing a lifetime of contribution to the arts, our A Life in the Arts honoree for 2026.</p>
-      <a href="/masterworkarts/journal.html">Read the full interview &rarr;</a>
-    </div>
-    <div class="card navy">
-      <span class="feature-eyebrow">June 2026</span>
-      <h3>Laurie Kenagy, Ridgefield Symphony Orchestra</h3>
-      <p>Laurie Kenagy on leading a regional orchestra and what sustained arts leadership looks like.</p>
-      <a href="/masterworkarts/journal.html">Read the full interview &rarr;</a>
-    </div>
-    <div class="card">
-      <span class="feature-eyebrow">More episodes</span>
-      <h3>Watch past interviews</h3>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">More episodes</span>
+      <h2>Watch past interviews</h2>
       <p>Every episode of A Life in the Arts is archived on our YouTube channel.</p>
-      <a href="https://www.youtube.com/@masterworkarts5965" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+      <a href="https://www.youtube.com/@masterworkarts5965" class="btn btn-outline dark" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
     </div>
   </div>
 </section>

@@ -70,4 +70,44 @@ document.addEventListener('DOMContentLoaded', function () {
       btn.disabled = true;
     });
   }
+
+  // A Life in the Arts carousel — prev/next, dots, autoplay, swipe.
+  var carousel = document.getElementById('loitaCarousel');
+  if (carousel) {
+    var track = document.getElementById('loitaTrack');
+    var slides = track.children;
+    var dots = document.querySelectorAll('#loitaDots .loita-dot');
+    var index = 0;
+    var timer;
+
+    function goTo(i) {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach(function (d, di) { d.classList.toggle('active', di === index); });
+    }
+    function startAutoplay() {
+      timer = setInterval(function () { goTo(index + 1); }, 6000);
+    }
+    function stopAutoplay() { clearInterval(timer); }
+
+    document.getElementById('loitaPrev').addEventListener('click', function () { goTo(index - 1); stopAutoplay(); startAutoplay(); });
+    document.getElementById('loitaNext').addEventListener('click', function () { goTo(index + 1); stopAutoplay(); startAutoplay(); });
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () { goTo(parseInt(d.dataset.index, 10)); stopAutoplay(); startAutoplay(); });
+    });
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+
+    var touchStartX = null;
+    carousel.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend', function (e) {
+      if (touchStartX === null) return;
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) { goTo(index + (dx < 0 ? 1 : -1)); stopAutoplay(); startAutoplay(); }
+      touchStartX = null;
+    });
+
+    goTo(0);
+    startAutoplay();
+  }
 });
