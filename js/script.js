@@ -312,7 +312,7 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
 })();
 
 /* --------------------------------------------------
-   VIDEO GRID: filter, sort, and show-more on mobile
+   VIDEO GRID: filter and show-more on mobile
    -------------------------------------------------- */
 (function () {
   const grid = document.getElementById('videoGrid');
@@ -320,13 +320,9 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
 
   const cards = Array.from(grid.querySelectorAll('.vid-card'));
   const filterBtns = document.querySelectorAll('.video-filter');
-  const sortSelect = document.getElementById('videoSort');
   const countEl = document.getElementById('videoCount');
   const emptyEl = document.getElementById('videoEmpty');
   const showMoreBtn = document.getElementById('videoShowMore');
-
-  // Preserve each card's original position for "Newest First" / "Oldest First"
-  cards.forEach((card, i) => card.dataset.order = i);
 
   let activeFilter = 'all';
   let expanded = false;
@@ -362,21 +358,6 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
     applyMobileExtras();
   }
 
-  function applySort() {
-    const mode = sortSelect ? sortSelect.value : 'newest';
-    const sorted = cards.slice().sort((a, b) => {
-      if (mode === 'newest') return Number(a.dataset.order) - Number(b.dataset.order);
-      if (mode === 'oldest') return Number(b.dataset.order) - Number(a.dataset.order);
-      const titleA = (a.dataset.title || '').toLowerCase();
-      const titleB = (b.dataset.title || '').toLowerCase();
-      if (mode === 'title-asc') return titleA.localeCompare(titleB);
-      if (mode === 'title-desc') return titleB.localeCompare(titleA);
-      return 0;
-    });
-    sorted.forEach(card => grid.appendChild(card));
-    applyMobileExtras();
-  }
-
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('is-active'));
@@ -385,10 +366,6 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
       applyFilter();
     });
   });
-
-  if (sortSelect) {
-    sortSelect.addEventListener('change', applySort);
-  }
 
   if (showMoreBtn) {
     showMoreBtn.addEventListener('click', () => {
