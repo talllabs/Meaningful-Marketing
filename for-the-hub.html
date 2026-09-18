@@ -256,6 +256,15 @@
       color: var(--teal-dark);
     }
 
+    /* Center a lone card instead of letting it sit flush-left in a multi-column grid */
+    .hub-grid > .hub-card:only-child,
+    .hub-grid--3 > .hub-card:only-child {
+      grid-column: 1 / -1;
+      max-width: 560px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
     .hub-meta { padding: 26px 28px 29px; }
     .hub-client {
       display: block;
@@ -447,8 +456,8 @@
     </div>
     <div class="container hub-grid">
       <article class="hub-card">
-        <div class="hub-thumb">
-          <iframe class="hub-thumb__embed" src="https://www.youtube-nocookie.com/embed/eTsmhJHWClQ?autoplay=1&mute=1&loop=1&playlist=eTsmhJHWClQ&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0&enablejsapi=0" title="" tabindex="-1" aria-hidden="true" allow="autoplay; encrypted-media"></iframe>
+        <div class="hub-thumb" style="background-image:url('https://img.youtube.com/vi/eTsmhJHWClQ/hqdefault.jpg')">
+          <button class="hub-play-btn js-open-video" data-youtube="eTsmhJHWClQ" aria-label="Play Inspire 20th Anniversary video"><span>▶</span></button>
         </div>
         <div class="hub-meta">
           <span class="hub-client">Inspire Life Skills Training</span>
@@ -478,8 +487,8 @@
     </div>
     <div class="container hub-grid">
       <article class="hub-card">
-        <div class="hub-thumb">
-          <iframe class="hub-thumb__embed" src="https://www.youtube-nocookie.com/embed/B3wrnDvipnE?autoplay=1&mute=1&loop=1&playlist=B3wrnDvipnE&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0&enablejsapi=0" title="" tabindex="-1" aria-hidden="true" allow="autoplay; encrypted-media"></iframe>
+        <div class="hub-thumb" style="background-image:url('https://img.youtube.com/vi/B3wrnDvipnE/hqdefault.jpg')">
+          <button class="hub-play-btn js-open-video" data-youtube="B3wrnDvipnE" aria-label="Play AHD Cotopaxi video"><span>▶</span></button>
         </div>
         <div class="hub-meta">
           <span class="hub-client">Andean Health &amp; Development</span>
@@ -492,8 +501,8 @@
         </div>
       </article>
       <article class="hub-card">
-        <div class="hub-thumb">
-          <iframe class="hub-thumb__embed" src="https://player.vimeo.com/video/822827038?background=1&autoplay=1&loop=1&muted=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay"></iframe>
+        <div class="hub-thumb" data-vimeo-id="822827038">
+          <button class="hub-play-btn js-open-video" data-vimeo="822827038" aria-label="Play What We Do Every Day video"><span>▶</span></button>
         </div>
         <div class="hub-meta">
           <span class="hub-client">Andean Health &amp; Development</span>
@@ -533,12 +542,10 @@
     </div>
     <div class="container hub-grid">
       <article class="hub-card">
-        <button class="hub-play-btn" type="button" aria-label="Play Lutheran World Relief video" style="position:relative;width:100%;">
-          <div class="hub-thumb">
-            <img class="hub-thumb__img" src="images/lwr%20case.png" alt="Lutheran World Relief — Farmers Market Coffee video thumbnail" />
-            <span class="hub-play-btn" aria-hidden="true"><span>▶</span></span>
-          </div>
-        </button>
+        <div class="hub-thumb">
+          <img class="hub-thumb__img" src="images/lwr%20case.png" alt="Lutheran World Relief — Farmers Market Coffee video thumbnail" />
+          <button class="hub-play-btn js-open-video" data-vimeo="221464315" aria-label="Play Lutheran World Relief video"><span>▶</span></button>
+        </div>
         <div class="hub-meta">
           <span class="hub-client">Lutheran World Relief</span>
           <span class="hub-title">From Script to Screen — Farmers Market Coffee</span>
@@ -551,8 +558,8 @@
         </div>
       </article>
       <article class="hub-card">
-        <div class="hub-thumb">
-          <iframe class="hub-thumb__embed" src="https://player.vimeo.com/video/221464023?background=1&autoplay=1&loop=1&muted=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay"></iframe>
+        <div class="hub-thumb" data-vimeo-id="221464023">
+          <button class="hub-play-btn js-open-video" data-vimeo="221464023" aria-label="Play Coffee Farmer video"><span>▶</span></button>
         </div>
         <div class="hub-meta">
           <span class="hub-client">Lutheran World Relief</span>
@@ -565,8 +572,8 @@
         </div>
       </article>
       <article class="hub-card">
-        <div class="hub-thumb">
-          <iframe class="hub-thumb__embed" src="https://player.vimeo.com/video/384909934?background=1&autoplay=1&loop=1&muted=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay"></iframe>
+        <div class="hub-thumb" data-vimeo-id="384909934">
+          <button class="hub-play-btn js-open-video" data-vimeo="384909934" aria-label="Play Coffee Couple video"><span>▶</span></button>
         </div>
         <div class="hub-meta">
           <span class="hub-client">Lutheran World Relief</span>
@@ -579,8 +586,8 @@
         </div>
       </article>
       <article class="hub-card">
-        <div class="hub-thumb">
-          <iframe class="hub-thumb__embed" src="https://www.youtube-nocookie.com/embed/FmfJgx94u7Q?autoplay=1&mute=1&loop=1&playlist=FmfJgx94u7Q&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0&enablejsapi=0" title="" tabindex="-1" aria-hidden="true" allow="autoplay; encrypted-media"></iframe>
+        <div class="hub-thumb" style="background-image:url('https://img.youtube.com/vi/FmfJgx94u7Q/hqdefault.jpg')">
+          <button class="hub-play-btn js-open-video" data-youtube="FmfJgx94u7Q" aria-label="Play VR Doc video"><span>▶</span></button>
         </div>
         <div class="hub-meta">
           <span class="hub-client">Lutheran World Relief</span>
@@ -593,8 +600,8 @@
         </div>
       </article>
       <article class="hub-card">
-        <div class="hub-thumb">
-          <iframe class="hub-thumb__embed" src="https://player.vimeo.com/video/77809770?background=1&autoplay=1&loop=1&muted=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay"></iframe>
+        <div class="hub-thumb" data-vimeo-id="77809770">
+          <button class="hub-play-btn js-open-video" data-vimeo="77809770" aria-label="Play Mini Doc — Daisy, Peru video"><span>▶</span></button>
         </div>
         <div class="hub-meta">
           <span class="hub-client">Lutheran World Relief</span>
@@ -649,8 +656,8 @@
     </div>
     <div class="container hub-grid">
       <article class="hub-card">
-        <div class="hub-thumb">
-          <iframe class="hub-thumb__embed" src="https://player.vimeo.com/video/561585470?background=1&autoplay=1&loop=1&muted=1" title="" tabindex="-1" aria-hidden="true" allow="autoplay"></iframe>
+        <div class="hub-thumb" data-vimeo-id="561585470">
+          <button class="hub-play-btn js-open-video" data-vimeo="561585470" aria-label="Play The Power of Collaboration video"><span>▶</span></button>
         </div>
         <div class="hub-meta">
           <span class="hub-client">The Sigmund Project</span>
