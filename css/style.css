@@ -1581,8 +1581,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    14. ARTIFICIAL INTELLIGENCE
    -------------------------------------------------- */
 .ai {
-  position: relative;
-  overflow: hidden;
   background: var(--black);
   color: var(--white);
   padding-bottom: var(--section-v);
