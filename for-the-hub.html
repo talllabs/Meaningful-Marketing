@@ -71,15 +71,15 @@
     body.hub-locked .hub-page-content { display: none; }
     body:not(.hub-locked) .hub-gate { display: none; }
 
-    /* ============ HUB WORK-SAMPLES PAGE ============ */
+    /* ============ HUB WORK-SAMPLES PAGE (condensed) ============ */
     .hub-hero {
-      padding: calc(var(--nav-h) + 72px) 0 20px;
+      padding: calc(var(--nav-h) + 56px) 0 16px;
       text-align: center;
       background: var(--off-white);
     }
     .hub-hero .eyebrow {
       display: inline-block;
-      margin: 0 0 18px;
+      margin: 0 0 14px;
       color: var(--teal-dark);
       font-size: 13px;
       font-weight: 700;
@@ -87,49 +87,37 @@
       text-transform: uppercase;
     }
     .hub-hero h1 {
-      max-width: 900px;
+      max-width: 820px;
       margin: 0 auto;
-      font-size: clamp(42px, 7vw, 84px);
-      line-height: 0.96;
-      letter-spacing: -0.04em;
-      font-weight: 700;
-    }
-
-    .hub-why {
-      max-width: 850px;
-      margin: 0 auto 46px;
-      text-align: center;
-      padding: 0 20px;
-    }
-    .hub-why h2 {
-      margin: 0 0 16px;
-      font-size: clamp(28px, 4vw, 44px);
+      font-size: clamp(34px, 5.5vw, 62px);
+      line-height: 0.98;
       letter-spacing: -0.03em;
       font-weight: 700;
     }
-    .hub-why p {
-      margin: 0 auto;
-      max-width: 720px;
-      font-size: 17px;
-      line-height: 1.65;
+    .hub-hero p {
+      max-width: 620px;
+      margin: 16px auto 0;
+      font-size: 15px;
+      line-height: 1.6;
       color: var(--text-muted);
+      padding: 0 20px;
     }
 
     .hub-nav-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
       justify-content: center;
       max-width: 900px;
-      margin: 0 auto 10px;
-      padding: 0 20px;
+      margin: 22px auto 0;
+      padding: 0 20px 28px;
     }
     .hub-nav-chips a {
       display: inline-block;
-      padding: 9px 16px;
+      padding: 7px 14px;
       border-radius: 999px;
       border: 1px solid rgba(12, 12, 12, 0.14);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--text-body);
       text-decoration: none;
@@ -141,173 +129,193 @@
       color: #fff;
     }
 
-    .hub-client-section {
-      padding: 64px 0;
-      border-top: 1px solid rgba(12, 12, 12, 0.06);
+    .hub-block {
+      padding: 30px 0;
+      border-top: 1px solid rgba(12, 12, 12, 0.07);
     }
-    .hub-client-section:nth-child(odd) { background: var(--white); }
-    .hub-client-section:nth-child(even) { background: var(--off-white); }
-    .hub-client-head {
-      max-width: 800px;
-      margin: 0 auto 32px;
+    .hub-block:nth-child(odd) { background: var(--white); }
+    .hub-block:nth-child(even) { background: var(--off-white); }
+    .hub-block__head {
+      max-width: 760px;
+      margin: 0 auto 18px;
       text-align: center;
       padding: 0 20px;
     }
-    .hub-client-head .hub-eyebrow {
+    .hub-eyebrow-sm {
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       color: var(--teal-dark);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
-    .hub-client-head h2 {
-      margin: 0 0 14px;
-      font-size: clamp(26px, 3.6vw, 40px);
+    .hub-block__head h2 {
+      margin: 0 0 8px;
+      font-size: clamp(20px, 2.6vw, 28px);
       font-weight: 700;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
     }
-    .hub-client-head p {
-      margin: 0;
-      font-size: 16px;
-      line-height: 1.65;
+    .hub-block__head p {
+      margin: 0 auto;
+      max-width: 640px;
+      font-size: 14.5px;
+      line-height: 1.55;
       color: var(--text-muted);
     }
 
-    .hub-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
+    /* Small clickable thumbnails */
+    .hub-thumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
-    .hub-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-    .hub-card {
-      overflow: hidden;
-      border-radius: var(--radius);
-      background: var(--white);
-      box-shadow: 0 18px 50px rgba(12, 12, 12, 0.09);
-      border: 1px solid rgba(12, 12, 12, 0.06);
-    }
-
-    .hub-thumb {
+    .hub-thumb-sm {
       position: relative;
-      aspect-ratio: 16 / 10;
+      width: 150px;
+      height: 98px;
+      border-radius: 10px;
+      overflow: hidden;
       background-position: center;
       background-size: cover;
       background-color: #171717;
-      overflow: hidden;
+      cursor: pointer;
+      border: 0;
+      padding: 0;
+      flex: 0 0 auto;
     }
-    .hub-thumb::after {
+    .hub-thumb-sm img.hub-thumb-sm__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hub-thumb-sm::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.18);
+      background: rgba(0, 0, 0, 0.22);
       transition: background 0.2s ease;
-      pointer-events: none;
     }
-    .hub-card:hover .hub-thumb::after {
-      background: rgba(0, 0, 0, 0.08);
-    }
-    .hub-thumb__video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .hub-thumb__embed {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 180%;
-      height: 180%;
-      transform: translate(-50%, -50%);
-      border: 0;
-      pointer-events: none;
-    }
-    .hub-thumb__img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .hub-play-btn {
+    .hub-thumb-sm:hover::after { background: rgba(0, 0, 0, 0.1); }
+    .hub-thumb-sm__play {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: transparent;
-      border: 0;
-      cursor: pointer;
       z-index: 2;
     }
-    .hub-play-btn span {
-      width: 62px;
-      height: 62px;
+    .hub-thumb-sm__play span {
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.92);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
-      color: var(--teal-dark);
-    }
-
-    /* Center a lone card instead of letting it sit flush-left in a multi-column grid */
-    .hub-grid > .hub-card:only-child,
-    .hub-grid--3 > .hub-card:only-child {
-      grid-column: 1 / -1;
-      max-width: 560px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .hub-meta { padding: 26px 28px 29px; }
-    .hub-client {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--teal-dark);
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-    .hub-title {
-      display: block;
-      font-size: 22px;
-      line-height: 1.12;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .hub-desc {
-      margin: 14px 0 0;
-      font-size: 15px;
-      line-height: 1.65;
-      color: var(--text-muted);
-    }
-    .hub-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 16px;
-    }
-    .hub-tags span {
       font-size: 12px;
+      color: var(--teal-dark);
+    }
+    .hub-thumb-sm__label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: 6px 8px;
+      font-size: 10.5px;
       font-weight: 600;
-      padding: 5px 11px;
-      border-radius: 999px;
-      background: rgba(12, 12, 12, 0.05);
-      color: var(--text-body);
+      line-height: 1.3;
+      color: #fff;
+      text-align: left;
+      background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
     }
 
     @media (max-width: 760px) {
-      .hub-hero { padding: calc(var(--nav-h) + 40px) 0 36px; }
-      .hub-grid, .hub-grid--3 { grid-template-columns: 1fr; }
-      .hub-meta { padding: 22px; }
-      .hub-client-section { padding: 44px 0; }
+      .hub-hero { padding: calc(var(--nav-h) + 32px) 0 24px; }
+      .hub-block { padding: 26px 0; }
+      .hub-thumb-sm { width: 130px; height: 86px; }
+    }
+
+    /* ============ LIGHTBOX (images + video, replaces linking out) ============ */
+    .hub-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10, 10, 10, 0.86);
+      padding: 24px;
+    }
+    .hub-lightbox.is-open { display: flex; }
+    .hub-lightbox__close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: transparent;
+      border: 0;
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .hub-lightbox__inner {
+      width: 100%;
+      max-width: 820px;
+      background: var(--white);
+      border-radius: var(--radius, 16px);
+      overflow: hidden;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .hub-lightbox__media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .hub-lightbox__media iframe,
+    .hub-lightbox__media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      object-fit: contain;
+      background: #000;
+    }
+    .hub-lightbox__meta {
+      padding: 18px 24px 22px;
+      overflow-y: auto;
+    }
+    .hub-lightbox__client {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .hub-lightbox__meta h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .hub-lightbox__meta p {
+      margin: 0;
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-muted);
     }
   </style>
 </head>
@@ -328,7 +336,7 @@
 
 <div class="hub-page-content">
 
-<!-- ============ NAVIGATION ============ -->
+<!-- ============ NAVIGATION (home + contact only) ============ -->
 <nav class="nav" id="nav">
   <div class="nav__inner container">
     <a href="index.html" class="nav__logo">
@@ -337,13 +345,7 @@
         <span class="logo-mark__bot">MARKETING</span>
       </div>
     </a>
-    <ul class="nav__links">
-      <li><a href="index.html#services">Services</a></li>
-      <li><a href="index.html#work">Work</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#ai">AI</a></li>
-    </ul>
-    <button class="btn btn--nav js-open-contact">Schedule a Call</button>
+    <button class="btn btn--nav js-open-contact">Contact Us</button>
     <button class="nav__burger" id="burger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
@@ -357,27 +359,9 @@
   </button>
   <ul>
     <li>
-      <a href="index.html#services" class="mobile-nav-stamp">
-        <span class="mobile-nav-stamp__pre">OUR</span>
-        <span class="mobile-nav-stamp__main">SERVICES</span>
-      </a>
-    </li>
-    <li>
-      <a href="index.html#work" class="mobile-nav-stamp">
-        <span class="mobile-nav-stamp__pre">OUR</span>
-        <span class="mobile-nav-stamp__main">WORK</span>
-      </a>
-    </li>
-    <li>
-      <a href="index.html#about" class="mobile-nav-stamp">
-        <span class="mobile-nav-stamp__pre">ABOUT</span>
-        <span class="mobile-nav-stamp__main">US</span>
-      </a>
-    </li>
-    <li>
-      <a href="index.html#ai" class="mobile-nav-stamp">
-        <span class="mobile-nav-stamp__pre">ARTIFICIAL</span>
-        <span class="mobile-nav-stamp__main">INTELLIGENCE</span>
+      <a href="index.html" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">GO TO</span>
+        <span class="mobile-nav-stamp__main">HOMEPAGE</span>
       </a>
     </li>
     <li>
@@ -394,13 +378,7 @@
   <div class="container">
     <span class="eyebrow">Prepared for the West Virginia Community Development Hub</span>
     <h1>WORK THAT CONNECTS COMMUNITIES.</h1>
-  </div>
-</section>
-
-<section class="hub-section" aria-label="Selected work samples">
-  <div class="hub-why">
-    <h2>A tailored look at our relevant work</h2>
-    <p>Real organizations, real communities, real storytelling — the same throughline we'd bring to The Hub's brand, video, social, website and Annual Impact Report work in 2027.</p>
+    <p>A condensed look at relevant storytelling, video and web work — tap any thumbnail to view it.</p>
   </div>
 
   <div class="hub-nav-chips">
@@ -413,271 +391,133 @@
   </div>
 </section>
 
-<!-- ============ MDD ============ -->
-<section class="hub-client-section" id="hub-mdd">
+<!-- ============ TRUSTED BY / LOGO WALL ============ -->
+<section class="logowall">
   <div class="container">
-    <div class="hub-client-head">
-      <span class="hub-eyebrow">Regional &amp; Community Development</span>
+    <p class="logowall__label">Trusted by mission-driven organizations worldwide</p>
+    <img src="images/logowall.png" alt="Client logos: United Nations Foundation, Lutheran World Relief, World Vision, Webster University, and more" class="logowall__img" />
+  </div>
+</section>
+
+<!-- ============ MDD ============ -->
+<section class="hub-block" id="hub-mdd">
+  <div class="container">
+    <div class="hub-block__head">
+      <span class="hub-eyebrow-sm">Regional &amp; Community Development</span>
       <h2>MidSouth Development District</h2>
-      <p>Blues Backroads had a tourism website built on WordPress that had become harder for the team to manage. We moved them off WordPress onto a more user-friendly, easier platform customized for them — migrating existing content, protecting important SEO, rebuilding itineraries and maps, streamlining events, and creating a custom event submission system for local partners. Their feedback: "I also really appreciate that I didn't have to worry about it, that you had it covered. That was exactly what we wanted."</p>
+      <p>Rebuilt the Blues Backroads regional tourism website — migrated off WordPress, protected SEO, and built custom maps and event tools across multiple communities. "I didn't have to worry about it — that was exactly what we wanted."</p>
     </div>
-    <div class="container hub-grid">
-      <article class="hub-card">
-        <a href="blues-backroads-case-study.html">
-          <div class="hub-thumb">
-            <img class="hub-thumb__img" src="images/bluesbackroads.png" alt="Blues Backroads website case study" />
-          </div>
-        </a>
-        <div class="hub-meta">
-          <span class="hub-client">MidSouth Development District</span>
-          <span class="hub-title">Blues Backroads — Website Migration</span>
-          <p class="hub-desc">A regional tourism website rebuild across multiple communities, each with its own stories, destinations and partners. Delivered ahead of schedule, working independently to understand the region and its communities quickly.</p>
-          <div class="hub-tags">
-            <span>Tourism Strategy</span>
-            <span>WordPress Migration</span>
-            <span>Custom Website Development</span>
-            <span>SEO</span>
-            <span>Interactive Maps</span>
-            <span>Event Tools</span>
-          </div>
-        </div>
-      </article>
+    <div class="hub-thumbs">
+      <button class="hub-thumb-sm" type="button" data-type="image" data-img="images/bluesbackroads.png" data-client="MidSouth Development District" data-title="Blues Backroads — Website Migration" data-desc="A regional tourism website rebuild across multiple communities, each with its own stories, destinations and partners. Delivered ahead of schedule.">
+        <img class="hub-thumb-sm__img" src="images/bluesbackroads.png" alt="Blues Backroads website case study" />
+        <span class="hub-thumb-sm__label">Blues Backroads — Website</span>
+      </button>
     </div>
   </div>
 </section>
 
 <!-- ============ INSPIRE ============ -->
-<section class="hub-client-section" id="hub-inspire">
+<section class="hub-block" id="hub-inspire">
   <div class="container">
-    <div class="hub-client-head">
-      <span class="hub-eyebrow">Anniversary Storytelling</span>
+    <div class="hub-block__head">
+      <span class="hub-eyebrow-sm">Anniversary Storytelling</span>
       <h2>Inspire Life Skills Training</h2>
-      <p>We recently helped this mission-driven nonprofit tell its 20th anniversary story across video, email, social media, its website, fundraising and a sold-out anniversary gala. We transcribed the anniversary interviews and created a library of written stories, quotes, website content and social material the organization could keep using long after the event.</p>
+      <p>Told Inspire's 20th anniversary story across video, email, social, website and a sold-out gala — then turned the interviews into a reusable library of stories and content.</p>
     </div>
-    <div class="container hub-grid">
-      <article class="hub-card">
-        <div class="hub-thumb" style="background-image:url('https://img.youtube.com/vi/eTsmhJHWClQ/hqdefault.jpg')">
-          <button class="hub-play-btn js-open-video" data-youtube="eTsmhJHWClQ" aria-label="Play Inspire 20th Anniversary video"><span>▶</span></button>
-        </div>
-        <div class="hub-meta">
-          <span class="hub-client">Inspire Life Skills Training</span>
-          <span class="hub-title">20th Anniversary</span>
-          <p class="hub-desc">A cinematic celebration of two decades of Inspire — honoring legacy, community and the stories that endure. Interview-led storytelling with authentic voices, not professional actors — created for Inspire's Annual Gala.</p>
-          <div class="hub-tags">
-            <span>Anniversary Video</span>
-            <span>Gala Marketing</span>
-            <span>Email Strategy</span>
-            <span>Social Media</span>
-            <span>Website Storytelling</span>
-            <span>Fundraising Communications</span>
-          </div>
-        </div>
-      </article>
+    <div class="hub-thumbs">
+      <button class="hub-thumb-sm" type="button" style="background-image:url('https://img.youtube.com/vi/eTsmhJHWClQ/hqdefault.jpg')" data-type="youtube" data-youtube="eTsmhJHWClQ" data-client="Inspire Life Skills Training" data-title="20th Anniversary" data-desc="A cinematic celebration of two decades of Inspire — honoring legacy, community and the stories that endure. Created for Inspire's Annual Gala.">
+        <span class="hub-thumb-sm__play"><span>▶</span></span>
+        <span class="hub-thumb-sm__label">20th Anniversary</span>
+      </button>
     </div>
   </div>
 </section>
 
 <!-- ============ ANDEAN HEALTH & DEVELOPMENT ============ -->
-<section class="hub-client-section" id="hub-ahd">
+<section class="hub-block" id="hub-ahd">
   <div class="container">
-    <div class="hub-client-head">
-      <span class="hub-eyebrow">Content Lifecycle &amp; Documentary</span>
+    <div class="hub-block__head">
+      <span class="hub-eyebrow-sm">Content Lifecycle &amp; Documentary</span>
       <h2>Andean Health &amp; Development</h2>
-      <p>We took one core video production and developed it into 52 separate videos — approximately one social video for every week of the year — producing landscape, square and vertical edits, plus assets for websites, email and social media. Production days are expensive; we know how to capture content once and create many useful assets from it.</p>
+      <p>Turned one video shoot into 52 videos — a full year of social, email and website content — alongside place-based documentary storytelling.</p>
     </div>
-    <div class="container hub-grid">
-      <article class="hub-card">
-        <div class="hub-thumb" style="background-image:url('https://img.youtube.com/vi/B3wrnDvipnE/hqdefault.jpg')">
-          <button class="hub-play-btn js-open-video" data-youtube="B3wrnDvipnE" aria-label="Play AHD Cotopaxi video"><span>▶</span></button>
-        </div>
-        <div class="hub-meta">
-          <span class="hub-client">Andean Health &amp; Development</span>
-          <span class="hub-title">AHD Cotopaxi</span>
-          <p class="hub-desc">A documentary following Andean communities and the mission-driven work of AHD at the base of Cotopaxi volcano — place-based impact storytelling around healthcare and community development.</p>
-          <div class="hub-tags">
-            <span>Documentary</span>
-            <span>Social Impact</span>
-          </div>
-        </div>
-      </article>
-      <article class="hub-card">
-        <div class="hub-thumb" data-vimeo-id="822827038">
-          <button class="hub-play-btn js-open-video" data-vimeo="822827038" aria-label="Play What We Do Every Day video"><span>▶</span></button>
-        </div>
-        <div class="hub-meta">
-          <span class="hub-client">Andean Health &amp; Development</span>
-          <span class="hub-title">What We Do Every Day</span>
-          <p class="hub-desc">A compelling look inside Andean Health's mission — bringing healthcare and hope to remote communities across the Andes by explaining a complex organization through real people and everyday moments.</p>
-          <div class="hub-tags">
-            <span>Documentary</span>
-            <span>Social Impact</span>
-          </div>
-        </div>
-      </article>
-    </div>
-    <div class="container" style="margin-top:24px;">
-      <article class="hub-card" style="max-width:520px;">
-        <div class="hub-meta">
-          <span class="hub-client">Andean Health &amp; Development</span>
-          <span class="hub-title">Maximum Content Lifecycle</span>
-          <p class="hub-desc">After producing a four-minute fundraising video, we repurposed that footage into a full year of social, email and website videos in landscape, square and vertical formats — 52 weeks of content from one shoot.</p>
-          <div class="hub-tags">
-            <span>Content Repurposing</span>
-            <span>Multi-Platform Formats</span>
-            <span>Full Year of Content</span>
-          </div>
-        </div>
-      </article>
+    <div class="hub-thumbs">
+      <button class="hub-thumb-sm" type="button" style="background-image:url('https://img.youtube.com/vi/B3wrnDvipnE/hqdefault.jpg')" data-type="youtube" data-youtube="B3wrnDvipnE" data-client="Andean Health &amp; Development" data-title="AHD Cotopaxi" data-desc="A documentary following Andean communities and the mission-driven work of AHD at the base of Cotopaxi volcano.">
+        <span class="hub-thumb-sm__play"><span>▶</span></span>
+        <span class="hub-thumb-sm__label">AHD Cotopaxi</span>
+      </button>
+      <button class="hub-thumb-sm vid-card__thumb" type="button" data-vimeo-id="822827038" data-type="vimeo" data-vimeo="822827038" data-client="Andean Health &amp; Development" data-title="What We Do Every Day" data-desc="A compelling look inside Andean Health's mission — bringing healthcare and hope to remote communities across the Andes.">
+        <span class="hub-thumb-sm__play"><span>▶</span></span>
+        <span class="hub-thumb-sm__label">What We Do Every Day</span>
+      </button>
     </div>
   </div>
 </section>
 
 <!-- ============ LUTHERAN WORLD RELIEF ============ -->
-<section class="hub-client-section" id="hub-lwr">
+<section class="hub-block" id="hub-lwr">
   <div class="container">
-    <div class="hub-client-head">
-      <span class="hub-eyebrow">On-Location Human Storytelling</span>
+    <div class="hub-block__head">
+      <span class="hub-eyebrow-sm">On-Location Human Storytelling</span>
       <h2>Lutheran World Relief</h2>
-      <p>Our work has included on-location human storytelling, from interviews and scripting through filming, editing and final production — telling personal stories respectfully while connecting individual voices to a larger mission.</p>
+      <p>Full-scale, on-location storytelling — from script to screen — across documentary and lifestyle videos that connect individual voices to a larger mission.</p>
     </div>
-    <div class="container hub-grid">
-      <article class="hub-card">
-        <div class="hub-thumb">
-          <img class="hub-thumb__img" src="images/lwr%20case.png" alt="Lutheran World Relief — Farmers Market Coffee video thumbnail" />
-          <button class="hub-play-btn js-open-video" data-vimeo="221464315" aria-label="Play Lutheran World Relief video"><span>▶</span></button>
-        </div>
-        <div class="hub-meta">
-          <span class="hub-client">Lutheran World Relief</span>
-          <span class="hub-title">From Script to Screen — Farmers Market Coffee</span>
-          <p class="hub-desc">A full video production project — from script development and on-location filming to editing, music and final delivery — bringing the story of farmer partners in Nicaragua to life for a U.S. audience. Full documentary process, start to finish.</p>
-          <div class="hub-tags">
-            <span>Script Development</span>
-            <span>On-Location Filming</span>
-            <span>Video Production</span>
-          </div>
-        </div>
-      </article>
-      <article class="hub-card">
-        <div class="hub-thumb" data-vimeo-id="221464023">
-          <button class="hub-play-btn js-open-video" data-vimeo="221464023" aria-label="Play Coffee Farmer video"><span>▶</span></button>
-        </div>
-        <div class="hub-meta">
-          <span class="hub-client">Lutheran World Relief</span>
-          <span class="hub-title">Coffee Farmer</span>
-          <p class="hub-desc">Documentary-style piece showing the coffee farming process and community stories in Kenya — from seed to cup.</p>
-          <div class="hub-tags">
-            <span>Documentary</span>
-            <span>Social Impact</span>
-          </div>
-        </div>
-      </article>
-      <article class="hub-card">
-        <div class="hub-thumb" data-vimeo-id="384909934">
-          <button class="hub-play-btn js-open-video" data-vimeo="384909934" aria-label="Play Coffee Couple video"><span>▶</span></button>
-        </div>
-        <div class="hub-meta">
-          <span class="hub-client">Lutheran World Relief</span>
-          <span class="hub-title">Coffee Couple</span>
-          <p class="hub-desc">An intimate documentary portrait of a couple bound together by their shared passion for coffee and craft.</p>
-          <div class="hub-tags">
-            <span>Documentary</span>
-            <span>Lifestyle</span>
-          </div>
-        </div>
-      </article>
-      <article class="hub-card">
-        <div class="hub-thumb" style="background-image:url('https://img.youtube.com/vi/FmfJgx94u7Q/hqdefault.jpg')">
-          <button class="hub-play-btn js-open-video" data-youtube="FmfJgx94u7Q" aria-label="Play VR Doc video"><span>▶</span></button>
-        </div>
-        <div class="hub-meta">
-          <span class="hub-client">Lutheran World Relief</span>
-          <span class="hub-title">VR Doc</span>
-          <p class="hub-desc">An immersive VR documentary placing viewers inside the human story of global aid and transformation.</p>
-          <div class="hub-tags">
-            <span>Documentary</span>
-            <span>Social Impact</span>
-          </div>
-        </div>
-      </article>
-      <article class="hub-card">
-        <div class="hub-thumb" data-vimeo-id="77809770">
-          <button class="hub-play-btn js-open-video" data-vimeo="77809770" aria-label="Play Mini Doc — Daisy, Peru video"><span>▶</span></button>
-        </div>
-        <div class="hub-meta">
-          <span class="hub-client">Lutheran World Relief</span>
-          <span class="hub-title">Mini Doc — Daisy, Peru</span>
-          <p class="hub-desc">A moving mini-documentary following Daisy in Peru — her story, her community and the ripple effect of compassionate aid.</p>
-          <div class="hub-tags">
-            <span>Documentary</span>
-            <span>Travel</span>
-          </div>
-        </div>
-      </article>
+    <div class="hub-thumbs">
+      <button class="hub-thumb-sm" type="button" style="background-image:url('images/lwr%20case.png')" data-type="vimeo" data-vimeo="221464315" data-client="Lutheran World Relief" data-title="From Script to Screen — Farmers Market Coffee" data-desc="A full video production project — from script development and on-location filming to editing, music and final delivery — bringing the story of farmer partners in Nicaragua to life.">
+        <span class="hub-thumb-sm__play"><span>▶</span></span>
+        <span class="hub-thumb-sm__label">Farmers Market Coffee</span>
+      </button>
+      <button class="hub-thumb-sm vid-card__thumb" type="button" data-vimeo-id="221464023" data-type="vimeo" data-vimeo="221464023" data-client="Lutheran World Relief" data-title="Coffee Farmer" data-desc="Documentary-style piece showing the coffee farming process and community stories in Kenya — from seed to cup.">
+        <span class="hub-thumb-sm__play"><span>▶</span></span>
+        <span class="hub-thumb-sm__label">Coffee Farmer</span>
+      </button>
+      <button class="hub-thumb-sm vid-card__thumb" type="button" data-vimeo-id="384909934" data-type="vimeo" data-vimeo="384909934" data-client="Lutheran World Relief" data-title="Coffee Couple" data-desc="An intimate documentary portrait of a couple bound together by their shared passion for coffee and craft.">
+        <span class="hub-thumb-sm__play"><span>▶</span></span>
+        <span class="hub-thumb-sm__label">Coffee Couple</span>
+      </button>
+      <button class="hub-thumb-sm" type="button" style="background-image:url('https://img.youtube.com/vi/FmfJgx94u7Q/hqdefault.jpg')" data-type="youtube" data-youtube="FmfJgx94u7Q" data-client="Lutheran World Relief" data-title="VR Doc" data-desc="An immersive VR documentary placing viewers inside the human story of global aid and transformation.">
+        <span class="hub-thumb-sm__play"><span>▶</span></span>
+        <span class="hub-thumb-sm__label">VR Doc</span>
+      </button>
+      <button class="hub-thumb-sm vid-card__thumb" type="button" data-vimeo-id="77809770" data-type="vimeo" data-vimeo="77809770" data-client="Lutheran World Relief" data-title="Mini Doc — Daisy, Peru" data-desc="A moving mini-documentary following Daisy in Peru — her story, her community and the ripple effect of compassionate aid.">
+        <span class="hub-thumb-sm__play"><span>▶</span></span>
+        <span class="hub-thumb-sm__label">Mini Doc — Daisy</span>
+      </button>
     </div>
   </div>
 </section>
 
 <!-- ============ LOBIKO ============ -->
-<section class="hub-client-section" id="hub-lobiko">
+<section class="hub-block" id="hub-lobiko">
   <div class="container">
-    <div class="hub-client-head">
-      <span class="hub-eyebrow">Brand &amp; Website Alignment</span>
+    <div class="hub-block__head">
+      <span class="hub-eyebrow-sm">Brand &amp; Website Alignment</span>
       <h2>The Lobiko Initiative</h2>
-      <p>Lobiko was doing transformative work — advancing the wholistic development of children in the Congo — but their website didn't reflect it. We extended their existing brand and logo to a full web identity: dynamic sections, bold storytelling and a design that puts the kids front and center. Brand rebuilt. Videos re-edited. Story sharpened.</p>
+      <p>Rebuilt Lobiko's brand and website to match the impact of their work advancing wholistic development for children in the Congo.</p>
     </div>
-    <div class="container hub-grid">
-      <article class="hub-card">
-        <div class="hub-thumb">
-          <img class="hub-thumb__img" src="images/lobiko%20case.png" alt="Lobiko Initiative website case study" />
-        </div>
-        <div class="hub-meta">
-          <span class="hub-client">The Lobiko Initiative</span>
-          <span class="hub-title">Engaged &amp; Inspired</span>
-          <p class="hub-desc">We helped bring the organization's website, visual identity, video and impact storytelling into greater alignment — closely reflecting the goal of a clear and recognizable story across different communications channels.</p>
-          <div class="hub-tags">
-            <span>Website Enhancement</span>
-            <span>Brand Rebuilding</span>
-            <span>Video Re-Editing</span>
-            <span>Impact Storytelling</span>
-          </div>
-        </div>
-      </article>
+    <div class="hub-thumbs">
+      <button class="hub-thumb-sm" type="button" data-type="image" data-img="images/lobiko%20case.png" data-client="The Lobiko Initiative" data-title="Engaged &amp; Inspired" data-desc="We extended their existing brand and logo to a full web identity — dynamic sections, bold storytelling and a design that puts the kids front and center.">
+        <img class="hub-thumb-sm__img" src="images/lobiko%20case.png" alt="Lobiko Initiative website case study" />
+        <span class="hub-thumb-sm__label">Engaged &amp; Inspired</span>
+      </button>
     </div>
   </div>
 </section>
 
 <!-- ============ SIGMUND ============ -->
-<section class="hub-client-section" id="hub-sigmund">
+<section class="hub-block" id="hub-sigmund">
   <div class="container">
-    <div class="hub-client-head">
-      <span class="hub-eyebrow">Digital Revenue &amp; Product Strategy</span>
+    <div class="hub-block__head">
+      <span class="hub-eyebrow-sm">Digital Revenue &amp; Product Strategy</span>
       <h2>The Sigmund Project</h2>
-      <p>The Sigmund Project wanted to create a sustainable revenue source that could help cover its nonprofit operating costs and reduce its reliance on donor funding. We developed the RFP Hub, a paid digital platform that connects tourism businesses with relevant contract opportunities — including business and revenue strategy, website and member portal development, technology and product management, RFP sourcing and publishing, email marketing, SEO, generative engine optimization, Google Ads, ChatGPT advertising, customer support and subscription management. Now in its third year, it is projected to generate approximately $30,000 in annual revenue, with approximately $50,000 forecast for 2027.</p>
+      <p>Built the RFP Hub, a paid digital platform connecting tourism businesses with contract opportunities — now projected to generate approximately $50,000 in 2027 revenue for Sigmund.</p>
     </div>
-    <div class="container hub-grid">
-      <article class="hub-card">
-        <div class="hub-thumb" data-vimeo-id="561585470">
-          <button class="hub-play-btn js-open-video" data-vimeo="561585470" aria-label="Play The Power of Collaboration video"><span>▶</span></button>
-        </div>
-        <div class="hub-meta">
-          <span class="hub-client">The Sigmund Project</span>
-          <span class="hub-title">The Power of Collaboration</span>
-          <p class="hub-desc">Launching Sigmund — a global platform supporting entrepreneurs in tourism with free resources and industry opportunities.</p>
-          <div class="hub-tags">
-            <span>Brand Launch</span>
-            <span>Digital Platform</span>
-            <span>Revenue Strategy</span>
-          </div>
-        </div>
-      </article>
+    <div class="hub-thumbs">
+      <button class="hub-thumb-sm vid-card__thumb" type="button" data-vimeo-id="561585470" data-type="vimeo" data-vimeo="561585470" data-client="The Sigmund Project" data-title="The Power of Collaboration" data-desc="Launching Sigmund — a global platform supporting entrepreneurs in tourism with free resources and industry opportunities.">
+        <span class="hub-thumb-sm__play"><span>▶</span></span>
+        <span class="hub-thumb-sm__label">Power of Collaboration</span>
+      </button>
     </div>
-  </div>
-</section>
-
-<!-- ============ PORTFOLIO LINK ============ -->
-<section class="hub-section">
-  <div class="container" style="max-width:760px; text-align:center; padding:40px 20px;">
-    <p style="font-size:16px; line-height:1.65; color:var(--text-muted);">See more of our work in our full portfolio at <a href="https://meaningfulmarketinghouse.com/" style="color:var(--teal-dark); font-weight:700;">meaningfulmarketinghouse.com</a>.</p>
   </div>
 </section>
 
@@ -696,7 +536,7 @@
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
+<!-- ============ FOOTER (home + contact only) ============ -->
 <footer class="footer">
   <div class="container">
     <div class="footer__top">
@@ -708,11 +548,7 @@
         <p>Serving mission-driven organizations since 2009.</p>
       </div>
       <nav class="footer__nav" aria-label="Footer navigation">
-        <a href="index.html#services">Services</a>
-        <a href="index.html#work">Work</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#ai">AI</a>
-        <button class="footer__nav-link js-open-contact">Schedule a Call</button>
+        <a href="index.html">Home</a>
         <button class="footer__nav-link js-open-contact">Contact</button>
       </nav>
     </div>
@@ -723,12 +559,25 @@
   </div>
 </footer>
 
-<!-- ============ VIDEO LIGHTBOX ============ -->
-<div class="video-overlay" id="videoOverlay" role="dialog" aria-modal="true" aria-label="Video player">
+<!-- ============ VIDEO LIGHTBOX (kept, unused, so js/script.js's global listeners don't error) ============ -->
+<div class="video-overlay" id="videoOverlay" role="dialog" aria-modal="true" aria-label="Video player" hidden>
   <button class="video-overlay__close" id="videoClose" aria-label="Close video">✕</button>
   <div class="video-overlay__frame">
     <iframe id="videoFrame" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>
     <video id="videoNative" controls hidden playsinline muted></video>
+  </div>
+</div>
+
+<!-- ============ HUB WORK-SAMPLE LIGHTBOX ============ -->
+<div class="hub-lightbox" id="hubLightbox" role="dialog" aria-modal="true" aria-label="Work sample viewer">
+  <button class="hub-lightbox__close" id="hubLightboxClose" aria-label="Close">✕</button>
+  <div class="hub-lightbox__inner">
+    <div class="hub-lightbox__media" id="hubLightboxMedia"></div>
+    <div class="hub-lightbox__meta">
+      <span class="hub-lightbox__client" id="hubLightboxClient"></span>
+      <h3 id="hubLightboxTitle"></h3>
+      <p id="hubLightboxDesc"></p>
+    </div>
   </div>
 </div>
 
@@ -837,6 +686,61 @@
         input.value = '';
         input.focus();
       }
+    });
+  })();
+
+  /* ---- Work-sample lightbox: every thumbnail opens here instead of linking out ---- */
+  (function () {
+    var lightbox = document.getElementById('hubLightbox');
+    var media = document.getElementById('hubLightboxMedia');
+    var closeBtn = document.getElementById('hubLightboxClose');
+    var clientEl = document.getElementById('hubLightboxClient');
+    var titleEl = document.getElementById('hubLightboxTitle');
+    var descEl = document.getElementById('hubLightboxDesc');
+
+    function openLightbox(el) {
+      var type = el.dataset.type;
+      media.innerHTML = '';
+      if (type === 'youtube') {
+        var yf = document.createElement('iframe');
+        yf.src = 'https://www.youtube-nocookie.com/embed/' + el.dataset.youtube + '?autoplay=1&rel=0&modestbranding=1';
+        yf.allow = 'autoplay; fullscreen; picture-in-picture';
+        yf.allowFullscreen = true;
+        media.appendChild(yf);
+      } else if (type === 'vimeo') {
+        var vf = document.createElement('iframe');
+        vf.src = 'https://player.vimeo.com/video/' + el.dataset.vimeo + '?autoplay=1&title=0&byline=0&portrait=0';
+        vf.allow = 'autoplay; fullscreen; picture-in-picture';
+        vf.allowFullscreen = true;
+        media.appendChild(vf);
+      } else if (type === 'image') {
+        var img = document.createElement('img');
+        img.src = el.dataset.img;
+        img.alt = el.dataset.title || '';
+        media.appendChild(img);
+      }
+      clientEl.textContent = el.dataset.client || '';
+      titleEl.textContent = el.dataset.title || '';
+      descEl.textContent = el.dataset.desc || '';
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      media.innerHTML = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.hub-thumb-sm').forEach(function (el) {
+      el.addEventListener('click', function () { openLightbox(el); });
+    });
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
     });
   })();
 </script>
