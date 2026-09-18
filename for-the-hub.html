@@ -72,8 +72,17 @@
     body:not(.hub-locked) .hub-gate { display: none; }
 
     /* ============ HUB WORK-SAMPLES PAGE (condensed) ============ */
+    /* Force the nav to behave like the homepage's scrolled state: a permanent black bar */
+    .nav {
+      background: var(--black) !important;
+      opacity: 1 !important;
+      transform: none !important;
+      pointer-events: auto !important;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
     .hub-hero {
-      padding: calc(var(--nav-h) + 56px) 0 16px;
+      padding: 40px 0 16px;
       text-align: center;
       background: var(--off-white);
     }
@@ -238,9 +247,15 @@
     }
 
     @media (max-width: 760px) {
-      .hub-hero { padding: calc(var(--nav-h) + 32px) 0 24px; }
+      .hub-hero { padding: 24px 0 24px; }
       .hub-block { padding: 26px 0; }
       .hub-thumb-sm { width: 130px; height: 86px; }
+    }
+
+    /* This page has no full-bleed hero image, so keep the logo visible on mobile too */
+    @media (max-width: 768px) {
+      .nav__logo { display: block !important; }
+      .nav__inner { justify-content: space-between !important; }
     }
 
     /* ============ LIGHTBOX (images + video, replaces linking out) ============ */
@@ -336,8 +351,8 @@
 
 <div class="hub-page-content">
 
-<!-- ============ NAVIGATION (home + contact only) ============ -->
-<nav class="nav" id="nav">
+<!-- ============ NAVIGATION (black bar, always visible — logo, in-page items, contact) ============ -->
+<nav class="nav nav--visible scrolled" id="nav">
   <div class="nav__inner container">
     <a href="index.html" class="nav__logo">
       <div class="logo-mark">
@@ -345,6 +360,14 @@
         <span class="logo-mark__bot">MARKETING</span>
       </div>
     </a>
+    <ul class="nav__links">
+      <li><a href="#hub-mdd">MidSouth</a></li>
+      <li><a href="#hub-inspire">Inspire</a></li>
+      <li><a href="#hub-ahd">Andean Health</a></li>
+      <li><a href="#hub-lwr">LWR</a></li>
+      <li><a href="#hub-lobiko">Lobiko</a></li>
+      <li><a href="#hub-sigmund">Sigmund</a></li>
+    </ul>
     <button class="btn btn--nav js-open-contact">Contact Us</button>
     <button class="nav__burger" id="burger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -373,6 +396,14 @@
   </ul>
 </div>
 
+<!-- ============ TRUSTED BY / LOGO WALL ============ -->
+<section class="logowall" style="padding-top:calc(var(--nav-h) + 28px);">
+  <div class="container">
+    <p class="logowall__label">Trusted by mission-driven organizations worldwide</p>
+    <img src="images/logowall.png" alt="Client logos: United Nations Foundation, Lutheran World Relief, World Vision, Webster University, and more" class="logowall__img" />
+  </div>
+</section>
+
 <!-- ============ HERO ============ -->
 <section class="hub-hero">
   <div class="container">
@@ -388,14 +419,6 @@
     <a href="#hub-lwr">Lutheran World Relief</a>
     <a href="#hub-lobiko">The Lobiko Initiative</a>
     <a href="#hub-sigmund">The Sigmund Project</a>
-  </div>
-</section>
-
-<!-- ============ TRUSTED BY / LOGO WALL ============ -->
-<section class="logowall">
-  <div class="container">
-    <p class="logowall__label">Trusted by mission-driven organizations worldwide</p>
-    <img src="images/logowall.png" alt="Client logos: United Nations Foundation, Lutheran World Relief, World Vision, Webster University, and more" class="logowall__img" />
   </div>
 </section>
 
