@@ -82,7 +82,7 @@
     }
 
     .hub-hero {
-      padding: 40px 0 16px;
+      padding: calc(var(--nav-h) + 40px) 0 16px;
       text-align: center;
       background: var(--off-white);
     }
@@ -455,7 +455,7 @@
     }
 
     @media (max-width: 760px) {
-      .hub-hero { padding: 24px 0 24px; }
+      .hub-hero { padding: calc(var(--nav-h) + 24px) 0 24px; }
       .hub-thumb-sm { width: 130px; height: 86px; }
       .hub-case-modal__inner { padding: 32px 20px 40px; }
     }
@@ -595,14 +595,6 @@
     </li>
   </ul>
 </div>
-
-<!-- ============ TRUSTED BY / LOGO WALL ============ -->
-<section class="logowall" style="padding-top:calc(var(--nav-h) + 28px);">
-  <div class="container">
-    <p class="logowall__label">Trusted by mission-driven organizations worldwide</p>
-    <img src="images/logowall.png" alt="Client logos: United Nations Foundation, Lutheran World Relief, World Vision, Webster University, and more" class="logowall__img" />
-  </div>
-</section>
 
 <!-- ============ HERO ============ -->
 <section class="hub-hero">
@@ -913,6 +905,14 @@
         <path d="M 38 45 L 28 53 L 40 58" stroke="#D4A020" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
+  </div>
+</section>
+
+<!-- ============ TRUSTED BY / LOGO WALL ============ -->
+<section class="logowall">
+  <div class="container">
+    <p class="logowall__label">Trusted by mission-driven organizations worldwide</p>
+    <img src="images/logowall.png" alt="Client logos: United Nations Foundation, Lutheran World Relief, World Vision, Webster University, and more" class="logowall__img" />
   </div>
 </section>
 
