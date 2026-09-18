@@ -181,6 +181,44 @@
     .hub-tile:nth-child(7) .hub-tile__toggle { background: rgba(255,255,255,.2); }
     .hub-tile:hover .hub-tile__toggle { transform: rotate(45deg); }
 
+    .hub-tile__services {
+      margin: 10px 0 0;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+      color: rgba(0, 0, 0, 0.5);
+    }
+    .hub-tile:nth-child(3) .hub-tile__services,
+    .hub-tile:nth-child(4) .hub-tile__services,
+    .hub-tile:nth-child(5) .hub-tile__services,
+    .hub-tile:nth-child(6) .hub-tile__services,
+    .hub-tile:nth-child(7) .hub-tile__services { color: rgba(255, 255, 255, 0.7); }
+
+    /* "Why It Matters" callout inside the case study modal */
+    .hub-why-matters {
+      margin-top: 20px;
+      padding: 18px 20px;
+      border-radius: 12px;
+      background: rgba(30, 138, 134, 0.07);
+      border-left: 3px solid var(--teal-dark);
+    }
+    .hub-why-matters__label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--teal-dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .hub-why-matters p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
     @media (max-width: 760px) {
       .hub-tile-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -577,30 +615,37 @@
       <button class="hub-tile" type="button" data-target="tpl-inspire">
         <div class="hub-tile__num">01</div>
         <h3 class="hub-tile__title">Inspire Life Skills Training <span class="hub-tile__toggle">+</span></h3>
+        <p class="hub-tile__services">Video Production · Social Media · Email · Website · Fundraising</p>
       </button>
       <button class="hub-tile" type="button" data-target="tpl-mdd">
         <div class="hub-tile__num">02</div>
         <h3 class="hub-tile__title">MidSouth Development District <span class="hub-tile__toggle">+</span></h3>
+        <p class="hub-tile__services">Website Development · SEO · Content Migration · Maps &amp; Event Tools</p>
       </button>
       <button class="hub-tile" type="button" data-target="tpl-ahd">
         <div class="hub-tile__num">03</div>
         <h3 class="hub-tile__title">Andean Health &amp; Development <span class="hub-tile__toggle">+</span></h3>
+        <p class="hub-tile__services">Video Production · Social Media · Content Repurposing</p>
       </button>
       <button class="hub-tile" type="button" data-target="tpl-lwr">
         <div class="hub-tile__num">04</div>
         <h3 class="hub-tile__title">Lutheran World Relief <span class="hub-tile__toggle">+</span></h3>
+        <p class="hub-tile__services">Video Production · On-Location Filming · Script Development</p>
       </button>
       <button class="hub-tile" type="button" data-target="tpl-lobiko">
         <div class="hub-tile__num">05</div>
         <h3 class="hub-tile__title">The Lobiko Initiative <span class="hub-tile__toggle">+</span></h3>
+        <p class="hub-tile__services">Website Development · Brand Identity · Video Re-Editing</p>
       </button>
       <button class="hub-tile" type="button" data-target="tpl-sigmund">
         <div class="hub-tile__num">06</div>
         <h3 class="hub-tile__title">The Sigmund Project <span class="hub-tile__toggle">+</span></h3>
+        <p class="hub-tile__services">Website &amp; Platform Development · Digital Strategy · SEO</p>
       </button>
       <button class="hub-tile" type="button" data-target="tpl-pitcairn">
         <div class="hub-tile__num">07</div>
         <h3 class="hub-tile__title">Pitcairn Islands Tourism <span class="hub-tile__toggle">+</span></h3>
+        <p class="hub-tile__services">Website Management · Email Marketing · Social Media · PR</p>
       </button>
     </div>
   </div>
@@ -618,6 +663,10 @@
     <span>Social Media</span>
     <span>Website Storytelling</span>
     <span>Fundraising Communications</span>
+  </div>
+  <div class="hub-why-matters">
+    <span class="hub-why-matters__label">Why It Matters for The Hub</span>
+    <p>The Hub is preparing for its own 20th Anniversary in 2028 and wants a partner who can help "elevate our storytelling" as that milestone approaches. This is exactly that project already done: turning anniversary interviews into video, social, email, website and gala content that keeps working long after the event — a model for building The Hub's 20th Anniversary story starting now.</p>
   </div>
   <div class="hub-thumbs">
     <button class="hub-thumb-sm" type="button" style="background-image:url('https://img.youtube.com/vi/eTsmhJHWClQ/hqdefault.jpg')" data-type="youtube" data-youtube="eTsmhJHWClQ" data-client="Inspire Life Skills Training" data-title="20th Anniversary" data-desc="A cinematic celebration of two decades of Inspire — honoring legacy, community and the stories that endure. Created for Inspire's Annual Gala.">
@@ -639,6 +688,10 @@
     <span>SEO</span>
     <span>Interactive Maps</span>
     <span>Event Tools</span>
+  </div>
+  <div class="hub-why-matters">
+    <span class="hub-why-matters__label">Why It Matters for The Hub</span>
+    <p>The RFP names "website management and content updates" as core scope. This is that work in practice — managing a site that represents many communities at once, migrating content without losing SEO, and building a submission system so local partners can contribute their own content, much like The Hub connects community leaders and partners across West Virginia and Central Appalachia.</p>
   </div>
   <div class="hub-thumbs">
     <button class="hub-thumb-sm" type="button" data-type="image" data-img="images/bluesbackroads.png" data-client="MidSouth Development District" data-title="Blues Backroads — Website Migration" data-desc="A regional tourism website rebuild across multiple communities, each with its own stories, destinations and partners. Delivered ahead of schedule, working independently to understand the region and its communities quickly.">
@@ -673,6 +726,10 @@
       <div class="lifecycle-out lifecycle-out--gold">52 Weeks of Content</div>
     </div>
   </div>
+  <div class="hub-why-matters">
+    <span class="hub-why-matters__label">Why It Matters for The Hub</span>
+    <p>The scope calls for "social media content creation (short form videos)" and "video production" within a $30,000 total budget. This case study shows exactly how to make that budget stretch — turning one production into a full year of short-form video, so The Hub's limited photography/video trips generate content for months, not days.</p>
+  </div>
   <div class="hub-thumbs" style="margin-top:20px;">
     <button class="hub-thumb-sm" type="button" style="background-image:url('https://img.youtube.com/vi/B3wrnDvipnE/hqdefault.jpg')" data-type="youtube" data-youtube="B3wrnDvipnE" data-client="Andean Health &amp; Development" data-title="AHD Cotopaxi" data-desc="A documentary following Andean communities and the mission-driven work of AHD at the base of Cotopaxi volcano.">
       <span class="hub-thumb-sm__play"><span>▶</span></span>
@@ -694,6 +751,10 @@
     <span>Video Production</span>
     <span>On-Location Filming</span>
     <span>Final Delivery</span>
+  </div>
+  <div class="hub-why-matters">
+    <span class="hub-why-matters__label">Why It Matters for The Hub</span>
+    <p>The RFP asks for pricing on "up to two photography trips per year" and video production. This is that trip-based production model in action — traveling on location, filming real people and real places, and delivering a finished story start to finish, the same approach we'd bring to documenting communities across West Virginia.</p>
   </div>
   <div class="hub-thumbs">
     <button class="hub-thumb-sm" type="button" style="background-image:url('images/lwr%20case.png')" data-type="vimeo" data-vimeo="221464315" data-client="Lutheran World Relief" data-title="From Script to Screen — Farmers Market Coffee" data-desc="A full video production project — from script development and on-location filming to editing, music and final delivery — bringing the story of farmer partners in Nicaragua to life.">
@@ -738,6 +799,10 @@
     <span>Video Re-Editing</span>
     <span>Impact Storytelling</span>
   </div>
+  <div class="hub-why-matters">
+    <span class="hub-why-matters__label">Why It Matters for The Hub</span>
+    <p>The scope of work includes a "strategic assessment of our brand identity." This case study shows how we approach that: not a full rebrand, but building on an organization's existing identity to make it feel as strong and dynamic as the work it represents — the same respectful, collaborative approach we'd bring to assessing The Hub's brand.</p>
+  </div>
   <div class="hub-thumbs" style="margin-top:20px;">
     <button class="hub-thumb-sm" type="button" data-type="image" data-img="images/lobiko%20case.png" data-client="The Lobiko Initiative" data-title="Engaged &amp; Inspired" data-desc="We extended their existing brand and logo to a full web identity — dynamic sections, bold storytelling and a design that puts the kids front and center.">
       <img class="hub-thumb-sm__img" src="images/lobiko%20case.png" alt="Lobiko Initiative website case study" />
@@ -755,6 +820,10 @@
     <span>Digital Platform</span>
     <span>Revenue Strategy</span>
   </div>
+  <div class="hub-why-matters">
+    <span class="hub-why-matters__label">Why It Matters for The Hub</span>
+    <p>The RFP welcomes "other opportunities" beyond the core scope and asks for a partner who "grows with our organization over time." This project shows that kind of thinking in practice — looking past a single deliverable toward a platform that builds sustainable, long-term value, the same lens we'd bring to supporting The Hub's growth toward its 20th Anniversary and beyond.</p>
+  </div>
   <div class="hub-thumbs">
     <button class="hub-thumb-sm vid-card__thumb" type="button" data-vimeo-id="561585470" data-type="vimeo" data-vimeo="561585470" data-client="The Sigmund Project" data-title="The Power of Collaboration" data-desc="Launching Sigmund — a global platform supporting entrepreneurs in tourism with free resources and industry opportunities.">
       <span class="hub-thumb-sm__play"><span>▶</span></span>
@@ -768,7 +837,6 @@
   <h2>Pitcairn Islands Tourism</h2>
   <p>We provide full-service communications support for one of the world's most remote communities — website management, email marketing, social media, public relations, tourism marketing and digital communications.</p>
   <p>We also developed and automated a paid newsletter program that supports local journalism on Pitcairn Island. Revenue from the newsletter covers the salaries of two on-island staff members. The previous process was managed manually; we built an automated system for subscriptions, payments, renewals and delivery, making the program more sustainable and reducing the administrative work required from the island team.</p>
-  <p><strong>Why it matters:</strong> We understand how to work with remote communities, coordinate across different stakeholders and use communications to support local jobs and long-term sustainability.</p>
   <div class="hub-tags">
     <span>Website Management</span>
     <span>Email Marketing</span>
@@ -776,6 +844,10 @@
     <span>Public Relations</span>
     <span>Tourism Marketing</span>
     <span>Automated Subscriptions</span>
+  </div>
+  <div class="hub-why-matters">
+    <span class="hub-why-matters__label">Why It Matters for The Hub</span>
+    <p>The Hub works as a "regional intermediary," connecting leaders, local governments, nonprofits and partners across many communities. This project shows we know how to do exactly that: coordinate across stakeholders, manage ongoing website and communications work, and build systems that support local jobs and long-term sustainability rather than a one-off deliverable.</p>
   </div>
   <div class="hub-carousel" data-carousel="pitcairn">
     <img class="hub-carousel__slide hub-carousel__slide--active" src="images/pitcairn1.png" alt="Pitcairn Island" />
