@@ -292,11 +292,12 @@
       .hub-lifecycle { flex-direction: column; }
     }
 
-    /* Pitcairn photo carousel */
+    /* Pitcairn photo carousel — TikTok-style 9:16 portrait frame, photos shown uncropped */
     .hub-carousel {
       position: relative;
-      max-width: 640px;
-      height: 380px;
+      width: 100%;
+      max-width: 260px;
+      aspect-ratio: 9 / 16;
       margin: 24px auto 0;
       border-radius: var(--radius, 16px);
       overflow: hidden;
@@ -308,7 +309,7 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
       opacity: 0;
       transition: opacity 1s ease;
@@ -316,7 +317,7 @@
     .hub-carousel__slide--active { opacity: 1; }
     .hub-carousel__dots {
       position: absolute;
-      bottom: 16px;
+      bottom: 14px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -336,9 +337,6 @@
     .hub-carousel__dot--active {
       background: #fff;
       transform: scale(1.5);
-    }
-    @media (max-width: 640px) {
-      .hub-carousel { height: 260px; }
     }
 
     /* Small clickable thumbnails */
