@@ -110,7 +110,7 @@
     }
     .hub-tile-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 2px;
       background: var(--gray-light, #ddd);
       border: 2px solid var(--gray-light, #ddd);
@@ -130,13 +130,14 @@
       font-family: inherit;
     }
     .hub-tile:hover { filter: brightness(0.93); }
-    .hub-tile:nth-child(1) { background: #8DD8D3; }
-    .hub-tile:nth-child(2) { background: #E8A820; }
-    .hub-tile:nth-child(3) { background: var(--forest); color: var(--white); }
-    .hub-tile:nth-child(4) { background: var(--coral); color: var(--white); }
-    .hub-tile:nth-child(5) { background: #454565; color: var(--white); }
-    .hub-tile:nth-child(6) { background: #8875C0; color: var(--white); }
-    .hub-tile:nth-child(7) { background: var(--navy); color: var(--white); }
+    .hub-tile:nth-child(8n+1) { background: #8DD8D3; }
+    .hub-tile:nth-child(8n+2) { background: #E8A820; }
+    .hub-tile:nth-child(8n+3) { background: var(--forest); color: var(--white); }
+    .hub-tile:nth-child(8n+4) { background: var(--coral); color: var(--white); }
+    .hub-tile:nth-child(8n+5) { background: #454565; color: var(--white); }
+    .hub-tile:nth-child(8n+6) { background: #8875C0; color: var(--white); }
+    .hub-tile:nth-child(8n+7) { background: var(--navy); color: var(--white); }
+    .hub-tile:nth-child(8n+8) { background: var(--teal-dark); color: var(--white); }
     .hub-tile__num {
       font-size: clamp(2.2rem, 3.6vw, 3.6rem);
       font-weight: 700;
@@ -145,11 +146,12 @@
       margin-bottom: 20px;
       letter-spacing: -0.02em;
     }
-    .hub-tile:nth-child(3) .hub-tile__num,
-    .hub-tile:nth-child(4) .hub-tile__num,
-    .hub-tile:nth-child(5) .hub-tile__num,
-    .hub-tile:nth-child(6) .hub-tile__num,
-    .hub-tile:nth-child(7) .hub-tile__num { color: rgba(255,255,255,.2); }
+    .hub-tile:nth-child(8n+3) .hub-tile__num,
+    .hub-tile:nth-child(8n+4) .hub-tile__num,
+    .hub-tile:nth-child(8n+5) .hub-tile__num,
+    .hub-tile:nth-child(8n+6) .hub-tile__num,
+    .hub-tile:nth-child(8n+7) .hub-tile__num,
+    .hub-tile:nth-child(8n+8) .hub-tile__num { color: rgba(255,255,255,.2); }
     .hub-tile__title {
       font-size: clamp(1rem, 1.7vw, 1.25rem);
       font-weight: 700;
@@ -174,11 +176,12 @@
       line-height: 1;
       transition: transform 0.35s ease, background 0.2s;
     }
-    .hub-tile:nth-child(3) .hub-tile__toggle,
-    .hub-tile:nth-child(4) .hub-tile__toggle,
-    .hub-tile:nth-child(5) .hub-tile__toggle,
-    .hub-tile:nth-child(6) .hub-tile__toggle,
-    .hub-tile:nth-child(7) .hub-tile__toggle { background: rgba(255,255,255,.2); }
+    .hub-tile:nth-child(8n+3) .hub-tile__toggle,
+    .hub-tile:nth-child(8n+4) .hub-tile__toggle,
+    .hub-tile:nth-child(8n+5) .hub-tile__toggle,
+    .hub-tile:nth-child(8n+6) .hub-tile__toggle,
+    .hub-tile:nth-child(8n+7) .hub-tile__toggle,
+    .hub-tile:nth-child(8n+8) .hub-tile__toggle { background: rgba(255,255,255,.2); }
     .hub-tile:hover .hub-tile__toggle { transform: rotate(45deg); }
 
     .hub-tile__services {
@@ -189,11 +192,12 @@
       line-height: 1.5;
       color: rgba(0, 0, 0, 0.5);
     }
-    .hub-tile:nth-child(3) .hub-tile__services,
-    .hub-tile:nth-child(4) .hub-tile__services,
-    .hub-tile:nth-child(5) .hub-tile__services,
-    .hub-tile:nth-child(6) .hub-tile__services,
-    .hub-tile:nth-child(7) .hub-tile__services { color: rgba(255, 255, 255, 0.7); }
+    .hub-tile:nth-child(8n+3) .hub-tile__services,
+    .hub-tile:nth-child(8n+4) .hub-tile__services,
+    .hub-tile:nth-child(8n+5) .hub-tile__services,
+    .hub-tile:nth-child(8n+6) .hub-tile__services,
+    .hub-tile:nth-child(8n+7) .hub-tile__services,
+    .hub-tile:nth-child(8n+8) .hub-tile__services { color: rgba(255, 255, 255, 0.7); }
 
     /* "Why It Matters" callout inside the case study modal */
     .hub-why-matters {
@@ -647,6 +651,11 @@
         <h3 class="hub-tile__title">Pitcairn Islands Tourism <span class="hub-tile__toggle">+</span></h3>
         <p class="hub-tile__services">Website Management · Email Marketing · Social Media · PR</p>
       </button>
+      <button class="hub-tile" type="button" data-target="tpl-adventure">
+        <div class="hub-tile__num">08</div>
+        <h3 class="hub-tile__title">Adventure International <span class="hub-tile__toggle">+</span></h3>
+        <p class="hub-tile__services">Brand Architecture · Website Development · Content Strategy · Email</p>
+      </button>
     </div>
   </div>
 </section>
@@ -860,6 +869,29 @@
       <button class="hub-carousel__dot" data-index="2" aria-label="Slide 3"></button>
       <button class="hub-carousel__dot" data-index="3" aria-label="Slide 4"></button>
     </div>
+  </div>
+</template>
+
+<template id="tpl-adventure">
+  <span class="hub-eyebrow-sm">Multi-Brand Architecture</span>
+  <h2>Adventure International</h2>
+  <p>Adventure International has spent decades creating extraordinary travel experiences and, over time, has grown into a family of specialized brands covering different destinations, experiences and types of travelers. We worked closely with the team to understand that entire family and find the clearest way to tell the bigger Adventure International story.</p>
+  <p>We started with a deep dive into the brands, destinations, travel products, photography, videos, newsletters and years of company knowledge. We mapped how everything connected, then used that work to build a new website that brings the family together while still giving each brand its own personality. We also redesigned the email newsletter to carry the same look, voice and organization into future communications.</p>
+  <div class="hub-tags">
+    <span>Brand Architecture</span>
+    <span>Website Development</span>
+    <span>Content Strategy</span>
+    <span>Email</span>
+  </div>
+  <div class="hub-why-matters">
+    <span class="hub-why-matters__label">Why It Matters for The Hub</span>
+    <p>The Hub runs multiple distinct programs — HubCAP, Cultivate WV, Accelerate WV, Blueprint Communities — under one organization, much like Adventure International's family of specialized brands. This project shows exactly how we approach that challenge: mapping how everything connects, then building a website and communications system that makes each program clear on its own while strengthening the larger Hub story, directly supporting the RFP's request for "website management and content updates" and a "strategic assessment of our brand identity."</p>
+  </div>
+  <div class="hub-thumbs">
+    <button class="hub-thumb-sm" type="button" style="background:#0f1f1a;" data-type="image" data-img="https://base44.app/api/apps/6a346c8a26f2040400f1384c/files/mp/public/6a346c8a26f2040400f1384c/7809c55bf_adventure-international-logo.svg" data-client="Adventure International" data-title="Adventure International" data-desc="A multi-brand website rebuild connecting a family of specialized travel brands, destinations and proprietary experiences under one clear story.">
+      <img class="hub-thumb-sm__img" src="https://base44.app/api/apps/6a346c8a26f2040400f1384c/files/mp/public/6a346c8a26f2040400f1384c/7809c55bf_adventure-international-logo.svg" alt="Adventure International logo" style="object-fit:contain; padding:20px; background:#0f1f1a;" />
+      <span class="hub-thumb-sm__label">Adventure International</span>
+    </button>
   </div>
 </template>
 
