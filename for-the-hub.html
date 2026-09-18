@@ -224,6 +224,55 @@
       .hub-lifecycle { flex-direction: column; }
     }
 
+    /* Pitcairn photo carousel */
+    .hub-carousel {
+      position: relative;
+      max-width: 640px;
+      height: 380px;
+      margin: 24px auto 0;
+      border-radius: var(--radius, 16px);
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(12, 12, 12, 0.16);
+      background: #171717;
+    }
+    .hub-carousel__slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .hub-carousel__slide--active { opacity: 1; }
+    .hub-carousel__dots {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 2;
+    }
+    .hub-carousel__dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .hub-carousel__dot--active {
+      background: #fff;
+      transform: scale(1.5);
+    }
+    @media (max-width: 640px) {
+      .hub-carousel { height: 260px; }
+    }
+
     /* Small clickable thumbnails */
     .hub-thumbs {
       display: flex;
@@ -669,6 +718,18 @@
         <span>Tourism Marketing</span>
         <span>Automated Subscriptions</span>
       </div>
+      <div class="hub-carousel" id="pitcairnCarousel">
+        <img class="hub-carousel__slide hub-carousel__slide--active" src="images/pitcairn1.png" alt="Pitcairn Island" />
+        <img class="hub-carousel__slide" src="images/pitcairn2.png" alt="Pitcairn Island" />
+        <img class="hub-carousel__slide" src="images/pitcairn3.png" alt="Pitcairn Island" />
+        <img class="hub-carousel__slide" src="images/pitcairn4.png" alt="Pitcairn Island" />
+        <div class="hub-carousel__dots" role="tablist" aria-label="Pitcairn photo slide indicators">
+          <button class="hub-carousel__dot hub-carousel__dot--active" data-index="0" aria-label="Slide 1"></button>
+          <button class="hub-carousel__dot" data-index="1" aria-label="Slide 2"></button>
+          <button class="hub-carousel__dot" data-index="2" aria-label="Slide 3"></button>
+          <button class="hub-carousel__dot" data-index="3" aria-label="Slide 4"></button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1035,6 +1096,30 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
     });
+  })();
+
+  /* ---- Pitcairn photo carousel: auto-advance every 4s, click dots to jump ---- */
+  (function () {
+    var root = document.getElementById('pitcairnCarousel');
+    if (!root) return;
+    var slides = root.querySelectorAll('.hub-carousel__slide');
+    var dots = root.querySelectorAll('.hub-carousel__dot');
+    if (slides.length < 2) return;
+    var current = 0;
+
+    function goTo(index) {
+      slides[current].classList.remove('hub-carousel__slide--active');
+      dots[current].classList.remove('hub-carousel__dot--active');
+      current = index;
+      slides[current].classList.add('hub-carousel__slide--active');
+      dots[current].classList.add('hub-carousel__dot--active');
+    }
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () { goTo(Number(dot.dataset.index)); });
+    });
+
+    setInterval(function () { goTo((current + 1) % slides.length); }, 4000);
   })();
 </script>
 </body>
