@@ -1360,7 +1360,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   justify-content: center;
   background: radial-gradient(circle at 50% 45%, #1c2b26 0%, var(--navy) 70%);
-  overflow: hidden;
+  overflow: visible;
 }
 .cs-mock--adv::before {
   content: "";
@@ -1613,8 +1613,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: 12px;
 }
 
-/* Orbiting AI tool logos around the center image */
-.ai__orbit-logo {
+/* Orbiting brand logos around the Adventure International logo mock */
+.adv-orbit-logo {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1622,33 +1622,33 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   height: 48px;
   margin: -24px 0 0 -24px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+  background: #0a0a0a;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
   padding: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 3;
-  animation: ai-orbit-spin 18s linear infinite;
+  animation: adv-orbit-spin 18s linear infinite;
 }
-.ai__orbit-logo img {
+.adv-orbit-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   border-radius: 0;
 }
-.ai__orbit-logo--1 { animation-delay: 0s; }
-.ai__orbit-logo--2 { animation-delay: -4.5s; }
-.ai__orbit-logo--3 { animation-delay: -9s; }
-.ai__orbit-logo--4 { animation-delay: -13.5s; }
+.adv-orbit-logo--1 { animation-delay: 0s; }
+.adv-orbit-logo--2 { animation-delay: -4.5s; }
+.adv-orbit-logo--3 { animation-delay: -9s; }
+.adv-orbit-logo--4 { animation-delay: -13.5s; }
 
-@keyframes ai-orbit-spin {
-  from { transform: rotate(0deg) translateX(clamp(90px, 14vw, 180px)) rotate(0deg); }
-  to   { transform: rotate(360deg) translateX(clamp(90px, 14vw, 180px)) rotate(-360deg); }
+@keyframes adv-orbit-spin {
+  from { transform: rotate(0deg) translateX(clamp(90px, 12vw, 160px)) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(clamp(90px, 12vw, 160px)) rotate(-360deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ai__orbit-logo { animation: none; }
+  .adv-orbit-logo { animation: none; }
 }
 .ai__heading {
   display: inline-flex;
