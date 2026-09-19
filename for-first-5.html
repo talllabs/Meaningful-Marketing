@@ -299,7 +299,65 @@
     .f5-browser--navy .f5-browser__body { background: linear-gradient(135deg, #454565, #1A3464); }
     .f5-browser--purple .f5-browser__body { background: linear-gradient(135deg, #8875C0, #5D4B96); }
 
+    /* Side-by-side live compare (Baldrige old vs. new) */
+    .f5-case--compare {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .f5-case__intro {
+      max-width: 760px;
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+    .f5-case__intro .f5-case__badge { margin-left: auto; margin-right: auto; }
+    .f5-case__intro .f5-case__icons,
+    .f5-case__intro .f5-case__links { justify-content: center; }
+    .f5-case__intro p { text-align: left; }
+
+    .f5-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .f5-compare__pane .f5-browser--frame {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .f5-browser--frame .f5-browser__bar {
+      flex-wrap: wrap;
+      gap: 8px 10px;
+    }
+    .f5-compare__label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+    .f5-compare__label--old { background: rgba(69,69,101,.14); color: #454565; }
+    .f5-compare__label--new { background: rgba(30,138,134,.14); color: var(--teal-dark); }
+    .f5-compare__frame-wrap {
+      position: relative;
+      flex: 1;
+      height: 520px;
+      background: #f4f4f4;
+    }
+    .f5-compare__frame-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     @media (max-width: 900px) {
+      .f5-compare { grid-template-columns: 1fr; }
+      .f5-compare__frame-wrap { height: 420px; }
       .f5-case__grid { grid-template-columns: 1fr; }
       .f5-case__grid--rev .f5-case__visual,
       .f5-case__grid--rev .f5-case__info { order: initial; }
@@ -479,36 +537,47 @@
   <p>Six recent projects — new brands, platform migrations, community platforms and long-term partnerships — each one relevant to what First 5 OC needs next.</p>
 </div>
 
-<section class="f5-case f5-case--light" aria-label="Baldrige Alliance">
-  <div class="f5-case__grid">
-    <div class="f5-case__visual">
-      <div class="f5-browser f5-browser--teal">
+<section class="f5-case f5-case--light f5-case--compare" aria-label="Baldrige Alliance">
+  <div class="f5-case__intro">
+    <span class="f5-case__badge">Currently Building — Live Staging Available</span>
+    <h3>Baldrige Alliance</h3>
+    <p class="f5-case__sub">Organization website rebuilt on Lovable (In Progress)</p>
+    <p>Right now, we're rebuilding the Baldrige Alliance website from the ground up on Lovable — the exact platform we're recommending for First 5 OC. Interact with both sites below to compare the old WordPress site with the new build in progress.</p>
+    <p>This is real, hands-on experience with the platform you'd be using. Lovable looks familiar (like WordPress), but it's actually more reliable and doesn't break. The staff editing tools are simpler, the backend is more stable, and you get a solid system your team can manage independently. We're happy to walk you through a demo of both the front-end and backend during your decision process.</p>
+    <div class="f5-case__icons">
+      <span>🚀 New Platform (Lovable)</span>
+      <span>🎨 Full Rebuild</span>
+      <span>👩‍🏫 Staff Editing Tools</span>
+    </div>
+    <div class="f5-case__links">
+      <a class="btn btn--primary" href="https://baldrige-alliance.lovable.app/" target="_blank" rel="noopener">Live Staging Site →</a>
+      <a class="btn btn--ghost" href="https://baldrigealliance.org/" target="_blank" rel="noopener">Current Site →</a>
+    </div>
+  </div>
+
+  <div class="f5-compare">
+    <div class="f5-compare__pane">
+      <div class="f5-browser f5-browser--frame">
         <div class="f5-browser__bar">
           <div class="f5-browser__dots"><span></span><span></span><span></span></div>
-          <div class="f5-browser__url">baldrige-alliance.lovable.app</div>
+          <div class="f5-browser__url">baldrigealliance.org</div>
+          <span class="f5-compare__label f5-compare__label--old">Current Site</span>
         </div>
-        <div class="f5-browser__body">
-          <div>
-            <div class="f5-browser__mark">Baldrige Alliance</div>
-            <span class="f5-browser__tag">Live Staging Site</span>
-          </div>
+        <div class="f5-compare__frame-wrap">
+          <iframe src="https://baldrigealliance.org/" title="Baldrige Alliance — current site" loading="lazy" referrerpolicy="no-referrer"></iframe>
         </div>
       </div>
     </div>
-    <div class="f5-case__info">
-      <span class="f5-case__badge">Currently Building — Live Staging Available</span>
-      <h3>Baldrige Alliance</h3>
-      <p class="f5-case__sub">Organization website rebuilt on Lovable (In Progress)</p>
-      <p>Right now, we're rebuilding the Baldrige Alliance website from the ground up on Lovable — the exact platform we're recommending for First 5 OC. You can see the current live site at baldrigealliance.org and view our work-in-progress on the staging site below.</p>
-      <p>This is real, hands-on experience with the platform you'd be using. Lovable looks familiar (like WordPress), but it's actually more reliable and doesn't break. The staff editing tools are simpler, the backend is more stable, and you get a solid system your team can manage independently. We're happy to walk you through a demo of both the front-end and backend during your decision process.</p>
-      <div class="f5-case__icons">
-        <span>🚀 New Platform (Lovable)</span>
-        <span>🎨 Full Rebuild</span>
-        <span>👩‍🏫 Staff Editing Tools</span>
-      </div>
-      <div class="f5-case__links">
-        <a class="btn btn--primary" href="https://baldrige-alliance.lovable.app/" target="_blank" rel="noopener">Live Staging Site →</a>
-        <a class="btn btn--ghost" href="https://baldrigealliance.org/" target="_blank" rel="noopener">Current Site →</a>
+    <div class="f5-compare__pane">
+      <div class="f5-browser f5-browser--frame">
+        <div class="f5-browser__bar">
+          <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+          <div class="f5-browser__url">baldrige-alliance.lovable.app</div>
+          <span class="f5-compare__label f5-compare__label--new">New Staging Site</span>
+        </div>
+        <div class="f5-compare__frame-wrap">
+          <iframe src="https://baldrige-alliance.lovable.app/" title="Baldrige Alliance — new staging site" loading="lazy" referrerpolicy="no-referrer"></iframe>
+        </div>
       </div>
     </div>
   </div>
