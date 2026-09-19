@@ -276,6 +276,31 @@
       display: block;
     }
 
+    /* Two-site mini carousel (Pitcairn tourism + government) */
+    .f5-site-carousel__slide { display: none; }
+    .f5-site-carousel__slide--active { display: block; }
+    .f5-site-carousel__dots {
+      display: flex;
+      gap: 8px;
+      padding: 10px 14px;
+      background: #ececec;
+      border-top: 1px solid rgba(0,0,0,.06);
+    }
+    .f5-site-carousel__dot {
+      border: 0;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(0,0,0,.06);
+      color: var(--text-body);
+      cursor: pointer;
+    }
+    .f5-site-carousel__dot--active {
+      background: var(--teal-dark);
+      color: #fff;
+    }
+
     /* Side-by-side live compare (Baldrige old vs. new) */
     .f5-case--compare {
       max-width: 1140px;
@@ -543,21 +568,52 @@
       line-height: 1.7;
       color: var(--text-muted);
     }
-    .f5-concepts__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      max-width: 1140px;
-      margin: 0 auto;
+    .f5-concept-feature {
+      max-width: 760px;
+      margin: 0 auto 8px;
+      padding: clamp(32px, 4vw, 44px) clamp(24px, 4vw, 40px);
+      background: var(--white);
+      border-radius: var(--radius, 16px);
+      box-shadow: 0 18px 50px rgba(12, 12, 12, 0.08);
+      text-align: center;
+    }
+    .f5-concept-feature h3 {
+      margin: 12px 0 8px;
+      font-size: clamp(20px, 2.4vw, 26px);
+      font-weight: 700;
+    }
+    .f5-concept-feature p {
+      margin: 0 0 20px;
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+    .f5-concept-feature .f5-concept-card__links { justify-content: center; }
+
+    .f5-concepts__divider {
+      max-width: 760px;
+      margin: 40px auto 28px;
+      text-align: center;
       padding: 0 20px;
     }
+    .f5-concepts__divider p {
+      margin: 6px 0 0;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
     .f5-concept-card {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .f5-concept-card--wide {
       background: var(--white);
       border-radius: var(--radius, 16px);
       overflow: hidden;
       box-shadow: 0 18px 50px rgba(12, 12, 12, 0.08);
-      display: flex;
-      flex-direction: column;
     }
     .f5-concept-card__badge {
       display: inline-block;
@@ -638,9 +694,6 @@
     }
     .f5-concept-carousel__dot--active { background: var(--teal-dark); }
 
-    @media (max-width: 860px) {
-      .f5-concepts__grid { grid-template-columns: 1fr; }
-    }
   </style>
 </head>
 <body class="f5-locked">
@@ -903,13 +956,28 @@
 <section class="f5-case f5-case--dark" aria-label="Pitcairn Islands: Tourism + Government">
   <div class="f5-case__grid f5-case__grid--rev">
     <div class="f5-case__visual">
-      <div class="f5-browser f5-browser--navy">
-        <div class="f5-browser__bar">
-          <div class="f5-browser__dots"><span></span><span></span><span></span></div>
-          <div class="f5-browser__url">visitpitcairn.pn</div>
+      <div class="f5-browser f5-browser--navy f5-site-carousel" data-carousel="pitcairn-sites">
+        <div class="f5-site-carousel__slide f5-site-carousel__slide--active" data-slide>
+          <div class="f5-browser__bar">
+            <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+            <div class="f5-browser__url">visitpitcairn.pn</div>
+          </div>
+          <div class="f5-browser__body f5-browser__body--photo">
+            <img src="images/pitcairn-home-screenshot.webp" alt="Pitcairn Islands Tourism — homepage">
+          </div>
         </div>
-        <div class="f5-browser__body f5-browser__body--photo">
-          <img src="images/pitcairn-home-screenshot.webp" alt="Pitcairn Islands Tourism — homepage">
+        <div class="f5-site-carousel__slide" data-slide>
+          <div class="f5-browser__bar">
+            <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+            <div class="f5-browser__url">government.pn</div>
+          </div>
+          <div class="f5-browser__body f5-browser__body--photo">
+            <img src="images/pitcairn-government-home-screenshot.webp" alt="Government of the Pitcairn Islands — homepage">
+          </div>
+        </div>
+        <div class="f5-site-carousel__dots" role="tablist" aria-label="Pitcairn site slide indicators">
+          <button class="f5-site-carousel__dot f5-site-carousel__dot--active" data-index="0">Tourism</button>
+          <button class="f5-site-carousel__dot" data-index="1">Government</button>
         </div>
       </div>
     </div>
@@ -988,44 +1056,44 @@
 <section class="f5-concepts">
   <div class="f5-concepts__head">
     <span class="eyebrow">A Starting Point, Not A Final Answer</span>
-    <h2>Here's Two Ideas for How the Site Could Be Restructured</h2>
-    <p>Two different directions for organizing the new First 5 OC site around what visitors are actually trying to do — find support, understand your work, or get involved — instead of around program names. Both include a working demo of the "Ask a Question" tool, which doubles as an FAQ builder: every question it fields over time becomes a candidate for the site's public FAQ page.</p>
+    <h2>Here's An Idea for How the Site Could Be Restructured</h2>
+    <p>A different way to organize the new First 5 OC site around what visitors are actually trying to do — find support, understand your work, or get involved — instead of around program names. It includes a working demo of the "Ask a Question" tool, which doubles as an FAQ builder: every question it fields over time becomes a candidate for the site's public FAQ page. Try the full site below first, then scroll down for another design direction.</p>
   </div>
-  <div class="f5-concepts__grid">
-    <div class="f5-concept-card">
-      <div class="f5-concept-carousel" data-carousel="f5-concept-a">
-        <div class="f5-concept-carousel__viewport">
-          <img class="f5-concept-carousel__slide f5-concept-carousel__slide--active" src="images/first5-concept-b-1-hero.png" alt="Concept A homepage — hero" data-slide>
-        </div>
+
+  <div class="f5-concept-feature">
+    <span class="f5-concept-card__badge">Live, Clickable Prototype</span>
+    <h3>Demo the Full Site</h3>
+    <p>A full multi-page prototype you can actually click through — homepage, resources, about, staff directory, and a live "Ask First 5 OC" popup you can try right now. Built to show how the reorganized navigation and content would actually feel to use.</p>
+    <div class="f5-concept-card__links">
+      <a class="btn btn--primary btn--lg" href="first5oc-concept-a/index.html" target="_blank" rel="noopener">Open the Live Prototype →</a>
+    </div>
+  </div>
+
+  <div class="f5-concepts__divider">
+    <span class="eyebrow">One More Option</span>
+    <p>Here's another design idea too.</p>
+  </div>
+
+  <div class="f5-concept-card f5-concept-card--wide">
+    <div class="f5-concept-carousel" data-carousel="f5-concept-b">
+      <div class="f5-concept-carousel__viewport">
+        <img class="f5-concept-carousel__slide f5-concept-carousel__slide--active" src="images/first5-concept-b-1-hero.png" alt="Design idea homepage — hero" data-slide>
+        <img class="f5-concept-carousel__slide" src="images/first5-concept-b-2-impact.png" alt="Design idea homepage — impact stats and news" data-slide>
+        <img class="f5-concept-carousel__slide" src="images/first5-concept-b-3-professionals.png" alt="Design idea homepage — for professionals and partners" data-slide>
+        <img class="f5-concept-carousel__slide" src="images/first5-concept-b-4-families.png" alt="Design idea homepage — tools for the early years" data-slide>
+        <img class="f5-concept-carousel__slide" src="images/first5-concept-b-5-cta-footer.png" alt="Design idea homepage — call to action and footer" data-slide>
       </div>
-      <span class="f5-concept-card__badge">Concept A — Live Prototype</span>
-      <h3>A working, clickable site</h3>
-      <p>A full multi-page prototype you can actually click through — homepage, resources, about, staff directory, and a live "Ask First 5 OC" popup you can try right now. Built to show how the reorganized navigation and content would actually feel to use.</p>
-      <div class="f5-concept-card__links">
-        <a class="btn btn--primary" href="first5oc-concept-a/index.html" target="_blank" rel="noopener">Open the Live Prototype →</a>
+      <div class="f5-concept-carousel__dots" role="tablist" aria-label="Design idea slide indicators">
+        <button class="f5-concept-carousel__dot f5-concept-carousel__dot--active" data-index="0" aria-label="Slide 1"></button>
+        <button class="f5-concept-carousel__dot" data-index="1" aria-label="Slide 2"></button>
+        <button class="f5-concept-carousel__dot" data-index="2" aria-label="Slide 3"></button>
+        <button class="f5-concept-carousel__dot" data-index="3" aria-label="Slide 4"></button>
+        <button class="f5-concept-carousel__dot" data-index="4" aria-label="Slide 5"></button>
       </div>
     </div>
-    <div class="f5-concept-card">
-      <div class="f5-concept-carousel" data-carousel="f5-concept-b">
-        <div class="f5-concept-carousel__viewport">
-          <img class="f5-concept-carousel__slide f5-concept-carousel__slide--active" src="images/first5-concept-b-1-hero.png" alt="Concept B homepage — hero" data-slide>
-          <img class="f5-concept-carousel__slide" src="images/first5-concept-b-2-impact.png" alt="Concept B homepage — impact stats and news" data-slide>
-          <img class="f5-concept-carousel__slide" src="images/first5-concept-b-3-professionals.png" alt="Concept B homepage — for professionals and partners" data-slide>
-          <img class="f5-concept-carousel__slide" src="images/first5-concept-b-4-families.png" alt="Concept B homepage — tools for the early years" data-slide>
-          <img class="f5-concept-carousel__slide" src="images/first5-concept-b-5-cta-footer.png" alt="Concept B homepage — call to action and footer" data-slide>
-        </div>
-        <div class="f5-concept-carousel__dots" role="tablist" aria-label="Concept B slide indicators">
-          <button class="f5-concept-carousel__dot f5-concept-carousel__dot--active" data-index="0" aria-label="Slide 1"></button>
-          <button class="f5-concept-carousel__dot" data-index="1" aria-label="Slide 2"></button>
-          <button class="f5-concept-carousel__dot" data-index="2" aria-label="Slide 3"></button>
-          <button class="f5-concept-carousel__dot" data-index="3" aria-label="Slide 4"></button>
-          <button class="f5-concept-carousel__dot" data-index="4" aria-label="Slide 5"></button>
-        </div>
-      </div>
-      <span class="f5-concept-card__badge">Concept B — Visual Direction</span>
-      <h3>A bolder visual style</h3>
-      <p>A more editorial homepage layout — a clear "parent or professional" split up top, a data-driven impact section, a dedicated space for partners and professionals, and playful tools for families. Scroll through the slides to see the full page.</p>
-    </div>
+    <span class="f5-concept-card__badge">Visual Direction</span>
+    <h3>A Bolder Visual Style</h3>
+    <p>A more editorial homepage layout — a clear "parent or professional" split up top, a data-driven impact section, a dedicated space for partners and professionals, and playful tools for families. Scroll through the slides to see the full page.</p>
   </div>
 </section>
 
@@ -1241,6 +1309,27 @@
       });
 
       start();
+    });
+  })();
+
+  /* ---- Two-site mini carousels (click to switch, no auto-advance) ---- */
+  (function () {
+    document.querySelectorAll('.f5-site-carousel').forEach(function (carousel) {
+      var slides = carousel.querySelectorAll('[data-slide]');
+      var dots = carousel.querySelectorAll('.f5-site-carousel__dot');
+      if (slides.length < 2) return;
+      var current = 0;
+
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          var index = parseInt(dot.dataset.index, 10);
+          slides[current].classList.remove('f5-site-carousel__slide--active');
+          dots[current].classList.remove('f5-site-carousel__dot--active');
+          current = index;
+          slides[current].classList.add('f5-site-carousel__slide--active');
+          dots[current].classList.add('f5-site-carousel__dot--active');
+        });
+      });
     });
   })();
 </script>
