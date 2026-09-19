@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRDL74J04V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZRDL74J04V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Portfolio for First 5 OC | Meaningful Marketing</title>
+  <meta name="description" content="Selected website work from Meaningful Marketing, prepared for First 5 Orange County." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ============ GATE ============ */
+    .f5-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--off-white, #f4f1ea);
+      padding: 20px;
+    }
+    .f5-gate__box {
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      background: var(--white, #fff);
+      border-radius: var(--radius, 18px);
+      box-shadow: 0 24px 64px rgba(12, 12, 12, 0.14);
+      padding: 40px 32px;
+      border: 1px solid rgba(12, 12, 12, 0.06);
+    }
+    .f5-gate__box h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .f5-gate__box p {
+      margin: 0 0 22px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+    .f5-gate__box input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(12, 12, 12, 0.15);
+      font-family: inherit;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+    .f5-gate__error {
+      display: none;
+      color: #b3261e;
+      font-size: 13px;
+      margin: -6px 0 14px;
+    }
+    body.f5-locked .f5-page-content { display: none; }
+    body:not(.f5-locked) .f5-gate { display: none; }
+
+    /* ============ PAGE ============ */
+    .nav {
+      background: var(--black) !important;
+      opacity: 1 !important;
+      transform: none !important;
+      pointer-events: auto !important;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+    @media (max-width: 768px) {
+      .nav__logo { display: block !important; }
+      .nav__inner { justify-content: space-between !important; }
+    }
+
+    .f5-hero {
+      padding: calc(var(--nav-h) + 48px) 0 36px;
+      text-align: center;
+      background: var(--off-white);
+    }
+    .f5-hero .eyebrow {
+      display: inline-block;
+      margin: 0 0 14px;
+      color: var(--teal-dark);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .f5-hero h1 {
+      max-width: 860px;
+      margin: 0 auto;
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+    }
+    .f5-hero p {
+      max-width: 640px;
+      margin: 16px auto 0;
+      font-size: 15.5px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      padding: 0 20px;
+    }
+
+    /* ============ COLORFUL TILE GRID ============ */
+    .f5-grid-section {
+      padding: 48px 0 var(--section-v, 80px);
+      background: var(--off-white);
+    }
+    .f5-grid-section__head {
+      max-width: 700px;
+      margin: 0 auto 32px;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .f5-grid-section__head h2 {
+      margin: 0 0 10px;
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .f5-grid-section__head p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+    .f5-tile-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--gray-light, #ddd);
+      border: 2px solid var(--gray-light, #ddd);
+      border-radius: calc(var(--radius, 16px) + 2px);
+      overflow: hidden;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .f5-tile {
+      background: var(--white);
+      padding: clamp(28px, 3.6vw, 44px);
+      position: relative;
+      text-align: left;
+      border: 0;
+      cursor: pointer;
+      transition: filter 0.2s;
+      font-family: inherit;
+    }
+    .f5-tile:hover { filter: brightness(0.93); }
+    .f5-tile:nth-child(6n+1) { background: #8DD8D3; }
+    .f5-tile:nth-child(6n+2) { background: #E8A820; }
+    .f5-tile:nth-child(6n+3) { background: var(--forest); color: var(--white); }
+    .f5-tile:nth-child(6n+4) { background: var(--coral); color: var(--white); }
+    .f5-tile:nth-child(6n+5) { background: #454565; color: var(--white); }
+    .f5-tile:nth-child(6n+6) { background: #8875C0; color: var(--white); }
+    .f5-tile__badge {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.12);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .f5-tile:nth-child(3n+3) .f5-tile__badge,
+    .f5-tile:nth-child(6n+4) .f5-tile__badge,
+    .f5-tile:nth-child(6n+5) .f5-tile__badge,
+    .f5-tile:nth-child(6n+6) .f5-tile__badge { background: rgba(255, 255, 255, 0.2); }
+    .f5-tile__title {
+      font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0;
+    }
+    .f5-tile__toggle {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(0,0,0,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      line-height: 1;
+      transition: transform 0.35s ease, background 0.2s;
+    }
+    .f5-tile:nth-child(6n+3) .f5-tile__toggle,
+    .f5-tile:nth-child(6n+4) .f5-tile__toggle,
+    .f5-tile:nth-child(6n+5) .f5-tile__toggle,
+    .f5-tile:nth-child(6n+6) .f5-tile__toggle { background: rgba(255,255,255,.2); }
+    .f5-tile:hover .f5-tile__toggle { transform: rotate(45deg); }
+    .f5-tile__icons {
+      margin: 14px 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .f5-tile__icons span {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 9px 4px 7px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.08);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .f5-tile:nth-child(6n+3) .f5-tile__icons span,
+    .f5-tile:nth-child(6n+4) .f5-tile__icons span,
+    .f5-tile:nth-child(6n+5) .f5-tile__icons span,
+    .f5-tile:nth-child(6n+6) .f5-tile__icons span { background: rgba(255, 255, 255, 0.16); }
+
+    @media (max-width: 760px) {
+      .f5-tile-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 460px) {
+      .f5-tile-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============ CASE STUDY MODAL ============ */
+    .f5-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10, 10, 10, 0.82);
+      padding: 24px;
+    }
+    .f5-modal.is-open { display: flex; }
+    .f5-modal__close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: transparent;
+      border: 0;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .f5-modal__inner {
+      width: 100%;
+      max-width: 720px;
+      max-height: 88vh;
+      overflow-y: auto;
+      background: var(--white);
+      border-radius: var(--radius, 16px);
+      padding: 40px clamp(24px, 4vw, 48px) 48px;
+    }
+    .f5-modal__inner .f5-eyebrow-sm {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .f5-modal__inner h2 {
+      margin: 0 0 6px;
+      font-size: clamp(22px, 2.8vw, 30px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .f5-modal__inner h3.f5-modal__sub {
+      margin: 0 0 16px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--teal-dark);
+    }
+    .f5-modal__inner p {
+      margin: 0 0 12px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+    .f5-modal__icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0;
+    }
+    .f5-modal__icons span {
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 6px 12px 6px 9px;
+      border-radius: 999px;
+      background: rgba(12, 12, 12, 0.05);
+      color: var(--text-body);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .f5-modal__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .f5-modal__links a {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--teal-dark);
+      text-decoration: none;
+    }
+    .f5-modal__links a:hover { text-decoration: underline; }
+
+    @media (max-width: 760px) {
+      .f5-hero { padding: calc(var(--nav-h) + 32px) 0 28px; }
+      .f5-modal__inner { padding: 32px 20px 40px; }
+    }
+
+    /* ============ "WHY THESE MATTER" ============ */
+    .f5-why {
+      padding: 56px 0;
+      background: var(--white);
+    }
+    .f5-why .container {
+      max-width: 760px;
+    }
+    .f5-why h2 {
+      margin: 0 0 16px;
+      font-size: clamp(22px, 2.8vw, 30px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+    .f5-why p {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin: 0 0 14px;
+    }
+
+    /* ============ ASK US ANYTHING MOCKUP ============ */
+    .f5-demo {
+      padding: 64px 0 80px;
+      background: var(--black);
+      color: var(--white);
+    }
+    .f5-demo__head {
+      max-width: 720px;
+      margin: 0 auto 40px;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .f5-demo__head .eyebrow {
+      display: inline-block;
+      margin: 0 0 14px;
+      color: var(--gold-light, #E8C547);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .f5-demo__head h2 {
+      margin: 0 0 14px;
+      font-size: clamp(24px, 3.4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .f5-demo__head p {
+      margin: 0;
+      font-size: 15.5px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .f5-demo__layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1080px;
+      margin: 0 auto;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .f5-demo__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .f5-demo__list li {
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.85);
+      padding-left: 30px;
+      position: relative;
+    }
+    .f5-demo__list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      top: 1px;
+      color: var(--gold-light, #E8C547);
+    }
+    .f5-demo__mock {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,.5);
+      background: var(--navy);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .f5-demo__layout { grid-template-columns: 1fr; }
+      .f5-demo__mock { margin: 0 auto; }
+    }
+  </style>
+</head>
+<body class="f5-locked">
+
+<!-- ============ PASSWORD GATE ============ -->
+<div class="f5-gate" id="f5Gate">
+  <div class="f5-gate__box">
+    <h1>Website Portfolio for First 5 OC</h1>
+    <p>Prepared for First 5 Orange County. Please enter the password to continue.</p>
+    <form id="f5GateForm" autocomplete="off">
+      <input type="password" id="f5GatePw" placeholder="Password" autocomplete="off" />
+      <p class="f5-gate__error" id="f5GateError">That password isn't quite right — please try again.</p>
+      <button type="submit" class="btn btn--gold btn--lg" style="width:100%;">Enter →</button>
+    </form>
+  </div>
+</div>
+
+<div class="f5-page-content">
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--visible scrolled" id="nav">
+  <div class="nav__inner container">
+    <a href="index.html" class="nav__logo">
+      <div class="logo-mark">
+        <span class="logo-mark__top">MEANINGFUL</span>
+        <span class="logo-mark__bot">MARKETING</span>
+      </div>
+    </a>
+    <button class="btn btn--nav js-open-contact">Contact Us</button>
+    <button class="nav__burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">
+    <span class="mobile-menu__close-label">CLOSE MENU</span>
+    <span class="mobile-menu__close-x">✕</span>
+  </button>
+  <ul>
+    <li>
+      <a href="index.html" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">GO TO</span>
+        <span class="mobile-nav-stamp__main">HOMEPAGE</span>
+      </a>
+    </li>
+    <li>
+      <a href="#contact" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">CONTACT</span>
+        <span class="mobile-nav-stamp__main">US</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="f5-hero">
+  <div class="container">
+    <span class="eyebrow">Prepared for First 5 Orange County</span>
+    <h1>Selected Website Portfolio</h1>
+    <p>Relevant strategy, design, development and long-term support — real websites we've built and migrated for clients like you. Tap any project to see what we did.</p>
+  </div>
+</section>
+
+<!-- ============ COLORFUL TILE GRID ============ -->
+<section class="f5-grid-section" aria-label="Website portfolio">
+  <div class="container">
+    <div class="f5-tile-grid">
+
+      <button class="f5-tile" type="button" data-target="tpl-baldrige">
+        <span class="f5-tile__badge">Currently Building</span>
+        <h3 class="f5-tile__title">Baldrige Alliance <span class="f5-tile__toggle">+</span></h3>
+        <div class="f5-tile__icons">
+          <span>🚀 New Platform</span>
+          <span>🎨 Rebuilt on Lovable</span>
+          <span>👩‍🏫 Staff Training</span>
+        </div>
+      </button>
+
+      <button class="f5-tile" type="button" data-target="tpl-adventure">
+        <span class="f5-tile__badge">Recently Migrated</span>
+        <h3 class="f5-tile__title">Adventure International <span class="f5-tile__toggle">+</span></h3>
+        <div class="f5-tile__icons">
+          <span>🔄 WordPress → Lovable</span>
+          <span>🔍 Improved SEO</span>
+          <span>⚡ Faster Performance</span>
+        </div>
+      </button>
+
+      <button class="f5-tile" type="button" data-target="tpl-blues">
+        <span class="f5-tile__badge">Platform Migration</span>
+        <h3 class="f5-tile__title">Blues Backroads <span class="f5-tile__toggle">+</span></h3>
+        <div class="f5-tile__icons">
+          <span>🔄 WordPress → Squarespace</span>
+          <span>🔍 SEO Protection</span>
+          <span>🗺️ Maps &amp; Event Tools</span>
+        </div>
+      </button>
+
+      <button class="f5-tile" type="button" data-target="tpl-sigmund">
+        <span class="f5-tile__badge">Built From Scratch</span>
+        <h3 class="f5-tile__title">The Sigmund Project <span class="f5-tile__toggle">+</span></h3>
+        <div class="f5-tile__icons">
+          <span>✦ New Brand</span>
+          <span>👥 Community Platform</span>
+          <span>🔄 Squarespace → Lovable</span>
+          <span>💰 Revenue Platform</span>
+        </div>
+      </button>
+
+      <button class="f5-tile" type="button" data-target="tpl-inspire">
+        <span class="f5-tile__badge">WordPress Escape</span>
+        <h3 class="f5-tile__title">Inspire Life Skills <span class="f5-tile__toggle">+</span></h3>
+        <div class="f5-tile__icons">
+          <span>🔄 WordPress → Squarespace</span>
+          <span>🎬 Anniversary Storytelling</span>
+          <span>💵 90% Cost Reduction</span>
+        </div>
+      </button>
+
+      <button class="f5-tile" type="button" data-target="tpl-pitcairn">
+        <span class="f5-tile__badge">Dual-Site Management</span>
+        <h3 class="f5-tile__title">Pitcairn Islands <span class="f5-tile__toggle">+</span></h3>
+        <div class="f5-tile__icons">
+          <span>🗂️ Two Public Sites</span>
+          <span>🔍 SEO &amp; Analytics</span>
+          <span>🛠️ Ongoing Support</span>
+        </div>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEMPLATES (cloned into the modal on tile click) ============ -->
+<template id="tpl-baldrige">
+  <span class="f5-eyebrow-sm">Currently Building — Live Staging Available</span>
+  <h2>Baldrige Alliance</h2>
+  <h3 class="f5-modal__sub">Organization website rebuilt on Lovable (In Progress)</h3>
+  <p>Right now, we're rebuilding the Baldrige Alliance website from the ground up on Lovable — the exact platform we're recommending for First 5 OC. You can see the current live site at baldrigealliance.org and view our work-in-progress on the staging site below.</p>
+  <p>This is real, hands-on experience with the platform you'd be using. Lovable looks familiar (like WordPress), but it's actually more reliable and doesn't break. The staff editing tools are simpler, the backend is more stable, and you get a solid system your team can manage independently.</p>
+  <p>We're happy to walk you through a demo of both the front-end and backend during your decision process.</p>
+  <div class="f5-modal__icons">
+    <span>🚀 New Platform (Lovable)</span>
+    <span>🎨 Full Rebuild</span>
+    <span>👩‍🏫 Staff Editing Tools</span>
+  </div>
+  <div class="f5-modal__links">
+    <a href="https://baldrige-alliance.lovable.app/" target="_blank" rel="noopener">Live Staging Site →</a>
+    <a href="https://baldrigealliance.org/" target="_blank" rel="noopener">Current Site →</a>
+  </div>
+</template>
+
+<template id="tpl-adventure">
+  <span class="f5-eyebrow-sm">Recently Migrated From WordPress</span>
+  <h2>Adventure International</h2>
+  <h3 class="f5-modal__sub">Website migration to Lovable with improved SEO and no platform limitations</h3>
+  <p>We just completed Adventure International's migration from WordPress to Lovable. The results: significantly improved SEO, faster performance, no more WordPress limitations, and staff can now update content confidently without workarounds or support tickets.</p>
+  <p>This is real-world proof of what the RFP asks for. The migration preserved all content, protected search visibility, improved page organization and clarity, and left the client with a system that fits their budget and priorities. Your team would experience the same smooth transition.</p>
+  <div class="f5-modal__icons">
+    <span>🔄 WordPress Migration</span>
+    <span>🔍 Improved SEO</span>
+    <span>⚡ Faster Performance</span>
+    <span>📄 Content Preserved</span>
+  </div>
+  <div class="f5-modal__links">
+    <a href="https://www.adventure-international.com/" target="_blank" rel="noopener">Visit Site →</a>
+  </div>
+</template>
+
+<template id="tpl-blues">
+  <span class="f5-eyebrow-sm">Regional Tourism &amp; Community Platform</span>
+  <h2>Blues Backroads</h2>
+  <h3 class="f5-modal__sub">WordPress to Squarespace migration</h3>
+  <p>For MidSouth Development District — a public regional organization serving six counties and 38 municipalities — WordPress became too hard for staff to manage. We migrated them to Squarespace so they could handle everyday updates confidently again. We rebuilt the tourism website on a maintainable platform, migrated content, protected SEO and improved itineraries, maps and events. We also created an event submission and review workflow for community partners.</p>
+  <p>This shows we understand when a platform stops working for a team and know how to move to something simpler and more reliable. Your staff will experience the same confidence with Lovable.</p>
+  <div class="f5-modal__icons">
+    <span>🔄 WordPress → Squarespace</span>
+    <span>🔍 SEO Protection</span>
+    <span>🗺️ Maps &amp; Itineraries</span>
+    <span>📝 Event Submission Workflow</span>
+  </div>
+  <div class="f5-modal__links">
+    <a href="https://www.bluesbackroads.com/" target="_blank" rel="noopener">Visit Site →</a>
+  </div>
+</template>
+
+<template id="tpl-sigmund">
+  <span class="f5-eyebrow-sm">Nonprofit Brand, Platform &amp; Earned Revenue System</span>
+  <h2>The Sigmund Project</h2>
+  <h3 class="f5-modal__sub">Community platform serving 10,000+ members</h3>
+  <p>We built The Sigmund Project from the ground up — brand identity, website, social strategy, and a community platform serving 10,000+ tourism professionals. The platform includes the RFP Hub (searchable and filterable), user-generated content for ideas, shared community resources, digital toolkits, a board of advisors, and email marketing. We also migrated them from Squarespace to Lovable for performance and flexibility.</p>
+  <p>This shows we can build platforms where multiple users contribute, share and collaborate. We handle community at scale, email communications, and move organizations from legacy platforms to systems that actually work. Now in its third year, the platform is projected to generate approximately $50,000 in 2027 revenue.</p>
+  <div class="f5-modal__icons">
+    <span>✦ New Brand</span>
+    <span>👥 10,000+ Member Community</span>
+    <span>🔄 Squarespace → Lovable</span>
+    <span>💰 Earned Revenue Platform</span>
+    <span>📧 Email Marketing</span>
+  </div>
+  <div class="f5-modal__links">
+    <a href="https://www.thesigmundproject.org/" target="_blank" rel="noopener">Visit Site →</a>
+  </div>
+</template>
+
+<template id="tpl-inspire">
+  <span class="f5-eyebrow-sm">Nonprofit Website + 20th Anniversary Storytelling</span>
+  <h2>Inspire Life Skills</h2>
+  <h3 class="f5-modal__sub">A WordPress escape story</h3>
+  <p>Inspire Life Skills approached us to help them get off WordPress — their site had become expensive and hard to manage. We rebuilt their entire website on Squarespace in a week for 10% of what they originally paid to build the WordPress site. Then we helped tell their 20th anniversary story across video, email, social media, their website and a sold-out gala. The interviews became a reusable library of stories, quotes and content they still use.</p>
+  <p>This shows we understand when a platform is broken and know how to move fast, cut costs dramatically, and leave clients with a system they can actually manage. We also understand how to support organizations through major milestones and bring their impact to life.</p>
+  <div class="f5-modal__icons">
+    <span>🔄 WordPress → Squarespace</span>
+    <span>⚡ Rebuilt in One Week</span>
+    <span>💵 90% Cost Reduction</span>
+    <span>🎬 Anniversary Storytelling</span>
+  </div>
+  <div class="f5-modal__links">
+    <a href="https://www.inspirelifeskills.org/" target="_blank" rel="noopener">Visit Site →</a>
+  </div>
+</template>
+
+<template id="tpl-pitcairn">
+  <span class="f5-eyebrow-sm">Community Communications Across Two Official Websites</span>
+  <h2>Pitcairn Islands: Tourism + Government</h2>
+  <h3 class="f5-modal__sub">Ongoing management for one of the world's most remote communities</h3>
+  <p>We manage both visitpitcairn.pn (tourism board) and government.pn (official government website) for one of the world's most remote communities. Large, content-rich sites with complex navigation, booking information, travel and immigration guidance, shipping schedules, community content, SEO, analytics, email, forms and ongoing public updates. Currently in talks to rebuild the new tourism site.</p>
+  <div class="f5-modal__icons">
+    <span>🗂️ Two Public Websites</span>
+    <span>🧭 Complex Navigation</span>
+    <span>🔍 SEO &amp; Analytics</span>
+    <span>🛠️ Ongoing Public Updates</span>
+  </div>
+  <div class="f5-modal__links">
+    <a href="https://www.visitpitcairn.pn/" target="_blank" rel="noopener">Tourism Site →</a>
+    <a href="https://www.government.pn/" target="_blank" rel="noopener">Government Site →</a>
+  </div>
+</template>
+
+<!-- ============ MODAL SHELL ============ -->
+<div class="f5-modal" id="f5Modal" role="dialog" aria-modal="true" aria-label="Website case study details">
+  <button class="f5-modal__close" id="f5ModalClose" aria-label="Close">✕</button>
+  <div class="f5-modal__inner" id="f5ModalBody"></div>
+</div>
+
+<!-- ============ WHY THESE MATTER ============ -->
+<section class="f5-why">
+  <div class="container">
+    <h2>Why These Examples Matter</h2>
+    <p>Together, these projects show we can organize complex information, serve multiple audiences, migrate and maintain content, create useful digital tools, train client teams and stay involved after launch.</p>
+    <p>The Baldrige Alliance and Adventure International projects are especially relevant — they show we're actively building and migrating to Lovable right now. Adventure International's completed WordPress migration demonstrates real results: improved SEO, faster performance, no more platform limitations, and staff who can update confidently. You get a partner with current, proven experience with the exact platform we're recommending. Lovable looks familiar but is more reliable than WordPress and doesn't break. Your staff will actually enjoy using it.</p>
+    <p>We understand the complete picture, create clear structure and leave clients with a system they can confidently own.</p>
+    <p style="text-align:center; margin-top:24px;">More of our work: <a href="index.html" style="color:var(--teal-dark); font-weight:700;">meaningfulmarketinghouse.com</a></p>
+  </div>
+</section>
+
+<!-- ============ ASK US ANYTHING MOCKUP ============ -->
+<section class="f5-demo">
+  <div class="f5-demo__head">
+    <span class="eyebrow">A Mockup of What's Possible</span>
+    <h2>What a New First 5 OC Site Could Look Like</h2>
+    <p>Organized around what people actually need to accomplish — not around program names. Here's a demo of the "Ask Us Anything" tool we'd explore for First 5 OC.</p>
+  </div>
+  <div class="f5-demo__layout">
+    <ul class="f5-demo__list">
+      <li>Visitors ask everyday questions in their own words — no need to know program names like "HubCAP" or "CalWORKs."</li>
+      <li>Answers are pulled only from approved First 5 OC content, so families and partners always get accurate, sanctioned information.</li>
+      <li>Every answer links directly to the right page, resource or staff contact — turning a question into a next step.</li>
+      <li>Reports and public documents become easier to search and use, instead of sitting in a buried PDF archive.</li>
+      <li>The same approach we're piloting for the Baldrige Alliance — real, working experience with this exact kind of tool.</li>
+    </ul>
+    <div class="f5-demo__mock">
+      <div class="chat-header">
+        <div class="chat-avatar-icon"></div>
+        <div>
+          <div class="chat-name">Ask Us Anything</div>
+          <div class="chat-org">First 5 Orange County</div>
+        </div>
+      </div>
+      <div class="chat-body">
+        <div class="chat-bubble chat-bubble--sys">Hi! Ask me anything about First 5 OC programs, resources or reports.</div>
+        <div class="chat-bubble chat-bubble--usr">How do I get help paying for preschool?</div>
+        <div class="chat-bubble chat-bubble--sys">First 5 OC helps connect families with preschool funding through our Early Learning programs. Based on your child's age, here's where to start:</div>
+        <div class="chat-options">
+          <div class="chat-opt">See Early Learning eligibility →</div>
+          <div class="chat-opt">Find a program near me →</div>
+          <div class="chat-opt">Talk to a Family Resource Navigator →</div>
+        </div>
+        <div class="chat-match">
+          <div class="chat-match__label">SOURCED FROM</div>
+          <div class="chat-match__val">Early Learning Program Guide (2026)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="contact">
+  <div class="cta__inner">
+    <p class="cta__prelude reveal-up">Let's make<br><span class="cta__prelude-teal">something</span></p>
+    <h2 class="cta__word reveal-up">MEANINGFUL.</h2>
+    <div class="cta__schedule reveal-up">
+      <p>Schedule a time that works for you <button class="cta__here js-open-contact">here</button></p>
+      <svg class="cta__arrow" viewBox="0 0 180 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 170 8 Q 185 40 140 55 Q 100 68 30 52" stroke="#D4A020" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M 38 45 L 28 53 L 40 58" stroke="#D4A020" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="logo-mark logo-mark--sm">
+          <span class="logo-mark__top">MEANINGFUL</span>
+          <span class="logo-mark__bot">MARKETING</span>
+        </div>
+        <p>Serving mission-driven organizations since 2009.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <button class="footer__nav-link js-open-contact">Contact</button>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2009–2026 Meaningful Marketing House. All rights reserved.</span>
+      <span>meaningfulmarketinghouse.com</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ VIDEO LIGHTBOX (kept, unused, so js/script.js's global listeners don't error) ============ -->
+<div class="video-overlay" id="videoOverlay" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+  <button class="video-overlay__close" id="videoClose" aria-label="Close video">✕</button>
+  <div class="video-overlay__frame">
+    <iframe id="videoFrame" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>
+    <video id="videoNative" controls hidden playsinline muted></video>
+  </div>
+</div>
+
+<!-- ============ CONTACT MODAL ============ -->
+<div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal modal--split">
+    <button class="modal__close" id="modalClose" aria-label="Close">✕</button>
+
+    <!-- Mobile chooser screen (shown first on mobile) -->
+    <div class="modal__chooser" id="modalChooser">
+      <h2 class="modal__heading">Let's connect!</h2>
+      <p class="modal__sub">How would you like to reach us?</p>
+      <div class="modal__choice-grid">
+        <button class="modal__choice-btn" id="chooseCalendly">
+          <span class="modal__choice-icon">📅</span>
+          <span class="modal__choice-title">Schedule a Call</span>
+          <span class="modal__choice-desc">Pick a time that works for you — no pressure</span>
+        </button>
+        <button class="modal__choice-btn" id="chooseForm">
+          <span class="modal__choice-icon">✉️</span>
+          <span class="modal__choice-title">Send a Message</span>
+          <span class="modal__choice-desc">We'll reply within one business day</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Back button (mobile panel mode only) -->
+    <button class="modal__back-btn" id="modalBack">← Back</button>
+
+    <div class="modal__split">
+
+      <!-- LEFT: Calendly -->
+      <div class="modal__panel modal__panel--calendly">
+        <span class="eyebrow eyebrow--light">Book a Time</span>
+        <h2 class="modal__heading">Schedule an Intro Call</h2>
+        <p class="modal__sub">Pick a time that works for you — no pressure, just a friendly conversation about your goals.</p>
+        <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener" class="btn btn--gold btn--lg">Open Calendly to Book →</a>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="modal__or"><span>or</span></div>
+
+      <!-- RIGHT: Contact Form -->
+      <div class="modal__panel modal__panel--form">
+        <span class="eyebrow eyebrow--light">Send a Message</span>
+        <h2 class="modal__heading" id="modalTitle">Let's Make Something Meaningful</h2>
+        <p class="modal__sub">Tell us a little about your project and we'll be in touch shortly.</p>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label for="cf-name">Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="contact-form__field">
+              <label for="cf-email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="contact-form__field">
+            <label for="cf-org">Organization</label>
+            <input type="text" id="cf-org" name="organization" placeholder="Your organization" autocomplete="organization" />
+          </div>
+          <div class="contact-form__field">
+            <label for="cf-message">Message <span aria-hidden="true">*</span></label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Tell us about your project or goals…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold btn--lg contact-form__submit">Send Message →</button>
+        </form>
+        <div class="contact-form__success is-hidden" id="formSuccess">
+          <div class="contact-form__success-icon">✓</div>
+          <h3>Message sent!</h3>
+          <p>Thanks for reaching out — we'll be in touch within one business day.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div><!-- /.f5-page-content -->
+
+<script src="js/script.js"></script>
+<script>
+  (function () {
+    var CORRECT_PW = 'first5';
+    var body = document.body;
+    var form = document.getElementById('f5GateForm');
+    var input = document.getElementById('f5GatePw');
+    var error = document.getElementById('f5GateError');
+    var STORAGE_KEY = 'f5-page-unlocked';
+
+    try {
+      if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
+        body.classList.remove('f5-locked');
+      }
+    } catch (e) {}
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if ((input.value || '').trim().toLowerCase() === CORRECT_PW) {
+        body.classList.remove('f5-locked');
+        error.style.display = 'none';
+        try { sessionStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
+      } else {
+        error.style.display = 'block';
+        input.value = '';
+        input.focus();
+      }
+    });
+  })();
+
+  /* ---- Colorful tile grid → case study modal ---- */
+  (function () {
+    var modal = document.getElementById('f5Modal');
+    var body = document.getElementById('f5ModalBody');
+    var closeBtn = document.getElementById('f5ModalClose');
+
+    function openCase(targetId) {
+      var tpl = document.getElementById(targetId);
+      if (!tpl) return;
+      body.innerHTML = '';
+      body.appendChild(tpl.content.cloneNode(true));
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCase() {
+      modal.classList.remove('is-open');
+      body.innerHTML = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.f5-tile').forEach(function (tile) {
+      tile.addEventListener('click', function () { openCase(tile.dataset.target); });
+    });
+    closeBtn.addEventListener('click', closeCase);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeCase();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeCase();
+    });
+  })();
+</script>
+</body>
+</html>
