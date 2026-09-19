@@ -115,222 +115,198 @@
       padding: 0 20px;
     }
 
-    /* ============ COLORFUL TILE GRID ============ */
-    .f5-grid-section {
-      padding: 48px 0 var(--section-v, 80px);
-      background: var(--off-white);
-    }
-    .f5-grid-section__head {
+    /* ============ AGENCY-STYLE PORTFOLIO SHOWCASE ============ */
+    .f5-portfolio-intro {
       max-width: 700px;
-      margin: 0 auto 32px;
+      margin: 0 auto 8px;
       text-align: center;
-      padding: 0 20px;
+      padding: 48px 20px 0;
     }
-    .f5-grid-section__head h2 {
+    .f5-portfolio-intro h2 {
       margin: 0 0 10px;
       font-size: clamp(22px, 2.8vw, 32px);
       font-weight: 700;
       letter-spacing: -0.02em;
     }
-    .f5-grid-section__head p {
+    .f5-portfolio-intro p {
       margin: 0;
       font-size: 15px;
       line-height: 1.6;
       color: var(--text-muted);
     }
-    .f5-tile-grid {
+
+    .f5-case {
+      padding: clamp(48px, 6vw, 80px) 0;
+    }
+    .f5-case--light { background: var(--white); }
+    .f5-case--off { background: var(--off-white); }
+    .f5-case--dark { background: var(--black); color: var(--white); }
+    .f5-case__grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: var(--gray-light, #ddd);
-      border: 2px solid var(--gray-light, #ddd);
-      border-radius: calc(var(--radius, 16px) + 2px);
-      overflow: hidden;
-      max-width: 1080px;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+      max-width: 1140px;
       margin: 0 auto;
+      padding: 0 20px;
     }
-    .f5-tile {
-      background: var(--white);
-      padding: clamp(28px, 3.6vw, 44px);
-      position: relative;
-      text-align: left;
-      border: 0;
-      cursor: pointer;
-      transition: filter 0.2s;
-      font-family: inherit;
-    }
-    .f5-tile:hover { filter: brightness(0.93); }
-    .f5-tile:nth-child(6n+1) { background: #8DD8D3; }
-    .f5-tile:nth-child(6n+2) { background: #E8A820; }
-    .f5-tile:nth-child(6n+3) { background: var(--forest); color: var(--white); }
-    .f5-tile:nth-child(6n+4) { background: var(--coral); color: var(--white); }
-    .f5-tile:nth-child(6n+5) { background: #454565; color: var(--white); }
-    .f5-tile:nth-child(6n+6) { background: #8875C0; color: var(--white); }
-    .f5-tile__badge {
+    .f5-case__grid--rev .f5-case__visual { order: 2; }
+    .f5-case__grid--rev .f5-case__info { order: 1; }
+
+    .f5-case__badge {
       display: inline-block;
-      margin-bottom: 16px;
-      padding: 4px 10px;
+      margin-bottom: 14px;
+      padding: 5px 12px;
       border-radius: 999px;
-      background: rgba(0, 0, 0, 0.12);
-      font-size: 10.5px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .f5-tile:nth-child(3n+3) .f5-tile__badge,
-    .f5-tile:nth-child(6n+4) .f5-tile__badge,
-    .f5-tile:nth-child(6n+5) .f5-tile__badge,
-    .f5-tile:nth-child(6n+6) .f5-tile__badge { background: rgba(255, 255, 255, 0.2); }
-    .f5-tile__title {
-      font-size: clamp(1.05rem, 1.7vw, 1.3rem);
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      line-height: 1.2;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin: 0;
-    }
-    .f5-tile__toggle {
-      flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: rgba(0,0,0,.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      line-height: 1;
-      transition: transform 0.35s ease, background 0.2s;
-    }
-    .f5-tile:nth-child(6n+3) .f5-tile__toggle,
-    .f5-tile:nth-child(6n+4) .f5-tile__toggle,
-    .f5-tile:nth-child(6n+5) .f5-tile__toggle,
-    .f5-tile:nth-child(6n+6) .f5-tile__toggle { background: rgba(255,255,255,.2); }
-    .f5-tile:hover .f5-tile__toggle { transform: rotate(45deg); }
-    .f5-tile__icons {
-      margin: 14px 0 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .f5-tile__icons span {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 4px 9px 4px 7px;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.08);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .f5-tile:nth-child(6n+3) .f5-tile__icons span,
-    .f5-tile:nth-child(6n+4) .f5-tile__icons span,
-    .f5-tile:nth-child(6n+5) .f5-tile__icons span,
-    .f5-tile:nth-child(6n+6) .f5-tile__icons span { background: rgba(255, 255, 255, 0.16); }
-
-    @media (max-width: 760px) {
-      .f5-tile-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 460px) {
-      .f5-tile-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ============ CASE STUDY MODAL ============ */
-    .f5-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 9500;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: rgba(10, 10, 10, 0.82);
-      padding: 24px;
-    }
-    .f5-modal.is-open { display: flex; }
-    .f5-modal__close {
-      position: absolute;
-      top: 20px;
-      right: 24px;
-      background: transparent;
-      border: 0;
-      color: #fff;
-      font-size: 24px;
-      cursor: pointer;
-      z-index: 2;
-    }
-    .f5-modal__inner {
-      width: 100%;
-      max-width: 720px;
-      max-height: 88vh;
-      overflow-y: auto;
-      background: var(--white);
-      border-radius: var(--radius, 16px);
-      padding: 40px clamp(24px, 4vw, 48px) 48px;
-    }
-    .f5-modal__inner .f5-eyebrow-sm {
-      display: block;
-      margin-bottom: 6px;
+      background: rgba(30, 138, 134, 0.1);
       color: var(--teal-dark);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
-    .f5-modal__inner h2 {
+    .f5-case--dark .f5-case__badge {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--gold-light, #E8C547);
+    }
+    .f5-case__info h3 {
       margin: 0 0 6px;
-      font-size: clamp(22px, 2.8vw, 30px);
+      font-size: clamp(24px, 3vw, 34px);
       font-weight: 700;
       letter-spacing: -0.02em;
     }
-    .f5-modal__inner h3.f5-modal__sub {
+    .f5-case__sub {
       margin: 0 0 16px;
       font-size: 15px;
       font-weight: 600;
       color: var(--teal-dark);
     }
-    .f5-modal__inner p {
-      margin: 0 0 12px;
+    .f5-case--dark .f5-case__sub { color: var(--gold-light, #E8C547); }
+    .f5-case__info p {
+      margin: 0 0 14px;
       font-size: 15px;
-      line-height: 1.65;
+      line-height: 1.7;
       color: var(--text-muted);
     }
-    .f5-modal__icons {
+    .f5-case--dark .f5-case__info p { color: rgba(255, 255, 255, 0.72); }
+    .f5-case__icons {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 16px 0;
+      margin: 16px 0 20px;
     }
-    .f5-modal__icons span {
+    .f5-case__icons span {
       font-size: 12.5px;
       font-weight: 600;
       padding: 6px 12px 6px 9px;
       border-radius: 999px;
-      background: rgba(12, 12, 12, 0.05);
+      background: rgba(12, 12, 12, 0.06);
       color: var(--text-body);
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
-    .f5-modal__links {
+    .f5-case--dark .f5-case__icons span {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--white);
+    }
+    .f5-case__links {
       display: flex;
       flex-wrap: wrap;
+      gap: 12px;
+    }
+    .f5-case__links a.btn { text-decoration: none; }
+
+    /* Browser-chrome mockup for each website */
+    .f5-browser {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 28px 70px rgba(12, 12, 12, 0.22);
+      background: #fff;
+    }
+    .f5-browser__bar {
+      display: flex;
+      align-items: center;
       gap: 10px;
-      margin-top: 18px;
+      padding: 12px 14px;
+      background: #ececec;
+      border-bottom: 1px solid rgba(0,0,0,.06);
     }
-    .f5-modal__links a {
-      font-size: 14px;
+    .f5-browser__dots { display: flex; gap: 6px; flex-shrink: 0; }
+    .f5-browser__dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #d6d6d6;
+    }
+    .f5-browser__dots span:nth-child(1) { background: #ec6a5e; }
+    .f5-browser__dots span:nth-child(2) { background: #f4bf4f; }
+    .f5-browser__dots span:nth-child(3) { background: #61c554; }
+    .f5-browser__url {
+      flex: 1;
+      background: #fff;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: #7a7a7a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .f5-browser__body {
+      aspect-ratio: 16 / 11;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .f5-browser__body::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.18), transparent 55%);
+    }
+    .f5-browser__mark {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(1.3rem, 3vw, 2rem);
       font-weight: 700;
-      color: var(--teal-dark);
-      text-decoration: none;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: #fff;
     }
-    .f5-modal__links a:hover { text-decoration: underline; }
+    .f5-browser__tag {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      margin-top: 14px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .f5-browser--teal .f5-browser__body { background: linear-gradient(135deg, #4DBDB8, #1E8A86); }
+    .f5-browser--gold .f5-browser__body { background: linear-gradient(135deg, #E8C547, #C9941F); }
+    .f5-browser--forest .f5-browser__body { background: linear-gradient(135deg, #2D7A55, #1c4d37); }
+    .f5-browser--coral .f5-browser__body { background: linear-gradient(135deg, #E8837A, #C24B41); }
+    .f5-browser--navy .f5-browser__body { background: linear-gradient(135deg, #454565, #1A3464); }
+    .f5-browser--purple .f5-browser__body { background: linear-gradient(135deg, #8875C0, #5D4B96); }
+
+    @media (max-width: 900px) {
+      .f5-case__grid { grid-template-columns: 1fr; }
+      .f5-case__grid--rev .f5-case__visual,
+      .f5-case__grid--rev .f5-case__info { order: initial; }
+    }
 
     @media (max-width: 760px) {
       .f5-hero { padding: calc(var(--nav-h) + 32px) 0 28px; }
-      .f5-modal__inner { padding: 32px 20px 40px; }
     }
 
     /* ============ "WHY THESE MATTER" ============ */
@@ -493,190 +469,226 @@
   <div class="container">
     <span class="eyebrow">Prepared for First 5 Orange County</span>
     <h1>Selected Website Portfolio</h1>
-    <p>Relevant strategy, design, development and long-term support — real websites we've built and migrated for clients like you. Tap any project to see what we did.</p>
+    <p>Relevant strategy, design, development and long-term support — real websites we've built and migrated for clients like you.</p>
   </div>
 </section>
 
-<!-- ============ COLORFUL TILE GRID ============ -->
-<section class="f5-grid-section" aria-label="Website portfolio">
-  <div class="container">
-    <div class="f5-tile-grid">
+<!-- ============ PORTFOLIO SHOWCASE ============ -->
+<div class="f5-portfolio-intro">
+  <h2>A Sample of Our Website Work</h2>
+  <p>Six recent projects — new brands, platform migrations, community platforms and long-term partnerships — each one relevant to what First 5 OC needs next.</p>
+</div>
 
-      <button class="f5-tile" type="button" data-target="tpl-baldrige">
-        <span class="f5-tile__badge">Currently Building</span>
-        <h3 class="f5-tile__title">Baldrige Alliance <span class="f5-tile__toggle">+</span></h3>
-        <div class="f5-tile__icons">
-          <span>🚀 New Platform</span>
-          <span>🎨 Rebuilt on Lovable</span>
-          <span>👩‍🏫 Staff Training</span>
+<section class="f5-case f5-case--light" aria-label="Baldrige Alliance">
+  <div class="f5-case__grid">
+    <div class="f5-case__visual">
+      <div class="f5-browser f5-browser--teal">
+        <div class="f5-browser__bar">
+          <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+          <div class="f5-browser__url">baldrige-alliance.lovable.app</div>
         </div>
-      </button>
-
-      <button class="f5-tile" type="button" data-target="tpl-adventure">
-        <span class="f5-tile__badge">Recently Migrated</span>
-        <h3 class="f5-tile__title">Adventure International <span class="f5-tile__toggle">+</span></h3>
-        <div class="f5-tile__icons">
-          <span>🔄 WordPress → Lovable</span>
-          <span>🔍 Improved SEO</span>
-          <span>⚡ Faster Performance</span>
+        <div class="f5-browser__body">
+          <div>
+            <div class="f5-browser__mark">Baldrige Alliance</div>
+            <span class="f5-browser__tag">Live Staging Site</span>
+          </div>
         </div>
-      </button>
-
-      <button class="f5-tile" type="button" data-target="tpl-blues">
-        <span class="f5-tile__badge">Platform Migration</span>
-        <h3 class="f5-tile__title">Blues Backroads <span class="f5-tile__toggle">+</span></h3>
-        <div class="f5-tile__icons">
-          <span>🔄 WordPress → Squarespace</span>
-          <span>🔍 SEO Protection</span>
-          <span>🗺️ Maps &amp; Event Tools</span>
-        </div>
-      </button>
-
-      <button class="f5-tile" type="button" data-target="tpl-sigmund">
-        <span class="f5-tile__badge">Built From Scratch</span>
-        <h3 class="f5-tile__title">The Sigmund Project <span class="f5-tile__toggle">+</span></h3>
-        <div class="f5-tile__icons">
-          <span>✦ New Brand</span>
-          <span>👥 Community Platform</span>
-          <span>🔄 Squarespace → Lovable</span>
-          <span>💰 Revenue Platform</span>
-        </div>
-      </button>
-
-      <button class="f5-tile" type="button" data-target="tpl-inspire">
-        <span class="f5-tile__badge">WordPress Escape</span>
-        <h3 class="f5-tile__title">Inspire Life Skills <span class="f5-tile__toggle">+</span></h3>
-        <div class="f5-tile__icons">
-          <span>🔄 WordPress → Squarespace</span>
-          <span>🎬 Anniversary Storytelling</span>
-          <span>💵 90% Cost Reduction</span>
-        </div>
-      </button>
-
-      <button class="f5-tile" type="button" data-target="tpl-pitcairn">
-        <span class="f5-tile__badge">Dual-Site Management</span>
-        <h3 class="f5-tile__title">Pitcairn Islands <span class="f5-tile__toggle">+</span></h3>
-        <div class="f5-tile__icons">
-          <span>🗂️ Two Public Sites</span>
-          <span>🔍 SEO &amp; Analytics</span>
-          <span>🛠️ Ongoing Support</span>
-        </div>
-      </button>
-
+      </div>
+    </div>
+    <div class="f5-case__info">
+      <span class="f5-case__badge">Currently Building — Live Staging Available</span>
+      <h3>Baldrige Alliance</h3>
+      <p class="f5-case__sub">Organization website rebuilt on Lovable (In Progress)</p>
+      <p>Right now, we're rebuilding the Baldrige Alliance website from the ground up on Lovable — the exact platform we're recommending for First 5 OC. You can see the current live site at baldrigealliance.org and view our work-in-progress on the staging site below.</p>
+      <p>This is real, hands-on experience with the platform you'd be using. Lovable looks familiar (like WordPress), but it's actually more reliable and doesn't break. The staff editing tools are simpler, the backend is more stable, and you get a solid system your team can manage independently. We're happy to walk you through a demo of both the front-end and backend during your decision process.</p>
+      <div class="f5-case__icons">
+        <span>🚀 New Platform (Lovable)</span>
+        <span>🎨 Full Rebuild</span>
+        <span>👩‍🏫 Staff Editing Tools</span>
+      </div>
+      <div class="f5-case__links">
+        <a class="btn btn--primary" href="https://baldrige-alliance.lovable.app/" target="_blank" rel="noopener">Live Staging Site →</a>
+        <a class="btn btn--ghost" href="https://baldrigealliance.org/" target="_blank" rel="noopener">Current Site →</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ TEMPLATES (cloned into the modal on tile click) ============ -->
-<template id="tpl-baldrige">
-  <span class="f5-eyebrow-sm">Currently Building — Live Staging Available</span>
-  <h2>Baldrige Alliance</h2>
-  <h3 class="f5-modal__sub">Organization website rebuilt on Lovable (In Progress)</h3>
-  <p>Right now, we're rebuilding the Baldrige Alliance website from the ground up on Lovable — the exact platform we're recommending for First 5 OC. You can see the current live site at baldrigealliance.org and view our work-in-progress on the staging site below.</p>
-  <p>This is real, hands-on experience with the platform you'd be using. Lovable looks familiar (like WordPress), but it's actually more reliable and doesn't break. The staff editing tools are simpler, the backend is more stable, and you get a solid system your team can manage independently.</p>
-  <p>We're happy to walk you through a demo of both the front-end and backend during your decision process.</p>
-  <div class="f5-modal__icons">
-    <span>🚀 New Platform (Lovable)</span>
-    <span>🎨 Full Rebuild</span>
-    <span>👩‍🏫 Staff Editing Tools</span>
+<section class="f5-case f5-case--dark" aria-label="Adventure International">
+  <div class="f5-case__grid f5-case__grid--rev">
+    <div class="f5-case__visual">
+      <div class="f5-browser f5-browser--gold">
+        <div class="f5-browser__bar">
+          <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+          <div class="f5-browser__url">adventure-international.com</div>
+        </div>
+        <div class="f5-browser__body">
+          <div>
+            <div class="f5-browser__mark">Adventure International</div>
+            <span class="f5-browser__tag">Recently Migrated</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="f5-case__info">
+      <span class="f5-case__badge">Recently Migrated From WordPress</span>
+      <h3>Adventure International</h3>
+      <p class="f5-case__sub">Website migration to Lovable with improved SEO and no platform limitations</p>
+      <p>We just completed Adventure International's migration from WordPress to Lovable. The results: significantly improved SEO, faster performance, no more WordPress limitations, and staff can now update content confidently without workarounds or support tickets.</p>
+      <p>This is real-world proof of what the RFP asks for. The migration preserved all content, protected search visibility, improved page organization and clarity, and left the client with a system that fits their budget and priorities. Your team would experience the same smooth transition.</p>
+      <div class="f5-case__icons">
+        <span>🔄 WordPress Migration</span>
+        <span>🔍 Improved SEO</span>
+        <span>⚡ Faster Performance</span>
+        <span>📄 Content Preserved</span>
+      </div>
+      <div class="f5-case__links">
+        <a class="btn btn--primary" href="https://www.adventure-international.com/" target="_blank" rel="noopener">Visit Site →</a>
+      </div>
+    </div>
   </div>
-  <div class="f5-modal__links">
-    <a href="https://baldrige-alliance.lovable.app/" target="_blank" rel="noopener">Live Staging Site →</a>
-    <a href="https://baldrigealliance.org/" target="_blank" rel="noopener">Current Site →</a>
-  </div>
-</template>
+</section>
 
-<template id="tpl-adventure">
-  <span class="f5-eyebrow-sm">Recently Migrated From WordPress</span>
-  <h2>Adventure International</h2>
-  <h3 class="f5-modal__sub">Website migration to Lovable with improved SEO and no platform limitations</h3>
-  <p>We just completed Adventure International's migration from WordPress to Lovable. The results: significantly improved SEO, faster performance, no more WordPress limitations, and staff can now update content confidently without workarounds or support tickets.</p>
-  <p>This is real-world proof of what the RFP asks for. The migration preserved all content, protected search visibility, improved page organization and clarity, and left the client with a system that fits their budget and priorities. Your team would experience the same smooth transition.</p>
-  <div class="f5-modal__icons">
-    <span>🔄 WordPress Migration</span>
-    <span>🔍 Improved SEO</span>
-    <span>⚡ Faster Performance</span>
-    <span>📄 Content Preserved</span>
+<section class="f5-case f5-case--off" aria-label="Blues Backroads">
+  <div class="f5-case__grid">
+    <div class="f5-case__visual">
+      <div class="f5-browser f5-browser--forest">
+        <div class="f5-browser__bar">
+          <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+          <div class="f5-browser__url">bluesbackroads.com</div>
+        </div>
+        <div class="f5-browser__body">
+          <div>
+            <div class="f5-browser__mark">Blues Backroads</div>
+            <span class="f5-browser__tag">Platform Migration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="f5-case__info">
+      <span class="f5-case__badge">Regional Tourism &amp; Community Platform</span>
+      <h3>Blues Backroads</h3>
+      <p class="f5-case__sub">WordPress to Squarespace migration</p>
+      <p>For MidSouth Development District — a public regional organization serving six counties and 38 municipalities — WordPress became too hard for staff to manage. We migrated them to Squarespace so they could handle everyday updates confidently again. We rebuilt the tourism website on a maintainable platform, migrated content, protected SEO and improved itineraries, maps and events. We also created an event submission and review workflow for community partners.</p>
+      <p>This shows we understand when a platform stops working for a team and know how to move to something simpler and more reliable. Your staff will experience the same confidence with Lovable.</p>
+      <div class="f5-case__icons">
+        <span>🔄 WordPress → Squarespace</span>
+        <span>🔍 SEO Protection</span>
+        <span>🗺️ Maps &amp; Itineraries</span>
+        <span>📝 Event Submission Workflow</span>
+      </div>
+      <div class="f5-case__links">
+        <a class="btn btn--primary" href="https://www.bluesbackroads.com/" target="_blank" rel="noopener">Visit Site →</a>
+      </div>
+    </div>
   </div>
-  <div class="f5-modal__links">
-    <a href="https://www.adventure-international.com/" target="_blank" rel="noopener">Visit Site →</a>
-  </div>
-</template>
+</section>
 
-<template id="tpl-blues">
-  <span class="f5-eyebrow-sm">Regional Tourism &amp; Community Platform</span>
-  <h2>Blues Backroads</h2>
-  <h3 class="f5-modal__sub">WordPress to Squarespace migration</h3>
-  <p>For MidSouth Development District — a public regional organization serving six counties and 38 municipalities — WordPress became too hard for staff to manage. We migrated them to Squarespace so they could handle everyday updates confidently again. We rebuilt the tourism website on a maintainable platform, migrated content, protected SEO and improved itineraries, maps and events. We also created an event submission and review workflow for community partners.</p>
-  <p>This shows we understand when a platform stops working for a team and know how to move to something simpler and more reliable. Your staff will experience the same confidence with Lovable.</p>
-  <div class="f5-modal__icons">
-    <span>🔄 WordPress → Squarespace</span>
-    <span>🔍 SEO Protection</span>
-    <span>🗺️ Maps &amp; Itineraries</span>
-    <span>📝 Event Submission Workflow</span>
+<section class="f5-case f5-case--dark" aria-label="The Sigmund Project">
+  <div class="f5-case__grid f5-case__grid--rev">
+    <div class="f5-case__visual">
+      <div class="f5-browser f5-browser--purple">
+        <div class="f5-browser__bar">
+          <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+          <div class="f5-browser__url">thesigmundproject.org</div>
+        </div>
+        <div class="f5-browser__body">
+          <div>
+            <div class="f5-browser__mark">The Sigmund Project</div>
+            <span class="f5-browser__tag">Built From Scratch</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="f5-case__info">
+      <span class="f5-case__badge">Nonprofit Brand, Platform &amp; Earned Revenue System</span>
+      <h3>The Sigmund Project</h3>
+      <p class="f5-case__sub">Community platform serving 10,000+ members</p>
+      <p>We built The Sigmund Project from the ground up — brand identity, website, social strategy, and a community platform serving 10,000+ tourism professionals. The platform includes the RFP Hub (searchable and filterable), user-generated content for ideas, shared community resources, digital toolkits, a board of advisors, and email marketing. We also migrated them from Squarespace to Lovable for performance and flexibility.</p>
+      <p>This shows we can build platforms where multiple users contribute, share and collaborate. We handle community at scale, email communications, and move organizations from legacy platforms to systems that actually work. Now in its third year, the platform is projected to generate approximately $50,000 in 2027 revenue.</p>
+      <div class="f5-case__icons">
+        <span>✦ New Brand</span>
+        <span>👥 10,000+ Member Community</span>
+        <span>🔄 Squarespace → Lovable</span>
+        <span>💰 Earned Revenue Platform</span>
+        <span>📧 Email Marketing</span>
+      </div>
+      <div class="f5-case__links">
+        <a class="btn btn--primary" href="https://www.thesigmundproject.org/" target="_blank" rel="noopener">Visit Site →</a>
+      </div>
+    </div>
   </div>
-  <div class="f5-modal__links">
-    <a href="https://www.bluesbackroads.com/" target="_blank" rel="noopener">Visit Site →</a>
-  </div>
-</template>
+</section>
 
-<template id="tpl-sigmund">
-  <span class="f5-eyebrow-sm">Nonprofit Brand, Platform &amp; Earned Revenue System</span>
-  <h2>The Sigmund Project</h2>
-  <h3 class="f5-modal__sub">Community platform serving 10,000+ members</h3>
-  <p>We built The Sigmund Project from the ground up — brand identity, website, social strategy, and a community platform serving 10,000+ tourism professionals. The platform includes the RFP Hub (searchable and filterable), user-generated content for ideas, shared community resources, digital toolkits, a board of advisors, and email marketing. We also migrated them from Squarespace to Lovable for performance and flexibility.</p>
-  <p>This shows we can build platforms where multiple users contribute, share and collaborate. We handle community at scale, email communications, and move organizations from legacy platforms to systems that actually work. Now in its third year, the platform is projected to generate approximately $50,000 in 2027 revenue.</p>
-  <div class="f5-modal__icons">
-    <span>✦ New Brand</span>
-    <span>👥 10,000+ Member Community</span>
-    <span>🔄 Squarespace → Lovable</span>
-    <span>💰 Earned Revenue Platform</span>
-    <span>📧 Email Marketing</span>
+<section class="f5-case f5-case--light" aria-label="Inspire Life Skills">
+  <div class="f5-case__grid">
+    <div class="f5-case__visual">
+      <div class="f5-browser f5-browser--coral">
+        <div class="f5-browser__bar">
+          <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+          <div class="f5-browser__url">inspirelifeskills.org</div>
+        </div>
+        <div class="f5-browser__body">
+          <div>
+            <div class="f5-browser__mark">Inspire Life Skills</div>
+            <span class="f5-browser__tag">WordPress Escape</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="f5-case__info">
+      <span class="f5-case__badge">Nonprofit Website + 20th Anniversary Storytelling</span>
+      <h3>Inspire Life Skills</h3>
+      <p class="f5-case__sub">A WordPress escape story</p>
+      <p>Inspire Life Skills approached us to help them get off WordPress — their site had become expensive and hard to manage. We rebuilt their entire website on Squarespace in a week for 10% of what they originally paid to build the WordPress site. Then we helped tell their 20th anniversary story across video, email, social media, their website and a sold-out gala. The interviews became a reusable library of stories, quotes and content they still use.</p>
+      <p>This shows we understand when a platform is broken and know how to move fast, cut costs dramatically, and leave clients with a system they can actually manage. We also understand how to support organizations through major milestones and bring their impact to life.</p>
+      <div class="f5-case__icons">
+        <span>🔄 WordPress → Squarespace</span>
+        <span>⚡ Rebuilt in One Week</span>
+        <span>💵 90% Cost Reduction</span>
+        <span>🎬 Anniversary Storytelling</span>
+      </div>
+      <div class="f5-case__links">
+        <a class="btn btn--primary" href="https://www.inspirelifeskills.org/" target="_blank" rel="noopener">Visit Site →</a>
+      </div>
+    </div>
   </div>
-  <div class="f5-modal__links">
-    <a href="https://www.thesigmundproject.org/" target="_blank" rel="noopener">Visit Site →</a>
-  </div>
-</template>
+</section>
 
-<template id="tpl-inspire">
-  <span class="f5-eyebrow-sm">Nonprofit Website + 20th Anniversary Storytelling</span>
-  <h2>Inspire Life Skills</h2>
-  <h3 class="f5-modal__sub">A WordPress escape story</h3>
-  <p>Inspire Life Skills approached us to help them get off WordPress — their site had become expensive and hard to manage. We rebuilt their entire website on Squarespace in a week for 10% of what they originally paid to build the WordPress site. Then we helped tell their 20th anniversary story across video, email, social media, their website and a sold-out gala. The interviews became a reusable library of stories, quotes and content they still use.</p>
-  <p>This shows we understand when a platform is broken and know how to move fast, cut costs dramatically, and leave clients with a system they can actually manage. We also understand how to support organizations through major milestones and bring their impact to life.</p>
-  <div class="f5-modal__icons">
-    <span>🔄 WordPress → Squarespace</span>
-    <span>⚡ Rebuilt in One Week</span>
-    <span>💵 90% Cost Reduction</span>
-    <span>🎬 Anniversary Storytelling</span>
+<section class="f5-case f5-case--off" aria-label="Pitcairn Islands: Tourism + Government">
+  <div class="f5-case__grid f5-case__grid--rev">
+    <div class="f5-case__visual">
+      <div class="f5-browser f5-browser--navy">
+        <div class="f5-browser__bar">
+          <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+          <div class="f5-browser__url">visitpitcairn.pn</div>
+        </div>
+        <div class="f5-browser__body">
+          <div>
+            <div class="f5-browser__mark">Pitcairn Islands</div>
+            <span class="f5-browser__tag">Dual-Site Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="f5-case__info">
+      <span class="f5-case__badge">Community Communications Across Two Official Websites</span>
+      <h3>Pitcairn Islands: Tourism + Government</h3>
+      <p class="f5-case__sub">Ongoing management for one of the world's most remote communities</p>
+      <p>We manage both visitpitcairn.pn (tourism board) and government.pn (official government website) for one of the world's most remote communities. Large, content-rich sites with complex navigation, booking information, travel and immigration guidance, shipping schedules, community content, SEO, analytics, email, forms and ongoing public updates. Currently in talks to rebuild the new tourism site.</p>
+      <div class="f5-case__icons">
+        <span>🗂️ Two Public Websites</span>
+        <span>🧭 Complex Navigation</span>
+        <span>🔍 SEO &amp; Analytics</span>
+        <span>🛠️ Ongoing Public Updates</span>
+      </div>
+      <div class="f5-case__links">
+        <a class="btn btn--primary" href="https://www.visitpitcairn.pn/" target="_blank" rel="noopener">Tourism Site →</a>
+        <a class="btn btn--ghost" href="https://www.government.pn/" target="_blank" rel="noopener">Government Site →</a>
+      </div>
+    </div>
   </div>
-  <div class="f5-modal__links">
-    <a href="https://www.inspirelifeskills.org/" target="_blank" rel="noopener">Visit Site →</a>
-  </div>
-</template>
-
-<template id="tpl-pitcairn">
-  <span class="f5-eyebrow-sm">Community Communications Across Two Official Websites</span>
-  <h2>Pitcairn Islands: Tourism + Government</h2>
-  <h3 class="f5-modal__sub">Ongoing management for one of the world's most remote communities</h3>
-  <p>We manage both visitpitcairn.pn (tourism board) and government.pn (official government website) for one of the world's most remote communities. Large, content-rich sites with complex navigation, booking information, travel and immigration guidance, shipping schedules, community content, SEO, analytics, email, forms and ongoing public updates. Currently in talks to rebuild the new tourism site.</p>
-  <div class="f5-modal__icons">
-    <span>🗂️ Two Public Websites</span>
-    <span>🧭 Complex Navigation</span>
-    <span>🔍 SEO &amp; Analytics</span>
-    <span>🛠️ Ongoing Public Updates</span>
-  </div>
-  <div class="f5-modal__links">
-    <a href="https://www.visitpitcairn.pn/" target="_blank" rel="noopener">Tourism Site →</a>
-    <a href="https://www.government.pn/" target="_blank" rel="noopener">Government Site →</a>
-  </div>
-</template>
-
-<!-- ============ MODAL SHELL ============ -->
-<div class="f5-modal" id="f5Modal" role="dialog" aria-modal="true" aria-label="Website case study details">
-  <button class="f5-modal__close" id="f5ModalClose" aria-label="Close">✕</button>
-  <div class="f5-modal__inner" id="f5ModalBody"></div>
-</div>
+</section>
 
 <!-- ============ WHY THESE MATTER ============ -->
 <section class="f5-why">
@@ -882,39 +894,6 @@
         input.value = '';
         input.focus();
       }
-    });
-  })();
-
-  /* ---- Colorful tile grid → case study modal ---- */
-  (function () {
-    var modal = document.getElementById('f5Modal');
-    var body = document.getElementById('f5ModalBody');
-    var closeBtn = document.getElementById('f5ModalClose');
-
-    function openCase(targetId) {
-      var tpl = document.getElementById(targetId);
-      if (!tpl) return;
-      body.innerHTML = '';
-      body.appendChild(tpl.content.cloneNode(true));
-      modal.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeCase() {
-      modal.classList.remove('is-open');
-      body.innerHTML = '';
-      document.body.style.overflow = '';
-    }
-
-    document.querySelectorAll('.f5-tile').forEach(function (tile) {
-      tile.addEventListener('click', function () { openCase(tile.dataset.target); });
-    });
-    closeBtn.addEventListener('click', closeCase);
-    modal.addEventListener('click', function (e) {
-      if (e.target === modal) closeCase();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeCase();
     });
   })();
 </script>
