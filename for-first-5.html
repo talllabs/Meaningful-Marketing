@@ -263,41 +263,18 @@
       position: relative;
       overflow: hidden;
     }
-    .f5-browser__body::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.18), transparent 55%);
+    .f5-browser__body--photo {
+      padding: 0;
+      align-items: flex-start;
+      background: #f4f4f4;
     }
-    .f5-browser__mark {
-      position: relative;
-      z-index: 1;
-      font-size: clamp(1.3rem, 3vw, 2rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      color: #fff;
+    .f5-browser__body--photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
     }
-    .f5-browser__tag {
-      position: relative;
-      z-index: 1;
-      display: inline-block;
-      margin-top: 14px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.18);
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #fff;
-    }
-    .f5-browser--teal .f5-browser__body { background: linear-gradient(135deg, #4DBDB8, #1E8A86); }
-    .f5-browser--gold .f5-browser__body { background: linear-gradient(135deg, #E8C547, #C9941F); }
-    .f5-browser--forest .f5-browser__body { background: linear-gradient(135deg, #2D7A55, #1c4d37); }
-    .f5-browser--coral .f5-browser__body { background: linear-gradient(135deg, #E8837A, #C24B41); }
-    .f5-browser--navy .f5-browser__body { background: linear-gradient(135deg, #454565, #1A3464); }
-    .f5-browser--purple .f5-browser__body { background: linear-gradient(135deg, #8875C0, #5D4B96); }
 
     /* Side-by-side live compare (Baldrige old vs. new) */
     .f5-case--compare {
@@ -621,11 +598,8 @@
           <div class="f5-browser__dots"><span></span><span></span><span></span></div>
           <div class="f5-browser__url">thesigmundproject.org</div>
         </div>
-        <div class="f5-browser__body">
-          <div>
-            <div class="f5-browser__mark">The Sigmund Project</div>
-            <span class="f5-browser__tag">Built From Scratch</span>
-          </div>
+        <div class="f5-browser__body f5-browser__body--photo">
+          <img src="images/sigmund-home-screenshot.webp" alt="The Sigmund Project — homepage">
         </div>
       </div>
     </div>
@@ -716,11 +690,8 @@
           <div class="f5-browser__dots"><span></span><span></span><span></span></div>
           <div class="f5-browser__url">adventure-international.com</div>
         </div>
-        <div class="f5-browser__body">
-          <div>
-            <div class="f5-browser__mark">Adventure International</div>
-            <span class="f5-browser__tag">Recently Migrated</span>
-          </div>
+        <div class="f5-browser__body f5-browser__body--photo">
+          <img src="images/adventure-international-home-screenshot.webp" alt="Adventure International — homepage">
         </div>
       </div>
     </div>
@@ -751,11 +722,8 @@
           <div class="f5-browser__dots"><span></span><span></span><span></span></div>
           <div class="f5-browser__url">inspirelifeskills.org</div>
         </div>
-        <div class="f5-browser__body">
-          <div>
-            <div class="f5-browser__mark">Inspire Life Skills</div>
-            <span class="f5-browser__tag">WordPress Escape</span>
-          </div>
+        <div class="f5-browser__body f5-browser__body--photo">
+          <img src="images/inspire-home-screenshot.webp" alt="Inspire Life Skills — homepage">
         </div>
       </div>
     </div>
@@ -786,11 +754,8 @@
           <div class="f5-browser__dots"><span></span><span></span><span></span></div>
           <div class="f5-browser__url">bluesbackroads.com</div>
         </div>
-        <div class="f5-browser__body">
-          <div>
-            <div class="f5-browser__mark">Blues Backroads</div>
-            <span class="f5-browser__tag">Platform Migration</span>
-          </div>
+        <div class="f5-browser__body f5-browser__body--photo">
+          <img src="images/blues-backroads-home-screenshot.webp" alt="Blues Backroads — homepage">
         </div>
       </div>
     </div>
@@ -821,11 +786,8 @@
           <div class="f5-browser__dots"><span></span><span></span><span></span></div>
           <div class="f5-browser__url">visitpitcairn.pn</div>
         </div>
-        <div class="f5-browser__body">
-          <div>
-            <div class="f5-browser__mark">Pitcairn Islands</div>
-            <span class="f5-browser__tag">Dual-Site Management</span>
-          </div>
+        <div class="f5-browser__body f5-browser__body--photo">
+          <img src="images/pitcairn-home-screenshot.webp" alt="Pitcairn Islands Tourism — homepage">
         </div>
       </div>
     </div>
