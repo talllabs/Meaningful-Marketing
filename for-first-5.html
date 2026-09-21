@@ -593,34 +593,8 @@
       .f5-live-demo__frame { height: 380px; }
     }
 
-    .f5-concepts__divider {
-      max-width: 760px;
-      margin: 40px auto 28px;
-      text-align: center;
-      padding: 0 20px;
-    }
-    .f5-concepts__divider p {
-      margin: 6px 0 0;
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
-    .f5-concept-card {
-      max-width: 760px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-    }
-    .f5-concept-card--wide {
-      background: var(--white);
-      border-radius: var(--radius, 16px);
-      overflow: hidden;
-      box-shadow: 0 18px 50px rgba(12, 12, 12, 0.08);
-    }
     .f5-concept-card__badge {
       display: inline-block;
-      margin: 24px 24px 0;
       padding: 5px 12px;
       border-radius: 999px;
       background: rgba(30, 138, 134, 0.1);
@@ -629,73 +603,13 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      align-self: flex-start;
-    }
-    .f5-concept-card h3 {
-      margin: 12px 24px 4px;
-      font-size: 19px;
-      font-weight: 700;
-    }
-    .f5-concept-card p {
-      margin: 0 24px 18px;
-      font-size: 14px;
-      line-height: 1.65;
-      color: var(--text-muted);
     }
     .f5-concept-card__links {
-      margin: 0 24px 24px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
     .f5-concept-card__links a.btn { text-decoration: none; }
-
-    .f5-concept-carousel {
-      position: relative;
-      width: 100%;
-      background: #eef1ee;
-      overflow: hidden;
-    }
-    .f5-concept-carousel__viewport {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-    }
-    .f5-concept-carousel__slide {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-    .f5-concept-carousel__slide--active { opacity: 1; }
-    .f5-concept-carousel__slide img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-    .f5-concept-carousel__dots {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 12px;
-      display: flex;
-      justify-content: center;
-      gap: 7px;
-    }
-    .f5-concept-carousel__dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(10, 10, 10, 0.25);
-      border: 0;
-      padding: 0;
-      cursor: pointer;
-    }
-    .f5-concept-carousel__dot--active { background: var(--teal-dark); }
 
   </style>
   <!-- Vercel Web Analytics -->
@@ -1077,32 +991,6 @@
     </div>
   </div>
 
-  <div class="f5-concepts__divider">
-    <span class="eyebrow">One More Option</span>
-    <p>Here's another design idea too.</p>
-  </div>
-
-  <div class="f5-concept-card f5-concept-card--wide">
-    <div class="f5-concept-carousel" data-carousel="f5-concept-b">
-      <div class="f5-concept-carousel__viewport">
-        <img class="f5-concept-carousel__slide f5-concept-carousel__slide--active" src="images/first5-concept-b-1-hero.png" alt="Design idea homepage — hero" data-slide>
-        <img class="f5-concept-carousel__slide" src="images/first5-concept-b-2-impact.png" alt="Design idea homepage — impact stats and news" data-slide>
-        <img class="f5-concept-carousel__slide" src="images/first5-concept-b-3-professionals.png" alt="Design idea homepage — for professionals and partners" data-slide>
-        <img class="f5-concept-carousel__slide" src="images/first5-concept-b-4-families.png" alt="Design idea homepage — tools for the early years" data-slide>
-        <img class="f5-concept-carousel__slide" src="images/first5-concept-b-5-cta-footer.png" alt="Design idea homepage — call to action and footer" data-slide>
-      </div>
-      <div class="f5-concept-carousel__dots" role="tablist" aria-label="Design idea slide indicators">
-        <button class="f5-concept-carousel__dot f5-concept-carousel__dot--active" data-index="0" aria-label="Slide 1"></button>
-        <button class="f5-concept-carousel__dot" data-index="1" aria-label="Slide 2"></button>
-        <button class="f5-concept-carousel__dot" data-index="2" aria-label="Slide 3"></button>
-        <button class="f5-concept-carousel__dot" data-index="3" aria-label="Slide 4"></button>
-        <button class="f5-concept-carousel__dot" data-index="4" aria-label="Slide 5"></button>
-      </div>
-    </div>
-    <span class="f5-concept-card__badge">Visual Direction</span>
-    <h3>A Bolder Visual Style</h3>
-    <p>A more editorial homepage layout — a clear "parent or professional" split up top, a data-driven impact section, a dedicated space for partners and professionals, and playful tools for families. Scroll through the slides to see the full page.</p>
-  </div>
 </section>
 
 <!-- ============ CTA ============ -->
@@ -1284,39 +1172,6 @@
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
-    });
-  })();
-
-  /* ---- Concept carousels (auto-advance + dots) ---- */
-  (function () {
-    document.querySelectorAll('.f5-concept-carousel').forEach(function (carousel) {
-      var slides = carousel.querySelectorAll('[data-slide]');
-      var dots = carousel.querySelectorAll('.f5-concept-carousel__dot');
-      if (slides.length < 2) return;
-      var current = 0;
-      var timer = null;
-
-      function goTo(index) {
-        slides[current].classList.remove('f5-concept-carousel__slide--active');
-        if (dots[current]) dots[current].classList.remove('f5-concept-carousel__dot--active');
-        current = index;
-        slides[current].classList.add('f5-concept-carousel__slide--active');
-        if (dots[current]) dots[current].classList.add('f5-concept-carousel__dot--active');
-      }
-
-      function start() {
-        timer = setInterval(function () { goTo((current + 1) % slides.length); }, 4000);
-      }
-
-      dots.forEach(function (dot) {
-        dot.addEventListener('click', function () {
-          clearInterval(timer);
-          goTo(parseInt(dot.dataset.index, 10));
-          start();
-        });
-      });
-
-      start();
     });
   })();
 
