@@ -182,6 +182,33 @@
       line-height: 1.7;
       color: var(--text-muted);
     }
+    .f5-case__list {
+      list-style: none;
+      margin: 0 0 18px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .f5-case__list li {
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--text-muted);
+      padding-left: 20px;
+      position: relative;
+    }
+    .f5-case__list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal-dark);
+    }
+    .f5-case__list strong { color: var(--text-body); }
+    .f5-case__intro .f5-case__list { text-align: left; max-width: 640px; margin-left: auto; margin-right: auto; }
     .f5-case__icons {
       display: flex;
       flex-wrap: wrap;
@@ -704,8 +731,12 @@
       <span class="f5-case__badge">Nonprofit Brand, Platform &amp; Earned Revenue System</span>
       <h3>The Sigmund Project</h3>
       <p class="f5-case__sub">Marina del Rey, CA — Squarespace to Lovable, two years in and never looked back</p>
-      <p>We built The Sigmund Project from the ground up — brand identity, website, social strategy, and a community platform serving 10,000+ tourism professionals. We started on Squarespace and moved to Lovable two years ago. The platform headaches disappeared, and the team now feels they can build the website they actually want — no more limitations like the old platform had.</p>
-      <p>As a nonprofit, that freedom matters even more. Two years ago we launched the RFP Hub inside the platform specifically to help fund the organization — it's on track to generate approximately $50,000 in 2027 to offset the nonprofit's budget. That's something we could never have pulled off on Squarespace or WordPress with a small team. Lovable let us be small but mighty for a nonprofit that has to make every dollar count.</p>
+      <ul class="f5-case__list">
+        <li>Built the brand identity, website, social strategy and community platform from the ground up, serving 10,000+ tourism professionals.</li>
+        <li>Started on Squarespace, then moved to Lovable two years ago — the platform headaches disappeared and the team can now build the site they actually want.</li>
+        <li>Launched the RFP Hub inside the platform to help fund the nonprofit — on track for approximately <strong>$50,000 in earned revenue in 2027</strong>.</li>
+        <li>A small nonprofit team is now able to build and maintain a platform that would have been out of reach on Squarespace or WordPress.</li>
+      </ul>
       <div class="f5-case__icons">
         <span>New Brand</span>
         <span>10,000+ Member Community</span>
@@ -725,8 +756,13 @@
     <span class="f5-case__badge">Currently Building — Launching Mid-October</span>
     <h3>Baldrige Alliance</h3>
     <p class="f5-case__sub">Washington, D.C. — Organization website rebuilt on Lovable (In Progress)</p>
-    <p>Right now, we're rebuilding the Baldrige Alliance website from the ground up on Lovable — the exact platform we're recommending for First 5 OC. We're preserving everything from the WordPress site in the process: URLs, page structure, SEO rankings and every link, so the transition is smooth with nothing lost. Click either screenshot below to open that site and explore it yourself.</p>
-    <p>This is real, hands-on experience with the platform you'd be using. Lovable looks familiar (like WordPress), but it's actually more reliable and doesn't break. The staff editing tools are simpler, the backend is more stable, and you get a solid system your team can manage independently. We're happy to walk you through a demo of both the front-end and backend during your decision process.</p>
+    <ul class="f5-case__list">
+      <li>Currently rebuilding the site from the ground up on Lovable — the exact platform we're recommending for First 5 OC.</li>
+      <li>Preserving everything from the existing WordPress site: URLs, page structure, SEO rankings and every link, so the transition is smooth with nothing lost.</li>
+      <li>Real, hands-on experience with the platform you'd be using — it looks familiar, like WordPress, but is more reliable and doesn't break.</li>
+      <li>Simpler staff editing tools and a more stable backend, so your team can manage the site independently.</li>
+      <li>Happy to demo both the public site and the staff backend during your selection process. Click either screenshot below to explore it yourself.</li>
+    </ul>
     <div class="f5-case__icons">
       <span>New Platform (Lovable)</span>
       <span>SEO &amp; Links Preserved</span>
@@ -796,8 +832,12 @@
       <span class="f5-case__badge">Recently Migrated From WordPress</span>
       <h3>Adventure International</h3>
       <p class="f5-case__sub">Venice Beach, CA — Website migration to Lovable with improved SEO and no platform limitations</p>
-      <p>We just completed Adventure International's migration from WordPress to Lovable. Just like with Baldrige Alliance, we preserved everything from the WordPress site — content, URLs, page structure and SEO rankings — so the transition was smooth with nothing lost.</p>
-      <p>The results: significantly improved SEO, faster performance, no more WordPress limitations, and staff can now update content confidently without workarounds or support tickets. This is real-world proof of what the RFP asks for — a system that fits the client's budget and priorities. Your team would experience the same smooth transition.</p>
+      <ul class="f5-case__list">
+        <li>Just completed the migration from WordPress to Lovable, preserving all content, URLs, page structure and SEO rankings — nothing was lost.</li>
+        <li>Results: significantly improved SEO, faster performance and no more WordPress limitations.</li>
+        <li>Staff can now update content confidently, without workarounds or support tickets.</li>
+        <li>Real-world proof of what a smooth, budget-conscious migration looks like — your team would experience the same transition.</li>
+      </ul>
       <div class="f5-case__icons">
         <span>WordPress Migration</span>
         <span>Improved SEO</span>
@@ -828,8 +868,12 @@
       <span class="f5-case__badge">Nonprofit Website + 20th Anniversary Storytelling</span>
       <h3>Inspire Life Skills</h3>
       <p class="f5-case__sub">Corona, CA — serving foster youth, now considering the move to Lovable</p>
-      <p>Inspire Life Skills approached us to help them get off WordPress — their site had become expensive and hard to manage. At the time they only wanted Squarespace, and we rebuilt their entire website there in a week for 10% of what they originally paid to build the WordPress site.</p>
-      <p>Now, they're considering a move to Lovable to make it easier to pull reports, track engagement on the site, and get donor insights — capabilities that matter a lot for an organization serving foster youth. We also helped tell their 20th anniversary story across video, email, social media, their website and a sold-out gala, turning the interviews into a reusable library of stories, quotes and content they still use.</p>
+      <ul class="f5-case__list">
+        <li>Helped them get off an expensive, hard-to-manage WordPress site — rebuilt the entire site on Squarespace in a week, for about 10% of the original WordPress build cost.</li>
+        <li>Now considering a move to Lovable for easier reporting, engagement tracking and donor insights — capabilities that matter for an organization serving foster youth.</li>
+        <li>Also produced their 20th anniversary campaign across video, email, social media, the website and a sold-out gala.</li>
+        <li>Turned those interviews into a reusable library of stories, quotes and content the organization still uses today.</li>
+      </ul>
       <div class="f5-case__icons">
         <span>WordPress to Squarespace</span>
         <span>Considering Lovable for Reporting</span>
@@ -860,8 +904,13 @@
       <span class="f5-case__badge">Regional Tourism &amp; Community Platform</span>
       <h3>Blues Backroads</h3>
       <p class="f5-case__sub">Memphis, TN — WordPress to Squarespace migration</p>
-      <p>For MidSouth Development District — a public regional organization serving six counties and 38 municipalities — WordPress became too hard for staff to manage. We migrated them to Squarespace so they could handle everyday updates confidently again. We rebuilt the tourism website on a maintainable platform, migrated content, protected SEO and improved itineraries, maps and events. We also created an event submission and review workflow for community partners.</p>
-      <p>This shows we understand when a platform stops working for a team and know how to move to something simpler and more reliable. Your staff will experience the same confidence with Lovable.</p>
+      <ul class="f5-case__list">
+        <li>Client: MidSouth Development District, a public regional organization serving six counties and 38 municipalities.</li>
+        <li>WordPress had become too hard for staff to manage, so we migrated the tourism site to Squarespace, a platform they could handle confidently.</li>
+        <li>Migrated content, protected SEO rankings, and improved maps, itineraries and event listings.</li>
+        <li>Built an event submission and review workflow for community partners.</li>
+        <li>Shows we know when a platform stops working for a team, and how to move them to something simpler — your staff would experience that same confidence with Lovable.</li>
+      </ul>
       <div class="f5-case__icons">
         <span>WordPress to Squarespace</span>
         <span>SEO Protection</span>
@@ -907,7 +956,12 @@
       <span class="f5-case__badge">Community Communications Across Two Official Websites</span>
       <h3>Pitcairn Islands: Tourism + Government</h3>
       <p class="f5-case__sub">Full-service partnership, 10 years and counting</p>
-      <p>We manage both visitpitcairn.pn (tourism board) and government.pn (official government website) for one of the world's most remote communities — full-service, across both sites, for the last 10 years. Large, content-rich sites with complex navigation, booking information, travel and immigration guidance, shipping schedules, community content, SEO, analytics, email, forms and ongoing public updates. Currently in talks to rebuild the new tourism site.</p>
+      <ul class="f5-case__list">
+        <li>Manage both visitpitcairn.pn (tourism board) and government.pn (official government website) for one of the world's most remote communities — full-service, for the last 10 years.</li>
+        <li>Large, content-rich sites with complex navigation, travel and immigration guidance, booking information and shipping schedules.</li>
+        <li>Ongoing SEO, analytics, email, forms and public updates across both sites.</li>
+        <li>Currently in talks to rebuild the tourism site.</li>
+      </ul>
       <div class="f5-case__icons">
         <span>Two Public Websites</span>
         <span>Complex Navigation</span>
