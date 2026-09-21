@@ -140,7 +140,6 @@
     }
     .f5-case--light { background: var(--white); }
     .f5-case--off { background: var(--off-white); }
-    .f5-case--dark { background: var(--black); color: var(--white); }
     .f5-case__grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -165,10 +164,6 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
-    .f5-case--dark .f5-case__badge {
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--gold-light, #E8C547);
-    }
     .f5-case__info h3 {
       margin: 0 0 6px;
       font-size: clamp(24px, 3vw, 34px);
@@ -181,14 +176,12 @@
       font-weight: 600;
       color: var(--teal-dark);
     }
-    .f5-case--dark .f5-case__sub { color: var(--gold-light, #E8C547); }
     .f5-case__info p {
       margin: 0 0 14px;
       font-size: 15px;
       line-height: 1.7;
       color: var(--text-muted);
     }
-    .f5-case--dark .f5-case__info p { color: rgba(255, 255, 255, 0.72); }
     .f5-case__icons {
       display: flex;
       flex-wrap: wrap;
@@ -205,10 +198,6 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-    }
-    .f5-case--dark .f5-case__icons span {
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--white);
     }
     .f5-case__links {
       display: flex;
@@ -470,8 +459,8 @@
     /* ============ ASK US ANYTHING MOCKUP ============ */
     .f5-demo {
       padding: 64px 0 80px;
-      background: var(--black);
-      color: var(--white);
+      background: var(--off-white);
+      color: var(--text-body);
     }
     .f5-demo__head {
       max-width: 720px;
@@ -482,7 +471,7 @@
     .f5-demo__head .eyebrow {
       display: inline-block;
       margin: 0 0 14px;
-      color: var(--gold-light, #E8C547);
+      color: var(--teal-dark);
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.18em;
@@ -498,21 +487,13 @@
       margin: 0;
       font-size: 15.5px;
       line-height: 1.65;
-      color: rgba(255, 255, 255, 0.7);
-    }
-    .f5-demo__layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      max-width: 1080px;
-      margin: 0 auto;
-      align-items: center;
-      padding: 0 20px;
+      color: var(--text-muted);
     }
     .f5-demo__list {
       list-style: none;
-      margin: 0;
+      margin: 0 auto;
       padding: 0;
+      max-width: 720px;
       display: flex;
       flex-direction: column;
       gap: 18px;
@@ -520,29 +501,19 @@
     .f5-demo__list li {
       font-size: 15px;
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.85);
+      color: var(--text-body);
       padding-left: 30px;
       position: relative;
     }
     .f5-demo__list li::before {
-      content: "✦";
+      content: "";
       position: absolute;
       left: 0;
-      top: 1px;
-      color: var(--gold-light, #E8C547);
-    }
-    .f5-demo__mock {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 32px 80px rgba(0,0,0,.5);
-      background: var(--navy);
-      max-width: 400px;
-      margin: 0 auto;
-    }
-
-    @media (max-width: 900px) {
-      .f5-demo__layout { grid-template-columns: 1fr; }
-      .f5-demo__mock { margin: 0 auto; }
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal-dark);
     }
 
     /* ============ TWO REDESIGN CONCEPTS ============ */
@@ -589,6 +560,38 @@
       color: var(--text-muted);
     }
     .f5-concept-feature .f5-concept-card__links { justify-content: center; }
+    .f5-concept-feature--wide { max-width: 1140px; }
+
+    .f5-live-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 28px;
+      text-align: left;
+    }
+    .f5-live-demo__pane { display: flex; flex-direction: column; }
+    .f5-live-demo__label {
+      margin-bottom: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+    }
+    .f5-live-demo .f5-browser { display: flex; flex-direction: column; }
+    .f5-live-demo__frame {
+      display: block;
+      width: 100%;
+      height: 460px;
+      border: 0;
+      background: #fff;
+    }
+    .f5-live-demo .f5-concept-card__links { margin: 14px 0 0; justify-content: flex-start; }
+
+    @media (max-width: 900px) {
+      .f5-live-demo { grid-template-columns: 1fr; }
+      .f5-live-demo__frame { height: 380px; }
+    }
 
     .f5-concepts__divider {
       max-width: 760px;
@@ -770,7 +773,7 @@
   <p>Six recent projects — new brands, platform migrations, community platforms and long-term partnerships — each one relevant to what First 5 OC needs next.</p>
 </div>
 
-<section class="f5-case f5-case--dark" aria-label="The Sigmund Project">
+<section class="f5-case f5-case--off" aria-label="The Sigmund Project">
   <div class="f5-case__grid">
     <div class="f5-case__visual">
       <div class="f5-browser f5-browser--purple">
@@ -790,11 +793,11 @@
       <p>We built The Sigmund Project from the ground up — brand identity, website, social strategy, and a community platform serving 10,000+ tourism professionals. We started on Squarespace and moved to Lovable two years ago. The platform headaches disappeared, and the team now feels they can build the website they actually want — no more limitations like the old platform had.</p>
       <p>As a nonprofit, that freedom matters even more. Two years ago we launched the RFP Hub inside the platform specifically to help fund the organization — it's on track to generate approximately $50,000 in 2027 to offset the nonprofit's budget. That's something we could never have pulled off on Squarespace or WordPress with a small team. Lovable let us be small but mighty for a nonprofit that has to make every dollar count.</p>
       <div class="f5-case__icons">
-        <span>✦ New Brand</span>
-        <span>👥 10,000+ Member Community</span>
-        <span>🔄 Squarespace → Lovable</span>
-        <span>💰 $50K Earned Revenue Platform</span>
-        <span>📧 Email Marketing</span>
+        <span>New Brand</span>
+        <span>10,000+ Member Community</span>
+        <span>Squarespace to Lovable</span>
+        <span>$50K Earned Revenue Platform</span>
+        <span>Email Marketing</span>
       </div>
       <div class="f5-case__links">
         <a class="btn btn--primary" href="https://www.thesigmundproject.org/" target="_blank" rel="noopener">Visit Site →</a>
@@ -811,10 +814,10 @@
     <p>Right now, we're rebuilding the Baldrige Alliance website from the ground up on Lovable — the exact platform we're recommending for First 5 OC. We're preserving everything from the WordPress site in the process: URLs, page structure, SEO rankings and every link, so the transition is smooth with nothing lost. Click either screenshot below to open that site and explore it yourself.</p>
     <p>This is real, hands-on experience with the platform you'd be using. Lovable looks familiar (like WordPress), but it's actually more reliable and doesn't break. The staff editing tools are simpler, the backend is more stable, and you get a solid system your team can manage independently. We're happy to walk you through a demo of both the front-end and backend during your decision process.</p>
     <div class="f5-case__icons">
-      <span>🚀 New Platform (Lovable)</span>
-      <span>🔍 SEO &amp; Links Preserved</span>
-      <span>🎨 Full Rebuild</span>
-      <span>👩‍🏫 Staff Editing Tools</span>
+      <span>New Platform (Lovable)</span>
+      <span>SEO &amp; Links Preserved</span>
+      <span>Full Rebuild</span>
+      <span>Staff Editing Tools</span>
     </div>
   </div>
 
@@ -862,7 +865,7 @@
   </div>
 </div>
 
-<section class="f5-case f5-case--dark" aria-label="Adventure International">
+<section class="f5-case f5-case--off" aria-label="Adventure International">
   <div class="f5-case__grid f5-case__grid--rev">
     <div class="f5-case__visual">
       <div class="f5-browser f5-browser--gold">
@@ -882,10 +885,10 @@
       <p>We just completed Adventure International's migration from WordPress to Lovable. Just like with Baldrige Alliance, we preserved everything from the WordPress site — content, URLs, page structure and SEO rankings — so the transition was smooth with nothing lost.</p>
       <p>The results: significantly improved SEO, faster performance, no more WordPress limitations, and staff can now update content confidently without workarounds or support tickets. This is real-world proof of what the RFP asks for — a system that fits the client's budget and priorities. Your team would experience the same smooth transition.</p>
       <div class="f5-case__icons">
-        <span>🔄 WordPress Migration</span>
-        <span>🔍 Improved SEO</span>
-        <span>⚡ Faster Performance</span>
-        <span>📄 Content &amp; Links Preserved</span>
+        <span>WordPress Migration</span>
+        <span>Improved SEO</span>
+        <span>Faster Performance</span>
+        <span>Content &amp; Links Preserved</span>
       </div>
       <div class="f5-case__links">
         <a class="btn btn--primary" href="https://www.adventure-international.com/" target="_blank" rel="noopener">Visit Site →</a>
@@ -914,10 +917,10 @@
       <p>Inspire Life Skills approached us to help them get off WordPress — their site had become expensive and hard to manage. At the time they only wanted Squarespace, and we rebuilt their entire website there in a week for 10% of what they originally paid to build the WordPress site.</p>
       <p>Now, they're considering a move to Lovable to make it easier to pull reports, track engagement on the site, and get donor insights — capabilities that matter a lot for an organization serving foster youth. We also helped tell their 20th anniversary story across video, email, social media, their website and a sold-out gala, turning the interviews into a reusable library of stories, quotes and content they still use.</p>
       <div class="f5-case__icons">
-        <span>🔄 WordPress → Squarespace</span>
-        <span>📊 Considering Lovable for Reporting</span>
-        <span>💵 90% Cost Reduction</span>
-        <span>🎬 Anniversary Storytelling</span>
+        <span>WordPress to Squarespace</span>
+        <span>Considering Lovable for Reporting</span>
+        <span>90% Cost Reduction</span>
+        <span>Anniversary Storytelling</span>
       </div>
       <div class="f5-case__links">
         <a class="btn btn--primary" href="https://www.inspirelifeskills.org/" target="_blank" rel="noopener">Visit Site →</a>
@@ -946,10 +949,10 @@
       <p>For MidSouth Development District — a public regional organization serving six counties and 38 municipalities — WordPress became too hard for staff to manage. We migrated them to Squarespace so they could handle everyday updates confidently again. We rebuilt the tourism website on a maintainable platform, migrated content, protected SEO and improved itineraries, maps and events. We also created an event submission and review workflow for community partners.</p>
       <p>This shows we understand when a platform stops working for a team and know how to move to something simpler and more reliable. Your staff will experience the same confidence with Lovable.</p>
       <div class="f5-case__icons">
-        <span>🔄 WordPress → Squarespace</span>
-        <span>🔍 SEO Protection</span>
-        <span>🗺️ Maps &amp; Itineraries</span>
-        <span>📝 Event Submission Workflow</span>
+        <span>WordPress to Squarespace</span>
+        <span>SEO Protection</span>
+        <span>Maps &amp; Itineraries</span>
+        <span>Event Submission Workflow</span>
       </div>
       <div class="f5-case__links">
         <a class="btn btn--primary" href="https://www.bluesbackroads.com/" target="_blank" rel="noopener">Visit Site →</a>
@@ -958,7 +961,7 @@
   </div>
 </section>
 
-<section class="f5-case f5-case--dark" aria-label="Pitcairn Islands: Tourism + Government">
+<section class="f5-case f5-case--light" aria-label="Pitcairn Islands: Tourism + Government">
   <div class="f5-case__grid f5-case__grid--rev">
     <div class="f5-case__visual">
       <div class="f5-browser f5-browser--navy f5-site-carousel" data-carousel="pitcairn-sites">
@@ -992,10 +995,10 @@
       <p class="f5-case__sub">Full-service partnership, 10 years and counting</p>
       <p>We manage both visitpitcairn.pn (tourism board) and government.pn (official government website) for one of the world's most remote communities — full-service, across both sites, for the last 10 years. Large, content-rich sites with complex navigation, booking information, travel and immigration guidance, shipping schedules, community content, SEO, analytics, email, forms and ongoing public updates. Currently in talks to rebuild the new tourism site.</p>
       <div class="f5-case__icons">
-        <span>🗂️ Two Public Websites</span>
-        <span>🧭 Complex Navigation</span>
-        <span>🔍 SEO &amp; Analytics</span>
-        <span>🛠️ 10 Years of Ongoing Support</span>
+        <span>Two Public Websites</span>
+        <span>Complex Navigation</span>
+        <span>SEO &amp; Analytics</span>
+        <span>10 Years of Ongoing Support</span>
       </div>
       <div class="f5-case__links">
         <a class="btn btn--primary" href="https://www.visitpitcairn.pn/" target="_blank" rel="noopener">Tourism Site →</a>
@@ -1023,38 +1026,13 @@
     <h2>What a New First 5 OC Site Could Look Like</h2>
     <p>Organized around what people actually need to accomplish — not around program names. Here's a demo of the "Ask Us Anything" tool we'd explore for First 5 OC.</p>
   </div>
-  <div class="f5-demo__layout">
-    <ul class="f5-demo__list">
-      <li>Visitors ask everyday questions in their own words — no need to know program names like "HubCAP" or "CalWORKs."</li>
-      <li>Answers are pulled only from approved First 5 OC content, so families and partners always get accurate, sanctioned information.</li>
-      <li>Every answer links directly to the right page, resource or staff contact — turning a question into a next step.</li>
-      <li>Reports and public documents become easier to search and use, instead of sitting in a buried PDF archive.</li>
-      <li>The same approach we're piloting for the Baldrige Alliance — real, working experience with this exact kind of tool.</li>
-    </ul>
-    <div class="f5-demo__mock">
-      <div class="chat-header">
-        <div class="chat-avatar-icon"></div>
-        <div>
-          <div class="chat-name">Ask Us Anything</div>
-          <div class="chat-org">First 5 Orange County</div>
-        </div>
-      </div>
-      <div class="chat-body">
-        <div class="chat-bubble chat-bubble--sys">Hi! Ask me anything about First 5 OC programs, resources or reports.</div>
-        <div class="chat-bubble chat-bubble--usr">How do I get help paying for preschool?</div>
-        <div class="chat-bubble chat-bubble--sys">First 5 OC helps connect families with preschool funding through our Early Learning programs. Based on your child's age, here's where to start:</div>
-        <div class="chat-options">
-          <div class="chat-opt">See Early Learning eligibility →</div>
-          <div class="chat-opt">Find a program near me →</div>
-          <div class="chat-opt">Talk to a Family Resource Navigator →</div>
-        </div>
-        <div class="chat-match">
-          <div class="chat-match__label">SOURCED FROM</div>
-          <div class="chat-match__val">Early Learning Program Guide (2026)</div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <ul class="f5-demo__list">
+    <li>Visitors ask everyday questions in their own words — no need to know program names like "HubCAP" or "CalWORKs."</li>
+    <li>Answers are pulled only from approved First 5 OC content, so families and partners always get accurate, sanctioned information.</li>
+    <li>Every answer links directly to the right page, resource or staff contact — turning a question into a next step.</li>
+    <li>Reports and public documents become easier to search and use, instead of sitting in a buried PDF archive.</li>
+    <li>The same approach we're piloting for the Baldrige Alliance — real, working experience with this exact kind of tool.</li>
+  </ul>
 </section>
 
 <!-- ============ TWO REDESIGN CONCEPTS ============ -->
@@ -1065,12 +1043,37 @@
     <p>A different way to organize the new First 5 OC site around what visitors are actually trying to do — find support, understand your work, or get involved — instead of around program names. It includes a working demo of the "Ask a Question" tool, which doubles as an FAQ builder: every question it fields over time becomes a candidate for the site's public FAQ page. Try the full site below first, then scroll down for another design direction.</p>
   </div>
 
-  <div class="f5-concept-feature">
+  <div class="f5-concept-feature f5-concept-feature--wide">
     <span class="f5-concept-card__badge">Live, Clickable Prototype</span>
-    <h3>Demo the Full Site</h3>
-    <p>A full multi-page prototype you can actually click through — homepage, resources, about, staff directory, and a live "Ask First 5 OC" popup you can try right now. Built to show how the reorganized navigation and content would actually feel to use.</p>
-    <div class="f5-concept-card__links">
-      <a class="btn btn--primary btn--lg" href="first5oc-concept-a/index.html" target="_blank" rel="noopener">Open the Live Prototype →</a>
+    <h3>Explore the Public Site and Staff Admin Portal</h3>
+    <p>This is just a mockup to show how we would reorganize the public-facing site so visitors get where they're going faster — and how the staff of First 5 OC would log in to make changes, edit pages, create new pages and more (spoiler: it looks a lot like WordPress). Try both below, or open either in a new tab.</p>
+    <div class="f5-live-demo">
+      <div class="f5-live-demo__pane">
+        <div class="f5-live-demo__label">Public Website</div>
+        <div class="f5-browser">
+          <div class="f5-browser__bar">
+            <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+            <div class="f5-browser__url">first5oc-concept-a</div>
+          </div>
+          <iframe class="f5-live-demo__frame" src="first5oc-concept-a/index.html" loading="lazy" title="Public site prototype"></iframe>
+        </div>
+        <div class="f5-concept-card__links">
+          <a class="btn btn--primary" href="first5oc-concept-a/index.html" target="_blank" rel="noopener">Open in a New Tab →</a>
+        </div>
+      </div>
+      <div class="f5-live-demo__pane">
+        <div class="f5-live-demo__label">Staff Admin Portal</div>
+        <div class="f5-browser">
+          <div class="f5-browser__bar">
+            <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+            <div class="f5-browser__url">first5oc-concept-a/admin</div>
+          </div>
+          <iframe class="f5-live-demo__frame" src="first5oc-concept-a/admin.html" loading="lazy" title="Staff admin portal prototype"></iframe>
+        </div>
+        <div class="f5-concept-card__links">
+          <a class="btn btn--primary" href="first5oc-concept-a/admin.html" target="_blank" rel="noopener">Open in a New Tab →</a>
+        </div>
+      </div>
     </div>
   </div>
 
