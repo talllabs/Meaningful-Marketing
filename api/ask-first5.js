@@ -16,7 +16,7 @@ ABOUT THIS PAGE
   practical technology, with support that continues well beyond launch. Below
   the intro, the page is signed "— Ally & Brad."
 
-SIX CASE STUDIES SHOWN ON THE PAGE
+FIVE CASE STUDIES SHOWN ON THE PAGE
 
 1. The Sigmund Project (Marina del Rey, CA) — A nonprofit network serving more
    than 10,000 tourism professionals worldwide. Nonprofit Brand, Platform &
@@ -35,20 +35,22 @@ SIX CASE STUDIES SHOWN ON THE PAGE
    https://www.thesigmundproject.org/
 
 2. Baldrige Alliance (Washington, D.C.) — A 501(c)(3) nonprofit connecting
-   performance-excellence programs across the United States. Currently being
-   rebuilt from the ground up on Lovable, the exact platform recommended for
-   First 5 OC, launching mid-October. Meaningful Marketing is replacing its
-   WordPress site with a custom platform that includes a national directory,
+   performance-excellence programs nationwide. Currently being rebuilt from
+   the ground up on Lovable, the exact platform recommended for First 5 OC,
+   launching mid-October. Meaningful Marketing is replacing its WordPress
+   site with a custom Lovable platform that includes a national directory,
    interactive map, news, events, documents and simple staff editing tools,
-   while protecting important web addresses and search visibility during the
-   move. For First 5 OC, this is direct, current, hands-on experience
-   delivering the same type of public website, content migration and staff
-   portal requested in the RFP. Lovable looks familiar like WordPress but is
-   more reliable, with simpler staff editing tools. The page lets visitors
-   compare the current site and the new staging site side by side. Tags: New
-   Platform (Lovable), SEO & Links Preserved, Full Rebuild, Staff Editing
-   Tools. Staging site: https://baldrige-alliance.lovable.app/ — Current
-   site: https://baldrigealliance.org/
+   while migrating all content and preserving important URLs, links and
+   search visibility. For First 5 OC, this is direct, current, hands-on
+   experience delivering the same type of public website, content migration
+   and staff portal requested in the RFP. Lovable looks familiar like
+   WordPress but is more reliable, with simpler staff editing tools.
+   Meaningful Marketing would also be happy to demonstrate the public
+   website and staff portal during the selection process. The page lets
+   visitors compare the current site and the new staging site side by side.
+   Tags: New Platform (Lovable), SEO & Links Preserved, Full Rebuild, Staff
+   Editing Tools. Staging site: https://baldrige-alliance.lovable.app/ —
+   Current site: https://baldrigealliance.org/
 
 3. Adventure International (Venice Beach, CA) — A travel company bringing
    several expedition brands and decades of content into one website.
@@ -67,26 +69,19 @@ SIX CASE STUDIES SHOWN ON THE PAGE
 
 4. Inspire Life Skills (Corona, CA) — A 501(c)(3) nonprofit serving young
    people who have experienced foster care or homelessness. Meaningful
-   Marketing rebuilt its website on Squarespace for approximately 10 percent
-   of the original WordPress build cost, and created a reusable library of
-   stories for its 20th anniversary campaign (video, email, social media,
-   website, a sold-out gala). They're now considering a move to Lovable for
-   easier reporting, engagement tracking and donor insights. For First 5 OC,
+   Marketing rebuilt its website on Squarespace in one week for approximately
+   10 percent of the original WordPress build cost. The organization is now
+   considering Lovable for easier reporting, engagement tracking and donor
+   insights. Meaningful Marketing also helped share its 20th anniversary
+   story through video, email, social media, the website and a sold-out
+   gala, creating a reusable library of stories and content. For First 5 OC,
    this shows how Meaningful Marketing makes nonprofit websites easier to
    manage while helping an organization clearly communicate its impact. Tags:
    WordPress to Squarespace, Considering Lovable for Reporting, 90% Cost
    Reduction, Anniversary Storytelling. Website:
    https://www.inspirelifeskills.org/
 
-5. Blues Backroads (Memphis, TN) — Client: MidSouth Development District, a
-   public regional organization serving six counties and 38 municipalities.
-   WordPress had become too hard for staff to manage, so Meaningful Marketing
-   migrated the regional tourism site to Squarespace. They migrated content,
-   protected SEO rankings, improved maps/itineraries/events, and built an event
-   submission and review workflow for community partners. Tags: WordPress to
-   Squarespace, SEO Protection, Maps & Itineraries, Event Submission Workflow.
-
-6. Pitcairn Islands: Tourism + Government — The official travel and
+5. Pitcairn Islands: Tourism + Government — The official travel and
    public-information websites for one of the world's most remote
    communities. Over a 10-year partnership, Meaningful Marketing moved the
    tourism site from a limited custom system to one that island staff can
@@ -106,16 +101,17 @@ SIX CASE STUDIES SHOWN ON THE PAGE
 
 More of Meaningful Marketing's work: https://www.meaningfulmarketinghouse.com/
 
-WHY THESE EXAMPLES MATTER (per the page)
-- Together, these six projects show Meaningful Marketing can organize complex
-  information, serve multiple audiences, migrate and maintain content, create
-  useful digital tools, train client teams, and stay involved after launch.
-- The Baldrige Alliance and Adventure International projects are especially
-  relevant because they show current, hands-on, proven experience building and
-  migrating to Lovable — the exact platform recommended for First 5 OC. Lovable
-  looks familiar like WordPress but is more reliable and doesn't break.
-- Meaningful Marketing aims to leave clients with a system they can confidently
-  own themselves.
+WHY WE CHOSE THESE EXAMPLES (per the page)
+- These projects show how Meaningful Marketing organizes complex information,
+  serves different audiences, migrates content, and gives staff simple tools
+  they can confidently manage.
+- Baldrige Alliance and Adventure International are especially relevant
+  because both are moving from WordPress to Lovable. Adventure
+  International's completed migration delivered faster performance, improved
+  search visibility and easier staff updates.
+- The page then invites the visitor to keep scrolling for a creative mockup —
+  to see what a new First 5 OC public website and staff portal could look
+  like.
 
 WHAT A NEW FIRST 5 OC SITE COULD LOOK LIKE
 - The page includes a live, clickable prototype ("Explore the Public Site and
