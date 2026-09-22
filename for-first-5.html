@@ -115,26 +115,6 @@
       padding: 0 20px;
     }
 
-    /* ============ AGENCY-STYLE PORTFOLIO SHOWCASE ============ */
-    .f5-portfolio-intro {
-      max-width: 700px;
-      margin: 0 auto 8px;
-      text-align: center;
-      padding: 48px 20px 0;
-    }
-    .f5-portfolio-intro h2 {
-      margin: 0 0 10px;
-      font-size: clamp(22px, 2.8vw, 32px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .f5-portfolio-intro p {
-      margin: 0;
-      font-size: 15px;
-      line-height: 1.6;
-      color: var(--text-muted);
-    }
-
     .f5-case {
       padding: clamp(48px, 6vw, 80px) 0;
     }
@@ -478,66 +458,15 @@
       text-transform: uppercase;
     }
     .f5-demo__head h2 {
-      margin: 0 0 14px;
+      margin: 0;
       font-size: clamp(24px, 3.4vw, 38px);
       font-weight: 700;
       letter-spacing: -0.02em;
     }
-    .f5-demo__head p {
-      margin: 0;
-      font-size: 15.5px;
-      line-height: 1.65;
-      color: var(--text-muted);
-    }
-    .f5-demo__list {
-      list-style: none;
-      margin: 0 auto;
-      padding: 0;
-      max-width: 720px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    .f5-demo__list li {
-      font-size: 15px;
-      line-height: 1.6;
-      color: var(--text-body);
-      padding-left: 30px;
-      position: relative;
-    }
-    .f5-demo__list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 8px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--teal-dark);
-    }
-
     /* ============ TWO REDESIGN CONCEPTS ============ */
     .f5-concepts {
       padding: clamp(56px, 7vw, 96px) 0;
       background: var(--off-white);
-    }
-    .f5-concepts__head {
-      max-width: 760px;
-      margin: 0 auto 44px;
-      text-align: center;
-      padding: 0 20px;
-    }
-    .f5-concepts__head h2 {
-      margin: 0 0 12px;
-      font-size: clamp(24px, 3vw, 34px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .f5-concepts__head p {
-      margin: 0;
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--text-muted);
     }
     .f5-concept-feature {
       max-width: 760px;
@@ -579,18 +508,29 @@
       color: var(--teal-dark);
     }
     .f5-live-demo .f5-browser { display: flex; flex-direction: column; }
+    .f5-live-demo__frame-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1440 / 900;
+      overflow: hidden;
+      background: #fff;
+    }
     .f5-live-demo__frame {
       display: block;
-      width: 100%;
-      height: 460px;
+      width: 1440px;
+      height: 900px;
       border: 0;
       background: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scale(var(--f5-frame-scale, 0.34));
+      transform-origin: 0 0;
     }
     .f5-live-demo .f5-concept-card__links { margin: 14px 0 0; justify-content: flex-start; }
 
     @media (max-width: 900px) {
       .f5-live-demo { grid-template-columns: 1fr; }
-      .f5-live-demo__frame { height: 380px; }
     }
 
     .f5-concept-card__badge {
@@ -677,15 +617,10 @@
   <div class="container">
     <span class="eyebrow">Prepared for First 5 Orange County</span>
     <h1>Selected Website Portfolio</h1>
-    <p>Relevant strategy, design, development and long-term support — real websites we've built and migrated for clients like you.</p>
+    <p>We build websites that are welcoming, easy to use and easy for teams to manage. Our work brings together thoughtful design, clear content and practical technology, with support that continues well beyond launch.</p>
+    <p>Below are a few recent projects that reflect the kind of work we would bring to First 5 Orange County.</p>
   </div>
 </section>
-
-<!-- ============ PORTFOLIO SHOWCASE ============ -->
-<div class="f5-portfolio-intro">
-  <h2>A Sample of Our Website Work</h2>
-  <p>Six recent projects — new brands, platform migrations, community platforms and long-term partnerships — each one relevant to what First 5 OC needs next.</p>
-</div>
 
 <section class="f5-case f5-case--off" aria-label="The Sigmund Project">
   <div class="f5-case__grid">
@@ -938,25 +873,11 @@
   <div class="f5-demo__head">
     <span class="eyebrow">A Mockup of What's Possible</span>
     <h2>What a New First 5 OC Site Could Look Like</h2>
-    <p>Organized around what people actually need to accomplish — not around program names. Here's a demo of the "Ask Us Anything" tool we'd explore for First 5 OC.</p>
   </div>
-  <ul class="f5-demo__list">
-    <li>Visitors ask everyday questions in their own words — no need to know program names like "HubCAP" or "CalWORKs."</li>
-    <li>Answers are pulled only from approved First 5 OC content, so families and partners always get accurate, sanctioned information.</li>
-    <li>Every answer links directly to the right page, resource or staff contact — turning a question into a next step.</li>
-    <li>Reports and public documents become easier to search and use, instead of sitting in a buried PDF archive.</li>
-    <li>The same approach we're piloting for the Baldrige Alliance — real, working experience with this exact kind of tool.</li>
-  </ul>
 </section>
 
 <!-- ============ TWO REDESIGN CONCEPTS ============ -->
 <section class="f5-concepts">
-  <div class="f5-concepts__head">
-    <span class="eyebrow">A Starting Point, Not A Final Answer</span>
-    <h2>Here's An Idea for How the Site Could Be Restructured</h2>
-    <p>A different way to organize the new First 5 OC site around what visitors are actually trying to do — find support, understand your work, or get involved — instead of around program names. It includes a working demo of the "Ask a Question" tool, which doubles as an FAQ builder: every question it fields over time becomes a candidate for the site's public FAQ page. Try the full site below first, then scroll down for another design direction.</p>
-  </div>
-
   <div class="f5-concept-feature f5-concept-feature--wide">
     <span class="f5-concept-card__badge">Live, Clickable Prototype</span>
     <h3>Explore the Public Site and Staff Admin Portal</h3>
@@ -969,7 +890,9 @@
             <div class="f5-browser__dots"><span></span><span></span><span></span></div>
             <div class="f5-browser__url">first5oc-concept-a</div>
           </div>
-          <iframe class="f5-live-demo__frame" src="first5oc-concept-a/index.html" loading="lazy" title="Public site prototype"></iframe>
+          <div class="f5-live-demo__frame-wrap">
+            <iframe class="f5-live-demo__frame" src="first5oc-concept-a/index.html" loading="lazy" title="Public site prototype"></iframe>
+          </div>
         </div>
         <div class="f5-concept-card__links">
           <a class="btn btn--primary" href="first5oc-concept-a/index.html" target="_blank" rel="noopener">Open in a New Tab →</a>
@@ -982,7 +905,9 @@
             <div class="f5-browser__dots"><span></span><span></span><span></span></div>
             <div class="f5-browser__url">first5oc-concept-a/admin</div>
           </div>
-          <iframe class="f5-live-demo__frame" src="first5oc-concept-a/admin.html" loading="lazy" title="Staff admin portal prototype"></iframe>
+          <div class="f5-live-demo__frame-wrap">
+            <iframe class="f5-live-demo__frame" src="first5oc-concept-a/admin.html" loading="lazy" title="Staff admin portal prototype"></iframe>
+          </div>
         </div>
         <div class="f5-concept-card__links">
           <a class="btn btn--primary" href="first5oc-concept-a/admin.html" target="_blank" rel="noopener">Open in a New Tab →</a>
@@ -1194,6 +1119,28 @@
         });
       });
     });
+  })();
+
+  /* ---- Scale desktop-width live-demo iframes to fit their panel ---- */
+  (function () {
+    var wraps = document.querySelectorAll('.f5-live-demo__frame-wrap');
+    if (!wraps.length) return;
+
+    function rescale() {
+      wraps.forEach(function (wrap) {
+        var frame = wrap.querySelector('.f5-live-demo__frame');
+        if (!frame) return;
+        var scale = wrap.getBoundingClientRect().width / frame.offsetWidth;
+        wrap.style.setProperty('--f5-frame-scale', scale);
+      });
+    }
+
+    rescale();
+    window.addEventListener('resize', rescale);
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(rescale);
+      wraps.forEach(function (wrap) { ro.observe(wrap); });
+    }
   })();
 </script>
 </body>
