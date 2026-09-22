@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRDL74J04V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZRDL74J04V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Concepts for Alan Elliott Merschen | Meaningful Marketing</title>
+  <meta name="description" content="Selected design concepts from Meaningful Marketing, prepared for Alan Elliott Merschen." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ============ GATE ============ */
+    .f5-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--off-white, #f4f1ea);
+      padding: 20px;
+    }
+    .f5-gate__box {
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      background: var(--white, #fff);
+      border-radius: var(--radius, 18px);
+      box-shadow: 0 24px 64px rgba(12, 12, 12, 0.14);
+      padding: 40px 32px;
+      border: 1px solid rgba(12, 12, 12, 0.06);
+    }
+    .f5-gate__box h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .f5-gate__box p {
+      margin: 0 0 22px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+    .f5-gate__box input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(12, 12, 12, 0.15);
+      font-family: inherit;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+    .f5-gate__error {
+      display: none;
+      color: #b3261e;
+      font-size: 13px;
+      margin: -6px 0 14px;
+    }
+    body.f5-locked .f5-page-content { display: none; }
+    body:not(.f5-locked) .f5-gate { display: none; }
+
+    /* ============ PAGE ============ */
+    .nav {
+      background: var(--black) !important;
+      opacity: 1 !important;
+      transform: none !important;
+      pointer-events: auto !important;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+    @media (max-width: 768px) {
+      .nav__logo { display: block !important; }
+      .nav__inner { justify-content: space-between !important; }
+    }
+
+    .f5-hero {
+      position: relative;
+      padding: calc(var(--nav-h) + 64px) 0 56px;
+      text-align: center;
+      background:
+        radial-gradient(560px 320px at 14% 0%, rgba(212, 160, 32, 0.1), transparent 60%),
+        radial-gradient(620px 360px at 88% 8%, rgba(30, 138, 134, 0.08), transparent 60%),
+        var(--white);
+      overflow: hidden;
+    }
+    .f5-hero__stripe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--coral) 0 16.6%, var(--amber) 16.6% 33.3%, var(--gold) 33.3% 50%, var(--teal-dark) 50% 66.6%, var(--forest) 66.6% 83.3%, var(--navy) 83.3% 100%);
+    }
+    .f5-hero .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--teal-dark);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .f5-hero .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--gold);
+    }
+    .f5-hero h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(38px, 7vw, 68px);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+      font-weight: 700;
+    }
+    .f5-hero p {
+      max-width: 720px;
+      margin: 18px auto 0;
+      font-size: clamp(16px, 1.6vw, 18px);
+      line-height: 1.65;
+      color: var(--text-muted);
+      padding: 0 20px;
+    }
+
+    /* ============ CONCEPT MOCKUP ============ */
+    .f5-concepts {
+      padding: 8px 0 clamp(64px, 7vw, 100px);
+      background: var(--off-white);
+    }
+    .f5-concept-feature {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: clamp(32px, 4vw, 44px) clamp(24px, 4vw, 40px);
+      background: var(--white);
+      border-radius: 20px;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 18px 50px rgba(12, 12, 12, 0.08);
+      text-align: center;
+    }
+    .f5-concept-card__badge {
+      display: inline-block;
+      padding: 7px 15px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .f5-concept-feature h3 {
+      margin: 12px 0 8px;
+      font-size: clamp(22px, 2.8vw, 30px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .f5-concept-feature p {
+      max-width: 640px;
+      margin: 0 auto 20px;
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* Browser-chrome mockup */
+    .f5-browser {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 28px 70px rgba(12, 12, 12, 0.22);
+      background: #fff;
+      border-top: 5px solid var(--gold);
+      text-align: left;
+    }
+    .f5-browser__bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      background: #ececec;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .f5-browser__dots { display: flex; gap: 6px; flex-shrink: 0; }
+    .f5-browser__dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #d6d6d6;
+    }
+    .f5-browser__dots span:nth-child(1) { background: #ec6a5e; }
+    .f5-browser__dots span:nth-child(2) { background: #f4bf4f; }
+    .f5-browser__dots span:nth-child(3) { background: #61c554; }
+    .f5-browser__url {
+      flex: 1;
+      background: #fff;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: #7a7a7a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .f5-concept-frame-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1440 / 900;
+      overflow: hidden;
+      background: #fff;
+    }
+    .f5-concept-frame {
+      display: block;
+      width: 1440px;
+      height: 900px;
+      border: 0;
+      background: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scale(var(--f5-frame-scale, 0.5));
+      transform-origin: 0 0;
+    }
+
+    .f5-concept-feature__cta {
+      margin-top: 26px;
+    }
+
+    @media (max-width: 700px) {
+      .f5-concept-frame-wrap { aspect-ratio: 9 / 16; }
+    }
+
+  </style>
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="f5-locked">
+
+<!-- ============ PASSWORD GATE ============ -->
+<div class="f5-gate" id="f5Gate">
+  <div class="f5-gate__box">
+    <h1>Design Concepts for Alan Elliott Merschen</h1>
+    <p>Prepared by Meaningful Marketing. Please enter the password to continue.</p>
+    <form id="f5GateForm" autocomplete="off">
+      <input type="password" id="f5GatePw" placeholder="Password" autocomplete="off" />
+      <p class="f5-gate__error" id="f5GateError">That password isn't quite right — please try again.</p>
+      <button type="submit" class="btn btn--gold btn--lg" style="width:100%;">Enter →</button>
+    </form>
+  </div>
+</div>
+
+<div class="f5-page-content">
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--visible scrolled" id="nav">
+  <div class="nav__inner container">
+    <a href="index.html" class="nav__logo">
+      <div class="logo-mark">
+        <span class="logo-mark__top">MEANINGFUL</span>
+        <span class="logo-mark__bot">MARKETING</span>
+      </div>
+    </a>
+    <button class="btn btn--nav js-open-contact">Contact Us</button>
+    <button class="nav__burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">
+    <span class="mobile-menu__close-label">CLOSE MENU</span>
+    <span class="mobile-menu__close-x">✕</span>
+  </button>
+  <ul>
+    <li>
+      <a href="index.html" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">GO TO</span>
+        <span class="mobile-nav-stamp__main">HOMEPAGE</span>
+      </a>
+    </li>
+    <li>
+      <a href="#contact" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">CONTACT</span>
+        <span class="mobile-nav-stamp__main">US</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="f5-hero">
+  <div class="f5-hero__stripe"></div>
+  <div class="container">
+    <span class="eyebrow">Prepared for Alan Elliott Merschen</span>
+    <h1>Selected Design Concept</h1>
+    <p>A first look at a personal site built around your work as a speaker, advisor and board member — designed to feel editorial, warm and credible. Below is Option A, explore it directly or open the full site in a new tab.</p>
+  </div>
+</section>
+
+<!-- ============ CONCEPT MOCKUP ============ -->
+<section class="f5-concepts">
+  <div class="f5-concept-feature">
+    <span class="f5-concept-card__badge">Option A — Sophie-Inspired</span>
+    <h3>Editorial, Warm &amp; Credible</h3>
+    <p>A quiet, editorial layout with a serif display face, generous photography and a warm paper-and-ink palette — built to introduce you as a speaker, advisor and board member without feeling like a typical corporate bio site.</p>
+    <div class="f5-browser">
+      <div class="f5-browser__bar">
+        <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+        <div class="f5-browser__url">merschen-concept-a</div>
+      </div>
+      <div class="f5-concept-frame-wrap">
+        <iframe class="f5-concept-frame" src="merschen-concept-a/index.html" loading="lazy" title="Option A concept prototype"></iframe>
+      </div>
+    </div>
+    <div class="f5-concept-feature__cta">
+      <a class="btn btn--primary btn--lg" href="merschen-concept-a/index.html" target="_blank" rel="noopener">Explore Full Site →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="contact">
+  <div class="cta__inner">
+    <p class="cta__prelude reveal-up">Let's make<br><span class="cta__prelude-teal">something</span></p>
+    <h2 class="cta__word reveal-up">MEANINGFUL.</h2>
+    <div class="cta__schedule reveal-up">
+      <p>Schedule a time that works for you <button class="cta__here js-open-contact">here</button></p>
+      <svg class="cta__arrow" viewBox="0 0 180 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 170 8 Q 185 40 140 55 Q 100 68 30 52" stroke="#D4A020" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M 38 45 L 28 53 L 40 58" stroke="#D4A020" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="logo-mark logo-mark--sm">
+          <span class="logo-mark__top">MEANINGFUL</span>
+          <span class="logo-mark__bot">MARKETING</span>
+        </div>
+        <p>Serving mission-driven organizations since 2009.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <button class="footer__nav-link js-open-contact">Contact</button>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2009–2026 Meaningful Marketing House. All rights reserved.</span>
+      <span>meaningfulmarketinghouse.com</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ VIDEO LIGHTBOX (kept, unused, so js/script.js's global listeners don't error) ============ -->
+<div class="video-overlay" id="videoOverlay" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+  <button class="video-overlay__close" id="videoClose" aria-label="Close video">✕</button>
+  <div class="video-overlay__frame">
+    <iframe id="videoFrame" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>
+    <video id="videoNative" controls hidden playsinline muted></video>
+  </div>
+</div>
+
+<!-- ============ CONTACT MODAL ============ -->
+<div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal modal--split">
+    <button class="modal__close" id="modalClose" aria-label="Close">✕</button>
+
+    <!-- Mobile chooser screen (shown first on mobile) -->
+    <div class="modal__chooser" id="modalChooser">
+      <h2 class="modal__heading">Let's connect!</h2>
+      <p class="modal__sub">How would you like to reach us?</p>
+      <div class="modal__choice-grid">
+        <button class="modal__choice-btn" id="chooseCalendly">
+          <span class="modal__choice-icon">📅</span>
+          <span class="modal__choice-title">Schedule a Call</span>
+          <span class="modal__choice-desc">Pick a time that works for you — no pressure</span>
+        </button>
+        <button class="modal__choice-btn" id="chooseForm">
+          <span class="modal__choice-icon">✉️</span>
+          <span class="modal__choice-title">Send a Message</span>
+          <span class="modal__choice-desc">We'll reply within one business day</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Back button (mobile panel mode only) -->
+    <button class="modal__back-btn" id="modalBack">← Back</button>
+
+    <div class="modal__split">
+
+      <!-- LEFT: Calendly -->
+      <div class="modal__panel modal__panel--calendly">
+        <span class="eyebrow eyebrow--light">Book a Time</span>
+        <h2 class="modal__heading">Schedule an Intro Call</h2>
+        <p class="modal__sub">Pick a time that works for you — no pressure, just a friendly conversation about your goals.</p>
+        <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener" class="btn btn--gold btn--lg">Open Calendly to Book →</a>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="modal__or"><span>or</span></div>
+
+      <!-- RIGHT: Contact Form -->
+      <div class="modal__panel modal__panel--form">
+        <span class="eyebrow eyebrow--light">Send a Message</span>
+        <h2 class="modal__heading" id="modalTitle">Let's Make Something Meaningful</h2>
+        <p class="modal__sub">Tell us a little about your project and we'll be in touch shortly.</p>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label for="cf-name">Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="contact-form__field">
+              <label for="cf-email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="contact-form__field">
+            <label for="cf-org">Organization</label>
+            <input type="text" id="cf-org" name="organization" placeholder="Your organization" autocomplete="organization" />
+          </div>
+          <div class="contact-form__field">
+            <label for="cf-message">Message <span aria-hidden="true">*</span></label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Tell us about your project or goals…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold btn--lg contact-form__submit">Send Message →</button>
+        </form>
+        <div class="contact-form__success is-hidden" id="formSuccess">
+          <div class="contact-form__success-icon">✓</div>
+          <h3>Message sent!</h3>
+          <p>Thanks for reaching out — we'll be in touch within one business day.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div><!-- /.f5-page-content -->
+
+<script src="js/script.js"></script>
+<script>
+  (function () {
+    var CORRECT_PW = 'fyc';
+    var body = document.body;
+    var form = document.getElementById('f5GateForm');
+    var input = document.getElementById('f5GatePw');
+    var error = document.getElementById('f5GateError');
+    var STORAGE_KEY = 'merschen-page-unlocked';
+
+    try {
+      if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
+        body.classList.remove('f5-locked');
+      }
+    } catch (e) {}
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if ((input.value || '').trim().toLowerCase() === CORRECT_PW) {
+        body.classList.remove('f5-locked');
+        error.style.display = 'none';
+        try { sessionStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
+      } else {
+        error.style.display = 'block';
+        input.value = '';
+        input.focus();
+      }
+    });
+  })();
+
+  /* ---- Scale desktop-width concept iframe to fit its panel ---- */
+  (function () {
+    var wraps = document.querySelectorAll('.f5-concept-frame-wrap');
+    if (!wraps.length) return;
+
+    function rescale() {
+      wraps.forEach(function (wrap) {
+        var frame = wrap.querySelector('.f5-concept-frame');
+        if (!frame) return;
+        var scale = wrap.getBoundingClientRect().width / frame.offsetWidth;
+        wrap.style.setProperty('--f5-frame-scale', scale);
+      });
+    }
+
+    rescale();
+    window.addEventListener('resize', rescale);
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(rescale);
+      wraps.forEach(function (wrap) { ro.observe(wrap); });
+    }
+  })();
+</script>
+</body>
+</html>
