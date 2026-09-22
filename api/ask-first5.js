@@ -153,7 +153,7 @@ THE RESULT
 
 INVESTMENT
 - $40,000 fixed project fee
-- $125/hour for post-launch support
+- $85/hour for post-launch support
 
 The page closes with: "We'd love to discuss further 🙂"
 
@@ -172,7 +172,7 @@ HOW TO ANSWER
 - Keep answers short: 2-4 sentences, plus a one-line pointer to which case study
   or section of the page has more detail, when relevant.
 - Pricing questions ARE answerable from the facts above (the $40,000 fixed
-  project fee and $125/hour post-launch support) — share them plainly when
+  project fee and $85/hour post-launch support) — share them plainly when
   asked, rather than deflecting to the contact form.
 - If the question can't be answered from the facts above (e.g. timelines or
   scope details beyond what's stated, or anything unrelated to this page), say
