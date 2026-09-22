@@ -501,6 +501,137 @@
     }
     .f5-site-modal__actions .btn { text-decoration: none; }
 
+    /* Ask Us Anything trigger + bottom CTA */
+    .f5-ask-btn { background: var(--gold) !important; color: var(--black) !important; }
+    .f5-ask-cta {
+      padding: clamp(56px, 7vw, 88px) 0;
+      background: var(--off-white);
+      text-align: center;
+    }
+    .f5-ask-cta h2 {
+      margin: 0 0 12px;
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .f5-ask-cta p {
+      max-width: 560px;
+      margin: 0 auto 26px;
+      font-size: 15.5px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    /* Ask Us Anything modal */
+    .f5-ask-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9600;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      background: rgba(10, 10, 10, 0.82);
+      padding: 24px;
+      overflow-y: auto;
+    }
+    .f5-ask-modal.is-open { display: flex; }
+    .f5-ask-modal__inner {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      margin: 40px 0;
+      background: var(--white);
+      border-radius: var(--radius, 16px);
+      padding: 40px clamp(24px, 4vw, 40px) 34px;
+      text-align: center;
+    }
+    .f5-ask-modal__close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: transparent;
+      border: 0;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+    .f5-ask-modal__inner h2 {
+      margin: 6px 0 8px;
+      font-size: clamp(20px, 2.6vw, 26px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .f5-ask-modal__sub {
+      margin: 0 0 22px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .f5-ask-form {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .f5-ask-form__input {
+      flex: 1;
+      min-width: 0;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(12, 12, 12, 0.15);
+      font-family: inherit;
+      font-size: 14.5px;
+    }
+    .f5-ask-form__input:focus { outline: 2px solid var(--teal-dark); outline-offset: 1px; }
+    .f5-ask-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 6px;
+    }
+    .f5-ask-chip {
+      border: 1px solid rgba(12, 12, 12, 0.14);
+      background: var(--off-white);
+      color: var(--text-body);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+    }
+    .f5-ask-chip:hover { border-color: var(--teal-dark); color: var(--teal-dark); }
+    .f5-ask-chip[disabled] { opacity: 0.5; cursor: default; }
+    .f5-ask-answer {
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(12, 12, 12, 0.08);
+      text-align: left;
+    }
+    .f5-ask-answer__q {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--teal-dark);
+      margin-bottom: 8px;
+    }
+    .f5-ask-answer__q::before { content: "Q: "; }
+    .f5-ask-answer__a {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--text-body);
+      white-space: pre-line;
+    }
+    .f5-ask-answer__a.is-loading { color: var(--text-muted); font-style: italic; }
+    .f5-ask-answer__a.is-error { color: #b3261e; }
+    .f5-ask-modal__note {
+      margin: 22px 0 0;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 520px) {
+      .f5-ask-form { flex-direction: column; }
+    }
+
     @media (max-width: 900px) {
       .f5-compare { grid-template-columns: 1fr; }
       .f5-case__grid { grid-template-columns: 1fr; }
@@ -741,6 +872,7 @@
         <span class="logo-mark__bot">MARKETING</span>
       </div>
     </a>
+    <button class="btn btn--nav f5-ask-btn js-open-ask">Ask Us Anything</button>
     <button class="btn btn--nav js-open-contact">Contact Us</button>
     <button class="nav__burger" id="burger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -1092,6 +1224,15 @@
 
 </section>
 
+<!-- ============ ASK US ANYTHING (BOTTOM) ============ -->
+<section class="f5-ask-cta">
+  <div class="container">
+    <h2>Still Have a Question?</h2>
+    <p>Ask about any project on this page, the Lovable platform, or what a new First 5 OC site could look like — you'll get a plain-language answer pulled straight from this page.</p>
+    <button class="btn btn--primary btn--lg js-open-ask">Ask Us Anything →</button>
+  </div>
+</section>
+
 <!-- ============ CTA ============ -->
 <section class="cta" id="contact">
   <div class="cta__inner">
@@ -1215,6 +1356,35 @@
   </div>
 </div>
 
+<!-- ============ ASK US ANYTHING MODAL ============ -->
+<div class="f5-ask-modal" id="f5AskModal" role="dialog" aria-modal="true" aria-labelledby="f5AskTitle">
+  <div class="f5-ask-modal__inner">
+    <button class="f5-ask-modal__close" id="f5AskModalClose" aria-label="Close">✕</button>
+    <span class="eyebrow">Ask Us Anything</span>
+    <h2 id="f5AskTitle">What would you like to know?</h2>
+    <p class="f5-ask-modal__sub">Ask in your own words — the answer is pulled from this page's content and written in plain language.</p>
+
+    <form id="f5AskForm" class="f5-ask-form">
+      <input type="text" id="f5AskInput" class="f5-ask-form__input" placeholder="For example, what platform do you recommend for First 5 OC?" autocomplete="off" />
+      <button type="submit" class="btn btn--primary" id="f5AskSubmit">Ask</button>
+    </form>
+
+    <div class="f5-ask-suggestions" id="f5AskSuggestions">
+      <button type="button" class="f5-ask-chip">What platform do you recommend for First 5 OC, and why?</button>
+      <button type="button" class="f5-ask-chip">Which projects show you've worked with Lovable?</button>
+      <button type="button" class="f5-ask-chip">What would the staff admin portal let our team do?</button>
+      <button type="button" class="f5-ask-chip">Have you worked with a public agency like ours before?</button>
+    </div>
+
+    <div class="f5-ask-answer" id="f5AskAnswer" aria-live="polite" hidden>
+      <div class="f5-ask-answer__q" id="f5AskAnswerQ"></div>
+      <div class="f5-ask-answer__a" id="f5AskAnswerA"></div>
+    </div>
+
+    <p class="f5-ask-modal__note">This uses AI to answer from this page's content only — always double-check anything important, and reach out directly for specifics.</p>
+  </div>
+</div>
+
 </div><!-- /.f5-page-content -->
 
 <script src="js/script.js"></script>
@@ -1271,6 +1441,93 @@
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  })();
+
+  /* ---- Ask Us Anything modal ---- */
+  (function () {
+    var modal = document.getElementById('f5AskModal');
+    var closeBtn = document.getElementById('f5AskModalClose');
+    var form = document.getElementById('f5AskForm');
+    var input = document.getElementById('f5AskInput');
+    var submitBtn = document.getElementById('f5AskSubmit');
+    var chips = document.querySelectorAll('.f5-ask-chip');
+    var answerWrap = document.getElementById('f5AskAnswer');
+    var answerQ = document.getElementById('f5AskAnswerQ');
+    var answerA = document.getElementById('f5AskAnswerA');
+    if (!modal || !closeBtn || !form || !input) return;
+
+    function openModal() {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () { input.focus(); }, 50);
+    }
+    function closeModal() {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.js-open-ask').forEach(function (btn) {
+      btn.addEventListener('click', openModal);
+    });
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+
+    function setLoading(isLoading) {
+      submitBtn.disabled = isLoading;
+      chips.forEach(function (chip) { chip.disabled = isLoading; });
+      submitBtn.textContent = isLoading ? 'Asking…' : 'Ask';
+    }
+
+    function askQuestion(question) {
+      question = (question || '').trim();
+      if (!question) return;
+
+      answerWrap.hidden = false;
+      answerQ.textContent = question;
+      answerA.textContent = 'Thinking…';
+      answerA.className = 'f5-ask-answer__a is-loading';
+      setLoading(true);
+
+      fetch('/api/ask-first5', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: question }),
+      })
+        .then(function (res) {
+          return res.json().then(function (data) {
+            if (!res.ok) throw new Error(data && data.error ? data.error : 'Something went wrong.');
+            return data;
+          });
+        })
+        .then(function (data) {
+          answerA.textContent = data.answer || "Sorry, I couldn't come up with an answer to that.";
+          answerA.className = 'f5-ask-answer__a';
+        })
+        .catch(function (err) {
+          answerA.textContent = err && err.message ? err.message : 'Sorry, something went wrong. Please try again or use the contact form.';
+          answerA.className = 'f5-ask-answer__a is-error';
+        })
+        .finally(function () {
+          setLoading(false);
+        });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      askQuestion(input.value);
+    });
+
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        input.value = chip.textContent;
+        askQuestion(chip.textContent);
+      });
     });
   })();
 
