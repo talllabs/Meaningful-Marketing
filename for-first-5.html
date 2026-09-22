@@ -131,44 +131,21 @@
       font-weight: 700;
     }
     .f5-hero p {
-      max-width: 640px;
+      max-width: 900px;
       margin: 18px auto 0;
-      font-size: 16.5px;
-      line-height: 1.65;
+      font-size: clamp(20px, 2.4vw, 25px);
+      line-height: 1.6;
       color: var(--text-muted);
       padding: 0 20px;
     }
-    .f5-hero__stats {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin: 30px auto 0;
+    .f5-hero__signoff {
+      max-width: 900px;
+      margin: 24px auto 0;
       padding: 0 20px;
-      max-width: 700px;
-    }
-    .f5-hero__stats span {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 16px;
-      border-radius: 999px;
-      background: var(--white);
-      box-shadow: 0 6px 18px rgba(12, 12, 12, 0.07);
-      font-size: 13.5px;
+      font-size: clamp(18px, 2vw, 22px);
       font-weight: 700;
       color: var(--text-body);
     }
-    .f5-hero__stats span::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .f5-hero__stats span:nth-child(1)::before { background: var(--coral); }
-    .f5-hero__stats span:nth-child(2)::before { background: var(--forest); }
-    .f5-hero__stats span:nth-child(3)::before { background: var(--gold); }
 
     .f5-case {
       position: relative;
@@ -909,11 +886,7 @@
     <h1>Selected Website Portfolio</h1>
     <p>We build websites that are welcoming, easy to use and easy for teams to manage. Our work brings together thoughtful design, clear content and practical technology, with support that continues well beyond launch.</p>
     <p>Below are a few recent projects that reflect the kind of work we would bring to First 5 Orange County.</p>
-    <div class="f5-hero__stats">
-      <span>6 Recent Projects</span>
-      <span>3 Platform Migrations</span>
-      <span>10 Years of Ongoing Support</span>
-    </div>
+    <p class="f5-hero__signoff">— Ally &amp; Brad</p>
   </div>
 </section>
 
