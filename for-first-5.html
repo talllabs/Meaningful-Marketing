@@ -85,42 +85,124 @@
     }
 
     .f5-hero {
-      padding: calc(var(--nav-h) + 48px) 0 36px;
+      position: relative;
+      padding: calc(var(--nav-h) + 64px) 0 56px;
       text-align: center;
-      background: var(--off-white);
+      background:
+        radial-gradient(560px 320px at 14% 0%, rgba(212, 160, 32, 0.16), transparent 60%),
+        radial-gradient(620px 360px at 88% 8%, rgba(30, 138, 134, 0.14), transparent 60%),
+        var(--off-white);
+      overflow: hidden;
+    }
+    .f5-hero__stripe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--coral) 0 16.6%, var(--amber) 16.6% 33.3%, var(--gold) 33.3% 50%, var(--teal-dark) 50% 66.6%, var(--forest) 66.6% 83.3%, var(--navy) 83.3% 100%);
     }
     .f5-hero .eyebrow {
-      display: inline-block;
-      margin: 0 0 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
       color: var(--teal-dark);
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
+    .f5-hero .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--gold);
+    }
     .f5-hero h1 {
-      max-width: 860px;
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
       margin: 0 auto;
-      font-size: clamp(30px, 5vw, 54px);
-      line-height: 1.02;
-      letter-spacing: -0.03em;
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
       font-weight: 700;
     }
     .f5-hero p {
       max-width: 640px;
-      margin: 16px auto 0;
-      font-size: 15.5px;
-      line-height: 1.6;
+      margin: 18px auto 0;
+      font-size: 16.5px;
+      line-height: 1.65;
       color: var(--text-muted);
       padding: 0 20px;
     }
+    .f5-hero__stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 30px auto 0;
+      padding: 0 20px;
+      max-width: 700px;
+    }
+    .f5-hero__stats span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: var(--white);
+      box-shadow: 0 6px 18px rgba(12, 12, 12, 0.07);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-body);
+    }
+    .f5-hero__stats span::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .f5-hero__stats span:nth-child(1)::before { background: var(--coral); }
+    .f5-hero__stats span:nth-child(2)::before { background: var(--forest); }
+    .f5-hero__stats span:nth-child(3)::before { background: var(--gold); }
 
     .f5-case {
-      padding: clamp(48px, 6vw, 80px) 0;
+      position: relative;
+      padding: clamp(56px, 7vw, 96px) 0;
+      overflow: hidden;
     }
-    .f5-case--light { background: var(--white); }
-    .f5-case--off { background: var(--off-white); }
+    /* Accent color system: each case gets a distinct brand color */
+    .f5-case--acc-teal   { --f5-accent: var(--teal-dark); --f5-tint: #E7F3F2; }
+    .f5-case--acc-gold    { --f5-accent: var(--gold);      --f5-tint: #FBF3E1; }
+    .f5-case--acc-coral   { --f5-accent: var(--coral);     --f5-tint: #FBEEEC; }
+    .f5-case--acc-forest  { --f5-accent: var(--forest);    --f5-tint: #EAF3EE; }
+    .f5-case--acc-navy    { --f5-accent: var(--navy);      --f5-tint: #E9ECF3; }
+    .f5-case--acc-amber   { --f5-accent: var(--amber);     --f5-tint: #FDF2E4; }
+    .f5-case[class*="f5-case--acc"] { background: var(--f5-tint); }
+
+    .f5-case__num {
+      position: absolute;
+      top: clamp(-10px, -2vw, 10px);
+      right: clamp(-10px, 1vw, 40px);
+      font-size: clamp(140px, 18vw, 260px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      color: var(--f5-accent, var(--teal-dark));
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+      user-select: none;
+    }
+    .f5-case__grid--rev .f5-case__num { right: auto; left: clamp(-10px, 1vw, 40px); }
+
     .f5-case__grid {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: clamp(32px, 5vw, 64px);
@@ -134,27 +216,32 @@
 
     .f5-case__badge {
       display: inline-block;
-      margin-bottom: 14px;
-      padding: 5px 12px;
+      margin-bottom: 16px;
+      padding: 7px 15px;
       border-radius: 999px;
-      background: rgba(30, 138, 134, 0.1);
-      color: var(--teal-dark);
+      background: var(--f5-accent, var(--teal-dark));
+      color: var(--white);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+      box-shadow: 0 8px 20px rgba(12, 12, 12, 0.12);
     }
     .f5-case__info h3 {
-      margin: 0 0 6px;
-      font-size: clamp(24px, 3vw, 34px);
+      margin: 0 0 10px;
+      font-size: clamp(28px, 3.6vw, 42px);
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
     }
     .f5-case__sub {
-      margin: 0 0 16px;
+      display: inline-block;
+      margin: 0 0 18px;
+      padding-left: 14px;
+      border-left: 3px solid var(--f5-accent, var(--teal-dark));
       font-size: 15px;
-      font-weight: 600;
-      color: var(--teal-dark);
+      font-weight: 700;
+      color: var(--f5-accent, var(--teal-dark));
     }
     .f5-case__info p {
       margin: 0 0 14px;
@@ -170,11 +257,12 @@
     }
     .f5-case__icons span {
       font-size: 12.5px;
-      font-weight: 600;
-      padding: 6px 12px 6px 9px;
+      font-weight: 700;
+      padding: 7px 13px;
       border-radius: 999px;
-      background: rgba(12, 12, 12, 0.06);
-      color: var(--text-body);
+      background: var(--white);
+      border: 1.5px solid var(--f5-accent, var(--teal-dark));
+      color: var(--f5-accent, var(--teal-dark));
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -192,6 +280,12 @@
       overflow: hidden;
       box-shadow: 0 28px 70px rgba(12, 12, 12, 0.22);
       background: #fff;
+      border-top: 5px solid var(--f5-accent, var(--teal-dark));
+      transition: transform 0.25s var(--ease-out, ease), box-shadow 0.25s ease;
+    }
+    .f5-case__visual:hover .f5-browser {
+      transform: translateY(-6px) rotate(-0.4deg);
+      box-shadow: 0 40px 90px rgba(12, 12, 12, 0.28);
     }
     .f5-browser__bar {
       display: flex;
@@ -278,6 +372,8 @@
       padding-right: 20px;
     }
     .f5-case__intro {
+      position: relative;
+      z-index: 1;
       max-width: 760px;
       margin: 0 auto 36px;
       text-align: center;
@@ -288,6 +384,8 @@
     .f5-case__intro p { text-align: left; }
 
     .f5-compare {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
@@ -416,71 +514,117 @@
 
     /* ============ "WHY THESE MATTER" ============ */
     .f5-why {
-      padding: 56px 0;
-      background: var(--white);
+      padding: clamp(64px, 8vw, 100px) 0;
+      background: var(--off-white);
     }
-    .f5-why .container {
-      max-width: 760px;
-    }
+    .f5-why .container { max-width: 900px; }
     .f5-why h2 {
-      margin: 0 0 16px;
-      font-size: clamp(22px, 2.8vw, 30px);
+      margin: 0 0 40px;
+      font-size: clamp(26px, 3.4vw, 40px);
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      text-align: center;
+      color: var(--text-body);
+    }
+    .f5-why__stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 0 0 40px;
+    }
+    .f5-why__stat {
+      padding: 28px 20px;
+      border-radius: 16px;
+      background: var(--white);
+      box-shadow: 0 14px 40px rgba(12, 12, 12, 0.08);
       text-align: center;
     }
+    .f5-why__stat strong {
+      display: block;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .f5-why__stat:nth-child(1) strong { color: var(--coral); }
+    .f5-why__stat:nth-child(2) strong { color: var(--gold); }
+    .f5-why__stat:nth-child(3) strong { color: var(--teal-dark); }
+    .f5-why__stat span {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
     .f5-why p {
+      max-width: 720px;
+      margin: 0 auto 14px;
       font-size: 15.5px;
       line-height: 1.7;
       color: var(--text-muted);
-      margin: 0 0 14px;
+    }
+    .f5-why a { color: var(--teal-dark); font-weight: 700; }
+
+    @media (max-width: 620px) {
+      .f5-why__stats { grid-template-columns: 1fr; }
     }
 
     /* ============ ASK US ANYTHING MOCKUP ============ */
     .f5-demo {
-      padding: 64px 0 80px;
-      background: var(--off-white);
+      padding: 72px 0 0;
+      background: var(--white);
       color: var(--text-body);
     }
     .f5-demo__head {
       max-width: 720px;
-      margin: 0 auto 40px;
+      margin: 0 auto;
       text-align: center;
       padding: 0 20px;
     }
     .f5-demo__head .eyebrow {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       margin: 0 0 14px;
-      color: var(--teal-dark);
+      color: var(--gold);
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
+    .f5-demo__head .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--coral);
+    }
     .f5-demo__head h2 {
       margin: 0;
-      font-size: clamp(24px, 3.4vw, 38px);
+      font-size: clamp(28px, 4vw, 46px);
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
     }
     /* ============ TWO REDESIGN CONCEPTS ============ */
     .f5-concepts {
-      padding: clamp(56px, 7vw, 96px) 0;
-      background: var(--off-white);
+      padding: 48px 0 clamp(56px, 7vw, 96px);
+      background: var(--white);
     }
     .f5-concept-feature {
       max-width: 760px;
       margin: 0 auto 8px;
       padding: clamp(32px, 4vw, 44px) clamp(24px, 4vw, 40px);
-      background: var(--white);
-      border-radius: var(--radius, 16px);
+      background: var(--off-white);
+      border-radius: 20px;
+      border-top: 6px solid var(--gold);
       box-shadow: 0 18px 50px rgba(12, 12, 12, 0.08);
       text-align: center;
     }
     .f5-concept-feature h3 {
       margin: 12px 0 8px;
-      font-size: clamp(20px, 2.4vw, 26px);
+      font-size: clamp(22px, 2.8vw, 30px);
       font-weight: 700;
+      letter-spacing: -0.02em;
     }
     .f5-concept-feature p {
       margin: 0 0 20px;
@@ -500,13 +644,26 @@
     }
     .f5-live-demo__pane { display: flex; flex-direction: column; }
     .f5-live-demo__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       margin-bottom: 10px;
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--teal-dark);
+      color: var(--text-body);
     }
+    .f5-live-demo__label::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+    .f5-live-demo__pane:nth-child(1) .f5-live-demo__label::before { background: var(--teal-dark); }
+    .f5-live-demo__pane:nth-child(2) .f5-live-demo__label::before { background: var(--coral); }
+    .f5-live-demo__pane:nth-child(1) .f5-browser { border-top: 5px solid var(--teal-dark); }
+    .f5-live-demo__pane:nth-child(2) .f5-browser { border-top: 5px solid var(--coral); }
     .f5-live-demo .f5-browser { display: flex; flex-direction: column; }
     .f5-live-demo__frame-wrap {
       position: relative;
@@ -535,10 +692,10 @@
 
     .f5-concept-card__badge {
       display: inline-block;
-      padding: 5px 12px;
+      padding: 7px 15px;
       border-radius: 999px;
-      background: rgba(30, 138, 134, 0.1);
-      color: var(--teal-dark);
+      background: var(--gold);
+      color: var(--black);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -614,15 +771,22 @@
 
 <!-- ============ HERO ============ -->
 <section class="f5-hero">
+  <div class="f5-hero__stripe"></div>
   <div class="container">
     <span class="eyebrow">Prepared for First 5 Orange County</span>
     <h1>Selected Website Portfolio</h1>
     <p>We build websites that are welcoming, easy to use and easy for teams to manage. Our work brings together thoughtful design, clear content and practical technology, with support that continues well beyond launch.</p>
     <p>Below are a few recent projects that reflect the kind of work we would bring to First 5 Orange County.</p>
+    <div class="f5-hero__stats">
+      <span>6 Recent Projects</span>
+      <span>3 Platform Migrations</span>
+      <span>10 Years of Ongoing Support</span>
+    </div>
   </div>
 </section>
 
-<section class="f5-case f5-case--off" aria-label="The Sigmund Project">
+<section class="f5-case f5-case--acc-teal" aria-label="The Sigmund Project">
+  <span class="f5-case__num" aria-hidden="true">01</span>
   <div class="f5-case__grid">
     <div class="f5-case__visual">
       <div class="f5-browser f5-browser--purple">
@@ -655,7 +819,8 @@
   </div>
 </section>
 
-<section class="f5-case f5-case--light f5-case--compare" aria-label="Baldrige Alliance">
+<section class="f5-case f5-case--acc-gold f5-case--compare" aria-label="Baldrige Alliance">
+  <span class="f5-case__num" aria-hidden="true">02</span>
   <div class="f5-case__intro">
     <span class="f5-case__badge">Currently Building — Launching Mid-October</span>
     <h3>Baldrige Alliance</h3>
@@ -714,7 +879,8 @@
   </div>
 </div>
 
-<section class="f5-case f5-case--off" aria-label="Adventure International">
+<section class="f5-case f5-case--acc-coral" aria-label="Adventure International">
+  <span class="f5-case__num" aria-hidden="true">03</span>
   <div class="f5-case__grid f5-case__grid--rev">
     <div class="f5-case__visual">
       <div class="f5-browser f5-browser--gold">
@@ -746,7 +912,8 @@
   </div>
 </section>
 
-<section class="f5-case f5-case--light" aria-label="Inspire Life Skills">
+<section class="f5-case f5-case--acc-forest" aria-label="Inspire Life Skills">
+  <span class="f5-case__num" aria-hidden="true">04</span>
   <div class="f5-case__grid">
     <div class="f5-case__visual">
       <div class="f5-browser f5-browser--coral">
@@ -778,7 +945,8 @@
   </div>
 </section>
 
-<section class="f5-case f5-case--off" aria-label="Blues Backroads">
+<section class="f5-case f5-case--acc-navy" aria-label="Blues Backroads">
+  <span class="f5-case__num" aria-hidden="true">05</span>
   <div class="f5-case__grid f5-case__grid--rev">
     <div class="f5-case__visual">
       <div class="f5-browser f5-browser--forest">
@@ -810,7 +978,8 @@
   </div>
 </section>
 
-<section class="f5-case f5-case--light" aria-label="Pitcairn Islands: Tourism + Government">
+<section class="f5-case f5-case--acc-amber" aria-label="Pitcairn Islands: Tourism + Government">
+  <span class="f5-case__num" aria-hidden="true">06</span>
   <div class="f5-case__grid f5-case__grid--rev">
     <div class="f5-case__visual">
       <div class="f5-browser f5-browser--navy f5-site-carousel" data-carousel="pitcairn-sites">
@@ -861,6 +1030,11 @@
 <section class="f5-why">
   <div class="container">
     <h2>Why These Examples Matter</h2>
+    <div class="f5-why__stats">
+      <div class="f5-why__stat"><strong>6</strong><span>Nonprofit &amp; Public Sector Projects</span></div>
+      <div class="f5-why__stat"><strong>3</strong><span>Platform Migrations Completed</span></div>
+      <div class="f5-why__stat"><strong>10+</strong><span>Years of Ongoing Support</span></div>
+    </div>
     <p>Together, these projects show we can organize complex information, serve multiple audiences, migrate and maintain content, create useful digital tools, train client teams and stay involved after launch.</p>
     <p>The Baldrige Alliance and Adventure International projects are especially relevant — they show we're actively building and migrating to Lovable right now. Adventure International's completed WordPress migration demonstrates real results: improved SEO, faster performance, no more platform limitations, and staff who can update confidently. You get a partner with current, proven experience with the exact platform we're recommending. Lovable looks familiar but is more reliable than WordPress and doesn't break. Your staff will actually enjoy using it.</p>
     <p>We understand the complete picture, create clear structure and leave clients with a system they can confidently own.</p>
