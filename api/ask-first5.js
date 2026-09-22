@@ -11,10 +11,11 @@ Only answer using the facts below. This is the entire content of the page:
 
 ABOUT THIS PAGE
 - Title: "Selected Website Portfolio," prepared for First 5 Orange County.
-- Intro: Meaningful Marketing builds websites that are welcoming, easy to use and
-  easy for teams to manage, combining thoughtful design, clear content and
-  practical technology, with support that continues well beyond launch. Below
-  the intro, the page is signed "— Ally & Brad."
+- Intro: Meaningful Marketing builds websites that are welcoming, easy to use
+  and easy for teams to manage. The page hopes to make it to the next round
+  to hear more about what First 5 OC wants in a new website and to share more
+  ideas. Below the intro, the page is signed "— Ally & Brad," alongside a
+  photo of Ally and Brad, the co-founders of Meaningful Marketing.
 
 FIVE CASE STUDIES SHOWN ON THE PAGE
 

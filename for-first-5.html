@@ -123,28 +123,47 @@
     .f5-hero h1 {
       position: relative;
       z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: clamp(38px, 7vw, 72px);
+      margin: 0;
+      font-size: clamp(38px, 5.2vw, 64px);
       line-height: 0.98;
       letter-spacing: -0.035em;
       font-weight: 700;
     }
     .f5-hero p {
-      max-width: 900px;
-      margin: 18px auto 0;
-      font-size: clamp(20px, 2.4vw, 25px);
+      margin: 18px 0 0;
+      font-size: clamp(18px, 1.8vw, 21px);
       line-height: 1.6;
       color: var(--text-muted);
-      padding: 0 20px;
     }
     .f5-hero__signoff {
-      max-width: 900px;
-      margin: 24px auto 0;
-      padding: 0 20px;
+      margin: 24px 0 0;
       font-size: clamp(18px, 2vw, 22px);
       font-weight: 700;
       color: var(--text-body);
+    }
+
+    .f5-hero__layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+      text-align: left;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .f5-hero__photo img {
+      display: block;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 28px 70px rgba(12, 12, 12, 0.18);
+    }
+
+    @media (max-width: 780px) {
+      .f5-hero__layout { grid-template-columns: 1fr; text-align: center; }
+      .f5-hero__photo { max-width: 340px; margin: 0 auto; }
     }
 
     .f5-case {
@@ -1029,12 +1048,16 @@
 <!-- ============ HERO ============ -->
 <section class="f5-hero">
   <div class="f5-hero__stripe"></div>
-  <div class="container">
-    <span class="eyebrow">Prepared for First 5 Orange County</span>
-    <h1>Selected Website Portfolio</h1>
-    <p>We build websites that are welcoming, easy to use and easy for teams to manage. Our work brings together thoughtful design, clear content and practical technology, with support that continues well beyond launch.</p>
-    <p>Below are a few recent projects that reflect the kind of work we would bring to First 5 Orange County.</p>
-    <p class="f5-hero__signoff">— Ally &amp; Brad</p>
+  <div class="f5-hero__layout">
+    <div class="f5-hero__text">
+      <span class="eyebrow">Prepared for First 5 Orange County</span>
+      <h1>Selected Website Portfolio</h1>
+      <p>We build websites that are welcoming, easy to use and easy for teams to manage. Below are a few recent projects that reflect the kind of work we would bring to First 5 Orange County. We hope we can make it to the next round to hear more about what you are wanting in a new website and we can share some more of our ideas!</p>
+      <p class="f5-hero__signoff">— Ally &amp; Brad</p>
+    </div>
+    <div class="f5-hero__photo">
+      <img src="images/ally%20and%20brad.png" alt="Ally and Brad Labriola, co-founders of Meaningful Marketing" />
+    </div>
   </div>
 </section>
 
