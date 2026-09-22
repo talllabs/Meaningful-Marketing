@@ -579,18 +579,29 @@
       color: var(--teal-dark);
     }
     .f5-live-demo .f5-browser { display: flex; flex-direction: column; }
+    .f5-live-demo__frame-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1440 / 900;
+      overflow: hidden;
+      background: #fff;
+    }
     .f5-live-demo__frame {
       display: block;
-      width: 100%;
-      height: 460px;
+      width: 1440px;
+      height: 900px;
       border: 0;
       background: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scale(var(--f5-frame-scale, 0.34));
+      transform-origin: 0 0;
     }
     .f5-live-demo .f5-concept-card__links { margin: 14px 0 0; justify-content: flex-start; }
 
     @media (max-width: 900px) {
       .f5-live-demo { grid-template-columns: 1fr; }
-      .f5-live-demo__frame { height: 380px; }
     }
 
     .f5-concept-card__badge {
@@ -969,7 +980,9 @@
             <div class="f5-browser__dots"><span></span><span></span><span></span></div>
             <div class="f5-browser__url">first5oc-concept-a</div>
           </div>
-          <iframe class="f5-live-demo__frame" src="first5oc-concept-a/index.html" loading="lazy" title="Public site prototype"></iframe>
+          <div class="f5-live-demo__frame-wrap">
+            <iframe class="f5-live-demo__frame" src="first5oc-concept-a/index.html" loading="lazy" title="Public site prototype"></iframe>
+          </div>
         </div>
         <div class="f5-concept-card__links">
           <a class="btn btn--primary" href="first5oc-concept-a/index.html" target="_blank" rel="noopener">Open in a New Tab →</a>
@@ -982,7 +995,9 @@
             <div class="f5-browser__dots"><span></span><span></span><span></span></div>
             <div class="f5-browser__url">first5oc-concept-a/admin</div>
           </div>
-          <iframe class="f5-live-demo__frame" src="first5oc-concept-a/admin.html" loading="lazy" title="Staff admin portal prototype"></iframe>
+          <div class="f5-live-demo__frame-wrap">
+            <iframe class="f5-live-demo__frame" src="first5oc-concept-a/admin.html" loading="lazy" title="Staff admin portal prototype"></iframe>
+          </div>
         </div>
         <div class="f5-concept-card__links">
           <a class="btn btn--primary" href="first5oc-concept-a/admin.html" target="_blank" rel="noopener">Open in a New Tab →</a>
@@ -1194,6 +1209,28 @@
         });
       });
     });
+  })();
+
+  /* ---- Scale desktop-width live-demo iframes to fit their panel ---- */
+  (function () {
+    var wraps = document.querySelectorAll('.f5-live-demo__frame-wrap');
+    if (!wraps.length) return;
+
+    function rescale() {
+      wraps.forEach(function (wrap) {
+        var frame = wrap.querySelector('.f5-live-demo__frame');
+        if (!frame) return;
+        var scale = wrap.getBoundingClientRect().width / frame.offsetWidth;
+        wrap.style.setProperty('--f5-frame-scale', scale);
+      });
+    }
+
+    rescale();
+    window.addEventListener('resize', rescale);
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(rescale);
+      wraps.forEach(function (wrap) { ro.observe(wrap); });
+    }
   })();
 </script>
 </body>
