@@ -2116,6 +2116,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-color: var(--teal-dark);
   color: var(--white);
 }
+.video-search {
+  margin-bottom: 20px;
+}
+.video-search__input {
+  width: 100%;
+  max-width: 420px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text-body);
+  background: var(--white);
+  border: 1.5px solid rgba(0,0,0,.15);
+  border-radius: var(--radius);
+  padding: 11px 16px;
+  transition: border-color 0.2s;
+}
+.video-search__input::placeholder { color: rgba(0,0,0,.4); }
+.video-search__input:focus {
+  outline: none;
+  border-color: var(--teal-dark);
+}
 .video-toolbar {
   margin-bottom: 24px;
 }
