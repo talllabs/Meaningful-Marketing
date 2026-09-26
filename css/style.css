@@ -3369,3 +3369,34 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 @media (max-width: 700px) {
   .video-work-page .video-grid { grid-template-columns: 1fr; }
 }
+
+/* Video card: collapsible details (body copy + need/created lines) */
+.vid-card__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  cursor: pointer;
+}
+.vid-card__toggle:hover { color: var(--teal); }
+.vid-card__toggle-icon {
+  display: inline-block;
+  font-size: 0.9rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+.vid-card__toggle[aria-expanded="true"] .vid-card__toggle-icon {
+  transform: rotate(45deg);
+}
+.vid-card__details {
+  margin-top: 8px;
+}

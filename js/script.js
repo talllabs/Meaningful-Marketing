@@ -515,3 +515,18 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
     io.observe(v);
   });
 })();
+
+/* ---- Video card: toggle collapsible details (body copy + need/created) ---- */
+(function () {
+  document.querySelectorAll(".js-vid-toggle").forEach(function (btn) {
+    var details = btn.nextElementSibling;
+    if (!details || !details.classList.contains("vid-card__details")) return;
+
+    btn.addEventListener("click", function () {
+      var expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!expanded));
+      details.hidden = expanded;
+      btn.querySelector(".vid-card__toggle-icon").textContent = expanded ? "+" : "−";
+    });
+  });
+})();
