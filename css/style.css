@@ -565,6 +565,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 48px;
   line-height: 1.65;
 }
+/* Mobile-only supporting line under the lockup — hidden on desktop */
+.hero__sub-mobile { display: none; }
 .hero__ctas {
   display: flex;
   gap: 16px;
@@ -2600,109 +2602,156 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero__split { height: auto; }
 }
 
-/* Mobile hero: full-bleed carousel with overlaid logo + CTAs */
+/* Mobile hero: content-first stack — nav clears 72px, then eyebrow,
+   lockup, one-line positioning, CTAs, a compact photo, then the
+   client marquee. Nothing overlays the photo. */
 @media (max-width: 768px) {
 
-  /* Give the hero a solid viewport-relative height */
   .hero {
-    height: 80vh;       /* fallback */
-    height: 88svh;      /* preferred: excludes browser chrome */
-    min-height: 480px;
-    max-height: 680px;
+    height: auto;
+    min-height: 0;
+    max-height: none;
   }
 
-  /* Stack children and use positioning to layer them */
   .hero__split {
-    position: relative;
-    display: block;
-    height: 100%;
+    position: static;
+    display: flex;
+    flex-direction: column;
+    height: auto;
   }
 
-  /* Carousel fills the entire hero as a full-bleed background */
+  /* Content block sits on the hero's own black background, above the photo */
+  .hero__content {
+    position: static;
+    padding: calc(var(--nav-h) + 14px) 20px 18px;
+    padding-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    z-index: 1;
+  }
+
+  /* MM ghost watermark off — no room for it in the tightened stack */
+  .hero__content::before { display: none; }
+
+  /* Eyebrow: small yellow label, tight above the lockup */
+  .hero__eyebrow {
+    background: transparent;
+    color: var(--gold-light);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    margin-bottom: 10px;
+    text-shadow: none;
+    text-align: left;
+  }
+
+  /* Stacked MEANINGFUL / MARKETING lockup — same distinctive treatment
+     (solid top line, outlined + staggered bottom line), tightened to
+     roughly 3/4 of its previous footprint via smaller type + padding
+     rather than shrinking it flat. */
+  .hero__headline {
+    display: inline-flex;
+    margin-bottom: 10px;
+  }
+  .hero__headline .stamp {
+    font-size: clamp(28px, 9vw, 42px);
+    line-height: 1;
+    padding: 7px 12px;
+    letter-spacing: 0.03em;
+  }
+  .hero__headline .stamp--fill {
+    background: var(--white);
+    color: var(--black);
+    border: none;
+  }
+  .hero__headline .stamp--stroke {
+    background: var(--black);
+    color: var(--white);
+    border: 2.5px solid var(--white);
+    margin-left: 10px;
+    margin-top: -2px;
+  }
+
+  /* One-sentence positioning line, directly under the lockup */
+  .hero__sub-mobile {
+    display: block;
+    font-size: 17px;
+    line-height: 1.4;
+    color: rgba(255,255,255,.82);
+    max-width: 30ch;
+    margin-bottom: 16px;
+  }
+
+  /* CTAs: above the photo. See Our Work (ghost in markup) is dominant;
+     Schedule a Call (primary in markup) is secondary. Side by side
+     where there's room, stacking cleanly on narrow screens. */
+  .hero__ctas {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+  }
+  .hero__ctas .btn {
+    flex: 1 1 148px;
+    justify-content: center;
+    text-align: center;
+    font-size: 12.5px;
+    padding: 15px 14px;
+  }
+  .hero__ctas .btn--ghost {
+    order: -1;
+    background: var(--teal);
+    color: var(--white);
+    border-color: var(--teal);
+  }
+  .hero__ctas .btn--ghost:hover {
+    background: var(--teal-dark);
+    border-color: var(--teal-dark);
+  }
+  .hero__ctas .btn--primary {
+    background: transparent;
+    border-color: rgba(255,255,255,.4);
+  }
+  .hero__ctas .btn--primary:hover {
+    background: rgba(255,255,255,.08);
+    border-color: var(--white);
+  }
+
+  /* Photo: a compact strip below the CTAs, not a full-bleed background —
+     nothing sits on top of it. */
   .hero__image,
   .hero__carousel {
-    position: absolute;
-    inset: 0;
-    height: 100%;
-    min-height: unset;
-    max-height: unset;
+    position: relative;
+    inset: auto;
+    height: clamp(220px, 58vw, 260px);
+    min-height: 220px;
+    max-height: 260px;
     z-index: 0;
     display: block;
   }
 
-  /* Gradient scrim so text stays legible over the image */
-  .hero__carousel::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(12,12,12,0.15) 0%,
-      rgba(12,12,12,0.40) 50%,
-      rgba(12,12,12,0.76) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
+  /* No scrim needed — no text overlays the photo anymore */
+  .hero__carousel::after { display: none; }
+
+  /* Superseded by the in-flow lockup in .hero__content above */
+  .hero__logo-overlay { display: none !important; }
+
+  .hero__dots {
+    bottom: 10px;
   }
 
-  /* Content overlaid at the bottom of the hero */
-  .hero__content {
-    position: absolute;
-    inset: auto 0 0 0;
-    padding-top: 0;
-    padding-bottom: 44px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    z-index: 2;
+  /* Client marquee: breathing room + edge fade so names intentionally
+     enter/leave the frame instead of clipping flush against the edge */
+  .ticker-band {
+    padding: 16px 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
   }
-
-  /* MM ghost text hidden */
-  .hero__content::before { display: none; }
-
-  /* Hide the stamp headline — the logo overlay handles the brand mark */
-  .hero__headline { display: none; }
-
-  /* Eyebrow: no background — image/gradient shows through */
-  .hero__eyebrow {
-    background: transparent;
-    font-size: 10px;
-    margin-bottom: 18px;
-    letter-spacing: 0.18em;
-    text-align: center;
+  .ticker-inner {
+    padding-left: 16px;
   }
-
-  /* CTAs: stack, primary full-width */
-  .hero__ctas {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    width: 100%;
-  }
-  .hero__ctas .btn--primary {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
-  .hero__ctas .btn--ghost {
-    background: none;
-    border: none;
-    color: rgba(255,255,255,.38);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    padding: 14px 0 0;
-    justify-content: center;
-    text-align: center;
-  }
-  .hero__ctas .btn--ghost:hover {
-    background: none;
-    border: none;
-    color: rgba(255,255,255,.65);
-  }
-
-  /* Dots: hidden on mobile — image fills the hero, no controls needed */
-  .hero__dots { display: none; }
 }
 
 /* Between 768–900px: moderate adjustments */
@@ -2929,9 +2978,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transform: translateY(-6px);
 }
 
-/* --- NAV LOGO: hidden on mobile (brand appears via hero logo overlay) --- */
+/* --- NAV LOGO: hidden on mobile (brand mark lives in the hero lockup) --- */
 @media (max-width: 768px) {
-  /* Nav always visible on mobile — hero is full-screen so JS never triggers nav--visible */
+  /* Nav always visible on mobile, fixed at 72px (--nav-h); hamburger upper right */
   .nav {
     transform: translateY(0);
     opacity: 1;
@@ -2949,106 +2998,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav.light-bg .nav__burger span { background: var(--white); }
 }
 
-/* --- HERO LOGO OVERLAY: brand mark centered over the carousel image --- */
-/* Desktop: hidden — right panel image needs no overlay */
+/* --- HERO LOGO OVERLAY: legacy full-bleed treatment, superseded on
+   mobile by the in-flow lockup in .hero__content (see above). Hidden
+   at all widths; kept only so the markup has no dangling unstyled node. --- */
 .hero__logo-overlay {
   display: none;
-}
-
-/* Origami fold-in animation for each logo line */
-@keyframes origami-unfold-top {
-  0%   { transform: rotateX(-90deg) translateY(-20px); opacity: 0; }
-  60%  { transform: rotateX(8deg)   translateY(2px);   opacity: 1; }
-  80%  { transform: rotateX(-4deg)  translateY(-1px);  opacity: 1; }
-  100% { transform: rotateX(0deg)   translateY(0);     opacity: 1; }
-}
-@keyframes origami-unfold-bot {
-  0%   { transform: rotateX(90deg)  translateY(20px);  opacity: 0; }
-  60%  { transform: rotateX(-8deg)  translateY(-2px);  opacity: 1; }
-  80%  { transform: rotateX(4deg)   translateY(1px);   opacity: 1; }
-  100% { transform: rotateX(0deg)   translateY(0);     opacity: 1; }
-}
-
-@media (max-width: 768px) {
-  /* Hide the eyebrow from hero__content — it lives inside the overlay instead */
-  .hero__content .hero__eyebrow { display: none; }
-
-  .hero__logo-overlay {
-    display: flex;
-    position: absolute;
-    inset: 0;
-    /* Anchor to upper portion, full-width black band */
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding-top: 24%;
-    z-index: 3;
-    pointer-events: none;
-    perspective: 600px;
-  }
-
-  /* Remove "See Our Work" from mobile hero */
-  .hero__ctas .btn--ghost { display: none; }
-
-  /* Logo + tagline: full-width black band */
-  .hero__logo-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    width: 100%;
-    background: var(--black);
-    padding: 10px 0; /* 10px top & bottom, edge-to-edge width */
-  }
-
-  /* Tagline: gold text inside the black container, above the stamp lines */
-  .hero__logo-tagline {
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    text-shadow: 0 0 16px rgba(212,160,32,.5);
-    margin: 0;
-    padding: 8px 4px 8px; /* breathing room within the black frame */
-    animation: origami-unfold-top 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) 0.15s both;
-  }
-
-  /* Logo mark: no own background or padding — group handles the black frame */
-  .hero__logo-overlay .logo-mark {
-    width: 100%;
-    background: none;
-    padding: 0;
-  }
-  .hero__logo-overlay .logo-mark__top {
-    display: block;
-    width: 100%;
-    background: var(--white);
-    color: var(--black);
-    border: none;
-    font-size: clamp(36px, 10.5vw, 54px);
-    padding: 10px 16px;
-    letter-spacing: 0.04em;
-    text-align: left;
-    text-shadow: none;
-    transform-origin: center bottom;
-    animation: origami-unfold-top 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s both;
-  }
-  .hero__logo-overlay .logo-mark__bot {
-    display: block;
-    width: calc(100% - 12px); /* slightly narrower for stagger effect */
-    background: var(--black);
-    color: var(--white);
-    border: 2.5px solid var(--white);
-    font-size: clamp(36px, 10.5vw, 54px);
-    padding: 10px 16px;
-    margin-left: 12px; /* stagger right, matching reference */
-    margin-top: -2px;
-    letter-spacing: 0.04em;
-    text-align: left;
-    text-shadow: none;
-    transform-origin: center top;
-    animation: origami-unfold-bot 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.55s both;
-  }
 }
 
 /* ============ TESTIMONIALS (redesign) ============ */
