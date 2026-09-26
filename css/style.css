@@ -2054,9 +2054,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .vid-card__desc {
   margin: 4px 0 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text-body);
+}
+.vid-card__body {
+  margin: 8px 0 0;
   font-size: 0.78rem;
-  line-height: 1.5;
-  color: rgba(0,0,0,.55);
+  line-height: 1.6;
+  color: rgba(0,0,0,.6);
 }
 .vid-card__need {
   margin: 6px 0 0;
