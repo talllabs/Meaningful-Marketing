@@ -3012,7 +3012,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .mm-testimonials {
-  --mm-navy: #101a2e;
+  --mm-navy: var(--black);
   --mm-blue: #4169ff;
   --mm-yellow: #ffe45b;
   --mm-pink: #ff9abc;
