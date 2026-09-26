@@ -33,6 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="images/hero1.webp" fetchpriority="high" />
   <link rel="stylesheet" href="css/style.css" />
   <!-- Vercel Web Analytics -->
   <script>
@@ -120,14 +121,14 @@
       </div>
     </div>
     <div class="hero__image hero__carousel">
-      <img class="hero__slide hero__slide--active" src="images/hero1.png" alt="Meaningful Marketing — mission-driven storytelling" />
-      <img class="hero__slide" src="images/hero2.png" alt="Meaningful Marketing" />
-      <img class="hero__slide" src="images/hero3.jpg" alt="Meaningful Marketing" />
-      <img class="hero__slide" src="images/hero4.jpg" alt="Meaningful Marketing" />
-      <img class="hero__slide" src="images/hero5.jpg" alt="Meaningful Marketing" />
-      <img class="hero__slide" src="images/hero6.jpg" alt="Meaningful Marketing" />
-      <img class="hero__slide" src="images/hero7.jpg" alt="Meaningful Marketing" />
-      <img class="hero__slide" src="images/hero8.jpg" alt="Meaningful Marketing" />
+      <img class="hero__slide hero__slide--active" src="images/hero1.webp" alt="Meaningful Marketing — mission-driven storytelling" width="1334" height="1232" fetchpriority="high" decoding="async" />
+      <img class="hero__slide" src="images/hero2.webp" alt="Meaningful Marketing" width="1600" height="1200" loading="lazy" decoding="async" />
+      <img class="hero__slide" src="images/hero3.webp" alt="Meaningful Marketing" width="1067" height="1600" loading="lazy" decoding="async" />
+      <img class="hero__slide" src="images/hero4.webp" alt="Meaningful Marketing" width="1066" height="1600" loading="lazy" decoding="async" />
+      <img class="hero__slide" src="images/hero5.webp" alt="Meaningful Marketing" width="1600" height="1600" loading="lazy" decoding="async" />
+      <img class="hero__slide" src="images/hero6.webp" alt="Meaningful Marketing" width="900" height="1600" loading="lazy" decoding="async" />
+      <img class="hero__slide" src="images/hero7.webp" alt="Meaningful Marketing" width="1600" height="1600" loading="lazy" decoding="async" />
+      <img class="hero__slide" src="images/hero8.webp" alt="Meaningful Marketing" width="1600" height="1600" loading="lazy" decoding="async" />
       <div class="hero__logo-overlay" aria-hidden="true">
         <div class="hero__logo-group">
           <p class="hero__logo-tagline">Serving Mission-Driven Organizations Since 2009</p>
@@ -239,7 +240,7 @@
 <section class="logowall">
   <div class="container">
     <p class="logowall__label">Trusted by mission-driven organizations worldwide</p>
-    <img src="images/logowall.png" alt="Client logos: United Nations Foundation, Lutheran World Relief, World Vision, Webster University, and more" class="logowall__img" />
+    <img src="images/logowall.png" alt="Client logos: United Nations Foundation, Lutheran World Relief, World Vision, Webster University, and more" class="logowall__img" loading="lazy" decoding="async" />
   </div>
 </section>
 
@@ -250,7 +251,7 @@
       <div class="about__visual reveal-up">
         <div class="about__photo-wrap">
           <div class="about__photo">
-            <img src="images/ally%20and%20brad.png" alt="Ally and Brad Labriola, co-founders of Meaningful Marketing" class="about__photo-img" />
+            <img src="images/ally%20and%20brad.png" alt="Ally and Brad Labriola, co-founders of Meaningful Marketing" class="about__photo-img" loading="lazy" decoding="async" />
           </div>
 
         </div>
@@ -302,7 +303,7 @@
         <div class="cs__visual reveal-up" style="--delay:.15s">
           <div class="cs-mock" style="box-shadow:0 24px 64px rgba(0,0,0,.18);">
             <a href="blues-backroads-case-study.html">
-              <img src="images/bluesbackroads.png" alt="Blues Backroads website case study" style="width:100%;display:block;" />
+              <img src="images/bluesbackroads.png" alt="Blues Backroads website case study" style="width:100%;display:block;" loading="lazy" decoding="async" />
             </a>
           </div>
         </div>
@@ -369,8 +370,9 @@
         <div class="cs__visual reveal-up" style="--delay:.15s">
           <div class="cc-card">
             <div class="cc-video-wrap">
-              <video src="images/Untitled design (1).mp4"
-                autoplay muted loop playsinline
+              <video data-src="images/Untitled design (1).mp4"
+                class="js-lazy-video"
+                muted loop playsinline preload="none"
                 aria-label="Courageous Conversations — USTOA case study preview"></video>
             </div>
             <div class="cc-body">
@@ -471,7 +473,7 @@
         </div>
         <div class="cs__visual reveal-up" style="--delay:.15s">
           <div class="cs-mock" style="box-shadow:0 24px 64px rgba(0,0,0,.18);">
-            <img src="images/lobiko%20case.png" alt="Lobiko Initiative website case study" style="width:100%;display:block;" />
+            <img src="images/lobiko%20case.png" alt="Lobiko Initiative website case study" style="width:100%;display:block;" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -537,7 +539,7 @@
         </div>
         <div class="cs__visual reveal-up" style="--delay:.15s">
           <button class="cs__video-thumb js-open-video" data-vimeo="221464315" aria-label="Play Lutheran World Relief video">
-            <img src="images/lwr%20case.png" alt="Lutheran World Relief — Farmers Market Coffee video thumbnail" />
+            <img src="images/lwr%20case.png" alt="Lutheran World Relief — Farmers Market Coffee video thumbnail" loading="lazy" decoding="async" />
             <span class="cs__play-btn" aria-hidden="true">▶</span>
           </button>
         </div>
@@ -563,7 +565,7 @@
       </div>
       <div class="ai__header-image reveal-up">
         <div class="ai__header-image-inner">
-          <img src="images/chat.png" alt="AI-powered marketing tools" />
+          <img src="images/chat.png" alt="AI-powered marketing tools" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>
@@ -614,7 +616,7 @@
     </div>
 
     <div class="ai__chat-mobile reveal-up">
-      <img src="images/chat.png" alt="AI-powered marketing tools" />
+      <img src="images/chat.png" alt="AI-powered marketing tools" loading="lazy" decoding="async" />
     </div>
 
   </div>

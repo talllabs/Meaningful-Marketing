@@ -472,3 +472,34 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
 
   updateTestimonials();
 })();
+
+/* ---- Lazy-load below-the-fold autoplay videos ---- */
+(function () {
+  var videos = document.querySelectorAll(".js-lazy-video");
+  if (!videos.length) return;
+
+  if (!("IntersectionObserver" in window)) {
+    videos.forEach(function (v) {
+      v.src = v.dataset.src;
+      v.play();
+    });
+    return;
+  }
+
+  var io = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var v = entry.target;
+        v.src = v.dataset.src;
+        v.play().catch(function () {});
+        io.unobserve(v);
+      });
+    },
+    { rootMargin: "200px" }
+  );
+
+  videos.forEach(function (v) {
+    io.observe(v);
+  });
+})();
