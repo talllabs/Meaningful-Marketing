@@ -323,9 +323,16 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
   const countEl = document.getElementById('videoCount');
   const emptyEl = document.getElementById('videoEmpty');
   const showMoreBtn = document.getElementById('videoShowMore');
+  const searchInput = document.getElementById('videoSearch');
 
   let activeFilter = 'all';
   let expanded = false;
+
+  function matchesSearch(card) {
+    if (!searchInput || !searchInput.value.trim()) return true;
+    const query = searchInput.value.trim().toLowerCase();
+    return (card.textContent || '').toLowerCase().includes(query);
+  }
 
   function applyMobileExtras() {
     const visible = cards.filter(card => !card.classList.contains('is-hidden'));
@@ -345,7 +352,8 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
     let visibleCount = 0;
     cards.forEach(card => {
       const categories = (card.dataset.categories || '').split(',');
-      const matches = activeFilter === 'all' || categories.includes(activeFilter);
+      const matchesCategory = activeFilter === 'all' || categories.includes(activeFilter);
+      const matches = matchesCategory && matchesSearch(card);
       card.classList.toggle('is-hidden', !matches);
       if (matches) visibleCount++;
     });
@@ -373,6 +381,10 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
       applyMobileExtras();
       showMoreBtn.textContent = expanded ? 'Show Less ↑' : 'Show More Videos ↓';
     });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFilter);
   }
 
   applyMobileExtras();
