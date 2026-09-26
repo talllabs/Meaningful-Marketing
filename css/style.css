@@ -3417,3 +3417,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .video-work-page .vid-card__thumb {
   aspect-ratio: 16 / 9;
 }
+
+/* Video Work page: hook line unbolded and 2x larger, scoped to this page */
+.video-work-page .vid-card__desc {
+  font-weight: 400;
+  font-size: 1.64rem;
+  line-height: 1.3;
+}
