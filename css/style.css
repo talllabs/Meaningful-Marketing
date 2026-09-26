@@ -3412,3 +3412,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .vid-card__details {
   margin-top: 8px;
 }
+
+/* Video Work page: 16:9 thumbnails (width unchanged, height reduced) */
+.video-work-page .vid-card__thumb {
+  aspect-ratio: 16 / 9;
+}
