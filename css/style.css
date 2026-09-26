@@ -3361,3 +3361,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .split-hero { grid-template-columns: 1fr; min-height: 0; }
   .split-hero__right { padding-top: 24px; }
 }
+
+/* ============ VIDEO WORK PAGE: wider cards ============ */
+/* Roughly double each card's width vs. the homepage's video grid by
+   halving the column count at every breakpoint. Scoped to this page only. */
+.video-work-page .video-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 700px) {
+  .video-work-page .video-grid { grid-template-columns: 1fr; }
+}
