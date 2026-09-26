@@ -2058,6 +2058,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1.5;
   color: rgba(0,0,0,.55);
 }
+.vid-card__need {
+  margin: 6px 0 0;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: rgba(0,0,0,.4);
+}
 .vid-card__tags {
   display: flex;
   flex-wrap: wrap;
@@ -3282,4 +3290,67 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     transform: none !important;
     transition: none;
   }
+}
+
+/* ============ SUBPAGE SPLIT HERO ============ */
+/* Used on standalone pages (services/work/about/ai/testimonials/video-work)
+   in place of the old single-column black block, which left too much dead
+   space above the fold and duplicated the section's own heading below it. */
+.split-hero {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  min-height: 340px;
+}
+.split-hero__left {
+  background: var(--black);
+  color: var(--white);
+  padding: calc(var(--nav-h) + 40px) clamp(24px, 4vw, 56px) 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.split-hero__right {
+  background: var(--white);
+  color: var(--black);
+  padding: calc(var(--nav-h) + 40px) clamp(24px, 4vw, 56px) 40px;
+  display: flex;
+  align-items: center;
+}
+.split-hero__back {
+  display: inline-block;
+  color: rgba(255,255,255,.5);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  margin-bottom: clamp(18px, 3vw, 32px);
+}
+.split-hero__back:hover { color: rgba(255,255,255,.8); }
+.split-hero__eyebrow {
+  display: block;
+  color: var(--gold-light);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.split-hero__title {
+  font-size: clamp(36px, 5.4vw, 68px);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.split-hero__summary {
+  font-size: clamp(19px, 2.1vw, 27px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .split-hero { grid-template-columns: 1fr; min-height: 0; }
+  .split-hero__right { padding-top: 24px; }
 }
