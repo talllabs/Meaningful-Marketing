@@ -2,7 +2,7 @@
    /for-transcend/ (same sessionStorage key), so visitors only enter it once. */
 (function () {
   var KEY = 'transcend-page-unlocked';
-  var PW = 'beta';
+  var PW = 'transcend';
   var unlocked = false;
   try { unlocked = sessionStorage.getItem(KEY) === 'true'; } catch (e) {}
   if (unlocked) return;

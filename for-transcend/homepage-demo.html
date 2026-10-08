@@ -69,7 +69,7 @@
 
     /* hero */
     .hero { position: relative; color: #fff; background: #060C1C; overflow: hidden; }
-    .hero svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
     .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(6,12,28,0.92) 0%, rgba(6,12,28,0.65) 45%, rgba(6,12,28,0.05) 80%); }
     .hero__inner { position: relative; z-index: 2; padding: clamp(70px, 10vw, 130px) 0 clamp(90px, 11vw, 150px); }
     .eyebrow { display: inline-block; margin-bottom: 18px; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
@@ -175,7 +175,7 @@
 
 <div class="demo-bar">
   <a href="/for-transcend/">← Back to the Q4 proposal</a>
-  <span class="demo-bar__label">Concept · Homepage rebuild</span>
+  <span class="demo-bar__label">Concept 1 · Homepage rebuild · <a href="/for-transcend/homepage-editorial-demo.html">See concept 2 →</a></span>
   <button type="button" class="notes-toggle" id="notesToggle" aria-pressed="true">Hide the “why” notes</button>
 </div>
 
@@ -198,79 +198,9 @@
 
 <main id="top">
   <section class="hero">
-    <svg viewBox="0 0 1200 580" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs>
-            <linearGradient id="hsky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#060C1C"/>
-              <stop offset="1" stop-color="#1A2A4A"/>
-            </linearGradient>
-            <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#0E1B33"/>
-              <stop offset="1" stop-color="#050A16"/>
-            </linearGradient>
-            <filter id="glow" x="-20%" y="-50%" width="140%" height="200%">
-              <feGaussianBlur stdDeviation="6" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <filter id="soft"><feGaussianBlur stdDeviation="10"/></filter>
-            <clipPath id="screenClip"><rect x="520" y="190" width="200" height="62" rx="4"/></clipPath>
-          </defs>
-
-          <rect width="1200" height="580" fill="url(#hsky)"/>
-          <g transform="translate(0,120)">
-          <g fill="#fff" opacity="0.7">
-            <circle cx="90" cy="60" r="1.4"/><circle cx="240" cy="110" r="1"/><circle cx="400" cy="40" r="1.3"/><circle cx="610" cy="80" r="1"/>
-            <circle cx="780" cy="50" r="1.5"/><circle cx="930" cy="120" r="1"/><circle cx="1080" cy="70" r="1.3"/><circle cx="1150" cy="140" r="1"/>
-          </g>
-          <path d="M0 300 L120 268 L260 286 L380 254 L520 280 L660 250 L800 276 L940 252 L1080 274 L1200 258 L1200 320 L0 320Z" fill="#0B1428"/>
-          <rect y="318" width="1200" height="142" fill="url(#water)"/>
-
-          <!-- reflection -->
-          <g fill="#E8C27A" opacity="0.35" filter="url(#soft)">
-            <rect x="150" y="335" width="900" height="16" rx="8"/>
-            <rect x="230" y="362" width="740" height="10" rx="5"/>
-            <rect x="320" y="388" width="560" height="7" rx="4"/>
-          </g>
-
-          <!-- glow under hull -->
-          <ellipse fill="#E8C27A" cx="600" cy="322" rx="470" ry="18" opacity="0.55" filter="url(#soft)"/>
-
-          <!-- hull -->
-          <path d="M110 268 L1060 268 L1100 296 Q1095 318 1060 320 L150 320 Q120 318 110 300 Z" fill="#0E1626"/>
-          <rect fill="#C9A55C" x="120" y="286" width="960" height="7" rx="3"/>
-          <!-- decks -->
-          <rect x="150" y="226" width="900" height="44" fill="#E9EDF3"/>
-          <rect x="190" y="186" width="820" height="42" fill="#DCE2EA"/>
-          <rect x="250" y="160" width="700" height="28" fill="#CFD6E0"/>
-          <!-- windows main deck -->
-          <g fill="#E8C27A" filter="url(#glow)">
-            <rect x="170" y="238" width="860" height="14" rx="3" opacity="0.95"/>
-          </g>
-          <g fill="#0E1626" opacity="0.55">
-            <rect x="230" y="238" width="3" height="14"/><rect x="310" y="238" width="3" height="14"/><rect x="390" y="238" width="3" height="14"/><rect x="470" y="238" width="3" height="14"/><rect x="550" y="238" width="3" height="14"/><rect x="630" y="238" width="3" height="14"/><rect x="710" y="238" width="3" height="14"/><rect x="790" y="238" width="3" height="14"/><rect x="870" y="238" width="3" height="14"/><rect x="950" y="238" width="3" height="14"/>
-          </g>
-          <!-- windows upper deck -->
-          <g fill="#E8C27A" filter="url(#glow)" opacity="0.85">
-            <rect x="210" y="198" width="290" height="12" rx="3"/>
-            <rect x="740" y="198" width="250" height="12" rx="3"/>
-          </g>
-          <!-- sun deck canopy + string lights -->
-          <path d="M300 160 Q600 120 900 160" fill="none" stroke="#CFD6E0" stroke-width="3"/>
-          <g fill="#E8C27A" filter="url(#glow)">
-            <circle cx="330" cy="155" r="3"/><circle cx="380" cy="149" r="3"/><circle cx="430" cy="144" r="3"/><circle cx="480" cy="141" r="3"/><circle cx="530" cy="139" r="3"/><circle cx="580" cy="138" r="3"/>
-            <circle cx="630" cy="138" r="3"/><circle cx="680" cy="139" r="3"/><circle cx="730" cy="141" r="3"/><circle cx="780" cy="144" r="3"/><circle cx="830" cy="149" r="3"/><circle cx="870" cy="155" r="3"/>
-          </g>
-          <!-- big onboard LED screen on the upper deck -->
-          <rect x="512" y="182" width="216" height="78" rx="6" fill="#05070D"/>
-          <rect fill="#C9A55C" x="520" y="190" width="200" height="62" rx="4"/>
-          <g clip-path="url(#screenClip)">
-            <image 
-            <text id="screenText" x="620" y="228" text-anchor="middle" dominant-baseline="middle" fill="#14284B" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="20">TRANSCEND</text>
-          </g>
-          <!-- bow light -->
-          <circle cx="1088" cy="290" r="4" fill="#E8C27A" filter="url(#glow)"/>
-          </g>
-        </svg>
+    <video class="hero__video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="https://transcendcruises.com/wp-content/uploads/2026/10/Transcend-Hero-Long-Version-web-1080p.mp4" type="video/mp4">
+    </video>
     <div class="wrap hero__inner">
       <span class="eyebrow">Private river charters · 30 to 120 guests</span>
       <h1>The whole ship, built around your event.</h1>
@@ -279,7 +209,7 @@
         <a class="btn btn--gold" href="#plan">Find your type of charter</a>
         <a class="btn btn--ghost" href="#availability">See ship availability</a>
       </div>
-      <div class="why"><b>2</b><span>Says what Transcend is within five seconds: a private, whole-ship charter for groups. The ship lights up in Transcend gold, and the same scene can switch to a client's brand.</span></div>
+      <div class="why"><b>2</b><span>Says what Transcend is within five seconds: a private, whole-ship charter for groups. Transcend's own video sets the mood right away.</span></div>
     </div>
   </section>
 
