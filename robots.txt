@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /for-landforce/
 
 Sitemap: https://www.meaningfulmarketinghouse.com/sitemap.xml
