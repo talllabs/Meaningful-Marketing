@@ -21,6 +21,7 @@
       --line: #E3E0D9;
     }
     * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
     body { margin: 0; font-family: "Space Grotesk", system-ui, sans-serif; background: #E9E6DF; color: var(--ink); }
     button, input, select { font: inherit; }
 
@@ -30,7 +31,7 @@
     .bar a:hover { color: #4DBDB8; }
     .bar__title { font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #4DBDB8; }
 
-    .layout { display: grid; grid-template-columns: 340px 1fr; gap: 22px; padding: 22px; max-width: 1480px; margin: 0 auto; align-items: start; }
+    .layout { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 22px; padding: 22px; max-width: 1480px; margin: 0 auto; align-items: start; }
 
     /* ---------- controls ---------- */
     .controls { position: sticky; top: 16px; background: #fff; border-radius: 16px; padding: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
@@ -54,7 +55,11 @@
     .drop input { display: none; }
     .colors { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .field .swatch { display: flex; align-items: center; gap: 8px; padding: 8px; border: 1px solid #D6D2CA; border-radius: 10px; font-size: 13px; font-weight: 600; }
-    .swatch input { width: 34px; height: 34px; padding: 0; border: 0; background: none; cursor: pointer; }
+    .swatch input[type="color"] { width: 34px; height: 34px; flex-shrink: 0; padding: 0; border: 0; background: none; cursor: pointer; }
+    .colors { grid-template-columns: 1fr; }
+    .swatch__name { flex: 1; }
+    .hex { width: 96px; padding: 7px 9px; border: 1px solid #D6D2CA; border-radius: 8px; font-family: ui-monospace, Menlo, monospace; font-size: 13px; text-transform: uppercase; }
+    .hex.is-bad { border-color: #C62828; background: #FFF4F4; }
     .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .small-btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
     .small-btn { padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; font-size: 13px; font-weight: 600; cursor: pointer; }
@@ -70,11 +75,17 @@
     .url b { color: var(--ink); }
 
     /* ---------- the client page ---------- */
-    .site-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 26px; background: var(--primary); color: var(--on-primary); transition: background 0.4s; }
-    .cobrand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.14em; font-size: 14px; }
-    .cobrand__x { opacity: 0.6; }
-    .cobrand__logo { height: 30px; max-width: 120px; object-fit: contain; }
-    .cobrand__name { letter-spacing: 0.04em; }
+    /* The preview mimics Transcend's own site: navy lockup on white, client color as an accent band. */
+    .frame { --site-font: "Helvetica Neue", Helvetica, Arial, sans-serif; --tc-navy: #14284B; font-family: var(--site-font); }
+    .site-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 26px; background: #fff; color: var(--tc-navy); }
+    .brand-band { height: 6px; background: var(--primary); transition: background 0.4s; }
+    .cobrand { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 15px; }
+    .tc-logo { height: 30px; width: auto; display: block; }
+    .tc-wordmark { font-weight: 700; letter-spacing: 0.2em; }
+    .cobrand__x { opacity: 0.45; font-weight: 400; }
+    .cobrand__logo { height: 32px; max-width: 130px; object-fit: contain; }
+    .cobrand__name { letter-spacing: 0.02em; overflow-wrap: anywhere; min-width: 0; }
+    .site-nav__links { color: var(--tc-navy); }
     .site-nav__links { display: flex; gap: 18px; font-size: 13px; font-weight: 600; opacity: 0.9; }
 
     .hero { position: relative; background: #0A1428; }
@@ -122,13 +133,33 @@
     .explain { margin: 18px 0 0; padding: 18px 20px; border-radius: 14px; background: #fff; font-size: 14px; line-height: 1.6; color: var(--muted); }
     .explain strong { color: var(--ink); }
 
+    /* ---------- logo editor ---------- */
+    .editor { position: fixed; inset: 0; z-index: 60; display: none; align-items: center; justify-content: center; padding: 18px; background: rgba(12,12,12,0.7); }
+    .editor.is-open { display: flex; }
+    .editor__box { width: 100%; max-width: 640px; max-height: 94vh; overflow-y: auto; padding: 22px; border-radius: 16px; background: #fff; }
+    .editor__box h2 { margin: 0 0 4px; font-size: 20px; }
+    .editor__box > p { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
+    .editor__stage { position: relative; display: flex; align-items: center; justify-content: center; min-height: 180px; padding: 10px; border-radius: 12px; background-color: #fff; background-image: linear-gradient(45deg, #E7E4DD 25%, transparent 25%), linear-gradient(-45deg, #E7E4DD 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #E7E4DD 75%), linear-gradient(-45deg, transparent 75%, #E7E4DD 75%); background-size: 18px 18px; background-position: 0 0, 0 9px, 9px -9px, -9px 0; }
+    .editor__stage canvas { max-width: 100%; touch-action: none; cursor: crosshair; display: block; }
+    .editor__tools { display: grid; gap: 12px; margin-top: 14px; }
+    .editor__row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 14px; }
+    .editor__row label { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+    .editor__row input[type="range"] { width: 160px; }
+    .editor__hint { font-size: 13px; color: var(--muted); }
+    .editor__actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 16px; }
+    .btn-dark { padding: 10px 16px; border: 0; border-radius: 8px; background: var(--ink); color: #fff; font-weight: 700; cursor: pointer; }
+
     .toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); padding: 11px 16px; border-radius: 10px; background: var(--ink); color: #fff; font-size: 14px; display: none; z-index: 50; }
 
     @media (max-width: 980px) {
-      .layout { grid-template-columns: 1fr; padding: 14px; }
+      .layout { grid-template-columns: minmax(0, 1fr); padding: 14px; }
       .controls { position: static; }
       .site-cards, .merch { grid-template-columns: 1fr; }
       .site-nav__links { display: none; }
+      .site-nav { padding: 12px 16px; }
+      .cobrand { flex-wrap: wrap; gap: 8px; min-width: 0; font-size: 14px; }
+      .tc-logo { height: 24px; }
+      .cobrand__logo { height: 26px; max-width: 90px; }
       .hero__copy { position: static; background: #0A1428; padding: 22px 20px 6px; }
       .site-body { padding: 22px 18px; }
       .site-cta { flex-direction: column; align-items: flex-start; }
@@ -167,6 +198,7 @@
         <input type="file" id="logo" accept="image/*">
       </label>
       <div class="small-btns">
+        <button class="small-btn" type="button" id="editLogo" hidden>Crop / remove background</button>
         <button class="small-btn" type="button" id="removeLogo">Remove logo</button>
       </div>
     </div>
@@ -174,8 +206,8 @@
     <div class="field">
       <span class="label">Brand colors</span>
       <div class="colors">
-        <label class="swatch"><input type="color" id="primary" value="#1F3A5F">Primary</label>
-        <label class="swatch"><input type="color" id="accent" value="#4DBDB8">Ship lighting</label>
+        <div class="swatch"><input type="color" id="primary" value="#1F3A5F" aria-label="Primary color picker"><span class="swatch__name">Primary</span><input class="hex" id="primaryHex" value="#1F3A5F" maxlength="7" spellcheck="false" aria-label="Primary color hex code"></div>
+        <div class="swatch"><input type="color" id="accent" value="#4DBDB8" aria-label="Ship lighting color picker"><span class="swatch__name">Ship lighting</span><input class="hex" id="accentHex" value="#4DBDB8" maxlength="7" spellcheck="false" aria-label="Ship lighting hex code"></div>
       </div>
     </div>
 
@@ -220,12 +252,15 @@
 
       <nav class="site-nav">
         <div class="cobrand">
-          <span>TRANSCEND</span><span class="cobrand__x">×</span>
+          <img class="tc-logo" id="tcLogo" src="https://transcendcruises.com/wp-content/uploads/2026/08/Transcend-Lockup-Navy-FA-1024x263.png" alt="Transcend">
+          <span class="tc-wordmark" id="tcWordmark" hidden>TRANSCEND</span>
+          <span class="cobrand__x">×</span>
           <img class="cobrand__logo" id="navLogo" alt="" hidden>
           <span class="cobrand__name" id="navName">Your Company</span>
         </div>
         <div class="site-nav__links"><span>Your sailing</span><span>The ship</span><span>Itinerary</span><span>Plan</span></div>
       </nav>
+      <div class="brand-band"></div>
 
       <section class="hero">
         <svg viewBox="0 0 1200 580" role="img" aria-label="Transcend ship at night with ambient lighting in your brand color">
@@ -295,7 +330,7 @@
           <rect class="primary-fill" x="520" y="190" width="200" height="62" rx="4"/>
           <g clip-path="url(#screenClip)">
             <image id="screenLogo" x="560" y="196" width="120" height="50" preserveAspectRatio="xMidYMid meet" href="" visibility="hidden"/>
-            <text id="screenText" x="620" y="228" text-anchor="middle" dominant-baseline="middle" class="on-primary-fill" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="20">Your Company</text>
+            <text id="screenText" x="620" y="228" text-anchor="middle" dominant-baseline="middle" class="on-primary-fill" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="20">Your Company</text>
           </g>
           <!-- bow light -->
           <circle cx="1088" cy="290" r="4" class="accent-fill" filter="url(#glow)"/>
@@ -353,6 +388,29 @@
       <strong>How this could work on the real site:</strong> a prospect visits a page like <em>transcendcruises.com/for/their-company</em>, uploads their logo and colors, and instantly sees their charter. The same template can power proposals and the client portal, so every client feels like the ship was made for them.
     </div>
   </main>
+</div>
+
+<div class="editor" id="editor" role="dialog" aria-modal="true" aria-labelledby="editorTitle">
+  <div class="editor__box">
+    <h2 id="editorTitle">Tidy up your logo</h2>
+    <p>Drag across the logo to crop it, or remove a solid background. The checkerboard shows transparent areas.</p>
+    <div class="editor__stage"><canvas id="editorCanvas" width="560" height="220"></canvas></div>
+    <div class="editor__tools">
+      <div class="editor__row">
+        <label><input type="checkbox" id="bgToggle"> Remove background</label>
+        <label>Strength <input type="range" id="bgTol" min="5" max="120" value="40"></label>
+      </div>
+      <div class="editor__row">
+        <button class="small-btn" type="button" id="autoTrim">Auto-trim edges</button>
+        <button class="small-btn" type="button" id="clearCrop">Clear crop</button>
+        <span class="editor__hint" id="cropInfo">Drag on the logo to choose a crop area.</span>
+      </div>
+    </div>
+    <div class="editor__actions">
+      <button class="small-btn" type="button" id="editorCancel">Use as is</button>
+      <button class="btn-dark" type="button" id="editorApply">Apply</button>
+    </div>
+  </div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -433,6 +491,9 @@
     $('company').value = state.name;
     $('primary').value = state.primary;
     $('accent').value = state.accent;
+    if (document.activeElement !== $('primaryHex')) { $('primaryHex').value = state.primary.toUpperCase(); $('primaryHex').classList.remove('is-bad'); }
+    if (document.activeElement !== $('accentHex')) { $('accentHex').value = state.accent.toUpperCase(); $('accentHex').classList.remove('is-bad'); }
+    $('editLogo').hidden = !originalLogo;
     $('eventType').value = state.event;
     $('guests').value = state.guests;
     $('route').value = state.route;
@@ -474,12 +535,12 @@
     }).join('');
   }
 
-  function loadFile(file) {
-    if (!file || !/^image\//.test(file.type)) return;
-    var reader = new FileReader();
-    reader.onload = function () {
-      state.logo = reader.result;
-      brandColorFrom(state.logo, function (hex) {
+  var originalLogo = ''; // the untouched upload, so edits can always be redone
+
+  function useLogo(dataUrl, pullColor) {
+    state.logo = dataUrl;
+    if (pullColor) {
+      brandColorFrom(dataUrl, function (hex) {
         if (hex) {
           state.primary = hex;
           state.accent = lighten(hex, 0.35);
@@ -487,10 +548,158 @@
         }
         render();
       });
-      render();
+    }
+    render();
+  }
+
+  function loadFile(file) {
+    if (!file || !/^image\//.test(file.type)) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      originalLogo = reader.result;
+      useLogo(originalLogo, true);
+      openEditor();
     };
     reader.readAsDataURL(file);
   }
+
+  /* ---------- logo editor: crop + background removal ---------- */
+  var ed = { img: null, src: null, work: null, crop: null, drag: null, scale: 1 };
+  var canvas = $('editorCanvas'), cx = canvas.getContext('2d');
+  var MAX_SIDE = 1200;
+
+  function openEditor() {
+    if (!originalLogo) return;
+    var img = new Image();
+    img.onload = function () {
+      var k = Math.min(1, MAX_SIDE / Math.max(img.naturalWidth, img.naturalHeight));
+      var w = Math.max(1, Math.round(img.naturalWidth * k)), h = Math.max(1, Math.round(img.naturalHeight * k));
+      var c = document.createElement('canvas'); c.width = w; c.height = h;
+      var g = c.getContext('2d'); g.drawImage(img, 0, 0, w, h);
+      try { ed.src = g.getImageData(0, 0, w, h); } catch (e) { toast('This image can\u2019t be edited, but it still works as is.'); return; }
+      ed.crop = null; $('bgToggle').checked = false;
+      process();
+      $('editor').classList.add('is-open');
+    };
+    img.src = originalLogo;
+  }
+
+  // Remove the background by flood-filling from the image edges over pixels close to the edge color.
+  function removeBackground(src, tol) {
+    var w = src.width, h = src.height, d = new Uint8ClampedArray(src.data);
+    var counts = {}, best = null;
+    function sample(x, y) {
+      var i = (y * w + x) * 4;
+      if (d[i + 3] < 16) return;
+      var key = (d[i] >> 3) + ',' + (d[i + 1] >> 3) + ',' + (d[i + 2] >> 3);
+      counts[key] = (counts[key] || 0) + 1;
+      if (!best || counts[key] > counts[best.key]) best = { key: key, r: d[i], g: d[i + 1], b: d[i + 2] };
+    }
+    for (var x = 0; x < w; x++) { sample(x, 0); sample(x, h - 1); }
+    for (var y = 0; y < h; y++) { sample(0, y); sample(w - 1, y); }
+    if (!best) return new ImageData(d, w, h); // already transparent around the edges
+    var t2 = tol * tol * 3, seen = new Uint8Array(w * h), stack = [];
+    function close(p) {
+      var i = p * 4, dr = d[i] - best.r, dg = d[i + 1] - best.g, db = d[i + 2] - best.b;
+      return d[i + 3] < 16 || dr * dr + dg * dg + db * db <= t2;
+    }
+    for (x = 0; x < w; x++) { stack.push(x, (h - 1) * w + x); }
+    for (y = 0; y < h; y++) { stack.push(y * w, y * w + w - 1); }
+    while (stack.length) {
+      var p = stack.pop();
+      if (seen[p] || !close(p)) continue;
+      seen[p] = 1; d[p * 4 + 3] = 0;
+      var px = p % w;
+      if (px > 0) stack.push(p - 1);
+      if (px < w - 1) stack.push(p + 1);
+      if (p >= w) stack.push(p - w);
+      if (p < w * (h - 1)) stack.push(p + w);
+    }
+    return new ImageData(d, w, h);
+  }
+
+  function process() {
+    ed.work = $('bgToggle').checked ? removeBackground(ed.src, +$('bgTol').value) : ed.src;
+    draw();
+  }
+
+  function draw() {
+    var w = ed.work.width, h = ed.work.height;
+    var maxW = Math.min(560, canvas.parentElement.clientWidth - 20 || 560), maxH = 260;
+    ed.scale = Math.min(maxW / w, maxH / h, 4);
+    canvas.width = Math.round(w * ed.scale); canvas.height = Math.round(h * ed.scale);
+    var tmp = document.createElement('canvas'); tmp.width = w; tmp.height = h;
+    tmp.getContext('2d').putImageData(ed.work, 0, 0);
+    cx.clearRect(0, 0, canvas.width, canvas.height);
+    cx.drawImage(tmp, 0, 0, canvas.width, canvas.height);
+    if (ed.crop) {
+      var r = ed.crop, s = ed.scale;
+      cx.fillStyle = 'rgba(12,12,12,0.45)';
+      cx.fillRect(0, 0, canvas.width, r.y * s);
+      cx.fillRect(0, (r.y + r.h) * s, canvas.width, canvas.height - (r.y + r.h) * s);
+      cx.fillRect(0, r.y * s, r.x * s, r.h * s);
+      cx.fillRect((r.x + r.w) * s, r.y * s, canvas.width - (r.x + r.w) * s, r.h * s);
+      cx.strokeStyle = '#4DBDB8'; cx.lineWidth = 2; cx.setLineDash([6, 4]);
+      cx.strokeRect(r.x * s + 1, r.y * s + 1, r.w * s - 2, r.h * s - 2); cx.setLineDash([]);
+      $('cropInfo').textContent = 'Crop: ' + r.w + ' × ' + r.h + ' px';
+    } else {
+      $('cropInfo').textContent = 'Drag on the logo to choose a crop area.';
+    }
+  }
+
+  function toImage(e) {
+    var b = canvas.getBoundingClientRect();
+    var x = (e.clientX - b.left) * (canvas.width / b.width) / ed.scale;
+    var y = (e.clientY - b.top) * (canvas.height / b.height) / ed.scale;
+    return { x: Math.max(0, Math.min(ed.work.width, x)), y: Math.max(0, Math.min(ed.work.height, y)) };
+  }
+  canvas.addEventListener('pointerdown', function (e) { canvas.setPointerCapture(e.pointerId); ed.drag = toImage(e); });
+  canvas.addEventListener('pointermove', function (e) {
+    if (!ed.drag) return;
+    var p = toImage(e), a = ed.drag;
+    ed.crop = { x: Math.round(Math.min(a.x, p.x)), y: Math.round(Math.min(a.y, p.y)), w: Math.round(Math.abs(p.x - a.x)), h: Math.round(Math.abs(p.y - a.y)) };
+    draw();
+  });
+  canvas.addEventListener('pointerup', function () {
+    ed.drag = null;
+    if (ed.crop && (ed.crop.w < 4 || ed.crop.h < 4)) { ed.crop = null; draw(); }
+  });
+
+  // Trim to the visible artwork: non-transparent pixels, or pixels unlike the corner color.
+  $('autoTrim').addEventListener('click', function () {
+    var w = ed.work.width, h = ed.work.height, d = ed.work.data;
+    var cr = d[0], cg = d[1], cb = d[2], ca = d[3];
+    var x0 = w, y0 = h, x1 = -1, y1 = -1;
+    for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) {
+      var i = (y * w + x) * 4;
+      var visible = ca < 16 ? d[i + 3] > 16 : (Math.abs(d[i] - cr) + Math.abs(d[i + 1] - cg) + Math.abs(d[i + 2] - cb) > 40 && d[i + 3] > 16);
+      if (visible) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+    }
+    if (x1 < 0) return toast('Couldn\u2019t find the edges of the logo to trim.');
+    var pad = 4;
+    x0 = Math.max(0, x0 - pad); y0 = Math.max(0, y0 - pad); x1 = Math.min(w - 1, x1 + pad); y1 = Math.min(h - 1, y1 + pad);
+    ed.crop = { x: x0, y: y0, w: x1 - x0 + 1, h: y1 - y0 + 1 };
+    draw();
+  });
+  $('clearCrop').addEventListener('click', function () { ed.crop = null; draw(); });
+  $('bgToggle').addEventListener('change', process);
+  $('bgTol').addEventListener('input', function () { if ($('bgToggle').checked) process(); });
+
+  function closeEditor() { $('editor').classList.remove('is-open'); }
+  $('editorCancel').addEventListener('click', closeEditor);
+  $('editor').addEventListener('click', function (e) { if (e.target === $('editor')) closeEditor(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeEditor(); });
+  $('editorApply').addEventListener('click', function () {
+    var r = ed.crop || { x: 0, y: 0, w: ed.work.width, h: ed.work.height };
+    var full = document.createElement('canvas'); full.width = ed.work.width; full.height = ed.work.height;
+    full.getContext('2d').putImageData(ed.work, 0, 0);
+    var out = document.createElement('canvas'); out.width = r.w; out.height = r.h;
+    out.getContext('2d').drawImage(full, r.x, r.y, r.w, r.h, 0, 0, r.w, r.h);
+    useLogo(out.toDataURL('image/png'), false);
+    closeEditor();
+    toast('Logo updated.');
+  });
+  $('editLogo').addEventListener('click', openEditor);
 
   function toast(msg) {
     var t = $('toast'); t.textContent = msg; t.style.display = 'block';
@@ -501,11 +710,27 @@
   $('company').addEventListener('input', function (e) { state.name = e.target.value; render(); });
   $('primary').addEventListener('input', function (e) { state.primary = e.target.value; render(); });
   $('accent').addEventListener('input', function (e) { state.accent = e.target.value; render(); });
+
+  // Typed hex codes: accepts "1F3A5F", "#1f3a5f" or shorthand "#abc".
+  function parseHex(v) {
+    var m = (v || '').trim().replace(/^#/, '');
+    if (/^[0-9a-f]{3}$/i.test(m)) m = m.split('').map(function (c) { return c + c; }).join('');
+    return /^[0-9a-f]{6}$/i.test(m) ? '#' + m.toLowerCase() : null;
+  }
+  [['primaryHex', 'primary'], ['accentHex', 'accent']].forEach(function (pair) {
+    var el = $(pair[0]);
+    el.addEventListener('input', function () {
+      var hex = parseHex(el.value);
+      el.classList.toggle('is-bad', !hex && el.value.trim() !== '');
+      if (hex) { state[pair[1]] = hex; render(); }
+    });
+    el.addEventListener('blur', function () { el.value = state[pair[1]].toUpperCase(); el.classList.remove('is-bad'); });
+  });
   $('eventType').addEventListener('change', function (e) { state.event = e.target.value; render(); });
   $('guests').addEventListener('input', function (e) { state.guests = Math.max(1, parseInt(e.target.value, 10) || 0); render(); });
   $('route').addEventListener('change', function (e) { state.route = e.target.value; render(); });
   $('logo').addEventListener('change', function (e) { loadFile(e.target.files[0]); });
-  $('removeLogo').addEventListener('click', function () { state.logo = ''; $('logo').value = ''; render(); });
+  $('removeLogo').addEventListener('click', function () { state.logo = ''; originalLogo = ''; $('logo').value = ''; render(); });
   var drop = $('drop');
   ['dragenter', 'dragover'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('is-over'); }); });
   ['dragleave', 'drop'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('is-over'); }); });
@@ -515,12 +740,14 @@
     btn.addEventListener('click', function () {
       var p = PRESETS[btn.dataset.preset];
       Object.keys(p).forEach(function (k) { state[k] = p[k]; });
+      originalLogo = '';
       $('logo').value = '';
       render();
     });
   });
   $('reset').addEventListener('click', function () {
     state = { name: 'Your Company', primary: '#1F3A5F', accent: '#4DBDB8', logo: '', event: 'Incentive trip', guests: 120, route: 'rhine' };
+    originalLogo = '';
     $('logo').value = '';
     render();
   });
@@ -543,6 +770,12 @@
     if (+q.get('g')) state.guests = +q.get('g');
     if (ROUTES[q.get('r')]) state.route = q.get('r');
   }
+
+  // If the Transcend logo can't load, fall back to the wordmark.
+  var tcLogo = $('tcLogo');
+  function logoFallback() { tcLogo.hidden = true; $('tcWordmark').hidden = false; }
+  tcLogo.addEventListener('error', logoFallback);
+  if (tcLogo.complete && !tcLogo.naturalWidth) logoFallback();
 
   render();
 })();

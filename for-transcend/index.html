@@ -669,7 +669,7 @@
     .tc-demo-link { margin-top: auto; align-self: flex-start; padding: 10px 14px; background: var(--black); color: var(--white); font-size: 14px; font-weight: 700; }
     .tc-demo-link:hover { background: var(--teal-dark); }
 
-    .tc-demos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .tc-demos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .tc-demo { display: flex; flex-direction: column; gap: 10px; padding: 30px; border: 2px solid rgba(255,255,255,0.18); background: #161616; transition: border-color 0.2s, transform 0.2s; }
     .tc-demo:hover { border-color: var(--teal); transform: translateY(-3px); }
     .tc-demo__tag { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); }
@@ -938,6 +938,7 @@
             <li>Point to the right contact or next step when needed</li>
           </ul>
         </details>
+        <a class="tc-demo-link" href="/for-transcend/assistant-demo.html">Try the demo: a smart charter guide →</a>
       </article>
 
       <article class="tc-project">
@@ -1019,7 +1020,7 @@
 <section class="lf-section lf-section--black" id="demos">
   <div class="container lf-wrap">
     <span class="lf-label">Click around</span>
-    <h2 class="lf-stamp">Two working demos.</h2>
+    <h2 class="lf-stamp">Three working demos.</h2>
     <p class="lf-lede">Early mockups to make the ideas tangible. <strong>Try them yourself</strong>, then imagine them on Transcend's real site and data.</p>
 
     <div class="tc-demos">
@@ -1028,6 +1029,12 @@
         <h3>Your ship, in their brand</h3>
         <p>Type a company name, upload a logo and pick brand colors. The ship's lighting, onboard screens and welcome page update instantly, the way a prospect could see their own charter.</p>
         <span class="tc-demo__go">Open the brand demo →</span>
+      </a>
+      <a class="tc-demo" href="/for-transcend/assistant-demo.html">
+        <span class="tc-demo__tag">AI website assistant</span>
+        <h3>Answers, not endless scrolling</h3>
+        <p>Your "Your Charter" page, reimagined as a smart guide. Visitors ask a question or choose what they are planning, and get approved answers, comparisons and the right next step.</p>
+        <span class="tc-demo__go">Open the charter guide demo →</span>
       </a>
       <a class="tc-demo" href="/for-transcend/ai-ingest-demo.html">
         <span class="tc-demo__tag">Deployment calendar + AI intake</span>

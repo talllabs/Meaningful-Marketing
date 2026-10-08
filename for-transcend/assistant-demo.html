@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Charter Guide | Transcend Demo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/images/favicon/favicon.ico" sizes="any">
+  <script src="/for-transcend/gate.js"></script>
+  <style>
+    :root {
+      --navy: #14284B;
+      --navy-2: #1F3A63;
+      --gold: #C9A55C;
+      --ink: #16202E;
+      --muted: #5E6878;
+      --line: #E2E5EA;
+      --paper: #F6F4EF;
+      --white: #FFFFFF;
+      --teal: #4DBDB8;
+      --site-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; font-family: var(--site-font); color: var(--ink); background: var(--white); line-height: 1.55; }
+    button, input, select { font: inherit; }
+    a { color: inherit; }
+
+    /* demo strip (not part of the mocked site) */
+    .demo-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 22px; background: #0C0C0C; color: #fff; font-size: 13px; }
+    .demo-bar a { color: #fff; font-weight: 700; text-decoration: none; }
+    .demo-bar a:hover { color: var(--teal); }
+    .demo-bar span { color: var(--teal); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 12px; }
+
+    /* mocked Transcend header */
+    .site-head { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px clamp(18px, 4vw, 48px); background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--line); }
+    .tc-logo { height: 34px; width: auto; display: block; }
+    .tc-wordmark { font-weight: 700; letter-spacing: 0.22em; color: var(--navy); }
+    .site-nav { display: flex; gap: 22px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
+    .site-nav .is-current { border-bottom: 2px solid var(--gold); padding-bottom: 3px; }
+
+    .page-hero { padding: clamp(46px, 7vw, 86px) clamp(18px, 4vw, 48px) 40px; background: linear-gradient(180deg, #0F1F3D 0%, var(--navy) 100%); color: #fff; }
+    .crumbs { font-size: 13px; opacity: 0.7; margin-bottom: 14px; }
+    .page-hero h1 { margin: 0 0 12px; font-size: clamp(34px, 5vw, 58px); font-weight: 300; letter-spacing: 0.02em; }
+    .page-hero p { max-width: 760px; margin: 0; font-size: 17px; opacity: 0.85; }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(18px, 4vw, 48px); }
+
+    /* the guide */
+    .guide { margin-top: -26px; position: relative; z-index: 2; }
+    .ask { padding: 26px; border-radius: 14px; background: #fff; box-shadow: 0 18px 50px rgba(20,40,75,0.16); }
+    .ask__label { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--navy-2); }
+    .ask__label i { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+    .ask__box { display: flex; gap: 10px; }
+    .ask__box input { flex: 1; min-width: 0; padding: 16px 18px; border: 1px solid #CBD2DC; border-radius: 10px; font-size: 18px; }
+    .ask__box input:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+    .ask__box button { padding: 0 22px; border: 0; border-radius: 10px; background: var(--navy); color: #fff; font-weight: 700; cursor: pointer; }
+    .suggest { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .suggest button { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font-size: 13px; color: var(--navy); cursor: pointer; }
+    .suggest button:hover { border-color: var(--navy); }
+
+    .answer { display: none; margin-top: 18px; padding: 22px; border-radius: 12px; background: var(--paper); border-left: 4px solid var(--gold); }
+    .answer.is-shown { display: block; }
+    .answer__meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; font-size: 12px; color: var(--muted); }
+    .pill { padding: 3px 9px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-weight: 700; color: var(--navy); }
+    .pill--ok { background: #E6F4EA; border-color: #BFE3C8; color: #1E6B37; }
+    .pill--warn { background: #FFF4E0; border-color: #F2D49A; color: #84590F; }
+    .answer h2 { margin: 0 0 8px; font-size: 21px; color: var(--navy); }
+    .answer p { margin: 0 0 10px; }
+    .answer__links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .answer__links a, .answer__links button { padding: 8px 12px; border-radius: 8px; border: 1px solid var(--navy); background: #fff; color: var(--navy); font-size: 14px; font-weight: 600; text-decoration: none; cursor: pointer; }
+    .answer__links .primary { background: var(--navy); color: #fff; }
+    .answer__related { margin-top: 14px; font-size: 14px; }
+    .answer__related b { display: block; margin-bottom: 6px; color: var(--muted); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .answer__related button { display: block; margin: 0 0 4px; padding: 0; border: 0; background: none; color: var(--navy-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left; }
+
+    section.block { padding: 50px 0 0; }
+    .block h2.title { margin: 0 0 6px; font-size: 28px; font-weight: 300; color: var(--navy); letter-spacing: 0.01em; }
+    .block p.lead { margin: 0 0 20px; color: var(--muted); max-width: 720px; }
+
+    .paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .path { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: #fff; text-align: left; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; }
+    .path:hover { border-color: var(--navy); }
+    .path.is-active { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,165,92,0.25); }
+    .path b { display: block; font-size: 17px; color: var(--navy); margin-bottom: 4px; }
+    .path span { font-size: 14px; color: var(--muted); }
+
+    .for-you { display: none; margin-top: 16px; padding: 24px; border-radius: 12px; background: var(--navy); color: #fff; }
+    .for-you.is-shown { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; }
+    .for-you h3 { margin: 0 0 8px; font-size: 22px; font-weight: 400; }
+    .for-you p { margin: 0 0 12px; opacity: 0.88; }
+    .for-you ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+    .for-you li button { width: 100%; padding: 10px 12px; border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; background: transparent; color: #fff; text-align: left; cursor: pointer; }
+    .for-you li button:hover { background: rgba(255,255,255,0.08); }
+    .for-you .next { margin-top: 14px; padding: 14px; border-radius: 10px; background: rgba(255,255,255,0.08); font-size: 14px; }
+    .for-you .next b { color: var(--gold); }
+
+    .compare { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .compare th, .compare td { padding: 12px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .compare th { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: var(--paper); }
+    .compare td:first-child { font-weight: 700; color: var(--navy); white-space: nowrap; }
+    .compare tr.is-hl td { background: #FBF6EA; }
+    .compare-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+
+    .faq-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .faq-tabs button { padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--navy); font-size: 14px; font-weight: 600; cursor: pointer; }
+    .faq-tabs button.is-active { background: var(--navy); border-color: var(--navy); color: #fff; }
+    .faq details { border-bottom: 1px solid var(--line); }
+    .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 14px; padding: 16px 0; font-size: 17px; font-weight: 600; color: var(--navy); }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; flex-shrink: 0; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); transition: transform 0.2s; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { margin: 0 0 16px; max-width: 820px; color: var(--muted); }
+    .faq details small { display: block; margin: -8px 0 16px; color: #8A93A2; }
+
+    .how { margin: 50px 0 0; padding: 22px; border-radius: 12px; background: var(--paper); font-size: 14px; color: var(--muted); }
+    .how b { color: var(--ink); }
+    .how ul { margin: 8px 0 0; padding-left: 18px; }
+
+    .review-log { margin-top: 12px; display: none; }
+    .review-log.is-shown { display: block; }
+    .review-log li { font-size: 13px; }
+
+    .site-foot { margin-top: 60px; padding: 30px clamp(18px, 4vw, 48px); background: var(--navy); color: rgba(255,255,255,0.8); font-size: 13px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+    .toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); padding: 11px 16px; border-radius: 10px; background: #0C0C0C; color: #fff; font-size: 14px; display: none; z-index: 50; }
+
+    @media (max-width: 860px) {
+      .site-nav { display: none; }
+      .paths { grid-template-columns: 1fr 1fr; }
+      .for-you.is-shown { grid-template-columns: 1fr; }
+      .ask__box { flex-direction: column; }
+      .ask__box button { padding: 12px; }
+    }
+    @media (max-width: 520px) { .paths { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="demo-bar">
+  <a href="/for-transcend/">← Back to the Q4 proposal</a>
+  <span>Demo · Smart charter guide</span>
+</div>
+
+<header class="site-head">
+  <a href="#" aria-label="Transcend Cruises">
+    <img class="tc-logo" id="tcLogo" src="https://transcendcruises.com/wp-content/uploads/2026/08/Transcend-Lockup-Navy-FA-1024x263.png" alt="Transcend Cruises">
+    <span class="tc-wordmark" id="tcWordmark" hidden>TRANSCEND</span>
+  </a>
+  <nav class="site-nav" aria-label="Mock site navigation">
+    <span>Home</span><span>Explore the Ship</span><span>Destinations</span><span class="is-current">Your Charter</span><span>Crew</span><span>In the News</span>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" style="padding:0">
+    <div class="crumbs">Home / Your Charter</div>
+    <h1>Your Charter</h1>
+    <p>Tailored, unforgettable experiences for meeting, incentive, corporate group and event buyers. Every charter is designed for you.</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <!-- ASK -->
+  <div class="guide">
+    <div class="ask">
+      <div class="ask__label"><i></i>Ask about chartering a Transcend ship</div>
+      <form class="ask__box" id="askForm">
+        <input id="q" type="search" autocomplete="off" placeholder="e.g. How many guests can we bring?" aria-label="Ask a question">
+        <button type="submit">Find answer</button>
+      </form>
+      <div class="suggest" id="suggest"></div>
+      <div class="answer" id="answer" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <!-- PATHS -->
+  <section class="block" id="paths">
+    <h2 class="title">What are you planning?</h2>
+    <p class="lead">Choose the closest fit. The page will surface the questions, details and next step that matter for you.</p>
+    <div class="paths" id="pathGrid"></div>
+    <div class="for-you" id="forYou" aria-live="polite"></div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="block" id="compare">
+    <h2 class="title">How the charter types compare</h2>
+    <p class="lead">Every charter is custom, but these are the most common starting points.</p>
+    <div class="compare-wrap">
+      <table class="compare" id="compareTable">
+        <thead><tr><th>Charter type</th><th>Ideal for</th><th>What stands out</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" id="faq">
+    <h2 class="title">Frequently asked questions</h2>
+    <p class="lead">Answers come straight from approved Transcend content.</p>
+    <div class="faq-tabs" id="faqTabs"></div>
+    <div class="faq" id="faqList"></div>
+  </section>
+
+  <div class="how">
+    <b>How this would work on the real site:</b>
+    <ul>
+      <li>Answers come only from content the Transcend team has approved. Nothing is invented.</li>
+      <li>Each answer shows where it came from and links to the right page.</li>
+      <li>When there is no approved answer, it says so, points to the right person, and adds the question to a review list so the team can approve a new answer.</li>
+      <li>Over time, the questions visitors actually ask show what the website needs to explain better.</li>
+    </ul>
+    <div class="review-log" id="reviewLog"><b>Questions waiting for an approved answer (this demo session):</b><ul id="reviewList"></ul></div>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <span>© 2026 Transcend Cruises · Demo mockup prepared by Meaningful Marketing House</span>
+  <span>Home · Explore the Ship · Destinations · Your Charter · Crew · In the News</span>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* ---------- approved content (from transcendcruises.com/your-charter) ---------- */
+  var SECTIONS = {
+    overview: 'Your Charter',
+    mice: 'MICE',
+    operators: 'Tour Operators & Leisure Travel Agencies',
+    affinity: 'Affinity Travel',
+    private: 'Private Events',
+    hotel: 'Hotel Stays',
+    corporate: 'Corporate Meetings & Retreats',
+    custom: 'Every Charter Is Designed for You',
+    work: 'Work With Us',
+    details: 'Charter Details'
+  };
+  var LINKS = {
+    details: { label: 'See Charter Details', href: 'https://transcendcruises.com/your-charter/charter-details/' },
+    ship: { label: 'Explore the Ship', href: 'https://transcendcruises.com/explore-the-ship/' },
+    destinations: { label: 'Destinations', href: 'https://transcendcruises.com/destinations' },
+    crew: { label: 'Meet the Crew', href: 'https://transcendcruises.com/meet-the-team' }
+  };
+
+  var FAQ = [
+    { id: 'who', topic: 'Getting started', q: 'What kinds of groups does Transcend work with?',
+      a: 'Transcend specializes in the group market, including meeting, incentive, corporate group and event buyers. That covers MICE programs, tour operators and leisure travel agencies, affinity groups, private events, hotel-stay style programs, and corporate meetings and retreats. Each type of travel is unique and treated as a new event.',
+      src: 'overview', k: 'groups types who work with kinds clients mice incentive corporate event buyers market', paths: ['mice', 'operators', 'affinity', 'private', 'hotel', 'corporate'], links: ['details'] },
+    { id: 'size', topic: 'The ship', q: 'How many guests can a ship accommodate?',
+      a: 'Guest counts range from 30 to 120 per vessel. The oversized, identical staterooms convert to two-room suites, which gives you flexibility in how you house your group.',
+      src: 'mice', k: 'guests how many people capacity size number pax accommodate fit 30 120 small large', paths: ['mice', 'corporate', 'affinity', 'private'], links: ['ship', 'details'] },
+    { id: 'rooms', topic: 'The ship', q: 'What are the staterooms like?',
+      a: 'Staterooms are oversized and identical, and they convert to two-room suites. That makes it easy to offer an all-suite experience or to adjust for different guest counts.',
+      src: 'mice', k: 'staterooms rooms cabins suites accommodation beds sleep identical', paths: ['mice', 'corporate', 'private'], links: ['ship'] },
+    { id: 'b2b', topic: 'Booking', q: 'Can individual travelers book a cabin?',
+      a: 'Transcend is 100% B2B and works only with dedicated charters, so the ship is always exclusively yours. Individual cabins are not sold to the public.',
+      src: 'custom', k: 'individual book cabin single traveler public retail buy one room b2b exclusive dedicated', paths: ['operators', 'affinity'], links: ['details'] },
+    { id: 'operators', topic: 'Booking', q: 'As a tour operator, will Transcend compete with my pricing?',
+      a: 'No. Because Transcend is 100% B2B, you no longer need to worry about fluctuating prices competing against your own, an itinerary that reads like many others in the leisure space, or fitting your charter into a prebuilt schedule.',
+      src: 'operators', k: 'tour operator agency agent travel advisor compete pricing prices resell resale leisure', paths: ['operators'], links: ['details'] },
+    { id: 'brand', topic: 'Branding', q: 'Can we put our brand on the ship?',
+      a: 'Yes. Your brand is front and center through the digital programming you control, lighting in your colors, music playlists, and personalized signage or giveaways. The event is wholly dedicated to you, so you choose how to showcase your brand.',
+      src: 'custom', k: 'brand branding logo colors colours lighting screens signage giveaways merch music playlist digital', paths: ['mice', 'corporate', 'affinity'], links: ['ship'] },
+    { id: 'itinerary', topic: 'Itineraries', q: 'Can the itinerary be customized?',
+      a: 'Yes. Transcend can design the ideal trip length, a round trip that starts and ends close to the airport, visits to undertouristed places, or no sailing at all if you prefer to stay portside. Once the product details are final, the onboard offering is tailored with the branding, technology and even furniture placement you need.',
+      src: 'custom', k: 'itinerary route custom customize change ports where destinations roundtrip airport length flexible', paths: ['mice', 'operators', 'affinity', 'private', 'corporate'], links: ['destinations'] },
+    { id: 'docked', topic: 'Itineraries', q: 'Can we stay docked instead of sailing?',
+      a: 'Yes. For conferences, conventions and multi-day events you can remain dockside the entire time or cruise a little. Service levels are flexible too, from a full meeting and entertainment program to a bed-and-breakfast style stay.',
+      src: 'hotel', k: 'dock docked dockside portside stay hotel not sail stationary conference convention venue', paths: ['hotel', 'mice'], links: ['details'] },
+    { id: 'length', topic: 'Itineraries', q: 'How long can a charter be?',
+      a: 'Charters are built around your event, whether that is 3 nights or 10. Transcend can also design the ideal trip duration around your goals.',
+      src: 'private', k: 'long length nights days duration short week how many nights', paths: ['private', 'affinity', 'mice'], links: ['destinations'] },
+    { id: 'meetings', topic: 'Meetings & events', q: 'Is the ship set up for meetings and breakouts?',
+      a: 'Yes. The vessel was designed to elevate the offsite meeting, with spaces that flex to your group size and technology for meetings and events. Groups can use 30 suites for a small board retreat, or hold daily breakout meetings with high-technology needs.',
+      src: 'corporate', k: 'meeting meetings breakout board retreat conference technology av spaces venues room offsite presentation', paths: ['corporate', 'mice'], links: ['details'] },
+    { id: 'venues', topic: 'Meetings & events', q: 'Where can I see the venue specifications?',
+      a: 'The public venues range from meeting rooms with modern technology to elegant social spaces for networking. Detailed specifications for each venue are on the Charter Details page.',
+      src: 'details', k: 'venue venues specs specifications floor plan spaces capacity rooms details lounge', paths: ['mice', 'corporate'], links: ['details'] },
+    { id: 'team', topic: 'Planning', q: 'Who will we work with?',
+      a: 'You get a dedicated team: a Sales Expert, an Account Manager and an on-ship Manager. Together they tailor an event order that plans every nuance of the charter.',
+      src: 'work', k: 'team who contact point person support account manager sales expert onboard manager dedicated planner representative rep', paths: ['mice', 'operators', 'affinity', 'private', 'hotel', 'corporate'], links: ['crew'] },
+    { id: 'process', topic: 'Planning', q: 'How does planning a charter work?',
+      a: 'It starts with why, so the charter syncs with your objectives or your clients’. The proposal and contract cover your entire event, including what you choose to do on your own. Your dedicated team then tailors an event order, and Transcend can be as involved or as hands-off as you like until the trip begins.',
+      src: 'work', k: 'process plan planning how start steps proposal contract event order begin', paths: ['mice', 'operators', 'affinity', 'private', 'hotel', 'corporate'], links: ['details'] },
+    { id: 'shore', topic: 'Planning', q: 'Can shore experiences and offsite events be included?',
+      a: 'Yes. The proposal and contract cover all the details of your event, including anything you choose to arrange yourself, such as shore experiences or offsite events. For private events, in-country partners help deliver the celebratory activities you envision.',
+      src: 'work', k: 'shore excursions shorex tours offsite activities land excursion outings', paths: ['affinity', 'private', 'mice'], links: ['destinations'] },
+    { id: 'multi', topic: 'Booking', q: 'Can we book multiple dates or years?',
+      a: 'Yes. If you are planning several charters or multiple years, Transcend can build out a schedule that locks in the itinerary as far ahead as you can plan.',
+      src: 'work', k: 'multiple dates years recurring repeat annual multi-year schedule several charters future', paths: ['operators', 'mice', 'affinity'], links: ['destinations'] },
+    { id: 'private', topic: 'Private events', q: 'Can we charter the ship for a wedding or family reunion?',
+      a: 'Yes. Weddings, graduations, multi-generation reunions and anniversaries are all possible, with the venue and planning exclusive to you. Transcend plans the entire multi-day event with you, whether it is for like-minded friends or a complex multi-generational family.',
+      src: 'private', k: 'wedding reunion family anniversary birthday graduation celebration private party milestone', paths: ['private'], links: ['ship'] },
+    { id: 'affinity', topic: 'Affinity groups', q: 'What kinds of affinity groups charter Transcend?',
+      a: 'Alumni and educational events, donor sailings, epicurean events, symphony programs and active adventures are a few examples. Charters are tailored to the group’s interests, with an inclusive, welcoming atmosphere where like-minded travelers can connect.',
+      src: 'affinity', k: 'affinity alumni donor donors symphony epicurean food wine interest group club association adventure', paths: ['affinity'], links: ['destinations'] },
+    { id: 'involvement', topic: 'Planning', q: 'How involved do we need to be?',
+      a: 'As involved as you like. Transcend will support your program whether you want to be incredibly hands-on or hands-off until the trip begins.',
+      src: 'work', k: 'involved hands off hands-on effort work time involvement manage ourselves', paths: ['mice', 'operators', 'affinity', 'private', 'hotel', 'corporate'], links: [] }
+  ];
+
+  var PATHS = [
+    { id: 'mice', name: 'Meetings & incentives', blurb: 'Incentives, conferences, trade shows, small conventions', intro: 'Fully equipped venues, onboard technology and a dedicated support team, with 30 to 120 guests per vessel.', route: 'an incentives or meetings & events specialist' },
+    { id: 'corporate', name: 'Corporate retreat', blurb: 'Board retreats, offsites, executive meetings', intro: 'A vessel designed for the offsite meeting, with flexible spaces, event technology and a team trained to anticipate your planning needs.', route: 'a meetings & events specialist' },
+    { id: 'operators', name: 'Tour operator or agency', blurb: 'Resell a charter to your own clients', intro: '100% B2B, so there is no competing price, no copycat itinerary and no prebuilt schedule to fit into.', route: 'a trade partnerships specialist' },
+    { id: 'affinity', name: 'Affinity group', blurb: 'Alumni, donors, clubs and special interests', intro: 'Charters built around your group’s interests, with activities and an atmosphere where like-minded travelers connect.', route: 'a special interest groups specialist' },
+    { id: 'private', name: 'Private celebration', blurb: 'Weddings, reunions, anniversaries', intro: 'An exclusive venue for a milestone, planned with you from start to finish, for 3 nights or 10.', route: 'a private events specialist' },
+    { id: 'hotel', name: 'Hotel stay or venue', blurb: 'Stay dockside for a conference or event', intro: 'Your own private ship as a hotel and venue, dockside the whole time or cruising a little, with flexible service levels.', route: 'a meetings & events specialist' }
+  ];
+
+  var COMPARE = [
+    ['mice', 'Meetings & incentives', 'Corporate gatherings, incentive programs, trade shows and small conventions', 'Fully equipped venues, onboard technology, 30 to 120 guests'],
+    ['corporate', 'Corporate retreat', 'Board retreats and offsites, from 30 suites to daily breakouts', 'Spaces that flex to group size, high-tech meeting support'],
+    ['operators', 'Tour operators & agencies', 'Resale to your own clients', '100% B2B: no competing prices or prebuilt schedules'],
+    ['affinity', 'Affinity travel', 'Alumni, donors, epicurean, symphony and adventure groups', 'Itineraries and activities built around shared interests'],
+    ['private', 'Private events', 'Weddings, graduations, reunions and anniversaries', 'Exclusive venue, full multi-day planning, in-country partners'],
+    ['hotel', 'Hotel stays', 'Conferences, conventions and hosted-buyer events', 'Stay dockside or cruise a little; flexible service levels']
+  ];
+
+  /* ---------- matching ---------- */
+  var STOP = 'a an the is are can we our you your i me my to of for in on at be do does how what who where when will with it this that there and or if any as by from have has us would should could get need want like'.split(' ');
+  var SYN = { people: 'guests', persons: 'guests', pax: 'guests', attendees: 'guests', passengers: 'guests', capacity: 'guests', cabin: 'cabins', room: 'rooms', logo: 'brand', colours: 'colors', branded: 'brand', docked: 'dock', port: 'portside', excursion: 'excursions', tours: 'shore', marriage: 'wedding', family: 'reunion', agent: 'agency', agents: 'agency', operator: 'operator', meeting: 'meetings', breakouts: 'breakout', price: 'pricing', cost: 'pricing', costs: 'pricing', nights: 'length', days: 'length', duration: 'length', long: 'length' };
+  function words(s) {
+    return (s.toLowerCase().match(/[a-z0-9]+/g) || []).filter(function (w) { return STOP.indexOf(w) === -1 && w.length > 1; }).map(function (w) { return SYN[w] || w; });
+  }
+  var INDEX = FAQ.map(function (f) {
+    var bag = {};
+    words(f.k).forEach(function (w) { bag[w] = (bag[w] || 0) + 3; });
+    words(f.q).forEach(function (w) { bag[w] = (bag[w] || 0) + 2; });
+    words(f.a).forEach(function (w) { bag[w] = (bag[w] || 0) + 1; });
+    return bag;
+  });
+  function search(query) {
+    var qw = words(query);
+    if (!qw.length) return [];
+    return FAQ.map(function (f, i) {
+      var score = 0, hits = 0;
+      qw.forEach(function (w) {
+        var s = INDEX[i][w] || 0;
+        if (!s) Object.keys(INDEX[i]).forEach(function (k) { if (k.length > 3 && w.length > 3 && (k.indexOf(w) === 0 || w.indexOf(k) === 0)) s = Math.max(s, INDEX[i][k] * 0.6); });
+        if (s) hits++;
+        score += s;
+      });
+      return { f: f, score: score * (hits / qw.length) };
+    }).filter(function (r) { return r.score > 0; }).sort(function (a, b) { return b.score - a.score; });
+  }
+
+  /* ---------- rendering ---------- */
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function linkHtml(keys) {
+    return keys.map(function (k) { return '<a href="' + LINKS[k].href + '" target="_blank" rel="noopener">' + LINKS[k].label + ' ↗</a>'; }).join('');
+  }
+
+  function showAnswer(f, related, confidence) {
+    var box = $('answer');
+    box.innerHTML =
+      '<div class="answer__meta"><span class="pill pill--ok">' + confidence + '</span>From the <span class="pill">' + esc(SECTIONS[f.src]) + '</span> section of Your Charter</div>' +
+      '<h2>' + esc(f.q) + '</h2><p>' + esc(f.a) + '</p>' +
+      '<div class="answer__links">' + linkHtml(f.links) + '<button type="button" class="primary" data-next="1">Talk to a charter expert</button></div>' +
+      (related.length ? '<div class="answer__related"><b>Related questions</b>' + related.map(function (r) { return '<button type="button" data-faq="' + r.id + '">' + esc(r.q) + '</button>'; }).join('') + '</div>' : '');
+    box.classList.add('is-shown');
+  }
+
+  function showNoAnswer(query) {
+    var box = $('answer');
+    box.innerHTML =
+      '<div class="answer__meta"><span class="pill pill--warn">No approved answer yet</span></div>' +
+      '<h2>Good question. A charter expert can help with that.</h2>' +
+      '<p>We only answer from approved Transcend content, and we don’t have a confirmed answer for “' + esc(query) + '” yet. Your dedicated Sales Expert can answer it directly.</p>' +
+      '<div class="answer__links"><button type="button" class="primary" data-next="1">Talk to a charter expert</button><a href="' + LINKS.details.href + '" target="_blank" rel="noopener">See Charter Details ↗</a></div>' +
+      '<div class="answer__related"><b>Added to the team’s review list</b>So the next visitor gets an approved answer.</div>';
+    box.classList.add('is-shown');
+    var li = document.createElement('li'); li.textContent = query;
+    $('reviewList').appendChild(li);
+    $('reviewLog').classList.add('is-shown');
+  }
+
+  function ask(query) {
+    query = (query || '').trim();
+    if (!query) return;
+    $('q').value = query;
+    var results = search(query);
+    var top = results[0];
+    if (!top || top.score < 4) return showNoAnswer(query);
+    var conf = top.score >= 10 ? 'Strong match' : 'Likely match';
+    showAnswer(top.f, results.slice(1, 4).map(function (r) { return r.f; }), conf);
+  }
+
+  function openFaq(id) {
+    var f = FAQ.filter(function (x) { return x.id === id; })[0];
+    if (!f) return;
+    var related = FAQ.filter(function (x) { return x.id !== id && x.topic === f.topic; }).slice(0, 3);
+    $('q').value = f.q;
+    showAnswer(f, related, 'Approved answer');
+    $('answer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // suggestions
+  ['How many guests can we bring?', 'Can we put our logo on the ship?', 'Can we stay docked?', 'Will you compete with my pricing?', 'Can we do a wedding?'].forEach(function (s) {
+    var b = document.createElement('button'); b.type = 'button'; b.textContent = s;
+    b.addEventListener('click', function () { ask(s); });
+    $('suggest').appendChild(b);
+  });
+  $('askForm').addEventListener('submit', function (e) { e.preventDefault(); ask($('q').value); });
+
+  // paths
+  PATHS.forEach(function (p) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'path'; b.dataset.path = p.id;
+    b.innerHTML = '<b>' + esc(p.name) + '</b><span>' + esc(p.blurb) + '</span>';
+    b.addEventListener('click', function () { choosePath(p.id); });
+    $('pathGrid').appendChild(b);
+  });
+  function choosePath(id) {
+    var p = PATHS.filter(function (x) { return x.id === id; })[0];
+    document.querySelectorAll('.path').forEach(function (b) { b.classList.toggle('is-active', b.dataset.path === id); });
+    var qs = FAQ.filter(function (f) { return f.paths.indexOf(id) !== -1; }).slice(0, 5);
+    var box = $('forYou');
+    box.innerHTML =
+      '<div><h3>' + esc(p.name) + ' on Transcend</h3><p>' + esc(p.intro) + '</p>' +
+      '<div class="next"><b>Your next step:</b> share your group size, preferred dates and goals, and we’ll connect you with ' + esc(p.route) + '.</div></div>' +
+      '<div><p style="margin-bottom:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.7">Questions planners like you ask</p><ul>' +
+      qs.map(function (f) { return '<li><button type="button" data-faq="' + f.id + '">' + esc(f.q) + '</button></li>'; }).join('') + '</ul></div>';
+    box.classList.add('is-shown');
+    document.querySelectorAll('#compareTable tr').forEach(function (tr) { tr.classList.toggle('is-hl', tr.dataset.path === id); });
+  }
+
+  // compare
+  $('compareTable').querySelector('tbody').innerHTML = COMPARE.map(function (r) {
+    return '<tr data-path="' + r[0] + '"><td>' + esc(r[1]) + '</td><td>' + esc(r[2]) + '</td><td>' + esc(r[3]) + '</td></tr>';
+  }).join('');
+
+  // FAQ list with topic tabs
+  var topics = ['All'].concat(FAQ.map(function (f) { return f.topic; }).filter(function (t, i, a) { return a.indexOf(t) === i; }));
+  function renderFaq(topic) {
+    $('faqList').innerHTML = FAQ.filter(function (f) { return topic === 'All' || f.topic === topic; }).map(function (f) {
+      return '<details id="faq-' + f.id + '"><summary>' + esc(f.q) + '</summary><p>' + esc(f.a) + '</p><small>Source: ' + esc(SECTIONS[f.src]) + '</small></details>';
+    }).join('');
+    document.querySelectorAll('.faq-tabs button').forEach(function (b) { b.classList.toggle('is-active', b.textContent === topic); });
+  }
+  topics.forEach(function (t) {
+    var b = document.createElement('button'); b.type = 'button'; b.textContent = t;
+    b.addEventListener('click', function () { renderFaq(t); });
+    $('faqTabs').appendChild(b);
+  });
+  renderFaq('All');
+
+  // delegated clicks for related questions / next step
+  document.addEventListener('click', function (e) {
+    var fq = e.target.closest('[data-faq]');
+    if (fq) { openFaq(fq.dataset.faq); return; }
+    if (e.target.closest('[data-next]')) toast('In the live version, this opens a short inquiry form routed to the right sales specialist.');
+  });
+
+  function toast(msg) {
+    var t = $('toast'); t.textContent = msg; t.style.display = 'block';
+    clearTimeout(toast._t); toast._t = setTimeout(function () { t.style.display = 'none'; }, 3200);
+  }
+
+  // Transcend logo fallback
+  var logo = $('tcLogo');
+  function fallback() { logo.hidden = true; $('tcWordmark').hidden = false; }
+  logo.addEventListener('error', fallback);
+  if (logo.complete && !logo.naturalWidth) fallback();
+})();
+</script>
+</body>
+</html>
