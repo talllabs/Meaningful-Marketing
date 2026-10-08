@@ -47,7 +47,7 @@ h1{font-size:34px;color:var(--navy)}h2{color:var(--navy)}
 .topbar{background:#fff;color:var(--navy);border-bottom:1px solid #E2E5EA;box-shadow:none;gap:16px}
 .tc-logo{height:30px;width:auto;display:block}.tc-wordmark{font-family:var(--head);font-size:20px;letter-spacing:.22em;color:var(--navy)}
 .brand{font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);padding-left:16px;border-left:1px solid #D6DAE0}
-.topnav{display:none}.user-pill{background:#F4EBDA;color:var(--navy);font-weight:600}
+.topnav{display:flex;gap:4px;padding-left:16px;border-left:1px solid #D6DAE0}.topnav button{color:var(--navy);border-radius:0;padding:22px 12px 19px;border-bottom:3px solid transparent;font-weight:600}.topnav button:hover{background:transparent;color:var(--navy);border-bottom-color:#E5D3AE}.topnav button.active{background:transparent;color:var(--navy);border-bottom-color:var(--gold)}.user-pill{background:#F4EBDA;color:var(--navy);font-weight:600}
 .btn.primary{background:var(--navy);border-color:var(--navy)}
 .btn.gold{background:var(--gold);border-color:var(--gold);color:#0B1830}
 .ingest-option{position:relative}.ingest-option:hover,.ingest-option.active{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,165,92,.22)}
@@ -62,20 +62,18 @@ h1{font-size:34px;color:var(--navy)}h2{color:var(--navy)}
 .step-tag.corner{position:absolute;top:12px;right:12px;margin:0}
 .pulse{animation:pulse 1.6s ease-out infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,165,92,.65)}70%{box-shadow:0 0 0 12px rgba(201,165,92,0)}100%{box-shadow:0 0 0 0 rgba(201,165,92,0)}}
-@media(max-width:900px){.guide{grid-template-columns:1fr}.topbar{flex-direction:row;flex-wrap:wrap;align-items:center}.brand{border-left:0;padding-left:0}}
+@media(max-width:900px){.topnav{border-left:0;padding-left:0;width:100%}.topnav button{padding:10px 10px 8px}.guide{grid-template-columns:1fr}.topbar{flex-direction:row;flex-wrap:wrap;align-items:center}.brand{border-left:0;padding-left:0}}
+.ai-updated{background:#FBF1DC!important;box-shadow:inset 3px 0 0 var(--gold)}
 </style>
 </head>
 <body>
-<div class="backbar"><a href="/for-transcend/">← Back to the Q4 proposal</a><span>Demo · AI intake</span></div>
+<div class="backbar"><a href="/for-transcend/">← Back to the Q4 proposal</a><span>Demo · Deployment calendar + AI intake</span></div>
 <div class="topbar">
   <img class="tc-logo" id="tcLogo" src="https://transcendcruises.com/wp-content/uploads/2026/08/Transcend-Lockup-Navy-FA-1024x263.png" alt="Transcend Cruises">
   <span class="tc-wordmark" id="tcWordmark" hidden>TRANSCEND</span>
-  <span class="brand">Deployment Calendar</span>
   <div class="topnav">
-    <button data-page="calendar">Calendar</button>
+    <button data-page="calendar">Deployment Calendar</button>
     <button class="active" data-page="ingest">✨ AI Ingest</button>
-    <button data-page="data">Data</button>
-    <button data-page="history">Change History</button>
   </div>
   <div class="user-pill">Demo workspace</div>
 </div>
@@ -218,7 +216,7 @@ Operations</textarea></div>
   </div>
 </section>
 
-<div id="toast" class="toast">Done! The calendar is updated, and the change is logged so it can be undone.</div>
+<div id="toast" class="toast">Done! Open the Deployment Calendar tab to see the updated voyage.</div>
 
 <script>
 const pages=document.querySelectorAll('.page'),navButtons=document.querySelectorAll('.topnav button');
@@ -227,7 +225,8 @@ function openIngest(){navButtons.forEach(b=>b.classList.toggle('active',b.datase
 function showMode(mode,el){document.querySelectorAll('.ingest-option').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('uploadMode').classList.toggle('hidden',mode!=='upload');document.getElementById('pasteMode').classList.toggle('hidden',mode!=='paste');document.getElementById('changeMode').classList.toggle('hidden',mode!=='change');document.getElementById('review').classList.add('hidden');document.getElementById('processing').classList.add('hidden');setStep(2)}
 function setStep(n){[1,2,3].forEach(i=>{const el=document.getElementById('g'+i);el.classList.toggle('is-current',i===n);el.classList.toggle('is-done',i<n)});document.getElementById('analyzeBtn').classList.toggle('pulse',n<=2);document.getElementById('approveBtn').classList.toggle('pulse',n===3)}
 function analyze(){setStep(3);document.getElementById('review').classList.add('hidden');document.getElementById('processing').classList.remove('hidden');setTimeout(()=>{document.getElementById('processing').classList.add('hidden');document.getElementById('review').classList.remove('hidden');document.getElementById('review').scrollIntoView({behavior:'smooth',block:'start'})},1200)}
-function approve(){setStep(4);const history=document.getElementById('historyList'),row=document.createElement('div');row.className='history-item';row.innerHTML='<div><strong>Just now</strong><br><span style="color:#6b7280;font-size:12px">AI Ingest</span></div><div><strong>Gruen Travel</strong><br><span style="color:#6b7280">Applied 4 approved changes from pasted Operations email</span></div><button class="btn">Undo</button>';history.prepend(row);const toast=document.getElementById('toast');toast.style.display='block';setTimeout(()=>toast.style.display='none',2400)}
+function applyToCalendar(){const rows=[...document.querySelectorAll('#calendar table.calendar tr')];const row=d=>rows.find(r=>r.cells[0]&&r.cells[0].textContent.trim()===d);const mark=(c,v)=>{if(!c)return;c.innerHTML='<strong>'+v+'</strong>';c.classList.add('ai-updated')};const r7=row('07 Oct');if(r7&&r7.cells[6]){r7.cells[6].innerHTML='';r7.cells[6].classList.add('ai-updated')}const r11=row('11 Oct');if(r11){r11.cells[2].textContent='Strasbourg';mark(r11.cells[3],'13:00')}const r12=row('12 Oct');if(r12)mark(r12.cells[4],'14:00');const r13=row('13 Oct');if(r13)mark(r13.cells[2],'Rüdesheim');const r8=row('08 Oct');if(r8)r8.cells[6].classList.add('ai-updated')}
+function approve(){setStep(4);applyToCalendar();const history=document.getElementById('historyList'),row=document.createElement('div');row.className='history-item';row.innerHTML='<div><strong>Just now</strong><br><span style="color:#6b7280;font-size:12px">AI Ingest</span></div><div><strong>Gruen Travel</strong><br><span style="color:#6b7280">Applied 4 approved changes from pasted Operations email</span></div><button class="btn">Undo</button>';history.prepend(row);const toast=document.getElementById('toast');toast.style.display='block';setTimeout(()=>toast.style.display='none',2400)}
 function resetDemo(){setStep(1);document.getElementById('review').classList.add('hidden');document.getElementById('processing').classList.add('hidden');window.scrollTo({top:0,behavior:'smooth'})}
 (function(){var l=document.getElementById('tcLogo');function f(){l.hidden=true;document.getElementById('tcWordmark').hidden=false}l.addEventListener('error',f);if(l.complete&&!l.naturalWidth)f()})();
 </script>
