@@ -6,6 +6,9 @@
   <title>Smart Charter Guide | Transcend Demo</title>
   <meta name="robots" content="noindex">
   <link rel="icon" href="/images/favicon/favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
   <script src="/for-transcend/gate.js"></script>
   <style>
     :root {
@@ -19,11 +22,13 @@
       --white: #FFFFFF;
       --teal: #4DBDB8;
       --site-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --head-font: "SaolDisplay-Regular", "Saol Display", "Playfair Display", Georgia, serif;
     }
     * { box-sizing: border-box; }
     [hidden] { display: none !important; }
     body { margin: 0; font-family: var(--site-font); color: var(--ink); background: var(--white); line-height: 1.55; }
     button, input, select { font: inherit; }
+    h1, h2, h3 { font-family: var(--head-font); font-weight: 500 !important; letter-spacing: 0 !important; }
     a { color: inherit; }
 
     /* demo strip (not part of the mocked site) */

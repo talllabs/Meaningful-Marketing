@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Charter Portal | Transcend Demo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/images/favicon/favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+  <script src="/for-transcend/gate.js"></script>
+  <style>
+    :root {
+      --navy: #14284B;
+      --navy-deep: #0B1830;
+      --gold: #C9A55C;
+      --gold-soft: #F4EBDA;
+      --client: #2F6FDE;
+      --ink: #16202E;
+      --muted: #5E6878;
+      --line: #E2E5EA;
+      --paper: #F5F4F0;
+      --white: #FFFFFF;
+      --teal: #4DBDB8;
+      --ok: #1E6B37; --ok-bg: #E6F4EA;
+      --warn: #84590F; --warn-bg: #FFF4E0;
+      --site-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --head-font: "SaolDisplay-Regular", "Saol Display", "Playfair Display", Georgia, serif;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; font-family: var(--site-font); color: var(--ink); background: var(--paper); line-height: 1.5; }
+    button, input, select, textarea { font: inherit; }
+    a { color: inherit; }
+    h1, h2, h3 { font-family: var(--head-font); font-weight: 500; margin: 0; }
+
+    .demo-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 22px; background: #0C0C0C; color: #fff; font-size: 13px; }
+    .demo-bar a { color: #fff; font-weight: 700; text-decoration: none; }
+    .demo-bar a:hover { color: var(--teal); }
+    .demo-bar span { color: var(--teal); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 12px; }
+
+    /* portal header */
+    .p-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px clamp(16px, 3vw, 34px); background: #fff; border-bottom: 1px solid var(--line); }
+    .cobrand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .tc-logo { height: 28px; width: auto; display: block; }
+    .tc-wordmark { font-family: var(--head-font); font-size: 20px; letter-spacing: 0.22em; color: var(--navy); }
+    .cobrand__x { color: #A3AAB6; }
+    .client-mark { display: flex; align-items: center; gap: 8px; min-width: 0; font-weight: 700; color: var(--ink); }
+    .client-mark i { flex-shrink: 0; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: var(--client); color: #fff; font-style: normal; }
+    .client-mark span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .user { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+    .user b { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: var(--gold); font-size: 13px; }
+
+    /* layout */
+    .shell { display: grid; grid-template-columns: 230px minmax(0, 1fr); min-height: calc(100vh - 110px); }
+    .side { padding: 22px 14px; background: var(--navy-deep); color: #fff; }
+    .side__label { padding: 0 12px 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+    .tabs { display: grid; gap: 4px; }
+    .tab { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%; padding: 11px 12px; border: 0; border-radius: 10px; background: transparent; color: rgba(255,255,255,0.82); text-align: left; font-size: 15px; cursor: pointer; }
+    .tab:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .tab.is-active { background: rgba(201,165,92,0.18); color: #fff; box-shadow: inset 3px 0 0 var(--gold); }
+    .tab em { min-width: 22px; padding: 1px 7px; border-radius: 999px; background: var(--gold); color: var(--navy-deep); font-size: 12px; font-style: normal; font-weight: 700; text-align: center; }
+    .side__help { margin-top: 26px; padding: 14px 12px; border-radius: 12px; background: rgba(255,255,255,0.06); font-size: 13px; color: rgba(255,255,255,0.7); }
+    .side__help b { display: block; margin-bottom: 4px; color: #fff; }
+
+    main { padding: clamp(18px, 3vw, 34px); }
+    .panel { display: none; }
+    .panel.is-active { display: block; }
+    .panel > h2 { margin-bottom: 4px; font-size: clamp(26px, 3vw, 34px); color: var(--navy); }
+    .panel > p.sub { margin: 0 0 22px; color: var(--muted); }
+
+    .card { padding: 22px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+    .card + .card { margin-top: 16px; }
+    .card h3 { margin-bottom: 12px; font-size: 21px; color: var(--navy); }
+    .grid-2 { display: grid; grid-template-columns: 1.35fr 1fr; gap: 16px; align-items: start; }
+    .grid-2 > div > .card + .card { margin-top: 16px; }
+
+    /* trip hero */
+    .trip { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; margin-bottom: 18px; padding: 26px 28px; border-radius: 18px; background: linear-gradient(120deg, var(--navy-deep), var(--navy) 60%, #22406F); color: #fff; overflow: hidden; }
+    .trip::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--client); }
+    .trip small { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+    .trip h1 { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.1; }
+    .trip p { margin: 8px 0 0; color: rgba(255,255,255,0.8); }
+    .countdown { text-align: center; padding: 14px 20px; border-radius: 14px; background: rgba(255,255,255,0.08); }
+    .countdown b { display: block; font-family: var(--head-font); font-weight: 500; font-size: 44px; line-height: 1; color: var(--gold); }
+    .countdown span { font-size: 13px; color: rgba(255,255,255,0.8); }
+
+    .progress { margin-bottom: 18px; }
+    .progress__top { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; font-weight: 700; color: var(--navy); }
+    .bar { height: 10px; border-radius: 999px; background: #E3E1DA; overflow: hidden; }
+    .bar i { display: block; height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--gold), #E2C17E); transition: width 0.4s; }
+
+    /* action items */
+    .todo { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    .todo li { display: grid; grid-template-columns: 24px 1fr auto; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); }
+    .todo li.is-done { background: #FAFAF8; }
+    .todo li.is-done .todo__text { color: #9AA1AD; text-decoration: line-through; }
+    .todo input { width: 20px; height: 20px; accent-color: var(--navy); }
+    .todo__text b { display: block; font-size: 15px; color: var(--ink); }
+    .todo__text small { color: var(--muted); }
+    .todo button.link { border: 0; background: none; color: var(--navy); font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+    .chip { display: inline-block; padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .chip--ok { background: var(--ok-bg); color: var(--ok); }
+    .chip--warn { background: var(--warn-bg); color: var(--warn); }
+    .chip--info { background: #E8EEF8; color: var(--navy); }
+    .chip--due { background: #FDE8E6; color: #9C2B20; }
+
+    .timeline { position: relative; margin: 0; padding: 0 0 0 22px; list-style: none; }
+    .timeline::before { content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+    .timeline li { position: relative; padding: 0 0 14px; font-size: 14px; }
+    .timeline li::before { content: ""; position: absolute; left: -22px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 2px solid #C2C8D2; }
+    .timeline li.done::before { background: var(--gold); border-color: var(--gold); }
+    .timeline li.next::before { border-color: var(--navy); box-shadow: 0 0 0 4px rgba(20,40,75,0.12); }
+    .timeline b { display: block; color: var(--ink); }
+    .timeline small { color: var(--muted); }
+
+    .feed { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; font-size: 14px; }
+    .feed li { padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .feed li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .feed small { display: block; color: var(--muted); }
+
+    /* documents */
+    .drop { display: grid; place-items: center; gap: 6px; padding: 28px; border: 2px dashed #C2C8D2; border-radius: 14px; background: #FBFAF7; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+    .drop:hover, .drop.is-over { border-color: var(--gold); background: var(--gold-soft); }
+    .drop b { font-size: 16px; color: var(--navy); }
+    .drop small { color: var(--muted); }
+    .doc-type { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 14px; font-weight: 700; color: var(--navy); }
+    .doc-type select { padding: 8px 10px; border: 1px solid #CBD2DC; border-radius: 8px; background: #fff; font-weight: 400; }
+    .docs { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .docs th, .docs td { padding: 11px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+    .docs th { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .docs td:first-child { font-weight: 600; color: var(--ink); }
+    .docs .ft { display: inline-block; min-width: 38px; margin-right: 8px; padding: 2px 6px; border-radius: 6px; background: var(--navy); color: #fff; font-size: 10px; font-weight: 700; text-align: center; }
+    .docs .new td { background: #FFFBEF; }
+    .tbl-wrap { overflow-x: auto; }
+    .mini-btn { padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--navy); font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+    .mini-btn:hover { border-color: var(--navy); }
+    .doc-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .doc-filter button { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--navy); font-size: 13px; font-weight: 600; cursor: pointer; }
+    .doc-filter button.is-active { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+    /* guests */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
+    .stat { padding: 16px; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
+    .stat b { display: block; font-family: var(--head-font); font-weight: 500; font-size: 30px; line-height: 1.1; color: var(--navy); }
+    .stat span { font-size: 13px; color: var(--muted); }
+    .row-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border: 1px solid transparent; border-radius: 999px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; }
+    .btn--navy { background: var(--navy); color: #fff; }
+    .btn--navy:hover { background: #1F3A63; }
+    .btn--line { border-color: var(--navy); background: #fff; color: var(--navy); }
+    .btn--gold { background: var(--gold); color: var(--navy-deep); }
+
+    /* event order */
+    .eo { display: grid; gap: 12px; }
+    .eo-item { padding: 18px 20px; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
+    .eo-item.is-approved { border-color: #BFE3C8; }
+    .eo-item.is-changes { border-color: #F2D49A; }
+    .eo-item__top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: center; margin-bottom: 8px; }
+    .eo-item h3 { font-size: 20px; color: var(--navy); }
+    .eo-item ul { margin: 0 0 12px; padding-left: 18px; font-size: 14px; color: var(--muted); }
+    .eo-item__btns { display: flex; flex-wrap: wrap; gap: 8px; }
+    .eo-item textarea { width: 100%; min-height: 70px; margin-top: 10px; padding: 10px; border: 1px solid #CBD2DC; border-radius: 10px; }
+    .eo-item .note { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: var(--warn-bg); font-size: 14px; color: var(--warn); }
+
+    /* payments */
+    .pay { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .pay th, .pay td { padding: 14px 10px; border-bottom: 1px solid var(--line); text-align: left; }
+    .pay th { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .pay td.num { font-variant-numeric: tabular-nums; font-weight: 700; }
+
+    /* itinerary */
+    .days { display: grid; gap: 10px; }
+    .day { display: grid; grid-template-columns: 90px 1fr; gap: 16px; padding: 16px 18px; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
+    .day__n { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .day__n b { display: block; font-family: var(--head-font); font-weight: 500; font-size: 22px; letter-spacing: 0; text-transform: none; color: var(--navy); }
+    .day h3 { font-size: 19px; color: var(--navy); margin-bottom: 4px; }
+    .day p { margin: 0; font-size: 14px; color: var(--muted); }
+
+    /* messages */
+    .thread { display: grid; gap: 12px; max-height: 420px; overflow-y: auto; padding: 4px 2px 10px; }
+    .msg { max-width: 78%; padding: 12px 14px; border-radius: 14px; background: #fff; border: 1px solid var(--line); font-size: 14px; }
+    .msg small { display: block; margin-bottom: 4px; font-weight: 700; color: var(--navy); }
+    .msg.me { justify-self: end; background: var(--navy); border-color: var(--navy); color: #fff; }
+    .msg.me small { color: var(--gold); }
+    .compose { display: flex; gap: 10px; margin-top: 12px; }
+    .compose input { flex: 1; min-width: 0; padding: 12px 14px; border: 1px solid #CBD2DC; border-radius: 999px; }
+    .compose input:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+
+    .team { display: grid; gap: 10px; }
+    .person { display: grid; grid-template-columns: 42px 1fr; gap: 12px; align-items: center; }
+    .person i { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--navy); color: var(--gold); font-style: normal; font-weight: 700; font-size: 13px; }
+    .person b { display: block; font-size: 15px; }
+    .person small { color: var(--muted); }
+
+    .demo-note { margin-top: 22px; padding: 14px 16px; border-radius: 12px; background: #fff; border: 1px dashed #C2C8D2; font-size: 13px; color: var(--muted); }
+
+    .toast { position: fixed; left: 50%; bottom: 24px; z-index: 60; transform: translateX(-50%); max-width: calc(100% - 32px); padding: 12px 18px; border-radius: 10px; background: #0C0C0C; color: #fff; font-size: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+
+    @media (max-width: 980px) {
+      .shell { grid-template-columns: minmax(0, 1fr); }
+      .side { padding: 10px 12px; }
+      .side__label, .side__help { display: none; }
+      .tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+      .tab { flex-shrink: 0; width: auto; padding: 9px 12px; font-size: 14px; }
+      .tab.is-active { box-shadow: inset 0 -3px 0 var(--gold); }
+      .grid-2 { grid-template-columns: minmax(0, 1fr); }
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .user span { display: none; }
+      .tc-logo { height: 22px; }
+      .trip { grid-template-columns: 1fr; padding: 22px; }
+      .countdown { text-align: left; }
+      .day { grid-template-columns: 1fr; gap: 6px; }
+      .msg { max-width: 92%; }
+      .todo li { grid-template-columns: 24px 1fr; }
+      .todo li > :last-child { grid-column: 2; justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="demo-bar">
+  <a href="/for-transcend/">← Back to the Q4 proposal</a>
+  <span>Demo · Client portal after booking</span>
+</div>
+
+<header class="p-head">
+  <div class="cobrand">
+    <img class="tc-logo" id="tcLogo" src="https://transcendcruises.com/wp-content/uploads/2026/08/Transcend-Lockup-Navy-FA-1024x263.png" alt="Transcend Cruises">
+    <span class="tc-wordmark" id="tcWordmark" hidden>TRANSCEND</span>
+    <span class="cobrand__x">×</span>
+    <span class="client-mark"><i>N</i><span>Northwind Group</span></span>
+  </div>
+  <div class="user"><span>Dana, Event Lead</span><b>DL</b></div>
+</header>
+
+<div class="shell">
+  <aside class="side">
+    <div class="side__label">Your charter</div>
+    <nav class="tabs" role="tablist" aria-label="Portal sections">
+      <button class="tab is-active" role="tab" data-tab="overview">Overview</button>
+      <button class="tab" role="tab" data-tab="documents">Documents <em id="badgeDocs">2</em></button>
+      <button class="tab" role="tab" data-tab="guests">Guests</button>
+      <button class="tab" role="tab" data-tab="event">Event order <em id="badgeEvent">3</em></button>
+      <button class="tab" role="tab" data-tab="payments">Payments</button>
+      <button class="tab" role="tab" data-tab="itinerary">Itinerary</button>
+      <button class="tab" role="tab" data-tab="messages">Messages</button>
+    </nav>
+    <div class="side__help"><b>Need a hand?</b>Your Account Manager usually replies within one business day.</div>
+  </aside>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section class="panel is-active" id="tab-overview">
+      <div class="trip">
+        <div>
+          <small>Booked charter · Sample client</small>
+          <h1>Northwind President's Club 2027</h1>
+          <p>Rhine River · Amsterdam to Basel · 7 nights · 96 guests</p>
+        </div>
+        <div class="countdown"><b id="daysLeft">0</b><span>days until you sail</span></div>
+      </div>
+
+      <div class="progress">
+        <div class="progress__top"><span>Planning progress</span><span id="progressPct">0%</span></div>
+        <div class="bar"><i id="progressBar"></i></div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <div class="card">
+            <h3>Your to-do list</h3>
+            <ul class="todo" id="todo"></ul>
+          </div>
+          <div class="card">
+            <h3>Latest updates</h3>
+            <ul class="feed">
+              <li>Event order <b>version 2</b> is ready for your review.<small>From your Account Manager · 2 days ago</small></li>
+              <li>Shore experience options for Strasbourg were added to Documents.<small>From your Account Manager · 5 days ago</small></li>
+              <li>Deposit received. Thank you!<small>From Transcend · 3 weeks ago</small></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <h3>Key dates</h3>
+            <ul class="timeline">
+              <li class="done"><b>Contract signed</b><small>Complete</small></li>
+              <li class="done"><b>Deposit paid</b><small>Complete</small></li>
+              <li class="next"><b>Guest manifest due</b><small>February 1, 2027</small></li>
+              <li><b>Second payment due</b><small>February 15, 2027</small></li>
+              <li><b>Final event order sign-off</b><small>April 1, 2027</small></li>
+              <li><b>Embarkation in Amsterdam</b><small>May 14, 2027</small></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Your Transcend team</h3>
+            <div class="team">
+              <div class="person"><i>SE</i><div><b>Sales Expert</b><small>Your proposal and contract</small></div></div>
+              <div class="person"><i>AM</i><div><b>Account Manager</b><small>Event order and day-to-day planning</small></div></div>
+              <div class="person"><i>SM</i><div><b>On-ship Manager</b><small>Your program onboard</small></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCUMENTS -->
+    <section class="panel" id="tab-documents">
+      <h2>Documents</h2>
+      <p class="sub">Everything for your charter in one place. Send files to your team, and download what they share with you.</p>
+      <div class="card">
+        <label class="doc-type">What are you sending?
+          <select id="docType">
+            <option>Brand &amp; logo files</option>
+            <option>Guest manifest</option>
+            <option>Run of show / agenda</option>
+            <option>Signage &amp; print</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <div class="drop" id="drop" role="button" tabindex="0">
+          <b>Drop files here, or click to upload</b>
+          <small>Logos, guest lists, run of show, signage files, anything your team needs.</small>
+        </div>
+        <input type="file" id="fileInput" multiple hidden>
+      </div>
+      <div class="card">
+        <div class="doc-filter" id="docFilter">
+          <button class="is-active" data-f="all">All</button>
+          <button data-f="tc">From Transcend</button>
+          <button data-f="you">From you</button>
+          <button data-f="sign">Needs your signature</button>
+        </div>
+        <div class="tbl-wrap">
+          <table class="docs">
+            <thead><tr><th>File</th><th>From</th><th>Status</th><th></th></tr></thead>
+            <tbody id="docRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUESTS -->
+    <section class="panel" id="tab-guests">
+      <h2>Guests</h2>
+      <p class="sub">Keep your guest manifest up to date. Your team sees changes right away.</p>
+      <div class="stats">
+        <div class="stat"><b id="gTotal">0</b><span>Guests on manifest</span></div>
+        <div class="stat"><b>96</b><span>Contracted guests</span></div>
+        <div class="stat"><b id="gPass">0</b><span>Passport details in</span></div>
+        <div class="stat"><b id="gDiet">0</b><span>Dietary notes</span></div>
+      </div>
+      <div class="row-actions">
+        <button class="btn btn--navy" id="addGuest">+ Add a guest</button>
+        <label class="btn btn--line">Upload a manifest (CSV)<input type="file" id="csvInput" accept=".csv,text/csv" hidden></label>
+        <button class="btn btn--line" id="dlTemplate">Download the template</button>
+      </div>
+      <div class="card">
+        <div class="tbl-wrap">
+          <table class="docs">
+            <thead><tr><th>Guest</th><th>Stateroom</th><th>Dietary</th><th>Passport</th></tr></thead>
+            <tbody id="guestRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENT ORDER -->
+    <section class="panel" id="tab-event">
+      <h2>Event order <span class="chip chip--info" style="vertical-align:middle">Version 2</span></h2>
+      <p class="sub">Every detail of your charter, section by section. Approve each part or ask for changes.</p>
+      <div class="eo" id="eo"></div>
+    </section>
+
+    <!-- PAYMENTS -->
+    <section class="panel" id="tab-payments">
+      <h2>Payments</h2>
+      <p class="sub">Your payment schedule and receipts. Sample amounts for this demo.</p>
+      <div class="card">
+        <div class="tbl-wrap">
+          <table class="pay">
+            <thead><tr><th>Payment</th><th>Due</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              <tr><td>Deposit (30%)</td><td>At signing</td><td class="num">$126,000</td><td><span class="chip chip--ok">Paid</span></td><td><button class="mini-btn" data-toast="In the real portal, this downloads the receipt.">Receipt</button></td></tr>
+              <tr><td>Second payment (40%)</td><td>Feb 15, 2027</td><td class="num">$168,000</td><td><span class="chip chip--warn" id="payStatus">Upcoming</span></td><td><button class="mini-btn" id="payNow">Pay now</button></td></tr>
+              <tr><td>Final payment (30%)</td><td>Apr 14, 2027</td><td class="num">$126,000</td><td><span class="chip chip--info">Scheduled</span></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Onboard extras</h3>
+        <p style="margin:0;color:var(--muted)">Add-ons like premium beverage packages or extra shore experiences appear here once you approve them, with the total updated automatically.</p>
+      </div>
+    </section>
+
+    <!-- ITINERARY -->
+    <section class="panel" id="tab-itinerary">
+      <h2>Itinerary</h2>
+      <p class="sub">Day by day, including everything you have planned onboard and ashore.</p>
+      <div class="days" id="days"></div>
+    </section>
+
+    <!-- MESSAGES -->
+    <section class="panel" id="tab-messages">
+      <h2>Messages</h2>
+      <p class="sub">One conversation with your Transcend team, instead of long email threads.</p>
+      <div class="card">
+        <div class="thread" id="thread">
+          <div class="msg"><small>Account Manager</small>Hi Dana! Event order version 2 is up. I added the Strasbourg shore options and moved the awards dinner to night 6, as you asked.</div>
+          <div class="msg me"><small>You</small>Perfect, thank you. I'll get the guest manifest to you this week.</div>
+          <div class="msg"><small>Account Manager</small>Sounds great. You can upload it in the Guests tab, and I'll see it right away.</div>
+        </div>
+        <form class="compose" id="compose">
+          <input id="msgInput" placeholder="Write a message to your team…" aria-label="Message">
+          <button class="btn btn--navy" type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+
+    <p class="demo-note"><b>About this demo:</b> Northwind Group is a fictional client and all details are samples. Files you upload stay in your browser and are not sent anywhere. In the real portal, each client gets a private login, and everything connects to the deployment calendar and Transcend's existing tools.</p>
+  </main>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  var toastEl = $('toast');
+  function toast(msg) {
+    toastEl.textContent = msg; toastEl.hidden = false;
+    clearTimeout(toastEl._t); toastEl._t = setTimeout(function () { toastEl.hidden = true; }, 3200);
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-toast]');
+    if (t) toast(t.getAttribute('data-toast'));
+  });
+
+  /* ---------- tabs ---------- */
+  var tabs = document.querySelectorAll('.tab');
+  function showTab(name) {
+    Array.prototype.forEach.call(tabs, function (t) {
+      var on = t.getAttribute('data-tab') === name;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', String(on));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.panel'), function (p) {
+      p.classList.toggle('is-active', p.id === 'tab-' + name);
+    });
+    try { history.replaceState(null, '', '#' + name); } catch (x) {}
+  }
+  Array.prototype.forEach.call(tabs, function (t) {
+    t.addEventListener('click', function () { showTab(t.getAttribute('data-tab')); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  });
+  var start = (location.hash || '').slice(1);
+  if (start && $('tab-' + start)) showTab(start);
+
+  /* ---------- countdown ---------- */
+  var sail = new Date(2027, 4, 14);
+  $('daysLeft').textContent = Math.max(0, Math.ceil((sail - new Date()) / 86400000));
+
+  /* ---------- to-do list ---------- */
+  var TODO = [
+    { id: 'contract', t: 'Sign the charter contract', d: 'Done', done: true },
+    { id: 'deposit', t: 'Pay the deposit', d: 'Done', done: true },
+    { id: 'logo', t: 'Send logo files for lighting and signage', d: 'Due Jan 15', go: 'documents' },
+    { id: 'event', t: 'Review event order version 2', d: 'Due Jan 20', go: 'event' },
+    { id: 'manifest', t: 'Upload your guest manifest', d: 'Due Feb 1', go: 'guests' },
+    { id: 'addendum', t: 'Sign the welcome dinner addendum', d: 'Due Feb 1', go: 'documents' },
+    { id: 'pay2', t: 'Make the second payment', d: 'Due Feb 15', go: 'payments' }
+  ];
+  function renderTodo() {
+    $('todo').innerHTML = TODO.map(function (x) {
+      return '<li class="' + (x.done ? 'is-done' : '') + '"><input type="checkbox" data-id="' + x.id + '"' + (x.done ? ' checked' : '') + ' aria-label="Mark done: ' + esc(x.t) + '">' +
+        '<span class="todo__text"><b>' + esc(x.t) + '</b><small>' + esc(x.done ? 'Done' : x.d) + '</small></span>' +
+        (x.done || !x.go ? '<span></span>' : '<button class="link" data-go="' + x.go + '">Open</button>') + '</li>';
+    }).join('');
+    var done = TODO.filter(function (x) { return x.done; }).length;
+    var pct = Math.round(done / TODO.length * 100);
+    $('progressPct').textContent = pct + '%';
+    $('progressBar').style.width = pct + '%';
+  }
+  function complete(id) {
+    TODO.forEach(function (x) { if (x.id === id) x.done = true; });
+    renderTodo();
+  }
+  $('todo').addEventListener('change', function (e) {
+    var id = e.target.getAttribute('data-id');
+    TODO.forEach(function (x) { if (x.id === id) x.done = e.target.checked; });
+    renderTodo();
+  });
+  $('todo').addEventListener('click', function (e) {
+    var go = e.target.getAttribute && e.target.getAttribute('data-go');
+    if (go) showTab(go);
+  });
+  renderTodo();
+
+  /* ---------- documents ---------- */
+  var DOCS = [
+    { n: 'Charter contract (signed).pdf', from: 'tc', s: 'ok', st: 'Signed' },
+    { n: 'Proposal: President\'s Club 2027.pdf', from: 'tc', s: 'info', st: 'Final' },
+    { n: 'Event order v2.pdf', from: 'tc', s: 'warn', st: 'Ready for review' },
+    { n: 'Welcome dinner addendum.pdf', from: 'tc', s: 'due', st: 'Needs your signature', sign: true },
+    { n: 'Strasbourg shore options.pdf', from: 'tc', s: 'info', st: 'New' },
+    { n: 'Deck plan and venues.pdf', from: 'tc', s: 'info', st: 'Reference' },
+    { n: 'Pre-departure guide for guests.pdf', from: 'tc', s: 'info', st: 'Share with guests' },
+    { n: 'Northwind agenda draft.docx', from: 'you', s: 'ok', st: 'Received' }
+  ];
+  var docFilter = 'all';
+  function ext(n) { var m = /\.([a-z0-9]+)$/i.exec(n); return m ? m[1].toUpperCase().slice(0, 4) : 'FILE'; }
+  function renderDocs() {
+    var rows = DOCS.filter(function (d) {
+      return docFilter === 'all' || (docFilter === 'sign' ? d.sign : d.from === docFilter);
+    });
+    $('docRows').innerHTML = rows.map(function (d, i) {
+      var idx = DOCS.indexOf(d);
+      var action = d.sign ? '<button class="mini-btn" data-sign="' + idx + '">Review &amp; sign</button>'
+        : d.local ? '<a class="mini-btn" href="' + d.local + '" download="' + esc(d.n) + '">Download</a>'
+        : '<button class="mini-btn" data-toast="In the real portal, this downloads the file.">Download</button>';
+      return '<tr class="' + (d.fresh ? 'new' : '') + '"><td><span class="ft">' + ext(d.n) + '</span>' + esc(d.n) + (d.type ? '<br><small style="color:var(--muted);font-weight:400">' + esc(d.type) + '</small>' : '') + '</td>' +
+        '<td>' + (d.from === 'tc' ? 'Transcend' : 'You') + '</td>' +
+        '<td><span class="chip chip--' + d.s + '">' + esc(d.st) + '</span></td><td>' + action + '</td></tr>';
+    }).join('') || '<tr><td colspan="4" style="color:var(--muted)">Nothing here yet.</td></tr>';
+    $('badgeDocs').textContent = DOCS.filter(function (d) { return d.sign; }).length || '';
+    $('badgeDocs').hidden = !DOCS.some(function (d) { return d.sign; });
+  }
+  $('docFilter').addEventListener('click', function (e) {
+    var f = e.target.getAttribute('data-f'); if (!f) return;
+    docFilter = f;
+    Array.prototype.forEach.call(this.querySelectorAll('button'), function (b) { b.classList.toggle('is-active', b === e.target); });
+    renderDocs();
+  });
+  $('docRows').addEventListener('click', function (e) {
+    var i = e.target.getAttribute('data-sign');
+    if (i === null) return;
+    var d = DOCS[+i];
+    d.sign = false; d.s = 'ok'; d.st = 'Signed just now';
+    complete('addendum');
+    renderDocs();
+    toast('Signed! Your Account Manager has been notified.');
+  });
+  function addFiles(files) {
+    var type = $('docType').value;
+    Array.prototype.forEach.call(files, function (f) {
+      DOCS.unshift({ n: f.name, from: 'you', s: 'warn', st: 'Uploaded · awaiting review', type: type, fresh: true, local: URL.createObjectURL(f) });
+    });
+    if (/logo/i.test(type)) complete('logo');
+    if (/manifest/i.test(type)) complete('manifest');
+    docFilter = 'all';
+    Array.prototype.forEach.call($('docFilter').querySelectorAll('button'), function (b) { b.classList.toggle('is-active', b.getAttribute('data-f') === 'all'); });
+    renderDocs();
+    toast(files.length + (files.length === 1 ? ' file' : ' files') + ' sent to your Transcend team.');
+  }
+  var drop = $('drop');
+  drop.addEventListener('click', function () { $('fileInput').click(); });
+  drop.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('fileInput').click(); } });
+  $('fileInput').addEventListener('change', function () { if (this.files.length) addFiles(this.files); this.value = ''; });
+  ['dragenter', 'dragover'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('is-over'); }); });
+  ['dragleave', 'drop'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('is-over'); }); });
+  drop.addEventListener('drop', function (e) { if (e.dataTransfer.files.length) addFiles(e.dataTransfer.files); });
+  renderDocs();
+
+  /* ---------- guests ---------- */
+  var GUESTS = [
+    ['Avery Chen', 'Suite (2-room)', 'Vegetarian', true],
+    ['Jordan Patel', 'Stateroom', '', true],
+    ['Sam Rivera', 'Stateroom', 'Gluten free', false],
+    ['Taylor Brooks', 'Suite (2-room)', '', true],
+    ['Morgan Lee', 'Stateroom', 'No shellfish', true],
+    ['Casey Novak', 'Stateroom', '', false]
+  ];
+  var EXTRA = 78; // guests already on file that aren't listed in this preview
+  function renderGuests() {
+    $('guestRows').innerHTML = GUESTS.map(function (g) {
+      return '<tr><td>' + esc(g[0]) + '</td><td>' + esc(g[1]) + '</td><td>' + (g[2] ? esc(g[2]) : '<span style="color:#9AA1AD">None</span>') + '</td>' +
+        '<td>' + (g[3] ? '<span class="chip chip--ok">Received</span>' : '<span class="chip chip--due">Missing</span>') + '</td></tr>';
+    }).join('') + '<tr><td colspan="4" style="color:var(--muted)">+ ' + EXTRA + ' more guests on file</td></tr>';
+    $('gTotal').textContent = GUESTS.length + EXTRA;
+    $('gPass').textContent = GUESTS.filter(function (g) { return g[3]; }).length + EXTRA - 9;
+    $('gDiet').textContent = GUESTS.filter(function (g) { return g[2]; }).length + 11;
+  }
+  $('addGuest').addEventListener('click', function () {
+    var name = window.prompt('Guest name');
+    if (!name || !name.trim()) return;
+    GUESTS.unshift([name.trim().slice(0, 60), 'Stateroom', '', false]);
+    renderGuests();
+    toast(name.trim().slice(0, 40) + ' added to the manifest.');
+  });
+  $('dlTemplate').addEventListener('click', function () {
+    var csv = 'Name,Stateroom,Dietary,Passport received (yes/no)\nAvery Chen,Suite (2-room),Vegetarian,yes\n';
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+    a.download = 'transcend-guest-manifest-template.csv';
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  $('csvInput').addEventListener('change', function () {
+    var f = this.files[0]; if (!f) return;
+    var input = this;
+    var r = new FileReader();
+    r.onload = function () {
+      var lines = String(r.result).split(/\r?\n/).filter(function (l) { return l.trim(); });
+      if (lines.length && /name/i.test(lines[0])) lines.shift();
+      var added = 0;
+      lines.slice(0, 200).forEach(function (l) {
+        var c = l.split(',').map(function (s) { return s.trim().replace(/^"|"$/g, ''); });
+        if (!c[0]) return;
+        GUESTS.unshift([c[0].slice(0, 60), c[1] || 'Stateroom', c[2] || '', /^y/i.test(c[3] || '')]);
+        added++;
+      });
+      renderGuests();
+      complete('manifest');
+      toast(added + (added === 1 ? ' guest' : ' guests') + ' added from ' + f.name + '.');
+      input.value = '';
+    };
+    r.readAsText(f);
+  });
+  renderGuests();
+
+  /* ---------- event order ---------- */
+  var EO = [
+    { t: 'Embarkation & welcome reception', items: ['Private check-in desk with Northwind signage', 'Welcome reception on the sun deck, night 1', 'Ship lighting in Northwind blue all week'], s: 'approved' },
+    { t: 'Meetings & awards', items: ['Morning sessions in the main lounge, days 2 to 4', 'AV package with two screens and wireless mics', 'Awards dinner moved to night 6'], s: 'review' },
+    { t: 'Dining', items: ['Chef’s welcome menu with regional wines', 'All dietary needs from the guest manifest', 'Farewell dinner with custom printed menus'], s: 'review' },
+    { t: 'Shore experiences', items: ['Kinderdijk windmills (morning)', 'Strasbourg: choose from three options in Documents', 'Free afternoon in Basel'], s: 'review' },
+    { t: 'Gifts & branding', items: ['Welcome gift in each stateroom', 'Branded playlists and screen content', 'Printed daily program with your logo'], s: 'approved' }
+  ];
+  function renderEO() {
+    $('eo').innerHTML = EO.map(function (x, i) {
+      var chip = x.s === 'approved' ? '<span class="chip chip--ok">Approved</span>' : x.s === 'changes' ? '<span class="chip chip--warn">Changes requested</span>' : '<span class="chip chip--info">Ready for review</span>';
+      var btns = x.s === 'approved' ? '<button class="mini-btn" data-eo="reopen" data-i="' + i + '">Undo approval</button>'
+        : '<button class="btn btn--navy" data-eo="approve" data-i="' + i + '">Approve</button><button class="btn btn--line" data-eo="ask" data-i="' + i + '">Request a change</button>';
+      return '<div class="eo-item ' + (x.s === 'approved' ? 'is-approved' : x.s === 'changes' ? 'is-changes' : '') + '">' +
+        '<div class="eo-item__top"><h3>' + esc(x.t) + '</h3>' + chip + '</div>' +
+        '<ul>' + x.items.map(function (it) { return '<li>' + esc(it) + '</li>'; }).join('') + '</ul>' +
+        (x.note ? '<div class="note"><b>Your note:</b> ' + esc(x.note) + '</div>' : '') +
+        '<div class="eo-item__btns">' + btns + '</div>' +
+        (x.asking ? '<textarea id="eoNote' + i + '" placeholder="What would you like changed?"></textarea><div class="eo-item__btns" style="margin-top:8px"><button class="btn btn--gold" data-eo="send" data-i="' + i + '">Send to my Account Manager</button></div>' : '') +
+        '</div>';
+    }).join('');
+    var open = EO.filter(function (x) { return x.s === 'review'; }).length;
+    $('badgeEvent').textContent = open;
+    $('badgeEvent').hidden = !open;
+    if (!open) complete('event');
+  }
+  $('eo').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-eo]'); if (!b) return;
+    var x = EO[+b.getAttribute('data-i')], act = b.getAttribute('data-eo');
+    if (act === 'approve') { x.s = 'approved'; x.asking = false; toast('Approved: ' + x.t + '.'); }
+    if (act === 'reopen') { x.s = 'review'; }
+    if (act === 'ask') { x.asking = !x.asking; }
+    if (act === 'send') {
+      var note = ($('eoNote' + b.getAttribute('data-i')).value || '').trim();
+      if (!note) { toast('Add a short note first, so your team knows what to change.'); return; }
+      x.note = note.slice(0, 400); x.s = 'changes'; x.asking = false;
+      toast('Sent! Your Account Manager will update the event order.');
+    }
+    renderEO();
+  });
+  renderEO();
+
+  /* ---------- payments ---------- */
+  $('payNow').addEventListener('click', function () {
+    $('payStatus').className = 'chip chip--ok'; $('payStatus').textContent = 'Paid';
+    this.outerHTML = '<button class="mini-btn" data-toast="In the real portal, this downloads the receipt.">Receipt</button>';
+    complete('pay2');
+    toast('Demo only: in the real portal this opens a secure payment page.');
+  });
+
+  /* ---------- itinerary ---------- */
+  var DAYS = [
+    ['Fri, May 14', 'Amsterdam', 'Embark from 3 pm. Welcome reception on the sun deck.'],
+    ['Sat, May 15', 'Kinderdijk', 'Morning windmill visit, afternoon sailing and opening session.'],
+    ['Sun, May 16', 'Cologne', 'Meetings in the main lounge, then the cathedral and old town.'],
+    ['Mon, May 17', 'Rüdesheim', 'Scenic Rhine Gorge sailing and a wine tasting onboard.'],
+    ['Tue, May 18', 'Speyer', 'Final meeting session and a free afternoon ashore.'],
+    ['Wed, May 19', 'Strasbourg', 'Your choice of shore experience, then the awards dinner.'],
+    ['Thu, May 20', 'Breisach', 'Black Forest excursion and the farewell dinner.'],
+    ['Fri, May 21', 'Basel', 'Breakfast onboard and disembark by 10 am.']
+  ];
+  $('days').innerHTML = DAYS.map(function (d, i) {
+    return '<div class="day"><div class="day__n">Day ' + (i + 1) + '<b>' + d[0] + '</b></div><div><h3>' + d[1] + '</h3><p>' + d[2] + '</p></div></div>';
+  }).join('');
+
+  /* ---------- messages ---------- */
+  $('compose').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = $('msgInput').value.trim(); if (!v) return;
+    var th = $('thread');
+    th.insertAdjacentHTML('beforeend', '<div class="msg me"><small>You</small>' + esc(v) + '</div>');
+    $('msgInput').value = '';
+    th.scrollTop = th.scrollHeight;
+    setTimeout(function () {
+      th.insertAdjacentHTML('beforeend', '<div class="msg"><small>Transcend</small>Thanks, Dana! Your Account Manager has your message and will reply within one business day.</div>');
+      th.scrollTop = th.scrollHeight;
+    }, 900);
+  });
+
+  /* ---------- Transcend logo fallback ---------- */
+  var logo = $('tcLogo');
+  function fallback() { logo.hidden = true; $('tcWordmark').hidden = false; }
+  logo.addEventListener('error', fallback);
+  if (logo.complete && !logo.naturalWidth) fallback();
+})();
+</script>
+</body>
+</html>

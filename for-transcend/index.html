@@ -668,6 +668,10 @@
     .tc-more p { padding: 8px 0 0 22px; font-size: 14.5px; }
     .tc-demo-link { margin-top: auto; align-self: flex-start; padding: 10px 14px; background: var(--black); color: var(--white); font-size: 14px; font-weight: 700; }
     .tc-demo-link:hover { background: var(--teal-dark); }
+    .tc-demo-links { margin-top: auto; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+    .tc-demo-links .tc-demo-link { margin-top: 0; }
+    .tc-demo-link--alt { background: var(--white); color: var(--black); box-shadow: inset 0 0 0 2px var(--black); }
+    .tc-demo-link--alt:hover { color: var(--white); }
 
     .tc-demos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .tc-demo { display: flex; flex-direction: column; gap: 10px; padding: 30px; border: 2px solid rgba(255,255,255,0.18); background: #161616; transition: border-color 0.2s, transform 0.2s; }
@@ -710,6 +714,28 @@
       .tc-pick { grid-template-columns: 26px 1fr; }
       .tc-pick__price { grid-column: 2; }
     }
+    /* ============ QUIETER BRAND LAYER (keeps MMH colors, softens the volume) ============ */
+    .lf-stamp, .lf-section--black .lf-stamp { display: block; background: none; color: inherit; padding: 0; text-transform: none; font-size: clamp(26px, 3.2vw, 38px); letter-spacing: -0.02em; }
+    .lf-hero__name { background: none; color: var(--white); padding: 0; margin: 6px 0 18px; font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.03em; }
+    .lf-hero__lead { font-size: clamp(22px, 2.8vw, 30px); font-weight: 600; color: rgba(255,255,255,0.85); }
+    .lf-hero { background: #141414; }
+    .lf-fact { background: #141414; }
+    .lf-facts { border-width: 1px; }
+    .lf-card, .tc-heard__item { border: 1px solid var(--gray-light); border-radius: 12px; }
+    .tc-project, .tc-pick, .tc-builder__total, .tc-stack, .tc-demo { border-radius: 12px; }
+    .tc-project__num { border-radius: 8px; }
+    .tc-preset { border-width: 1px; border-color: var(--gray-light); }
+    .tc-demo-link { border-radius: 8px; }
+    .lf-jump a { border-width: 1px; }
+    #demos.lf-section--black { background: var(--off-white); color: var(--black); }
+    #demos .lf-label { color: var(--teal-dark); }
+    #demos .lf-lede { color: var(--text-body); }
+    #demos .lf-lede strong { color: var(--black); }
+    #demos .tc-demo { background: var(--white); border: 1px solid var(--gray-light); }
+    #demos .tc-demo:hover { border-color: var(--teal-dark); }
+    #demos .tc-demo h3 { color: var(--black); font-size: 22px; }
+    #demos .tc-demo p { color: var(--text-muted); }
+    #demos .tc-demo__tag, #demos .tc-demo__go { color: var(--teal-dark); }
   </style>
   <!-- Vercel Web Analytics -->
   <script>
@@ -768,7 +794,7 @@
   <div class="container lf-wrap">
     <span class="lf-hero__eyebrow">Prepared for Kim Daley · Transcend Cruises · October 2026</span>
     <p class="lf-hero__lead">Practical technology wins <em>for Q4</em></p>
-    <h1 class="lf-hero__name">TRANSCEND.</h1>
+    <h1 class="lf-hero__name">Transcend</h1>
     <p class="lf-hero__sub">Start focused <span>+</span> learn fast <span>+</span> build what's next</p>
     <p class="lf-hero__note">Rather than rebuilding the whole technology ecosystem at once, start with a few visible wins this quarter.</p>
 
@@ -914,7 +940,10 @@
             <li>A foundation for client-facing tools and integrations</li>
           </ul>
         </details>
-        <a class="tc-demo-link" href="/for-transcend/brand-demo.html">Try the demo: see the site in a client's brand →</a>
+        <div class="tc-demo-links">
+          <a class="tc-demo-link" href="/for-transcend/brand-demo.html">See a demo: let clients upload their brand to customize the ship, route and more →</a>
+          <a class="tc-demo-link tc-demo-link--alt" href="/for-transcend/homepage-demo.html">Here's how we would rebuild your homepage →</a>
+        </div>
       </article>
 
       <article class="tc-project">
@@ -993,23 +1022,25 @@
         <div class="tc-project__head">
           <span class="tc-project__num">06</span>
           <div>
-            <h3>Client + Proposal Portal Prototype</h3>
+            <h3>Client Charter Portal Prototype</h3>
             <p class="tc-project__price">$6,000 to $8,000</p>
           </div>
         </div>
-        <p>A first version of a personalized client experience that brings key information together in one place, ready to test with real clients and shape the larger platform.</p>
+        <p>Once a client books, they get one private place for everything: documents, guest details, approvals, payments and their Transcend team. Fewer email threads for everyone, and a first version to test with real clients before the larger platform.</p>
         <details class="tc-more">
-          <summary>Potential features</summary>
+          <summary>What clients can do</summary>
           <ul>
-            <li>Proposal content and itineraries</li>
-            <li>Deployment information</li>
-            <li>Client-specific documents</li>
-            <li>Updates, approvals and action items</li>
-            <li>Next steps</li>
-            <li>Relevant Transcend content and resources</li>
+            <li>Upload and download documents: contracts, logos, run of show, signage files</li>
+            <li>Sign addendums and see what still needs their attention</li>
+            <li>Keep the guest manifest up to date, including dietary needs and passports</li>
+            <li>Review the event order section by section, then approve or request changes</li>
+            <li>See the payment schedule, status and receipts</li>
+            <li>Follow a to-do list with key dates and reminders</li>
+            <li>View the day-by-day itinerary and onboard details</li>
+            <li>Message their Sales Expert, Account Manager and on-ship Manager in one thread</li>
           </ul>
         </details>
-        <a class="tc-demo-link" href="/for-transcend/brand-demo.html">See how a client-branded page could look →</a>
+        <a class="tc-demo-link" href="/for-transcend/portal-demo.html">Try the demo: a client's portal after they book →</a>
       </article>
 
     </div>
@@ -1020,12 +1051,12 @@
 <section class="lf-section lf-section--black" id="demos">
   <div class="container lf-wrap">
     <span class="lf-label">Click around</span>
-    <h2 class="lf-stamp">Three working demos.</h2>
+    <h2 class="lf-stamp">Five working demos.</h2>
     <p class="lf-lede">Early mockups to make the ideas tangible. <strong>Try them yourself</strong>, then imagine them on Transcend's real site and data.</p>
 
     <div class="tc-demos">
       <a class="tc-demo" href="/for-transcend/brand-demo.html">
-        <span class="tc-demo__tag">Website + client portal</span>
+        <span class="tc-demo__tag">Website: brand customizer</span>
         <h3>Your ship, in their brand</h3>
         <p>Type a company name, upload a logo and pick brand colors. The ship's lighting, onboard screens and welcome page update instantly, the way a prospect could see their own charter.</p>
         <span class="tc-demo__go">Open the brand demo →</span>
@@ -1042,6 +1073,18 @@
         <p>Paste an operations email or describe a change in plain English. AI matches it to the right voyage, shows exactly what would change and waits for approval.</p>
         <span class="tc-demo__go">Open the AI ingest demo →</span>
       </a>
+      <a class="tc-demo" href="/for-transcend/homepage-demo.html">
+        <span class="tc-demo__tag">Website: homepage rebuild</span>
+        <h3>A homepage that sorts visitors fast</h3>
+        <p>A concept for Transcend's new homepage: clear positioning, a quick "what are you planning?" finder, pathways by type of event and live availability. Notes explain each choice.</p>
+        <span class="tc-demo__go">Open the homepage concept →</span>
+      </a>
+      <a class="tc-demo" href="/for-transcend/portal-demo.html">
+        <span class="tc-demo__tag">Client charter portal</span>
+        <h3>Everything after "yes," in one place</h3>
+        <p>Step into a booked client's portal. Upload files, sign an addendum, update the guest list, approve the event order and message the team.</p>
+        <span class="tc-demo__go">Open the client portal demo →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -1051,7 +1094,6 @@
   <div class="container lf-wrap">
     <span class="lf-label">Build your Q4</span>
     <h2 class="lf-stamp">Pick what matters most.</h2>
-    <p class="lf-lede">We suggest selecting about <strong>$20,000 to $30,000</strong> of these projects for Q4. Check the ones that would make the biggest difference, or start from one of the suggested mixes.</p>
 
     <div class="tc-presets" role="group" aria-label="Suggested mixes">
       <button type="button" class="tc-preset" data-pick="1,2,3">Foundations: exam + website + assistant</button>
@@ -1066,7 +1108,7 @@
         <label class="tc-pick"><input type="checkbox" value="3" data-min="4500" data-max="6000"><span class="tc-pick__name">Proactive AI Website Assistant</span><span class="tc-pick__price">$4,500 to $6,000</span></label>
         <label class="tc-pick"><input type="checkbox" value="4" data-min="6000" data-max="8000"><span class="tc-pick__name">Deployment Calendar 2.0</span><span class="tc-pick__price">$6,000 to $8,000</span></label>
         <label class="tc-pick"><input type="checkbox" value="5" data-min="6000" data-max="8000"><span class="tc-pick__name">AI-Powered Information Intake</span><span class="tc-pick__price">$6,000 to $8,000</span></label>
-        <label class="tc-pick"><input type="checkbox" value="6" data-min="6000" data-max="8000"><span class="tc-pick__name">Client + Proposal Portal Prototype</span><span class="tc-pick__price">$6,000 to $8,000</span></label>
+        <label class="tc-pick"><input type="checkbox" value="6" data-min="6000" data-max="8000"><span class="tc-pick__name">Client Charter Portal Prototype</span><span class="tc-pick__price">$6,000 to $8,000</span></label>
       </div>
       <div class="tc-builder__total" aria-live="polite">
         <span class="tc-builder__label">Your Q4 estimate</span>
