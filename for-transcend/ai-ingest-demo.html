@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ship Deployment Calendar - AI Ingest Demo</title>
+<title>AI Intake | Transcend Demo</title>
 <meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 <script src="/for-transcend/gate.js"></script>
 <style>
 :root{--navy:#173a63;--navy2:#224f7e;--gold:#f4c45e;--bg:#f4f6f9;--panel:#fff;--line:#dfe5ec;--text:#1f2937;--muted:#6b7280;--blue:#4b98e6;--orange:#f4a62a;--green:#85bd4c;--gray:#8b8b84}
@@ -32,22 +35,52 @@ textarea.big{width:100%;min-height:170px;resize:vertical;border:1px solid #ccd7e
 .history-item{display:grid;grid-template-columns:160px 1fr auto;gap:14px;padding:14px 16px;border-bottom:1px solid var(--line);align-items:center}.badge{display:inline-block;padding:4px 7px;border-radius:6px;background:#eef4fb;color:#325d88;font-size:11px;font-weight:800}
 @media(max-width:900px){.topbar{align-items:flex-start;flex-direction:column;padding:14px}.user-pill{margin-left:0}.cards,.ingest-grid,.review-grid{grid-template-columns:1fr}.month-strip{grid-template-columns:repeat(12,90px)}.wrap{padding:14px}}
 .backbar{background:#0C0C0C;color:#fff;padding:9px 22px;font-size:13px}.backbar a{color:#fff;font-weight:700;text-decoration:none}.backbar a:hover{color:#4DBDB8}
+
+/* ===== Transcend look + guided demo ===== */
+:root{--navy:#14284B;--navy2:#1F3A63;--gold:#C9A55C;--bg:#F7F5F0;--head:"SaolDisplay-Regular","Saol Display","Playfair Display",Georgia,serif}
+[hidden]{display:none!important}
+body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+h1,h2{font-family:var(--head);font-weight:500;letter-spacing:0}
+h1{font-size:34px;color:var(--navy)}h2{color:var(--navy)}
+.eyebrow{color:#9A7A3A;letter-spacing:.16em}
+.backbar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}.backbar span{color:#4DBDB8;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:12px}
+.topbar{background:#fff;color:var(--navy);border-bottom:1px solid #E2E5EA;box-shadow:none;gap:16px}
+.tc-logo{height:30px;width:auto;display:block}.tc-wordmark{font-family:var(--head);font-size:20px;letter-spacing:.22em;color:var(--navy)}
+.brand{font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);padding-left:16px;border-left:1px solid #D6DAE0}
+.topnav{display:none}.user-pill{background:#F4EBDA;color:var(--navy);font-weight:600}
+.btn.primary{background:var(--navy);border-color:var(--navy)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#0B1830}
+.ingest-option{position:relative}.ingest-option:hover,.ingest-option.active{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,165,92,.22)}
+.toast{background:var(--navy)}
+.guide{list-style:none;margin:6px 0 4px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.guide li{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:14px;color:#5E6878;transition:border-color .2s,background .2s}
+.guide li b{flex-shrink:0;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#EEF0F3;color:var(--navy);font-size:13px}
+.guide li strong{color:var(--navy)}
+.guide li.is-current{border-color:var(--gold);background:#FBF6EA}.guide li.is-current b{background:var(--gold);color:#0B1830}
+.guide li.is-done b{background:var(--navy);color:#fff;font-size:0}.guide li.is-done b::after{content:"✓";font-size:13px}
+.step-tag{display:inline-grid;place-items:center;width:20px;height:20px;margin-right:8px;border-radius:50%;background:var(--gold);color:#0B1830;font-style:normal;font-size:12px;font-weight:800;vertical-align:middle}
+.step-tag.corner{position:absolute;top:12px;right:12px;margin:0}
+.pulse{animation:pulse 1.6s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,165,92,.65)}70%{box-shadow:0 0 0 12px rgba(201,165,92,0)}100%{box-shadow:0 0 0 0 rgba(201,165,92,0)}}
+@media(max-width:900px){.guide{grid-template-columns:1fr}.topbar{flex-direction:row;flex-wrap:wrap;align-items:center}.brand{border-left:0;padding-left:0}}
 </style>
 </head>
 <body>
-<div class="backbar"><a href="/for-transcend/">← Back to the Q4 proposal</a></div>
+<div class="backbar"><a href="/for-transcend/">← Back to the Q4 proposal</a><span>Demo · AI intake</span></div>
 <div class="topbar">
-  <div class="brand">⚓ Ship Deployment Calendar</div>
+  <img class="tc-logo" id="tcLogo" src="https://transcendcruises.com/wp-content/uploads/2026/08/Transcend-Lockup-Navy-FA-1024x263.png" alt="Transcend Cruises">
+  <span class="tc-wordmark" id="tcWordmark" hidden>TRANSCEND</span>
+  <span class="brand">Deployment Calendar</span>
   <div class="topnav">
-    <button class="active" data-page="calendar">Calendar</button>
-    <button data-page="ingest">✨ AI Ingest</button>
+    <button data-page="calendar">Calendar</button>
+    <button class="active" data-page="ingest">✨ AI Ingest</button>
     <button data-page="data">Data</button>
     <button data-page="history">Change History</button>
   </div>
   <div class="user-pill">Demo workspace</div>
 </div>
 
-<section id="calendar" class="page active">
+<section id="calendar" class="page">
   <div class="shiptabs">
     <button class="active">MS Connect - Rhine 2026</button><button>Alternative Ship - Rhine 2026</button><button>Alternative Ship - Danube 2026</button><button>MS Connect - Rhine 2027</button><button>MS Evolve - Danube 2027</button><button>MS Create - Danube 2027</button><button>MS Connect - Rhine 2028</button>
   </div>
@@ -91,16 +124,21 @@ textarea.big{width:100%;min-height:170px;resize:vertical;border:1px solid #ccd7e
   </div>
 </section>
 
-<section id="ingest" class="page">
+<section id="ingest" class="page active">
   <div class="wrap">
     <div class="hero">
       <div><div class="eyebrow">AI-powered schedule intake</div><h1>Give us whatever you received.</h1><p>Upload a file, paste an email, or describe a change. AI turns it into clean voyage and itinerary data for review.</p></div>
       <button class="btn" onclick="resetDemo()">Reset demo</button>
     </div>
+    <ol class="guide" aria-label="How to try this demo">
+      <li id="g1" class="is-current"><b>1</b><span><strong>Pick how to send it.</strong> Paste an email (already filled in) or describe a change.</span></li>
+      <li id="g2"><b>2</b><span><strong>Click “Analyze with AI.”</strong> It finds the right voyage and spots what changed.</span></li>
+      <li id="g3"><b>3</b><span><strong>Review and approve.</strong> Nothing changes until a person says yes.</span></li>
+    </ol>
     <div class="ingest-grid">
       <div class="ingest-option" onclick="showMode('upload',this)"><div class="icon">📎</div><h3>Upload files</h3><p>PDF, Excel, CSV, Word, screenshots, photos, or several files at once.</p></div>
-      <div class="ingest-option active" onclick="showMode('paste',this)"><div class="icon">📋</div><h3>Paste information</h3><p>Paste an email, copied table, itinerary, booking note, or messy text.</p></div>
-      <div class="ingest-option" onclick="showMode('change',this)"><div class="icon">✨</div><h3>Describe a change</h3><p>Tell the calendar what changed in plain English.</p></div>
+      <div class="ingest-option active" onclick="showMode('paste',this)"><i class="step-tag corner">1</i><div class="icon">📋</div><h3>Paste information</h3><p>Paste an email, copied table, itinerary, booking note, or messy text.</p></div>
+      <div class="ingest-option" onclick="showMode('change',this)"><i class="step-tag corner">1</i><div class="icon">✨</div><h3>Describe a change</h3><p>Tell the calendar what changed in plain English.</p></div>
     </div>
     <div class="panel" style="padding:18px">
       <div id="uploadMode" class="hidden"><div class="upload-zone"><div><div class="icon">⬆️</div><strong>Drop schedule files here</strong><p>PDF, XLSX, CSV, DOCX, PNG, JPG</p><input type="file" multiple style="margin-top:8px"></div></div></div>
@@ -113,7 +151,7 @@ Sales contact remains MS.
 Thanks,
 Operations</textarea></div>
       <div id="changeMode" class="hidden"><label><strong>Describe the change</strong></label><textarea class="big">Move Gruen Travel one day later, update Strasbourg arrival to 13:00, Speyer departure to 14:00, and change Oct 13 from Mainz to Rüdesheim.</textarea></div>
-      <div class="analysis-bar"><button class="btn">Save as draft</button><button class="btn primary" onclick="analyze()">✨ Analyze with AI</button></div>
+      <div class="analysis-bar"><button class="btn">Save as draft</button><button class="btn primary pulse" id="analyzeBtn" onclick="analyze()"><i class="step-tag">2</i>✨ Analyze with AI</button></div>
     </div>
 
     <div id="processing" class="panel processing hidden" style="margin-top:14px">
@@ -152,7 +190,7 @@ Operations</textarea></div>
             <tr><td>13 Oct</td><td><strong>Rüdesheim</strong></td><td>on board</td><td>14:00</td><td><span class="badge">Changed</span></td></tr>
           </tbody>
         </table>
-        <div class="review-actions"><button class="btn" onclick="resetDemo()">Discard</button><button class="btn">Edit extracted data</button><button class="btn gold">Approve selected</button><button class="btn primary" onclick="approve()">✓ Approve & apply 4 changes</button></div>
+        <div class="review-actions"><button class="btn" onclick="resetDemo()">Discard</button><button class="btn">Edit extracted data</button><button class="btn gold">Approve selected</button><button class="btn primary" id="approveBtn" onclick="approve()"><i class="step-tag">3</i>✓ Approve &amp; apply 4 changes</button></div>
       </div>
     </div>
   </div>
@@ -180,16 +218,18 @@ Operations</textarea></div>
   </div>
 </section>
 
-<div id="toast" class="toast">Changes applied successfully.</div>
+<div id="toast" class="toast">Done! The calendar is updated, and the change is logged so it can be undone.</div>
 
 <script>
 const pages=document.querySelectorAll('.page'),navButtons=document.querySelectorAll('.topnav button');
 navButtons.forEach(btn=>btn.addEventListener('click',()=>{navButtons.forEach(b=>b.classList.remove('active'));btn.classList.add('active');pages.forEach(p=>p.classList.remove('active'));document.getElementById(btn.dataset.page).classList.add('active')}));
 function openIngest(){navButtons.forEach(b=>b.classList.toggle('active',b.dataset.page==='ingest'));pages.forEach(p=>p.classList.remove('active'));document.getElementById('ingest').classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
-function showMode(mode,el){document.querySelectorAll('.ingest-option').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('uploadMode').classList.toggle('hidden',mode!=='upload');document.getElementById('pasteMode').classList.toggle('hidden',mode!=='paste');document.getElementById('changeMode').classList.toggle('hidden',mode!=='change');document.getElementById('review').classList.add('hidden');document.getElementById('processing').classList.add('hidden')}
-function analyze(){document.getElementById('review').classList.add('hidden');document.getElementById('processing').classList.remove('hidden');setTimeout(()=>{document.getElementById('processing').classList.add('hidden');document.getElementById('review').classList.remove('hidden');document.getElementById('review').scrollIntoView({behavior:'smooth',block:'start'})},1200)}
-function approve(){const history=document.getElementById('historyList'),row=document.createElement('div');row.className='history-item';row.innerHTML='<div><strong>Just now</strong><br><span style="color:#6b7280;font-size:12px">AI Ingest</span></div><div><strong>Gruen Travel</strong><br><span style="color:#6b7280">Applied 4 approved changes from pasted Operations email</span></div><button class="btn">Undo</button>';history.prepend(row);const toast=document.getElementById('toast');toast.style.display='block';setTimeout(()=>toast.style.display='none',2400)}
-function resetDemo(){document.getElementById('review').classList.add('hidden');document.getElementById('processing').classList.add('hidden');window.scrollTo({top:0,behavior:'smooth'})}
+function showMode(mode,el){document.querySelectorAll('.ingest-option').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('uploadMode').classList.toggle('hidden',mode!=='upload');document.getElementById('pasteMode').classList.toggle('hidden',mode!=='paste');document.getElementById('changeMode').classList.toggle('hidden',mode!=='change');document.getElementById('review').classList.add('hidden');document.getElementById('processing').classList.add('hidden');setStep(2)}
+function setStep(n){[1,2,3].forEach(i=>{const el=document.getElementById('g'+i);el.classList.toggle('is-current',i===n);el.classList.toggle('is-done',i<n)});document.getElementById('analyzeBtn').classList.toggle('pulse',n<=2);document.getElementById('approveBtn').classList.toggle('pulse',n===3)}
+function analyze(){setStep(3);document.getElementById('review').classList.add('hidden');document.getElementById('processing').classList.remove('hidden');setTimeout(()=>{document.getElementById('processing').classList.add('hidden');document.getElementById('review').classList.remove('hidden');document.getElementById('review').scrollIntoView({behavior:'smooth',block:'start'})},1200)}
+function approve(){setStep(4);const history=document.getElementById('historyList'),row=document.createElement('div');row.className='history-item';row.innerHTML='<div><strong>Just now</strong><br><span style="color:#6b7280;font-size:12px">AI Ingest</span></div><div><strong>Gruen Travel</strong><br><span style="color:#6b7280">Applied 4 approved changes from pasted Operations email</span></div><button class="btn">Undo</button>';history.prepend(row);const toast=document.getElementById('toast');toast.style.display='block';setTimeout(()=>toast.style.display='none',2400)}
+function resetDemo(){setStep(1);document.getElementById('review').classList.add('hidden');document.getElementById('processing').classList.add('hidden');window.scrollTo({top:0,behavior:'smooth'})}
+(function(){var l=document.getElementById('tcLogo');function f(){l.hidden=true;document.getElementById('tcWordmark').hidden=false}l.addEventListener('error',f);if(l.complete&&!l.naturalWidth)f()})();
 </script>
 </body>
 </html>
