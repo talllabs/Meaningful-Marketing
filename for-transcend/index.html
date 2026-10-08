@@ -736,6 +736,30 @@
     #demos .tc-demo h3 { color: var(--black); font-size: 22px; }
     #demos .tc-demo p { color: var(--text-muted); }
     #demos .tc-demo__tag, #demos .tc-demo__go { color: var(--teal-dark); }
+    /* ============ LIGHT HERO + CONVERSATIONAL LETTER ============ */
+    .lf-hero { background: var(--off-white); color: var(--black); }
+    .lf-hero__eyebrow { color: var(--text-muted); }
+    .lf-hero__name { color: var(--black); font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; margin: 4px 0 22px; }
+    .tc-letter { max-width: 760px; }
+    .tc-letter p { margin: 0 0 14px; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.65; color: var(--text-body); }
+    .tc-letter strong { color: var(--black); }
+    .tc-plan { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 30px 0 28px; }
+    .tc-plan__step { display: flex; flex-direction: column; gap: 4px; padding: 20px; border-radius: 12px; background: var(--white); border: 1px solid var(--gray-light); }
+    .tc-plan__step.is-now { border-color: var(--teal-dark); box-shadow: inset 0 3px 0 var(--teal); }
+    .tc-plan__step span { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal-dark); }
+    .tc-plan__step b { font-size: 18px; color: var(--black); }
+    .tc-plan__step small { font-size: 14px; line-height: 1.5; color: var(--text-muted); }
+    .lf-hero .lf-jump a { border-color: var(--gray-light); color: var(--black); background: var(--white); }
+    .lf-hero .lf-jump a:hover { background: var(--teal); border-color: var(--teal); }
+    .tc-rec { display: inline-block; margin-bottom: 6px; padding: 3px 9px; border-radius: 999px; background: #EAF6F5; color: var(--teal-dark); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .tc-preset--rec { border-color: var(--teal-dark); background: #EAF6F5; }
+    .tc-cta-light { background: var(--off-white); color: var(--black); }
+    .tc-cta-light .lf-cta__word { background: none; color: var(--black); padding: 0; font-size: clamp(36px, 6vw, 72px); }
+    .tc-cta-light .lf-cta__contact { color: var(--text-muted); }
+    .tc-cta-light .lf-cta__contact a { color: var(--black); }
+    .tc-next__step { border-radius: 12px; }
+    .tc-next__step span { border-radius: 999px; background: #EAF6F5; color: var(--teal-dark); }
+    @media (max-width: 760px) { .tc-plan { grid-template-columns: 1fr; } }
   </style>
   <!-- Vercel Web Analytics -->
   <script>
@@ -793,16 +817,18 @@
 <section class="lf-hero">
   <div class="container lf-wrap">
     <span class="lf-hero__eyebrow">Prepared for Kim Daley · Transcend Cruises · October 2026</span>
-    <p class="lf-hero__lead">Practical technology wins <em>for Q4</em></p>
-    <h1 class="lf-hero__name">Transcend</h1>
-    <p class="lf-hero__sub">Start focused <span>+</span> learn fast <span>+</span> build what's next</p>
-    <p class="lf-hero__note">Rather than rebuilding the whole technology ecosystem at once, start with a few visible wins this quarter.</p>
+    <h1 class="lf-hero__name">Hi Kim, here's where we'd start.</h1>
+    <div class="tc-letter">
+      <p>We looked at everything you shared, and <strong>we think we can make big strides by Q4.</strong></p>
+      <p>Our recommendation: start the <strong>Under-the-Hood Systems Examination</strong> and, at the same time, <strong>move the website off WordPress to Lovable with a redesign.</strong> If there's room, we add a few fun ones by the end of the year, like the AI website assistant or a client portal.</p>
+      <p>All of it leads up to one question: <strong>does Transcend need a total backend overhaul, or not?</strong> If it does, we'll bring in technical partners. That work typically starts around $50K, so it's a bigger conversation. Let's have a look first.</p>
+      <p>Ally will come in, assess, find where AI can make life easier for your team, get some wins on the board, and then we plan 2027 together.</p>
+    </div>
 
-    <div class="lf-facts">
-      <div class="lf-fact"><span class="lf-fact__big">6</span><span class="lf-fact__small">Focused projects to choose from</span></div>
-      <div class="lf-fact"><span class="lf-fact__big">$20–30K</span><span class="lf-fact__small">Suggested Q4 investment</span></div>
-      <div class="lf-fact"><span class="lf-fact__big">Standalone</span><span class="lf-fact__small">Each piece works on its own</span></div>
-      <div class="lf-fact"><span class="lf-fact__big">No lock-in</span><span class="lf-fact__small">No multi-year commitment to start</span></div>
+    <div class="tc-plan">
+      <div class="tc-plan__step is-now"><span>By Q4</span><b>Systems exam + new website</b><small>Off WordPress, onto Lovable, redesigned. Roughly $15,500 to $25,500.</small></div>
+      <div class="tc-plan__step"><span>By end of year</span><b>A few fun ones</b><small>Pick from the AI assistant, client portal, calendar or an AI workflow tool.</small></div>
+      <div class="tc-plan__step"><span>2027</span><b>Decide on the backend</b><small>Overhaul or not, based on what we actually find.</small></div>
     </div>
 
     <nav class="lf-jump" aria-label="Jump to section">
@@ -897,6 +923,7 @@
         <div class="tc-project__head">
           <span class="tc-project__num">01</span>
           <div>
+            <span class="tc-rec">Recommended for Q4</span>
             <h3>Under-the-Hood Systems Examination</h3>
             <p class="tc-project__price">$7,000 to $10,000</p>
           </div>
@@ -922,14 +949,16 @@
         <div class="tc-project__head">
           <span class="tc-project__num">02</span>
           <div>
+            <span class="tc-rec">Recommended for Q4</span>
             <h3>Website + Buyer Journey Redesign</h3>
             <p class="tc-project__price">$8,500 to $15,500</p>
           </div>
         </div>
-        <p>A stronger, more flexible website that helps visitors quickly understand what Transcend offers and find the right path for what they are looking for. Final scope depends on the agreed must-haves, nice-to-haves and how much of the current site is rebuilt versus refined.</p>
+        <p>We'd move the site off WordPress to Lovable and redesign it at the same time, so it's faster, easier for your team to update and ready for tools like the demos below. The result is a stronger, more flexible website that helps visitors quickly understand what Transcend offers and find the right path for what they are looking for. Final scope depends on the agreed must-haves, nice-to-haves and how much of the current site is rebuilt versus refined.</p>
         <details class="tc-more">
           <summary>Potential scope</summary>
           <ul>
+            <li>Move from WordPress to Lovable</li>
             <li>Clearer positioning and messaging</li>
             <li>Navigation by audience or need</li>
             <li>Pathways for charters, meetings, events, brand activations and more</li>
@@ -998,24 +1027,23 @@
         <div class="tc-project__head">
           <span class="tc-project__num">05</span>
           <div>
-            <h3>AI-Powered Information Intake</h3>
+            <h3>AI Workflow Tool</h3>
             <p class="tc-project__price">$6,000 to $8,000</p>
           </div>
         </div>
-        <p>Give the system whatever you received, in whatever shape it arrives. AI turns it into structured updates for a person to approve.</p>
+        <p>During the systems exam, we'll find workflows that are clunkier than they need to be. We pick the one that costs your team the most time and build an AI tool that makes it easier.</p>
         <details class="tc-more">
           <summary>How it works</summary>
-          <p><strong>Drop in:</strong> emails, PDFs, spreadsheets, itineraries, documents or notes.</p>
           <ul>
-            <li>Identifies the relevant ship, voyage, client or project</li>
-            <li>Extracts key dates and operational information</li>
-            <li>Spots proposed changes</li>
-            <li>Flags conflicts, missing information or inconsistencies</li>
-            <li>Converts it all into structured updates</li>
-            <li>Shows every update for human review before anything touches live data</li>
+            <li>Choose the workflow together, based on what discovery turns up</li>
+            <li>Map today's steps and where the time goes</li>
+            <li>Build an AI tool for the re-typing, sorting, summarizing or matching</li>
+            <li>Connect it to the tools you already use where it makes sense</li>
+            <li>A person reviews and approves before anything changes</li>
+            <li>Measure the time saved and keep improving it</li>
           </ul>
         </details>
-        <a class="tc-demo-link" href="/for-transcend/ai-ingest-demo.html">Try the demo: paste an email, watch it update →</a>
+        <a class="tc-demo-link" href="/for-transcend/ai-ingest-demo.html">See an example: AI turns an email into calendar updates →</a>
       </article>
 
       <article class="tc-project">
@@ -1096,8 +1124,9 @@
     <h2 class="lf-stamp">Pick what matters most.</h2>
 
     <div class="tc-presets" role="group" aria-label="Suggested mixes">
+      <button type="button" class="tc-preset tc-preset--rec" data-pick="1,2">Our recommendation: exam + website</button>
       <button type="button" class="tc-preset" data-pick="1,2,3">Foundations: exam + website + assistant</button>
-      <button type="button" class="tc-preset" data-pick="1,4,5">Operations first: exam + calendar + intake</button>
+      <button type="button" class="tc-preset" data-pick="1,4,5">Operations first: exam + calendar + AI workflow tool</button>
       <button type="button" class="tc-preset" data-pick="2,3,6">Client experience: website + assistant + portal</button>
     </div>
 
@@ -1107,7 +1136,7 @@
         <label class="tc-pick"><input type="checkbox" value="2" data-min="8500" data-max="15500"><span class="tc-pick__name">Website + Buyer Journey Redesign</span><span class="tc-pick__price">$8,500 to $15,500</span></label>
         <label class="tc-pick"><input type="checkbox" value="3" data-min="4500" data-max="6000"><span class="tc-pick__name">Proactive AI Website Assistant</span><span class="tc-pick__price">$4,500 to $6,000</span></label>
         <label class="tc-pick"><input type="checkbox" value="4" data-min="6000" data-max="8000"><span class="tc-pick__name">Deployment Calendar 2.0</span><span class="tc-pick__price">$6,000 to $8,000</span></label>
-        <label class="tc-pick"><input type="checkbox" value="5" data-min="6000" data-max="8000"><span class="tc-pick__name">AI-Powered Information Intake</span><span class="tc-pick__price">$6,000 to $8,000</span></label>
+        <label class="tc-pick"><input type="checkbox" value="5" data-min="6000" data-max="8000"><span class="tc-pick__name">AI Workflow Tool</span><span class="tc-pick__price">$6,000 to $8,000</span></label>
         <label class="tc-pick"><input type="checkbox" value="6" data-min="6000" data-max="8000"><span class="tc-pick__name">Client Charter Portal Prototype</span><span class="tc-pick__price">$6,000 to $8,000</span></label>
       </div>
       <div class="tc-builder__total" aria-live="polite">
@@ -1126,13 +1155,13 @@
 <section class="lf-section lf-section--white" id="next">
   <div class="container lf-wrap">
     <span class="lf-label">What comes next</span>
-    <h2 class="lf-stamp">Smarter Phase 2 decisions.</h2>
-    <p class="lf-lede">Once we are under the hood, with real usage and feedback, we can decide much more confidently <strong>what should come next, what should integrate, what can be simplified and where deeper engineering support is warranted.</strong></p>
+    <h2 class="lf-stamp">Then we plan 2027 together.</h2>
+    <p class="lf-lede">Everything this year builds toward one decision: <strong>is a total backend overhaul needed, or not?</strong> If it is, we'll bring in technical partners. Their work typically starts around $50K, so that's a larger conversation, and one worth having with real facts in hand. Let's have a look first.</p>
 
     <div class="tc-next">
-      <div class="tc-next__step"><span>Q4</span><h3>Initial wins</h3><p>Two to four focused projects, live and in use.</p></div>
-      <div class="tc-next__step"><span>Review</span><h3>Learn from real use</h3><p>Feedback from your team and clients, plus the systems map.</p></div>
-      <div class="tc-next__step"><span>Phase 2</span><h3>Build the right platform</h3><p>A roadmap based on what is actually needed, with technical partners brought in where it makes sense.</p></div>
+      <div class="tc-next__step"><span>Q4</span><h3>Assess and get wins</h3><p>Ally maps your systems, moves the website and finds where AI can make life easier for the team.</p></div>
+      <div class="tc-next__step"><span>End of year</span><h3>Add a few fun ones</h3><p>One or two more projects, chosen with what we've learned.</p></div>
+      <div class="tc-next__step"><span>2027</span><h3>Decide on the backend</h3><p>Overhaul or not. If yes, we bring in technical partners with a clear plan.</p></div>
     </div>
 
     <p class="tc-sign">When you hire us, you get Ally as your day-to-day lead, with experienced technical partners for deeper engineering when a project calls for it. We do the heavy lifting, so send notes, voice memos or screenshots in whatever form is easiest.</p>
@@ -1140,7 +1169,7 @@
 </section>
 
 <!-- ============ CTA ============ -->
-<section class="lf-section lf-section--black lf-cta" id="contact">
+<section class="lf-section lf-cta tc-cta-light" id="contact">
   <div class="container lf-wrap">
     <p class="lf-cta__lead">Let's make <em>something</em></p>
     <p class="lf-cta__word">MEANINGFUL.</p>
