@@ -98,6 +98,26 @@ document.querySelectorAll('.js-open-contact, .js-open-calendly').forEach(el => {
   el.addEventListener('click', openContactModal);
 });
 
+// Any "#contact" link (e.g. "Contact us" in the mobile menu, or a link back to
+// the homepage's #contact section) opens the modal instead of jumping. Runs in the
+// capture phase so it beats the smooth-scroll and mobile-menu link handlers.
+const CONTACT_HREF = /^(https:\/\/www\.meaningfulmarketinghouse\.com)?\/?(index\.html)?#contact$/;
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[href]');
+  if (!link || link.closest('#contactModal')) return;
+  if (!CONTACT_HREF.test(link.getAttribute('href'))) return;
+  e.preventDefault();
+  e.stopPropagation();
+  const menu = document.getElementById('mobileMenu');
+  if (menu) menu.classList.remove('open');
+  openContactModal();
+}, true);
+
+// Arriving at /#contact from another page opens the modal too.
+if (window.location.hash === '#contact') {
+  window.addEventListener('load', openContactModal);
+}
+
 modalClose.addEventListener('click', closeContactModal);
 contactModal.addEventListener('click', (e) => {
   if (e.target === contactModal) closeContactModal();

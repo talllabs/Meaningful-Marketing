@@ -3,23 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Move your organization to a website that is easier to manage, better suited to your team, and ready to grow with you.">
-  <title>Website Migration | Meaningful Marketing</title>
+  <meta name="description" content="Ready to move from CivicPlus, WordPress, Squarespace, Wix or another website platform? We handle website migration, redesign, content, SEO redirects, training and launch.">
+  <title>Website Migration &amp; Platform Replacement | Meaningful Marketing House</title>
   <link rel="icon" href="/images/favicon/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
   <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png" />
   <link rel="canonical" href="https://www.meaningfulmarketinghouse.com/lets-talk-websites.html" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Meaningful Marketing" />
-  <meta property="og:title" content="Website Migration | Meaningful Marketing" />
-  <meta property="og:description" content="Move your organization to a website that is easier to manage, better suited to your team, and ready to grow with you." />
+  <meta property="og:site_name" content="Meaningful Marketing House" />
+  <meta property="og:title" content="Website Migration &amp; Platform Replacement | Meaningful Marketing House" />
+  <meta property="og:description" content="Ready to move from CivicPlus, WordPress, Squarespace, Wix or another website platform? We handle website migration, redesign, content, SEO redirects, training and launch." />
   <meta property="og:url" content="https://www.meaningfulmarketinghouse.com/lets-talk-websites.html" />
   <meta property="og:image" content="https://www.meaningfulmarketinghouse.com/images/hero1.png" />
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Website Migration | Meaningful Marketing">
-  <meta name="twitter:description" content="Move your organization to a website that is easier to manage, better suited to your team, and ready to grow with you.">
+  <meta name="twitter:title" content="Website Migration &amp; Platform Replacement | Meaningful Marketing House">
+  <meta name="twitter:description" content="Ready to move from CivicPlus, WordPress, Squarespace, Wix or another website platform? We handle website migration, redesign, content, SEO redirects, training and launch.">
   <meta name="twitter:image" content="https://www.meaningfulmarketinghouse.com/images/hero1.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Website Migration & Platform Replacement",
+    "serviceType": "Website migration and custom website development",
+    "url": "https://www.meaningfulmarketinghouse.com/lets-talk-websites.html",
+    "description": "Ready to move from CivicPlus, WordPress, Squarespace, Wix or another website platform? We handle website migration, redesign, content, SEO redirects, training and launch.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Meaningful Marketing House",
+      "url": "https://www.meaningfulmarketinghouse.com/"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Platform migrations",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "CivicPlus migration",
+            "url": "https://www.meaningfulmarketinghouse.com/civicplus-alternative.html"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "WordPress migration",
+            "url": "https://www.meaningfulmarketinghouse.com/wordpress-alternative.html"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Squarespace migration",
+            "url": "https://www.meaningfulmarketinghouse.com/squarespace-alternative.html"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Wix migration",
+            "url": "https://www.meaningfulmarketinghouse.com/wix-alternative.html"
+          }
+        }
+      ]
+    }
+  }
+  </script>
   <style>
     :root {
       --ink: #171717;
@@ -389,12 +442,196 @@
       .step p { grid-column: 1; }
       .reason-number { margin-bottom: 36px; }
     }
+
+    /* ============ PLATFORM PAGE ADDITIONS ============ */
+    .crumbs {
+      margin: 0 0 22px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .crumbs a { color: var(--muted); }
+    .crumbs span { color: var(--muted); margin: 0 6px; }
+
+    .reason-grid.many { grid-template-columns: repeat(3, 1fr); }
+    .reason-grid.many .reason { min-height: 0; }
+    .reason-grid.many .reason-number { margin-bottom: 34px; }
+    .reason-grid.many .reason:nth-child(4) { background: transparent; color: var(--white); }
+    .reason-grid.many .reason:nth-child(5) { background: var(--blue); }
+    .reason-grid.many .reason:nth-child(6) { background: var(--lime); color: var(--ink); }
+    .reason-grid.many .reason:nth-child(6) .reason-how,
+    .reason-grid.many .reason:nth-child(6) p { color: var(--ink); }
+    .reason-grid.many .reason:nth-child(4) p { color: #dedbd4; }
+
+    .chips-light {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .chips-light li {
+      padding: 7px 13px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: var(--paper);
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .fit-list { display: grid; gap: 12px; margin: 18px 0 0; padding: 0; list-style: none; }
+    .fit-list li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; font-weight: 700; }
+    .fit-list li::before {
+      content: "";
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--ink);
+    }
+    .fit-list.stay li::before { content: "✓"; display: grid; place-items: center; color: var(--lime); font-size: 0.8rem; }
+    .fit-list.move li::before { content: "→"; display: grid; place-items: center; color: var(--lime); font-size: 0.85rem; }
+
+    .covers {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0 48px;
+      border-top: 2px solid var(--ink);
+    }
+    .cover {
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .cover h3 {
+      margin-bottom: 8px;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+    .cover p { margin: 0; color: var(--muted); }
+
+    .example {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--white);
+    }
+    .example + .example { margin-top: 18px; }
+    .example img {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      border-right: 2px solid var(--ink);
+    }
+    .example-body { padding: 34px; }
+    .example-body h3 { margin-bottom: 18px; font-size: 1.7rem; letter-spacing: -0.04em; line-height: 1.05; }
+    .example-body dl { margin: 0; display: grid; gap: 14px; }
+    .example-body dt {
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .example-body dd { margin: 2px 0 0; color: var(--muted); }
+    .example-body blockquote {
+      margin: 18px 0 0;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: var(--lime);
+      font-weight: 700;
+    }
+    .example-body .more { display: inline-block; margin-top: 16px; font-weight: 800; }
+
+    .faq { border-top: 2px solid var(--ink); }
+    .faq details { border-bottom: 1px solid var(--line); }
+    .faq summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px 0;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: "+";
+      flex-shrink: 0;
+      width: 34px; height: 34px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      background: var(--lime);
+      border: 2px solid var(--ink);
+      transition: transform 160ms ease;
+    }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { max-width: 760px; margin: 0 0 24px; color: var(--muted); font-size: 1.05rem; }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .related-card {
+      display: block;
+      padding: 24px;
+      border: 2px solid var(--ink);
+      border-radius: 20px;
+      background: var(--white);
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+    .related-card:hover, .related-card:focus-visible { transform: translateY(-3px); background: var(--lime); }
+    .related-card strong { display: block; margin-bottom: 6px; font-size: 1.25rem; letter-spacing: -0.03em; }
+    .related-card span { color: var(--muted); font-size: 0.95rem; }
+    .related-card.hub { background: var(--ink); color: var(--white); }
+    .related-card.hub span { color: #d1cec7; }
+    .related-card.hub:hover { background: var(--blue); }
+
+    @media (max-width: 860px) {
+      .reason-grid.many, .covers, .example, .related-grid { grid-template-columns: 1fr; }
+      .example img { min-height: 200px; border-right: 0; border-bottom: 2px solid var(--ink); }
+      .example-body { padding: 26px 22px; }
+      .faq summary { font-size: 1.15rem; }
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .platform-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 250px;
+      padding: 28px;
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      background: var(--white);
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+    .platform-card:hover, .platform-card:focus-visible { transform: translateY(-4px); background: var(--lime); }
+    .platform-card h3 { margin-bottom: 12px; font-size: 2rem; letter-spacing: -0.05em; }
+    .platform-card p { color: var(--muted); }
+    .platform-card .go { margin-top: auto; font-weight: 800; }
+    .platform-other { margin-top: 26px; font-size: 1.05rem; color: var(--muted); }
+    .platform-other a { color: var(--ink); font-weight: 800; }
+    .examples-grid { display: grid; gap: 18px; }
+
+    @media (max-width: 1000px) { .platform-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .platform-grid { grid-template-columns: 1fr; } .platform-card { min-height: 0; } }
   </style>
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/js/contact-modal.js"></script>
 </head>
 <body>
   <header>
@@ -404,7 +641,7 @@
         <a href="https://www.meaningfulmarketinghouse.com/#services">Services</a>
         <a href="https://www.meaningfulmarketinghouse.com/#work">Work</a>
         <a href="https://www.meaningfulmarketinghouse.com/#about">About</a>
-        <a class="button" href="https://www.meaningfulmarketinghouse.com/#contact">Schedule a Call</a>
+        <a class="button js-open-contact" href="https://www.meaningfulmarketinghouse.com/#contact">Schedule a Call</a>
       </nav>
     </div>
   </header>
@@ -416,7 +653,7 @@
           <p class="eyebrow">A better website fit</p>
           <h1>Ready to move on?</h1>
           <p>If your website has become expensive, frustrating or difficult to update, we can move you to a platform that works better for your team.</p>
-          <a class="button" href="https://www.meaningfulmarketinghouse.com/#contact">Talk About Your Website</a>
+          <a class="button js-open-contact" href="https://www.meaningfulmarketinghouse.com/#contact">Talk About Your Website</a>
         </div>
 
         <aside class="hero-card" aria-label="Signs it may be time to switch">
@@ -461,6 +698,39 @@
       </div>
     </section>
 
+    <section id="platforms">
+      <div class="wrap">
+        <div class="process-head">
+          <p class="eyebrow">Choose your starting point</p>
+          <h2>Moving from a specific platform?</h2>
+          <p>Every platform has its strengths, and every move is a little different. Pick the one you are on today to see the common reasons organizations outgrow it and how we handle the transition.</p>
+        </div>
+        <div class="platform-grid">
+          <a class="platform-card" href="https://www.meaningfulmarketinghouse.com/civicplus-alternative.html">
+            <h3>CivicPlus</h3>
+            <p>For municipalities and organizations looking for more flexibility, ownership and custom functionality.</p>
+            <span class="go">Moving from CivicPlus →</span>
+          </a>
+          <a class="platform-card" href="https://www.meaningfulmarketinghouse.com/wordpress-alternative.html">
+            <h3>WordPress</h3>
+            <p>For teams tired of plugin maintenance, security updates, technical clutter or developer dependence.</p>
+            <span class="go">Moving from WordPress →</span>
+          </a>
+          <a class="platform-card" href="https://www.meaningfulmarketinghouse.com/squarespace-alternative.html">
+            <h3>Squarespace</h3>
+            <p>For organizations that have outgrown templates and need more custom functionality.</p>
+            <span class="go">Moving from Squarespace →</span>
+          </a>
+          <a class="platform-card" href="https://www.meaningfulmarketinghouse.com/wix-alternative.html">
+            <h3>Wix</h3>
+            <p>For organizations ready for more flexibility, scalability and control.</p>
+            <span class="go">Moving from Wix →</span>
+          </a>
+        </div>
+        <p class="platform-other">On something else, like Drupal, Weebly, GoDaddy or a custom system? <a class="js-open-contact" href="https://www.meaningfulmarketinghouse.com/#contact">Tell us about it</a>. The same process applies.</p>
+      </div>
+    </section>
+
     <section id="process">
       <div class="wrap">
         <div class="process-head">
@@ -499,6 +769,64 @@
       </div>
     </section>
 
+    <section id="examples" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="process-head">
+          <p class="eyebrow">Sites we have built</p>
+          <h2>Real moves, real results.</h2>
+          <p>A few of the organizations we have helped move to websites that fit them better. See more on our <a href="https://www.meaningfulmarketinghouse.com/work.html">work page</a>.</p>
+        </div>
+        <div class="examples-grid">
+          <article class="example">
+            <img src="/images/blues-backroads-home-screenshot.webp" alt="Blues Backroads website" loading="lazy" decoding="async">
+            <div class="example-body">
+              <h3>Blues Backroads · MidSouth Development District</h3>
+              <dl>
+                <div><dt>The client needed</dt><dd>A regional tourism website on WordPress had become harder for the team to manage, and local partners needed an easier way to share events.</dd></div>
+                <div><dt>We did</dt><dd>We moved the site off WordPress to a custom platform, migrated the content, rebuilt itineraries and interactive maps, and created an event submission system where regional partners submit events for review.</dd></div>
+                <div><dt>The result</dt><dd>A tourism website that is easier to explore, easier to manage and ready to keep growing, with important SEO protected through the move.</dd></div>
+              </dl>
+            <blockquote>“I also really appreciate that I didn't have to worry about it, that you had it covered. That was exactly what we wanted.”</blockquote>
+            <a class="more" href="https://www.meaningfulmarketinghouse.com/blues-backroads-case-study.html">Read the full case study →</a>
+            </div>
+          </article>
+          <article class="example">
+            <img src="/images/baldrige-staging-site.webp" alt="BaldrigeAlliance.org website" loading="lazy" decoding="async">
+            <div class="example-body">
+              <h3>BaldrigeAlliance.org</h3>
+              <dl>
+                <div><dt>The client needed</dt><dd>The Alliance took on the national Baldrige Award process on top of supporting its network of state and regional programs, which meant new audiences, new services and a much more complicated story, all on a rigid WordPress site.</dd></div>
+                <div><dt>We did</dt><dd>We simplified the information architecture and rebuilt the site as a custom web application with an interactive member map, a program finder, a self-service member portal, an AI site assistant grounded in Alliance content and an admin portal with permission levels for staff.</dd></div>
+                <div><dt>The result</dt><dd>News, events, member records and media were migrated, every legacy URL was mapped to protect SEO, and the site soft-launched ahead of the annual conference.</dd></div>
+              </dl>
+            </div>
+          </article>
+          <article class="example">
+            <img src="/images/sigmund-home-screenshot.webp" alt="TheSigmundProject.org website" loading="lazy" decoding="async">
+            <div class="example-body">
+              <h3>TheSigmundProject.org</h3>
+              <dl>
+                <div><dt>The client needed</dt><dd>A growing nonprofit serving several distinct audiences of tourism professionals needed member accounts, user-generated content and a way to fund its mission, all beyond what its Squarespace site could do.</dd></div>
+                <div><dt>We did</dt><dd>We moved the platform from Squarespace to a custom build with a member portal and user-generated content, and launched the RFP Hub, a paid product that connects tourism businesses with contract opportunities.</dd></div>
+                <div><dt>The result</dt><dd>A community of 10,000+ tourism professionals, and an earned-revenue product projected to bring in about $50,000 a year.</dd></div>
+              </dl>
+            </div>
+          </article>
+          <article class="example">
+            <img src="/images/adventure-international-home-screenshot.webp" alt="Adventure International website" loading="lazy" decoding="async">
+            <div class="example-body">
+              <h3>Adventure International</h3>
+              <dl>
+                <div><dt>The client needed</dt><dd>Decades of destinations, travel brands and specialized experiences had piled up on a site where pages repeated themselves and the strongest stories were buried.</dd></div>
+                <div><dt>We did</dt><dd>We mapped how every brand and destination connected, then built one consistent page structure and reusable templates that fit very different offerings while still feeling like one organization.</dd></div>
+                <div><dt>The result</dt><dd>A clearer, easier-to-navigate site, carried through launch including the domain and DNS transition and post-launch testing.</dd></div>
+              </dl>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="promise">
       <div class="wrap promise-box">
         <div>
@@ -523,7 +851,7 @@
         <p class="eyebrow">Start with a conversation</p>
         <h2>Find a better home for your website.</h2>
         <p>Tell us what is working, what is frustrating and what your organization needs next.</p>
-        <a class="button light" href="https://www.meaningfulmarketinghouse.com/#contact">Let’s Talk</a>
+        <a class="button light js-open-contact" href="https://www.meaningfulmarketinghouse.com/#contact">Let’s Talk</a>
       </div>
     </section>
   </main>
@@ -531,7 +859,7 @@
   <footer>
     <div class="wrap footer-row">
       <strong>MEANINGFUL MARKETING</strong>
-      <span>Serving mission-driven organizations since 2009.</span>
+      <span><a href="https://www.meaningfulmarketinghouse.com/civicplus-alternative.html">CivicPlus</a> · <a href="https://www.meaningfulmarketinghouse.com/wordpress-alternative.html">WordPress</a> · <a href="https://www.meaningfulmarketinghouse.com/squarespace-alternative.html">Squarespace</a> · <a href="https://www.meaningfulmarketinghouse.com/wix-alternative.html">Wix</a> alternatives</span>
       <span>© 2009–2026 Meaningful Marketing House</span>
     </div>
   </footer>

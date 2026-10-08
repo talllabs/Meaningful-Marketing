@@ -40,6 +40,25 @@
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    /* ============ "WEBSITES THAT WORK" PROMO POP-UP ============ */
+    .web-promo { position: fixed; inset: 0; z-index: 9000; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(12, 12, 12, 0.78); }
+    .web-promo.is-open { display: flex; }
+    .web-promo__box { position: relative; width: 100%; max-width: 620px; max-height: 92vh; overflow-y: auto; padding: 44px 40px 38px; background: var(--off-white); color: var(--black); border-radius: 18px; box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4); }
+    .web-promo__close { position: absolute; top: 14px; right: 16px; width: 38px; height: 38px; border-radius: 50%; background: var(--black); color: var(--white); font-size: 16px; }
+    .web-promo__eyebrow { margin: 0 0 12px; color: var(--teal-dark); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+    .web-promo__box h2 { margin: 0 0 14px; font-size: clamp(30px, 5vw, 44px); line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; }
+    .web-promo__box > p { margin: 0 0 18px; font-size: 16px; line-height: 1.6; color: var(--text-body); }
+    .web-promo__list { display: grid; gap: 8px; margin: 0 0 22px; }
+    .web-promo__list li { position: relative; padding-left: 26px; font-weight: 600; }
+    .web-promo__list li::before { content: "✓"; position: absolute; left: 0; color: var(--teal-dark); font-weight: 700; }
+    .web-promo__platforms { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 26px; }
+    .web-promo__platforms a { padding: 6px 12px; border: 1px solid rgba(12, 12, 12, 0.2); border-radius: 999px; font-size: 13px; font-weight: 600; }
+    .web-promo__platforms a:hover { background: var(--teal); border-color: var(--teal); }
+    .web-promo__actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .web-promo__secondary { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    @media (max-width: 560px) { .web-promo__box { padding: 40px 22px 30px; } }
+  </style>
 </head>
 <body>
 
@@ -202,7 +221,7 @@
     <div class="services__grid">
       <article class="svc-card reveal-up" style="--delay:.0s">
         <div class="svc-card__num">01</div>
-        <h3 class="svc-card__title"><a href="#cs01" style="color:inherit;text-decoration:none;">Websites That Work</a> <span class="svc-card__toggle">+</span></h3>
+        <h3 class="svc-card__title"><a href="lets-talk-websites.html" id="websitesPromoLink" style="color:inherit;text-decoration:none;">Websites That Work</a> <span class="svc-card__toggle">+</span></h3>
         <p class="svc-card__body">We build clear, welcoming websites that explain who you are and what you do in a way that feels natural and easy to understand. The focus is on helping visitors find what they need and take the next step with confidence.</p>
       </article>
       <article class="svc-card reveal-up" style="--delay:.07s">
@@ -1187,6 +1206,64 @@
     </div>
   </div>
 </div>
+<!-- ============ "WEBSITES THAT WORK" PROMO POP-UP ============ -->
+<div class="web-promo" id="webPromo" role="dialog" aria-modal="true" aria-labelledby="webPromoTitle">
+  <div class="web-promo__box">
+    <button class="web-promo__close" id="webPromoClose" aria-label="Close">✕</button>
+    <p class="web-promo__eyebrow">Websites that work</p>
+    <h2 id="webPromoTitle">Ready for a website that works for your team?</h2>
+    <p>If your website has become expensive, frustrating or hard to update, we can move you to a custom site built around how your organization actually works.</p>
+    <ul class="web-promo__list">
+      <li>Content, documents and SEO carried over</li>
+      <li>Easy everyday updates for your staff</li>
+      <li>Accessible, secure and built to grow</li>
+      <li>Your current site stays live until launch</li>
+    </ul>
+    <div class="web-promo__platforms" aria-label="Moving from a specific platform">
+      <a href="civicplus-alternative.html">From CivicPlus</a>
+      <a href="wordpress-alternative.html">From WordPress</a>
+      <a href="squarespace-alternative.html">From Squarespace</a>
+      <a href="wix-alternative.html">From Wix</a>
+    </div>
+    <div class="web-promo__actions">
+      <a class="btn btn--gold btn--lg" href="lets-talk-websites.html">See How Website Moves Work →</a>
+      <button class="web-promo__secondary" id="webPromoTalk">Or talk to us</button>
+    </div>
+  </div>
+</div>
+
 <script src="js/script.js"></script>
+<script>
+  (function () {
+    var promo = document.getElementById('webPromo');
+    var link = document.getElementById('websitesPromoLink');
+    var closeBtn = document.getElementById('webPromoClose');
+    var talkBtn = document.getElementById('webPromoTalk');
+    if (!promo || !link) return;
+
+    function open(e) {
+      e.preventDefault();
+      e.stopPropagation(); // keep the service card from toggling
+      promo.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+    function close() {
+      promo.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    link.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    promo.addEventListener('click', function (e) { if (e.target === promo) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && promo.classList.contains('is-open')) close();
+    });
+    talkBtn.addEventListener('click', function () {
+      close();
+      openContactModal();
+    });
+  })();
+</script>
 </body>
 </html>
