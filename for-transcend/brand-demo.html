@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Charter, Your Brand | Transcend Demo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/images/favicon/favicon.ico" sizes="any">
+  <script src="/for-transcend/gate.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1F3A5F;
+      --accent: #4DBDB8;
+      --on-primary: #FFFFFF;
+      --ink: #0C0C0C;
+      --paper: #F4F2ED;
+      --muted: #706D68;
+      --line: #E3E0D9;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Space Grotesk", system-ui, sans-serif; background: #E9E6DF; color: var(--ink); }
+    button, input, select { font: inherit; }
+
+    /* ---------- top bar ---------- */
+    .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 22px; background: var(--ink); color: #fff; }
+    .bar a { color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .bar a:hover { color: #4DBDB8; }
+    .bar__title { font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #4DBDB8; }
+
+    .layout { display: grid; grid-template-columns: 340px 1fr; gap: 22px; padding: 22px; max-width: 1480px; margin: 0 auto; align-items: start; }
+
+    /* ---------- controls ---------- */
+    .controls { position: sticky; top: 16px; background: #fff; border-radius: 16px; padding: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+    .controls h1 { margin: 0 0 6px; font-size: 22px; line-height: 1.15; letter-spacing: -0.02em; }
+    .controls > p { margin: 0 0 18px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+    .presets { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .presets span { width: 100%; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .preset { padding: 7px 11px; border: 1px solid var(--line); border-radius: 999px; background: #fff; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .preset:hover { border-color: var(--ink); }
+    .field { margin-bottom: 14px; }
+    .field label, .field .label { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .field input[type="text"], .field input[type="number"], .field select { width: 100%; padding: 10px 12px; border: 1px solid #D6D2CA; border-radius: 10px; background: #fff; }
+    .field .drop, .field .swatch { text-transform: none; letter-spacing: 0; margin-bottom: 0; }
+    .field .drop { font-size: 14px; font-weight: 400; }
+    .drop { display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px dashed #CFCAC0; border-radius: 12px; cursor: pointer; background: #FBFAF7; }
+    .drop:hover, .drop.is-over { border-color: var(--ink); }
+    .drop__thumb { width: 54px; height: 54px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: #fff; border: 1px solid var(--line); overflow: hidden; font-size: 22px; }
+    .drop__thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .drop__text { font-size: 13px; line-height: 1.4; color: var(--muted); }
+    .drop__text strong { display: block; color: var(--ink); font-size: 14px; }
+    .drop input { display: none; }
+    .colors { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .field .swatch { display: flex; align-items: center; gap: 8px; padding: 8px; border: 1px solid #D6D2CA; border-radius: 10px; font-size: 13px; font-weight: 600; }
+    .swatch input { width: 34px; height: 34px; padding: 0; border: 0; background: none; cursor: pointer; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .small-btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+    .small-btn { padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .small-btn:hover { border-color: var(--ink); }
+    .note { margin-top: 14px; font-size: 12px; line-height: 1.5; color: var(--muted); }
+
+    /* ---------- browser frame ---------- */
+    .frame { border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+    .frame__chrome { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #ECEAE5; border-bottom: 1px solid #DDD9D1; }
+    .dots { display: flex; gap: 6px; }
+    .dots i { width: 11px; height: 11px; border-radius: 50%; background: #CFCAC0; }
+    .url { flex: 1; padding: 6px 12px; border-radius: 8px; background: #fff; font-size: 13px; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .url b { color: var(--ink); }
+
+    /* ---------- the client page ---------- */
+    .site-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 26px; background: var(--primary); color: var(--on-primary); transition: background 0.4s; }
+    .cobrand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.14em; font-size: 14px; }
+    .cobrand__x { opacity: 0.6; }
+    .cobrand__logo { height: 30px; max-width: 120px; object-fit: contain; }
+    .cobrand__name { letter-spacing: 0.04em; }
+    .site-nav__links { display: flex; gap: 18px; font-size: 13px; font-weight: 600; opacity: 0.9; }
+
+    .hero { position: relative; background: #0A1428; }
+    .hero svg { display: block; width: 100%; height: auto; }
+    .hero__copy { position: absolute; left: 0; right: 0; top: 0; padding: 30px 34px; color: #fff; pointer-events: none; }
+    .hero__eyebrow { display: inline-block; padding: 5px 10px; border-radius: 999px; background: var(--accent); color: var(--ink); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.4s; }
+    .hero__title { margin: 12px 0 6px; font-size: clamp(26px, 3.4vw, 46px); line-height: 1.02; letter-spacing: -0.03em; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+    .hero__sub { margin: 0; font-size: clamp(14px, 1.4vw, 18px); opacity: 0.9; text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
+
+    .site-body { padding: 30px 34px 36px; background: #fff; }
+    .site-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .site-card { padding: 20px; border-radius: 14px; background: var(--paper); }
+    .site-card h3 { margin: 0 0 6px; font-size: 18px; letter-spacing: -0.01em; }
+    .site-card p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+    .site-card__visual { height: 96px; margin-bottom: 14px; border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .lighting { background: linear-gradient(180deg, #0A1428 0%, #0A1428 40%, var(--accent) 140%); position: relative; }
+    .lighting::before { content: ""; position: absolute; left: 12%; right: 12%; bottom: 22%; height: 10px; border-radius: 6px; background: var(--accent); box-shadow: 0 0 30px 8px var(--accent); }
+    .screen { background: #111; padding: 10px; }
+    .screen__inner { width: 100%; height: 100%; border-radius: 6px; background: var(--primary); display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--on-primary); font-weight: 700; padding: 8px; text-align: center; transition: background 0.4s; }
+    .screen__inner img { max-height: 46px; max-width: 46%; object-fit: contain; }
+    .ports { background: var(--paper); flex-direction: column; align-items: stretch; justify-content: center; gap: 3px; padding: 4px 6px; }
+    .ports div { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; }
+    .ports div span:last-child { color: var(--muted); }
+
+    .merch { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 16px; margin-top: 16px; }
+    .merch__item { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 150px; padding: 16px; border-radius: 14px; background: var(--paper); text-align: center; font-size: 12px; font-weight: 600; color: var(--muted); }
+    .welcome-card { width: 100%; max-width: 230px; padding: 14px; border-radius: 10px; background: var(--primary); color: var(--on-primary); text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.12); transition: background 0.4s; }
+    .welcome-card img { height: 22px; max-width: 100px; object-fit: contain; display: block; margin-bottom: 8px; }
+    .welcome-card b { display: block; font-size: 15px; margin-bottom: 3px; }
+    .welcome-card small { opacity: 0.8; }
+    .lanyard { width: 56px; height: 86px; border-radius: 8px; background: #fff; border: 1px solid var(--line); box-shadow: 0 6px 14px rgba(0,0,0,0.08); position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; }
+    .lanyard::before { content: ""; position: absolute; top: -44px; left: 50%; width: 14px; height: 50px; margin-left: -7px; background: var(--accent); border-radius: 3px; transition: background 0.4s; }
+    .lanyard__chip { width: 34px; height: 24px; border-radius: 4px; background: var(--primary); display: flex; align-items: center; justify-content: center; overflow: hidden; transition: background 0.4s; }
+    .lanyard__chip img { max-width: 90%; max-height: 80%; object-fit: contain; }
+    .tote { width: 74px; height: 82px; border-radius: 4px 4px 10px 10px; background: var(--accent); position: relative; display: flex; align-items: center; justify-content: center; transition: background 0.4s; }
+    .tote::before { content: ""; position: absolute; top: -16px; left: 18px; right: 18px; height: 22px; border: 4px solid var(--accent); border-bottom: 0; border-radius: 14px 14px 0 0; }
+    .tote__mark { max-width: 60%; max-height: 40%; object-fit: contain; }
+    .tote__text { font-size: 10px; font-weight: 700; color: var(--ink); padding: 0 6px; }
+
+    .site-cta { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 22px; padding: 22px 24px; border-radius: 14px; background: var(--ink); color: #fff; }
+    .site-cta p { margin: 0; font-size: 15px; opacity: 0.85; }
+    .site-cta b { display: block; font-size: 19px; margin-bottom: 2px; opacity: 1; }
+    .cta-btn { flex-shrink: 0; padding: 13px 20px; border: 0; border-radius: 999px; background: var(--accent); color: var(--ink); font-weight: 700; cursor: pointer; transition: background 0.4s; }
+
+    .explain { margin: 18px 0 0; padding: 18px 20px; border-radius: 14px; background: #fff; font-size: 14px; line-height: 1.6; color: var(--muted); }
+    .explain strong { color: var(--ink); }
+
+    .toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); padding: 11px 16px; border-radius: 10px; background: var(--ink); color: #fff; font-size: 14px; display: none; z-index: 50; }
+
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; padding: 14px; }
+      .controls { position: static; }
+      .site-cards, .merch { grid-template-columns: 1fr; }
+      .site-nav__links { display: none; }
+      .hero__copy { position: static; background: #0A1428; padding: 22px 20px 6px; }
+      .site-body { padding: 22px 18px; }
+      .site-cta { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bar">
+  <a href="/for-transcend/">← Back to the Q4 proposal</a>
+  <span class="bar__title">Demo · Your charter, your brand</span>
+</div>
+
+<div class="layout">
+  <aside class="controls" aria-label="Customize the preview">
+    <h1>See your charter in your brand.</h1>
+    <p>Add a company name, logo and colors. The ship, screens and welcome page update instantly.</p>
+
+    <div class="presets">
+      <span>Try a sample brand</span>
+      <button class="preset" type="button" data-preset="northwind">Northwind Motors</button>
+      <button class="preset" type="button" data-preset="lumen">Lumen Health</button>
+      <button class="preset" type="button" data-preset="altair">Altair Jets</button>
+    </div>
+
+    <div class="field">
+      <label for="company">Company name</label>
+      <input type="text" id="company" value="Your Company" maxlength="40">
+    </div>
+
+    <div class="field">
+      <span class="label">Logo</span>
+      <label class="drop" id="drop">
+        <span class="drop__thumb" id="thumb">⬆️</span>
+        <span class="drop__text"><strong>Upload or drop a logo</strong>PNG, JPG or SVG. We'll pull a brand color from it.</span>
+        <input type="file" id="logo" accept="image/*">
+      </label>
+      <div class="small-btns">
+        <button class="small-btn" type="button" id="removeLogo">Remove logo</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="label">Brand colors</span>
+      <div class="colors">
+        <label class="swatch"><input type="color" id="primary" value="#1F3A5F">Primary</label>
+        <label class="swatch"><input type="color" id="accent" value="#4DBDB8">Ship lighting</label>
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <label for="eventType">Event type</label>
+        <select id="eventType">
+          <option>Incentive trip</option>
+          <option>Executive meeting</option>
+          <option>Product launch</option>
+          <option>Celebration</option>
+          <option>Affinity group</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="guests">Guests</label>
+        <input type="number" id="guests" value="120" min="10" max="200" step="10">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="route">River</label>
+      <select id="route">
+        <option value="rhine">Rhine · Amsterdam to Basel</option>
+        <option value="danube">Danube · Passau to Budapest</option>
+      </select>
+    </div>
+
+    <div class="small-btns">
+      <button class="small-btn" type="button" id="share">Copy shareable link</button>
+      <button class="small-btn" type="button" id="reset">Reset</button>
+    </div>
+    <p class="note">Your logo stays in your browser. Nothing is uploaded or saved.</p>
+  </aside>
+
+  <main>
+    <div class="frame">
+      <div class="frame__chrome">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="url">transcendcruises.com/for/<b id="slug">your-company</b></div>
+      </div>
+
+      <nav class="site-nav">
+        <div class="cobrand">
+          <span>TRANSCEND</span><span class="cobrand__x">×</span>
+          <img class="cobrand__logo" id="navLogo" alt="" hidden>
+          <span class="cobrand__name" id="navName">Your Company</span>
+        </div>
+        <div class="site-nav__links"><span>Your sailing</span><span>The ship</span><span>Itinerary</span><span>Plan</span></div>
+      </nav>
+
+      <section class="hero">
+        <svg viewBox="0 0 1200 580" role="img" aria-label="Transcend ship at night with ambient lighting in your brand color">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#060C1C"/>
+              <stop offset="1" stop-color="#1A2A4A"/>
+            </linearGradient>
+            <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#0E1B33"/>
+              <stop offset="1" stop-color="#050A16"/>
+            </linearGradient>
+            <filter id="glow" x="-20%" y="-50%" width="140%" height="200%">
+              <feGaussianBlur stdDeviation="6" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="soft"><feGaussianBlur stdDeviation="10"/></filter>
+            <clipPath id="screenClip"><rect x="520" y="190" width="200" height="62" rx="4"/></clipPath>
+          </defs>
+
+          <rect width="1200" height="580" fill="url(#sky)"/>
+          <g transform="translate(0,120)">
+          <g fill="#fff" opacity="0.7">
+            <circle cx="90" cy="60" r="1.4"/><circle cx="240" cy="110" r="1"/><circle cx="400" cy="40" r="1.3"/><circle cx="610" cy="80" r="1"/>
+            <circle cx="780" cy="50" r="1.5"/><circle cx="930" cy="120" r="1"/><circle cx="1080" cy="70" r="1.3"/><circle cx="1150" cy="140" r="1"/>
+          </g>
+          <path d="M0 300 L120 268 L260 286 L380 254 L520 280 L660 250 L800 276 L940 252 L1080 274 L1200 258 L1200 320 L0 320Z" fill="#0B1428"/>
+          <rect y="318" width="1200" height="142" fill="url(#water)"/>
+
+          <!-- reflection -->
+          <g class="accent-fill" opacity="0.35" filter="url(#soft)">
+            <rect x="150" y="335" width="900" height="16" rx="8"/>
+            <rect x="230" y="362" width="740" height="10" rx="5"/>
+            <rect x="320" y="388" width="560" height="7" rx="4"/>
+          </g>
+
+          <!-- glow under hull -->
+          <ellipse class="accent-fill" cx="600" cy="322" rx="470" ry="18" opacity="0.55" filter="url(#soft)"/>
+
+          <!-- hull -->
+          <path d="M110 268 L1060 268 L1100 296 Q1095 318 1060 320 L150 320 Q120 318 110 300 Z" fill="#0E1626"/>
+          <rect class="primary-fill" x="120" y="286" width="960" height="7" rx="3"/>
+          <!-- decks -->
+          <rect x="150" y="226" width="900" height="44" fill="#E9EDF3"/>
+          <rect x="190" y="186" width="820" height="42" fill="#DCE2EA"/>
+          <rect x="250" y="160" width="700" height="28" fill="#CFD6E0"/>
+          <!-- windows main deck -->
+          <g class="accent-fill" filter="url(#glow)">
+            <rect x="170" y="238" width="860" height="14" rx="3" opacity="0.95"/>
+          </g>
+          <g fill="#0E1626" opacity="0.55">
+            <rect x="230" y="238" width="3" height="14"/><rect x="310" y="238" width="3" height="14"/><rect x="390" y="238" width="3" height="14"/><rect x="470" y="238" width="3" height="14"/><rect x="550" y="238" width="3" height="14"/><rect x="630" y="238" width="3" height="14"/><rect x="710" y="238" width="3" height="14"/><rect x="790" y="238" width="3" height="14"/><rect x="870" y="238" width="3" height="14"/><rect x="950" y="238" width="3" height="14"/>
+          </g>
+          <!-- windows upper deck -->
+          <g class="accent-fill" filter="url(#glow)" opacity="0.85">
+            <rect x="210" y="198" width="290" height="12" rx="3"/>
+            <rect x="740" y="198" width="250" height="12" rx="3"/>
+          </g>
+          <!-- sun deck canopy + string lights -->
+          <path d="M300 160 Q600 120 900 160" fill="none" stroke="#CFD6E0" stroke-width="3"/>
+          <g class="accent-fill" filter="url(#glow)">
+            <circle cx="330" cy="155" r="3"/><circle cx="380" cy="149" r="3"/><circle cx="430" cy="144" r="3"/><circle cx="480" cy="141" r="3"/><circle cx="530" cy="139" r="3"/><circle cx="580" cy="138" r="3"/>
+            <circle cx="630" cy="138" r="3"/><circle cx="680" cy="139" r="3"/><circle cx="730" cy="141" r="3"/><circle cx="780" cy="144" r="3"/><circle cx="830" cy="149" r="3"/><circle cx="870" cy="155" r="3"/>
+          </g>
+          <!-- big onboard LED screen on the upper deck -->
+          <rect x="512" y="182" width="216" height="78" rx="6" fill="#05070D"/>
+          <rect class="primary-fill" x="520" y="190" width="200" height="62" rx="4"/>
+          <g clip-path="url(#screenClip)">
+            <image id="screenLogo" x="560" y="196" width="120" height="50" preserveAspectRatio="xMidYMid meet" href="" visibility="hidden"/>
+            <text id="screenText" x="620" y="228" text-anchor="middle" dominant-baseline="middle" class="on-primary-fill" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="20">Your Company</text>
+          </g>
+          <!-- bow light -->
+          <circle cx="1088" cy="290" r="4" class="accent-fill" filter="url(#glow)"/>
+          </g>
+        </svg>
+        <div class="hero__copy">
+          <span class="hero__eyebrow" id="eyebrow">Incentive trip · Rhine</span>
+          <h2 class="hero__title" id="title">Welcome aboard, Your Company.</h2>
+          <p class="hero__sub" id="sub">A full-ship charter for 120 guests, from Amsterdam to Basel.</p>
+        </div>
+      </section>
+
+      <div class="site-body">
+        <div class="site-cards">
+          <div class="site-card">
+            <div class="site-card__visual lighting"></div>
+            <h3>Your colors, everywhere</h3>
+            <p>Ambient lighting across the ship, inside and out, set to your brand.</p>
+          </div>
+          <div class="site-card">
+            <div class="site-card__visual screen"><div class="screen__inner" id="screenCard"><img id="screenCardLogo" alt="" hidden><span id="screenCardText">Welcome, Your Company</span></div></div>
+            <h3>Your brand on every screen</h3>
+            <p>Logos, agendas and videos on screens throughout the ship.</p>
+          </div>
+          <div class="site-card">
+            <div class="site-card__visual ports" id="ports"></div>
+            <h3>Your itinerary</h3>
+            <p id="itinNote">Built around your program, with flexibility as plans change.</p>
+          </div>
+        </div>
+
+        <div class="merch">
+          <div class="merch__item">
+            <div class="welcome-card"><img id="cardLogo" alt="" hidden><b id="cardTitle">Welcome, Your Company</b><small id="cardSub">Cabin 214 · Embark Amsterdam</small></div>
+            Welcome cards
+          </div>
+          <div class="merch__item">
+            <div class="lanyard"><div class="lanyard__chip"><img id="badgeLogo" alt="" hidden></div></div>
+            Lanyards and badges
+          </div>
+          <div class="merch__item">
+            <div class="tote"><img class="tote__mark" id="toteLogo" alt="" hidden><span class="tote__text" id="toteText">Your Company</span></div>
+            Welcome gifts
+          </div>
+        </div>
+
+        <div class="site-cta">
+          <div><p><b id="ctaTitle">Ready to plan Your Company's sailing?</b>Your Transcend team will build the program around you.</p></div>
+          <button class="cta-btn" type="button">Start planning →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="explain">
+      <strong>How this could work on the real site:</strong> a prospect visits a page like <em>transcendcruises.com/for/their-company</em>, uploads their logo and colors, and instantly sees their charter. The same template can power proposals and the client portal, so every client feels like the ship was made for them.
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var state = { name: 'Your Company', primary: '#1F3A5F', accent: '#4DBDB8', logo: '', event: 'Incentive trip', guests: 120, route: 'rhine' };
+
+  var ROUTES = {
+    rhine: { river: 'Rhine', from: 'Amsterdam', to: 'Basel', ports: [['Amsterdam', 'Embark'], ['Cologne', 'Day 3'], ['Rüdesheim', 'Day 4'], ['Strasbourg', 'Day 6'], ['Basel', 'Debark']] },
+    danube: { river: 'Danube', from: 'Passau', to: 'Budapest', ports: [['Passau', 'Embark'], ['Linz', 'Day 2'], ['Melk', 'Day 3'], ['Vienna', 'Day 4'], ['Budapest', 'Debark']] }
+  };
+
+  // Sample brands use simple generated SVG marks so the demo works without a real logo.
+  function mark(letter, bg, fg) {
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">' +
+      '<rect width="120" height="120" rx="26" fill="' + bg + '"/>' +
+      '<text x="60" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="64" fill="' + fg + '">' + letter + '</text></svg>';
+    return 'data:image/svg+xml;base64,' + btoa(svg);
+  }
+  var PRESETS = {
+    northwind: { name: 'Northwind Motors', primary: '#B3121F', accent: '#FF5A4E', logo: mark('N', '#FFFFFF', '#B3121F'), event: 'Incentive trip', guests: 150, route: 'rhine' },
+    lumen: { name: 'Lumen Health', primary: '#0B3C5D', accent: '#3DDC97', logo: mark('L', '#3DDC97', '#0B3C5D'), event: 'Executive meeting', guests: 60, route: 'danube' },
+    altair: { name: 'Altair Jets', primary: '#1E1E24', accent: '#E3B341', logo: mark('A', '#E3B341', '#1E1E24'), event: 'Celebration', guests: 90, route: 'rhine' }
+  };
+
+  function textOn(hex) {
+    var c = hex.replace('#', '');
+    var r = parseInt(c.substr(0, 2), 16), g = parseInt(c.substr(2, 2), 16), b = parseInt(c.substr(4, 2), 16);
+    return (0.299 * r + 0.587 * g + 0.114 * b) > 165 ? '#0C0C0C' : '#FFFFFF';
+  }
+  function slug(s) { return (s || 'your-company').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'your-company'; }
+
+  function setImg(el, src) {
+    if (src) { el.src = src; el.hidden = false; } else { el.removeAttribute('src'); el.hidden = true; }
+  }
+
+  function render() {
+    var root = document.documentElement.style;
+    root.setProperty('--primary', state.primary);
+    root.setProperty('--accent', state.accent);
+    root.setProperty('--on-primary', textOn(state.primary));
+    document.querySelectorAll('.accent-fill').forEach(function (el) { el.setAttribute('fill', state.accent); });
+    document.querySelectorAll('.primary-fill').forEach(function (el) { el.setAttribute('fill', state.primary); });
+    document.querySelectorAll('.on-primary-fill').forEach(function (el) { el.setAttribute('fill', textOn(state.primary)); });
+
+    var name = state.name.trim() || 'Your Company';
+    var r = ROUTES[state.route];
+    $('slug').textContent = slug(name);
+    $('navName').textContent = name;
+    $('title').textContent = 'Welcome aboard, ' + name + '.';
+    $('eyebrow').textContent = state.event + ' · ' + r.river;
+    $('sub').textContent = 'A full-ship charter for ' + state.guests + ' guests, from ' + r.from + ' to ' + r.to + '.';
+    $('screenCardText').textContent = state.logo ? 'Welcome aboard' : 'Welcome, ' + name;
+    $('cardTitle').textContent = 'Welcome, ' + name;
+    $('cardSub').textContent = 'Cabin 214 · Embark ' + r.from;
+    $('toteText').textContent = name;
+    $('toteText').hidden = !!state.logo;
+    $('ctaTitle').textContent = 'Ready to plan ' + name + (/s$/i.test(name) ? "' " : "'s ") + 'sailing?';
+    $('ports').innerHTML = r.ports.map(function (p) { return '<div><span>' + p[0] + '</span><span>' + p[1] + '</span></div>'; }).join('');
+
+    // ship screen: logo if we have one, otherwise the name
+    var screenLogo = $('screenLogo'), screenText = $('screenText');
+    if (state.logo) {
+      screenLogo.setAttribute('href', state.logo);
+      screenLogo.setAttribute('visibility', 'visible');
+      screenText.setAttribute('visibility', 'hidden');
+    } else {
+      screenLogo.setAttribute('visibility', 'hidden');
+      screenText.setAttribute('visibility', 'visible');
+      screenText.textContent = name.length > 18 ? name.slice(0, 17) + '…' : name;
+    }
+    ['navLogo', 'screenCardLogo', 'cardLogo', 'badgeLogo', 'toteLogo'].forEach(function (id) { setImg($(id), state.logo); });
+    $('thumb').innerHTML = state.logo ? '<img alt="Uploaded logo" src="' + state.logo + '">' : '⬆️';
+
+    // keep the controls in sync (for presets / shared links)
+    $('company').value = state.name;
+    $('primary').value = state.primary;
+    $('accent').value = state.accent;
+    $('eventType').value = state.event;
+    $('guests').value = state.guests;
+    $('route').value = state.route;
+  }
+
+  // Pull the most prominent saturated color out of an uploaded logo.
+  function brandColorFrom(src, done) {
+    var img = new Image();
+    img.onload = function () {
+      var c = document.createElement('canvas'); c.width = c.height = 48;
+      var ctx = c.getContext('2d');
+      ctx.drawImage(img, 0, 0, 48, 48);
+      var data;
+      try { data = ctx.getImageData(0, 0, 48, 48).data; } catch (e) { return done(null); }
+      var buckets = {};
+      for (var i = 0; i < data.length; i += 4) {
+        var r = data[i], g = data[i + 1], b = data[i + 2], a = data[i + 3];
+        if (a < 128) continue;
+        var max = Math.max(r, g, b), min = Math.min(r, g, b);
+        if (max - min < 40 || max < 40 || min > 225) continue; // skip grays, near-black, near-white
+        var key = (r >> 4) + ',' + (g >> 4) + ',' + (b >> 4);
+        (buckets[key] = buckets[key] || { n: 0, r: 0, g: 0, b: 0 });
+        buckets[key].n++; buckets[key].r += r; buckets[key].g += g; buckets[key].b += b;
+      }
+      var best = null;
+      Object.keys(buckets).forEach(function (k) { if (!best || buckets[k].n > best.n) best = buckets[k]; });
+      if (!best) return done(null);
+      var hex = '#' + [best.r, best.g, best.b].map(function (v) { return ('0' + Math.round(v / best.n).toString(16)).slice(-2); }).join('');
+      done(hex);
+    };
+    img.onerror = function () { done(null); };
+    img.src = src;
+  }
+  function lighten(hex, amt) {
+    var c = hex.replace('#', '');
+    return '#' + [0, 2, 4].map(function (i) {
+      var v = parseInt(c.substr(i, 2), 16); v = Math.round(v + (255 - v) * amt);
+      return ('0' + v.toString(16)).slice(-2);
+    }).join('');
+  }
+
+  function loadFile(file) {
+    if (!file || !/^image\//.test(file.type)) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      state.logo = reader.result;
+      brandColorFrom(state.logo, function (hex) {
+        if (hex) {
+          state.primary = hex;
+          state.accent = lighten(hex, 0.35);
+          toast('Brand color pulled from your logo. Adjust it anytime.');
+        }
+        render();
+      });
+      render();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function toast(msg) {
+    var t = $('toast'); t.textContent = msg; t.style.display = 'block';
+    clearTimeout(toast._t); toast._t = setTimeout(function () { t.style.display = 'none'; }, 2600);
+  }
+
+  // controls
+  $('company').addEventListener('input', function (e) { state.name = e.target.value; render(); });
+  $('primary').addEventListener('input', function (e) { state.primary = e.target.value; render(); });
+  $('accent').addEventListener('input', function (e) { state.accent = e.target.value; render(); });
+  $('eventType').addEventListener('change', function (e) { state.event = e.target.value; render(); });
+  $('guests').addEventListener('input', function (e) { state.guests = Math.max(1, parseInt(e.target.value, 10) || 0); render(); });
+  $('route').addEventListener('change', function (e) { state.route = e.target.value; render(); });
+  $('logo').addEventListener('change', function (e) { loadFile(e.target.files[0]); });
+  $('removeLogo').addEventListener('click', function () { state.logo = ''; $('logo').value = ''; render(); });
+  var drop = $('drop');
+  ['dragenter', 'dragover'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('is-over'); }); });
+  ['dragleave', 'drop'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('is-over'); }); });
+  drop.addEventListener('drop', function (e) { loadFile(e.dataTransfer.files[0]); });
+
+  document.querySelectorAll('.preset').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var p = PRESETS[btn.dataset.preset];
+      Object.keys(p).forEach(function (k) { state[k] = p[k]; });
+      $('logo').value = '';
+      render();
+    });
+  });
+  $('reset').addEventListener('click', function () {
+    state = { name: 'Your Company', primary: '#1F3A5F', accent: '#4DBDB8', logo: '', event: 'Incentive trip', guests: 120, route: 'rhine' };
+    $('logo').value = '';
+    render();
+  });
+
+  // Shareable link: name, colors, event, guests and route (not the logo, which stays local).
+  $('share').addEventListener('click', function () {
+    var q = new URLSearchParams({ name: state.name, p: state.primary.slice(1), a: state.accent.slice(1), e: state.event, g: state.guests, r: state.route });
+    var url = location.origin + location.pathname + '#' + q.toString();
+    var ok = function () { toast('Link copied. The logo is not included, since it stays in your browser.'); };
+    if (navigator.clipboard) navigator.clipboard.writeText(url).then(ok, function () { prompt('Copy this link:', url); });
+    else prompt('Copy this link:', url);
+  });
+  if (location.hash.length > 1) {
+    var q = new URLSearchParams(location.hash.slice(1));
+    var hex = /^[0-9a-f]{6}$/i;
+    if (q.get('name')) state.name = q.get('name').slice(0, 40);
+    if (hex.test(q.get('p') || '')) state.primary = '#' + q.get('p');
+    if (hex.test(q.get('a') || '')) state.accent = '#' + q.get('a');
+    if (q.get('e')) state.event = q.get('e');
+    if (+q.get('g')) state.guests = +q.get('g');
+    if (ROUTES[q.get('r')]) state.route = q.get('r');
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>

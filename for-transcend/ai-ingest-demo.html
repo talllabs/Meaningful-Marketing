@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ship Deployment Calendar - AI Ingest Demo</title>
+<meta name="robots" content="noindex">
+<script src="/for-transcend/gate.js"></script>
+<style>
+:root{--navy:#173a63;--navy2:#224f7e;--gold:#f4c45e;--bg:#f4f6f9;--panel:#fff;--line:#dfe5ec;--text:#1f2937;--muted:#6b7280;--blue:#4b98e6;--orange:#f4a62a;--green:#85bd4c;--gray:#8b8b84}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+.topbar{background:var(--navy);color:#fff;min-height:64px;display:flex;align-items:center;padding:0 22px;gap:22px;box-shadow:0 1px 7px rgba(0,0,0,.15)}
+.brand{font-weight:800;font-size:18px;white-space:nowrap}.topnav{display:flex;gap:6px}.topnav button{border:0;background:transparent;color:#d8e4ef;padding:10px 12px;border-radius:7px;font-weight:650}.topnav button.active,.topnav button:hover{background:rgba(255,255,255,.12);color:#fff}.user-pill{margin-left:auto;background:rgba(255,255,255,.12);padding:8px 11px;border-radius:999px;font-size:13px}
+.page{display:none}.page.active{display:block}.wrap{padding:22px;max-width:1480px;margin:auto}.hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:18px}
+h1{margin:0;font-size:28px}h2{margin:0 0 8px;font-size:19px}h3{margin:0 0 8px;font-size:16px}p{margin:6px 0;color:var(--muted)}.eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--navy2);font-weight:800;margin-bottom:7px}
+.btn{border:1px solid var(--line);background:#fff;color:var(--text);padding:10px 14px;border-radius:8px;font-weight:750}.btn.primary{border-color:var(--navy);background:var(--navy);color:#fff}.btn.gold{border-color:#d7a94b;background:var(--gold);color:#3c2f14}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:14px 0 18px}.kpi{background:#fff;border:1px solid var(--line);border-radius:11px;padding:15px 16px}.kpi .num{font-size:28px;font-weight:850;color:var(--navy)}.kpi .label{font-size:12px;color:var(--muted)}
+.panel{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 2px 7px rgba(20,35,55,.04)}
+.shiptabs{display:flex;gap:6px;overflow-x:auto;background:#fff;border-bottom:1px solid var(--line);padding:0 12px}.shiptabs button{border:0;background:#fff;white-space:nowrap;padding:14px 12px 12px;color:#52606f;border-bottom:3px solid transparent}.shiptabs button.active{color:var(--navy);border-bottom-color:var(--gold);font-weight:800}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;margin:14px 0}.toolbar-left,.toolbar-right{display:flex;gap:8px;flex-wrap:wrap}.input{border:1px solid #cfd7e2;border-radius:8px;padding:9px 11px;background:#fff}
+.month-strip{display:grid;grid-template-columns:repeat(12,minmax(80px,1fr));gap:5px;overflow-x:auto;margin:12px 0}.month{min-width:82px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px;text-align:center;font-size:11px}.month .bar{height:5px;border-radius:6px;background:#d9d9ef;margin:5px 0 4px;overflow:hidden}.month .bar span{display:block;height:100%;background:var(--green)}.month b{font-size:11px;color:#26431d}
+.legend{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:11px;color:#4b5563}.dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:4px}.gray{background:var(--gray)}.blue{background:var(--blue)}.orange{background:var(--orange)}.green{background:var(--green)}.purple{background:#d9d9ef}
+.calendar{width:100%;border-collapse:collapse;font-size:12px}.calendar th{text-align:left;background:var(--navy);color:#fff;padding:9px 8px}.calendar td{border-bottom:1px solid #e8edf2;padding:7px 8px;vertical-align:top}.calendar tr:nth-child(even):not(.monthrow){background:#fafbfc}.monthrow td{background:#2e5f91;color:#fff;font-weight:800;padding:7px 10px}
+.voyage{background:#edf4ff;border-left:4px solid var(--blue);padding:5px 7px;border-radius:4px;min-height:29px;font-weight:800;color:#1f436b}.voyage small{display:block;color:#61758d;font-weight:600;margin-top:2px}.voyage.orange{border-left-color:var(--orange);background:#fff6e6;color:#70480b}
+.ingest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.ingest-option{padding:18px;border:1px solid var(--line);border-radius:12px;background:#fff;min-height:130px;cursor:pointer}.ingest-option:hover,.ingest-option.active{border-color:#8fb3d8;box-shadow:0 0 0 3px rgba(69,132,194,.08)}.icon{font-size:27px;margin-bottom:10px}
+.upload-zone{border:2px dashed #b8c6d5;border-radius:12px;min-height:180px;padding:24px;display:flex;align-items:center;justify-content:center;text-align:center;background:#fbfdff}.upload-zone strong{display:block;font-size:17px;color:var(--navy)}.hidden{display:none!important}
+textarea.big{width:100%;min-height:170px;resize:vertical;border:1px solid #ccd7e3;border-radius:10px;padding:13px;line-height:1.5}.analysis-bar{margin-top:12px;display:flex;gap:8px;justify-content:flex-end}
+.processing{padding:22px;text-align:center}.spinner{width:34px;height:34px;border-radius:50%;border:4px solid #dbe6ef;border-top-color:var(--navy);margin:0 auto 12px;animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.review-header{padding:17px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.confidence{padding:5px 8px;border-radius:999px;background:#eaf6e1;color:#386422;font-weight:800;font-size:12px;white-space:nowrap}.review-body{padding:18px}.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.mini{border:1px solid var(--line);border-radius:10px;padding:13px}.field{display:grid;grid-template-columns:120px 1fr;padding:6px 0;border-bottom:1px solid #eef1f4;font-size:13px}.field:last-child{border-bottom:0}.field span:first-child{color:var(--muted)}.change{background:#fff9e9;border:1px solid #efd99a;border-radius:8px;padding:9px 10px;margin-top:7px;font-size:13px}.old{text-decoration:line-through;color:#9a6a6a}.new{color:#2f6f35;font-weight:800}.warning{background:#fff5e8;border:1px solid #f2cc91;padding:10px 12px;border-radius:8px;font-size:13px;color:#77511c;margin:12px 0}.itinerary{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}.itinerary th,.itinerary td{padding:7px;border-bottom:1px solid #edf0f3;text-align:left}.itinerary th{color:#667085;background:#f8fafc}.review-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:15px;flex-wrap:wrap}
+.toast{position:fixed;right:22px;bottom:22px;background:#173a63;color:#fff;padding:12px 16px;border-radius:9px;box-shadow:0 8px 22px rgba(0,0,0,.18);display:none;z-index:50}.data-table{width:100%;border-collapse:collapse;font-size:13px}.data-table th,.data-table td{padding:9px;border-bottom:1px solid #e7ebef;text-align:left}.data-table th{background:#f6f8fa;color:#596575}
+.history-item{display:grid;grid-template-columns:160px 1fr auto;gap:14px;padding:14px 16px;border-bottom:1px solid var(--line);align-items:center}.badge{display:inline-block;padding:4px 7px;border-radius:6px;background:#eef4fb;color:#325d88;font-size:11px;font-weight:800}
+@media(max-width:900px){.topbar{align-items:flex-start;flex-direction:column;padding:14px}.user-pill{margin-left:0}.cards,.ingest-grid,.review-grid{grid-template-columns:1fr}.month-strip{grid-template-columns:repeat(12,90px)}.wrap{padding:14px}}
+.backbar{background:#0C0C0C;color:#fff;padding:9px 22px;font-size:13px}.backbar a{color:#fff;font-weight:700;text-decoration:none}.backbar a:hover{color:#4DBDB8}
+</style>
+</head>
+<body>
+<div class="backbar"><a href="/for-transcend/">← Back to the Q4 proposal</a></div>
+<div class="topbar">
+  <div class="brand">⚓ Ship Deployment Calendar</div>
+  <div class="topnav">
+    <button class="active" data-page="calendar">Calendar</button>
+    <button data-page="ingest">✨ AI Ingest</button>
+    <button data-page="data">Data</button>
+    <button data-page="history">Change History</button>
+  </div>
+  <div class="user-pill">Demo workspace</div>
+</div>
+
+<section id="calendar" class="page active">
+  <div class="shiptabs">
+    <button class="active">MS Connect - Rhine 2026</button><button>Alternative Ship - Rhine 2026</button><button>Alternative Ship - Danube 2026</button><button>MS Connect - Rhine 2027</button><button>MS Evolve - Danube 2027</button><button>MS Create - Danube 2027</button><button>MS Connect - Rhine 2028</button>
+  </div>
+  <div class="wrap">
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <select class="input"><option>All statuses</option><option>10% Speculative</option><option>30% RFP</option><option>60% Contract</option><option>100% Executed</option><option>Available only</option></select>
+        <input class="input" placeholder="Search client, port, sales...">
+        <button class="btn">Hide empty rows</button>
+      </div>
+      <div class="toolbar-right">
+        <button class="btn gold" onclick="openIngest()">✨ AI Ingest</button><button class="btn">+ Add voyage</button><button class="btn">↓ CSV</button>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="kpi"><div class="num">36</div><div class="label">Voyages</div></div><div class="kpi"><div class="num">0</div><div class="label">Executed</div></div><div class="kpi"><div class="num">0</div><div class="label">Pipeline</div></div><div class="kpi"><div class="num">27</div><div class="label">Available days</div></div>
+    </div>
+    <div class="toolbar"><div></div><div class="legend"><span><i class="dot gray"></i>10%</span><span><i class="dot blue"></i>30%</span><span><i class="dot orange"></i>60%</span><span><i class="dot green"></i>100%</span><span><i class="dot purple"></i>available</span></div></div>
+    <div class="month-strip">
+      <div class="month">Jan<div class="bar"><span style="width:100%"></span></div><b>31 free</b></div><div class="month">Feb<div class="bar"><span style="width:100%"></span></div><b>28 free</b></div><div class="month">Mar<div class="bar"><span style="width:100%"></span></div><b>31 free</b></div><div class="month">Apr<div class="bar"><span style="width:100%"></span></div><b>30 free</b></div><div class="month">May<div class="bar"><span style="width:100%"></span></div><b>31 free</b></div><div class="month">Jun<div class="bar"><span style="width:100%"></span></div><b>30 free</b></div><div class="month">Jul<div class="bar"><span style="width:85%"></span></div><b>27 free</b></div><div class="month">Aug<div class="bar"><span style="width:10%"></span></div><b>3 free</b></div><div class="month">Sep<div class="bar"><span style="width:0%"></span></div><b>0 free</b></div><div class="month">Oct<div class="bar"><span style="width:0%"></span></div><b>0 free</b></div><div class="month">Nov<div class="bar"><span style="width:34%"></span></div><b>10 free</b></div><div class="month">Dec<div class="bar"><span style="width:45%"></span></div><b>14 free</b></div>
+    </div>
+    <div class="panel" style="overflow:auto">
+      <table class="calendar">
+        <thead><tr><th>Date</th><th>Day</th><th>Port / City</th><th>Arrive</th><th>Depart</th><th>Client 1</th><th>Client 2</th><th>Client 3</th></tr></thead>
+        <tbody>
+          <tr class="monthrow"><td colspan="8">SEPTEMBER 2026</td></tr>
+          <tr><td>07 Sep</td><td>Mon</td><td>Basel</td><td>06:00</td><td>18:00</td><td><div class="voyage">Lindblad/NatGeo<small>Kim</small></div></td><td></td><td></td></tr>
+          <tr><td>08 Sep</td><td>Tue</td><td>Breisach</td><td>04:00</td><td>18:00</td><td><div class="voyage">Lindblad/NatGeo<small>Kim</small></div></td><td></td><td></td></tr>
+          <tr><td>09 Sep</td><td>Wed</td><td>Strassbourg</td><td>03:00</td><td>18:00</td><td><div class="voyage">Lindblad/NatGeo</div></td><td></td><td></td></tr>
+          <tr class="monthrow"><td colspan="8">OCTOBER 2026</td></tr>
+          <tr><td>07 Oct</td><td>Wed</td><td>Basel</td><td>on board</td><td>on board</td><td><div class="voyage orange">Detours</div></td><td><div class="voyage">Gruen Travel<small>MS</small></div></td><td></td></tr>
+          <tr><td>08 Oct</td><td>Thu</td><td>Basel</td><td>on board</td><td>on board</td><td></td><td><div class="voyage">Gruen Travel<small>MS</small></div></td><td></td></tr>
+          <tr><td>09 Oct</td><td>Fri</td><td>Basel</td><td>on board</td><td>on board</td><td></td><td><div class="voyage">Gruen Travel</div></td><td></td></tr>
+          <tr><td>10 Oct</td><td>Sat</td><td>Basel</td><td>on board</td><td>20:30</td><td></td><td><div class="voyage">Gruen Travel</div></td><td></td></tr>
+          <tr><td>11 Oct</td><td>Sun</td><td>Strassbourg</td><td>12:30</td><td>23:00</td><td></td><td><div class="voyage">Gruen Travel</div></td><td></td></tr>
+          <tr><td>12 Oct</td><td>Mon</td><td>Speyer</td><td>08:00</td><td>11:00</td><td></td><td><div class="voyage">Gruen Travel</div></td><td></td></tr>
+          <tr><td>13 Oct</td><td>Tue</td><td>Mainz</td><td>on board</td><td>14:00</td><td></td><td><div class="voyage">Gruen Travel</div></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="ingest" class="page">
+  <div class="wrap">
+    <div class="hero">
+      <div><div class="eyebrow">AI-powered schedule intake</div><h1>Give us whatever you received.</h1><p>Upload a file, paste an email, or describe a change. AI turns it into clean voyage and itinerary data for review.</p></div>
+      <button class="btn" onclick="resetDemo()">Reset demo</button>
+    </div>
+    <div class="ingest-grid">
+      <div class="ingest-option" onclick="showMode('upload',this)"><div class="icon">📎</div><h3>Upload files</h3><p>PDF, Excel, CSV, Word, screenshots, photos, or several files at once.</p></div>
+      <div class="ingest-option active" onclick="showMode('paste',this)"><div class="icon">📋</div><h3>Paste information</h3><p>Paste an email, copied table, itinerary, booking note, or messy text.</p></div>
+      <div class="ingest-option" onclick="showMode('change',this)"><div class="icon">✨</div><h3>Describe a change</h3><p>Tell the calendar what changed in plain English.</p></div>
+    </div>
+    <div class="panel" style="padding:18px">
+      <div id="uploadMode" class="hidden"><div class="upload-zone"><div><div class="icon">⬆️</div><strong>Drop schedule files here</strong><p>PDF, XLSX, CSV, DOCX, PNG, JPG</p><input type="file" multiple style="margin-top:8px"></div></div></div>
+      <div id="pasteMode"><label><strong>Paste incoming information</strong></label><textarea class="big">Hi team,
+
+Gruen Travel has revised the October sailing. Please move the start to October 8. They will remain onboard in Basel through October 10, then Strasbourg on October 11 arriving 13:00 instead of 12:30. Speyer departure on October 12 is now 14:00. Mainz on October 13 has been replaced with Rüdesheim. Everything else remains as currently scheduled.
+
+Sales contact remains MS.
+
+Thanks,
+Operations</textarea></div>
+      <div id="changeMode" class="hidden"><label><strong>Describe the change</strong></label><textarea class="big">Move Gruen Travel one day later, update Strasbourg arrival to 13:00, Speyer departure to 14:00, and change Oct 13 from Mainz to Rüdesheim.</textarea></div>
+      <div class="analysis-bar"><button class="btn">Save as draft</button><button class="btn primary" onclick="analyze()">✨ Analyze with AI</button></div>
+    </div>
+
+    <div id="processing" class="panel processing hidden" style="margin-top:14px">
+      <div class="spinner"></div><h3>Reading source and comparing with the live calendar...</h3><p>Identifying ship, client, dates, itinerary changes, duplicates, and ambiguous fields.</p>
+    </div>
+
+    <div id="review" class="panel hidden" style="margin-top:14px">
+      <div class="review-header">
+        <div><div class="eyebrow">AI import review</div><h2>Existing voyage update detected: Gruen Travel</h2><p>MS Connect · Rhine 2026 · Current record matched with high confidence</p></div>
+        <div class="confidence">96% match confidence</div>
+      </div>
+      <div class="review-body">
+        <div class="review-grid">
+          <div class="mini">
+            <h3>Voyage details</h3>
+            <div class="field"><span>Ship</span><strong>MS Connect</strong></div><div class="field"><span>Route</span><strong>Rhine</strong></div><div class="field"><span>Client</span><strong>Gruen Travel</strong></div><div class="field"><span>Sales contact</span><strong>MS</strong></div><div class="field"><span>Status</span><strong>30% RFP</strong></div>
+          </div>
+          <div class="mini">
+            <h3>Changes detected</h3>
+            <div class="change"><span class="old">Start: Oct 7</span> → <span class="new">Oct 8</span></div>
+            <div class="change"><span class="old">Strasbourg arrival: 12:30</span> → <span class="new">13:00</span></div>
+            <div class="change"><span class="old">Speyer departure: 11:00</span> → <span class="new">14:00</span></div>
+            <div class="change"><span class="old">Oct 13: Mainz</span> → <span class="new">Rüdesheim</span></div>
+          </div>
+        </div>
+        <div class="warning">⚠ The source says "Everything else remains as currently scheduled." AI will preserve existing itinerary rows not explicitly changed.</div>
+        <h3>Proposed itinerary</h3>
+        <table class="itinerary">
+          <thead><tr><th>Date</th><th>Port / City</th><th>Arrive</th><th>Depart</th><th>AI note</th></tr></thead>
+          <tbody>
+            <tr><td>08 Oct</td><td>Basel</td><td>on board</td><td>on board</td><td><span class="badge">Moved start</span></td></tr>
+            <tr><td>09 Oct</td><td>Basel</td><td>on board</td><td>on board</td><td>Existing value retained</td></tr>
+            <tr><td>10 Oct</td><td>Basel</td><td>on board</td><td>20:30</td><td>Existing value retained</td></tr>
+            <tr><td>11 Oct</td><td>Strassbourg</td><td><strong>13:00</strong></td><td>23:00</td><td><span class="badge">Changed</span></td></tr>
+            <tr><td>12 Oct</td><td>Speyer</td><td>08:00</td><td><strong>14:00</strong></td><td><span class="badge">Changed</span></td></tr>
+            <tr><td>13 Oct</td><td><strong>Rüdesheim</strong></td><td>on board</td><td>14:00</td><td><span class="badge">Changed</span></td></tr>
+          </tbody>
+        </table>
+        <div class="review-actions"><button class="btn" onclick="resetDemo()">Discard</button><button class="btn">Edit extracted data</button><button class="btn gold">Approve selected</button><button class="btn primary" onclick="approve()">✓ Approve & apply 4 changes</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="data" class="page">
+  <div class="wrap">
+    <div class="hero"><div><div class="eyebrow">Structured data</div><h1>Voyages</h1><p>Spreadsheet-style access remains available for bulk editing and export.</p></div><button class="btn gold" onclick="openIngest()">✨ AI Ingest</button></div>
+    <div class="panel" style="overflow:auto"><table class="data-table"><thead><tr><th>Ship</th><th>Route</th><th>Client</th><th>Embark</th><th>Debark</th><th>Sales</th><th>Status</th></tr></thead><tbody>
+      <tr><td>MS Connect</td><td>Rhine</td><td>Lindblad/NatGeo</td><td>07 Sep 2026</td><td>14 Sep 2026</td><td>Kim</td><td>30% RFP</td></tr>
+      <tr><td>MS Connect</td><td>Rhine</td><td>Gruen Travel</td><td>07 Oct 2026</td><td>19 Oct 2026</td><td>MS</td><td>30% RFP</td></tr>
+      <tr><td>MS Connect</td><td>Rhine</td><td>Texas Restaurant Association</td><td>19 Oct 2026</td><td>25 Oct 2026</td><td>MS/JC</td><td>60% Contract</td></tr>
+      <tr><td>MS Connect</td><td>Rhine</td><td>Shawn Horwitz</td><td>25 Oct 2026</td><td>29 Oct 2026</td><td>JC/Kim</td><td>30% RFP</td></tr>
+    </tbody></table></div>
+  </div>
+</section>
+
+<section id="history" class="page">
+  <div class="wrap">
+    <div class="hero"><div><div class="eyebrow">Audit trail</div><h1>Change History</h1><p>Every manual or AI-assisted update is traceable and reversible.</p></div></div>
+    <div class="panel" id="historyList">
+      <div class="history-item"><div><strong>Oct 8, 10:54 AM</strong><br><span style="color:#6b7280;font-size:12px">Operations</span></div><div><strong>Texas Restaurant Association</strong><br><span style="color:#6b7280">Status changed from 30% RFP to 60% Contract</span></div><button class="btn">Undo</button></div>
+      <div class="history-item"><div><strong>Oct 7, 4:18 PM</strong><br><span style="color:#6b7280;font-size:12px">Kim</span></div><div><strong>Lindblad/NatGeo</strong><br><span style="color:#6b7280">Updated daily itinerary from uploaded PDF</span></div><button class="btn">View source</button></div>
+    </div>
+  </div>
+</section>
+
+<div id="toast" class="toast">Changes applied successfully.</div>
+
+<script>
+const pages=document.querySelectorAll('.page'),navButtons=document.querySelectorAll('.topnav button');
+navButtons.forEach(btn=>btn.addEventListener('click',()=>{navButtons.forEach(b=>b.classList.remove('active'));btn.classList.add('active');pages.forEach(p=>p.classList.remove('active'));document.getElementById(btn.dataset.page).classList.add('active')}));
+function openIngest(){navButtons.forEach(b=>b.classList.toggle('active',b.dataset.page==='ingest'));pages.forEach(p=>p.classList.remove('active'));document.getElementById('ingest').classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function showMode(mode,el){document.querySelectorAll('.ingest-option').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('uploadMode').classList.toggle('hidden',mode!=='upload');document.getElementById('pasteMode').classList.toggle('hidden',mode!=='paste');document.getElementById('changeMode').classList.toggle('hidden',mode!=='change');document.getElementById('review').classList.add('hidden');document.getElementById('processing').classList.add('hidden')}
+function analyze(){document.getElementById('review').classList.add('hidden');document.getElementById('processing').classList.remove('hidden');setTimeout(()=>{document.getElementById('processing').classList.add('hidden');document.getElementById('review').classList.remove('hidden');document.getElementById('review').scrollIntoView({behavior:'smooth',block:'start'})},1200)}
+function approve(){const history=document.getElementById('historyList'),row=document.createElement('div');row.className='history-item';row.innerHTML='<div><strong>Just now</strong><br><span style="color:#6b7280;font-size:12px">AI Ingest</span></div><div><strong>Gruen Travel</strong><br><span style="color:#6b7280">Applied 4 approved changes from pasted Operations email</span></div><button class="btn">Undo</button>';history.prepend(row);const toast=document.getElementById('toast');toast.style.display='block';setTimeout(()=>toast.style.display='none',2400)}
+function resetDemo(){document.getElementById('review').classList.add('hidden');document.getElementById('processing').classList.add('hidden');window.scrollTo({top:0,behavior:'smooth'})}
+</script>
+</body>
+</html>
