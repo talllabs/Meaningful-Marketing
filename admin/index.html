@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Logo Manager · Meaningful Marketing</title>
+  <link rel="icon" href="/images/favicon/favicon.ico" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1A3464;
+      --navy-dark: #0F1F3D;
+      --teal: #4DBDB8;
+      --teal-dark: #1E8A86;
+      --coral: #D4635A;
+      --off-white: #F4F2ED;
+      --gray-light: #E8E6E1;
+      --gray-mid: #B0ADA7;
+      --text: #2A2825;
+      --muted: #706D68;
+      --white: #FFFFFF;
+      --font: 'Space Grotesk', -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--off-white);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    button, input { font: inherit; }
+    [hidden] { display: none !important; }
+
+    /* ---------- Login ---------- */
+    .login {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+    }
+    .login__card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px 32px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 10px 40px rgba(15, 31, 61, 0.08);
+      text-align: center;
+    }
+    .login__card h1 { margin: 0 0 6px; font-size: 24px; color: var(--navy-dark); }
+    .login__card p { margin: 0 0 24px; color: var(--muted); }
+    .login__card input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+    .login__card input:focus { outline: 2px solid var(--teal); border-color: transparent; }
+
+    .btn {
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--navy);
+      color: var(--white);
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .btn:hover { background: var(--navy-dark); }
+    .btn:disabled { opacity: 0.4; cursor: default; background: var(--navy); }
+    .btn--full { width: 100%; }
+    .btn--publish { background: var(--teal-dark); }
+    .btn--publish:hover { background: #166c69; }
+    .error { color: var(--coral); margin-top: 12px; font-size: 14px; min-height: 1em; }
+
+    /* ---------- App ---------- */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .topbar__inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .topbar h1 { font-size: 18px; margin: 0; color: var(--navy-dark); flex: 1; min-width: 140px; }
+    .status { font-size: 14px; color: var(--muted); }
+    .status--dirty { color: var(--coral); font-weight: 600; }
+    .status--ok { color: var(--teal-dark); font-weight: 600; }
+
+    main { max-width: 1000px; margin: 0 auto; padding: 24px 16px 80px; }
+
+    .dropzone {
+      display: block;
+      border: 2px dashed var(--gray-mid);
+      border-radius: 12px;
+      background: var(--white);
+      padding: 36px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .dropzone:hover, .dropzone--over { border-color: var(--teal); background: #eef8f8; }
+    .dropzone__big { font-size: 18px; font-weight: 600; color: var(--navy-dark); margin: 8px 0 4px; }
+    .dropzone__small { font-size: 14px; color: var(--muted); margin: 0; }
+    .dropzone__icon { font-size: 32px; }
+
+    .help {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 28px 0 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .help strong { color: var(--text); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      cursor: grab;
+      transition: box-shadow 0.2s, opacity 0.2s;
+      position: relative;
+    }
+    .card:hover { box-shadow: 0 4px 16px rgba(15, 31, 61, 0.08); }
+    .card--dragging { opacity: 0.35; }
+    .card--new { border-color: var(--teal); }
+    .card__num {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      font-size: 12px;
+      color: var(--gray-mid);
+      font-weight: 600;
+    }
+    .card__remove {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .card__remove:hover { background: #fbe9e7; color: var(--coral); }
+    .card__img {
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px 4px;
+      pointer-events: none;
+    }
+    .card__img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .card__img span { font-size: 12px; color: var(--muted); text-align: center; }
+    .card input {
+      width: 100%;
+      padding: 7px 9px;
+      border: 1px solid var(--gray-light);
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: text;
+    }
+    .card input:focus { outline: 2px solid var(--teal); border-color: transparent; }
+    .card__move { display: flex; gap: 6px; }
+    .card__move button {
+      flex: 1;
+      border: 1px solid var(--gray-light);
+      background: var(--white);
+      border-radius: 6px;
+      padding: 4px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .card__move button:hover:not(:disabled) { border-color: var(--teal); color: var(--teal-dark); }
+    .card__move button:disabled { opacity: 0.3; cursor: default; }
+    .empty { color: var(--muted); text-align: center; padding: 30px 0; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Login screen ===== -->
+  <section class="login" id="login">
+    <form class="login__card" id="login-form">
+      <h1>Logo Manager</h1>
+      <p>Enter the admin password to edit your logo carousel.</p>
+      <input type="password" id="password" placeholder="Password" autocomplete="current-password" required />
+      <button class="btn btn--full" type="submit" id="login-btn">Log in</button>
+      <div class="error" id="login-error"></div>
+    </form>
+  </section>
+
+  <!-- ===== Main app ===== -->
+  <div id="app" hidden>
+    <header class="topbar">
+      <div class="topbar__inner">
+        <h1>Logo Carousel</h1>
+        <span class="status" id="status"></span>
+        <a href="/" target="_blank" class="status">View site ↗</a>
+        <button class="btn btn--publish" id="publish" disabled>Publish changes</button>
+      </div>
+    </header>
+
+    <main>
+      <label class="dropzone" id="dropzone">
+        <div class="dropzone__icon">⬆️</div>
+        <p class="dropzone__big">Drag logos here, or click to choose files</p>
+        <p class="dropzone__small">PNG, JPG, SVG or WebP · you can add several at once</p>
+        <input type="file" id="file-input" accept="image/*" multiple hidden />
+      </label>
+
+      <div class="help">
+        <span><strong>Drag cards</strong> to change the order · <strong>×</strong> removes a logo</span>
+        <span id="count"></span>
+      </div>
+
+      <div class="grid" id="grid"></div>
+      <p class="empty" id="empty" hidden>No logos yet. Drag some in above!</p>
+    </main>
+  </div>
+
+<script>
+(function () {
+  let password = '';
+  let logos = [];      // { name, file?, url?, image? (data URL for new uploads) }
+  let dirty = false;
+  let dragIndex = null;
+
+  const $ = (id) => document.getElementById(id);
+  const grid = $('grid');
+
+  // ---------- Login ----------
+  try { password = sessionStorage.getItem('mm-admin') || ''; } catch (e) {}
+  if (password) load();
+
+  $('login-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    password = $('password').value;
+    load();
+  });
+
+  function load() {
+    $('login-btn').disabled = true;
+    $('login-error').textContent = '';
+    fetch('/api/logos', { headers: { 'x-admin-password': password } })
+      .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+      .then(({ ok, data }) => {
+        $('login-btn').disabled = false;
+        if (!ok) {
+          $('login-error').textContent = data.error || 'Something went wrong.';
+          try { sessionStorage.removeItem('mm-admin'); } catch (e) {}
+          return;
+        }
+        try { sessionStorage.setItem('mm-admin', password); } catch (e) {}
+        logos = data.logos;
+        $('login').hidden = true;
+        $('app').hidden = false;
+        render();
+      })
+      .catch(() => {
+        $('login-btn').disabled = false;
+        $('login-error').textContent = 'Could not reach the server. Check your internet connection.';
+      });
+  }
+
+  // ---------- Status ----------
+  function setDirty(value) {
+    dirty = value;
+    $('publish').disabled = !dirty;
+    const s = $('status');
+    s.className = 'status' + (dirty ? ' status--dirty' : '');
+    s.textContent = dirty ? 'Unpublished changes' : '';
+  }
+
+  window.addEventListener('beforeunload', function (e) {
+    if (dirty) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  // ---------- Render cards ----------
+  function render() {
+    grid.innerHTML = '';
+    $('empty').hidden = logos.length > 0;
+    $('count').textContent = logos.length + (logos.length === 1 ? ' logo' : ' logos');
+
+    logos.forEach(function (logo, i) {
+      const card = document.createElement('div');
+      card.className = 'card' + (logo.image && !logo.published ? ' card--new' : '');
+      card.draggable = true;
+
+      const num = document.createElement('span');
+      num.className = 'card__num';
+      num.textContent = i + 1;
+
+      const remove = document.createElement('button');
+      remove.className = 'card__remove';
+      remove.type = 'button';
+      remove.title = 'Remove logo';
+      remove.setAttribute('aria-label', 'Remove ' + logo.name);
+      remove.textContent = '×';
+      remove.onclick = function () {
+        if (!confirm('Remove "' + logo.name + '" from the carousel?')) return;
+        logos.splice(i, 1);
+        setDirty(true);
+        render();
+      };
+
+      const imgWrap = document.createElement('div');
+      imgWrap.className = 'card__img';
+      const img = document.createElement('img');
+      img.alt = logo.name;
+      img.src = logo.image || '/images/logos/' + logo.file;
+      img.onerror = function () {
+        imgWrap.innerHTML = '<span>Just published. The image appears after the site updates (about 1 min).</span>';
+      };
+      imgWrap.appendChild(img);
+
+      const name = document.createElement('input');
+      name.value = logo.name;
+      name.placeholder = 'Organization name';
+      name.setAttribute('aria-label', 'Organization name');
+      name.oninput = function () { logo.name = name.value; setDirty(true); };
+
+      const url = document.createElement('input');
+      url.value = logo.url || '';
+      url.placeholder = 'Website link (optional)';
+      url.setAttribute('aria-label', 'Website link (optional)');
+      url.oninput = function () { logo.url = url.value; setDirty(true); };
+
+      // Inputs shouldn't start a card drag when selecting text
+      [name, url].forEach(function (input) {
+        input.addEventListener('mousedown', function () { card.draggable = false; });
+        input.addEventListener('blur', function () { card.draggable = true; });
+      });
+
+      const move = document.createElement('div');
+      move.className = 'card__move';
+      const left = document.createElement('button');
+      left.type = 'button';
+      left.textContent = '← Earlier';
+      left.disabled = i === 0;
+      left.onclick = function () { moveLogo(i, i - 1); };
+      const right = document.createElement('button');
+      right.type = 'button';
+      right.textContent = 'Later →';
+      right.disabled = i === logos.length - 1;
+      right.onclick = function () { moveLogo(i, i + 1); };
+      move.append(left, right);
+
+      // Drag to reorder
+      card.addEventListener('dragstart', function (e) {
+        dragIndex = i;
+        card.classList.add('card--dragging');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', String(i));
+      });
+      card.addEventListener('dragend', function () {
+        dragIndex = null;
+        card.classList.remove('card--dragging');
+      });
+      card.addEventListener('dragover', function (e) {
+        if (dragIndex === null) return;
+        e.preventDefault();
+      });
+      card.addEventListener('drop', function (e) {
+        if (dragIndex === null) return;
+        e.preventDefault();
+        e.stopPropagation();
+        moveLogo(dragIndex, i);
+      });
+
+      card.append(num, remove, imgWrap, name, url, move);
+      grid.appendChild(card);
+    });
+  }
+
+  function moveLogo(from, to) {
+    if (from === to || to < 0 || to >= logos.length) return;
+    const item = logos.splice(from, 1)[0];
+    logos.splice(to, 0, item);
+    setDirty(true);
+    render();
+  }
+
+  // ---------- Adding new logos ----------
+  function niceName(filename) {
+    return filename
+      .replace(/\.[^.]+$/, '')
+      .replace(/[-_]+/g, ' ')
+      .replace(/\b(logo|final|copy)\b/gi, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .replace(/\b\w/g, (c) => c.toUpperCase()) || 'New logo';
+  }
+
+  // Convert any image to a reasonably sized PNG (keeps transparency).
+  function toPng(file) {
+    return new Promise(function (resolve, reject) {
+      const src = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = function () {
+        const w = img.naturalWidth || 600;
+        const h = img.naturalHeight || 300;
+        const scale = Math.min(1, 600 / w, 300 / h);
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.max(1, Math.round(w * scale));
+        canvas.height = Math.max(1, Math.round(h * scale));
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+        URL.revokeObjectURL(src);
+        resolve(canvas.toDataURL('image/png'));
+      };
+      img.onerror = function () { URL.revokeObjectURL(src); reject(); };
+      img.src = src;
+    });
+  }
+
+  function addFiles(files) {
+    const images = Array.from(files).filter((f) => f.type.startsWith('image/'));
+    if (!images.length) {
+      alert('Please choose image files (PNG, JPG, SVG or WebP).');
+      return;
+    }
+    Promise.all(images.map(function (file) {
+      return toPng(file)
+        .then((image) => ({ name: niceName(file.name), image: image }))
+        .catch(() => { alert('Could not read "' + file.name + '".'); return null; });
+    })).then(function (added) {
+      added = added.filter(Boolean);
+      if (!added.length) return;
+      logos = logos.concat(added);
+      setDirty(true);
+      render();
+      grid.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
+  const dropzone = $('dropzone');
+  $('file-input').addEventListener('change', function (e) {
+    addFiles(e.target.files);
+    e.target.value = '';
+  });
+
+  // Files can be dropped anywhere on the page
+  function isFileDrag(e) {
+    return e.dataTransfer && Array.from(e.dataTransfer.types).includes('Files');
+  }
+  document.addEventListener('dragover', function (e) {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dropzone.classList.add('dropzone--over');
+  });
+  document.addEventListener('dragleave', function (e) {
+    if (e.relatedTarget === null) dropzone.classList.remove('dropzone--over');
+  });
+  document.addEventListener('drop', function (e) {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dropzone.classList.remove('dropzone--over');
+    addFiles(e.dataTransfer.files);
+  });
+
+  // ---------- Publish ----------
+  $('publish').addEventListener('click', function () {
+    const missing = logos.find((l) => !String(l.name || '').trim());
+    if (missing) {
+      alert('Every logo needs a name. Please fill in the empty name box.');
+      return;
+    }
+    const btn = $('publish');
+    btn.disabled = true;
+    btn.textContent = 'Publishing…';
+
+    fetch('/api/logos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        password: password,
+        logos: logos.map((l) => l.image && !l.published
+          ? { name: l.name, url: l.url, image: l.image }
+          : { name: l.name, url: l.url, file: l.file }),
+      }),
+    })
+      .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+      .then(({ ok, data }) => {
+        btn.textContent = 'Publish changes';
+        if (!ok) {
+          btn.disabled = false;
+          alert(data.error || 'Saving failed. Please try again.');
+          return;
+        }
+        // Keep showing new images from memory until the site redeploys
+        const previews = {};
+        logos.forEach((l, i) => { if (l.image) previews[i] = l.image; });
+        logos = data.logos.map((l, i) => previews[i] ? Object.assign({}, l, { image: previews[i], published: true }) : l);
+        setDirty(false);
+        render();
+        const s = $('status');
+        s.className = 'status status--ok';
+        s.textContent = '✓ Published! Your site will update in about a minute.';
+      })
+      .catch(() => {
+        btn.disabled = false;
+        btn.textContent = 'Publish changes';
+        alert('Could not reach the server. Check your internet connection and try again.');
+      });
+  });
+})();
+</script>
+</body>
+</html>

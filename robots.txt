@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /for-landforce/
 Disallow: /for-transcend/
+Disallow: /admin/
 
 Sitemap: https://www.meaningfulmarketinghouse.com/sitemap.xml
