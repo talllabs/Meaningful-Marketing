@@ -658,30 +658,35 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 40px;
 }
 .logowall__grid {
-  overflow: hidden;
-  /* soft fade at the left and right edges */
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-          mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  display: grid; /* all groups sit in the same spot and fade in/out */
+  max-width: 1000px;
+  margin: 0 auto;
 }
-.logowall__track {
-  display: flex;
+.logowall__group {
+  grid-area: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
-  width: max-content;
-  animation: ticker 45s linear infinite; /* lower = faster */
+  gap: clamp(24px, 5vw, 64px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s;
 }
-.logowall__grid:hover .logowall__track { animation-play-state: paused; }
+.logowall__group.is-active {
+  opacity: 1;
+  visibility: visible;
+}
 .logowall__item {
-  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(120px, 14vw, 170px);
   height: clamp(56px, 7vw, 80px);
-  margin-right: clamp(36px, 5vw, 64px);
+}
+@media (max-width: 600px) {
+  .logowall__group { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .logowall__track { animation: none; }
-  .logowall__grid { overflow-x: auto; }
+  .logowall__group { transition: none; }
 }
 .logowall__item img {
   max-width: 100%;
