@@ -9,10 +9,10 @@
 fetch('/data/logos.json', { cache: 'no-cache' })
   .then(function (res) { return res.json(); })
   .then(function (logos) {
-    const PER_GROUP = 4;     // logos shown at once
+    const PER_GROUP = 6;     // logos shown at once
     const SHOW_FOR = 3000;   // milliseconds each group stays on screen
 
-    // Split the logos into groups of 4. If the last group is short,
+    // Split the logos into groups of 6. If the last group is short,
     // top it up with logos from the start so every group is full.
     const groups = [];
     for (let i = 0; i < logos.length; i += PER_GROUP) {
