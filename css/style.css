@@ -657,17 +657,32 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--gray-mid);
   margin-bottom: 40px;
 }
-.logowall__img {
+.logowall__grid {
   max-width: 1100px;
-  width: 92%;
-  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(24px, 4vw, 48px) clamp(28px, 5vw, 64px);
+}
+.logowall__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(110px, 14vw, 170px);
+  height: clamp(56px, 7vw, 80px);
+}
+.logowall__item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply; /* hides white logo backgrounds */
   opacity: 0.65;
   filter: grayscale(1);
   transition: opacity 0.3s, filter 0.3s;
-  display: block;
-  margin: 0 auto;
 }
-.logowall__img:hover { opacity: 1; filter: grayscale(0); }
+.logowall__item:hover img { opacity: 1; filter: grayscale(0); }
 
 /* --------------------------------------------------
    11. SERVICES
