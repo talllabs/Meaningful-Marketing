@@ -919,7 +919,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .work .section-intro { padding-bottom: 0; }
 .work > .container { padding-bottom: 60px; }
 
-.cs { padding-block: clamp(60px, 8vw, 100px); }
+.cs {
+  padding-block: clamp(60px, 8vw, 100px);
+  overflow-x: clip; /* keeps the hover glow on case-study cards from widening the page */
+}
 .cs--dark  { background: var(--black); color: var(--white); }
 .cs--light { background: var(--white); color: var(--text-body); }
 .cs--photo {
