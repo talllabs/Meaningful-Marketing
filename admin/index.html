@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Logo Manager · Meaningful Marketing</title>
+  <title>Site Manager · Meaningful Marketing</title>
   <link rel="icon" href="/images/favicon/favicon.ico" sizes="any" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -205,6 +205,69 @@
     .card__move button:hover:not(:disabled) { border-color: var(--teal); color: var(--teal-dark); }
     .card__move button:disabled { opacity: 0.3; cursor: default; }
     .empty { color: var(--muted); text-align: center; padding: 30px 0; }
+
+    /* ---------- Tabs ---------- */
+    .tabs { display: flex; gap: 4px; background: var(--off-white); padding: 4px; border-radius: 10px; }
+    .tab {
+      border: 0;
+      background: transparent;
+      padding: 7px 14px;
+      border-radius: 7px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .tab.is-active { background: var(--white); color: var(--navy-dark); box-shadow: 0 1px 4px rgba(15, 31, 61, 0.1); }
+
+    /* ---------- Headshots ---------- */
+    .hs-intro { color: var(--muted); margin: 0 0 8px; max-width: 640px; line-height: 1.5; }
+    .hs-intro strong { color: var(--text); }
+    .hs-layout { display: grid; grid-template-columns: 1fr 300px; gap: 28px; align-items: start; margin-top: 16px; }
+    .hs-editors { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    .hs-card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .hs-card--over { border-color: var(--teal); background: #eef8f8; }
+    .hs-card h2 { margin: 0; font-size: 18px; color: var(--navy-dark); }
+    .hs-ring {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      padding: 6px;
+      background: linear-gradient(90deg, #9f7933, #c9a456 45%, #f0d58f 80%, #e9c766);
+    }
+    .hs-ring canvas {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      display: block;
+      background: var(--gray-light);
+      cursor: grab;
+      touch-action: none;
+    }
+    .hs-ring canvas:active { cursor: grabbing; }
+    .hs-zoom { width: 100%; display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+    .hs-zoom input { flex: 1; accent-color: var(--teal-dark); }
+    .hs-buttons { display: flex; gap: 8px; width: 100%; }
+    .hs-buttons .btn { flex: 1; padding: 9px 10px; font-size: 14px; }
+    .btn--light { background: var(--white); color: var(--navy); border: 1px solid var(--gray-light); }
+    .btn--light:hover { background: var(--off-white); }
+    .hs-tip { font-size: 12px; color: var(--muted); margin: 0; text-align: center; }
+    .hs-preview { position: sticky; top: 90px; background: var(--white); border-radius: 12px; padding: 16px; border: 1px solid var(--gray-light); }
+    .hs-label { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    #hs-canvas { width: 100%; height: auto; display: block; }
+    @media (max-width: 760px) {
+      .hs-layout { grid-template-columns: 1fr; }
+      .hs-preview { position: static; max-width: 320px; margin: 0 auto; }
+    }
   </style>
 </head>
 <body>
@@ -212,8 +275,8 @@
   <!-- ===== Login screen ===== -->
   <section class="login" id="login">
     <form class="login__card" id="login-form">
-      <h1>Logo Manager</h1>
-      <p>Enter the admin password to edit your logo carousel.</p>
+      <h1>Site Manager</h1>
+      <p>Enter the admin password to edit your logos and headshots.</p>
       <input type="password" id="password" placeholder="Password" autocomplete="current-password" required />
       <button class="btn btn--full" type="submit" id="login-btn">Log in</button>
       <div class="error" id="login-error"></div>
@@ -224,14 +287,20 @@
   <div id="app" hidden>
     <header class="topbar">
       <div class="topbar__inner">
-        <h1>Logo Carousel</h1>
+        <h1>Site Manager</h1>
+        <nav class="tabs" role="tablist">
+          <button class="tab is-active" type="button" data-tab="logos" role="tab">Logos</button>
+          <button class="tab" type="button" data-tab="headshots" role="tab">Headshots</button>
+        </nav>
         <span class="status" id="status"></span>
+        <span class="status" id="hs-status" hidden></span>
         <a href="/" target="_blank" class="status">View site ↗</a>
         <button class="btn btn--publish" id="publish" disabled>Publish changes</button>
+        <button class="btn btn--publish" id="hs-publish" disabled hidden>Publish headshots</button>
       </div>
     </header>
 
-    <main>
+    <main id="tab-logos">
       <label class="dropzone" id="dropzone">
         <div class="dropzone__icon">⬆️</div>
         <p class="dropzone__big">Drag logos here, or click to choose files</p>
@@ -247,6 +316,18 @@
       <div class="grid" id="grid"></div>
       <p class="empty" id="empty" hidden>No logos yet. Drag some in above!</p>
     </main>
+
+    <main id="tab-headshots" hidden>
+      <p class="hs-intro">Upload a photo for each person, then <strong>drag the photo</strong> to move it and use the <strong>zoom slider</strong> to size it inside the gold circle. The preview shows exactly how it will look on your site.</p>
+      <p class="error" id="hs-error"></p>
+      <div class="hs-layout">
+        <div class="hs-editors" id="hs-editors"></div>
+        <div class="hs-preview">
+          <p class="hs-label">Preview</p>
+          <canvas id="hs-canvas" width="680" height="926" aria-label="Preview of the headshot image"></canvas>
+        </div>
+      </div>
+    </main>
   </div>
 
 <script>
@@ -255,6 +336,7 @@
   let logos = [];      // { name, file?, url?, image? (data URL for new uploads) }
   let dirty = false;
   let dragIndex = null;
+  let hsDirty = false;
 
   const $ = (id) => document.getElementById(id);
   const grid = $('grid');
@@ -286,6 +368,7 @@
         $('login').hidden = true;
         $('app').hidden = false;
         render();
+        loadHeadshots();
       })
       .catch(() => {
         $('login-btn').disabled = false;
@@ -303,7 +386,7 @@
   }
 
   window.addEventListener('beforeunload', function (e) {
-    if (dirty) { e.preventDefault(); e.returnValue = ''; }
+    if (dirty || hsDirty) { e.preventDefault(); e.returnValue = ''; }
   });
 
   // ---------- Render cards ----------
@@ -476,7 +559,7 @@
   document.addEventListener('dragover', function (e) {
     if (!isFileDrag(e)) return;
     e.preventDefault();
-    dropzone.classList.add('dropzone--over');
+    if (!$('tab-logos').hidden) dropzone.classList.add('dropzone--over');
   });
   document.addEventListener('dragleave', function (e) {
     if (e.relatedTarget === null) dropzone.classList.remove('dropzone--over');
@@ -485,6 +568,7 @@
     if (!isFileDrag(e)) return;
     e.preventDefault();
     dropzone.classList.remove('dropzone--over');
+    if ($('tab-logos').hidden) return;
     addFiles(e.dataTransfer.files);
   });
 
@@ -530,6 +614,328 @@
       .catch(() => {
         btn.disabled = false;
         btn.textContent = 'Publish changes';
+        alert('Could not reach the server. Check your internet connection and try again.');
+      });
+  });
+
+  // =====================================================
+  //  TABS
+  // =====================================================
+  document.querySelectorAll('.tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      const name = tab.dataset.tab;
+      document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('is-active', t === tab));
+      $('tab-logos').hidden = name !== 'logos';
+      $('tab-headshots').hidden = name !== 'headshots';
+      $('status').hidden = $('publish').hidden = name !== 'logos';
+      $('hs-status').hidden = $('hs-publish').hidden = name !== 'headshots';
+      if (name === 'headshots') drawPreview();
+    });
+  });
+
+  // =====================================================
+  //  HEADSHOTS
+  // =====================================================
+  // Layout of the finished image (matches the original design).
+  const HS_W = 680;
+  const HS_H = 926;
+  const RING = 9;
+  const CIRCLES = [
+    { cx: 265, cy: 267, r: 231 },   // person 1 (top left)
+    { cx: 400, cy: 660, r: 235 },   // person 2 (bottom right, drawn on top)
+  ];
+
+  let people = [];   // { name, file, zoom, x, y, img, image? (new upload) }
+
+  function setHsDirty(value) {
+    hsDirty = value;
+    $('hs-publish').disabled = !hsDirty;
+    const s = $('hs-status');
+    s.className = 'status' + (hsDirty ? ' status--dirty' : '');
+    s.textContent = hsDirty ? 'Unpublished changes' : '';
+  }
+
+  function loadImage(src) {
+    return new Promise(function (resolve, reject) {
+      const img = new Image();
+      img.onload = function () { resolve(img); };
+      img.onerror = reject;
+      img.src = src;
+    });
+  }
+
+  function loadHeadshots() {
+    fetch('/api/headshots', { headers: { 'x-admin-password': password } })
+      .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+      .then(({ ok, data }) => {
+        if (!ok) { $('hs-error').textContent = data.error || 'Could not load the headshots.'; return; }
+        people = data.people;
+        return Promise.all(people.map(function (p) {
+          return loadImage('/images/team/' + p.file + '?v=' + Date.now())
+            .then((img) => { p.img = img; })
+            .catch(() => { p.img = null; });
+        })).then(renderEditors);
+      })
+      .catch(() => { $('hs-error').textContent = 'Could not reach the server.'; });
+  }
+
+  // Keep the photo covering the whole circle, whatever the zoom/position.
+  function clampCrop(p, r) {
+    if (!p.img) return;
+    const iw = p.img.naturalWidth;
+    const ih = p.img.naturalHeight;
+    const scale = Math.max(2 * r / iw, 2 * r / ih) * p.zoom;
+    const hx = r / scale / iw;
+    const hy = r / scale / ih;
+    p.x = Math.min(1 - hx, Math.max(hx, p.x));
+    p.y = Math.min(1 - hy, Math.max(hy, p.y));
+  }
+
+  // Draws one person's photo inside a circle of radius r centred at (cx, cy).
+  function drawPhoto(ctx, p, cx, cy, r) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.clip();
+    if (p.img) {
+      clampCrop(p, r);
+      const iw = p.img.naturalWidth;
+      const ih = p.img.naturalHeight;
+      const scale = Math.max(2 * r / iw, 2 * r / ih) * p.zoom;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(p.img, cx - p.x * iw * scale, cy - p.y * ih * scale, iw * scale, ih * scale);
+    } else {
+      ctx.fillStyle = '#E8E6E1';
+      ctx.fillRect(cx - r, cy - r, r * 2, r * 2);
+    }
+    ctx.restore();
+  }
+
+  function drawRing(ctx, c) {
+    const grad = ctx.createLinearGradient(c.cx - c.r, 0, c.cx + c.r, 0);
+    grad.addColorStop(0, '#9f7933');
+    grad.addColorStop(0.45, '#c9a456');
+    grad.addColorStop(0.8, '#f0d58f');
+    grad.addColorStop(1, '#e9c766');
+    ctx.beginPath();
+    ctx.arc(c.cx, c.cy, c.r - RING / 2, 0, Math.PI * 2);
+    ctx.lineWidth = RING;
+    ctx.strokeStyle = grad;
+    ctx.stroke();
+  }
+
+  function drawComposite(canvas) {
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, HS_W, HS_H);
+    people.forEach(function (p, i) {
+      const c = CIRCLES[i];
+      if (!c) return;
+      drawPhoto(ctx, p, c.cx, c.cy, c.r - RING + 1);
+      drawRing(ctx, c);
+    });
+  }
+
+  function drawPreview() {
+    if (people.length) drawComposite($('hs-canvas'));
+  }
+
+  function renderEditors() {
+    const wrap = $('hs-editors');
+    wrap.innerHTML = '';
+    people.forEach(function (p, i) {
+      const card = document.createElement('div');
+      card.className = 'hs-card';
+
+      const title = document.createElement('h2');
+      title.textContent = p.name;
+
+      const ring = document.createElement('div');
+      ring.className = 'hs-ring';
+      const canvas = document.createElement('canvas');
+      canvas.width = canvas.height = 416;   // sharp on high-res screens
+      canvas.setAttribute('aria-label', 'Drag to move ' + p.name + "'s photo");
+      ring.appendChild(canvas);
+
+      const zoomRow = document.createElement('label');
+      zoomRow.className = 'hs-zoom';
+      const zoom = document.createElement('input');
+      zoom.type = 'range';
+      zoom.min = '1';
+      zoom.max = '4';
+      zoom.step = '0.01';
+      zoom.value = p.zoom;
+      zoom.setAttribute('aria-label', 'Zoom ' + p.name + "'s photo");
+      zoomRow.append('−', zoom, '+');
+
+      const buttons = document.createElement('div');
+      buttons.className = 'hs-buttons';
+      const upload = document.createElement('label');
+      upload.className = 'btn';
+      upload.textContent = 'Upload photo';
+      upload.style.textAlign = 'center';
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.hidden = true;
+      upload.appendChild(input);
+      const reset = document.createElement('button');
+      reset.type = 'button';
+      reset.className = 'btn btn--light';
+      reset.textContent = 'Re-center';
+      buttons.append(upload, reset);
+
+      const tip = document.createElement('p');
+      tip.className = 'hs-tip';
+      tip.textContent = 'Tip: you can also drag a photo file onto this card.';
+
+      card.append(title, ring, zoomRow, buttons, tip);
+      wrap.appendChild(card);
+
+      function redraw() {
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawPhoto(ctx, p, canvas.width / 2, canvas.height / 2, canvas.width / 2);
+        drawPreview();
+      }
+
+      // Drag the photo to move it
+      let drag = null;
+      canvas.addEventListener('pointerdown', function (e) {
+        if (!p.img) return;
+        drag = { x: e.clientX, y: e.clientY };
+        canvas.setPointerCapture(e.pointerId);
+      });
+      canvas.addEventListener('pointermove', function (e) {
+        if (!drag) return;
+        const r = canvas.clientWidth / 2;
+        const iw = p.img.naturalWidth;
+        const ih = p.img.naturalHeight;
+        const scale = Math.max(2 * r / iw, 2 * r / ih) * p.zoom;
+        p.x -= (e.clientX - drag.x) / scale / iw;
+        p.y -= (e.clientY - drag.y) / scale / ih;
+        drag = { x: e.clientX, y: e.clientY };
+        setHsDirty(true);
+        redraw();
+      });
+      canvas.addEventListener('pointerup', function () { drag = null; });
+      canvas.addEventListener('pointercancel', function () { drag = null; });
+
+      // Zoom with the slider or the mouse wheel / trackpad
+      zoom.addEventListener('input', function () {
+        p.zoom = Number(zoom.value);
+        setHsDirty(true);
+        redraw();
+      });
+      canvas.addEventListener('wheel', function (e) {
+        if (!p.img) return;
+        e.preventDefault();
+        p.zoom = Math.min(4, Math.max(1, p.zoom * (e.deltaY < 0 ? 1.05 : 1 / 1.05)));
+        zoom.value = p.zoom;
+        setHsDirty(true);
+        redraw();
+      }, { passive: false });
+
+      reset.addEventListener('click', function () {
+        p.zoom = 1;
+        p.x = 0.5;
+        p.y = 0.5;
+        zoom.value = 1;
+        setHsDirty(true);
+        redraw();
+      });
+
+      // New photo: shrink it to a sensible size and convert to JPEG
+      function usePhoto(file) {
+        if (!file || !file.type.startsWith('image/')) {
+          alert('Please choose a photo (JPG or PNG).');
+          return;
+        }
+        const src = URL.createObjectURL(file);
+        loadImage(src).then(function (img) {
+          const scale = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight));
+          const c = document.createElement('canvas');
+          c.width = Math.round(img.naturalWidth * scale);
+          c.height = Math.round(img.naturalHeight * scale);
+          const ctx = c.getContext('2d');
+          ctx.fillStyle = '#fff';
+          ctx.fillRect(0, 0, c.width, c.height);
+          ctx.drawImage(img, 0, 0, c.width, c.height);
+          URL.revokeObjectURL(src);
+          p.image = c.toDataURL('image/jpeg', 0.9);
+          return loadImage(p.image);
+        }).then(function (img) {
+          if (!img) return;
+          p.img = img;
+          p.zoom = 1;
+          p.x = 0.5;
+          p.y = 0.4;   // faces are usually a little above the middle
+          zoom.value = 1;
+          setHsDirty(true);
+          redraw();
+        }).catch(function () {
+          URL.revokeObjectURL(src);
+          alert('Sorry, that photo could not be opened. Try saving it as a JPG first.');
+        });
+      }
+      input.addEventListener('change', function () { usePhoto(input.files[0]); input.value = ''; });
+      card.addEventListener('dragover', function (e) {
+        if (!isFileDrag(e)) return;
+        e.preventDefault();
+        card.classList.add('hs-card--over');
+      });
+      card.addEventListener('dragleave', function () { card.classList.remove('hs-card--over'); });
+      card.addEventListener('drop', function (e) {
+        if (!isFileDrag(e)) return;
+        e.preventDefault();
+        e.stopPropagation();
+        card.classList.remove('hs-card--over');
+        usePhoto(e.dataTransfer.files[0]);
+      });
+
+      redraw();
+    });
+    drawPreview();
+  }
+
+  $('hs-publish').addEventListener('click', function () {
+    const btn = $('hs-publish');
+    btn.disabled = true;
+    btn.textContent = 'Publishing…';
+
+    const out = document.createElement('canvas');
+    out.width = HS_W;
+    out.height = HS_H;
+    drawComposite(out);
+
+    fetch('/api/headshots', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        password: password,
+        composite: out.toDataURL('image/png'),
+        people: people.map((p) => ({ zoom: p.zoom, x: p.x, y: p.y, image: p.image })),
+      }),
+    })
+      .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+      .then(({ ok, data }) => {
+        btn.textContent = 'Publish headshots';
+        if (!ok) {
+          btn.disabled = false;
+          alert(data.error || 'Saving failed. Please try again.');
+          return;
+        }
+        data.people.forEach(function (saved, i) {
+          people[i].file = saved.file;
+          delete people[i].image;   // now saved, don't upload it again
+        });
+        setHsDirty(false);
+        const s = $('hs-status');
+        s.className = 'status status--ok';
+        s.textContent = '✓ Published! Your site will update in about a minute.';
+      })
+      .catch(() => {
+        btn.disabled = false;
+        btn.textContent = 'Publish headshots';
         alert('Could not reach the server. Check your internet connection and try again.');
       });
   });

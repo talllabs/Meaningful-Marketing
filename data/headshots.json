@@ -1,0 +1,6 @@
+{
+  "people": [
+    { "name": "Ally", "file": "ally.jpg", "zoom": 1, "x": 0.5, "y": 0.5 },
+    { "name": "Brad", "file": "brad.jpg", "zoom": 1, "x": 0.5, "y": 0.5 }
+  ]
+}
