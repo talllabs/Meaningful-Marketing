@@ -4,10 +4,6 @@
     "file": "united-nations-foundation.png"
   },
   {
-    "name": "Midsouth",
-    "file": "midsouth-1c96f8.png"
-  },
-  {
     "name": "AAA",
     "file": "aaa.png"
   },
@@ -22,6 +18,10 @@
   {
     "name": "Papua New Guinea Tourism",
     "file": "papua-new-guinea-tourism.png"
+  },
+  {
+    "name": "Midsouth",
+    "file": "midsouth-1c96f8.png"
   },
   {
     "name": "Galapagos Conservancy",
