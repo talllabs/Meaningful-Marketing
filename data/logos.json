@@ -1,63 +1,7 @@
 [
   {
-    "name": "United Nations Foundation",
-    "file": "united-nations-foundation.png"
-  },
-  {
-    "name": "AAA",
-    "file": "aaa.png"
-  },
-  {
-    "name": "USTOA",
-    "file": "ustoa.png"
-  },
-  {
-    "name": "Pitcairn Islands Tourism",
-    "file": "pitcairn-islands-tourism.png"
-  },
-  {
-    "name": "Papua New Guinea Tourism",
-    "file": "papua-new-guinea-tourism.png"
-  },
-  {
     "name": "Midsouth",
     "file": "midsouth-1c96f8.png"
-  },
-  {
-    "name": "Galapagos Conservancy",
-    "file": "galapagos-conservancy.png"
-  },
-  {
-    "name": "TOMS",
-    "file": "toms.png"
-  },
-  {
-    "name": "Lutheran World Relief",
-    "file": "lutheran-world-relief.png"
-  },
-  {
-    "name": "Andean Health & Development",
-    "file": "andean-health.png"
-  },
-  {
-    "name": "The Lobiko Initiative",
-    "file": "lobiko-initiative.png"
-  },
-  {
-    "name": "Sigmund",
-    "file": "sigmund.png"
-  },
-  {
-    "name": "NOVO",
-    "file": "novo.png"
-  },
-  {
-    "name": "Outpatch",
-    "file": "outpatch.png"
-  },
-  {
-    "name": "World Vision",
-    "file": "world-vision.png"
   },
   {
     "name": "Inspire",
@@ -66,5 +10,69 @@
   {
     "name": "AI",
     "file": "ai-c895ed.png"
+  },
+  {
+    "name": "Webster",
+    "file": "webster-ff8c1e.png"
+  },
+  {
+    "name": "Screenshot 2026 10 10 At 10.30.33 AM",
+    "file": "screenshot-2026-10-10-at-10-30-33-am-c0edab.png"
+  },
+  {
+    "name": "Screenshot 2026 10 10 At 10.30.30 AM",
+    "file": "screenshot-2026-10-10-at-10-30-30-am-5bf059.png"
+  },
+  {
+    "name": "Screenshot 2026 10 10 At 10.30.28 AM",
+    "file": "screenshot-2026-10-10-at-10-30-28-am-99592c.png"
+  },
+  {
+    "name": "Screenshot 2026 10 10 At 10.30.26 AM",
+    "file": "screenshot-2026-10-10-at-10-30-26-am-abe906.png"
+  },
+  {
+    "name": "Screenshot 2026 10 10 At 10.30.22 AM",
+    "file": "screenshot-2026-10-10-at-10-30-22-am-bb5e7b.png"
+  },
+  {
+    "name": "Screenshot 2026 10 10 At 10.30.20 AM",
+    "file": "screenshot-2026-10-10-at-10-30-20-am-0ddce3.png"
+  },
+  {
+    "name": "Screenshot 2026 10 10 At 10.30.18 AM",
+    "file": "screenshot-2026-10-10-at-10-30-18-am-10bf05.png"
+  },
+  {
+    "name": "Screenshot 2026 10 10 At 10.30.16 AM",
+    "file": "screenshot-2026-10-10-at-10-30-16-am-78c4f2.png"
+  },
+  {
+    "name": "Screenshot 2026 10 10 At 10.30.13 AM",
+    "file": "screenshot-2026-10-10-at-10-30-13-am-59fa91.png"
+  },
+  {
+    "name": "Screenshot 2026 10 10 At 10.30.11 AM",
+    "file": "screenshot-2026-10-10-at-10-30-11-am-de0d75.png"
+  },
+  {
+    "name": "Screenshot 2026 10 10 At 10.30.08 AM",
+    "file": "screenshot-2026-10-10-at-10-30-08-am-6cd7e8.png"
+  },
+  {
+    "name": "Screenshot 2026 10 10 At 10.30.06 AM",
+    "file": "screenshot-2026-10-10-at-10-30-06-am-325055.png"
+  },
+  {
+    "name": "Screenshot 2026 10 10 At 10.30.02 AM",
+    "file": "screenshot-2026-10-10-at-10-30-02-am-533bdc.png"
+  },
+  {
+    "name": "Alliance",
+    "file": "alliance-19a0c2.png"
+  },
+  {
+    "name": "World",
+    "file": "world-643b7a.png"
   }
 ]
