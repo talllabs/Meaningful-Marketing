@@ -4,6 +4,10 @@
     "file": "united-nations-foundation.png"
   },
   {
+    "name": "Midsouth",
+    "file": "midsouth-1c96f8.png"
+  },
+  {
     "name": "AAA",
     "file": "aaa.png"
   },
@@ -62,9 +66,5 @@
   {
     "name": "AI",
     "file": "ai-c895ed.png"
-  },
-  {
-    "name": "Midsouth",
-    "file": "midsouth-1c96f8.png"
   }
 ]
