@@ -659,15 +659,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .logowall__grid {
   display: grid; /* all groups sit in the same spot and fade in/out */
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .logowall__group {
   grid-area: 1 / 1;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   align-items: center;
-  gap: clamp(24px, 5vw, 64px);
+  gap: clamp(20px, 3.5vw, 48px);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.8s ease, visibility 0.8s;
@@ -680,10 +680,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   justify-content: center;
-  height: clamp(56px, 7vw, 80px);
+  height: clamp(48px, 6vw, 72px);
 }
 @media (max-width: 600px) {
-  .logowall__group { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
+  .logowall__group { grid-template-columns: repeat(3, 1fr); row-gap: 24px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .logowall__group { transition: none; }
