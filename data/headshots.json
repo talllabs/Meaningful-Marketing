@@ -1,6 +1,18 @@
 {
   "people": [
-    { "name": "Ally", "file": "ally.jpg", "zoom": 1, "x": 0.5, "y": 0.5 },
-    { "name": "Brad", "file": "brad.jpg", "zoom": 1, "x": 0.5, "y": 0.5 }
+    {
+      "name": "Ally",
+      "file": "ally-2d1d12.jpg",
+      "zoom": 1.71,
+      "x": 0.5038017982841316,
+      "y": 0.3104858123875392
+    },
+    {
+      "name": "Brad",
+      "file": "brad-015e13.jpg",
+      "zoom": 1,
+      "x": 0.5,
+      "y": 0.4
+    }
   ]
 }
