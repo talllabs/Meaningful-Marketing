@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Give | Andean Health &amp; Development</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/for-ahd/images/ahd-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <script src="/for-ahd/gate.js"></script>
+  <script src="/for-ahd/demo-bar.js" data-design="3"></script>
+  <link rel="stylesheet" href="/for-ahd/design-3/d3.css">
+</head>
+<body data-page="donate">
+<main id="main">
+  <section class="sec" style="padding-top:clamp(50px,7vw,90px)">
+    <div class="pad">
+      <span class="camp">Give</span>
+      <h1 class="big" style="margin-bottom:10px">Choose your<br><span style="color:var(--orange)">altitude.</span></h1>
+      <p class="lead-xl" style="max-width:640px;color:rgba(246,243,236,.8)">Drag the climber up the mountain to pick your gift. Every step trains doctors and builds hospitals that Ecuadorians run themselves.</p>
+
+      <div class="climb" style="margin-top:40px">
+        <div>
+          <div class="mtn">
+            <svg viewBox="0 0 600 340" role="img" aria-label="A mountain showing how high your gift climbs">
+              <polygon fill="#10283B" points="0,340 80,250 150,280 300,30 450,280 520,240 600,340"/>
+              <polygon fill="#F6F3EC" points="262,92 300,30 338,92 322,86 310,100 300,88 288,102 276,86"/>
+              <path id="route" fill="none" stroke="#F1BF34" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round" d="M60,330 C140,300 170,270 210,230 S250,170 262,140 S290,70 300,32"/>
+              <g id="climber">
+                <circle r="13" fill="#F08519"/>
+                <path d="M-1,-30 L-1,-6 M-1,-30 L16,-24 L-1,-18" stroke="#F6F3EC" stroke-width="3" fill="#F6F3EC" stroke-linejoin="round"/>
+              </g>
+            </svg>
+          </div>
+          <label class="field3" for="alt" style="margin-top:10px">Your altitude</label>
+          <input type="range" id="alt" min="0" max="6" step="1" value="2" aria-describedby="alt-out">
+        </div>
+
+        <form id="give3" novalidate>
+          <div class="level" id="lvl">Camp 1</div>
+          <div class="amount-big" id="alt-out" aria-live="polite">$100</div>
+          <div class="freq3" role="group" aria-label="Frequency">
+            <button type="button" class="is-on" data-f="once">Once</button>
+            <button type="button" data-f="monthly">Monthly</button>
+          </div>
+          <label class="field3">Where should it go?
+            <select id="fund3">
+              <option value="general">Where it’s needed most</option>
+              <option value="cotopaxi">Campaign Cotopaxi</option>
+              <option value="bike">2026 Bike Ride</option>
+              <option value="endowment">Endowment</option>
+            </select>
+          </label>
+          <label class="field3">Email<input type="email" autocomplete="email" placeholder="you@example.com"></label>
+          <button type="submit" class="pill pill--give" id="give3-btn" style="width:100%;justify-content:center;padding:18px;font-size:15px">Give $100</button>
+          <p class="note3" id="give3-note" hidden>This is a website concept, so no payment is taken. The live site would continue to a secure checkout.</p>
+          <div class="why"><b>1</b><span>Giving becomes playful and memorable. Gift levels are named like camps on a climb, which also gives AHD a ready-made language for donor recognition (“Summit Society”).</span></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--snow" style="padding:clamp(50px,7vw,90px) 0">
+    <div class="pad cols" style="align-items:start">
+      <div>
+        <span class="camp">Prefer to mail a check?</span>
+        <p class="lead-xl">Andean Health &amp; Development<br>PO Box 7158<br>Carol Stream, IL 60197-7158</p>
+      </div>
+      <div>
+        <span class="camp">Other ways to give</span>
+        <p class="lead-xl">Stock, IRA distributions and legacy gifts through the Hesburgh Legacy Society. Email <a href="mailto:info@andeanhealth.org">info@andeanhealth.org</a>.</p>
+        <p style="font-size:15px">Tax ID 39-1809174</p>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="/for-ahd/design-3/d3.js"></script>
+<script>
+// "Choose your altitude" gift picker (concept only: no payment is taken)
+(function () {
+  var LEVELS = [
+    ['Trailhead', 25], ['Base Camp', 50], ['Camp 1', 100], ['Camp 2', 250],
+    ['Camp 3', 500], ['High Camp', 1000], ['Summit', 2500]
+  ];
+  var range = document.getElementById('alt');
+  var route = document.getElementById('route');
+  var climber = document.getElementById('climber');
+  var freq = 'once';
+  var fund = document.getElementById('fund3');
+  var m = location.search.match(/fund=(\w+)/);
+  if (m && fund.querySelector('option[value="' + m[1] + '"]')) fund.value = m[1];
+
+  function update() {
+    var i = Number(range.value);
+    var level = LEVELS[i];
+    var amount = '$' + level[1].toLocaleString();
+    var pt = route.getPointAtLength(route.getTotalLength() * (i / (LEVELS.length - 1)));
+    climber.setAttribute('transform', 'translate(' + pt.x + ',' + pt.y + ')');
+    document.getElementById('lvl').textContent = level[0];
+    document.getElementById('alt-out').textContent = amount + (freq === 'monthly' ? '/mo' : '');
+    range.setAttribute('aria-valuetext', level[0] + ', ' + amount);
+    document.getElementById('give3-btn').textContent = 'Give ' + amount + (freq === 'monthly' ? ' monthly' : '');
+  }
+  range.addEventListener('input', update);
+  document.querySelectorAll('[data-f]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      freq = b.getAttribute('data-f');
+      document.querySelectorAll('[data-f]').forEach(function (x) { x.classList.toggle('is-on', x === b); });
+      update();
+    });
+  });
+  document.getElementById('give3').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('give3-note').hidden = false;
+  });
+  update();
+})();
+</script>
+</body>
+</html>

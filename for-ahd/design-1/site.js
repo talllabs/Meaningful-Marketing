@@ -5,7 +5,7 @@
    menu can highlight where you are.
    ================================================== */
 (function () {
-  var BASE = '/for-ahd/';
+  var BASE = '/for-ahd/design-1/';
   var NAV = [
     ['about', 'About Us', 'about.html'],
     ['challenge', 'The Challenge', 'the-challenge.html'],
@@ -53,17 +53,17 @@
       '<span class="utility__tag">Quality, sustainable health care for Latin America’s underserved</span>' +
       '<span class="utility__links">' +
         '<a class="utility__phone" href="tel:5742132648">(574) 213-2648</a>' +
-        '<a href="/for-ahd/contact.html">Contact</a>' +
+        '<a href="/for-ahd/design-1/contact.html">Contact</a>' +
       '</span>' +
     '</div></div>' +
     '<header class="header"><div class="container">' +
-      '<a class="brand" href="/for-ahd/" aria-label="Andean Health &amp; Development home">' +
+      '<a class="brand" href="/for-ahd/design-1/" aria-label="Andean Health &amp; Development home">' +
         '<img src="/for-ahd/images/ahd-mark.png" alt="" width="62" height="56">' +
         '<span class="brand__text"><strong>ANDEAN</strong><span>Health &amp; Development</span></span>' +
       '</a>' +
       '<button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>' +
       '<nav class="nav" id="site-nav" aria-label="Main">' + navLinks +
-        '<a class="btn btn--give" href="/for-ahd/donate.html"' + (page === 'donate' ? ' aria-current="page"' : '') + '>Donate</a>' +
+        '<a class="btn btn--give" href="/for-ahd/design-1/donate.html"' + (page === 'donate' ? ' aria-current="page"' : '') + '>Donate</a>' +
       '</nav>' +
     '</div></header>';
   document.body.insertAdjacentHTML('afterbegin', header);
@@ -92,12 +92,12 @@
         '<div>' +
           '<h4>Explore</h4>' +
           '<ul>' +
-            '<li><a href="/for-ahd/about.html">About Us</a></li>' +
-            '<li><a href="/for-ahd/what-we-do.html">What We Do</a></li>' +
-            '<li><a href="/for-ahd/campaign-cotopaxi.html">Campaign Cotopaxi</a></li>' +
-            '<li><a href="/for-ahd/news.html">News &amp; Media</a></li>' +
-            '<li><a href="/for-ahd/bike-ride.html">AHCT Bike Ride</a></li>' +
-            '<li><a href="/for-ahd/contact.html">Contact Us</a></li>' +
+            '<li><a href="/for-ahd/design-1/about.html">About Us</a></li>' +
+            '<li><a href="/for-ahd/design-1/what-we-do.html">What We Do</a></li>' +
+            '<li><a href="/for-ahd/design-1/campaign-cotopaxi.html">Campaign Cotopaxi</a></li>' +
+            '<li><a href="/for-ahd/design-1/news.html">News &amp; Media</a></li>' +
+            '<li><a href="/for-ahd/design-1/bike-ride.html">AHCT Bike Ride</a></li>' +
+            '<li><a href="/for-ahd/design-1/contact.html">Contact Us</a></li>' +
           '</ul>' +
         '</div>' +
         '<div>' +
@@ -113,10 +113,9 @@
       '</div>' +
       '<div class="footer__bottom">' +
         '<span>© Andean Health &amp; Development. A 501(c)(3) nonprofit organization.</span>' +
-        '<a href="/for-ahd/donate.html">Donate</a>' +
+        '<a href="/for-ahd/design-1/donate.html">Donate</a>' +
       '</div>' +
-    '</div></footer>' +
-    '<div class="concept-ribbon">Website concept · Meaningful Marketing</div>';
+    '</div></footer>';
   document.body.insertAdjacentHTML('beforeend', footer);
 
   // ---------- Rotating word in the home hero ----------
