@@ -54,5 +54,17 @@
   {
     "name": "World Vision",
     "file": "world-vision.png"
+  },
+  {
+    "name": "Inspire",
+    "file": "inspire-ff23a9.png"
+  },
+  {
+    "name": "AI",
+    "file": "ai-c895ed.png"
+  },
+  {
+    "name": "Midsouth",
+    "file": "midsouth-1c96f8.png"
   }
 ]
