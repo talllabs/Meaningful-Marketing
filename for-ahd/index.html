@@ -3,248 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andean Health &amp; Development | Website Concept</title>
+  <title>Website Concepts | Andean Health &amp; Development</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="/for-ahd/images/ahd-mark.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
   <script src="/for-ahd/gate.js"></script>
-  <link rel="stylesheet" href="/for-ahd/ahd.css">
+  <style>
+    :root { --sky: #52AADE; --deep: #1C4E74; --orange: #F08519; --yellow: #F1BF34; --green: #8AA336; --ink: #2E3438; --muted: #6B7378; --line: #E3E8EC; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 18px; line-height: 1.6; color: var(--ink); background: linear-gradient(180deg, #D4EAF7 0, #fff 520px); }
+    h1, h2, h3 { font-family: 'Montserrat', system-ui, sans-serif; color: var(--deep); line-height: 1.15; margin: 0 0 .4em; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
+    header { padding: 56px 0 40px; text-align: center; }
+    header img { width: 130px; margin: 0 auto 22px; display: block; }
+    .eyebrow { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--sky); }
+    header h1 { font-size: clamp(32px, 4.6vw, 54px); font-weight: 800; margin-top: 8px; }
+    header p { max-width: 700px; margin: 0 auto; color: var(--muted); font-size: 20px; }
+    .stripe { display: flex; gap: 5px; width: 72px; margin: 18px auto; }
+    .stripe span { height: 5px; flex: 1; border-radius: 3px; }
+    .stripe span:nth-child(1) { background: var(--orange); } .stripe span:nth-child(2) { background: var(--yellow); } .stripe span:nth-child(3) { background: var(--green); }
+    .designs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding-bottom: 60px; }
+    .design { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; text-decoration: none; color: inherit; box-shadow: 0 14px 40px rgba(28,78,116,.08); transition: transform .25s, box-shadow .25s; }
+    .design:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(28,78,116,.16); }
+    .design img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 1px solid var(--line); }
+    .design__body { padding: 26px; display: flex; flex-direction: column; flex: 1; }
+    .num { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 6px; }
+    .design:nth-child(1) .num { color: var(--sky); } .design:nth-child(2) .num { color: var(--deep); } .design:nth-child(3) .num { color: var(--orange); }
+    .design h2 { font-size: 24px; }
+    .design p { color: var(--muted); font-size: 17px; }
+    .design ul { padding-left: 1.1em; margin: 0 0 18px; color: var(--muted); font-size: 16px; }
+    .go { margin-top: auto; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; color: var(--deep); }
+    .tip { text-align: center; color: var(--muted); font-size: 16px; padding-bottom: 60px; }
+    .tip b { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--yellow); color: #0C0C0C; font-family: 'Montserrat', sans-serif; font-size: 12px; margin-right: 6px; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0 40px; text-align: center; font-size: 15px; color: var(--muted); }
+    @media (max-width: 960px) { .designs { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; } }
+  </style>
 </head>
-<body data-page="home">
-<main id="main">
+<body>
+  <header class="wrap">
+    <img src="/for-ahd/images/ahd-logo.png" alt="Andean Health &amp; Development">
+    <span class="eyebrow">Website concepts</span>
+    <h1>Three directions for a new Andean Health website</h1>
+    <div class="stripe"><span></span><span></span><span></span></div>
+    <p>Each one uses AHD’s new brand and content from today’s site. Click into any design and browse its pages, then switch between designs using the bar at the top.</p>
+  </header>
 
-  <!-- ============ HERO ============ -->
-  <section class="hero" data-mountains>
-    <div class="hero__sun" aria-hidden="true"></div>
-    <div class="container">
-      <span class="eyebrow">Rural Ecuador · Since 1997</span>
-      <div class="stripe"><span></span><span></span><span></span></div>
-      <h1>Without access to quality medical care, <span class="rotator" data-words="giving birth|drinking water|a snakebite">giving birth</span> can be fatal.</h1>
-      <p class="lead">Over two decades, we have pioneered a proven, sustainable model to deliver quality health care to those who need it most. Our focus has been Ecuador, but our methods can work across developing Latin America.</p>
-      <div class="hero__actions">
-        <a class="btn btn--give" href="/for-ahd/donate.html">Give now</a>
-        <a class="btn btn--ghost" href="/for-ahd/what-we-do.html">See how we work</a>
-      </div>
+  <main class="wrap">
+    <div class="designs">
+      <a class="design" href="/for-ahd/design-1/">
+        <img src="/for-ahd/images/thumb-1.jpg" alt="Preview of Design 1">
+        <div class="design__body">
+          <div class="num">Design 1</div>
+          <h2>Clean &amp; hopeful</h2>
+          <p>Light, open and optimistic. Built entirely from the new logo’s colors, with mountain shapes and the wing stripes as a recurring signature.</p>
+          <ul><li>10 pages, including News and Contact</li><li>Rotating “can be fatal” headline</li><li>Simple, focused giving flow</li></ul>
+          <span class="go">View Design 1 →</span>
+        </div>
+      </a>
+      <a class="design" href="/for-ahd/design-2/">
+        <img src="/for-ahd/images/thumb-2.jpg" alt="Preview of Design 2">
+        <div class="design__body">
+          <div class="num">Design 2</div>
+          <h2>Classic &amp; photo-led</h2>
+          <p>Familiar and trustworthy. Big, human photography, AHD’s current words and structure, and a clear path to give.</p>
+          <ul><li>8 pages matching today’s menu</li><li>Video front and center</li><li>About page with story tabs</li></ul>
+          <span class="go">View Design 2 →</span>
+        </div>
+      </a>
+      <a class="design" href="/for-ahd/design-3/">
+        <img src="/for-ahd/images/thumb-3.jpg" alt="Preview of Design 3">
+        <div class="design__body">
+          <div class="num">Design 3</div>
+          <h2>Bold &amp; unexpected</h2>
+          <p>“The Climb.” The homepage is a journey up Cotopaxi, with an altitude meter, giant type and color-blocked camps leading to the campaign at the summit.</p>
+          <ul><li>Immersive scrolling homepage</li><li>“Choose your altitude” giving</li><li>A campaign page built to inspire</li></ul>
+          <span class="go">View Design 3 →</span>
+        </div>
+      </a>
     </div>
-  </section>
+    <p class="tip"><b>1</b>Numbered notes explain why we made each choice. Use “Hide the ‘why’ notes” in the top bar to see a design without them.</p>
+  </main>
 
-  <!-- ============ STATS ============ -->
-  <div class="container">
-    <div class="stats reveal">
-      <div class="stat"><div class="stat__num">25<small>+</small></div><div class="stat__label">years delivering care in rural Ecuador</div></div>
-      <div class="stat"><div class="stat__num">175K<small>+</small></div><div class="stat__label">people served by Hospital Pedro Vicente Maldonado</div></div>
-      <div class="stat"><div class="stat__num">100<small>%</small></div><div class="stat__label">Ecuadorian staff, and 75% of them are women</div></div>
-      <div class="stat"><div class="stat__num">60</div><div class="stat__label">doctors trained each year in our residency program</div></div>
-    </div>
-  </div>
-
-  <!-- ============ WHAT WE DO EVERY DAY ============ -->
-  <section class="section">
-    <div class="container">
-      <div class="grid-2">
-        <div class="photo photo--tall reveal" data-label="Photo: Dr. Gaus with patients"></div>
-        <div class="reveal">
-          <span class="eyebrow">What we do every day</span>
-          <div class="stripe"><span></span><span></span><span></span></div>
-          <h2>A story that is nothing short of inspirational.</h2>
-          <p>For over two decades, Dr. David Gaus has worked to provide quality health care to the underserved rural poor of Ecuador.</p>
-          <p>Since launching Andean Health &amp; Development in 1997 with his mentor and co-chair, the late Fr. Theodore Hesburgh, David has built a sustainable approach to rural health: developing local talent, establishing two hospitals and clinics, and creating Ecuador’s first residency training program for rural doctors.</p>
-          <a class="btn btn--blue" href="/for-ahd/about.html">Our story</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ THREE PROGRAMS ============ -->
-  <section class="section section--sky">
-    <div class="container">
-      <div class="section-head section-head--center reveal">
-        <span class="eyebrow">The AHD model</span>
-        <div class="stripe stripe--center"><span></span><span></span><span></span></div>
-        <h2>Quality care today. Health care leaders for tomorrow.</h2>
-        <p class="lead">We are the only rural health provider in Latin America delivering quality care through a proven model of self-sufficiency and capacity building.</p>
-      </div>
-      <div class="grid-3">
-        <div class="card reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M12 9v6M9 12h6"/></svg></div>
-          <h3>Two hospitals</h3>
-          <p>Hesburgh Hospital in Santo Domingo and Hospital Pedro Vicente Maldonado serve every patient who comes through the door.</p>
-          <a class="link-arrow" href="/for-ahd/what-we-do.html#hospitals">Our hospitals</a>
-        </div>
-        <div class="card card--orange reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div>
-          <h3>Rural residency</h3>
-          <p>A rigorous 3-year Family Medicine residency trains Ecuadorian doctors to lead care in their own communities.</p>
-          <a class="link-arrow" href="/for-ahd/what-we-do.html#residency">The residency</a>
-        </div>
-        <div class="card card--green reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8 11h6M11 8v6"/></svg></div>
-          <h3>Andean Health Institute</h3>
-          <p>We measure our impact, research the health threats facing our communities, and share what we learn.</p>
-          <a class="link-arrow" href="/for-ahd/what-we-do.html#institute">The institute</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CAMPAIGN COTOPAXI ============ -->
-  <section class="section section--deep campaign">
-    <div class="container">
-      <div class="grid-2">
-        <div class="reveal">
-          <span class="eyebrow" style="color:var(--yellow)">Campaign Cotopaxi</span>
-          <div class="stripe"><span></span><span></span><span></span></div>
-          <h2>Our next hospital, in the heart of the Ecuadorian highlands.</h2>
-          <p>Help us expand our impact and better serve the people of Cotopaxi. A new 42-bed teaching hospital will bring critical care, high-risk obstetrics and surgical specialties to one of Ecuador’s poorest provinces.</p>
-          <ul class="check-list">
-            <li>Critical care for adults and newborns</li>
-            <li>High-risk obstetrics for moms and babies</li>
-            <li>Training for nurses, lab techs and administrators</li>
-          </ul>
-          <div class="hero__actions">
-            <a class="btn btn--give" href="/for-ahd/donate.html?fund=cotopaxi">Support the campaign</a>
-            <a class="btn btn--ghost-light" href="/for-ahd/campaign-cotopaxi.html">Learn more</a>
-          </div>
-        </div>
-        <div class="reveal">
-          <a class="video" href="/for-ahd/campaign-cotopaxi.html" aria-label="Watch the Campaign Cotopaxi video">
-            <span class="video__play"></span>
-            <span class="video__caption">Watch: Campaign Cotopaxi</span>
-          </a>
-          <div class="mini-stats">
-            <div class="mini-stat"><strong>$11M</strong>campaign goal</div>
-            <div class="mini-stat"><strong>42</strong>hospital beds</div>
-            <div class="mini-stat"><strong>500K</strong>people in the province</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PILLARS ============ -->
-  <section class="section section--paper">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Who we are</span>
-        <div class="stripe"><span></span><span></span><span></span></div>
-        <h2>Built by people who believe in rural Ecuador.</h2>
-      </div>
-      <div class="grid-4">
-        <div class="pillar reveal"><h3>Pioneered by Dr. Gaus.</h3><p>Our founder and CEO has dedicated his life to health care for rural Ecuador.</p></div>
-        <div class="pillar reveal"><h3>Championed by Fr. Hesburgh.</h3><p>Notre Dame’s longtime president was our Founding Chair and lifelong advocate.</p></div>
-        <div class="pillar reveal"><h3>Staffed by Ecuadorians.</h3><p>100% of our staff are local Ecuadorians, and 75% are women.</p></div>
-        <div class="pillar reveal"><h3>Supported by you.</h3><p>Gifts from the U.S. expand the model and our training programs.</p></div>
-      </div>
-      <p style="margin-top:32px" class="reveal"><a class="link-arrow" href="/for-ahd/about.html">Learn more about us</a></p>
-    </div>
-  </section>
-
-  <!-- ============ SUSTAINABILITY HIGHLIGHT ============ -->
-  <section class="section">
-    <div class="container">
-      <div class="grid-2">
-        <div class="reveal">
-          <p class="quote">“Working with and for the communities we serve, instead of as an outside organization, drives a faster, more profound transformation of the health care system.”</p>
-        </div>
-        <div class="reveal">
-          <span class="eyebrow">Self-sustaining by design</span>
-          <h3>Your gift grows the model. It doesn’t just keep the lights on.</h3>
-          <p>Our hospitals combine fees for service, public-private partnerships with Ecuador’s Social Security Institute and Ministry of Health, local contracts and municipal support. Hospital PVM has been 100% financially self-sustaining since 2007.</p>
-          <p>That means donations from the U.S. are used to expand the model and our training programs, not to pay for day-to-day operations.</p>
-          <a class="link-arrow" href="/for-ahd/what-we-do.html">How the model works</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ NEWS ============ -->
-  <section class="section section--sky">
-    <div class="container">
-      <div class="section-head reveal" style="display:flex;justify-content:space-between;align-items:end;gap:20px;max-width:none;flex-wrap:wrap">
-        <div>
-          <span class="eyebrow">From the field</span>
-          <div class="stripe"><span></span><span></span><span></span></div>
-          <h2 style="margin:0">Latest news</h2>
-        </div>
-        <a class="btn btn--ghost" href="/for-ahd/news.html">All news</a>
-      </div>
-      <div class="grid-3">
-        <a class="news-card reveal" href="/for-ahd/news.html">
-          <div class="news-card__top"></div>
-          <div class="news-card__body">
-            <div class="news-card__date">Summer 2026</div>
-            <h3>What comes after Hospital Cotopaxi?</h3>
-            <p>As construction continues, the question naturally arises: will Andean keep building hospitals indefinitely? The short answer is no.</p>
-            <span class="link-arrow">Read more</span>
-          </div>
-        </a>
-        <a class="news-card reveal" href="/for-ahd/news.html">
-          <div class="news-card__top"></div>
-          <div class="news-card__body">
-            <div class="news-card__date">Spring 2026</div>
-            <h3>Managing a hospital in the Ecuadorian countryside</h3>
-            <p>Is hospital administration different here than in the United States? The answer is, as you might expect, complicated.</p>
-            <span class="link-arrow">Read more</span>
-          </div>
-        </a>
-        <a class="news-card reveal" href="/for-ahd/news.html">
-          <div class="news-card__top"></div>
-          <div class="news-card__body">
-            <div class="news-card__date">Fall 2025</div>
-            <h3>Alfredo and the snakebite</h3>
-            <p>More than 25 years ago, in a makeshift outpatient room in Pedro Vicente Maldonado, a young boy changed how we think about care.</p>
-            <span class="link-arrow">Read more</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ WAYS TO HELP ============ -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head section-head--center reveal">
-        <span class="eyebrow">Get involved</span>
-        <div class="stripe stripe--center"><span></span><span></span><span></span></div>
-        <h2>Join us in changing the world, one region at a time.</h2>
-      </div>
-      <div class="grid-3">
-        <div class="card card--orange reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
-          <h3>Give today</h3>
-          <p>Bring our hospitals and residency programs to full self-sufficiency, and cover care for our poorest patients.</p>
-          <a class="link-arrow" href="/for-ahd/donate.html">Donate</a>
-        </div>
-        <div class="card reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h2l3 11.5M5.5 17.5L9 9h6l3.5 8.5M12 17.5L9 9"/></svg></div>
-          <h3>Ride with the AHCT</h3>
-          <p>Our cycling team celebrates its 15th anniversary in 2026, and all are welcome to join.</p>
-          <a class="link-arrow" href="/for-ahd/bike-ride.html">The bike ride</a>
-        </div>
-        <div class="card card--green reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5-3 8-7 8-12V5l-8-3-8 3v5c0 5 3 9 8 12z"/></svg></div>
-          <h3>Leave a legacy</h3>
-          <p>Join the Hesburgh Legacy Society, give stock or an IRA distribution, or support our endowment.</p>
-          <a class="link-arrow" href="/for-ahd/how-you-can-help.html">Ways to give</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CTA ============ -->
-  <section class="cta-band">
-    <div class="container">
-      <div>
-        <h2>Quality health care shouldn’t depend on where you’re born.</h2>
-        <p>Your gift trains doctors and builds hospitals that Ecuadorians run themselves.</p>
-      </div>
-      <a class="btn" href="/for-ahd/donate.html">Give now</a>
-    </div>
-  </section>
-
-</main>
-<script src="/for-ahd/site.js"></script>
+  <footer>Website concepts prepared by Meaningful Marketing. Photos are placeholders; final images would come from AHD’s library.</footer>
 </body>
 </html>

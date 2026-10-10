@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate | Andean Health &amp; Development</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/for-ahd/images/ahd-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <script src="/for-ahd/gate.js"></script>
+  <script src="/for-ahd/demo-bar.js" data-design="2"></script>
+  <link rel="stylesheet" href="/for-ahd/design-2/d2.css">
+</head>
+<body data-page="donate">
+<main id="main">
+  <section class="phero">
+    <img src="/for-ahd/images/d2/donate-girl.jpg" alt="A smiling young girl in a knit hat">
+    <div class="wrap">
+      <h1>Donate</h1>
+      <p>Your generosity helps bring quality health care to the people who need it most.</p>
+    </div>
+  </section>
+
+  <section class="band band--mist">
+    <div class="wrap give">
+      <form id="give-form" novalidate>
+        <h2 style="font-size:26px">Make a Gift</h2>
+        <div class="freq" role="group" aria-label="Frequency">
+          <button type="button" class="is-on" data-f="once">One-time</button>
+          <button type="button" data-f="monthly">Monthly</button>
+        </div>
+        <div class="amts" role="radiogroup" aria-label="Amount">
+          <label><input type="radio" name="amt" value="50"><span>$50</span></label>
+          <label><input type="radio" name="amt" value="100" checked><span>$100</span></label>
+          <label><input type="radio" name="amt" value="250"><span>$250</span></label>
+          <label><input type="radio" name="amt" value="500"><span>$500</span></label>
+          <label><input type="radio" name="amt" value="1000"><span>$1,000</span></label>
+          <label><input type="radio" name="amt" value="0"><span>Other</span></label>
+        </div>
+        <label class="fld">Special designation
+          <select>
+            <option>Where it’s needed most</option>
+            <option>Campaign Cotopaxi</option>
+            <option>2026 Bike Ride Campaign</option>
+            <option>Endowment</option>
+          </select>
+        </label>
+        <div class="row2">
+          <label class="fld">In memory of<input type="text"></label>
+          <label class="fld">In honor of<input type="text"></label>
+        </div>
+        <div class="row2">
+          <label class="fld">First name<input type="text" autocomplete="given-name"></label>
+          <label class="fld">Last name<input type="text" autocomplete="family-name"></label>
+        </div>
+        <label class="fld">Email<input type="email" autocomplete="email"></label>
+        <button class="btn btn--give" type="submit" style="width:100%;justify-content:center" id="give-btn">Give Now</button>
+        <p class="notice" id="give-note" hidden style="margin-top:14px">This is a website concept, so no payment is taken. The live site would continue to a secure checkout.</p>
+        <div class="why"><b>1</b><span>The current donate form asks for everything at once. This version starts with the amount, then asks only what’s needed, with monthly giving one tap away.</span></div>
+      </form>
+      <aside>
+        <div class="card" style="margin-bottom:18px">
+          <h3>Donations may be sent to:</h3>
+          <p style="margin:0">Andean Health &amp; Development<br>PO Box 7158<br>Carol Stream, IL 60197-7158</p>
+        </div>
+        <div class="card">
+          <h3>Other Ways to Give</h3>
+          <p style="margin:0"><a class="more" href="/for-ahd/design-2/how-you-can-help.html">Stock, IRA &amp; legacy gifts</a></p>
+          <p style="margin:12px 0 0;font-size:14px;color:var(--muted)">Tax ID: 39-1809174</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+<script src="/for-ahd/design-2/d2.js"></script>
+<script>
+// Design 2 donate form (concept only: no payment is taken)
+(function () {
+  var form = document.getElementById('give-form');
+  var freq = 'once';
+  function update() {
+    var v = Number(form.querySelector('input[name="amt"]:checked').value);
+    document.getElementById('give-btn').textContent = v
+      ? 'Give $' + v.toLocaleString() + (freq === 'monthly' ? ' Monthly' : ' Now')
+      : 'Give Now';
+  }
+  form.querySelectorAll('[data-f]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      freq = b.getAttribute('data-f');
+      form.querySelectorAll('[data-f]').forEach(function (x) { x.classList.toggle('is-on', x === b); });
+      update();
+    });
+  });
+  form.addEventListener('change', update);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('give-note').hidden = false;
+  });
+  update();
+})();
+</script>
+</body>
+</html>
