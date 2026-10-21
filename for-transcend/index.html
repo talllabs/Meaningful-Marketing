@@ -761,6 +761,17 @@
     .tc-next__step { border-radius: 12px; }
     .tc-next__step span { border-radius: 999px; background: #EAF6F5; color: var(--teal-dark); }
     @media (max-width: 760px) { .tc-plan { grid-template-columns: 1fr; } }
+    .tc-sub { margin: -10px 0 24px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal-dark); }
+    .tc-h3 { margin: 28px 0 14px; font-size: 20px; font-weight: 700; color: var(--black); }
+    .tc-sign a { color: var(--black); border-bottom: 1px solid var(--teal); }
+    .lf-hero .tc-sign { margin-bottom: 28px; }
+    .tc-project__timing { font-size: 14px; color: var(--text-muted); }
+    .tc-fine { margin-top: 18px; font-size: 14px; color: var(--text-muted); }
+    .tc-terms { max-width: 760px; margin-top: 28px; }
+    .tc-terms .tc-fine { margin: 0 0 8px; }
+    .tc-steps { max-width: 760px; display: grid; gap: 10px; padding: 0; list-style: none; counter-reset: step; }
+    .tc-steps li { counter-increment: step; display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; border-radius: 12px; background: var(--off-white); font-size: 16px; line-height: 1.5; }
+    .tc-steps li::before { content: counter(step); flex-shrink: 0; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 999px; background: #EAF6F5; color: var(--teal-dark); font-size: 14px; font-weight: 700; }
   </style>
   <!-- Vercel Web Analytics -->
   <script>
@@ -807,95 +818,283 @@
     <span class="mobile-menu__close-x">✕</span>
   </button>
   <ul>
+    <li><a href="#projects" class="mobile-nav-stamp"><span class="mobile-nav-stamp__pre">THE</span><span class="mobile-nav-stamp__main">PROJECTS</span></a></li>
     <li><a href="#demos" class="mobile-nav-stamp"><span class="mobile-nav-stamp__pre">TRY THE</span><span class="mobile-nav-stamp__main">DEMOS</span></a></li>
-    <li><a href="#build" class="mobile-nav-stamp"><span class="mobile-nav-stamp__pre">THE</span><span class="mobile-nav-stamp__main">MENU</span></a></li>
+    <li><a href="#build" class="mobile-nav-stamp"><span class="mobile-nav-stamp__pre">THE</span><span class="mobile-nav-stamp__main">INVESTMENT</span></a></li>
+    <li><a href="#next" class="mobile-nav-stamp"><span class="mobile-nav-stamp__pre">NEXT</span><span class="mobile-nav-stamp__main">STEPS</span></a></li>
     <li><a href="#contact" class="mobile-nav-stamp"><span class="mobile-nav-stamp__pre">CONTACT</span><span class="mobile-nav-stamp__main">US</span></a></li>
   </ul>
 </div>
 
+<!-- ============ HERO / QUICK NOTE ============ -->
+<section class="lf-hero">
+  <div class="container lf-wrap">
+    <span class="lf-hero__eyebrow">Prepared for Kimberly Daley · Transcend · October 2026</span>
+    <h1 class="lf-hero__name">Let's make something meaningful for Transcend.</h1>
+    <p class="tc-sub">Q4 Initial Wins + Technology Roadmap</p>
+    <div class="tc-letter">
+      <p>Thank you for sharing Transcend’s systems, deployment calendar, and plans for growth. We see a lot of opportunity to make the customer experience stronger while also making day-to-day work easier for your team.</p>
+      <p>Transcend has a unique product, but much of the manual work happens between the tools you already use.</p>
+      <p>We recommend starting with a few focused projects that can make an immediate difference. <strong>The five projects below can be done separately or together.</strong></p>
+    </div>
+
+    <h2 class="tc-h3">Where we see opportunity</h2>
+    <div class="lf-ticks">
+      <div class="lf-tick">Create clearer workflows now and scale as the fleet grows.</div>
+      <div class="lf-tick">Help buyers quickly understand what a Transcend charter could look like for them on the website.</div>
+      <div class="lf-tick">Make the website easier to manage for the Transcend team.</div>
+      <div class="lf-tick">Reduce manual work in proposals, itineraries, and deployment planning.</div>
+      <div class="lf-tick">Review which tools should stay, connect, improve, or eventually be replaced.</div>
+    </div>
+    <p class="tc-sign">Best,<br><strong>Ally LaBriola</strong><br><a href="mailto:ally@meaningfulmarketinghouse.com">ally@meaningfulmarketinghouse.com</a> · WhatsApp: 949 307 4780</p>
+
+    <nav class="lf-jump" aria-label="Jump to section">
+      <a href="#projects">The 5 projects</a>
+      <a href="#demos">Try the demos</a>
+      <a href="#build">Investment</a>
+      <a href="#next">Next steps</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="lf-section lf-section--white" id="projects">
+  <div class="container lf-wrap">
+    <span class="lf-label">Proposed initial wins for Q4</span>
+    <h2 class="lf-stamp">Five projects.</h2>
+    <p class="lf-lede">Below are five projects we think would benefit Transcend right now. Where there's a demo, the link is included so you can explore a mockup of what we’re thinking at this stage.</p>
+
+    <div class="tc-projects">
+      <article class="tc-project">
+        <div class="tc-project__head">
+          <span class="tc-project__num">01</span>
+          <div>
+            <h3>Under-the-Hood Systems Examination</h3>
+            <p class="tc-project__price">$7,000 to $10,000</p>
+            <p class="tc-project__timing">Timing: 2 to 3 weeks</p>
+          </div>
+        </div>
+        <p>The Meaningful Marketing team will review your tools and how your team uses them, then recommend what to improve first.</p>
+        <details class="tc-more" open>
+          <summary>What we’ll review</summary>
+          <p>Your website, HubSpot, NetSuite, WeTravel, HotelFriend, First Impressions, Claude, deployment calendar, and other key systems Transcend identifies.</p>
+        </details>
+        <details class="tc-more">
+          <summary>What you’ll receive</summary>
+          <p>A written action plan and team walkthrough covering:</p><ul><li>How your tools work together and where information gets stuck.</li><li>Repeated tasks that could be simplified or automated.</li><li>Who has access and any obvious risks.</li><li>Opportunities to reduce software and support costs.</li><li>What to keep, improve, connect, or replace, in priority order.</li></ul>
+        </details>
+        <p class="tc-project__note"><strong>Return on investment:</strong> the goal is to identify efficiencies, cost savings, and opportunities to reduce ongoing expenses.</p>
+        
+      </article>
+
+      <article class="tc-project">
+        <div class="tc-project__head">
+          <span class="tc-project__num">02</span>
+          <div>
+            <h3>Website &amp; Buyer Journey</h3>
+            <p class="tc-project__price">$8,500 to $10,500</p>
+            <p class="tc-project__timing">Timing: 60 to 90 days</p>
+          </div>
+        </div>
+        <p>The Meaningful Marketing team will make your website easier to explore, easier to update, and better at turning interest into inquiries.</p>
+        <details class="tc-more" open>
+          <summary>Phase 1: Core website</summary>
+          <ul><li>Clearer homepage messaging and navigation.</li><li>Redesigned key pages and layouts your team can reuse.</li><li>Easier ways to inquire about charters, meetings, and events.</li><li>Better mobile experience, page speed, and search visibility.</li><li>Simple content updates, with team training.</li><li>We’ll agree on the pages, features, content, and revisions before starting, with a fixed price.</li></ul>
+        </details>
+        <details class="tc-more">
+          <summary>Phase 2: Optional additions</summary>
+          <p>Add features such as the ship branding tool, pages for different buyers, personalized content, and connections to other systems. These will be priced separately.</p>
+        </details>
+        
+        <div class="tc-demo-links"><a class="tc-demo-link" href="/for-transcend/homepage-demo.html">Homepage concept A →</a><a class="tc-demo-link tc-demo-link--alt" href="/for-transcend/homepage-editorial-demo.html">Homepage concept B →</a><a class="tc-demo-link tc-demo-link--alt" href="/for-transcend/brand-demo.html">Ship branding tool (Phase 2) →</a></div>
+      </article>
+
+      <article class="tc-project">
+        <div class="tc-project__head">
+          <span class="tc-project__num">03</span>
+          <div>
+            <h3>AI Powered ‘Charter Concierge’</h3>
+            <p class="tc-project__price">$4,500 to $6,000</p>
+            <p class="tc-project__timing">Timing: 3 to 4 weeks</p>
+          </div>
+        </div>
+        <p>An AI-powered assistant that helps prospective clients explore Transcend, understand their options, and connect with the right person. It will support the charter concierge by making approved website information easier to find.</p>
+        <details class="tc-more" open>
+          <summary>Proposed capabilities</summary>
+          <ul><li>Ask visitors what they are looking for and guide them to relevant pages.</li><li>Answer common questions using approved Transcend content.</li><li>Explain the differences between offerings.</li><li>Recommend relevant content, experiences, and resources.</li><li>Help visitors identify the right contact or next step.</li></ul>
+        </details>
+        <details class="tc-more">
+          <summary>How we will approach it</summary>
+          <ul><li>The Meaningful Marketing team will agree the content sources, tone, answer boundaries, and handoff routes with Transcend. We will test common visitor questions and review the experience with your team before launch.</li><li>The initial assistant will use approved information. Live availability, binding quotes, bookings, and CRM automation require separate scoping. The final scope will specify any inquiry capture or HubSpot connection.</li></ul>
+        </details>
+        <p class="tc-project__note"><strong>The goal:</strong> make a complex, highly customized business much easier to understand and navigate.</p>
+        <a class="tc-demo-link" href="/for-transcend/assistant-demo.html">Try the Charter Concierge demo →</a>
+      </article>
+
+      <article class="tc-project">
+        <div class="tc-project__head">
+          <span class="tc-project__num">04</span>
+          <div>
+            <h3>Deployment Calendar 2.0</h3>
+            <p class="tc-project__price">$6,000 to $8,000</p>
+            <p class="tc-project__timing">Timing: 4 to 6 weeks</p>
+          </div>
+        </div>
+        <p>We’ll improve the calendar Transcend already uses so the team can more easily see and manage plans across ships, clients, trips, and years.</p>
+        <details class="tc-more" open>
+          <summary>What’s included</summary>
+          <ul><li>Clearer views of ships, trips, and clients</li><li>A simple way to track availability and trip status</li><li>Better search and filters</li><li>Easier updates to calendar information</li><li>A clearer view of plans for sales and internal teams</li><li>A setup that can connect with other systems in the future</li></ul>
+        </details>
+        <details class="tc-more">
+          <summary>How we will approach it</summary>
+          <p>We’ll first confirm how the calendar is organized, who can edit it, which statuses the team uses, and which views would help most. Then we’ll make and test the agreed changes using sample trips and planning situations.</p><p>The final scope will explain how existing information will be moved, who can make edits, and which calendar should be used to confirm availability. Connections to booking, finance, or other systems will be planned separately unless included in the agreed scope.</p>
+        </details>
+        <p class="tc-project__note"><strong>The result:</strong> the team can see deployment plans more clearly, spend less time entering and searching for information, and stay aligned as plans change.</p>
+        <a class="tc-demo-link" href="/for-transcend/ai-ingest-demo.html">Try the Deployment Calendar 2.0 demo →</a>
+      </article>
+
+      <article class="tc-project">
+        <div class="tc-project__head">
+          <span class="tc-project__num">05</span>
+          <div>
+            <h3>Client + Proposal Portal 1.0</h3>
+            <p class="tc-project__price">$5,000 to $8,000</p>
+            <p class="tc-project__timing">Timing: 4 to 6 weeks</p>
+          </div>
+        </div>
+        <p>Create a simple first version of a shared space where selected clients can view proposal and planning information. Transcend can test it and decide what would be useful in a larger platform.</p>
+        <details class="tc-more" open>
+          <summary>The prototype may include</summary>
+          <ul><li>Proposal details and trip plans</li><li>Relevant ship and voyage information</li><li>Client documents and resources</li><li>Updates and selected approval steps</li><li>To-do items and next steps</li><li>Relevant Transcend content</li></ul>
+        </details>
+        <details class="tc-more">
+          <summary>Scope</summary>
+          <p>This is a 1.0 prototype. We’ll agree on who can use it, what information it includes, and which approval steps will work. Payments, connections to other systems, and a wider launch would need separate planning for 2.0.</p>
+        </details>
+        <p class="tc-project__note"><strong>Expected result:</strong> a working client portal Transcend can use for clients as a first step towards a more sophisticated portal.</p>
+        <a class="tc-demo-link" href="/for-transcend/portal-demo.html">Try the client portal demo →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ============ DEMOS ============ -->
 <section class="lf-section lf-section--black" id="demos">
   <div class="container lf-wrap">
-    <span class="lf-label">Click around</span>
+    <span class="lf-label">View all demos</span>
     <h2 class="lf-stamp">Six working demos.</h2>
     <p class="lf-lede">Early mockups to make the ideas tangible. <strong>Try them yourself</strong>, then imagine them on Transcend's real site and data.</p>
 
     <div class="tc-demos">
+      <a class="tc-demo" href="/for-transcend/homepage-demo.html">
+        <span class="tc-demo__tag">02 Website: homepage concept A</span>
+        <h3>A homepage that sorts visitors fast</h3>
+        <p>A concept for Transcend's new homepage: clear positioning, a quick "what are you planning?" finder, pathways by type of event and live availability. Notes explain each choice.</p>
+        <span class="tc-demo__go">Open homepage concept A →</span>
+      </a>
+      <a class="tc-demo" href="/for-transcend/homepage-editorial-demo.html">
+        <span class="tc-demo__tag">02 Website: homepage concept B</span>
+        <h3>A more editorial direction</h3>
+        <p>A second homepage idea that feels like a travel magazine: big type, Transcend's hero video, generous white space and a story that starts with why your group is gathering.</p>
+        <span class="tc-demo__go">Open homepage concept B →</span>
+      </a>
       <a class="tc-demo" href="/for-transcend/brand-demo.html">
-        <span class="tc-demo__tag">Website: brand customizer</span>
+        <span class="tc-demo__tag">02 Website: Phase 2 addition</span>
         <h3>Your ship, in their brand</h3>
-        <p>Type a company name, upload a logo and pick brand colors. The ship's lighting, onboard screens and welcome page update instantly, the way a prospect could see their own charter.</p>
-        <span class="tc-demo__go">Open the brand demo →</span>
+        <p>The ship branding tool. Type a company name, upload a logo and pick brand colors. The ship's lighting, onboard screens and welcome page update instantly.</p>
+        <span class="tc-demo__go">Open the ship branding tool →</span>
       </a>
       <a class="tc-demo" href="/for-transcend/assistant-demo.html">
-        <span class="tc-demo__tag">AI website assistant</span>
+        <span class="tc-demo__tag">03 Charter Concierge</span>
         <h3>Answers, not endless scrolling</h3>
-        <p>Your "Your Charter" page, reimagined as a Charter Concierge. Visitors ask a question or choose what they are planning, and get approved answers, comparisons and the right next step.</p>
+        <p>Visitors ask a question or choose what they are planning, and get approved answers, comparisons and the right next step.</p>
         <span class="tc-demo__go">Open the Charter Concierge demo →</span>
       </a>
       <a class="tc-demo" href="/for-transcend/ai-ingest-demo.html">
-        <span class="tc-demo__tag">Deployment calendar + AI intake</span>
-        <h3>Give it whatever you received</h3>
-        <p>Paste an operations email or describe a change in plain English. AI matches it to the right voyage, shows exactly what would change and waits for approval.</p>
-        <span class="tc-demo__go">Open the AI ingest demo →</span>
-      </a>
-      <a class="tc-demo" href="/for-transcend/homepage-demo.html">
-        <span class="tc-demo__tag">Website: homepage rebuild</span>
-        <h3>A homepage that sorts visitors fast</h3>
-        <p>A concept for Transcend's new homepage: clear positioning, a quick "what are you planning?" finder, pathways by type of event and live availability. Notes explain each choice.</p>
-        <span class="tc-demo__go">Open the homepage concept →</span>
-      </a>
-      <a class="tc-demo" href="/for-transcend/homepage-editorial-demo.html">
-        <span class="tc-demo__tag">Website: homepage concept 2</span>
-        <h3>A more editorial direction</h3>
-        <p>A second homepage idea that feels like a travel magazine: big type, Transcend's hero video, generous white space and a story that starts with why your group is gathering.</p>
-        <span class="tc-demo__go">Open homepage concept 2 →</span>
+        <span class="tc-demo__tag">04 Deployment Calendar 2.0</span>
+        <h3>Keep the calendar current</h3>
+        <p>Paste an operations email or describe a change in plain English. It matches the right voyage, shows exactly what would change and waits for approval.</p>
+        <span class="tc-demo__go">Open the calendar demo →</span>
       </a>
       <a class="tc-demo" href="/for-transcend/portal-demo.html">
-        <span class="tc-demo__tag">Client charter portal</span>
+        <span class="tc-demo__tag">05 Client + Proposal Portal 1.0</span>
         <h3>Everything after "yes," in one place</h3>
-        <p>Step into a booked client's portal. This shows the full version: upload files, sign an addendum, update the guest list, approve the event order and message the team. The first version would be simpler.</p>
+        <p>Step into a booked client's portal. A simple first version: trip details, key dates, your team, documents to download, and a place to send files like the guest manifest and logos.</p>
         <span class="tc-demo__go">Open the client portal demo →</span>
       </a>
     </div>
+    <p class="tc-fine">All demos are illustrative concepts.</p>
   </div>
 </section>
 
-<!-- ============ BUILD YOUR Q4 ============ -->
+<!-- ============ INVESTMENT ============ -->
 <section class="lf-section" id="build">
   <div class="container lf-wrap">
-    <span class="lf-label">The menu</span>
+    <span class="lf-label">Investment</span>
     <h2 class="lf-stamp">Build your Q4.</h2>
-    <p class="lf-lede">Check the projects you're interested in, or start from one of our suggested mixes. Details for each are in the proposal doc.</p>
+    <p class="lf-lede">Check the projects you're interested in, or start from one of the mixes below, to see the estimated investment.</p>
 
     <div class="tc-presets" role="group" aria-label="Suggested mixes">
-      <button type="button" class="tc-preset tc-preset--rec" data-pick="1,2">Our recommendation: exam + website</button>
-      <button type="button" class="tc-preset" data-pick="1,2,3">Foundations: exam + website + assistant</button>
-      <button type="button" class="tc-preset" data-pick="1,4,5">Operations first: exam + calendar + AI workflow tool</button>
-      <button type="button" class="tc-preset" data-pick="2,3,6">Client experience: website + assistant + portal</button>
+      <button type="button" class="tc-preset" data-pick="1,2">Exam + website</button>
+      <button type="button" class="tc-preset" data-pick="1,4">Operations: exam + calendar</button>
+      <button type="button" class="tc-preset" data-pick="2,3,5">Client experience: website + concierge + portal</button>
+      <button type="button" class="tc-preset" data-pick="1,2,3,4,5">All five</button>
     </div>
 
     <div class="tc-builder">
       <div class="tc-builder__list">
-        <label class="tc-pick"><input type="checkbox" value="1" data-min="7000" data-max="10000"><span class="tc-pick__name">Under-the-Hood Systems Examination</span><span class="tc-pick__price">$7,000 to $10,000</span></label>
-        <label class="tc-pick"><input type="checkbox" value="2" data-min="8500" data-max="15500"><span class="tc-pick__name">Website + Buyer Journey Redesign</span><span class="tc-pick__price">$8,500 to $15,500</span></label>
-        <label class="tc-pick"><input type="checkbox" value="3" data-min="4500" data-max="6000"><span class="tc-pick__name">Proactive AI Website Assistant</span><span class="tc-pick__price">$4,500 to $6,000</span></label>
-        <label class="tc-pick"><input type="checkbox" value="4" data-min="6000" data-max="8000"><span class="tc-pick__name">Deployment Calendar 2.0</span><span class="tc-pick__price">$6,000 to $8,000</span></label>
-        <label class="tc-pick"><input type="checkbox" value="5" data-min="6000" data-max="8000"><span class="tc-pick__name">AI Workflow Tool</span><span class="tc-pick__price">$6,000 to $8,000</span></label>
-        <label class="tc-pick"><input type="checkbox" value="6" data-min="6000" data-max="8000"><span class="tc-pick__name">Client Charter Portal (simple first version)</span><span class="tc-pick__price">$6,000 to $8,000</span></label>
+        <label class="tc-pick"><input type="checkbox" value="1" data-min="7000" data-max="10000"><span class="tc-pick__name">01 Systems Review and Technology Roadmap</span><span class="tc-pick__price">$7,000 to $10,000</span></label>
+        <label class="tc-pick"><input type="checkbox" value="2" data-min="8500" data-max="10500"><span class="tc-pick__name">02 Website and Buyer Journey Phase 1</span><span class="tc-pick__price">$8,500 to $10,500</span></label>
+        <label class="tc-pick"><input type="checkbox" value="3" data-min="4500" data-max="6000"><span class="tc-pick__name">03 Charter Concierge Assistant</span><span class="tc-pick__price">$4,500 to $6,000</span></label>
+        <label class="tc-pick"><input type="checkbox" value="4" data-min="6000" data-max="8000"><span class="tc-pick__name">04 Deployment Calendar 2.0</span><span class="tc-pick__price">$6,000 to $8,000</span></label>
+        <label class="tc-pick"><input type="checkbox" value="5" data-min="5000" data-max="8000"><span class="tc-pick__name">05 Client and Proposal Portal Prototype</span><span class="tc-pick__price">$5,000 to $8,000</span></label>
       </div>
       <div class="tc-builder__total" aria-live="polite">
-        <span class="tc-builder__label">Your Q4 estimate</span>
+        <span class="tc-builder__label">Estimated investment</span>
         <span class="tc-builder__sum" id="tcSum">$0</span>
         <span class="tc-builder__count" id="tcCount">No projects selected yet</span>
-        <div class="tc-builder__bar"><div class="tc-builder__zone"></div><div class="tc-builder__fill" id="tcFill"></div></div>
-        <span class="tc-builder__hint" id="tcHint">The shaded zone is the suggested $20K to $30K range.</span>
+        <span class="tc-builder__hint" id="tcHint">All amounts are in USD. Estimates are subject to an agreed scope and fixed price before work begins.</span>
         <button class="btn btn--gold btn--lg js-open-contact" type="button">Talk through this mix →</button>
       </div>
+    </div>
+
+    <div class="tc-terms">
+      <p class="tc-fine">All amounts are in USD. Estimates are subject to an agreed scope and fixed price before work begins. Website Phase 2 is excluded from the combined estimate.</p>
+      <details class="tc-more" open>
+        <summary>Shared efficiencies</summary>
+        <p>If Transcend proceeds with all five projects, shared discovery, design, and project coordination will create efficiencies. Meaningful Marketing will reflect those savings in a combined fixed-price proposal once scope and sequencing are confirmed.</p>
+      </details>
+      <details class="tc-more">
+        <summary>Included in each engagement</summary>
+        <p>Discovery with the Transcend team, the agreed project deliverables, and a walkthrough. Build projects also include design, development, testing, training, and a 30-day warranty after launch. Transcend owns its custom code, content, data, and accounts, subject to third-party software licenses.</p>
+      </details>
+      <details class="tc-more">
+        <summary>Separate costs and work</summary>
+        <p>Platform, hosting, software subscriptions, and AI usage are billed directly to Transcend with no markup. Replacing HubSpot, NetSuite, or WeTravel, website Phase 2, and deeper engineering beyond the agreed project scope are excluded.</p>
+      </details>
+      <details class="tc-more">
+        <summary>Specialist support</summary>
+        <p>Where deeper architecture or backend engineering is needed, Meaningful Marketing brings in specialist technical partners. Any additional scope and associated costs will be agreed before work begins.</p>
+      </details>
     </div>
   </div>
 </section>
 
+<!-- ============ NEXT STEPS ============ -->
+<section class="lf-section lf-section--white" id="next">
+  <div class="container lf-wrap">
+    <span class="lf-label">Next steps</span>
+    <h2 class="lf-stamp">Where we go from here.</h2>
+    <ol class="tc-steps">
+      <li>Meet with Transcend to review the proposal and discuss immediate priorities.</li>
+      <li>Choose the projects that best fit the immediate priorities.</li>
+      <li>Confirm requirements and sequencing.</li>
+      <li>Meaningful Marketing will provide an updated financial proposal reflecting shared efficiencies.</li>
+      <li>Agree the deliverables, fixed prices, shared efficiencies, and schedule.</li>
+      <li>Kick off with the access and content needed to move forward.</li>
+    </ol>
+  </div>
+</section>
 
 <!-- ============ CTA ============ -->
 <section class="lf-section lf-cta tc-cta-light" id="contact">
@@ -1056,10 +1255,8 @@
     var boxes = document.querySelectorAll('.tc-pick input');
     var sumEl = document.getElementById('tcSum');
     var countEl = document.getElementById('tcCount');
-    var fillEl = document.getElementById('tcFill');
     var hintEl = document.getElementById('tcHint');
     var presets = document.querySelectorAll('.tc-preset');
-    var SCALE = 50000; // bar shows $0 to $50K; the suggested zone is $20K to $30K
     function fmt(n) { return '$' + n.toLocaleString('en-US'); }
     function update() {
       var min = 0, max = 0, n = 0;
@@ -1068,11 +1265,9 @@
       });
       sumEl.textContent = n ? fmt(min) + ' to ' + fmt(max) : '$0';
       countEl.textContent = n ? n + ' project' + (n > 1 ? 's' : '') + ' selected' : 'No projects selected yet';
-      fillEl.style.width = Math.min(100, ((min + max) / 2) / SCALE * 100) + '%';
-      if (!n) hintEl.textContent = 'The shaded zone is the suggested $20K to $30K range.';
-      else if (max < 20000) hintEl.textContent = 'A lighter start. Room to add another project if it would help.';
-      else if (min > 30000) hintEl.textContent = 'A bigger Q4. We could also phase some of this into early next year.';
-      else hintEl.textContent = 'Right in the suggested Q4 range.';
+      hintEl.textContent = n === boxes.length
+        ? 'With all five, shared discovery, design and coordination savings will be reflected in a combined fixed-price proposal.'
+        : 'All amounts are in USD. Estimates are subject to an agreed scope and fixed price before work begins.';
     }
     boxes.forEach(function (b) {
       b.addEventListener('change', function () {
