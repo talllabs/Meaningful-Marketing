@@ -197,6 +197,15 @@
   }
 
   var shown = [];
+  // If the map started hidden (zero size, e.g. behind the password gate or on
+  // the mobile list view), re-fit it the first time it becomes visible.
+  var mapEl = document.getElementById('ll-map'), wasZero = !mapEl.offsetWidth;
+  window.addEventListener('resize', function () {
+    if (!map) return;
+    var zero = !mapEl.offsetWidth;
+    if (wasZero && !zero) { map.invalidateSize(); fitMap(); }
+    wasZero = zero;
+  });
   function fitMap() {
     if (shown.length > 1) map.fitBounds(L.latLngBounds(shown.map(function (l) { return [l._lat, l._lng]; })), { padding: [40, 40], maxZoom: 13, animate: false });
     else if (shown.length === 1) map.setView([shown[0]._lat, shown[0]._lng], 13, { animate: false });

@@ -20,6 +20,10 @@ It's plain HTML, CSS and JavaScript, so there's no build step and nothing to ins
 - **Or serve it locally:** from the repo root run `python3 -m http.server 8000`, then visit
   <http://localhost:8000/first5oc-demos/>.
 - **On the deployed site** it lives at `/first5oc-demos/` and is linked from `/for-first-5.html`.
+- **Password:** `first5`. Every demo and Concept A page loads `gate.js`, which shares its unlock with
+  `/for-first-5.html`, so visitors enter it once per browser tab. Pages shown as previews inside the
+  proposal page skip the gate (the proposal page is already locked). Like the site's other client gates,
+  this is a light screen for sharing, not real security: the pages are still publicly reachable.
 
 ## How it's organized
 

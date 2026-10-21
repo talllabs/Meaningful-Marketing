@@ -166,7 +166,7 @@
     var more = D.activities.filter(function (x) { return x.age === a.age && x.builder === a.builder && x.id !== a.id; });
     dialog.dataset.b = a.builder;
     body.innerHTML =
-      '<span class="eyebrow" style="color:var(--b)">' + esc(b.label) + ' · ' + esc(g.label) + '</span>' +
+      '<span class="eyebrow" style="color:var(--bink)">' + esc(b.label) + ' · ' + esc(g.label) + '</span>' +
       '<h2 id="kb-detail-title">' + esc(a.title) + '</h2>' +
       '<div class="tags" style="display:flex;gap:6px;flex-wrap:wrap">' + (a.isNew ? '<span class="newtag">New</span>' : '') +
         (a.ageRange ? '<span class="btag">Best for ' + esc(a.ageRange) + '</span>' : '') + '</div>' +

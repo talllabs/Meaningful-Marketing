@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script src="gate.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kid Builders Activity Finder — Demo | First 5 OC Proposal</title>
   <meta name="description" content="Proposal demo: a searchable, filterable Kid Builders activity finder for families with children ages 0–5, using First 5 OC's Kid Builders activities and artwork.">
@@ -9,12 +10,14 @@
   <link rel="stylesheet" href="demos.css">
   <style>
     /* Six builder families: distinct hues, all ≥4.5:1 with white text */
-    :root { --b-mind: #5b3fb5; --b-word: #0b7a8f; --b-body: #2f7d32; --b-relationship: #c2185b; --b-safety: #b85c00; --b-health: #1d5fbf; }
+    :root { --b-mind: #5b3fb5; --b-word: #0b7a8f; --b-body: #2f7d32; --b-relationship: #ff6b2c; --b-safety: #7a6000; --b-health: #1d5fbf; }
+    /* --bink: builder text on light backgrounds; --bon: text on a filled builder color */
+    [data-b] { --bink: var(--b); --bon: #fff; }
     [data-b="mind"] { --b: var(--b-mind); --bt: #efeafd; }
     [data-b="word"] { --b: var(--b-word); --bt: #e0f4f7; }
     [data-b="body"] { --b: var(--b-body); --bt: #e6f4e6; }
-    [data-b="relationship"] { --b: var(--b-relationship); --bt: #fde7ef; }
-    [data-b="safety"] { --b: var(--b-safety); --bt: #fff0de; }
+    [data-b="relationship"] { --b: var(--b-relationship); --bt: #ffe9df; --bink: var(--ink); --bon: var(--ink); }
+    [data-b="safety"] { --b: var(--b-safety); --bt: #fbf3d6; }
     [data-b="health"] { --b: var(--b-health); --bt: #e5eefc; }
 
     .kb-hero { background: #fff; padding: 40px 0 34px; border-bottom: 1px solid var(--line); }
@@ -39,10 +42,10 @@
     .builders { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
     .builder { border: 2px solid var(--b); background: #fff; color: var(--ink); border-radius: 18px; padding: 12px 12px 12px 14px; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 4px; position: relative; }
     .builder::before { content: ''; position: absolute; left: 0; top: 12px; bottom: 12px; width: 5px; border-radius: 0 4px 4px 0; background: var(--b); }
-    .builder strong { font: 800 1.05rem 'Bricolage Grotesque'; color: var(--b); }
+    .builder strong { font: 800 1.05rem 'Bricolage Grotesque'; color: var(--bink); }
     .builder small { font-size: .8rem; color: var(--muted); line-height: 1.35; }
     .builder[aria-pressed="true"] { background: var(--b); }
-    .builder[aria-pressed="true"] strong, .builder[aria-pressed="true"] small { color: #fff; }
+    .builder[aria-pressed="true"] strong, .builder[aria-pressed="true"] small { color: var(--bon); }
     .builder[aria-pressed="true"]::before { background: #fff; }
 
     .kb-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 22px 0 18px; }
@@ -69,11 +72,11 @@
     .act .pic img, .act .pic canvas { max-width: 100%; max-height: 100%; object-fit: contain; }
     .act .card-body { gap: 6px; }
     .act .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .btag { background: var(--bt); color: var(--b); border-radius: 999px; padding: 3px 10px; font-size: .74rem; font-weight: 800; }
+    .btag { background: var(--bt); color: var(--bink); border-radius: 999px; padding: 3px 10px; font-size: .74rem; font-weight: 800; }
     .newtag { background: var(--yellow); color: var(--ink); border-radius: 999px; padding: 3px 10px; font-size: .74rem; font-weight: 800; }
     .act h3 { font-size: 1.2rem; }
     .act p { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-    .fallback { width: 100%; height: 100%; min-height: 120px; border-radius: 14px; background: var(--bt); color: var(--b); display: grid; place-items: center; text-align: center; padding: 12px; font: 800 1rem 'Bricolage Grotesque'; }
+    .fallback { width: 100%; height: 100%; min-height: 120px; border-radius: 14px; background: var(--bt); color: var(--bink); display: grid; place-items: center; text-align: center; padding: 12px; font: 800 1rem 'Bricolage Grotesque'; }
 
     .kb-detail-art { background: #fff; border: 1px solid var(--line); border-radius: 20px; display: grid; place-items: center; padding: 12px; margin: 14px 0 6px; aspect-ratio: 16/10; }
     .kb-detail-art img, .kb-detail-art canvas { max-width: 100%; max-height: 100%; object-fit: contain; }
