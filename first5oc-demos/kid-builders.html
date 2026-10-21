@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kid Builders Activity Finder — Demo | First 5 OC Proposal</title>
+  <meta name="description" content="Proposal demo: a searchable, filterable Kid Builders activity finder for families with children ages 0–5.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="demos.css">
+  <style>
+    .kb-top { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; margin-bottom: 24px; display: grid; gap: 16px; }
+    .kb-top-row { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+    .kb-top-row > .label { font-weight: 800; min-width: 150px; }
+    .kb-speech span { border-color: var(--orange-ink); color: var(--orange-ink); }
+    .kb-speech input:checked + span { background: var(--orange-ink); border-color: var(--orange-ink); color: #fff; }
+    .kb-thumb { height: 120px; display: grid; place-items: center; font-size: 3rem; position: relative; }
+    .kb-thumb[data-area="language"] { background: #dff7fb; }
+    .kb-thumb[data-area="movement"] { background: #e7f5c4; }
+    .kb-thumb[data-area="thinking"] { background: #fff1b8; }
+    .kb-thumb[data-area="social"] { background: #ffe4d6; }
+    .kb-thumb .play { position: absolute; right: 12px; bottom: 12px; background: var(--deep); color: #fff; border-radius: 999px; padding: 4px 10px; font-size: .75rem; font-weight: 800; }
+    .kb-thumb .lang { position: absolute; left: 12px; top: 12px; }
+    .kb-ages { font-weight: 800; color: var(--dark); font-size: .85rem; }
+    .kb-sub { font-style: italic; color: var(--muted); font-size: .9rem; margin-top: -4px; }
+    .kb-video { aspect-ratio: 16/9; background: linear-gradient(135deg, var(--dark), var(--blue)); border-radius: 18px; display: grid; place-items: center; color: #fff; text-align: center; margin: 18px 0 6px; }
+    .kb-video .playbtn { width: 72px; height: 72px; border-radius: 50%; background: var(--yellow); color: var(--deep); display: grid; place-items: center; font-size: 1.8rem; margin: 0 auto 10px; border: 0; cursor: pointer; }
+    .kb-facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+    .kb-related { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+    .kb-related button { text-align: left; background: var(--sky-2); border: 1px solid var(--line); border-radius: 14px; padding: 12px; cursor: pointer; font-weight: 700; }
+    .kb-related button:hover { background: var(--sky); }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#results">Skip to activities</a>
+
+  <div class="demo-banner" role="note">
+    <div class="wrap">
+      <span><strong>Proposal demo.</strong> Activities, videos and translations are illustrative samples, not real Kid Builders content.</span>
+      <a href="index.html">← All demos</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html" aria-label="First 5 Orange County demos home (placeholder logo)">
+        <span class="logo-mark" aria-hidden="true">✋</span>
+        <span class="logo-text">FIRST 5<small>ORANGE COUNTY</small></span>
+      </a>
+      <nav class="demo-nav" aria-label="Demos">
+        <a href="kid-builders.html" aria-current="page">Kid Builders</a>
+        <a href="edi.html">Kindergarten Readiness (EDI)</a>
+        <a href="learning-link.html">Learning Link</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">Kid Builders · Ages 0–5</span>
+        <h1>Simple play that <span>builds big skills.</span></h1>
+        <p class="lede">Free, everyday activities for babies, toddlers and preschoolers. Choose your children’s ages and find ideas you can try today, in English, Español and Tiếng Việt.</p>
+      </div>
+    </section>
+
+    <section class="finder">
+      <div class="wrap">
+        <form id="kb-form" role="search" aria-label="Find activities" onsubmit="return false">
+          <div class="kb-top">
+            <div class="search-row" style="margin:0">
+              <div class="search-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <label for="kb-q" class="sr-only">Search activities</label>
+                <input id="kb-q" type="search" placeholder="Try “bath time”, “songs”, or “lotería”" autocomplete="off">
+              </div>
+              <label class="sr-only" for="kb-sort">Sort by</label>
+              <select id="kb-sort" class="select">
+                <option value="relevance">Best match</option>
+                <option value="short">Quickest first</option>
+                <option value="az">A–Z</option>
+              </select>
+            </div>
+            <fieldset class="kb-top-row" style="border:0;padding:0;margin:0">
+              <legend class="label" style="float:left">My children are:</legend>
+              <div class="chips" id="kb-ages"></div>
+            </fieldset>
+            <fieldset class="kb-top-row" style="border:0;padding:0;margin:0">
+              <legend class="label" style="float:left">Language:</legend>
+              <div class="chips" id="kb-langs"></div>
+            </fieldset>
+            <div class="kb-top-row">
+              <span class="label" aria-hidden="true">Speech support:</span>
+              <div class="chips">
+                <label class="chip kb-speech"><input type="checkbox" id="kb-speech"><span>▶ Speech-support videos only</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="layout">
+            <div>
+              <button type="button" class="btn btn-outline filter-toggle" aria-expanded="false" aria-controls="kb-filters" id="kb-filter-toggle" style="margin-bottom:12px">More filters</button>
+              <aside class="filters" id="kb-filters" aria-label="More filters">
+                <div class="filters-head">
+                  <h2>Filters</h2>
+                  <button type="button" class="btn-link" id="kb-clear">Clear all</button>
+                </div>
+                <fieldset><legend>Skill area</legend><div id="kb-areas"></div></fieldset>
+                <fieldset><legend>Season</legend><div id="kb-seasons"></div></fieldset>
+                <fieldset><legend>Activity type</legend><div id="kb-types"></div></fieldset>
+              </aside>
+            </div>
+
+            <div id="results" tabindex="-1">
+              <div class="results-bar">
+                <p class="results-count" id="kb-count" aria-live="polite" style="margin:0"></p>
+                <div class="active-filters" id="kb-active" aria-label="Active filters"></div>
+              </div>
+              <div class="grid" id="kb-grid"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="detail" id="kb-detail" aria-labelledby="kb-detail-title">
+    <button class="detail-close" type="button" aria-label="Close activity">×</button>
+    <div class="detail-inner" id="kb-detail-body"></div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Proposal concept by Meaningful Marketing House for First 5 Orange County. Not an official First 5 OC page.</span>
+      <a href="index.html">Back to all demos</a>
+    </div>
+  </footer>
+
+  <script src="data/kid-builders.js"></script>
+  <script src="demos-common.js"></script>
+  <script src="kid-builders.js"></script>
+</body>
+</html>

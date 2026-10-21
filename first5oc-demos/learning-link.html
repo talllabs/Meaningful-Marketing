@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning Link Location Finder — Demo | First 5 OC Proposal</title>
+  <meta name="description" content="Proposal demo: a searchable, filterable county-wide Learning Link location directory with list and map views. All locations illustrative.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="demos.css">
+  <style>
+    .ll-bar { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; justify-content: space-between; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; margin-bottom: 20px; }
+    .term { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .9rem; }
+    .term strong { font-weight: 800; }
+    .viewtoggle { display: inline-flex; border: 2px solid var(--line); border-radius: 999px; padding: 3px; gap: 2px; }
+    .viewtoggle button { border: 0; background: none; border-radius: 999px; padding: 7px 16px; font-weight: 800; cursor: pointer; }
+    .viewtoggle button[aria-pressed="true"] { background: var(--dark); color: #fff; }
+    .seg { display: inline-flex; border: 2px solid var(--line); border-radius: 999px; padding: 3px; gap: 2px; }
+    .seg label { position: relative; }
+    .seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+    .seg span { display: block; padding: 6px 12px; border-radius: 999px; font-weight: 700; font-size: .85rem; cursor: pointer; }
+    .seg input:checked + span { background: var(--yellow); color: var(--ink); }
+    .seg input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+    .loc-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; }
+    .loc .card-body { gap: 6px; }
+    .loc .city { font-weight: 800; font-size: .82rem; color: var(--dark); text-transform: uppercase; letter-spacing: .06em; }
+    .loc .addr { font-size: .88rem; color: var(--muted); }
+    .loc .next { background: var(--sky-2); border-radius: 12px; padding: 10px 12px; font-size: .88rem; margin-top: 4px; }
+    .loc .next strong { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--dark); }
+    .loc .soon { background: #fff3c4; color: #5b4300; }
+    .loc.hl { box-shadow: 0 0 0 3px var(--orange-ink); }
+
+    .map-view { display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; align-items: start; }
+    .map { position: relative; aspect-ratio: 4/3.4; background: #cfeef6; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+    .map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .map .ocean { position: absolute; left: 6%; bottom: 8%; font-weight: 800; font-size: .8rem; letter-spacing: .2em; color: #2c6d80; text-transform: uppercase; transform: rotate(28deg); }
+    .map .map-note { position: absolute; right: 10px; bottom: 10px; }
+    .pin { position: absolute; transform: translate(-50%, -100%); border: 0; background: none; padding: 0; cursor: pointer; width: 34px; height: 42px; }
+    .pin svg { position: static; width: 34px; height: 42px; filter: drop-shadow(0 3px 4px rgba(0,0,0,.25)); }
+    .pin .n { position: absolute; top: 6px; left: 0; right: 0; text-align: center; font-weight: 800; font-size: .8rem; color: #fff; }
+    .pin[aria-pressed="true"] svg path { fill: var(--orange-ink); }
+    .pin:hover svg path { fill: var(--orange-ink); }
+    .pin.soon svg path { fill: #7a8a90; }
+    .map-side { display: grid; gap: 8px; max-height: 560px; overflow: auto; padding-right: 4px; }
+    .mini { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; text-align: left; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; cursor: pointer; width: 100%; }
+    .mini[aria-pressed="true"] { border-color: var(--orange-ink); box-shadow: 0 0 0 2px var(--orange-ink); }
+    .mini .num { width: 28px; height: 28px; border-radius: 50%; background: var(--dark); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: .8rem; }
+    .mini strong { display: block; line-height: 1.25; }
+    .mini small { color: var(--muted); }
+    .popup { position: absolute; z-index: 3; background: #fff; border-radius: 14px; box-shadow: var(--shadow); padding: 12px 14px; width: 230px; transform: translate(-50%, calc(-100% - 50px)); font-size: .88rem; }
+    .popup.below { transform: translate(-50%, 8px); }
+    .popup strong { display: block; line-height: 1.25; margin-bottom: 4px; }
+
+    .sched { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .sched th, .sched td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .sched thead th { font-size: .74rem; text-transform: uppercase; letter-spacing: .07em; color: var(--dark); }
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+    .detail-grid > div { background: var(--sky-2); border-radius: 14px; padding: 14px; font-size: .92rem; }
+    .detail-grid strong { display: block; font-size: .74rem; text-transform: uppercase; letter-spacing: .07em; color: var(--dark); margin-bottom: 4px; }
+    @media (max-width: 900px) { .map-view { grid-template-columns: 1fr; } .map-side { max-height: none; } }
+    @media (max-width: 560px) { .detail-grid { grid-template-columns: 1fr; } .popup { width: 190px; } .pin { width: 28px; height: 36px; } .pin svg { width: 28px; height: 36px; } .pin .n { top: 4px; font-size: .7rem; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#results">Skip to locations</a>
+
+  <div class="demo-banner" role="note">
+    <div class="wrap">
+      <span><strong>Proposal demo.</strong> All locations, addresses, phone numbers and schedules are invented for illustration.</span>
+      <a href="index.html">← All demos</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html" aria-label="First 5 Orange County demos home (placeholder logo)">
+        <span class="logo-mark" aria-hidden="true">✋</span>
+        <span class="logo-text">FIRST 5<small>ORANGE COUNTY</small></span>
+      </a>
+      <nav class="demo-nav" aria-label="Demos">
+        <a href="kid-builders.html">Kid Builders</a>
+        <a href="edi.html">Kindergarten Readiness (EDI)</a>
+        <a href="learning-link.html" aria-current="page">Learning Link</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">Learning Link · Across Orange County</span>
+        <h1>Free play-and-learn groups <span>near you.</span></h1>
+        <p class="lede">Learning Link sites offer free activities where young children play and learn while parents and caregivers connect. Find a location, day and language that works for your family.</p>
+      </div>
+    </section>
+
+    <section class="finder">
+      <div class="wrap">
+        <form id="ll-form" role="search" aria-label="Find a location" onsubmit="return false">
+          <div class="search-row">
+            <div class="search-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <label for="ll-q" class="sr-only">Search by city, location name or program</label>
+              <input id="ll-q" type="search" placeholder="Search a city, location or program (e.g. “Santa Ana”, “story time”)" autocomplete="off">
+            </div>
+            <label class="sr-only" for="ll-region">Area of the county</label>
+            <select id="ll-region" class="select"><option value="">All of Orange County</option></select>
+          </div>
+
+          <div class="ll-bar">
+            <div class="term">
+              <span>Showing schedules for</span>
+              <fieldset class="seg" style="margin:0"><legend class="sr-only">Schedule term</legend><span id="ll-terms" style="display:contents"></span></fieldset>
+              <span id="ll-updated" style="color:var(--muted)"></span>
+            </div>
+            <div class="viewtoggle" role="group" aria-label="View">
+              <button type="button" data-view="list" aria-pressed="true">☰ List</button>
+              <button type="button" data-view="map" aria-pressed="false">⌖ Map</button>
+            </div>
+          </div>
+
+          <div class="layout">
+            <div>
+              <button type="button" class="btn btn-outline filter-toggle" aria-expanded="false" aria-controls="ll-filters" id="ll-filter-toggle" style="margin-bottom:12px">More filters</button>
+              <aside class="filters" id="ll-filters" aria-label="Filters">
+                <div class="filters-head">
+                  <h2>Filters</h2>
+                  <button type="button" class="btn-link" id="ll-clear">Clear all</button>
+                </div>
+                <fieldset><legend>Day</legend><div class="chips" id="ll-days"></div></fieldset>
+                <fieldset><legend>Time of day</legend><div id="ll-times"></div></fieldset>
+                <fieldset><legend>Language</legend><div id="ll-langs"></div></fieldset>
+                <fieldset><legend>Services</legend><div id="ll-services"></div></fieldset>
+                <fieldset><legend>Type of location</legend><div id="ll-settings"></div></fieldset>
+                <fieldset><legend>Registration</legend>
+                  <label class="check" for="ll-dropin"><input type="checkbox" id="ll-dropin"><span>Drop-in welcome (no sign-up)</span></label>
+                </fieldset>
+              </aside>
+            </div>
+
+            <div id="results" tabindex="-1">
+              <div class="results-bar">
+                <p class="results-count" id="ll-count" aria-live="polite" style="margin:0"></p>
+                <div class="active-filters" id="ll-active" aria-label="Active filters"></div>
+              </div>
+              <div id="ll-out"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="detail" id="ll-detail" aria-labelledby="ll-detail-title">
+    <button class="detail-close" type="button" aria-label="Close location">×</button>
+    <div class="detail-inner" id="ll-detail-body"></div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Proposal concept by Meaningful Marketing House for First 5 Orange County. Not an official First 5 OC page.</span>
+      <a href="index.html">Back to all demos</a>
+    </div>
+  </footer>
+
+  <script src="data/learning-link.js"></script>
+  <script src="demos-common.js"></script>
+  <script src="learning-link.js"></script>
+</body>
+</html>

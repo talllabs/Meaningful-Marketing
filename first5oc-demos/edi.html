@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kindergarten Readiness (EDI) — Demo | First 5 OC Proposal</title>
+  <meta name="description" content="Proposal demo: a layered, plain-language and interactive view of Early Development Index (EDI) kindergarten readiness data. All data illustrative.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="demos.css">
+  <style>
+    :root { --s0: #e6f4f8; --s1: #b5dfea; --s2: #7cc3d6; --s3: #16708a; --s4: #0b4a63; }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .why { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+    .why .num { font: 800 2.2rem 'Bricolage Grotesque'; color: var(--orange-ink); }
+    .why h3 { font-size: 1.35rem; margin: 6px 0 8px; }
+    .why p { margin: 0; color: var(--muted); }
+    .section { padding: 64px 0; }
+    .section.white { background: #fff; }
+    .section-head { max-width: 760px; margin-bottom: 28px; }
+    .section-head h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); margin: 8px 0 12px; }
+    .domain-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .domain { background: var(--sky-2); border-radius: 18px; padding: 18px; }
+    .domain .ic { font-size: 1.8rem; }
+    .domain h3 { font-size: 1.1rem; margin: 8px 0 6px; }
+    .domain p { margin: 0; font-size: .9rem; color: var(--muted); }
+    .reading-tip { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; margin-top: 24px; }
+    .reading-tip .big { font: 800 3rem 'Bricolage Grotesque'; color: var(--dark); }
+
+    /* Explorer */
+    .explorer { background: var(--deep); color: #fff; padding: 64px 0 72px; }
+    .explorer .section-head h2 { color: #fff; }
+    .explorer .eyebrow { color: var(--yellow); }
+    .explorer .lede { color: #d9eef3; }
+    .ex-panel { background: #fff; color: var(--ink); border-radius: 26px; padding: 24px; }
+    .ex-controls { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); margin-bottom: 22px; }
+    .ex-controls fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+    .ex-controls legend, .ex-controls label.lbl { font-weight: 800; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--dark); margin-bottom: 8px; display: block; padding: 0; }
+    .seg { display: inline-flex; border: 2px solid var(--line); border-radius: 999px; padding: 3px; gap: 2px; flex-wrap: wrap; }
+    .seg label { position: relative; }
+    .seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+    .seg span { display: block; padding: 7px 13px; border-radius: 999px; font-weight: 700; font-size: .88rem; cursor: pointer; }
+    .seg input:checked + span { background: var(--dark); color: #fff; }
+    .seg input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+    .ex-controls .select { width: 100%; }
+    .ex-main { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; }
+    .ex-main > * { min-width: 0; }
+    .ex-title { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; justify-content: space-between; margin-bottom: 12px; }
+    .ex-title h3 { font-size: 1.35rem; }
+    .tilemap { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+    .tile { min-width: 0; overflow: hidden; aspect-ratio: 1; border: 0; border-radius: 12px; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; padding: 8px; text-align: left; font-weight: 800; transition: transform .1s, opacity .15s; }
+    .tile small { font-size: .68rem; font-weight: 700; opacity: .9; }
+    .tile .code { display: none; }
+    .tile strong { font: 800 1.15rem 'Bricolage Grotesque'; }
+    .tile:hover { transform: scale(1.04); }
+    .tile[aria-pressed="true"] { box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--orange-ink); }
+    .tile.dim { opacity: .25; }
+    .tile.light { color: var(--ink); }
+    .tile.darkt { color: #fff; }
+    .legend { display: flex; align-items: center; gap: 10px; margin-top: 14px; font-size: .82rem; color: var(--muted); flex-wrap: wrap; }
+    .legend-bar { display: flex; gap: 2px; }
+    .legend-bar span { width: 38px; height: 12px; display: block; }
+    .legend-bar span:first-child { border-radius: 4px 0 0 4px; }
+    .legend-bar span:last-child { border-radius: 0 4px 4px 0; }
+    .hover-read { min-height: 1.6em; font-size: .9rem; margin-top: 8px; color: var(--ink); }
+    .stat { display: flex; gap: 18px; align-items: flex-end; flex-wrap: wrap; margin: 6px 0 16px; }
+    .stat .big { font: 800 3.4rem/1 'Bricolage Grotesque'; color: var(--ink); }
+    .stat .vs { font-size: .92rem; color: var(--muted); }
+    .stat .vs strong { color: var(--ink); }
+    .ex-side h4 { font: 800 .78rem Manrope; text-transform: uppercase; letter-spacing: .08em; color: var(--dark); margin: 18px 0 8px; }
+    .bars { display: grid; gap: 9px; }
+    .bar-row { display: grid; grid-template-columns: 110px 1fr 46px; gap: 10px; align-items: center; font-size: .86rem; }
+    .bar-row button { all: unset; cursor: pointer; font-weight: 700; }
+    .bar-row button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+    .bar-row.on button { color: var(--orange-ink); text-decoration: underline; }
+    .bar-track { position: relative; height: 14px; background: var(--sky-2); border-radius: 4px; }
+    .bar-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--s3); border-radius: 0 4px 4px 0; }
+    .bar-avg { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); }
+    .bar-row .v { text-align: right; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .key { display: flex; gap: 14px; font-size: .78rem; color: var(--muted); margin-top: 8px; flex-wrap: wrap; }
+    .key i { display: inline-block; width: 14px; height: 10px; background: var(--s3); border-radius: 2px; margin-right: 5px; vertical-align: middle; }
+    .key i.avg { width: 2px; height: 14px; background: var(--ink); }
+    .trend svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .ex-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .table-wrap { overflow-x: auto; margin-top: 18px; }
+    table { border-collapse: collapse; width: 100%; font-size: .9rem; font-variant-numeric: tabular-nums; }
+    th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+    th:first-child, td:first-child { text-align: left; }
+    thead th { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--dark); }
+    thead th button { all: unset; cursor: pointer; }
+    thead th button:focus-visible { outline: 3px solid var(--focus); }
+    tfoot td { font-weight: 800; }
+    .disclaimer { background: #fff3c4; color: #5b4300; border-radius: 16px; padding: 14px 18px; margin-bottom: 20px; font-size: .92rem; border: 1px dashed #b38f00; }
+    @media (max-width: 960px) {
+      .domain-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: 1fr; }
+      .ex-main, .ex-controls { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .domain-grid { grid-template-columns: 1fr; }
+      .ex-panel { padding: 16px; }
+      .tile { padding: 5px; border-radius: 8px; }
+      .tile small { font-size: .62rem; }
+      .tile .full { display: none; }
+      .tile .code { display: inline; }
+      .tile strong { font-size: .9rem; }
+      .bar-row { grid-template-columns: 104px 1fr 44px; font-size: .8rem; }
+      .tilemap { gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#explore">Skip to data explorer</a>
+
+  <div class="demo-banner" role="note">
+    <div class="wrap">
+      <span><strong>Proposal demo.</strong> All EDI figures, areas and trends on this page are invented for illustration. They are not real Orange County results.</span>
+      <a href="index.html">← All demos</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html" aria-label="First 5 Orange County demos home (placeholder logo)">
+        <span class="logo-mark" aria-hidden="true">✋</span>
+        <span class="logo-text">FIRST 5<small>ORANGE COUNTY</small></span>
+      </a>
+      <nav class="demo-nav" aria-label="Demos">
+        <a href="kid-builders.html">Kid Builders</a>
+        <a href="edi.html" aria-current="page">Kindergarten Readiness (EDI)</a>
+        <a href="learning-link.html">Learning Link</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- LAYER 1: plain language -->
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">Early Development Index (EDI)</span>
+        <h1>How ready are our kids <span>for kindergarten?</span></h1>
+        <p class="lede">Every few years, kindergarten teachers fill out a short checklist about each child in their class. Together, those checklists show how young children are doing across our county, and where families may need more support <em>before</em> kindergarten starts.</p>
+      </div>
+    </section>
+
+    <section class="section white" aria-labelledby="why-h">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Why it matters</span>
+          <h2 id="why-h">The first five years shape the next fifty.</h2>
+          <p class="lede">Most brain growth happens before age five. The EDI doesn’t grade children; it gives communities a picture of what’s working and where to help.</p>
+        </div>
+        <div class="why-grid">
+          <div class="why"><div class="num" aria-hidden="true">01</div><h3>Spot needs early</h3><p>Neighborhood-level patterns show where families could use more support, years before gaps show up in test scores.</p></div>
+          <div class="why"><div class="num" aria-hidden="true">02</div><h3>Guide investments</h3><p>First 5 OC uses EDI results to decide where to focus programs, partnerships and funding. <span class="illustrative">Confirm wording</span></p></div>
+          <div class="why"><div class="num" aria-hidden="true">03</div><h3>Track progress together</h3><p>Repeating the EDI in waves lets schools, cities and nonprofits see whether things are improving over time.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="dom-h">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">What the EDI looks at</span>
+          <h2 id="dom-h">Five areas of a child’s development</h2>
+        </div>
+        <div class="domain-grid" id="domain-grid"></div>
+        <div class="reading-tip note">
+          <span class="big" aria-hidden="true">↓</span>
+          <p style="margin:0"><strong>How to read the numbers:</strong> results show the <em>percent of kindergartners who are “vulnerable”</em> in an area, meaning they may need extra support. <strong>Lower numbers are better.</strong> Results describe groups of children, never individual kids.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAYER 2: partner explorer -->
+    <section class="explorer" id="explore" aria-labelledby="ex-h" tabindex="-1">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">For partners · Explore the data</span>
+          <h2 id="ex-h">Dig into results by area, domain and wave</h2>
+          <p class="lede">Choose a developmental area and a data wave, then select a place on the map to compare it with the county.</p>
+        </div>
+
+        <div class="ex-panel">
+          <div class="disclaimer" role="note"><strong>◆ Illustrative data.</strong> The map tiles, area names and percentages are invented to show how the tool would work. Real geographies and published EDI results would replace them.</div>
+
+          <form class="ex-controls" id="ex-form" onsubmit="return false">
+            <div>
+              <label class="lbl" for="ex-domain">Developmental area</label>
+              <select class="select" id="ex-domain"></select>
+            </div>
+            <fieldset>
+              <legend>Data wave</legend>
+              <div class="seg" id="ex-waves"></div>
+            </fieldset>
+            <div>
+              <label class="lbl" for="ex-region">Geography</label>
+              <select class="select" id="ex-region"><option value="">All of county</option></select>
+            </div>
+          </form>
+
+          <div class="ex-main">
+            <div>
+              <div class="ex-title">
+                <h3 id="map-title"></h3>
+                <span class="illustrative">Illustrative · not to scale</span>
+              </div>
+              <div class="tilemap" id="tilemap" role="group" aria-labelledby="map-title"></div>
+              <div class="legend" id="legend" aria-hidden="true"></div>
+              <p class="hover-read" id="hover-read" aria-live="polite"></p>
+            </div>
+            <div class="ex-side" id="ex-side" aria-live="polite"></div>
+          </div>
+
+          <div class="ex-foot">
+            <button type="button" class="btn btn-outline btn-small" id="table-toggle" aria-expanded="false" aria-controls="table-wrap">Show as a table</button>
+            <span style="font-size:.85rem;color:var(--muted)">Source: placeholder · Sample sizes shown are invented.</span>
+          </div>
+          <div class="table-wrap" id="table-wrap" hidden></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Proposal concept by Meaningful Marketing House for First 5 Orange County. Not an official First 5 OC page. Data shown is illustrative.</span>
+      <a href="index.html">Back to all demos</a>
+    </div>
+  </footer>
+
+  <script src="data/edi.js"></script>
+  <script src="demos-common.js"></script>
+  <script src="edi.js"></script>
+</body>
+</html>

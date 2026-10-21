@@ -985,6 +985,17 @@
     }
     .f5-concept-card__links a.btn { text-decoration: none; }
 
+    /* Program demos (Kid Builders, EDI, Learning Link) */
+    .f5-programs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; text-align: left; }
+    .f5-program { background: #fff; border-radius: 18px; border-top: 5px solid var(--teal-dark); box-shadow: 0 10px 30px rgba(0,0,0,.08); padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .f5-program:nth-child(2) { border-top-color: var(--coral); }
+    .f5-program:nth-child(3) { border-top-color: var(--gold); }
+    .f5-program h4 { margin: 0; font-size: 20px; }
+    .f5-program p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text-muted); }
+    .f5-program ul { margin: 0; padding-left: 18px; list-style: disc; font-size: 14px; line-height: 1.6; }
+    .f5-program .f5-concept-card__links { margin-top: auto; padding-top: 8px; }
+    @media (max-width: 900px) { .f5-programs { grid-template-columns: 1fr; } }
+
   </style>
   <!-- Vercel Web Analytics -->
   <script>
@@ -1362,6 +1373,33 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="f5-concept-feature f5-concept-feature--wide" style="margin-top:32px">
+    <span class="f5-concept-card__badge">Three More Clickable Demos</span>
+    <h3>Kid Builders, Kindergarten Readiness (EDI) and Learning Link</h3>
+    <p>These show how three of First 5 OC's programs could be easier to search, filter and explore. Each works on phones too. All activities, locations and data in these demos are illustrative samples.</p>
+    <div class="f5-programs">
+      <div class="f5-program">
+        <h4>Kid Builders Activity Finder</h4>
+        <p>Families pick their children's ages and find activities by skill, season and type.</p>
+        <ul><li>Speech-support videos one click away</li><li>Spanish and Vietnamese activities in the same results</li></ul>
+        <div class="f5-concept-card__links"><a class="btn btn--primary" href="first5oc-demos/kid-builders.html" target="_blank" rel="noopener">Try Kid Builders →</a></div>
+      </div>
+      <div class="f5-program">
+        <h4>Kindergarten Readiness (EDI)</h4>
+        <p>Plain-language "why it matters" first, then a data explorer for partners.</p>
+        <ul><li>Map by geography, domain and data wave</li><li>Trends, county comparison and a table view</li></ul>
+        <div class="f5-concept-card__links"><a class="btn btn--primary" href="first5oc-demos/edi.html" target="_blank" rel="noopener">Explore the EDI Demo →</a></div>
+      </div>
+      <div class="f5-program">
+        <h4>Learning Link Locations</h4>
+        <p>A county-wide directory families can search by city, day, time and language.</p>
+        <ul><li>List and map views with location details</li><li>Fall / Spring schedules staff update twice a year</li></ul>
+        <div class="f5-concept-card__links"><a class="btn btn--primary" href="first5oc-demos/learning-link.html" target="_blank" rel="noopener">Find a Location →</a></div>
+      </div>
+    </div>
+    <p style="margin:22px 0 0;"><a href="first5oc-demos/index.html" target="_blank" rel="noopener" style="color:var(--teal-dark); font-weight:700;">See all three demos on one page →</a></p>
   </div>
 
 </section>
