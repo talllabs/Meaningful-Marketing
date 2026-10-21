@@ -7,7 +7,7 @@ The page designs are proposal concepts.
 |---|---|
 | `index.html` | Landing page linking to all three demos |
 | `kid-builders.html` | All 171 current Kid Builders activities with official artwork. It has an age picker (more than one age at once), the six builder areas as filters, search, a "new" filter, a Speech & Language feature with strategy videos in English/Español/Tiếng Việt, and an activity detail view |
-| `edi.html` | Orange County's 2025 Early Development Index. Headline readiness figure (53.0%, up from 48.2% in 2015), a spot for First 5 OC's **live ArcGIS map**, the five domains with 2015 vs. 2025 results (chart + table), how results are classified, how the data is used, collection and privacy, and resources and data requests |
+| `edi.html` | Orange County's 2025 Early Development Index in two modes. **Explore** (default) is a plain-language, interactive view for parents: a 100-kindergartners picture (2015 vs. 2025), the five areas in everyday words, parent FAQs and help-at-home links. **Deep Dive** has everything: headline readiness figure (53.0%, up from 48.2% in 2015), a spot for First 5 OC's **live ArcGIS map**, the five domains with 2015 vs. 2025 results (chart + table), how results are classified, how the data is used, collection and privacy, and resources and data requests |
 | `learning-link.html` | All 53 FY 2026-27 Learning Link sites (plus Tustin USD, coming soon). Search, district/day/time/fee filters, a clustered map and a list built from the same data, tap-to-call phones, directions and registration links |
 
 Nothing connects to a CMS or changes the live First 5 OC site.
@@ -50,12 +50,17 @@ All three were compiled from first5oc.org on Oct 21, 2026 and provided as refere
 
 ## Assumptions and demo-only choices
 
-- **Brand:** the "First 5" logo mark, colors and fonts match our earlier Concept A and are **placeholders**.
-  Colors are tokens at the top of `demos.css`. Buttons use a darker orange (`#b8400f`) than Concept A so
+- **Brand:** headers use First 5 OC's real logo (white, so it sits on a brand-blue tile in light headers),
+  hotlinked from their media library. Colors and fonts match our earlier Concept A and are still
+  **placeholders** until we have the official palette. Colors are tokens at the top of `demos.css`. Buttons use a darker orange (`#b8400f`) than Concept A so
   white text meets WCAG AA contrast.
 - **Images are hotlinked** from First 5 OC's WordPress media library (Kid Builders artwork, the Learning
   Link photo). Before production, copy approved assets into the new site's own library. Images that fail
   to load fall back gracefully (a colored tile, or the photo is hidden).
+- **EDI Explore mode** uses only the published figures, rounded into everyday phrases (e.g. 80.3% becomes
+  "about 8 in 10"). The exact numbers are shown alongside. Parent-friendly area names and FAQ answers live
+  in `data/edi.js` next to the official wording, so First 5 OC can edit them. The "Try at home" links open
+  Kid Builders pre-filtered (`kid-builders.html?b=word`). Mode is kept in the URL (`#explore`, `#deep-dive`).
 - **EDI map:** First 5 OC's neighborhood map is a live ArcGIS application. Their guidance is to embed it,
   not rebuild it, so neighborhood data, filters and future updates keep working without a website
   change. The demo shows a labeled placeholder that links to the current map. **To turn the live map on,**
@@ -100,6 +105,7 @@ All three were compiled from first5oc.org on Oct 21, 2026 and provided as refere
 - That the CHOC-reported domain figures are the "on track" percentages First 5 OC wants to show, or
   First 5 OC's own published domain figures to use instead.
 - Whether to keep Cristina Blevins as the listed EDI contact.
+- Review of the Explore-mode wording (plain-language area names, FAQ answers, Kid Builders pairings).
 - An inventory of the Domain Spotlight images and downloads.
 
 **Learning Link**

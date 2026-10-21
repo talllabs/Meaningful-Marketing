@@ -22,18 +22,31 @@ window.F5_DATA.edi = {
 
   // Share of kindergartners on track in each developmental area.
   domains: [
-    { id: 'physical', title: 'Physical Health and Well-Being', short: 'Physical Health', icon: '🤸', y2015: 79.8, y2025: 80.3,
+    { id: 'physical',
+      plain: 'Healthy, strong bodies', plainText: 'Coming to school rested and ready, with energy, coordination, and big and small muscles that work well.', kb: ['body', 'health'], title: 'Physical Health and Well-Being', short: 'Physical Health', icon: '🤸', y2015: 79.8, y2025: 80.3,
       text: 'Looks at physical readiness for the school day, physical independence, energy, coordination, and gross and fine motor abilities.' },
-    { id: 'social', title: 'Social Competence', short: 'Social Competence', icon: '🤝', y2015: 77.3, y2025: 78.9,
+    { id: 'social',
+      plain: 'Getting along with others', plainText: 'Playing and working with others, following routines, asking for what they need, and feeling confident.', kb: ['relationship'], title: 'Social Competence', short: 'Social Competence', icon: '🤝', y2015: 77.3, y2025: 78.9,
       text: 'Looks at children’s ability to cooperate with others, follow appropriate behavior expectations, communicate needs, demonstrate confidence, and participate socially.' },
-    { id: 'emotional', title: 'Emotional Maturity', short: 'Emotional Maturity', icon: '💛', y2015: 79.6, y2025: 76.5,
+    { id: 'emotional',
+      plain: 'Handling big feelings', plainText: 'Being curious, trying new things, calming down, helping others, and thinking before acting.', kb: ['relationship'], title: 'Emotional Maturity', short: 'Emotional Maturity', icon: '💛', y2015: 79.6, y2025: 76.5,
       text: 'Looks at curiosity, willingness to try new experiences, emotional regulation, prosocial behavior, and the ability to reflect before acting.' },
-    { id: 'language', title: 'Language and Cognitive Development', short: 'Language & Cognition', icon: '🔤', y2015: 67.4, y2025: 74.4,
+    { id: 'language',
+      plain: 'Words, books and numbers', plainText: 'Learning new words, loving books, early reading and counting, and remembering things.', kb: ['word', 'mind'], title: 'Language and Cognitive Development', short: 'Language & Cognition', icon: '🔤', y2015: 67.4, y2025: 74.4,
       text: 'Looks at vocabulary, early literacy, numeracy, memory, interest in books and reading, and the ability to organize and understand information.' },
-    { id: 'communication', title: 'Communication Skills and General Knowledge', short: 'Communication & Knowledge', icon: '💬', y2015: 71.7, y2025: 75.1,
+    { id: 'communication',
+      plain: 'Sharing ideas and stories', plainText: 'Understanding what others say, and telling about their experiences, ideas, wishes and feelings.', kb: ['word'], title: 'Communication Skills and General Knowledge', short: 'Communication & Knowledge', icon: '💬', y2015: 71.7, y2025: 75.1,
       text: 'Looks at children’s ability to understand verbal communication and communicate experiences, ideas, wishes, and feelings so others can understand them.' }
   ],
   domainSource: { label: 'CHOC 2025 Community Health Needs Assessment', url: 'https://choc.org/files/CHOC_2025_CHNA_Report.pdf' },
+
+  // Parent-facing answers for Explore mode, drawn from First 5 OC's EDI page.
+  faq: [
+    { q: 'Is this a test of my child?', a: 'No. The EDI is never used to screen, identify or diagnose an individual child. It shows how groups of children are doing across neighborhoods and communities.' },
+    { q: 'Who fills it out?', a: 'Kindergarten teachers, who receive online training and complete a short checklist for each child during the second half of the school year.' },
+    { q: 'Will anyone see my child’s results?', a: 'Individual children are never reported publicly. Results are shared in aggregate, and neighborhoods with fewer than 10 children’s records are kept private.' },
+    { q: 'Why does First 5 OC collect it?', a: 'To spot where families could use more support, guide programs and investments, and track progress over time with schools and community partners.' }
+  ],
 
   mapSteps: [
     'Choose a geographic area using the dropdown controls.',

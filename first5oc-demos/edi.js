@@ -100,4 +100,100 @@
     '<p style="margin:0 0 10px"><strong>' + esc(c.name) + '</strong><br><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a></p>' +
     '<p style="margin:0 0 14px">First 5 Orange County<br><a href="mailto:' + esc(c.general) + '">' + esc(c.general) + '</a> · <a href="tel:+17148345310">' + esc(c.phone) + '</a></p>' +
     '<a class="btn btn-primary" href="https://first5oc.org/resources/edi/request-form/" target="_blank" rel="noopener">Request EDI data or help<span class="sr-only"> (opens in a new tab)</span></a>';
+
+  // =====================================================================
+  // Explore mode: the same real figures, in everyday language for parents
+  // =====================================================================
+  // Friendly rounding: 80.3% -> "about 8 in 10", 74.4% -> "about 3 in 4".
+  function inPlain(v) { return Math.abs(v - 75) <= 2 ? 'about 3 in 4' : 'about ' + Math.round(v / 10) + ' in 10'; }
+
+  var kidsEl = document.getElementById('kids');
+  kidsEl.innerHTML = new Array(101).join('<span class="kid"></span>');
+  document.getElementById('kids-exact').textContent = pct(h.compareReady) + ' in ' + h.compareYear + ' and ' + pct(h.ready) + ' in ' + h.year;
+  function showKids(year) {
+    var v = year === String(h.year) ? h.ready : h.compareReady, n = Math.round(v);
+    kidsEl.querySelectorAll('.kid').forEach(function (k, i) { k.classList.toggle('on', i < n); });
+    kidsEl.setAttribute('aria-label', n + ' of 100 dots filled: about ' + n + ' of every 100 kindergartners were ready in ' + year);
+    document.getElementById('kids-sentence').innerHTML = 'In ' + year + ', about <strong>' + n + '</strong> of every 100 kindergartners were ready for kindergarten in all five areas.' +
+      (year === String(h.year) ? ' That’s up from about ' + Math.round(h.compareReady) + ' in ' + h.compareYear + '.' : '');
+  }
+  document.querySelectorAll('input[name="kids-year"]').forEach(function (r) { r.addEventListener('change', function () { showKids(r.value); }); });
+  showKids(String(h.year));
+
+  var KB_NAMES = { mind: 'Mind', word: 'Word', body: 'Body', relationship: 'Relationship', safety: 'Safety', health: 'Health' };
+  var maxUp = D.domains.reduce(function (m, d) { return d.y2025 - d.y2015 > m.y2025 - m.y2015 ? d : m; });
+  document.getElementById('areas').innerHTML = D.domains.map(function (d) {
+    var x = d.y2025 - d.y2015;
+    var note = d === maxUp ? ' The biggest improvement of all five areas.' : x < 0 ? ' The only area that went down since ' + h.compareYear + '.' : '';
+    return '<article class="area" data-open="false">' +
+      '<button type="button" aria-expanded="false" aria-controls="area-' + d.id + '">' +
+        '<span class="ic" aria-hidden="true">' + d.icon + '</span>' +
+        '<span class="name">' + esc(d.plain) + '</span>' +
+        '<span class="stat">' + inPlain(d.y2025).replace(/^a/, 'A') + ' kids on track</span>' +
+        '<span class="more" aria-hidden="true">Learn more +</span></button>' +
+      '<div class="body" id="area-' + d.id + '" hidden>' +
+        '<p>' + esc(d.plainText) + '</p>' +
+        '<div class="trend">' + h.compareYear + ': ' + pct(d.y2015) + ' → ' + h.year + ': <strong>' + pct(d.y2025) + '</strong> (' + (x >= 0 ? 'up ' : 'down ') + Math.abs(x).toFixed(1) + ' points).' + note + '</div>' +
+        '<p><a href="kid-builders.html?b=' + d.kb.join(',') + '">Try at home: ' + d.kb.map(function (b) { return KB_NAMES[b]; }).join(' &amp; ') + ' Builders →</a></p>' +
+        '<span class="official">Official name: ' + esc(d.title) + '</span>' +
+      '</div></article>';
+  }).join('');
+  document.getElementById('areas').addEventListener('click', function (e) {
+    var b = e.target.closest('.area > button'); if (!b) return;
+    var open = b.getAttribute('aria-expanded') !== 'true', card = b.parentNode;
+    b.setAttribute('aria-expanded', open); card.dataset.open = open;
+    card.querySelector('.body').hidden = !open;
+    card.querySelector('.more').textContent = open ? 'Show less –' : 'Learn more +';
+  });
+
+  document.getElementById('faq').innerHTML = D.faq.map(function (f) {
+    return '<details><summary>' + esc(f.q) + '</summary><p>' + esc(f.a) + '</p></details>';
+  }).join('');
+
+  // =====================================================================
+  // Mode switch (Explore / Deep Dive), remembered in the URL hash
+  // =====================================================================
+  var tabs = [document.getElementById('tab-explore'), document.getElementById('tab-deep')];
+  var panels = { explore: document.getElementById('panel-explore'), 'deep-dive': document.getElementById('panel-deep') };
+  function setMode(mode, opts) {
+    opts = opts || {};
+    tabs.forEach(function (t) {
+      var on = t.dataset.mode === mode;
+      t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+      if (on && opts.focusTab) t.focus();
+    });
+    Object.keys(panels).forEach(function (k) { panels[k].hidden = k !== mode; });
+    if (mode === 'deep-dive') drawChart(); // it was hidden (zero width) until now
+    if (opts.updateHash !== false) history.replaceState(null, '', '#' + mode);
+  }
+  document.querySelector('.modes').addEventListener('click', function (e) {
+    var t = e.target.closest('[role="tab"]'); if (!t) return;
+    setMode(t.dataset.mode);
+    window.scrollTo(0, 0);
+  });
+  document.querySelector('.modes').addEventListener('keydown', function (e) {
+    if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].indexOf(e.key) === -1) return;
+    e.preventDefault();
+    var i = tabs.indexOf(document.activeElement), next = e.key === 'Home' ? 0 : e.key === 'End' ? 1 : (i + 1) % 2;
+    setMode(tabs[next].dataset.mode, { focusTab: true });
+  });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-goto-mode]'); if (!b) return;
+    setMode(b.dataset.gotoMode);
+    var t = document.getElementById(b.dataset.gotoTarget);
+    if (t) { t.scrollIntoView(); t.focus({ preventScroll: true }); }
+  });
+  // Deep links: #deep-dive, or any anchor inside Deep Dive (e.g. #map), open Deep Dive.
+  // Runs on load and whenever the hash changes (e.g. a link on this same page).
+  function fromHash() {
+    var hash = location.hash.slice(1), target = hash && document.getElementById(hash);
+    if (hash === 'deep-dive' || (target && panels['deep-dive'].contains(target))) {
+      setMode('deep-dive', { updateHash: false });
+      if (target && hash !== 'deep-dive') target.scrollIntoView();
+    } else if (hash === 'explore' || !hash) {
+      setMode('explore', { updateHash: false });
+    }
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
 })();

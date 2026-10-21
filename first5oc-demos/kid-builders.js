@@ -191,6 +191,11 @@
     return true;
   });
 
+  // Other pages can link here pre-filtered, e.g. kid-builders.html?b=body,health&age=3
+  var params = new URLSearchParams(location.search);
+  (params.get('b') || '').split(',').forEach(function (b) { if (builderOf(b) && st.builders.indexOf(b) === -1) st.builders.push(b); });
+  (params.get('age') || '').split(',').forEach(function (g) { if (ageOf(g) && st.ages.indexOf(g) === -1) st.ages.push(g); });
+
   setPaused(paused);
   render(true);
 })();

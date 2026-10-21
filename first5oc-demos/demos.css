@@ -49,6 +49,9 @@ button, input, select { font: inherit; color: inherit; }
 .site-header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 30; }
 .site-header .wrap { display: flex; align-items: center; gap: 24px; min-height: 76px; }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; color: var(--dark); }
+/* First 5 OC's logo is white, so it sits on a brand-blue tile in light headers. */
+.f5-logo { display: inline-flex; align-items: center; background: var(--blue); border-radius: 14px; padding: 8px 14px; color: #fff; font-weight: 800; }
+.f5-logo img { height: 40px; width: auto; max-width: 200px; display: block; }
 .logo-mark { width: 44px; height: 44px; border-radius: 12px; background: var(--blue); display: grid; place-items: center; color: #fff; font-size: 1.4rem; }
 .logo-text { font: 700 1.5rem/.9 'Bricolage Grotesque'; letter-spacing: -.05em; }
 .logo-text small { display: block; font: 700 .55rem Manrope; letter-spacing: .21em; margin-top: 6px; }
@@ -168,5 +171,7 @@ dialog.detail::backdrop { background: rgba(9, 47, 64, .6); }
   .hero { padding: 40px 0 34px; }
   .detail-inner { padding: 22px 18px; }
   .logo-text { font-size: 1.2rem; }
+  .f5-logo { padding: 6px 11px; }
+  .f5-logo img { height: 32px; }
   .site-header .wrap { min-height: 64px; }
 }
