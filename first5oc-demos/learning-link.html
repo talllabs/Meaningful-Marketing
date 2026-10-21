@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning Link Locations | Free Early Learning Programs — Demo | First 5 OC Proposal</title>
+  <meta name="description" content="Proposal demo: find Learning Link early learning and play programs for Orange County children from infancy through age 5 and their parents or caregivers. FY 2026-27 locations, schedules, fees and registration.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="demos.css">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="vendor/leaflet/MarkerCluster.css">
+  <link rel="stylesheet" href="vendor/leaflet/MarkerCluster.Default.css">
+  <style>
+    .ll-hero { background: var(--sky); padding: 44px 0; position: relative; overflow: hidden; }
+    .ll-hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 36px; align-items: center; position: relative; z-index: 1; }
+    .ll-hero h1 { font-size: clamp(2.3rem, 5.5vw, 4.2rem); margin: 10px 0 14px; }
+    .ll-hero h1 span { color: var(--blue); }
+    .ll-photo { border-radius: 28px; overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4/3; background: #cfeef6; }
+    .ll-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .ll-photo figcaption { font-size: .78rem; color: var(--muted); padding: 6px 4px 0; }
+    .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .fact { background: #fff; border-radius: 999px; padding: 7px 14px; font-weight: 800; font-size: .88rem; }
+    .fact strong { color: var(--orange-ink); }
+
+    .ll-controls { position: sticky; top: 76px; z-index: 20; background: var(--cream); padding: 14px 0 10px; border-bottom: 1px solid var(--line); }
+    .ll-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .ll-row .search-box { flex: 1 1 280px; }
+    .ll-row .select { max-width: 100%; }
+    .ll-more { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 10px; }
+    .ll-more .lbl { font-weight: 800; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--dark); }
+    .chips .chip span { padding: 6px 12px; font-size: .86rem; }
+    .viewtoggle { display: none; border: 2px solid var(--line); border-radius: 999px; padding: 3px; gap: 2px; background: #fff; }
+    .viewtoggle button { border: 0; background: none; border-radius: 999px; padding: 9px 18px; font-weight: 800; cursor: pointer; min-height: 44px; }
+    .viewtoggle button[aria-pressed="true"] { background: var(--dark); color: #fff; }
+
+    .ll-main { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding: 20px 0 70px; align-items: start; }
+    .ll-mapcol { position: sticky; top: 200px; }
+    #ll-map { scroll-margin-top: 90px; height: calc(100vh - 240px); min-height: 420px; border-radius: 22px; border: 1px solid var(--line); background: #dfeef2; }
+    .map-note { font-size: .8rem; color: var(--muted); margin: 8px 2px 0; }
+    .map-fail { display: grid; place-items: center; text-align: center; padding: 24px; height: 100%; color: var(--muted); }
+
+    .loc-list { display: grid; gap: 12px; }
+    .loc { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 18px 20px; scroll-margin-top: 220px; }
+    .loc.hl { box-shadow: 0 0 0 3px var(--orange-ink); }
+    .loc .district { font-weight: 800; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--dark); }
+    .loc h3 { font-size: 1.35rem; margin: 4px 0 10px; }
+    .loc dl { display: grid; grid-template-columns: 70px 1fr; gap: 6px 12px; margin: 0; font-size: .95rem; }
+    .loc dt { font-weight: 800; color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; padding-top: 2px; }
+    .loc dd { margin: 0; }
+    .loc address { font-style: normal; user-select: text; }
+    .loc .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .loc .actions .btn { min-height: 44px; }
+    .status { display: inline-block; border-radius: 999px; padding: 3px 10px; font-size: .74rem; font-weight: 800; margin-left: 6px; vertical-align: middle; }
+    .status.soon { background: #fff3c4; color: #5b4300; }
+    .status.fee { background: #e7f5c4; color: #34500a; }
+    .qa { background: #fff3c4; color: #5b4300; border: 1px dashed #b38f00; border-radius: 10px; padding: 8px 10px; font-size: .84rem; margin-top: 8px; }
+    .coming { background: #fff; border: 2px dashed var(--line); border-radius: 20px; padding: 18px 20px; }
+
+    .pin { background: var(--dark); color: #fff; border: 2px solid #fff; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); width: 30px !important; height: 30px !important; box-shadow: 0 3px 6px rgba(0,0,0,.3); }
+    .pin.active { background: var(--orange-ink); }
+    .leaflet-popup-content { font: 14px/1.45 Manrope, sans-serif; }
+    .leaflet-popup-content strong { font-size: 1rem; }
+
+    .about-ll { background: #fff; padding: 56px 0; border-top: 1px solid var(--line); }
+    .about-ll .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .about-ll h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 18px; }
+    .about-ll h3 { font-size: 1.2rem; margin-bottom: 6px; }
+    .about-ll p, .about-ll li { color: var(--muted); }
+    .about-ll ul { margin: 0; padding-left: 20px; }
+
+    @media (max-width: 900px) {
+      .ll-hero .wrap { grid-template-columns: 1fr; }
+      .ll-photo { max-width: 520px; }
+      .viewtoggle { display: inline-flex; }
+      .ll-controls { position: static; }
+      .ll-main { grid-template-columns: 1fr; }
+      .ll-mapcol { position: static; }
+      #ll-map { height: 70vh; }
+      .ll-main[data-view="list"] .ll-mapcol { display: none; }
+      .ll-main[data-view="map"] .ll-listcol { display: none; }
+      .about-ll .grid3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#ll-list">Skip to locations</a>
+
+  <div class="demo-banner" role="note">
+    <div class="wrap">
+      <span><strong>Proposal demo.</strong> Locations, schedules and links are First 5 OC’s FY 2026-27 Learning Link data; the page design is a concept.</span>
+      <a href="index.html">← All demos</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html" aria-label="First 5 Orange County demos home">
+        <span class="f5-logo"><img src="https://first5oc.wpengine.com/wp-content/uploads/2022/10/First5-OC-Logo-2022.png" alt="" height="40"></span>
+      </a>
+      <nav class="demo-nav" aria-label="Demos">
+        <a href="kid-builders.html">Kid Builders</a>
+        <a href="edi.html">Kindergarten Readiness (EDI)</a>
+        <a href="learning-link.html" aria-current="page">Learning Link</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="ll-hero">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow">Learning Link · Orange County</span>
+          <h1>Find a Learning Link <span>near you.</span></h1>
+          <p class="lede">Learning Link is a drop-in play and learning program for children from infancy through age 5 and their parent or caregiver. Children meet other children while you learn new ways to play with and support your child, with help from a qualified preschool teacher.</p>
+          <div class="facts" id="ll-facts"></div>
+        </div>
+        <figure class="ll-photo" style="margin:0">
+          <img id="ll-photo" alt="" width="640" height="480">
+        </figure>
+      </div>
+    </section>
+
+    <form class="ll-controls" id="ll-form" role="search" aria-label="Find a Learning Link" onsubmit="return false">
+      <div class="wrap">
+        <div class="ll-row">
+          <div class="search-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <label for="ll-q" class="sr-only">Search by site, city or district</label>
+            <input id="ll-q" type="search" placeholder="Search site, city or district" autocomplete="off">
+          </div>
+          <label class="sr-only" for="ll-district">School district or organization</label>
+          <select id="ll-district" class="select"><option value="">All districts &amp; organizations</option></select>
+          <div class="viewtoggle" role="group" aria-label="View">
+            <button type="button" data-view="list" aria-pressed="true">List</button>
+            <button type="button" data-view="map" aria-pressed="false">Map</button>
+          </div>
+        </div>
+        <div class="ll-more">
+          <fieldset style="border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+            <legend class="lbl" style="float:left;margin-right:6px">Day</legend>
+            <div class="chips" id="ll-days"></div>
+          </fieldset>
+          <fieldset style="border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+            <legend class="lbl" style="float:left;margin-right:6px">Time</legend>
+            <div class="chips" id="ll-times"></div>
+          </fieldset>
+          <label class="chip"><input type="checkbox" id="ll-free"><span>No fee only</span></label>
+          <button type="button" class="btn-link" id="ll-clear">Clear all</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="wrap">
+      <div class="ll-main" id="ll-main" data-view="list">
+        <div class="ll-listcol" id="ll-list" tabindex="-1">
+          <div class="results-bar">
+            <p class="results-count" id="ll-count" aria-live="polite" style="margin:0"></p>
+            <div class="active-filters" id="ll-active" aria-label="Active filters"></div>
+          </div>
+          <div id="ll-out"></div>
+        </div>
+        <div class="ll-mapcol">
+          <div id="ll-map" role="region" aria-label="Map of Learning Link locations. Every location on the map is also listed as text."></div>
+          <p class="map-note"><span class="illustrative">Demo</span> Pins sit at the approximate center of each site’s city, not the exact address. Production would use First 5 OC’s Google Maps setup with geocoded addresses.</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="about-ll" aria-labelledby="about-h">
+      <div class="wrap">
+        <h2 id="about-h">What to expect at Learning Link</h2>
+        <div class="grid3">
+          <div><h3>For your child</h3><ul><li>Play with other children</li><li>Fine and gross motor development</li><li>Early positive experiences at school</li></ul></div>
+          <div><h3>For you</h3><ul><li>New ways to play with and support your child</li><li>Connection with other parents</li><li>Questions answered by a qualified preschool teacher</li><li>Awareness of developmental milestones</li></ul></div>
+          <div><h3>More from First 5 OC</h3><ul>
+            <li><a href="kid-builders.html">Kid Builders activities</a></li>
+            <li><a href="https://first5oc.org/wp-content/uploads/2024/03/First-5-OC-Building-Blocks-Handbook.HIGH-RES.pdf" target="_blank" rel="noopener">Building Blocks for Kindergarten (PDF)</a></li>
+            <li><a id="ll-story" target="_blank" rel="noopener">Learning Link success story</a></li>
+            <li><a href="https://first5oc.org/resources/parent-resources/" target="_blank" rel="noopener">All parent resources</a></li>
+          </ul><p style="margin-top:10px">Questions? <a href="mailto:info@first5.oc.gov">info@first5.oc.gov</a> · <a href="tel:+17148345310">(714) 834-5310</a></p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Proposal concept by Meaningful Marketing House for First 5 Orange County. Location data from first5oc.org (FY 2026-27, updated October 2026). Map data © OpenStreetMap contributors.</span>
+      <a href="index.html">Back to all demos</a>
+    </div>
+  </footer>
+
+  <script src="data/learning-link.js"></script>
+  <script src="demos-common.js"></script>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="vendor/leaflet/leaflet.markercluster.js"></script>
+  <script src="learning-link.js"></script>
+</body>
+</html>

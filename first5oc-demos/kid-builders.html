@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kid Builders Activity Finder — Demo | First 5 OC Proposal</title>
+  <meta name="description" content="Proposal demo: a searchable, filterable Kid Builders activity finder for families with children ages 0–5, using First 5 OC's Kid Builders activities and artwork.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="demos.css">
+  <style>
+    /* Six builder families: distinct hues, all ≥4.5:1 with white text */
+    :root { --b-mind: #5b3fb5; --b-word: #0b7a8f; --b-body: #2f7d32; --b-relationship: #c2185b; --b-safety: #b85c00; --b-health: #1d5fbf; }
+    [data-b="mind"] { --b: var(--b-mind); --bt: #efeafd; }
+    [data-b="word"] { --b: var(--b-word); --bt: #e0f4f7; }
+    [data-b="body"] { --b: var(--b-body); --bt: #e6f4e6; }
+    [data-b="relationship"] { --b: var(--b-relationship); --bt: #fde7ef; }
+    [data-b="safety"] { --b: var(--b-safety); --bt: #fff0de; }
+    [data-b="health"] { --b: var(--b-health); --bt: #e5eefc; }
+
+    .kb-hero { background: #fff; padding: 40px 0 34px; border-bottom: 1px solid var(--line); }
+    .kb-hero .wrap { display: grid; grid-template-columns: 260px 1fr; gap: 36px; align-items: center; }
+    .kb-logo { width: 100%; max-width: 260px; height: auto; }
+    .kb-hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); margin: 6px 0 12px; }
+    .kb-hero h1 span { color: var(--blue); }
+
+    .kb-step { padding: 34px 0 6px; }
+    .kb-step h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 4px; }
+    .kb-step .hint { margin: 0 0 16px; color: var(--muted); }
+    .ages { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .age { background: #fff; border: 2px solid var(--line); border-radius: 22px; padding: 10px 10px 14px; cursor: pointer; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; position: relative; transition: border-color .15s, transform .15s; }
+    .age:hover { border-color: var(--blue); transform: translateY(-2px); }
+    .age[aria-pressed="true"] { border-color: var(--dark); background: var(--sky); box-shadow: 0 0 0 2px var(--dark); }
+    .age[aria-pressed="true"]::after { content: '✓'; position: absolute; top: 8px; right: 10px; width: 26px; height: 26px; border-radius: 50%; background: var(--dark); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: .85rem; }
+    .age .art { width: 100%; aspect-ratio: 1.25; display: grid; place-items: center; }
+    .age .art img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .age strong { font: 800 1.15rem 'Bricolage Grotesque'; }
+    .age small { color: var(--muted); font-weight: 700; }
+
+    .builders { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+    .builder { border: 2px solid var(--b); background: #fff; color: var(--ink); border-radius: 18px; padding: 12px 12px 12px 14px; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 4px; position: relative; }
+    .builder::before { content: ''; position: absolute; left: 0; top: 12px; bottom: 12px; width: 5px; border-radius: 0 4px 4px 0; background: var(--b); }
+    .builder strong { font: 800 1.05rem 'Bricolage Grotesque'; color: var(--b); }
+    .builder small { font-size: .8rem; color: var(--muted); line-height: 1.35; }
+    .builder[aria-pressed="true"] { background: var(--b); }
+    .builder[aria-pressed="true"] strong, .builder[aria-pressed="true"] small { color: #fff; }
+    .builder[aria-pressed="true"]::before { background: #fff; }
+
+    .kb-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 22px 0 18px; }
+    .kb-tools .search-box { flex: 1 1 300px; }
+    .toggle { display: inline-flex; align-items: center; gap: 8px; border: 2px solid var(--line); background: #fff; border-radius: 999px; padding: 10px 16px; font-weight: 800; cursor: pointer; }
+    .toggle[aria-pressed="true"] { background: var(--dark); color: #fff; border-color: var(--dark); }
+
+    .speech { background: var(--b-word); color: #fff; border-radius: 26px; display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: center; padding: 22px 26px; margin: 26px 0 8px; }
+    .speech img { width: 100%; max-width: 200px; height: auto; background: #fff; border-radius: 18px; padding: 8px; }
+    .speech h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 6px; }
+    .speech p { margin: 0 0 12px; }
+    .speech .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .speech .btn-outline { box-shadow: none; }
+    .speech a.lang { color: #fff; font-weight: 800; }
+
+    .group { margin-top: 30px; }
+    .group-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .group-head img { width: 56px; height: 56px; object-fit: contain; }
+    .group-head h3 { font-size: 1.6rem; }
+    .group-head span { color: var(--muted); font-weight: 700; }
+
+    .act { border-top: 5px solid var(--b); }
+    .act .pic { aspect-ratio: 4/3; background: #fff; display: grid; place-items: center; padding: 10px; border-bottom: 1px solid var(--line); }
+    .act .pic img, .act .pic canvas { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .act .card-body { gap: 6px; }
+    .act .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .btag { background: var(--bt); color: var(--b); border-radius: 999px; padding: 3px 10px; font-size: .74rem; font-weight: 800; }
+    .newtag { background: var(--yellow); color: var(--ink); border-radius: 999px; padding: 3px 10px; font-size: .74rem; font-weight: 800; }
+    .act h3 { font-size: 1.2rem; }
+    .act p { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .fallback { width: 100%; height: 100%; min-height: 120px; border-radius: 14px; background: var(--bt); color: var(--b); display: grid; place-items: center; text-align: center; padding: 12px; font: 800 1rem 'Bricolage Grotesque'; }
+
+    .kb-detail-art { background: #fff; border: 1px solid var(--line); border-radius: 20px; display: grid; place-items: center; padding: 12px; margin: 14px 0 6px; aspect-ratio: 16/10; }
+    .kb-detail-art img, .kb-detail-art canvas { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .dl { display: flex; flex-wrap: wrap; gap: 8px; }
+    .dl a { text-decoration: none; }
+    .related { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+    .related button { text-align: left; background: var(--bt); border: 1px solid transparent; border-radius: 14px; padding: 12px; cursor: pointer; font-weight: 800; color: var(--ink); }
+    .related button:hover { border-color: var(--b); }
+    .source-note { font-size: .82rem; color: var(--muted); margin-top: 6px; }
+
+    @media (max-width: 1000px) { .builders { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 760px) {
+      .kb-hero .wrap { grid-template-columns: 1fr; gap: 14px; }
+      .kb-logo { max-width: 180px; }
+      .ages { grid-template-columns: repeat(3, 1fr); }
+      .speech { grid-template-columns: 1fr; }
+      .speech img { max-width: 140px; }
+    }
+    @media (max-width: 480px) {
+      .ages { grid-template-columns: repeat(2, 1fr); }
+      .builders { grid-template-columns: repeat(2, 1fr); }
+      .builder small { display: none; }
+      .ages .age:last-child:nth-child(odd) { grid-column: span 2; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#results">Skip to activities</a>
+
+  <div class="demo-banner" role="note">
+    <div class="wrap">
+      <span><strong>Proposal demo.</strong> Activities and artwork are First 5 OC’s current Kid Builders content; the page layout is a redesign concept.</span>
+      <a href="index.html">← All demos</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html" aria-label="First 5 Orange County demos home">
+        <span class="f5-logo"><img src="https://first5oc.wpengine.com/wp-content/uploads/2022/10/First5-OC-Logo-2022.png" alt="" height="40"></span>
+      </a>
+      <nav class="demo-nav" aria-label="Demos">
+        <a href="kid-builders.html" aria-current="page">Kid Builders</a>
+        <a href="edi.html">Kindergarten Readiness (EDI)</a>
+        <a href="learning-link.html">Learning Link</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="kb-hero">
+      <div class="wrap">
+        <img class="kb-logo" id="kb-logo" alt="Kid Builders by First 5 Orange County" width="260" height="160">
+        <div>
+          <span class="eyebrow">Free activities for ages 0–5</span>
+          <h1>Play together. <span>Grow together.</span></h1>
+          <p class="lede">Kid Builders helps parents and caregivers support development through everyday play. Every child grows and learns at their own pace, so use these activities to spark curiosity and strengthen your connection.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section class="kb-step" aria-labelledby="ages-h">
+        <h2 id="ages-h">1. How old is your child?</h2>
+        <p class="hint">Have more than one little one? Pick every age that applies.</p>
+        <div class="ages" id="kb-ages" role="group" aria-labelledby="ages-h"></div>
+      </section>
+
+      <section class="kb-step" aria-labelledby="b-h">
+        <h2 id="b-h">2. What would you like to build?</h2>
+        <p class="hint">Choose one or more of the six Kid Builders areas, or leave them all off to see everything.</p>
+        <div class="builders" id="kb-builders" role="group" aria-labelledby="b-h"></div>
+      </section>
+
+      <section class="speech" aria-labelledby="speech-h">
+        <img id="kb-speech-img" alt="Kid Builders speech and language illustration">
+        <div>
+          <h2 id="speech-h">Speech &amp; Language Activities</h2>
+          <p>Children are learning to express themselves, understand others and connect with the world. These activities are for children meeting speech milestones and those still working toward them.</p>
+          <div class="row">
+            <button type="button" class="btn btn-outline btn-small" id="kb-speech-btn">Show Word Builders activities</button>
+            <span>Speech strategy videos:</span>
+            <span id="kb-speech-links" class="row"></span>
+          </div>
+        </div>
+      </section>
+
+      <form id="kb-form" role="search" aria-label="Search activities" onsubmit="return false">
+        <div class="kb-tools">
+          <div class="search-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <label for="kb-q" class="sr-only">Search activities</label>
+            <input id="kb-q" type="search" placeholder="Search activities, e.g. “bath”, “sleep”, “peek-a-boo”" autocomplete="off">
+          </div>
+          <button type="button" class="toggle" id="kb-new" aria-pressed="false">New activities only</button>
+          <button type="button" class="toggle" id="kb-pause" aria-pressed="false">Pause animations</button>
+        </div>
+      </form>
+
+      <section id="results" tabindex="-1" aria-label="Activities" style="padding-bottom:70px">
+        <div class="results-bar">
+          <p class="results-count" id="kb-count" aria-live="polite" style="margin:0"></p>
+          <div class="active-filters" id="kb-active" aria-label="Active filters"></div>
+        </div>
+        <div id="kb-out"></div>
+      </section>
+    </div>
+  </main>
+
+  <dialog class="detail" id="kb-detail" aria-labelledby="kb-detail-title">
+    <button class="detail-close" type="button" aria-label="Close activity">×</button>
+    <div class="detail-inner" id="kb-detail-body"></div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Proposal concept by Meaningful Marketing House for First 5 Orange County. Kid Builders content and artwork © First 5 Orange County, shown from first5oc.org.</span>
+      <a href="index.html">Back to all demos</a>
+    </div>
+  </footer>
+
+  <script src="data/kid-builders.js"></script>
+  <script src="demos-common.js"></script>
+  <script src="kid-builders.js"></script>
+</body>
+</html>

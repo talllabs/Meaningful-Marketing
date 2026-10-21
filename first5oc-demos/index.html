@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First 5 OC Program Demos | Proposal Concepts</title>
+  <meta name="description" content="Three clickable proposal demos for First 5 Orange County: Kid Builders, the Early Development Index, and Learning Link.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="demos.css">
+  <style>
+    .demo-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 48px 0 70px; }
+    .demo-card { background: #fff; border: 1px solid var(--line); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; position: relative; transition: transform .15s, box-shadow .15s; }
+    .demo-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .demo-card .top { padding: 22px 26px; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; }
+    .demo-card .top .ic { font-size: 2.6rem; }
+    .demo-card:nth-child(1) .top { background: #e7f5c4; }
+    .demo-card:nth-child(2) .top { background: var(--sky); }
+    .demo-card:nth-child(3) .top { background: #fff1b8; }
+    .demo-card .body { padding: 22px 26px 26px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .demo-card h2 { font-size: 1.8rem; }
+    .demo-card h2 a { color: inherit; text-decoration: none; }
+    .demo-card h2 a::after { content: ''; position: absolute; inset: 0; }
+    .demo-card p { margin: 0; color: var(--muted); }
+    .demo-card ul { margin: 0; padding-left: 18px; font-size: .92rem; }
+    .demo-card .go { margin-top: auto; font-weight: 800; color: var(--orange-ink); }
+    .about { background: #fff; padding: 48px 0; border-top: 1px solid var(--line); }
+    .about .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .about h3 { font-size: 1.2rem; margin-bottom: 6px; }
+    .about p { margin: 0; color: var(--muted); font-size: .95rem; }
+    @media (max-width: 900px) { .demo-cards, .about .wrap { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#demos">Skip to demos</a>
+  <div class="demo-banner" role="note">
+    <div class="wrap">
+      <span><strong>Proposal concepts.</strong> Clickable demos for discussion, built on First 5 OC’s real content.</span>
+      <a href="../for-first-5.html">← Back to proposal</a>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html" aria-label="First 5 Orange County demos home">
+        <span class="f5-logo"><img src="https://first5oc.wpengine.com/wp-content/uploads/2022/10/First5-OC-Logo-2022.png" alt="" height="40"></span>
+      </a>
+      <nav class="demo-nav" aria-label="Demos">
+        <a href="kid-builders.html">Kid Builders</a>
+        <a href="edi.html">Kindergarten Readiness (EDI)</a>
+        <a href="learning-link.html">Learning Link</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">Program demos · Proposal concepts</span>
+        <h1>Three programs, <span>easier to find and use.</span></h1>
+        <p class="lede">These clickable demos show how Kid Builders, the Early Development Index and Learning Link could work on a new First 5 OC website. Try the search, filters and detail views on phone or desktop.</p>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section class="demo-cards" id="demos" aria-label="Demos">
+        <article class="demo-card">
+          <div class="top"><span class="eyebrow">For families</span></div>
+          <div class="body">
+            <h2><a href="kid-builders.html">Kid Builders</a></h2>
+            <p>An activity finder for families with children ages 0–5.</p>
+            <ul><li>All 171 real Kid Builders activities with their official artwork</li><li>Pick more than one child’s age at once</li><li>Filter by the six builder areas, or show only new activities</li><li>Speech &amp; language activities and videos in English, Español and Tiếng Việt</li></ul>
+            <span class="go" aria-hidden="true">Open demo →</span>
+          </div>
+        </article>
+        <article class="demo-card">
+          <div class="top"><span class="eyebrow">For everyone + partners</span></div>
+          <div class="body">
+            <h2><a href="edi.html">Kindergarten Readiness (EDI)</a></h2>
+            <p>Two modes: Explore, a friendly look for parents, and Deep Dive, with all the data.</p>
+            <ul><li>53.0% ready for kindergarten in 2025, up from 48.2% in 2015</li><li>Interactive “100 kindergartners” picture and five areas in plain words</li><li>Spot reserved for First 5 OC’s live ArcGIS map</li><li>Five domains with 2015 vs. 2025 results and a table view</li><li>Research, resources and data requests in one place</li></ul>
+            <span class="go" aria-hidden="true">Open demo →</span>
+          </div>
+        </article>
+        <article class="demo-card">
+          <div class="top"><span class="eyebrow">For families</span></div>
+          <div class="body">
+            <h2><a href="learning-link.html">Learning Link</a></h2>
+            <p>All 53 FY 2026-27 Learning Link sites across Orange County.</p>
+            <ul><li>Search by site, city or district</li><li>Filter by district, day, time and fee</li><li>Map and list built from the same data</li><li>Tap-to-call phones, directions and registration links</li></ul>
+            <span class="go" aria-hidden="true">Open demo →</span>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <section class="about" aria-label="About these demos">
+      <div class="wrap">
+        <div><h3>Real First 5 OC content</h3><p>Kid Builders activities and artwork, the 2025 EDI figures and copy, and the FY 2026-27 Learning Link sites all come from first5oc.org. The page designs are concepts.</p></div>
+        <div><h3>Built to swap in real content</h3><p>Sample data lives in separate files, so real content (or a CMS) can replace it without redesigning the pages.</p></div>
+        <div><h3>Accessible by default</h3><p>Keyboard-friendly controls, visible focus, screen-reader labels, sufficient contrast, and mobile layouts throughout.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Proposal concept by Meaningful Marketing House for First 5 Orange County. Not an official First 5 OC page. Logo and colors are placeholders.</span>
+      <a href="../for-first-5.html">Back to proposal</a>
+    </div>
+  </footer>
+</body>
+</html>
