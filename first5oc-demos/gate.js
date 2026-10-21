@@ -25,10 +25,10 @@
     '#f5Gate p{margin:0 0 20px;color:#4d6670;font-size:16px;line-height:1.5;}' +
     '#f5Gate input{width:100%;box-sizing:border-box;padding:13px 16px;border-radius:12px;border:2px solid #cbe5e9;font:inherit;font-size:16px;margin-bottom:14px;}' +
     '#f5Gate input:focus{outline:3px solid #1d4ed8;outline-offset:2px;}' +
-    '#f5Gate button{width:100%;padding:14px;border:0;border-radius:999px;background:#b8400f;color:#fff;font:800 16px Manrope,system-ui,sans-serif;cursor:pointer;}' +
-    '#f5Gate button:hover{background:#9a350c;}' +
+    '#f5Gate button{width:100%;padding:14px;border:0;border-radius:999px;background:#ff6b2c;color:#12313d;font:800 16px Manrope,system-ui,sans-serif;cursor:pointer;}' +
+    '#f5Gate button:hover{background:#ff8450;}' +
     '#f5Gate button:focus-visible{outline:3px solid #1d4ed8;outline-offset:3px;}' +
-    '#f5Gate .err{display:none;color:#b3261e;font-size:14px;margin:-6px 0 14px;}';
+    '#f5Gate .err{display:none;color:#12313d;font-size:14px;margin:-4px 0 14px;padding:8px 12px;border-left:4px solid #ff6b2c;background:#fff4ee;border-radius:0 8px 8px 0;text-align:left;}';
   document.head.appendChild(style);
 
   function mount() {

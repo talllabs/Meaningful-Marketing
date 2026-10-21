@@ -9,8 +9,7 @@
   --deep: #092f40;
   --sky: #dff7fb;
   --sky-2: #effbfd;
-  --orange: #ff6b2c;       /* decorative only — fails contrast with white text */
-  --orange-ink: #b8400f;   /* accessible orange for text and buttons (≥4.5:1 on white) */
+  --orange: #ff6b2c;       /* the accent color. Pair with dark ink text (4.8:1), never white (2.9:1) */
   --yellow: #ffd83d;
   --lime: #b8df42;
   --ink: #12313d;
@@ -71,8 +70,8 @@ button, input, select { font: inherit; color: inherit; }
 
 /* ---------- Buttons, chips, badges ---------- */
 .btn { border: 0; border-radius: 999px; padding: 12px 20px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; line-height: 1.2; }
-.btn-primary { background: var(--orange-ink); color: #fff; }
-.btn-primary:hover { background: #9a350c; }
+.btn-primary { background: var(--orange); color: var(--ink); }
+.btn-primary:hover { background: #ff8450; }
 .btn-dark { background: var(--dark); color: #fff; }
 .btn-outline { background: #fff; color: var(--dark); box-shadow: inset 0 0 0 2px var(--dark); }
 .btn-outline:hover { background: var(--sky); }
@@ -82,7 +81,7 @@ button, input, select { font: inherit; color: inherit; }
 .badge { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 4px 10px; font-size: .74rem; font-weight: 800; letter-spacing: .03em; background: var(--sky); color: var(--dark); }
 .badge-yellow { background: var(--yellow); color: var(--ink); }
 .badge-lime { background: #e7f5c4; color: #34500a; }
-.badge-orange { background: #ffe4d6; color: #8a2e07; }
+.badge-orange { background: #ffe9df; color: var(--ink); box-shadow: inset 0 0 0 1px var(--orange); }
 .badge-ink { background: var(--dark); color: #fff; }
 .illustrative { display: inline-flex; align-items: center; gap: 6px; background: #fff3c4; color: #5b4300; border: 1px dashed #b38f00; border-radius: 8px; padding: 3px 9px; font-size: .74rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
 .illustrative::before { content: '◆'; font-size: .6rem; }
