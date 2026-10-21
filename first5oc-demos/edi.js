@@ -37,7 +37,7 @@
     return (x >= 0 ? '▲ +' : '▼ ') + x.toFixed(1) + ' pts';
   }
   document.getElementById('domains').innerHTML = D.domains.map(function (d) {
-    return '<article class="domain"><span class="ic" aria-hidden="true">' + d.icon + '</span><h3>' + esc(d.title) + '</h3><p>' + esc(d.text) + '</p>' +
+    return '<article class="domain"><h3>' + esc(d.title) + '</h3><p>' + esc(d.text) + '</p>' +
       '<div class="num"><strong>' + pct(d.y2025) + '</strong> on track in 2025<br><span style="color:var(--muted)">' + delta(d) + ' since 2015 (' + pct(d.y2015) + ')</span></div></article>';
   }).join('');
 
@@ -127,7 +127,6 @@
     var note = d === maxUp ? ' The biggest improvement of all five areas.' : x < 0 ? ' The only area that went down since ' + h.compareYear + '.' : '';
     return '<article class="area" data-open="false">' +
       '<button type="button" aria-expanded="false" aria-controls="area-' + d.id + '">' +
-        '<span class="ic" aria-hidden="true">' + d.icon + '</span>' +
         '<span class="name">' + esc(d.plain) + '</span>' +
         '<span class="stat">' + inPlain(d.y2025).replace(/^a/, 'A') + ' kids on track</span>' +
         '<span class="more" aria-hidden="true">Learn more +</span></button>' +

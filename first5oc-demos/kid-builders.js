@@ -47,7 +47,7 @@
   function setPaused(p) {
     paused = p;
     pauseBtn.setAttribute('aria-pressed', p);
-    pauseBtn.textContent = p ? '▶ Play animations' : '⏸ Pause animations';
+    pauseBtn.textContent = p ? 'Play animations' : 'Pause animations';
     if (p) document.querySelectorAll('img[data-anim]').forEach(freeze); else thaw(document);
   }
   pauseBtn.addEventListener('click', function () { setPaused(!paused); });
@@ -178,7 +178,7 @@
       '<h3>Printable activities</h3>' +
       '<p style="margin:0 0 10px">Download the ' + esc(g.label) + ' ' + esc(b.label) + ' activity sheet:</p>' +
       '<div class="dl">' + [['English', 'en'], ['Español', 'es'], ['Tiếng Việt', 'vi']].map(function (l) {
-        return '<a class="btn btn-outline btn-small" lang="' + l[1] + '" href="' + esc(a.sourcePage) + '" target="_blank" rel="noopener">⬇ ' + l[0] + '</a>';
+        return '<a class="btn btn-outline btn-small" lang="' + l[1] + '" href="' + esc(a.sourcePage) + '" target="_blank" rel="noopener">Download: ' + l[0] + '</a>';
       }).join('') + '</div>' +
       '<p class="source-note"><span class="illustrative">Demo</span> Buttons open the current First 5 OC page where each language’s PDF lives. In production they would link straight to each file.</p>' +
       (more.length ? '<h3>More ' + esc(b.label) + ' for ' + esc(g.label) + '</h3><div class="related">' + more.map(function (r) {
