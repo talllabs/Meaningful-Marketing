@@ -3,117 +3,107 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kindergarten Readiness (EDI) — Demo | First 5 OC Proposal</title>
-  <meta name="description" content="Proposal demo: a layered, plain-language and interactive view of Early Development Index (EDI) kindergarten readiness data. All data illustrative.">
+  <title>Early Development Index (EDI) | Kindergarten Readiness Data — Demo | First 5 OC Proposal</title>
+  <meta name="description" content="Proposal demo: Orange County's Early Development Index, including 2025 kindergarten readiness data, developmental domains, the live neighborhood map, research and resources.">
   <meta name="robots" content="noindex">
   <link rel="stylesheet" href="demos.css">
   <style>
-    :root { --s0: #e6f4f8; --s1: #b5dfea; --s2: #7cc3d6; --s3: #16708a; --s4: #0b4a63; }
-    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .why { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
-    .why .num { font: 800 2.2rem 'Bricolage Grotesque'; color: var(--orange-ink); }
-    .why h3 { font-size: 1.35rem; margin: 6px 0 8px; }
-    .why p { margin: 0; color: var(--muted); }
-    .section { padding: 64px 0; }
+    :root { --c15: #9cc9d6; --c25: #07516e; }
+    .section { padding: 60px 0; }
     .section.white { background: #fff; }
-    .section-head { max-width: 760px; margin-bottom: 28px; }
-    .section-head h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); margin: 8px 0 12px; }
-    .domain-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-    .domain { background: var(--sky-2); border-radius: 18px; padding: 18px; }
-    .domain .ic { font-size: 1.8rem; }
-    .domain h3 { font-size: 1.1rem; margin: 8px 0 6px; }
-    .domain p { margin: 0; font-size: .9rem; color: var(--muted); }
-    .reading-tip { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; margin-top: 24px; }
-    .reading-tip .big { font: 800 3rem 'Bricolage Grotesque'; color: var(--dark); }
+    .section-head { max-width: 780px; margin-bottom: 26px; }
+    .section-head h2 { font-size: clamp(1.9rem, 4.2vw, 3rem); margin: 8px 0 12px; }
 
-    /* Explorer */
-    .explorer { background: var(--deep); color: #fff; padding: 64px 0 72px; }
-    .explorer .section-head h2 { color: #fff; }
-    .explorer .eyebrow { color: var(--yellow); }
-    .explorer .lede { color: #d9eef3; }
-    .ex-panel { background: #fff; color: var(--ink); border-radius: 26px; padding: 24px; }
-    .ex-controls { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); margin-bottom: 22px; }
-    .ex-controls fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
-    .ex-controls legend, .ex-controls label.lbl { font-weight: 800; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--dark); margin-bottom: 8px; display: block; padding: 0; }
-    .seg { display: inline-flex; border: 2px solid var(--line); border-radius: 999px; padding: 3px; gap: 2px; flex-wrap: wrap; }
-    .seg label { position: relative; }
-    .seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-    .seg span { display: block; padding: 7px 13px; border-radius: 999px; font-weight: 700; font-size: .88rem; cursor: pointer; }
-    .seg input:checked + span { background: var(--dark); color: #fff; }
-    .seg input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
-    .ex-controls .select { width: 100%; }
-    .ex-main { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; }
-    .ex-main > * { min-width: 0; }
-    .ex-title { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; justify-content: space-between; margin-bottom: 12px; }
-    .ex-title h3 { font-size: 1.35rem; }
-    .tilemap { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
-    .tile { min-width: 0; overflow: hidden; aspect-ratio: 1; border: 0; border-radius: 12px; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; padding: 8px; text-align: left; font-weight: 800; transition: transform .1s, opacity .15s; }
-    .tile small { font-size: .68rem; font-weight: 700; opacity: .9; }
-    .tile .code { display: none; }
-    .tile strong { font: 800 1.15rem 'Bricolage Grotesque'; }
-    .tile:hover { transform: scale(1.04); }
-    .tile[aria-pressed="true"] { box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--orange-ink); }
-    .tile.dim { opacity: .25; }
-    .tile.light { color: var(--ink); }
-    .tile.darkt { color: #fff; }
-    .legend { display: flex; align-items: center; gap: 10px; margin-top: 14px; font-size: .82rem; color: var(--muted); flex-wrap: wrap; }
-    .legend-bar { display: flex; gap: 2px; }
-    .legend-bar span { width: 38px; height: 12px; display: block; }
-    .legend-bar span:first-child { border-radius: 4px 0 0 4px; }
-    .legend-bar span:last-child { border-radius: 0 4px 4px 0; }
-    .hover-read { min-height: 1.6em; font-size: .9rem; margin-top: 8px; color: var(--ink); }
-    .stat { display: flex; gap: 18px; align-items: flex-end; flex-wrap: wrap; margin: 6px 0 16px; }
-    .stat .big { font: 800 3.4rem/1 'Bricolage Grotesque'; color: var(--ink); }
-    .stat .vs { font-size: .92rem; color: var(--muted); }
-    .stat .vs strong { color: var(--ink); }
-    .ex-side h4 { font: 800 .78rem Manrope; text-transform: uppercase; letter-spacing: .08em; color: var(--dark); margin: 18px 0 8px; }
-    .bars { display: grid; gap: 9px; }
-    .bar-row { display: grid; grid-template-columns: 110px 1fr 46px; gap: 10px; align-items: center; font-size: .86rem; }
-    .bar-row button { all: unset; cursor: pointer; font-weight: 700; }
-    .bar-row button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
-    .bar-row.on button { color: var(--orange-ink); text-decoration: underline; }
-    .bar-track { position: relative; height: 14px; background: var(--sky-2); border-radius: 4px; }
-    .bar-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--s3); border-radius: 0 4px 4px 0; }
-    .bar-avg { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); }
-    .bar-row .v { text-align: right; font-weight: 800; font-variant-numeric: tabular-nums; }
-    .key { display: flex; gap: 14px; font-size: .78rem; color: var(--muted); margin-top: 8px; flex-wrap: wrap; }
-    .key i { display: inline-block; width: 14px; height: 10px; background: var(--s3); border-radius: 2px; margin-right: 5px; vertical-align: middle; }
-    .key i.avg { width: 2px; height: 14px; background: var(--ink); }
-    .trend svg { width: 100%; height: auto; display: block; overflow: visible; }
-    .ex-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
-    .table-wrap { overflow-x: auto; margin-top: 18px; }
-    table { border-collapse: collapse; width: 100%; font-size: .9rem; font-variant-numeric: tabular-nums; }
-    th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+    .edi-hero { background: var(--sky); padding: 52px 0; position: relative; overflow: hidden; }
+    .edi-hero::after { content: ''; position: absolute; width: 260px; height: 260px; border-radius: 50%; background: var(--yellow); right: -100px; top: -150px; }
+    .edi-hero .wrap { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; position: relative; z-index: 1; }
+    .edi-hero h1 { font-size: clamp(2.2rem, 5vw, 3.9rem); margin: 10px 0 14px; }
+    .edi-hero h1 span { color: var(--blue); }
+    .headline { background: #fff; border-radius: 28px; padding: 26px; box-shadow: var(--shadow); }
+    .headline .big { font: 800 clamp(3.6rem, 9vw, 5.2rem)/1 'Bricolage Grotesque'; color: var(--ink); }
+    .headline p { margin: 6px 0 16px; font-weight: 700; }
+    .yrbars { display: grid; gap: 10px; }
+    .yr { display: grid; grid-template-columns: 44px 1fr 56px; gap: 10px; align-items: center; font-weight: 800; font-size: .9rem; font-variant-numeric: tabular-nums; }
+    .yr .track { height: 16px; background: var(--sky-2); border-radius: 4px; overflow: hidden; }
+    .yr .fill { height: 100%; border-radius: 0 4px 4px 0; }
+    .change { margin-top: 12px; font-weight: 800; color: var(--dark); }
+    .src { font-size: .78rem; color: var(--muted); margin-top: 10px; }
+    .not-screening { margin-top: 18px; background: #fff; border-left: 4px solid var(--blue); border-radius: 0 14px 14px 0; padding: 12px 16px; font-size: .95rem; max-width: 640px; }
+
+    .map-wrap { background: #fff; border: 1px solid var(--line); border-radius: 24px; overflow: hidden; }
+    .map-wrap iframe { display: block; width: 100%; min-height: 720px; border: 0; }
+    .map-placeholder { min-height: 520px; display: grid; place-items: center; padding: 30px; text-align: center; background:
+      repeating-linear-gradient(45deg, #f2fafc, #f2fafc 14px, #e8f5f8 14px, #e8f5f8 28px); }
+    .map-placeholder .inner { max-width: 560px; background: #fff; border-radius: 20px; padding: 26px; box-shadow: var(--shadow); }
+    .map-placeholder h3 { font-size: 1.5rem; margin: 8px 0; }
+    .map-help { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; margin-top: 22px; }
+    .map-help ol { margin: 0; padding-left: 22px; }
+    .map-help li { margin: 4px 0; }
+    .privacy { background: var(--sky-2); border-radius: 18px; padding: 18px; font-size: .95rem; }
+    .privacy h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    .privacy ul { margin: 0; padding-left: 20px; }
+    .legend-note { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: .9rem; }
+    .legend-note .ramp { display: flex; } .legend-note .ramp i { width: 26px; height: 12px; display: block; }
+
+    .domains { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .domain { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 8px; }
+    .domain .ic { font-size: 1.7rem; }
+    .domain h3 { font-size: 1.12rem; }
+    .domain p { margin: 0; font-size: .9rem; color: var(--muted); }
+    .domain .num { margin-top: auto; padding-top: 8px; border-top: 1px solid var(--line); font-size: .85rem; }
+    .domain .num strong { font: 800 1.5rem 'Bricolage Grotesque'; color: var(--ink); }
+
+    .chart-card { background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 22px; margin-top: 22px; }
+    .chart-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 20px; align-items: baseline; }
+    .chart-head h3 { font-size: 1.3rem; }
+    .legend { display: flex; gap: 16px; font-size: .85rem; color: var(--muted); }
+    .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+    .dumbbell svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .dumbbell .row:hover .lbl, .dumbbell .row:focus .lbl { text-decoration: underline; }
+    .table-wrap { overflow-x: auto; margin-top: 14px; }
+    table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font-size: .95rem; }
+    th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: right; }
     th:first-child, td:first-child { text-align: left; }
     thead th { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--dark); }
-    thead th button { all: unset; cursor: pointer; }
-    thead th button:focus-visible { outline: 3px solid var(--focus); }
-    tfoot td { font-weight: 800; }
-    .disclaimer { background: #fff3c4; color: #5b4300; border-radius: 16px; padding: 14px 18px; margin-bottom: 20px; font-size: .92rem; border: 1px dashed #b38f00; }
-    @media (max-width: 960px) {
-      .domain-grid { grid-template-columns: repeat(2, 1fr); }
-      .why-grid { grid-template-columns: 1fr; }
-      .ex-main, .ex-controls { grid-template-columns: 1fr; }
+
+    .classes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .cls { border-radius: 18px; padding: 18px; background: #fff; border: 1px solid var(--line); }
+    .cls strong { display: block; font: 800 1.25rem 'Bricolage Grotesque'; margin-bottom: 4px; }
+    .cls.on { border-top: 6px solid #2f7d32; } .cls.risk { border-top: 6px solid #b85c00; } .cls.vul { border-top: 6px solid #b3261e; }
+    .cls p { margin: 0; color: var(--muted); }
+
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .ticks li { padding-left: 28px; position: relative; }
+    .ticks li::before { content: '✓'; position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--sky); color: var(--dark); font-weight: 800; font-size: .75rem; display: grid; place-items: center; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pills span { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 7px 13px; font-weight: 700; font-size: .9rem; }
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .fact { background: var(--deep); color: #fff; border-radius: 20px; padding: 20px; }
+    .fact strong { display: block; font: 800 2rem 'Bricolage Grotesque'; color: var(--yellow); }
+    .fact p { margin: 4px 0 0; color: #d9eef3; font-size: .92rem; }
+
+    .res { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .res a { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 18px; font-weight: 800; text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 10px; min-height: 120px; }
+    .res a:hover { border-color: var(--blue); }
+    .res a span { color: var(--orange-ink); margin-top: auto; }
+    .contact-card { background: var(--sky); border-radius: 22px; padding: 22px; }
+
+    @media (max-width: 1000px) { .domains { grid-template-columns: repeat(2, 1fr); } .facts, .res { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 800px) {
+      .edi-hero .wrap, .map-help, .two { grid-template-columns: 1fr; }
+      .classes { grid-template-columns: 1fr; }
+      .map-wrap iframe { min-height: 620px; }
     }
-    @media (max-width: 560px) {
-      .domain-grid { grid-template-columns: 1fr; }
-      .ex-panel { padding: 16px; }
-      .tile { padding: 5px; border-radius: 8px; }
-      .tile small { font-size: .62rem; }
-      .tile .full { display: none; }
-      .tile .code { display: inline; }
-      .tile strong { font-size: .9rem; }
-      .bar-row { grid-template-columns: 104px 1fr 44px; font-size: .8rem; }
-      .tilemap { gap: 4px; }
-    }
+    @media (max-width: 520px) { .domains, .facts, .res { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <a class="skip" href="#explore">Skip to data explorer</a>
+  <a class="skip" href="#map-h">Skip to the EDI map</a>
 
   <div class="demo-banner" role="note">
     <div class="wrap">
-      <span><strong>Proposal demo.</strong> All EDI figures, areas and trends on this page are invented for illustration. They are not real Orange County results.</span>
+      <span><strong>Proposal demo.</strong> Text and countywide figures are from First 5 OC’s EDI page (2025). The live neighborhood map would be embedded from First 5 OC’s ArcGIS application.</span>
       <a href="index.html">← All demos</a>
     </div>
   </div>
@@ -133,26 +123,41 @@
   </header>
 
   <main>
-    <!-- LAYER 1: plain language -->
-    <section class="hero">
+    <section class="edi-hero">
       <div class="wrap">
-        <span class="eyebrow">Early Development Index (EDI)</span>
-        <h1>How ready are our kids <span>for kindergarten?</span></h1>
-        <p class="lede">Every few years, kindergarten teachers fill out a short checklist about each child in their class. Together, those checklists show how young children are doing across our county, and where families may need more support <em>before</em> kindergarten starts.</p>
+        <div>
+          <span class="eyebrow">Early Development Index (EDI)</span>
+          <h1>Orange County’s 2025 <span>Early Development Index</span></h1>
+          <p class="lede">Using data to create systems change in Orange County through policy change, targeted intervention, and will building.</p>
+          <p class="not-screening"><strong>A picture of communities, not individual children.</strong> The EDI is a population-level measure of how groups of young children are developing. It is never used to screen, identify or diagnose an individual child.</p>
+        </div>
+        <div class="headline" id="headline" aria-labelledby="hl-label"></div>
       </div>
     </section>
 
-    <section class="section white" aria-labelledby="why-h">
+    <section class="section white" aria-labelledby="map-h" id="map">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">Why it matters</span>
-          <h2 id="why-h">The first five years shape the next fifty.</h2>
-          <p class="lede">Most brain growth happens before age five. The EDI doesn’t grade children; it gives communities a picture of what’s working and where to help.</p>
+          <span class="eyebrow">Explore by neighborhood</span>
+          <h2 id="map-h" tabindex="-1">Early Development Index Map</h2>
+          <p class="lede">Explore kindergarten readiness across Orange County by location, developmental domain and year.</p>
         </div>
-        <div class="why-grid">
-          <div class="why"><div class="num" aria-hidden="true">01</div><h3>Spot needs early</h3><p>Neighborhood-level patterns show where families could use more support, years before gaps show up in test scores.</p></div>
-          <div class="why"><div class="num" aria-hidden="true">02</div><h3>Guide investments</h3><p>First 5 OC uses EDI results to decide where to focus programs, partnerships and funding. <span class="illustrative">Confirm wording</span></p></div>
-          <div class="why"><div class="num" aria-hidden="true">03</div><h3>Track progress together</h3><p>Repeating the EDI in waves lets schools, cities and nonprofits see whether things are improving over time.</p></div>
+        <div class="map-wrap" id="map-slot"></div>
+        <div class="map-help">
+          <div>
+            <h3 style="font-size:1.2rem;margin-bottom:8px">How to use the map</h3>
+            <ol id="map-steps"></ol>
+            <div class="legend-note"><span class="ramp" aria-hidden="true"><i style="background:#e6f4f8"></i><i style="background:#9cc9d6"></i><i style="background:#3d8aa3"></i><i style="background:#07516e"></i></span><span>Darker shades mean lower levels of kindergarten readiness.</span></div>
+          </div>
+          <div class="privacy">
+            <h3>How the map protects families</h3>
+            <ul>
+              <li>Children are mapped by <strong>where they live</strong>, not the school they attend.</li>
+              <li>Results are shown in aggregate. Individual children are never reported.</li>
+              <li>Neighborhoods with <strong>fewer than 10</strong> valid EDI records are suppressed for confidentiality.</li>
+            </ul>
+            <p style="margin:10px 0 0">Can’t use the map? <a href="https://first5oc.org/resources/edi/request-form/" target="_blank" rel="noopener">Request neighborhood data or help</a>.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -160,62 +165,87 @@
     <section class="section" aria-labelledby="dom-h">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">What the EDI looks at</span>
-          <h2 id="dom-h">Five areas of a child’s development</h2>
+          <span class="eyebrow">What the EDI measures</span>
+          <h2 id="dom-h">Five developmental domains</h2>
+          <p class="lede">Kindergarten teachers complete the EDI for each child during the second half of the school year. Results show the share of kindergartners on track in each area.</p>
         </div>
-        <div class="domain-grid" id="domain-grid"></div>
-        <div class="reading-tip note">
-          <span class="big" aria-hidden="true">↓</span>
-          <p style="margin:0"><strong>How to read the numbers:</strong> results show the <em>percent of kindergartners who are “vulnerable”</em> in an area, meaning they may need extra support. <strong>Lower numbers are better.</strong> Results describe groups of children, never individual kids.</p>
+        <div class="domains" id="domains"></div>
+
+        <div class="chart-card">
+          <div class="chart-head">
+            <h3 id="chart-h">On track by domain, 2015 vs. 2025</h3>
+            <div class="legend" aria-hidden="true"><span><i style="background:var(--c15)"></i>2015</span><span><i style="background:var(--c25)"></i>2025</span></div>
+          </div>
+          <p style="margin:6px 0 4px;color:var(--muted);font-size:.92rem">Language and cognition improved the most over the decade, while emotional maturity declined.</p>
+          <div class="dumbbell" id="dumbbell"></div>
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center;margin-top:8px">
+            <button type="button" class="btn btn-outline btn-small" id="table-toggle" aria-expanded="false" aria-controls="domain-table">Show as a table</button>
+            <p class="src" id="domain-src" style="margin:0"></p>
+          </div>
+          <div class="table-wrap" id="domain-table" hidden></div>
         </div>
       </div>
     </section>
 
-    <!-- LAYER 2: partner explorer -->
-    <section class="explorer" id="explore" aria-labelledby="ex-h" tabindex="-1">
+    <section class="section white" aria-labelledby="cls-h">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">For partners · Explore the data</span>
-          <h2 id="ex-h">Dig into results by area, domain and wave</h2>
-          <p class="lede">Choose a developmental area and a data wave, then select a place on the map to compare it with the county.</p>
+          <span class="eyebrow">Reading the results</span>
+          <h2 id="cls-h">How EDI results are classified</h2>
+          <p class="lede">In each of the five areas, every child’s results fall into one of three groups. <strong>Children who are on track in all five areas are considered ready for kindergarten.</strong></p>
         </div>
+        <div class="classes">
+          <div class="cls on"><strong>On track</strong><p>Above the 25th percentile.</p></div>
+          <div class="cls risk"><strong>At risk</strong><p>Above the 10th percentile and at or below the 25th percentile.</p></div>
+          <div class="cls vul"><strong>Not on track / vulnerable</strong><p>At or below the 10th percentile.</p></div>
+        </div>
+        <p class="note" style="margin-top:16px">The EDI also includes 16 developmental subareas, reported as <em>ready</em>, <em>somewhat ready</em> or <em>not ready</em>. Area and subarea classifications are not interchangeable.</p>
+      </div>
+    </section>
 
-        <div class="ex-panel">
-          <div class="disclaimer" role="note"><strong>◆ Illustrative data.</strong> The map tiles, area names and percentages are invented to show how the tool would work. Real geographies and published EDI results would replace them.</div>
+    <section class="section" aria-labelledby="why-h">
+      <div class="wrap two">
+        <div>
+          <span class="eyebrow">Why it matters</span>
+          <h2 id="why-h" style="font-size:clamp(1.8rem,4vw,2.6rem);margin:8px 0 12px">Ready for kindergarten, ready for what comes next</h2>
+          <p>Children who enter kindergarten ready are more likely to reach later milestones, including:</p>
+          <ul class="ticks" id="milestones"></ul>
+        </div>
+        <div>
+          <span class="eyebrow">How First 5 OC uses the data</span>
+          <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin:8px 0 12px">Turning data into support for families</h2>
+          <p>The EDI lets First 5 OC and its partners look at these patterns geographically, presented carefully so it helps rather than harms families and communities. It is used to:</p>
+          <div class="pills" id="uses"></div>
+        </div>
+      </div>
+    </section>
 
-          <form class="ex-controls" id="ex-form" onsubmit="return false">
-            <div>
-              <label class="lbl" for="ex-domain">Developmental area</label>
-              <select class="select" id="ex-domain"></select>
-            </div>
-            <fieldset>
-              <legend>Data wave</legend>
-              <div class="seg" id="ex-waves"></div>
-            </fieldset>
-            <div>
-              <label class="lbl" for="ex-region">Geography</label>
-              <select class="select" id="ex-region"><option value="">All of county</option></select>
-            </div>
-          </form>
+    <section class="section white" aria-labelledby="data-h">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Over a decade of data</span>
+          <h2 id="data-h">How the data is collected</h2>
+          <p class="lede">Kindergarten teachers receive online training and complete an EDI record for each child in their classroom. EDI data is collected across every Orange County elementary school district and from some charter schools.</p>
+        </div>
+        <div class="facts" id="facts"></div>
+        <p style="margin-top:16px;color:var(--muted);font-size:.92rem">The EDI was developed by Dan Offord and Magdalena Janus at the Offord Centre for Child Studies at McMaster University in Canada. The UCLA Center for Healthier Children, Families and Communities holds the U.S. implementation license and partners with First 5 Orange County.</p>
+      </div>
+    </section>
 
-          <div class="ex-main">
-            <div>
-              <div class="ex-title">
-                <h3 id="map-title"></h3>
-                <span class="illustrative">Illustrative · not to scale</span>
-              </div>
-              <div class="tilemap" id="tilemap" role="group" aria-labelledby="map-title"></div>
-              <div class="legend" id="legend" aria-hidden="true"></div>
-              <p class="hover-read" id="hover-read" aria-live="polite"></p>
-            </div>
-            <div class="ex-side" id="ex-side" aria-live="polite"></div>
+    <section class="section" aria-labelledby="res-h">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Research and resources</span>
+          <h2 id="res-h">Go deeper with the EDI</h2>
+        </div>
+        <div class="res" id="resources"></div>
+        <div class="two" style="margin-top:28px">
+          <div>
+            <h3 style="font-size:1.3rem;margin-bottom:8px">Request EDI data or assistance</h3>
+            <p style="margin-top:0">Agencies and partners can ask First 5 OC for:</p>
+            <ul class="ticks" id="requests"></ul>
           </div>
-
-          <div class="ex-foot">
-            <button type="button" class="btn btn-outline btn-small" id="table-toggle" aria-expanded="false" aria-controls="table-wrap">Show as a table</button>
-            <span style="font-size:.85rem;color:var(--muted)">Source: placeholder · Sample sizes shown are invented.</span>
-          </div>
-          <div class="table-wrap" id="table-wrap" hidden></div>
+          <div class="contact-card" id="contact"></div>
         </div>
       </div>
     </section>
@@ -223,7 +253,7 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <span>Proposal concept by Meaningful Marketing House for First 5 Orange County. Not an official First 5 OC page. Data shown is illustrative.</span>
+      <span>Proposal concept by Meaningful Marketing House for First 5 Orange County. EDI content and figures from first5oc.org; domain results as reported in CHOC’s 2025 Community Health Needs Assessment.</span>
       <a href="index.html">Back to all demos</a>
     </div>
   </footer>

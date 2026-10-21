@@ -1,187 +1,103 @@
 (function () {
   var D = window.F5_DATA.edi, esc = F5.esc;
-  var RAMP = ['var(--s0)', 'var(--s1)', 'var(--s2)', 'var(--s3)', 'var(--s4)'];
-  var st = { domain: 'anyOne', wave: D.waves[D.waves.length - 1].id, region: '', area: null, sortKey: 'name', sortDir: 1 };
+  var pct = function (v) { return v.toFixed(1) + '%'; };
+  var ext = function (url, label) { return '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + label + '</a>'; };
 
-  var byId = function (list, id) { return list.filter(function (x) { return x.id === id; })[0]; };
-  var fmt = function (v) { return v.toFixed(1) + '%'; };
-
-  // ----- Layer 1: domain cards -----
-  document.getElementById('domain-grid').innerHTML = D.domains.filter(function (d) { return d.id !== 'anyOne'; }).map(function (d) {
-    return '<div class="domain"><div class="ic" aria-hidden="true">' + d.icon + '</div><h3>' + esc(d.label) + '</h3><p>' + esc(d.plain) + '</p></div>';
-  }).join('');
-
-  // ----- Controls -----
-  var domSel = document.getElementById('ex-domain');
-  domSel.innerHTML = D.domains.map(function (d) { return '<option value="' + d.id + '">' + esc(d.label) + '</option>'; }).join('');
-  document.getElementById('ex-waves').innerHTML = D.waves.map(function (w) {
-    return '<label><input type="radio" name="wave" value="' + w.id + '"' + (w.id === st.wave ? ' checked' : '') + '><span>' + esc(w.label) + '</span></label>';
-  }).join('');
-  var regSel = document.getElementById('ex-region');
-  regSel.innerHTML += D.regions.map(function (r) { return '<option value="' + r.id + '">' + esc(r.label) + '</option>'; }).join('');
-
-  // Weighted average across a set of areas (weighted by children assessed).
-  function avg(areas, domain, wave) {
-    var n = 0, s = 0;
-    areas.forEach(function (a) { var v = a.values[wave]; s += v[domain] * v.assessed; n += v.assessed; });
-    return n ? s / n : 0;
-  }
-  function inRegion(a) { return !st.region || a.region === st.region; }
-
-  // Fixed bins per domain across ALL waves so colors stay comparable when switching waves.
-  function bins(domain) {
-    var vals = [];
-    D.areas.forEach(function (a) { D.waves.forEach(function (w) { vals.push(a.values[w.id][domain]); }); });
-    var lo = Math.floor(Math.min.apply(null, vals)), hi = Math.ceil(Math.max.apply(null, vals));
-    var step = (hi - lo) / 5;
-    return [0, 1, 2, 3, 4, 5].map(function (i) { return lo + step * i; });
-  }
-  function binOf(v, b) { for (var i = 4; i >= 0; i--) if (v >= b[i]) return i; return 0; }
-
-  var hoverRead = document.getElementById('hover-read');
-
-  function renderMap() {
-    var dom = byId(D.domains, st.domain), wave = byId(D.waves, st.wave), b = bins(st.domain);
-    document.getElementById('map-title').textContent = dom.short + ' · ' + wave.label;
-    var maxRow = Math.max.apply(null, D.areas.map(function (a) { return a.row; }));
-    var map = document.getElementById('tilemap');
-    map.style.gridTemplateRows = 'repeat(' + (maxRow + 1) + ', auto)';
-    map.innerHTML = D.areas.map(function (a) {
-      var v = a.values[st.wave][st.domain], k = binOf(v, b);
-      return '<button type="button" class="tile ' + (k >= 3 ? 'darkt' : 'light') + (inRegion(a) ? '' : ' dim') + '" ' +
-        'style="grid-column:' + (a.col + 1) + ';grid-row:' + (a.row + 1) + ';background:' + RAMP[k] + '" ' +
-        'data-id="' + a.id + '" aria-pressed="' + (st.area === a.id) + '" ' +
-        'aria-label="' + esc(a.name) + ': ' + fmt(v) + ' vulnerable' + (inRegion(a) ? '' : ' (outside selected geography)') + '">' +
-        '<small aria-hidden="true"><span class="full">' + esc(a.name.replace(' Area ', ' ')) + '</span><span class="code">' + esc(a.id.toUpperCase()) + '</span></small><strong>' + v.toFixed(1) + '</strong></button>';
-    }).join('');
-    document.getElementById('legend').innerHTML = '<span>Lower % (better)</span><span class="legend-bar">' +
-      RAMP.map(function (c, i) { return '<span style="background:' + c + '" title="' + b[i].toFixed(1) + '–' + b[i + 1].toFixed(1) + '%"></span>'; }).join('') +
-      '</span><span>Higher %</span><span>· ' + b[0].toFixed(0) + '–' + b[5].toFixed(0) + '% range</span>';
-  }
-
-  function trendSvg(area, scope) {
-    var W = 320, H = 130, P = { l: 34, r: 14, t: 14, b: 26 };
-    var a = D.waves.map(function (w) { return area ? area.values[w.id][st.domain] : avg(scope, st.domain, w.id); });
-    var c = D.waves.map(function (w) { return avg(D.areas, st.domain, w.id); });
-    var all = a.concat(c), lo = Math.floor(Math.min.apply(null, all) - 1), hi = Math.ceil(Math.max.apply(null, all) + 1);
-    var x = function (i) { return P.l + i * (W - P.l - P.r) / (D.waves.length - 1); };
-    var y = function (v) { return P.t + (hi - v) / (hi - lo) * (H - P.t - P.b); };
-    var path = function (arr) { return arr.map(function (v, i) { return (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(v).toFixed(1); }).join(' '); };
-    var grid = [lo, (lo + hi) / 2, hi].map(function (g) {
-      return '<line x1="' + P.l + '" x2="' + (W - P.r) + '" y1="' + y(g) + '" y2="' + y(g) + '" stroke="#dbe8eb" stroke-width="1"/>' +
-        '<text x="' + (P.l - 6) + '" y="' + (y(g) + 4) + '" text-anchor="end" font-size="10" fill="#4d6670">' + g.toFixed(0) + '%</text>';
-    }).join('');
-    var xl = D.waves.map(function (w, i) { return '<text x="' + x(i) + '" y="' + (H - 6) + '" text-anchor="' + (i === 0 ? 'start' : i === D.waves.length - 1 ? 'end' : 'middle') + '" font-size="11" fill="#4d6670">' + esc(w.label) + '</text>'; }).join('');
-    var dots = a.map(function (v, i) {
-      return '<circle cx="' + x(i) + '" cy="' + y(v) + '" r="' + (D.waves[i].id === st.wave ? 6 : 4.5) + '" fill="#16708a" stroke="#fff" stroke-width="2"><title>' + esc(D.waves[i].label) + ': ' + fmt(v) + '</title></circle>';
-    }).join('');
-    var label = area ? area.name : (st.region ? 'Selected geography' : 'County');
-    return '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Trend for ' + esc(label) + ': ' + a.map(function (v, i) { return D.waves[i].label + ' ' + fmt(v); }).join(', ') + '">' +
-      grid + xl +
-      (area || st.region ? '<path d="' + path(c) + '" fill="none" stroke="#12313d" stroke-width="2" stroke-dasharray="4 4"/>' : '') +
-      '<path d="' + path(a) + '" fill="none" stroke="#16708a" stroke-width="2.5"/>' + dots + '</svg>' +
-      '<div class="key"><span><i></i>' + esc(label) + '</span>' + (area || st.region ? '<span><i class="avg" style="background:none;border-left:2px dashed #12313d"></i>County average</span>' : '') + '</div>';
-  }
-
-  function renderSide() {
-    var scope = D.areas.filter(inRegion);
-    var area = st.area ? byId(D.areas, st.area) : null;
-    var dom = byId(D.domains, st.domain), wave = byId(D.waves, st.wave);
-    var wi = D.waves.indexOf(wave);
-    var val = area ? area.values[st.wave][st.domain] : avg(scope, st.domain, st.wave);
-    var county = avg(D.areas, st.domain, st.wave);
-    var prev = wi > 0 ? (area ? area.values[D.waves[wi - 1].id][st.domain] : avg(scope, st.domain, D.waves[wi - 1].id)) : null;
-    var title = area ? area.name : (st.region ? byId(D.regions, st.region).label : 'Orange County overall');
-    var assessed = area ? area.values[st.wave].assessed : scope.reduce(function (s, a) { return s + a.values[st.wave].assessed; }, 0);
-
-    var change = '';
-    if (prev != null) {
-      var d = val - prev;
-      change = Math.abs(d) < 0.3 ? 'About the same as ' + D.waves[wi - 1].label
-        : (d < 0 ? '▼ Down ' : '▲ Up ') + Math.abs(d).toFixed(1) + ' pts since ' + D.waves[wi - 1].label + (d < 0 ? ' (improving)' : ' (more children need support)');
-    }
-    var compare = (area || st.region)
-      ? 'County average: <strong>' + fmt(county) + '</strong>' + (val < county ? ' · below average (better)' : ' · above average')
-      : 'Across all ' + D.areas.length + ' illustrative areas';
-
-    document.getElementById('ex-side').innerHTML =
-      '<div class="ex-title"><h3>' + esc(title) + '</h3>' + (area ? '<button type="button" class="btn-link" id="clear-area">Back to ' + (st.region ? 'geography' : 'county') + '</button>' : '') + '</div>' +
-      '<p style="margin:0;color:var(--muted);font-size:.9rem">' + esc(dom.label) + ' · ' + esc(wave.label) + ' · ' + esc(wave.years) + '</p>' +
-      '<div class="stat"><span class="big">' + fmt(val) + '</span><span class="vs">of kindergartners vulnerable<br>' + compare + '</span></div>' +
-      (change ? '<p style="margin:-6px 0 0;font-weight:700;font-size:.92rem">' + change + '</p>' : '') +
-      '<p style="margin:6px 0 0;font-size:.82rem;color:var(--muted)">≈ ' + assessed.toLocaleString() + ' children assessed (illustrative)</p>' +
-      '<h4>Change across waves</h4><div class="trend">' + trendSvg(area, scope) + '</div>' +
-      '<h4>All five areas · ' + esc(wave.label) + '</h4><div class="bars">' + D.domains.map(function (d) {
-        var v = area ? area.values[st.wave][d.id] : avg(scope, d.id, st.wave), c = avg(D.areas, d.id, st.wave);
-        var max = 40;
-        return '<div class="bar-row' + (d.id === st.domain ? ' on' : '') + '"><button type="button" data-domain="' + d.id + '" aria-label="Show ' + esc(d.label) + ' on map">' + esc(d.short) + '</button>' +
-          '<div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:' + Math.min(100, v / max * 100) + '%"></div>' +
-          ((area || st.region) ? '<div class="bar-avg" style="left:' + Math.min(100, c / max * 100) + '%" title="County ' + fmt(c) + '"></div>' : '') + '</div>' +
-          '<span class="v">' + fmt(v) + '</span></div>';
+  // ----- Headline -----
+  var h = D.headline, diff = h.ready - h.compareReady;
+  document.getElementById('headline').innerHTML =
+    '<span class="eyebrow" id="hl-label">Kindergarten readiness, ' + h.year + '</span>' +
+    '<div class="big">' + pct(h.ready) + '</div>' +
+    '<p>of Orange County kindergartners were ready for kindergarten in ' + h.year + '.</p>' +
+    '<div class="yrbars" role="img" aria-label="Ready for kindergarten: ' + h.compareYear + ' ' + pct(h.compareReady) + ', ' + h.year + ' ' + pct(h.ready) + '">' +
+      [[h.compareYear, h.compareReady, 'var(--c15)'], [h.year, h.ready, 'var(--c25)']].map(function (r) {
+        return '<div class="yr" aria-hidden="true"><span>' + r[0] + '</span><span class="track"><span class="fill" style="display:block;width:' + r[1] + '%;background:' + r[2] + '"></span></span><span>' + pct(r[1]) + '</span></div>';
       }).join('') + '</div>' +
-      ((area || st.region) ? '<div class="key"><span><i></i>' + esc(area ? area.name : 'Selected geography') + '</span><span><i class="avg"></i>County average</span></div>' : '');
+    '<div class="change">▲ +' + diff.toFixed(1) + ' percentage points since ' + h.compareYear + '</div>' +
+    '<div class="src">Source: ' + ext(h.sourceUrl, esc(h.source)) + '</div>';
 
-    var back = document.getElementById('clear-area');
-    if (back) back.addEventListener('click', function () { var id = st.area; st.area = null; render(); var t = document.querySelector('.tile[data-id="' + id + '"]'); if (t) t.focus(); });
+  // ----- Live map slot: embed the ArcGIS app once its URL is configured -----
+  var slot = document.getElementById('map-slot');
+  if (D.mapUrl) {
+    slot.innerHTML = '<iframe src="' + esc(D.mapUrl) + '" title="Orange County Early Development Index interactive map" width="100%" height="720" loading="lazy" allow="fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+  } else {
+    slot.innerHTML = '<div class="map-placeholder"><div class="inner">' +
+      '<span class="illustrative">Live map goes here</span>' +
+      '<h3>First 5 OC’s live ArcGIS EDI map</h3>' +
+      '<p>The real map stays connected to First 5 OC’s ArcGIS application, so neighborhood results, filters and future data updates keep working without a website change. In the new site it embeds here, full width.</p>' +
+      '<a class="btn btn-primary" href="' + esc(D.pageUrl) + '" target="_blank" rel="noopener">Open the current live map<span class="sr-only"> on first5oc.org (opens in a new tab)</span></a>' +
+      '<p class="src" style="margin-top:14px">For the build team: paste the iframe <code>src</code> from the current EDI page into <code>mapUrl</code> in <code>data/edi.js</code>.</p>' +
+      '</div></div>';
   }
+  document.getElementById('map-steps').innerHTML = D.mapSteps.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('');
 
-  function renderTable() {
-    var wrap = document.getElementById('table-wrap');
-    if (wrap.hidden) return;
-    var rows = D.areas.filter(inRegion).map(function (a) { var r = { id: a.id, name: a.name }; D.domains.forEach(function (d) { r[d.id] = a.values[st.wave][d.id]; }); r.assessed = a.values[st.wave].assessed; return r; });
-    rows.sort(function (x, y) { var k = st.sortKey; return (typeof x[k] === 'string' ? x[k].localeCompare(y[k]) : x[k] - y[k]) * st.sortDir; });
-    var cols = [{ id: 'name', label: 'Area' }].concat(D.domains.map(function (d) { return { id: d.id, label: d.short }; })).concat([{ id: 'assessed', label: 'Assessed' }]);
-    var sortAttr = function (c) { return c.id === st.sortKey ? (st.sortDir > 0 ? 'ascending' : 'descending') : 'none'; };
-    wrap.innerHTML = '<table><caption class="sr-only">% of kindergartners vulnerable by area, ' + esc(byId(D.waves, st.wave).label) + ' (illustrative data)</caption><thead><tr>' +
-      cols.map(function (c) { return '<th scope="col" aria-sort="' + sortAttr(c) + '"><button type="button" data-sort="' + c.id + '">' + esc(c.label) + (c.id === st.sortKey ? (st.sortDir > 0 ? ' ▲' : ' ▼') : '') + '</button></th>'; }).join('') +
-      '</tr></thead><tbody>' + rows.map(function (r) {
-        return '<tr><th scope="row" style="text-align:left;font-weight:700">' + esc(r.name) + '</th>' + D.domains.map(function (d) { return '<td>' + fmt(r[d.id]) + '</td>'; }).join('') + '<td>' + r.assessed.toLocaleString() + '</td></tr>';
-      }).join('') + '</tbody><tfoot><tr><td>County average</td>' + D.domains.map(function (d) { return '<td>' + fmt(avg(D.areas, d.id, st.wave)) + '</td>'; }).join('') +
-      '<td>' + D.areas.reduce(function (s, a) { return s + a.values[st.wave].assessed; }, 0).toLocaleString() + '</td></tr></tfoot></table>';
+  // ----- Domain cards -----
+  function delta(d) {
+    var x = d.y2025 - d.y2015;
+    return (x >= 0 ? '▲ +' : '▼ ') + x.toFixed(1) + ' pts';
   }
+  document.getElementById('domains').innerHTML = D.domains.map(function (d) {
+    return '<article class="domain"><span class="ic" aria-hidden="true">' + d.icon + '</span><h3>' + esc(d.title) + '</h3><p>' + esc(d.text) + '</p>' +
+      '<div class="num"><strong>' + pct(d.y2025) + '</strong> on track in 2025<br><span style="color:var(--muted)">' + delta(d) + ' since 2015 (' + pct(d.y2015) + ')</span></div></article>';
+  }).join('');
 
-  function render() { renderMap(); renderSide(); renderTable(); }
-
-  // ----- Events -----
-  domSel.addEventListener('change', function () { st.domain = domSel.value; render(); });
-  document.getElementById('ex-waves').addEventListener('change', function (e) { st.wave = e.target.value; render(); });
-  regSel.addEventListener('change', function () {
-    st.region = regSel.value;
-    if (st.area && !inRegion(byId(D.areas, st.area))) st.area = null;
-    render();
-  });
-  var map = document.getElementById('tilemap');
-  map.addEventListener('click', function (e) {
-    var t = e.target.closest('.tile'); if (!t) return;
-    st.area = st.area === t.dataset.id ? null : t.dataset.id;
-    var id = t.dataset.id; render();
-    var again = map.querySelector('.tile[data-id="' + id + '"]'); if (again) again.focus();
-  });
-  function readout(e) {
-    var t = e.target.closest('.tile'); if (!t) return;
-    var a = byId(D.areas, t.dataset.id), v = a.values[st.wave][st.domain], c = avg(D.areas, st.domain, st.wave);
-    hoverRead.textContent = a.name + ': ' + fmt(v) + ' (county ' + fmt(c) + ') — select to compare';
+  // ----- Dumbbell chart: 2015 -> 2025 per domain -----
+  // Drawn at the container's real pixel width so text stays full size; on
+  // narrow screens each label sits above its row instead of to the left.
+  var chartEl = document.getElementById('dumbbell');
+  function drawChart() {
+    var W = Math.max(300, chartEl.clientWidth || 720), narrow = W < 560;
+    var rowH = narrow ? 58 : 46, P = narrow ? { l: 12, r: 52, t: 10, b: 30 } : { l: 210, r: 70, t: 26, b: 30 };
+    var H = P.t + P.b + rowH * D.domains.length, lo = 60, hi = 90;
+    var x = function (v) { return P.l + 40 + (v - lo) / (hi - lo) * (W - P.l - P.r - 40); };
+    var grid = [60, 70, 80, 90].map(function (g) {
+      return '<line x1="' + x(g) + '" x2="' + x(g) + '" y1="' + (P.t - 4) + '" y2="' + (H - P.b) + '" stroke="#dbe8eb"/>' +
+        '<text x="' + x(g) + '" y="' + (H - P.b + 18) + '" text-anchor="middle" font-size="12" fill="#4d6670">' + g + '%</text>';
+    }).join('');
+    var rows = D.domains.map(function (d, i) {
+      var top = P.t + i * rowH, y = narrow ? top + 38 : top + rowH / 2, up = d.y2025 >= d.y2015;
+      var a = x(d.y2015), b = x(d.y2025);
+      // Each value label sits on the outside of its dot so the pair never collides.
+      var l15 = up ? [a - 10, 'end'] : [a + 10, 'start'], l25 = up ? [b + 10, 'start'] : [b - 10, 'end'];
+      return '<g class="row" tabindex="0" role="img" aria-label="' + esc(d.title) + ': ' + pct(d.y2015) + ' in 2015, ' + pct(d.y2025) + ' in 2025, ' + delta(d) + '">' +
+        '<title>' + esc(d.title) + ': ' + pct(d.y2015) + ' → ' + pct(d.y2025) + ' (' + delta(d) + ')</title>' +
+        '<rect x="0" y="' + top + '" width="' + W + '" height="' + rowH + '" fill="transparent"/>' +
+        '<text class="lbl" x="' + (narrow ? P.l : 0) + '" y="' + (narrow ? top + 16 : y + 4) + '" font-size="13" font-weight="700" fill="#12313d">' + esc(d.short) + '</text>' +
+        '<line x1="' + a + '" x2="' + b + '" y1="' + y + '" y2="' + y + '" stroke="#7a9aa4" stroke-width="2"/>' +
+        '<circle cx="' + a + '" cy="' + y + '" r="7" fill="var(--c15)" stroke="#fff" stroke-width="2"/>' +
+        '<circle cx="' + b + '" cy="' + y + '" r="8" fill="var(--c25)" stroke="#fff" stroke-width="2"/>' +
+        '<text x="' + l15[0] + '" y="' + (y + 4) + '" text-anchor="' + l15[1] + '" font-size="12" fill="#4d6670">' + pct(d.y2015) + '</text>' +
+        '<text x="' + l25[0] + '" y="' + (y + 4) + '" text-anchor="' + l25[1] + '" font-size="12.5" font-weight="800" fill="#12313d">' + pct(d.y2025) + '</text>' +
+        '</g>';
+    }).join('');
+    chartEl.innerHTML = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" aria-labelledby="chart-h">' + grid + rows + '</svg>';
   }
-  map.addEventListener('mouseover', readout);
-  map.addEventListener('focusin', readout);
-  map.addEventListener('mouseleave', function () { hoverRead.textContent = ''; });
-  document.getElementById('ex-side').addEventListener('click', function (e) {
-    var b = e.target.closest('[data-domain]'); if (!b) return;
-    st.domain = domSel.value = b.dataset.domain; render();
-    var again = document.querySelector('[data-domain="' + st.domain + '"]'); if (again) again.focus();
-  });
-  var tbtn = document.getElementById('table-toggle'), twrap = document.getElementById('table-wrap');
+  drawChart();
+  var lastW = chartEl.clientWidth;
+  window.addEventListener('resize', function () { if (chartEl.clientWidth !== lastW) { lastW = chartEl.clientWidth; drawChart(); } });
+  document.getElementById('domain-src').innerHTML = 'Source: ' + ext(D.domainSource.url, esc(D.domainSource.label));
+
+  var tbtn = document.getElementById('table-toggle'), twrap = document.getElementById('domain-table');
+  twrap.innerHTML = '<table><caption class="sr-only">Share of Orange County kindergartners on track by EDI domain, 2015 and 2025</caption><thead><tr><th scope="col">Domain</th><th scope="col">2015</th><th scope="col">2025</th><th scope="col">Change</th></tr></thead><tbody>' +
+    D.domains.map(function (d) { return '<tr><th scope="row" style="text-align:left;font-weight:700">' + esc(d.title) + '</th><td>' + pct(d.y2015) + '</td><td>' + pct(d.y2025) + '</td><td>' + delta(d) + '</td></tr>'; }).join('') +
+    '<tr><th scope="row" style="text-align:left">Ready for kindergarten (all five)</th><td>' + pct(h.compareReady) + '</td><td>' + pct(h.ready) + '</td><td>▲ +' + diff.toFixed(1) + ' pts</td></tr></tbody></table>';
   tbtn.addEventListener('click', function () {
     twrap.hidden = !twrap.hidden;
     tbtn.setAttribute('aria-expanded', !twrap.hidden);
     tbtn.textContent = twrap.hidden ? 'Show as a table' : 'Hide table';
-    renderTable();
-  });
-  twrap.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-sort]'); if (!b) return;
-    st.sortDir = st.sortKey === b.dataset.sort ? -st.sortDir : 1; st.sortKey = b.dataset.sort;
-    renderTable(); twrap.querySelector('[data-sort="' + st.sortKey + '"]').focus();
   });
 
-  render();
+  // ----- Lists -----
+  document.getElementById('milestones').innerHTML = D.milestones.map(function (m) { return '<li>' + esc(m) + '</li>'; }).join('');
+  document.getElementById('uses').innerHTML = D.uses.map(function (u) { return '<span>' + esc(u) + '</span>'; }).join('');
+  document.getElementById('facts').innerHTML = D.facts.map(function (f) { return '<div class="fact"><strong>' + esc(f.big) + '</strong><p>' + esc(f.text) + '</p></div>'; }).join('');
+  document.getElementById('resources').innerHTML = D.resources.map(function (r) {
+    return '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.label) + '<span aria-hidden="true">Open →</span><span class="sr-only"> (opens in a new tab)</span></a>';
+  }).join('');
+  document.getElementById('requests').innerHTML = D.requestOptions.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('');
+  var c = D.contact;
+  document.getElementById('contact').innerHTML = '<h3 style="font-size:1.3rem;margin-bottom:8px">Questions about the EDI?</h3>' +
+    '<p style="margin:0 0 10px"><strong>' + esc(c.name) + '</strong><br><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a></p>' +
+    '<p style="margin:0 0 14px">First 5 Orange County<br><a href="mailto:' + esc(c.general) + '">' + esc(c.general) + '</a> · <a href="tel:+17148345310">' + esc(c.phone) + '</a></p>' +
+    '<a class="btn btn-primary" href="https://first5oc.org/resources/edi/request-form/" target="_blank" rel="noopener">Request EDI data or help<span class="sr-only"> (opens in a new tab)</span></a>';
 })();

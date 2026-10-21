@@ -1,281 +1,928 @@
-/* Learning Link — ILLUSTRATIVE SAMPLE DATA
-   ⚠ Location names, addresses, phone numbers, schedules and services are
-   INVENTED for a proposal demo. Do not treat any of it as real.
+/* Learning Link — FY 2026-27 location data for the proposal demo.
+   GENERATED from first5oc-learning-link-live-locations.json (the live First 5 OC
+   Learning Link page, updated October 2026). District, site name, address, phone,
+   days, times, fee, registration URL, status and QA notes are copied unchanged.
 
-   HOW STAFF WOULD UPDATE THIS TWICE A YEAR
-   - Add a new entry to `terms` (e.g. Spring 2027) and set `currentTerm`.
-   - Under each location's `schedules`, add sessions for the new term id.
-   - Locations with no sessions for the current term automatically show a
-     "Schedule coming soon" message instead of disappearing.
-   In production this would map to a CMS collection (one record per location,
-   with a repeatable "session" field grouped by term). */
+   Added for the demo:
+   - `id` and `city` (city read from the address)
+   - `approxLat` / `approxLng`: the approximate CENTER OF THE CITY, so pins can be
+     drawn without a geocoding service. These are not the sites' real positions.
+     Before production, geocode each address once and store `latitude`/`longitude`.
+   - Tustin USD appears in `districts` as coming soon (no named site yet). */
 window.F5_DATA = window.F5_DATA || {};
 window.F5_DATA.learningLink = {
-  currentTerm: 'fall-2026',
-  terms: [
-    { id: 'fall-2026', label: 'Fall 2026', range: 'Aug 2026 – Jan 2027', updated: 'Aug 1, 2026' },
-    { id: 'spring-2027', label: 'Spring 2027', range: 'Feb 2027 – Jul 2027', updated: 'Draft · publishes Jan 2027' }
-  ],
-  taxonomy: {
-    regions: [
-      { id: 'north', label: 'North County' },
-      { id: 'central', label: 'Central County' },
-      { id: 'west', label: 'West County' },
-      { id: 'south', label: 'South County' }
-    ],
-    days: [
-      { id: 'Mon', label: 'Mon' }, { id: 'Tue', label: 'Tue' }, { id: 'Wed', label: 'Wed' },
-      { id: 'Thu', label: 'Thu' }, { id: 'Fri', label: 'Fri' }, { id: 'Sat', label: 'Sat' }
-    ],
-    times: [
-      { id: 'morning', label: 'Morning (before noon)' },
-      { id: 'afternoon', label: 'Afternoon (12–5 pm)' },
-      { id: 'evening', label: 'Evening (after 5 pm)' }
-    ],
-    languages: [
-      { id: 'en', label: 'English' }, { id: 'es', label: 'Español' }, { id: 'vi', label: 'Tiếng Việt' }, { id: 'ko', label: '한국어' }
-    ],
-    services: [
-      { id: 'playlearn', label: 'Play & learn groups' },
-      { id: 'screening', label: 'Developmental screenings' },
-      { id: 'workshops', label: 'Parent workshops' },
-      { id: 'books', label: 'Free books' },
-      { id: 'kinder', label: 'Kindergarten prep' }
-    ],
-    settings: [
-      { id: 'library', label: 'Library' },
-      { id: 'community', label: 'Community center' },
-      { id: 'school', label: 'School campus' },
-      { id: 'frc', label: 'Family resource center' },
-      { id: 'park', label: 'Park & rec' }
-    ]
+ "source": "https://first5oc.org/resources/parent-resources/learning-link/",
+ "fiscalYear": "FY 2026-27",
+ "updated": "October 2026",
+ "photo": {
+  "url": "https://first5oc.org/wp-content/uploads/2024/11/Learning-Link-2024-2025-03.jpeg",
+  "alt": "A parent and young child playing together at an Orange Unified School District Learning Link session",
+  "credit": "First 5 Orange County",
+  "story": "https://first5oc.org/ousd-learning-link-finds-success-in-new-summer-program/"
+ },
+ "districts": [
+  {
+   "name": "Anaheim Elementary School District",
+   "status": "listed"
   },
-
-  // x / y = position (0–100) on the simplified illustrative county map.
-  locations: [
-    {
-      id: 'ana-1', name: 'Sample Site: Northside Family Center', setting: 'frc', city: 'Anaheim', region: 'north', x: 33, y: 22,
-      address: '100 Example Ave, Anaheim, CA 92800', phone: '(000) 555-0101',
-      languages: ['en', 'es'], services: ['playlearn', 'screening', 'workshops'], dropIn: true,
-      access: 'Ground floor, stroller parking, accessible restroom.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Tue', start: '09:30', end: '11:00', name: 'Play & Learn (ages 0–3)', lang: 'en' },
-          { day: 'Thu', start: '09:30', end: '11:00', name: 'Juega y Aprende (0–3 años)', lang: 'es' },
-          { day: 'Thu', start: '18:00', end: '19:30', name: 'Parent workshop: Bedtime routines', lang: 'es' }
-        ],
-        'spring-2027': [
-          { day: 'Tue', start: '09:30', end: '11:00', name: 'Play & Learn (ages 0–3)', lang: 'en' },
-          { day: 'Wed', start: '10:00', end: '11:30', name: 'Juega y Aprende (0–3 años)', lang: 'es' }
-        ]
-      }
-    },
-    {
-      id: 'ful-1', name: 'Sample Site: Hillcrest Library Branch', setting: 'library', city: 'Fullerton', region: 'north', x: 24, y: 12,
-      address: '200 Example Blvd, Fullerton, CA 92800', phone: '(000) 555-0102',
-      languages: ['en', 'ko'], services: ['playlearn', 'books'], dropIn: true,
-      access: 'Elevator access; story room on second floor.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Mon', start: '10:00', end: '11:00', name: 'Baby & Me Rhymes', lang: 'en' },
-          { day: 'Wed', start: '10:00', end: '11:00', name: 'Toddler Story Play', lang: 'en' },
-          { day: 'Sat', start: '10:30', end: '11:30', name: '한국어 이야기 시간 (Korean story time)', lang: 'ko' }
-        ],
-        'spring-2027': []
-      }
-    },
-    {
-      id: 'bp-1', name: 'Sample Site: Parkview Elementary Room 4', setting: 'school', city: 'Buena Park', region: 'north', x: 14, y: 20,
-      address: '300 Example St, Buena Park, CA 92800', phone: '(000) 555-0103',
-      languages: ['en', 'es'], services: ['kinder', 'playlearn'], dropIn: false,
-      access: 'Enter through main office; registration required.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Wed', start: '13:00', end: '14:30', name: 'Ready for K: Pre-K playgroup', lang: 'en' },
-          { day: 'Fri', start: '13:00', end: '14:30', name: 'Listos para el Kínder', lang: 'es' }
-        ],
-        'spring-2027': [
-          { day: 'Wed', start: '13:00', end: '14:30', name: 'Ready for K: Pre-K playgroup', lang: 'en' }
-        ]
-      }
-    },
-    {
-      id: 'or-1', name: 'Sample Site: Orchard Park Rec Room', setting: 'park', city: 'Orange', region: 'central', x: 47, y: 30,
-      address: '400 Example Way, Orange, CA 92800', phone: '(000) 555-0104',
-      languages: ['en'], services: ['playlearn'], dropIn: true,
-      access: 'Single-level building next to playground.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Fri', start: '09:00', end: '10:30', name: 'Move & Play (ages 1–4)', lang: 'en' }
-        ],
-        'spring-2027': [
-          { day: 'Fri', start: '09:00', end: '10:30', name: 'Move & Play (ages 1–4)', lang: 'en' },
-          { day: 'Sat', start: '09:30', end: '11:00', name: 'Weekend Family Play', lang: 'en' }
-        ]
-      }
-    },
-    {
-      id: 'sa-1', name: 'Sample Site: Riverside Community Hub', setting: 'community', city: 'Santa Ana', region: 'central', x: 40, y: 40,
-      address: '500 Example Ave, Santa Ana, CA 92700', phone: '(000) 555-0105',
-      languages: ['es', 'en'], services: ['playlearn', 'screening', 'workshops', 'books'], dropIn: true,
-      access: 'Accessible entrance on east side; Spanish-speaking staff on site.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Mon', start: '09:30', end: '11:00', name: 'Juega y Aprende', lang: 'es' },
-          { day: 'Wed', start: '09:30', end: '11:00', name: 'Juega y Aprende', lang: 'es' },
-          { day: 'Wed', start: '17:30', end: '19:00', name: 'Taller para padres: Hablemos de emociones', lang: 'es' },
-          { day: 'Sat', start: '10:00', end: '12:00', name: 'Developmental screening clinic', lang: 'en' }
-        ],
-        'spring-2027': [
-          { day: 'Mon', start: '09:30', end: '11:00', name: 'Juega y Aprende', lang: 'es' },
-          { day: 'Sat', start: '10:00', end: '12:00', name: 'Developmental screening clinic', lang: 'en' }
-        ]
-      }
-    },
-    {
-      id: 'sa-2', name: 'Sample Site: Centro Familiar Library Annex', setting: 'library', city: 'Santa Ana', region: 'central', x: 37, y: 46,
-      address: '510 Example St, Santa Ana, CA 92700', phone: '(000) 555-0106',
-      languages: ['es', 'en'], services: ['books', 'playlearn', 'kinder'], dropIn: true,
-      access: 'Street-level entrance; children’s area near front desk.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Tue', start: '15:30', end: '16:30', name: 'Cuentos y canciones', lang: 'es' },
-          { day: 'Thu', start: '15:30', end: '16:30', name: 'Ready for K Story Time', lang: 'en' }
-        ],
-        'spring-2027': []
-      }
-    },
-    {
-      id: 'gg-1', name: 'Sample Site: Little Saigon Family Room', setting: 'frc', city: 'Garden Grove', region: 'west', x: 27, y: 38,
-      address: '600 Example Blvd, Garden Grove, CA 92800', phone: '(000) 555-0107',
-      languages: ['vi', 'en'], services: ['playlearn', 'workshops', 'screening'], dropIn: true,
-      access: 'Accessible parking in front; Vietnamese-speaking staff.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Tue', start: '10:00', end: '11:30', name: 'Vui Chơi và Học Hỏi (0–5 tuổi)', lang: 'vi' },
-          { day: 'Thu', start: '10:00', end: '11:30', name: 'Play & Learn (0–5)', lang: 'en' },
-          { day: 'Sat', start: '09:00', end: '10:30', name: 'Hội thảo phụ huynh: Chuẩn bị vào mẫu giáo', lang: 'vi' }
-        ],
-        'spring-2027': [
-          { day: 'Tue', start: '10:00', end: '11:30', name: 'Vui Chơi và Học Hỏi (0–5 tuổi)', lang: 'vi' }
-        ]
-      }
-    },
-    {
-      id: 'wm-1', name: 'Sample Site: Westminster Learning Center', setting: 'community', city: 'Westminster', region: 'west', x: 22, y: 47,
-      address: '700 Example Ave, Westminster, CA 92600', phone: '(000) 555-0108',
-      languages: ['vi', 'en', 'es'], services: ['playlearn', 'books'], dropIn: true,
-      access: 'Single-level; accessible restrooms; stroller-friendly.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Mon', start: '16:00', end: '17:00', name: 'Giờ Kể Chuyện (Story time)', lang: 'vi' },
-          { day: 'Fri', start: '10:00', end: '11:00', name: 'Play & Learn (0–3)', lang: 'en' }
-        ],
-        'spring-2027': [
-          { day: 'Mon', start: '16:00', end: '17:00', name: 'Giờ Kể Chuyện (Story time)', lang: 'vi' }
-        ]
-      }
-    },
-    {
-      id: 'hb-1', name: 'Sample Site: Seaside Community Room', setting: 'community', city: 'Huntington Beach', region: 'west', x: 22, y: 60,
-      address: '800 Example Ln, Huntington Beach, CA 92600', phone: '(000) 555-0109',
-      languages: ['en'], services: ['playlearn', 'workshops'], dropIn: false,
-      access: 'Accessible ramp at rear entrance.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Thu', start: '17:30', end: '19:00', name: 'Working Parents Evening Playgroup', lang: 'en' }
-        ],
-        'spring-2027': [
-          { day: 'Thu', start: '17:30', end: '19:00', name: 'Working Parents Evening Playgroup', lang: 'en' }
-        ]
-      }
-    },
-    {
-      id: 'cm-1', name: 'Sample Site: Mesa Verde Rec Center', setting: 'park', city: 'Costa Mesa', region: 'central', x: 37, y: 58,
-      address: '900 Example Dr, Costa Mesa, CA 92600', phone: '(000) 555-0110',
-      languages: ['en', 'es'], services: ['playlearn', 'kinder'], dropIn: true,
-      access: 'Accessible entrance; shaded outdoor play area.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Wed', start: '09:30', end: '11:00', name: 'Outdoor Play & Learn', lang: 'en' },
-          { day: 'Sat', start: '10:00', end: '11:30', name: 'Familias Activas', lang: 'es' }
-        ],
-        'spring-2027': []
-      }
-    },
-    {
-      id: 'irv-1', name: 'Sample Site: Woodbridge Family Library', setting: 'library', city: 'Irvine', region: 'south', x: 55, y: 52,
-      address: '1000 Example Pkwy, Irvine, CA 92600', phone: '(000) 555-0111',
-      languages: ['en', 'ko'], services: ['books', 'playlearn', 'screening'], dropIn: true,
-      access: 'Elevator; quiet room available for nursing parents.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Tue', start: '10:30', end: '11:30', name: 'Baby Lapsit', lang: 'en' },
-          { day: 'Thu', start: '13:30', end: '15:00', name: 'Developmental screening (by appointment)', lang: 'en' },
-          { day: 'Sat', start: '11:00', end: '12:00', name: '한국어 놀이 시간 (Korean play time)', lang: 'ko' }
-        ],
-        'spring-2027': [
-          { day: 'Tue', start: '10:30', end: '11:30', name: 'Baby Lapsit', lang: 'en' }
-        ]
-      }
-    },
-    {
-      id: 'mv-1', name: 'Sample Site: Canyon View Elementary', setting: 'school', city: 'Mission Viejo', region: 'south', x: 72, y: 66,
-      address: '1100 Example Rd, Mission Viejo, CA 92600', phone: '(000) 555-0112',
-      languages: ['en', 'es'], services: ['kinder', 'workshops'], dropIn: false,
-      access: 'Check in at front office; registration required.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Mon', start: '15:00', end: '16:30', name: 'Kinder Ready Club', lang: 'en' },
-          { day: 'Wed', start: '18:00', end: '19:00', name: 'Parent night: Kindergarten registration', lang: 'en' }
-        ],
-        'spring-2027': [
-          { day: 'Mon', start: '15:00', end: '16:30', name: 'Kinder Ready Club', lang: 'en' },
-          { day: 'Mon', start: '16:45', end: '17:45', name: 'Club Listos para el Kínder', lang: 'es' }
-        ]
-      }
-    },
-    {
-      id: 'ln-1', name: 'Sample Site: Hillside Family Resource Room', setting: 'frc', city: 'Laguna Niguel', region: 'south', x: 70, y: 80,
-      address: '1200 Example Ct, Laguna Niguel, CA 92600', phone: '(000) 555-0113',
-      languages: ['en', 'es'], services: ['screening', 'workshops'], dropIn: false,
-      access: 'Accessible parking; interpreters available on request.',
-      schedules: {
-        'fall-2026': [],
-        'spring-2027': [
-          { day: 'Tue', start: '09:30', end: '11:00', name: 'Play & Learn (new for Spring)', lang: 'en' }
-        ]
-      }
-    },
-    {
-      id: 'sc-1', name: 'Sample Site: Coastline Rec Hall', setting: 'park', city: 'San Clemente', region: 'south', x: 86, y: 92,
-      address: '1300 Example Ave, San Clemente, CA 92600', phone: '(000) 555-0114',
-      languages: ['en', 'es'], services: ['playlearn', 'books'], dropIn: true,
-      access: 'Single-level hall near beach parking.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Thu', start: '10:00', end: '11:00', name: 'Beach Town Playgroup', lang: 'en' },
-          { day: 'Sat', start: '10:00', end: '11:00', name: 'Juegos en Familia', lang: 'es' }
-        ],
-        'spring-2027': [
-          { day: 'Thu', start: '10:00', end: '11:00', name: 'Beach Town Playgroup', lang: 'en' }
-        ]
-      }
-    },
-    {
-      id: 'tus-1', name: 'Sample Site: Old Town Family Space', setting: 'community', city: 'Tustin', region: 'central', x: 51, y: 41,
-      address: '1400 Example St, Tustin, CA 92700', phone: '(000) 555-0115',
-      languages: ['en', 'es', 'vi'], services: ['playlearn', 'workshops', 'books'], dropIn: true,
-      access: 'Accessible entrance; free on-site parking.',
-      schedules: {
-        'fall-2026': [
-          { day: 'Mon', start: '18:00', end: '19:00', name: 'Family Evening Play', lang: 'en' },
-          { day: 'Fri', start: '09:30', end: '10:30', name: 'Vui Chơi Cùng Bé', lang: 'vi' }
-        ],
-        'spring-2027': [
-          { day: 'Mon', start: '18:00', end: '19:00', name: 'Family Evening Play', lang: 'en' }
-        ]
-      }
-    }
-  ]
+  {
+   "name": "Beyond Blindness (Santa Ana)",
+   "status": "listed"
+  },
+  {
+   "name": "Brea Olinda Unified School District",
+   "status": "listed"
+  },
+  {
+   "name": "Buena Park School District",
+   "status": "listed"
+  },
+  {
+   "name": "Capistrano Unified School District",
+   "status": "listed"
+  },
+  {
+   "name": "Centralia School District",
+   "status": "listed"
+  },
+  {
+   "name": "Cypress School District",
+   "status": "listed"
+  },
+  {
+   "name": "Fountain Valley School District",
+   "status": "listed"
+  },
+  {
+   "name": "Fullerton School District",
+   "status": "listed"
+  },
+  {
+   "name": "Garden Grove Unified School District",
+   "status": "listed"
+  },
+  {
+   "name": "Huntington Beach City School District",
+   "status": "listed"
+  },
+  {
+   "name": "Irvine Unified School District",
+   "status": "listed"
+  },
+  {
+   "name": "La Habra City School District",
+   "status": "listed"
+  },
+  {
+   "name": "Laguna Beach Unified School District",
+   "status": "listed"
+  },
+  {
+   "name": "Los Alamitos Unified School District",
+   "status": "listed"
+  },
+  {
+   "name": "Lowell Joint School District",
+   "status": "listed"
+  },
+  {
+   "name": "Magnolia School District",
+   "status": "listed"
+  },
+  {
+   "name": "Newport-Mesa Unified School District",
+   "status": "listed"
+  },
+  {
+   "name": "Ocean View School District",
+   "status": "listed"
+  },
+  {
+   "name": "Orange Unified School District",
+   "status": "listed"
+  },
+  {
+   "name": "Placentia Yorba Linda Unified School District",
+   "status": "listed"
+  },
+  {
+   "name": "Saddleback Valley Unified School District",
+   "status": "listed"
+  },
+  {
+   "name": "Santa Ana Unified School District",
+   "status": "listed"
+  },
+  {
+   "name": "Savanna School District",
+   "status": "listed"
+  },
+  {
+   "name": "Westminster School District",
+   "status": "listed"
+  },
+  {
+   "name": "Tustin Unified School District",
+   "status": "coming_soon",
+   "note": "Coming soon - contact district for details"
+  }
+ ],
+ "locations": [
+  {
+   "district": "Anaheim Elementary School District",
+   "name": "Key Campus",
+   "address": "2000 W. Ball Rd., Room 3, Anaheim, CA 92804",
+   "phone": "714-517-7126",
+   "days": "Mondays, Wednesdays",
+   "times": "8:30am; 10am; 12:30pm",
+   "fee": "No fee",
+   "url": "https://drive.google.com/file/d/1TzaE0Ts8kqQXNfTAwBuUZdL0vyLOsivR/view",
+   "status": "open",
+   "id": "anaheim-elementary-school-district-key-campus",
+   "city": "Anaheim",
+   "approxLat": 33.8366,
+   "approxLng": -117.9143
+  },
+  {
+   "district": "Anaheim Elementary School District",
+   "name": "Mann Elementary",
+   "address": "600 W. La Palma Ave., Room 58, Anaheim, CA 92801",
+   "phone": "714-517-7115",
+   "days": "Fridays",
+   "times": "8:30am; 10am; 12:30pm",
+   "fee": "No fee",
+   "url": "https://drive.google.com/file/d/1TzaE0Ts8kqQXNfTAwBuUZdL0vyLOsivR/view",
+   "status": "open",
+   "id": "anaheim-elementary-school-district-mann-elementary",
+   "city": "Anaheim",
+   "approxLat": 33.8366,
+   "approxLng": -117.9143
+  },
+  {
+   "district": "Anaheim Elementary School District",
+   "name": "Sunkist Elementary",
+   "address": "500 Sunkist St., Anaheim, CA 92806",
+   "phone": "714-517-7135",
+   "days": "Tuesdays, Thursdays",
+   "times": "8:30am; 10am; 12:30pm",
+   "fee": "No fee",
+   "url": "https://drive.google.com/file/d/1TzaE0Ts8kqQXNfTAwBuUZdL0vyLOsivR/view",
+   "status": "open",
+   "id": "anaheim-elementary-school-district-sunkist-elementary",
+   "city": "Anaheim",
+   "approxLat": 33.8366,
+   "approxLng": -117.9143
+  },
+  {
+   "district": "Anaheim Elementary School District",
+   "name": "Roosevelt Elementary",
+   "address": "1600 E. Vermont Ave., Room 16, Anaheim, CA 92804",
+   "phone": "714-517-7144",
+   "days": "Tuesdays, Thursdays",
+   "times": "1:30pm",
+   "fee": "No fee",
+   "url": "https://drive.google.com/file/d/1TzaE0Ts8kqQXNfTAwBuUZdL0vyLOsivR/view",
+   "status": "open",
+   "id": "anaheim-elementary-school-district-roosevelt-elementary",
+   "city": "Anaheim",
+   "approxLat": 33.8366,
+   "approxLng": -117.9143
+  },
+  {
+   "district": "Beyond Blindness (Santa Ana)",
+   "name": "Beyond Blindness Program Site",
+   "address": "18542-B Vanderlip Avenue, Santa Ana, CA 92705",
+   "phone": "949-352-4497",
+   "days": "Tuesdays, Thursdays",
+   "times": "9:30am-11:30am",
+   "fee": "No fee",
+   "url": "https://www.beyondblindness.org/programs/learning-link/",
+   "status": "open",
+   "id": "beyond-blindness-santa-ana-beyond-blindness-program-site",
+   "city": "Santa Ana",
+   "approxLat": 33.7455,
+   "approxLng": -117.8677
+  },
+  {
+   "district": "Brea Olinda Unified School District",
+   "name": "Falcon Academy of Science and Technology",
+   "address": "650 N. Apricot, Brea, CA 92821",
+   "phone": "714-990-7581",
+   "days": "Tuesdays, Thursdays",
+   "times": "10:00am-11:15am",
+   "fee": "No fee",
+   "url": "https://www.bousd.us/page/learning-link",
+   "status": "open",
+   "id": "brea-olinda-unified-school-district-falcon-academy-of-science-and-technology",
+   "city": "Brea",
+   "approxLat": 33.9167,
+   "approxLng": -117.9001
+  },
+  {
+   "district": "Buena Park School District",
+   "name": "Carl E. Gilbert Elementary",
+   "address": "7255 8th Street, Buena Park, CA 90621",
+   "phone": "714-994-9381",
+   "days": "Fridays",
+   "times": "1:30pm-2:30pm",
+   "fee": "No fee",
+   "url": "https://drive.google.com/file/d/1RtuPbuD9ut7-WJXhfIdzIsie1kiHc1s7/view",
+   "status": "open",
+   "id": "buena-park-school-district-carl-e-gilbert-elementary",
+   "city": "Buena Park",
+   "approxLat": 33.8675,
+   "approxLng": -117.9981
+  },
+  {
+   "district": "Capistrano Unified School District",
+   "name": "Hidden Hills Elementary",
+   "address": "25142 Hidden Hills Rd, Room P9-10, Laguna Niguel, CA 92677",
+   "phone": "949-234-5998",
+   "days": "Mondays through Fridays",
+   "times": "8:00am-10:30am; 11:00am-1:30pm",
+   "fee": "Donation Based",
+   "url": "https://www.capousd.org/subsites/Early-Childhood-Education/Infant-Programs/Learning-Link-Program--0-5/Learning-Link-Information/index.html",
+   "status": "open",
+   "id": "capistrano-unified-school-district-hidden-hills-elementary",
+   "city": "Laguna Niguel",
+   "approxLat": 33.5225,
+   "approxLng": -117.7076
+  },
+  {
+   "district": "Capistrano Unified School District",
+   "name": "San Juan Elementary",
+   "address": "31642 El Camino Real, Room 26, San Juan Capistrano, CA 92675",
+   "phone": "949-496-5198",
+   "days": "Mondays through Fridays",
+   "times": "8:00am-10:30am; 11:00am-1:30pm",
+   "fee": "Donation Based",
+   "url": "https://www.capousd.org/subsites/Early-Childhood-Education/Infant-Programs/Learning-Link-Program--0-5/Learning-Link-Information/index.html",
+   "status": "open",
+   "id": "capistrano-unified-school-district-san-juan-elementary",
+   "city": "San Juan Capistrano",
+   "approxLat": 33.5017,
+   "approxLng": -117.6625
+  },
+  {
+   "district": "Centralia School District",
+   "name": "Walter Knott Learning Center",
+   "address": "7300 La Palma Avenue, Room 6, Buena Park, CA 90620",
+   "phone": "714-228-3155",
+   "days": "Wednesdays",
+   "times": "10:00am-11:00am; 3:00pm-4:00pm",
+   "fee": "No fee",
+   "url": "https://www.cesd.us/apps/pages/index.jsp?uREC_ID=501781&type=d&termREC_ID=&pREC_ID=966974",
+   "status": "open",
+   "id": "centralia-school-district-walter-knott-learning-center",
+   "city": "Buena Park",
+   "approxLat": 33.8675,
+   "approxLng": -117.9981
+  },
+  {
+   "district": "Cypress School District",
+   "name": "Clara J. King Elementary",
+   "address": "8710 Moody St, Cypress, CA 90630",
+   "phone": "714-220-6752",
+   "days": "Will open Winter 2027",
+   "times": "",
+   "fee": "No fee",
+   "url": "",
+   "status": "opening_winter_2027",
+   "id": "cypress-school-district-clara-j-king-elementary",
+   "city": "Cypress",
+   "approxLat": 33.817,
+   "approxLng": -118.0373
+  },
+  {
+   "district": "Fountain Valley School District",
+   "name": "Plavan Elementary",
+   "address": "9625 Warner Ave., Room Esp A, Fountain Valley, CA 92708",
+   "phone": "714-962-4052",
+   "days": "1st and 3rd Wednesdays",
+   "times": "9:30am-11:00am",
+   "fee": "No fee",
+   "url": "https://www.fvsdchildcareprograms.com/school-readiness-initiative.html",
+   "status": "open",
+   "id": "fountain-valley-school-district-plavan-elementary",
+   "city": "Fountain Valley",
+   "approxLat": 33.7092,
+   "approxLng": -117.9537
+  },
+  {
+   "district": "Fullerton School District",
+   "name": "Richman Elementary",
+   "address": "700 S. Richman Ave., Room 2, Fullerton, CA 92832",
+   "phone": "714-477-7499",
+   "days": "Mondays, Tuesdays, Thursdays, Fridays",
+   "times": "9:00am-10:30am",
+   "fee": "No fee",
+   "url": "https://drive.google.com/file/d/1Eh9bAY-uo1WfB2myZWAd5lXvaA4-bIfd/view",
+   "status": "open",
+   "id": "fullerton-school-district-richman-elementary",
+   "city": "Fullerton",
+   "approxLat": 33.8704,
+   "approxLng": -117.9243
+  },
+  {
+   "district": "Garden Grove Unified School District",
+   "name": "Clinton Corner Family Campus",
+   "address": "13581 Clinton St., Garden Grove, CA 92843",
+   "phone": "714-663-6298",
+   "days": "Mondays, Wednesdays, Fridays",
+   "times": "8:30am-10:00am, 10:00am-11:30am, 12:30pm-2:00pm",
+   "fee": "No fee",
+   "url": "https://forms.gle/BRZciUqcSq81EYmc7",
+   "status": "open",
+   "id": "garden-grove-unified-school-district-clinton-corner-family-campus",
+   "city": "Garden Grove",
+   "approxLat": 33.7743,
+   "approxLng": -117.938
+  },
+  {
+   "district": "Garden Grove Unified School District",
+   "name": "Skylark Preschool",
+   "address": "11250 MacMurray, Garden Grove, CA 92841",
+   "phone": "714-663-6298",
+   "days": "Tuesdays, Thursdays",
+   "times": "8:30am-10:00am, 10:00am-11:30am, 12:30pm-2:00pm",
+   "fee": "No fee",
+   "url": "https://forms.gle/BRZciUqcSq81EYmc7",
+   "status": "open",
+   "id": "garden-grove-unified-school-district-skylark-preschool",
+   "city": "Garden Grove",
+   "approxLat": 33.7743,
+   "approxLng": -117.938
+  },
+  {
+   "district": "Huntington Beach City School District",
+   "name": "Perry Elementary",
+   "address": "19231 Harding Lane, Room 11, Huntington Beach, CA 92646",
+   "phone": "714-378-2033",
+   "days": "Mondays through Fridays",
+   "times": "9:00am-11:00am",
+   "fee": "$25/per child",
+   "url": "https://www.hbcsd.k12.ca.us/learninglink",
+   "status": "open",
+   "id": "huntington-beach-city-school-district-perry-elementary",
+   "city": "Huntington Beach",
+   "approxLat": 33.6603,
+   "approxLng": -117.9992
+  },
+  {
+   "district": "Irvine Unified School District",
+   "name": "Early Childhood Learning Center",
+   "address": "1 Smoketree, Irvine, CA 92604",
+   "phone": "949-936-5890",
+   "days": "Mondays, Tuesdays, Thursdays, Fridays",
+   "times": "9:00am-10:15am",
+   "fee": "No fee",
+   "url": "https://eclc.iusd.org/parents/eclc-offerings",
+   "status": "open",
+   "id": "irvine-unified-school-district-early-childhood-learning-center",
+   "city": "Irvine",
+   "approxLat": 33.6846,
+   "approxLng": -117.8265
+  },
+  {
+   "district": "Laguna Beach Unified School District",
+   "name": "Top of the World Elementary",
+   "address": "21601 Treetop Lane, Laguna Beach, CA 92651",
+   "phone": "949-497-7790",
+   "days": "Fridays",
+   "times": "10:00am-11:30am",
+   "fee": "No fee",
+   "url": "https://docs.google.com/forms/d/e/1FAIpQLSfDDPUKprzrRm3yiUivw23pCOHLxK8yA7P5AMvtMPq_Uj_OmA/viewform",
+   "status": "open",
+   "id": "laguna-beach-unified-school-district-top-of-the-world-elementary",
+   "city": "Laguna Beach",
+   "approxLat": 33.5427,
+   "approxLng": -117.7854
+  },
+  {
+   "district": "Laguna Beach Unified School District",
+   "name": "El Morro Elementary",
+   "address": "8681 N. Coast Hwy, Laguna Beach, CA 92651",
+   "phone": "949-497-7780",
+   "days": "Wednesdays",
+   "times": "10:00am-11:30am",
+   "fee": "No fee",
+   "url": "https://docs.google.com/forms/d/e/1FAIpQLSfDDPUKprzrRm3yiUivw23pCOHLxK8yA7P5AMvtMPq_Uj_OmA/viewform",
+   "status": "open",
+   "id": "laguna-beach-unified-school-district-el-morro-elementary",
+   "city": "Laguna Beach",
+   "approxLat": 33.5427,
+   "approxLng": -117.7854
+  },
+  {
+   "district": "La Habra City School District",
+   "name": "El Cerrito School",
+   "address": "1051 North Hillside St., La Habra, CA 90631",
+   "phone": "562-690-2386",
+   "days": "Mondays, Tuesdays, Thursdays, Fridays",
+   "times": "8:30am-1:00pm",
+   "fee": "No fee",
+   "url": "https://www.lahabraschools.org/early-learning/school-readiness-registration",
+   "status": "open",
+   "id": "la-habra-city-school-district-el-cerrito-school",
+   "city": "La Habra",
+   "approxLat": 33.9319,
+   "approxLng": -117.9462
+  },
+  {
+   "district": "La Habra City School District",
+   "name": "Hillcrest Health and Wellness Center",
+   "address": "341 Hillcrest Street, La Habra, CA 90631",
+   "phone": "562-690-2386",
+   "days": "Wednesdays",
+   "times": "10:00am-11:00am",
+   "fee": "No fee",
+   "url": "https://www.lahabraschools.org/early-learning/school-readiness-registration",
+   "status": "open",
+   "id": "la-habra-city-school-district-hillcrest-health-and-wellness-center",
+   "city": "La Habra",
+   "approxLat": 33.9319,
+   "approxLng": -117.9462
+  },
+  {
+   "district": "Los Alamitos Unified School District",
+   "name": "Rush Park",
+   "address": "3021 Blume Dr. (East Room), Rossmoor, CA 90720",
+   "phone": "562-799-4585 ext. 80632",
+   "days": "Fridays (see link for specific dates)",
+   "times": "10:00am-11:30am",
+   "fee": "No fee",
+   "url": "https://www.losal.org/programs/cdc/school-readiness/parent-learning-connection",
+   "status": "open",
+   "id": "los-alamitos-unified-school-district-rush-park",
+   "city": "Rossmoor",
+   "approxLat": 33.7856,
+   "approxLng": -118.0817
+  },
+  {
+   "district": "Lowell Joint School District",
+   "name": "Maybrook Elementary",
+   "address": "11700 Maybrook Ave., Room C, Whittier, CA 90604",
+   "phone": "562-902-4207",
+   "days": "Mondays, Tuesdays, Wednesdays, Thursdays",
+   "times": "8:30am-10am; 10:30am-12:00pm; 1:00pm-2:30pm",
+   "fee": "No fee",
+   "url": "https://preschool.ljsd.org/99814_2",
+   "status": "open",
+   "id": "lowell-joint-school-district-maybrook-elementary",
+   "city": "Whittier",
+   "approxLat": 33.9792,
+   "approxLng": -118.0328
+  },
+  {
+   "district": "Magnolia School District",
+   "name": "Lord Baden Powell Elementary",
+   "address": "2911 W Stonybrook Dr., Anaheim, CA 92804",
+   "phone": "714-527-2154",
+   "days": "Mondays through Thursdays",
+   "times": "8:15am; 9:15am; 10:15am",
+   "fee": "No fee",
+   "url": "https://www.magnoliasd.org/apps/pages/index.jsp?uREC_ID=1118054&type=d&pREC_ID=2692390",
+   "status": "open",
+   "id": "magnolia-school-district-lord-baden-powell-elementary",
+   "city": "Anaheim",
+   "approxLat": 33.8366,
+   "approxLng": -117.9143
+  },
+  {
+   "district": "Newport-Mesa Unified School District",
+   "name": "BESST Center",
+   "address": "2045 Meyer Place, Room 124, Costa Mesa, CA 92627",
+   "phone": "949-515-6622",
+   "days": "Mondays through Thursdays",
+   "times": "8:15am-9:45am, 10:00am-11:30am; 12:30am-2:00pm",
+   "fee": "No fee",
+   "url": "https://web.nmusd.us/departments/education-services/early-learning/learninglink",
+   "status": "open",
+   "qa_note": "The live First 5 OC page currently displays 12:30am-2:00pm. This is likely a typo and should be confirmed before relaunch.",
+   "id": "newport-mesa-unified-school-district-besst-center",
+   "city": "Costa Mesa",
+   "approxLat": 33.6411,
+   "approxLng": -117.9187
+  },
+  {
+   "district": "Newport-Mesa Unified School District",
+   "name": "Whittier Preschool",
+   "address": "1800 Whittier Ave., Room 3, Costa Mesa, CA 92627",
+   "phone": "949-515-6622",
+   "days": "Mondays through Thursdays",
+   "times": "12:30pm-2:00pm",
+   "fee": "No fee",
+   "url": "https://web.nmusd.us/departments/education-services/early-learning/learninglink",
+   "status": "open",
+   "id": "newport-mesa-unified-school-district-whittier-preschool",
+   "city": "Costa Mesa",
+   "approxLat": 33.6411,
+   "approxLng": -117.9187
+  },
+  {
+   "district": "Ocean View School District",
+   "name": "Oak View Elementary, Room 5",
+   "address": "17241 Oak Lane, Huntington Beach, CA 92647",
+   "phone": "714-842-4459",
+   "days": "Thursdays",
+   "times": "8:30am-11:00am",
+   "fee": "No fee",
+   "url": "https://forms.gle/6VhS7N7SwLXPPJVm6",
+   "status": "open",
+   "id": "ocean-view-school-district-oak-view-elementary-room-5",
+   "city": "Huntington Beach",
+   "approxLat": 33.6603,
+   "approxLng": -117.9992
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "California Elementary",
+   "address": "1080 N California St, Orange, CA 92867",
+   "phone": "714-628-5577",
+   "days": "Tuesdays, Fridays",
+   "times": "1:00pm-2:00pm",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-california-elementary",
+   "city": "Orange",
+   "approxLat": 33.7879,
+   "approxLng": -117.8531
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "Canyon Rim Elementary",
+   "address": "1090 S. The Highlands, Anaheim, CA 92808",
+   "phone": "714-628-5577",
+   "days": "Mondays, Fridays",
+   "times": "8:30am-11:00am; 12:00pm-2:00pm",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-canyon-rim-elementary",
+   "city": "Anaheim",
+   "approxLat": 33.8366,
+   "approxLng": -117.9143
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "Child Development Center",
+   "address": "2345 E. Palmyra Ave., Orange, CA 92869",
+   "phone": "714-628-5577",
+   "days": "Tuesdays, Thursdays",
+   "times": "8:30am-11:00am; 12:00pm-2:00pm",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-child-development-center",
+   "city": "Orange",
+   "approxLat": 33.7879,
+   "approxLng": -117.8531
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "Chapman Hills Elementary",
+   "address": "170 Aspen, Orange, CA 92869",
+   "phone": "714-628-5577",
+   "days": "Mondays, Fridays",
+   "times": "8:30am-11:00am; 12:00pm-2:00pm",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-chapman-hills-elementary",
+   "city": "Orange",
+   "approxLat": 33.7879,
+   "approxLng": -117.8531
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "Esplanade Elementary",
+   "address": "381 N Esplanade St, Orange, CA 92869",
+   "phone": "714-628-5577",
+   "days": "Mondays, Wednesdays, Fridays",
+   "times": "12:00pm-2:00pm",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-esplanade-elementary",
+   "city": "Orange",
+   "approxLat": 33.7879,
+   "approxLng": -117.8531
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "Fairhaven Elementary",
+   "address": "1415 E. Fairhaven Ave., Santa Ana, CA 92705",
+   "phone": "714-628-5577",
+   "days": "Mondays, Wednesdays, Fridays",
+   "times": "12:00pm-2:00pm",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-fairhaven-elementary",
+   "city": "Santa Ana",
+   "approxLat": 33.7455,
+   "approxLng": -117.8677
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "Handy Elementary",
+   "address": "860 N Handy St, Orange, CA 92867",
+   "phone": "714-628-5577",
+   "days": "Mondays, Wednesdays, Fridays",
+   "times": "12:00pm-2:00pm",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-handy-elementary",
+   "city": "Orange",
+   "approxLat": 33.7879,
+   "approxLng": -117.8531
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "Jordan Elementary",
+   "address": "4319 E. Jordan, Orange, CA 92869",
+   "phone": "714-628-5577",
+   "days": "Tuesdays, Thursdays",
+   "times": "8:30am-11:00am; 12:00pm-2:00pm",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-jordan-elementary",
+   "city": "Orange",
+   "approxLat": 33.7879,
+   "approxLng": -117.8531
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "Lampson Elementary",
+   "address": "13321 Lampson Ave., Garden Grove, CA 92840",
+   "phone": "714-628-5577",
+   "days": "Mondays, Wednesdays",
+   "times": "8:30am-11:00am; 12:00pm-2:00pm",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-lampson-elementary",
+   "city": "Garden Grove",
+   "approxLat": 33.7743,
+   "approxLng": -117.938
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "La Veta Elementary",
+   "address": "2800 E La Veta Ave, Orange, CA 92869",
+   "phone": "714-628-5577",
+   "days": "Mondays, Wednesdays, Fridays",
+   "times": "12:00pm-2:00pm",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-la-veta-elementary",
+   "city": "Orange",
+   "approxLat": 33.7879,
+   "approxLng": -117.8531
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "Linda Vista Elementary",
+   "address": "1200 N Cannon St., Orange, CA 92869",
+   "phone": "714-628-5577",
+   "days": "Tuesdays, Fridays",
+   "times": "8:30am-11:00am",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-linda-vista-elementary",
+   "city": "Orange",
+   "approxLat": 33.7879,
+   "approxLng": -117.8531
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "Palmyra Elementary",
+   "address": "1325 E Palmyra Ave, Orange, CA 92866",
+   "phone": "714-628-5577",
+   "days": "Tuesdays, Thursdays",
+   "times": "8:20am-10:30am",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-palmyra-elementary",
+   "city": "Orange",
+   "approxLat": 33.7879,
+   "approxLng": -117.8531
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "Sycamore Elementary",
+   "address": "340 N Main St, Orange, CA 92868",
+   "phone": "714-628-5577",
+   "days": "Mondays, Wednesdays, Fridays",
+   "times": "12:00pm-2:00pm",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-sycamore-elementary",
+   "city": "Orange",
+   "approxLat": 33.7879,
+   "approxLng": -117.8531
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "Taft Elementary",
+   "address": "1829 N Cambridge St, Orange, CA 92865",
+   "phone": "714-628-5577",
+   "days": "Mondays, Wednesdays, Fridays",
+   "times": "12:00pm-2:00pm",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-taft-elementary",
+   "city": "Orange",
+   "approxLat": 33.7879,
+   "approxLng": -117.8531
+  },
+  {
+   "district": "Orange Unified School District",
+   "name": "West Orange Elementary",
+   "address": "243 S Bush St, Orange, CA 92868",
+   "phone": "714-628-5577",
+   "days": "Mondays, Wednesdays",
+   "times": "8:30am-11:00am",
+   "fee": "Donations accepted",
+   "url": "https://www.orangeusd.org/child-development-services/learning-link",
+   "status": "open",
+   "id": "orange-unified-school-district-west-orange-elementary",
+   "city": "Orange",
+   "approxLat": 33.7879,
+   "approxLng": -117.8531
+  },
+  {
+   "district": "Placentia Yorba Linda Unified School District",
+   "name": "Ruby Drive Elementary",
+   "address": "601 Ruby Drive, Room 602, Placentia, CA 92870",
+   "phone": "714-986-7263",
+   "days": "Tuesdays, Wednesdays, Thursdays",
+   "times": "8:15am-9:45am (Session I); 10:00am-11:30am (Session II)",
+   "fee": "No fee",
+   "url": "https://drive.google.com/file/d/182LkdTcLt4M2Psk7JI8WWiLRV9mQYlXy/view",
+   "status": "open",
+   "id": "placentia-yorba-linda-unified-school-district-ruby-drive-elementary",
+   "city": "Placentia",
+   "approxLat": 33.8722,
+   "approxLng": -117.8703
+  },
+  {
+   "district": "Saddleback Valley Unified School District",
+   "name": "Los Alisos",
+   "address": "2020 Los Lobos Wy, Mission Viejo, CA 92691",
+   "phone": "949-830-9700",
+   "days": "Mondays, Wednesdays, Fridays or Tuesdays, Thursdays",
+   "times": "9:00am-11:30am (age 4); 1:00pm-2:30pm (age 3)",
+   "fee": "No fee",
+   "url": "https://www.svusd.org/departments/educational-services/elementary-education-curriculum-instruction/learning-link",
+   "status": "open",
+   "id": "saddleback-valley-unified-school-district-los-alisos",
+   "city": "Mission Viejo",
+   "approxLat": 33.6,
+   "approxLng": -117.672
+  },
+  {
+   "district": "Saddleback Valley Unified School District",
+   "name": "Cielo Vista Elementary",
+   "address": "21811 Avenida de Los Fundadores, Rancho Santa Margarita, CA 92688",
+   "phone": "949-580-3376",
+   "days": "Tuesdays, Thursdays",
+   "times": "9:00am-11:30am (age 4); 1:00pm-2:30pm (age 3)",
+   "fee": "No fee",
+   "url": "https://www.svusd.org/departments/educational-services/elementary-education-curriculum-instruction/learning-link",
+   "status": "open",
+   "id": "saddleback-valley-unified-school-district-cielo-vista-elementary",
+   "city": "Rancho Santa Margarita",
+   "approxLat": 33.6409,
+   "approxLng": -117.6031
+  },
+  {
+   "district": "Saddleback Valley Unified School District",
+   "name": "Glen Yermo Elementary",
+   "address": "26400 Trabuco Rd, Mission Viejo, CA 92691",
+   "phone": "949-580-3376",
+   "days": "Mondays, Wednesdays, Fridays",
+   "times": "9:00am-11:30am (age 4); M/W Only 1:00pm-2:30pm (age 3)",
+   "fee": "No fee",
+   "url": "https://www.svusd.org/departments/educational-services/elementary-education-curriculum-instruction/learning-link",
+   "status": "open",
+   "id": "saddleback-valley-unified-school-district-glen-yermo-elementary",
+   "city": "Mission Viejo",
+   "approxLat": 33.6,
+   "approxLng": -117.672
+  },
+  {
+   "district": "Santa Ana Unified School District",
+   "name": "Martin Elementary",
+   "address": "939 W. Wilshire Ave., Room 16, Santa Ana, CA 92707",
+   "phone": "714-455-2373 / 714-480-8022",
+   "days": "Tuesdays",
+   "times": "11:00am-12:00pm",
+   "fee": "No fee",
+   "url": "https://drive.google.com/file/d/1eyB8ro-s3oy7dEg4FLixycywDHz9-ttq/view?usp=drive_link",
+   "status": "open",
+   "id": "santa-ana-unified-school-district-martin-elementary",
+   "city": "Santa Ana",
+   "approxLat": 33.7455,
+   "approxLng": -117.8677
+  },
+  {
+   "district": "Santa Ana Unified School District",
+   "name": "Carver Elementary",
+   "address": "1401 W. Santa Ana Blvd., Room 8, Santa Ana, CA 92703",
+   "phone": "714-455-2373 / 714-564-2031",
+   "days": "Wednesdays",
+   "times": "11:00am-12:00pm",
+   "fee": "No fee",
+   "url": "https://drive.google.com/file/d/1zdemw7TKQ4vmXFS7WMSFZJvUPObis2Rv/view?usp=drive_link",
+   "status": "open",
+   "id": "santa-ana-unified-school-district-carver-elementary",
+   "city": "Santa Ana",
+   "approxLat": 33.7455,
+   "approxLng": -117.8677
+  },
+  {
+   "district": "Santa Ana Unified School District",
+   "name": "Adams Elementary",
+   "address": "2130 S. Raitt St., Room 43, Santa Ana, CA 92704",
+   "phone": "714-455-2373 / 714-967-3143",
+   "days": "Thursdays",
+   "times": "11:00am-12:00pm",
+   "fee": "No fee",
+   "url": "https://drive.google.com/file/d/14erACRr_c3sNpPgQ25xoZWK6zJNFZZ00/view?usp=drive_link",
+   "status": "open",
+   "id": "santa-ana-unified-school-district-adams-elementary",
+   "city": "Santa Ana",
+   "approxLat": 33.7455,
+   "approxLng": -117.8677
+  },
+  {
+   "district": "Savanna School District",
+   "name": "Reid Elementary",
+   "address": "720 S. Western Ave., Anaheim, CA 92804",
+   "phone": "714-236-3813",
+   "days": "Tuesdays and Thursdays",
+   "times": "9:00am-10:30am",
+   "fee": "No fee",
+   "url": "",
+   "status": "open",
+   "id": "savanna-school-district-reid-elementary",
+   "city": "Anaheim",
+   "approxLat": 33.8366,
+   "approxLng": -117.9143
+  },
+  {
+   "district": "Westminster School District",
+   "name": "Land Early Learning Center",
+   "address": "15151 Temple St., Westminster, CA 92683",
+   "phone": "714-898-8389",
+   "days": "Tuesdays",
+   "times": "9:30am-11:00am",
+   "fee": "No fee",
+   "url": "https://forms.gle/hf91cU1Z9ksYYyK9A",
+   "status": "open",
+   "id": "westminster-school-district-land-early-learning-center",
+   "city": "Westminster",
+   "approxLat": 33.7513,
+   "approxLng": -117.994
+  },
+  {
+   "district": "Westminster School District",
+   "name": "Learning Link @ Schmitt Elementary",
+   "address": "7200 Trask Avenue, Westminster, CA 92683",
+   "phone": "714-898-8389",
+   "days": "Wednesdays",
+   "times": "9:30am-11:00am",
+   "fee": "No fee",
+   "url": "https://forms.gle/hf91cU1Z9ksYYyK9A",
+   "status": "open",
+   "id": "westminster-school-district-learning-link-schmitt-elementary",
+   "city": "Westminster",
+   "approxLat": 33.7513,
+   "approxLng": -117.994
+  },
+  {
+   "district": "Westminster School District",
+   "name": "Learning Link @ Sequoia Elementary",
+   "address": "5900 Iroquois Road, Westminster, CA 92683",
+   "phone": "714-898-8389",
+   "days": "TBD",
+   "times": "TBD",
+   "fee": "No fee",
+   "url": "https://forms.gle/hf91cU1Z9ksYYyK9A",
+   "status": "open",
+   "id": "westminster-school-district-learning-link-sequoia-elementary",
+   "city": "Westminster",
+   "approxLat": 33.7513,
+   "approxLng": -117.994
+  }
+ ]
 };

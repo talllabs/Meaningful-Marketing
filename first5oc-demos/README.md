@@ -1,23 +1,24 @@
 # First 5 OC: Program Demos (Proposal Concepts)
 
-Three clickable demos for First 5 Orange County, plus a landing page:
+Three clickable demos for First 5 Orange County, plus a landing page. All three use **First 5 OC's real content**.
+The page designs are proposal concepts.
 
 | Page | What it shows |
 |---|---|
 | `index.html` | Landing page linking to all three demos |
-| `kid-builders.html` | Kid Builders activity finder with all 171 current activities and official artwork: age picker (multi-select), the six builder areas, search, "new" filter, speech & language feature, activity detail view |
-| `edi.html` | Early Development Index: plain-language explainer, then a partner explorer (tile map by geography, domain and three-year wave; trend; domain comparison; sortable table) |
-| `learning-link.html` | Learning Link directory: search and filters (day, time, language, services, location type, drop-in), list and map views, location detail with Fall/Spring schedules |
+| `kid-builders.html` | All 171 current Kid Builders activities with official artwork. It has an age picker (more than one age at once), the six builder areas as filters, search, a "new" filter, a Speech & Language feature with strategy videos in English/Español/Tiếng Việt, and an activity detail view |
+| `edi.html` | Orange County's 2025 Early Development Index. Headline readiness figure (53.0%, up from 48.2% in 2015), a spot for First 5 OC's **live ArcGIS map**, the five domains with 2015 vs. 2025 results (chart + table), how results are classified, how the data is used, collection and privacy, and resources and data requests |
+| `learning-link.html` | All 53 FY 2026-27 Learning Link sites (plus Tustin USD, coming soon). Search, district/day/time/fee filters, a clustered map and a list built from the same data, tap-to-call phones, directions and registration links |
 
-These are **proposal concepts**, not production code. Nothing connects to a CMS or the live First 5 OC site.
+Nothing connects to a CMS or changes the live First 5 OC site.
 
 ## Run it
 
 It's plain HTML, CSS and JavaScript, so there's no build step and nothing to install.
 
 - **Easiest:** open `first5oc-demos/index.html` in a browser.
-- **Or serve it locally** (so the links behave like a real site): from the repo root run
-  `python3 -m http.server 8000`, then visit <http://localhost:8000/first5oc-demos/>.
+- **Or serve it locally:** from the repo root run `python3 -m http.server 8000`, then visit
+  <http://localhost:8000/first5oc-demos/>.
 - **On the deployed site** it lives at `/first5oc-demos/` and is linked from `/for-first-5.html`.
 
 ## How it's organized
@@ -28,87 +29,84 @@ first5oc-demos/
   kid-builders.js, edi.js, learning-link.js                     ← page behavior
   demos-common.js                                               ← shared helpers (search, filters, dialogs)
   demos.css                                                     ← shared styles + color tokens
-  data/kid-builders.js, data/edi.js, data/learning-link.js      ← SAMPLE DATA (swap for real content)
+  data/kid-builders.js, data/edi.js, data/learning-link.js      ← CONTENT (separate from the pages)
+  vendor/leaflet/                                               ← Leaflet 1.9.4 + markercluster 1.5.3 (open source, licenses included)
 ```
 
-**Kid Builders uses real content.** `data/kid-builders.js` is generated from First 5 OC's Kid Builders content
-inventory and official image manifest (compiled Oct 21, 2026 from first5oc.org). Activity titles, descriptions,
-ages, builder areas, "NEW" flags, recommended age ranges and artwork are theirs; nothing is invented.
-Learning Link and EDI still use illustrative sample data.
+Content lives in `data/`, separate from the page code, so a CMS or API can replace those files
+without redesigning the pages.
 
-Sample data is kept **separate from the components**. To use real content, replace the files in `data/`
-(or point them at a CMS/API feed with the same shape). The pages themselves don't need to change.
+## Where the content came from
 
-**Learning Link twice-yearly updates:** each location has a `schedules` object keyed by term
-(`fall-2026`, `spring-2027`). To roll over, staff add the new term to `terms`, enter sessions under
-that term, and set `currentTerm`. A location with no sessions for a term shows "Schedule coming soon"
-instead of disappearing.
+All three were compiled from first5oc.org on Oct 21, 2026 and provided as reference files.
 
-## Assumptions
+- **Kid Builders:** `data/kid-builders.js` was generated from the Kid Builders content inventory and official
+  image manifest. Titles, descriptions, ages, builder areas, "NEW" flags, age ranges and artwork are theirs.
+- **EDI:** `data/edi.js` holds the page copy, the 2025 and 2015 readiness figures (First 5 OC) and the
+  five domain results for 2015 and 2025 (as reported in CHOC's 2025 Community Health Needs Assessment).
+  **No neighborhood values are stored**, by design (see below).
+- **Learning Link:** `data/learning-link.js` was generated from the FY 2026-27 live location data. Every
+  district, site, address, phone, day, time, fee, URL, status and QA note is copied unchanged.
 
-- **Brand:** the logo mark, colors and fonts match our earlier Concept A and are **placeholders**, not official
-  First 5 OC brand assets. Colors are defined as tokens at the top of `demos.css` so they're easy to swap.
-  The bright orange (`#ff6b2c`) is used for decoration only. Buttons use a darker orange (`#b8400f`) so
+## Assumptions and demo-only choices
+
+- **Brand:** the "First 5" logo mark, colors and fonts match our earlier Concept A and are **placeholders**.
+  Colors are tokens at the top of `demos.css`. Buttons use a darker orange (`#b8400f`) than Concept A so
   white text meets WCAG AA contrast.
-- **Kid Builders content is real; the rest is illustrative.** Learning Link locations, addresses, phone
-  numbers and schedules, plus EDI geographies and every EDI number, are invented. Each page carries a
-  banner saying which is which.
-- **Kid Builders artwork is hotlinked** from First 5 OC's current WordPress media library
-  (`first5oc.org` and the legacy `first5oc.wpengine.com`). That's fine for a demo, but before production
-  the approved assets should be copied into the new site's own library and `imageUrl` updated. If an image
-  fails to load, the card shows a builder-colored tile with the activity title instead of a broken image.
-- **Kid Builders GIFs are animated**, as on the current site. A "Pause animations" button freezes them,
-  and they start paused for anyone whose device asks for reduced motion.
-- **No season or activity-type filters on Kid Builders.** The original brief asked for them, but the
-  real content has no season or type tags. The six builder areas (Mind, Word, Body, Relationship, Safety,
-  Health) are the real taxonomy, so those are the filters. Season or type could be added later as new
-  data fields.
-- **Language downloads:** each builder page on first5oc.org has English, Spanish and Vietnamese PDFs.
-  The demo's download buttons open that page, because the individual PDF URLs weren't in the inventory.
-- **EDI domains** use the five standard EDI domain names. The "% vulnerable, lower is better" framing,
-  the three-year waves and the area-level reporting are assumptions about how First 5 OC presents results.
-- **The EDI map** is a simplified tile layout, and the **Learning Link map** is a simplified county
-  outline. Neither is geographically accurate. Production would likely use real boundaries (e.g. a
-  GeoJSON layer) or a mapping library.
-- **Detail views** open in a dialog tied to the URL hash (e.g. `#activity=leaf-sort`,
-  `#location=sa-1`), so they're linkable and the Back button closes them.
+- **Images are hotlinked** from First 5 OC's WordPress media library (Kid Builders artwork, the Learning
+  Link photo). Before production, copy approved assets into the new site's own library. Images that fail
+  to load fall back gracefully (a colored tile, or the photo is hidden).
+- **EDI map:** First 5 OC's neighborhood map is a live ArcGIS application. Their guidance is to embed it,
+  not rebuild it, so neighborhood data, filters and future updates keep working without a website
+  change. The demo shows a labeled placeholder that links to the current map. **To turn the live map on,**
+  paste the exact iframe `src` from the current EDI page into `mapUrl` in `data/edi.js`. Don't guess the URL.
+- **Learning Link map:** production should use First 5 OC's Google Maps setup (it needs their API key).
+  The demo uses the open-source Leaflet library with OpenStreetMap tiles instead, with the same clustered-pin
+  behavior. Because the data has no coordinates yet, **pins sit at the approximate center of each site's
+  city**, fanned out slightly when several share a city. This is labeled on the page. Before production,
+  geocode each address once and store `latitude`/`longitude`.
+- **Learning Link day/time filters** are read from the published text (e.g. "Mondays through Thursdays",
+  "1st and 3rd Wednesdays"), and the original text is always shown unchanged on each card.
+- **Kid Builders has no season or activity-type filters.** The real content has no such tags, so the six
+  builder areas are the filters.
+- **Kid Builders GIFs are animated**, with a "Pause animations" button. They start paused for anyone whose
+  device asks for reduced motion.
+- **Kid Builders language downloads** open each builder page on first5oc.org, where the English, Spanish
+  and Vietnamese PDFs live. The individual PDF URLs weren't in the inventory.
 
 ## Accessibility notes
 
-- All controls are native buttons, checkboxes, radios and selects, so everything is keyboard operable.
-- Visible focus outlines on every interactive element, plus a skip link on each page.
+- Native buttons, checkboxes, radios and selects, so everything is keyboard operable. Visible focus
+  outlines everywhere, plus a skip link on each page.
 - Result counts are announced to screen readers (`aria-live`). Removable filter chips have labels.
-- The EDI map never relies on color alone: every tile shows its value, and a sortable table view is provided.
-- Non-English content is marked with `lang` attributes so screen readers pronounce it correctly.
-- Every page has empty states (no results) with a one-click "Clear all filters".
+- Every Learning Link site is fully described in text. The map is never the only way to see a location,
+  and the list works even if the map fails to load.
+- The EDI chart has a data table alternative and is redrawn at the screen's real width so text stays
+  readable on phones. Map instructions and privacy notes are in text.
+- Phone numbers use `tel:` links (including extensions). External links say they open a new tab.
 - Tested at desktop (1366px) and phone (360–390px) widths with no horizontal scrolling.
 
 ## Needs confirmation before production
 
 **Kid Builders**
-- Permission to reuse the existing artwork in the new site, and a copy of the original files
-  (to replace the hotlinks).
+- Permission to reuse the existing artwork, and the original files (to replace the hotlinks).
 - Direct URLs for the 90 English/Spanish/Vietnamese activity PDFs.
-- Full activity instructions and caregiver language (the inventory has one-line summaries).
-- Which activities have embedded videos, and where the 18 activity and 20 speech videos are hosted.
-- Artwork for Baby "A Safe Bed" (none verified), and the 3 Years builder-card images.
-- Should seasonal or activity-type tags be added to the content?
+- Full activity instructions (the inventory has one-line summaries) and which activities have videos.
+- Artwork for Baby "A Safe Bed" (none verified) and the 3 Years builder-card images.
 - Review of time-sensitive health and safety guidance (car seats, safe sleep, helmets, sunscreen, dental).
-- Should the whole interface be translatable, not just the downloads?
 
 **EDI**
-- Which geographies First 5 OC reports publicly (school district, city, neighborhood) and any minimum
-  group sizes or suppression rules for small areas.
-- Official wave years and how results are labelled.
-- Preferred wording for how First 5 OC uses the data (marked "Confirm wording" in the demo).
-- Whether partners need downloads (CSV/PDF) or a login for deeper data.
+- The exact ArcGIS iframe `src` from the current EDI page (for `mapUrl`).
+- That the CHOC-reported domain figures are the "on track" percentages First 5 OC wants to show, or
+  First 5 OC's own published domain figures to use instead.
+- Whether to keep Cristina Blevins as the listed EDI contact.
+- An inventory of the Domain Spotlight images and downloads.
 
 **Learning Link**
-- Real location list, addresses, contact info and accessibility details.
-- Term dates for Fall and Spring, who updates schedules, and whether updates come from a spreadsheet,
-  a CMS or another system.
-- Registration process: links to sign-up forms? Waitlists?
-- Map provider for production (e.g. Google Maps or Mapbox), including cost and privacy review.
+- **BESST Center (Newport-Mesa):** the live page says `12:30am-2:00pm`, likely meant to be 12:30pm.
+  It's shown as published and flagged on the card until First 5 OC confirms.
+- First 5 OC's Google Maps API key (domain-restricted) and geocoded coordinates for each site.
+- Who updates the location data each fiscal year, and whether it should live in the CMS.
 
 **General**
 - CMS choice and how these collections would be modelled there.
