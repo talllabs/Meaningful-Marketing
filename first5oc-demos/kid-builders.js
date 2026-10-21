@@ -1,186 +1,196 @@
 (function () {
-  var D = window.F5_DATA.kidBuilders, T = D.taxonomy, esc = F5.esc;
-  var form = document.getElementById('kb-form');
-  var grid = document.getElementById('kb-grid');
-  var countEl = document.getElementById('kb-count');
-  var activeEl = document.getElementById('kb-active');
+  var D = window.F5_DATA.kidBuilders, esc = F5.esc;
+  var out = document.getElementById('kb-out');
   var q = document.getElementById('kb-q');
-  var sort = document.getElementById('kb-sort');
-  var speech = document.getElementById('kb-speech');
+  var newBtn = document.getElementById('kb-new');
+  var pauseBtn = document.getElementById('kb-pause');
+  var st = { ages: [], builders: [], isNew: false };
+  var byId = function (list, id) { return list.filter(function (x) { return x.id === id; })[0]; };
+  var ageOf = function (id) { return byId(D.ages, id); };
+  var builderOf = function (id) { return byId(D.builders, id); };
 
-  var TYPE_ICON = { game: '🎲', song: '🎵', reading: '📖', outdoor: '🌳', art: '🎨', kitchen: '🥄', video: '▶️' };
-  var lookup = function (list, id) { return (list.filter(function (x) { return String(x.id) === String(id); })[0] || {}).label || id; };
+  // ----- Animated GIFs: pause on request, and by default for reduced-motion users -----
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var paused = reduceMotion;
+  // Swap a loaded GIF for a canvas holding its current (first) frame.
+  function freeze(img) {
+    if (!paused || !img.complete || !img.naturalWidth || img.dataset.frozen) return;
+    var c = document.createElement('canvas');
+    c.width = img.naturalWidth; c.height = img.naturalHeight;
+    c.getContext('2d').drawImage(img, 0, 0);
+    c.setAttribute('role', 'img');
+    c.setAttribute('aria-label', img.alt);
+    c.dataset.src = img.src;
+    img.dataset.frozen = '1';
+    img.replaceWith(c);
+  }
+  function thaw(root) {
+    root.querySelectorAll('canvas[data-src]').forEach(function (c) {
+      var img = document.createElement('img');
+      img.src = c.dataset.src; img.alt = c.getAttribute('aria-label');
+      c.replaceWith(img);
+    });
+  }
+  document.addEventListener('load', function (e) { if (e.target.tagName === 'IMG' && e.target.dataset.anim) freeze(e.target); }, true);
+  // If artwork can't load, show a builder-colored tile with the title rather than a broken image.
+  document.addEventListener('error', function (e) {
+    var img = e.target;
+    if (img.tagName !== 'IMG' || img.dataset.failed) return;
+    img.dataset.failed = '1';
+    if (img.dataset.fallback) {
+      var d = document.createElement('div');
+      d.className = 'fallback'; d.textContent = img.dataset.fallback;
+      d.setAttribute('role', 'img'); d.setAttribute('aria-label', img.alt);
+      img.replaceWith(d);
+    } else { img.style.visibility = 'hidden'; }
+  }, true);
+  function setPaused(p) {
+    paused = p;
+    pauseBtn.setAttribute('aria-pressed', p);
+    pauseBtn.textContent = p ? '▶ Play animations' : '⏸ Pause animations';
+    if (p) document.querySelectorAll('img[data-anim]').forEach(freeze); else thaw(document);
+  }
+  pauseBtn.addEventListener('click', function () { setPaused(!paused); });
 
-  F5.renderChecks(document.getElementById('kb-ages'), T.ages, 'age', 'chip');
-  F5.renderChecks(document.getElementById('kb-langs'), T.languages, 'lang', 'chip');
-  F5.renderChecks(document.getElementById('kb-areas'), T.areas, 'area', 'check');
-  F5.renderChecks(document.getElementById('kb-seasons'), T.seasons.filter(function (s) { return s.id !== 'any'; }), 'season', 'check');
-  F5.renderChecks(document.getElementById('kb-types'), T.types, 'type', 'check');
-  F5.wireFilterToggle(document.getElementById('kb-filter-toggle'), document.getElementById('kb-filters'));
-
-  function ageText(ages) {
-    if (ages.length === 1) return lookup(T.ages, ages[0]);
-    var lo = ages[0], hi = ages[ages.length - 1];
-    return (lo === 0 ? 'Birth' : 'Age ' + lo) + '–' + hi + (hi === 1 ? ' year' : ' years');
+  function art(a, cls) {
+    var alt = 'Illustration for ' + a.title;
+    if (!a.imageUrl) return '<div class="fallback ' + (cls || '') + '" role="img" aria-label="' + esc(a.title) + ' (no illustration yet)">' + esc(a.title) + '</div>';
+    return '<img src="' + esc(a.imageUrl) + '" alt="' + esc(alt) + '" loading="lazy" data-anim="1" data-fallback="' + esc(a.title) + '">';
   }
 
-  function state() {
-    return {
-      q: q.value.trim(),
-      age: F5.checked(form, 'age').map(Number),
-      lang: F5.checked(form, 'lang'),
-      area: F5.checked(form, 'area'),
-      season: F5.checked(form, 'season'),
-      type: F5.checked(form, 'type'),
-      speech: speech.checked
-    };
-  }
+  // ----- Static pieces -----
+  var logo = document.getElementById('kb-logo'); logo.src = D.logo;
+  var sImg = document.getElementById('kb-speech-img'); sImg.src = D.speechImage;
+  document.getElementById('kb-speech-links').innerHTML = D.speechStrategies.map(function (s) {
+    return '<a class="lang" lang="' + s.lang + '" href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + '<span class="sr-only"> (opens first5oc.org)</span></a>';
+  }).join(' · ');
 
-  // `skip` lets us compute facet counts while ignoring that facet's own selection.
-  function match(a, s, skip) {
-    if (s.q && !F5.matchesQuery([a.title, a.subtitle, a.summary, a.why, a.cultural, a.materials.join(' '), lookup(T.types, a.type)].join(' '), s.q)) return false;
-    if (skip !== 'age' && s.age.length && !s.age.some(function (x) { return a.ages.indexOf(x) !== -1; })) return false;
-    if (skip !== 'lang' && s.lang.length && s.lang.indexOf(a.language) === -1) return false;
-    if (skip !== 'area' && s.area.length && !s.area.some(function (x) { return a.areas.indexOf(x) !== -1; })) return false;
-    if (skip !== 'season' && s.season.length && a.seasons.indexOf('any') === -1 && !s.season.some(function (x) { return a.seasons.indexOf(x) !== -1; })) return false;
-    if (skip !== 'type' && s.type.length && s.type.indexOf(a.type) === -1) return false;
-    if (s.speech && !a.speechVideo) return false;
+  var count = function (fn) { return D.activities.filter(fn).length; };
+  document.getElementById('kb-ages').innerHTML = D.ages.map(function (g) {
+    return '<button type="button" class="age" data-age="' + g.id + '" aria-pressed="false">' +
+      '<span class="art"><img src="' + esc(g.hero) + '" alt="" loading="lazy"></span>' +
+      '<strong>' + esc(g.label) + '</strong><small>' + count(function (a) { return a.age === g.id; }) + ' activities</small></button>';
+  }).join('');
+  document.getElementById('kb-builders').innerHTML = D.builders.map(function (b) {
+    return '<button type="button" class="builder" data-b="' + b.id + '" aria-pressed="false"><strong>' + esc(b.short) + '</strong><small>' + esc(b.purpose) + '</small></button>';
+  }).join('');
+
+  // ----- Filtering -----
+  function match(a) {
+    if (st.ages.length && st.ages.indexOf(a.age) === -1) return false;
+    if (st.builders.length && st.builders.indexOf(a.builder) === -1) return false;
+    if (st.isNew && !a.isNew) return false;
+    var s = q.value.trim();
+    if (s && !F5.matchesQuery([a.title, a.description, builderOf(a.builder).label, ageOf(a.age).label].join(' '), s)) return false;
     return true;
   }
 
-  function updateCounts(s) {
-    [['area', T.areas, 'areas'], ['season', T.seasons, 'seasons'], ['type', T.types, null]].forEach(function (g) {
-      var pool = D.activities.filter(function (a) { return match(a, s, g[0]); });
-      g[1].forEach(function (opt) {
-        var n = pool.filter(function (a) {
-          if (g[0] === 'type') return a.type === opt.id;
-          if (g[0] === 'season') return a.seasons.indexOf(opt.id) !== -1 || a.seasons.indexOf('any') !== -1;
-          return a[g[2]].indexOf(opt.id) !== -1;
-        }).length;
-        F5.setCount(g[0], opt.id, n);
-      });
-    });
-  }
-
   function card(a) {
-    var area = a.areas[0];
-    return '<article class="card">' +
-      '<div class="kb-thumb" data-area="' + area + '" aria-hidden="true">' + (TYPE_ICON[a.type] || '★') +
-        (a.speechVideo ? '<span class="play">▶ Speech video</span>' : '') + '</div>' +
+    var b = builderOf(a.builder);
+    return '<article class="card act" data-b="' + a.builder + '">' +
+      '<div class="pic">' + art(a) + '</div>' +
       '<div class="card-body">' +
-        '<span class="kb-ages">' + esc(ageText(a.ages)) + ' · ' + a.minutes + ' min</span>' +
+        '<div class="tags"><span class="btag">' + esc(b.label) + '</span>' + (a.isNew ? '<span class="newtag">New</span>' : '') + '</div>' +
         '<h3><a href="#activity=' + esc(a.id) + '">' + esc(a.title) + '</a></h3>' +
-        (a.subtitle ? '<span class="kb-sub" lang="en">' + esc(a.subtitle) + '</span>' : '') +
-        '<p' + (a.language !== 'en' ? ' lang="' + a.language + '"' : '') + '>' + esc(a.summary) + '</p>' +
-        '<div class="meta">' +
-          a.areas.map(function (x) { return '<span class="badge">' + esc(lookup(T.areas, x)) + '</span>'; }).join('') +
-          (a.speechVideo ? '<span class="badge badge-orange">Speech support</span>' : '') +
-          (a.language !== 'en' ? '<span class="badge badge-ink">' + esc(lookup(T.languages, a.language)) + '</span>' : '') +
-          (a.cultural ? '<span class="badge badge-yellow">Culturally rooted</span>' : '') +
-        '</div>' +
+        '<span style="font-weight:800;font-size:.82rem;color:var(--dark)">' + esc(ageOf(a.age).label) + (a.ageRange ? ' · ' + esc(a.ageRange) : '') + '</span>' +
+        '<p>' + esc(a.description) + '</p>' +
       '</div></article>';
   }
 
-  function chipsFor(s) {
-    var out = [];
-    if (s.q) out.push(['q', '', '“' + s.q + '”']);
-    s.age.forEach(function (v) { out.push(['age', v, lookup(T.ages, v)]); });
-    s.lang.forEach(function (v) { out.push(['lang', v, lookup(T.languages, v)]); });
-    s.area.forEach(function (v) { out.push(['area', v, lookup(T.areas, v)]); });
-    s.season.forEach(function (v) { out.push(['season', v, lookup(T.seasons, v)]); });
-    s.type.forEach(function (v) { out.push(['type', v, lookup(T.types, v)]); });
-    if (s.speech) out.push(['speech', '', 'Speech-support videos']);
-    return out;
+  function chips() {
+    var o = [];
+    if (q.value.trim()) o.push(['q', '', '“' + q.value.trim() + '”']);
+    st.ages.forEach(function (v) { o.push(['age', v, ageOf(v).label]); });
+    st.builders.forEach(function (v) { o.push(['builder', v, builderOf(v).label]); });
+    if (st.isNew) o.push(['new', '', 'New activities']);
+    return o;
   }
 
-  // Skip redundant renders (e.g. the "change" fired when the search box blurs)
-  // so buttons aren't replaced mid-click.
   var lastKey = null;
-  function render() {
-    var s = state();
-    var key = JSON.stringify(s) + sort.value;
-    if (key === lastKey) return;
+  function render(force) {
+    var key = JSON.stringify(st) + q.value;
+    if (key === lastKey && !force) return;
     lastKey = key;
-    var list = D.activities.filter(function (a) { return match(a, s); });
-    if (sort.value === 'short') list.sort(function (a, b) { return a.minutes - b.minutes; });
-    if (sort.value === 'az') list.sort(function (a, b) { return a.title.localeCompare(b.title); });
-    // Best match: title hits first, otherwise keep editorial order from the data file.
-    if (sort.value === 'relevance' && s.q) {
-      var nq = F5.norm(s.q);
-      list.sort(function (a, b) { return (F5.norm(b.title).indexOf(nq) !== -1) - (F5.norm(a.title).indexOf(nq) !== -1); });
-    }
+    document.querySelectorAll('.age').forEach(function (b) { b.setAttribute('aria-pressed', st.ages.indexOf(b.dataset.age) !== -1); });
+    document.querySelectorAll('.builder').forEach(function (b) { b.setAttribute('aria-pressed', st.builders.indexOf(b.dataset.b) !== -1); });
+    newBtn.setAttribute('aria-pressed', st.isNew);
 
-    countEl.textContent = list.length === 1 ? '1 activity' : list.length + ' activities';
-    activeEl.innerHTML = chipsFor(s).map(function (c) {
+    var list = D.activities.filter(match);
+    document.getElementById('kb-count').textContent = list.length === 1 ? '1 activity' : list.length + ' activities';
+    document.getElementById('kb-active').innerHTML = chips().map(function (c) {
       return '<button type="button" data-kind="' + c[0] + '" data-val="' + esc(c[1]) + '" aria-label="Remove filter: ' + esc(c[2]) + '">' + esc(c[2]) + '</button>';
     }).join('');
-    updateCounts(s);
-
     if (!list.length) {
-      grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><h3>No activities match yet</h3>' +
-        '<p>Try removing a filter or searching for something broader, like “songs” or “outside”. New activities are added throughout the year.</p>' +
-        '<button type="button" class="btn btn-dark" data-clear>Clear all filters</button></div>';
+      out.innerHTML = '<div class="empty"><h3>No activities match yet</h3><p>Try a different word, or turn off a filter. Every age has activities in all six Kid Builders areas.</p><button type="button" class="btn btn-dark" data-clear>Clear all filters</button></div>';
       return;
     }
-    grid.innerHTML = list.map(card).join('');
+    // Group by age so families with several children can scan each child's section.
+    out.innerHTML = D.ages.map(function (g) {
+      var items = list.filter(function (a) { return a.age === g.id; });
+      if (!items.length) return '';
+      return '<section class="group" aria-labelledby="g-' + g.id + '"><div class="group-head"><img src="' + esc(g.hero) + '" alt="" loading="lazy"><div><h3 id="g-' + g.id + '">' + esc(g.label) + '</h3><span>' + items.length + ' activities</span></div></div>' +
+        '<div class="grid">' + items.map(card).join('') + '</div></section>';
+    }).join('');
   }
 
-  function clearAll() {
-    form.reset();
-    render();
-    q.focus();
-  }
+  function toggle(arr, v) { var i = arr.indexOf(v); if (i === -1) arr.push(v); else arr.splice(i, 1); }
+  function clearAll() { st = { ages: [], builders: [], isNew: false }; q.value = ''; render(); q.focus(); }
 
-  form.addEventListener('input', render);
-  form.addEventListener('change', render);
-  document.getElementById('kb-clear').addEventListener('click', clearAll);
-  grid.addEventListener('click', function (e) { if (e.target.closest('[data-clear]')) clearAll(); });
-  activeEl.addEventListener('click', function (e) {
+  document.getElementById('kb-ages').addEventListener('click', function (e) { var b = e.target.closest('.age'); if (b) { toggle(st.ages, b.dataset.age); render(); } });
+  document.getElementById('kb-builders').addEventListener('click', function (e) { var b = e.target.closest('.builder'); if (b) { toggle(st.builders, b.dataset.b); render(); } });
+  newBtn.addEventListener('click', function () { st.isNew = !st.isNew; render(); });
+  q.addEventListener('input', function () { render(); });
+  document.getElementById('kb-speech-btn').addEventListener('click', function () {
+    st.builders = ['word']; render();
+    document.getElementById('results').focus();
+  });
+  out.addEventListener('click', function (e) { if (e.target.closest('[data-clear]')) clearAll(); });
+  document.getElementById('kb-active').addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
-    var k = b.dataset.kind;
+    var k = b.dataset.kind, v = b.dataset.val;
     if (k === 'q') q.value = '';
-    else if (k === 'speech') speech.checked = false;
-    else { var i = form.querySelector('input[name="' + k + '"][value="' + b.dataset.val + '"]'); if (i) i.checked = false; }
+    if (k === 'age') toggle(st.ages, v);
+    if (k === 'builder') toggle(st.builders, v);
+    if (k === 'new') st.isNew = false;
     render();
-    (activeEl.querySelector('button') || q).focus();
+    (document.querySelector('#kb-active button') || q).focus();
   });
 
   // ----- Detail view -----
   var body = document.getElementById('kb-detail-body');
-  F5.wireDialog(document.getElementById('kb-detail'), 'activity', function (id) {
-    var a = D.activities.filter(function (x) { return x.id === id; })[0];
+  var dialog = document.getElementById('kb-detail');
+  F5.wireDialog(dialog, 'activity', function (id) {
+    var a = byId(D.activities, id);
     if (!a) return false;
-    var lang = a.language !== 'en' ? ' lang="' + a.language + '"' : '';
-    var related = D.activities.filter(function (x) {
-      return x.id !== a.id && (x.areas.some(function (r) { return a.areas.indexOf(r) !== -1; })) && x.ages.some(function (g) { return a.ages.indexOf(g) !== -1; });
-    }).slice(0, 3);
+    var b = builderOf(a.builder), g = ageOf(a.age);
+    var more = D.activities.filter(function (x) { return x.age === a.age && x.builder === a.builder && x.id !== a.id; });
+    dialog.dataset.b = a.builder;
     body.innerHTML =
-      '<span class="eyebrow">' + esc(lookup(T.types, a.type)) + ' · ' + esc(ageText(a.ages)) + '</span>' +
-      '<h2 id="kb-detail-title"' + lang + '>' + esc(a.title) + '</h2>' +
-      (a.subtitle ? '<p class="kb-sub">' + esc(a.subtitle) + '</p>' : '') +
-      '<p class="lede"' + lang + '>' + esc(a.summary) + '</p>' +
-      (a.type === 'video' || a.speechVideo
-        ? '<div class="kb-video" role="img" aria-label="Video placeholder"><div><button type="button" class="playbtn" aria-label="Play video (placeholder — no video in demo)">▶</button><strong>Video placeholder</strong><br><small>Captioned video would play here · ' + a.minutes + ' min</small></div></div><p style="margin:0"><span class="illustrative">Illustrative</span> Real videos would include captions and a transcript.</p>'
-        : '') +
-      '<div class="kb-facts">' +
-        '<span class="badge">⏱ ' + a.minutes + ' minutes</span>' +
-        a.areas.map(function (x) { return '<span class="badge">' + esc(lookup(T.areas, x)) + '</span>'; }).join('') +
-        '<span class="badge">' + esc(a.seasons.map(function (x) { return lookup(T.seasons, x); }).join(', ')) + '</span>' +
-        '<span class="badge badge-ink">' + esc(lookup(T.languages, a.language)) + '</span>' +
-      '</div>' +
-      '<h3>What you’ll need</h3><ul' + lang + '>' + a.materials.map(function (m) { return '<li>' + esc(m) + '</li>'; }).join('') + '</ul>' +
-      '<h3>Try it</h3><ol' + lang + '>' + a.steps.map(function (m) { return '<li>' + esc(m) + '</li>'; }).join('') + '</ol>' +
-      '<h3>Why it matters</h3><p' + lang + '>' + esc(a.why) + '</p>' +
-      (a.cultural ? '<div class="note"><strong>Family connection:</strong> ' + esc(a.cultural) + '</div>' : '') +
-      (related.length ? '<h3>You might also like</h3><div class="kb-related">' + related.map(function (r) {
-        return '<button type="button" data-goto="' + esc(r.id) + '">' + esc(r.title) + '<br><small style="font-weight:600;color:var(--muted)">' + esc(ageText(r.ages)) + '</small></button>';
+      '<span class="eyebrow" style="color:var(--b)">' + esc(b.label) + ' · ' + esc(g.label) + '</span>' +
+      '<h2 id="kb-detail-title">' + esc(a.title) + '</h2>' +
+      '<div class="tags" style="display:flex;gap:6px;flex-wrap:wrap">' + (a.isNew ? '<span class="newtag">New</span>' : '') +
+        (a.ageRange ? '<span class="btag">Best for ' + esc(a.ageRange) + '</span>' : '') + '</div>' +
+      '<div class="kb-detail-art">' + art(a) + '</div>' +
+      '<p class="lede">' + esc(a.description) + '</p>' +
+      '<h3>Why it matters</h3><p style="margin:0">' + esc(b.label) + ' ' + esc(b.purpose.charAt(0).toLowerCase() + b.purpose.slice(1)) + '</p>' +
+      (a.builder === 'word' ? '<div class="note" style="margin-top:14px"><strong>Speech &amp; language:</strong> watch short videos of speech therapists sharing strategies you can use at home, in ' +
+        D.speechStrategies.map(function (s) { return '<a lang="' + s.lang + '" href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + '</a>'; }).join(', ') + '.</div>' : '') +
+      '<h3>Printable activities</h3>' +
+      '<p style="margin:0 0 10px">Download the ' + esc(g.label) + ' ' + esc(b.label) + ' activity sheet:</p>' +
+      '<div class="dl">' + [['English', 'en'], ['Español', 'es'], ['Tiếng Việt', 'vi']].map(function (l) {
+        return '<a class="btn btn-outline btn-small" lang="' + l[1] + '" href="' + esc(a.sourcePage) + '" target="_blank" rel="noopener">⬇ ' + l[0] + '</a>';
+      }).join('') + '</div>' +
+      '<p class="source-note"><span class="illustrative">Demo</span> Buttons open the current First 5 OC page where each language’s PDF lives. In production they would link straight to each file.</p>' +
+      (more.length ? '<h3>More ' + esc(b.label) + ' for ' + esc(g.label) + '</h3><div class="related">' + more.map(function (r) {
+        return '<button type="button" data-goto="' + esc(r.id) + '">' + esc(r.title) + (r.isNew ? ' <span class="newtag">New</span>' : '') + '</button>';
       }).join('') + '</div>' : '') +
-      '<div class="detail-actions"><button type="button" class="btn btn-primary" onclick="window.print()">Print this activity</button>' +
+      '<div class="detail-actions"><a class="btn btn-primary" href="' + esc(a.sourcePage) + '" target="_blank" rel="noopener">View on first5oc.org</a>' +
       '<button type="button" class="btn btn-outline" data-close>Back to activities</button></div>';
-    body.querySelectorAll('[data-goto]').forEach(function (b) { b.addEventListener('click', function () { location.hash = 'activity=' + b.dataset.goto; }); });
-    body.querySelector('[data-close]').addEventListener('click', function () { document.getElementById('kb-detail').close(); });
+    body.querySelectorAll('[data-goto]').forEach(function (x) { x.addEventListener('click', function () { location.hash = 'activity=' + x.dataset.goto; }); });
+    body.querySelector('[data-close]').addEventListener('click', function () { dialog.close(); });
     return true;
   });
 
-  render();
+  setPaused(paused);
+  render(true);
 })();

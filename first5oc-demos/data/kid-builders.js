@@ -1,302 +1,2027 @@
-/* Kid Builders — SAMPLE DATA (illustrative)
-   Every activity below is placeholder content written for this proposal demo.
-   Replace with real Kid Builders content from First 5 OC before production.
-   Spanish and Vietnamese entries need review by native speakers / community partners. */
+/* Kid Builders — content data for the proposal demo.
+   GENERATED from the First 5 OC Kid Builders content inventory and official
+   image manifest (source: https://first5oc.org/kid-builders/, compiled Oct 21, 2026).
+   Activity titles, descriptions, age groups, builder types, NEW flags, age ranges
+   and artwork URLs come from that inventory. Nothing here is invented.
+
+   Images are hotlinked from First 5 OC's current WordPress media library for the
+   demo only. Before production, copy approved assets into the new site's own
+   library (e.g. /kid-builders/<age>/<builder>/) and update `imageUrl`.
+
+   Known gap: Baby "A Safe Bed" has no verified illustration, so imageUrl is null
+   (the page shows a builder-colored tile instead of borrowing other artwork). */
 window.F5_DATA = window.F5_DATA || {};
 window.F5_DATA.kidBuilders = {
-  taxonomy: {
-    ages: [
-      { id: 0, label: 'Under 1' },
-      { id: 1, label: '1 year' },
-      { id: 2, label: '2 years' },
-      { id: 3, label: '3 years' },
-      { id: 4, label: '4 years' },
-      { id: 5, label: '5 years' }
-    ],
-    areas: [
-      { id: 'language', label: 'Talking & Language', icon: '💬' },
-      { id: 'movement', label: 'Moving & Body', icon: '🤸' },
-      { id: 'thinking', label: 'Thinking & Problem Solving', icon: '🧩' },
-      { id: 'social', label: 'Feelings & Friends', icon: '💛' }
-    ],
-    seasons: [
-      { id: 'any', label: 'Any time' },
-      { id: 'spring', label: 'Spring' },
-      { id: 'summer', label: 'Summer' },
-      { id: 'fall', label: 'Fall' },
-      { id: 'winter', label: 'Winter' }
-    ],
-    types: [
-      { id: 'game', label: 'Game' },
-      { id: 'song', label: 'Song & Rhyme' },
-      { id: 'reading', label: 'Reading & Stories' },
-      { id: 'outdoor', label: 'Outdoor' },
-      { id: 'art', label: 'Art & Crafts' },
-      { id: 'kitchen', label: 'Kitchen & Everyday' },
-      { id: 'video', label: 'Video' }
-    ],
-    languages: [
-      { id: 'en', label: 'English' },
-      { id: 'es', label: 'Español' },
-      { id: 'vi', label: 'Tiếng Việt' }
-    ]
+ "source": "https://first5oc.org/kid-builders/",
+ "logo": "https://first5oc.org/wp-content/uploads/2025/09/15459_KidBuidersBy_4C.png",
+ "speechImage": "https://first5oc.org/wp-content/uploads/2025/05/kb-home-sala.png",
+ "ages": [
+  {
+   "id": "baby",
+   "label": "Baby",
+   "hero": "https://first5oc.wpengine.com/wp-content/uploads/2022/10/kb-home-baby.png",
+   "page": "https://first5oc.org/kid-builders/baby-activities/",
+   "summary": "Babies learn about the world through play, and parents and caregivers are their first playmates."
   },
-
-  activities: [
-    {
-      id: 'serve-and-return',
-      title: 'Talk-Back Turns',
-      summary: 'A short video showing how to answer your baby’s coos and babbles like a real conversation.',
-      ages: [0, 1], areas: ['language', 'social'], seasons: ['any'], type: 'video', language: 'en',
-      speechVideo: true, minutes: 3,
-      materials: ['Just you and your baby'],
-      steps: ['Watch for your baby to make a sound or look at something.', 'Respond — copy the sound, smile, or name what they see.', 'Pause and wait. Give your baby time to “answer” back.', 'Keep the back-and-forth going for a few turns.'],
-      why: 'Back-and-forth “conversations” build the brain connections that support language long before first words.'
-    },
-    {
-      id: 'mealtime-naming',
-      title: 'The Naming Game at Mealtime',
-      summary: 'Speech-support video: turn snack time into word time by naming foods, colors and actions.',
-      ages: [1, 2], areas: ['language'], seasons: ['any'], type: 'video', language: 'en',
-      speechVideo: true, minutes: 4,
-      materials: ['Any meal or snack'],
-      steps: ['Name each food as you set it down: “Banana. Yellow banana.”', 'Describe actions: “You’re biting. Crunch!”', 'Offer a choice so your child can point or say a word.', 'Repeat and add one word to whatever your child says.'],
-      why: 'Hearing the same words in everyday routines helps toddlers learn and use new vocabulary.'
-    },
-    {
-      id: 'two-word-stretch',
-      title: 'Stretch It Out: From One Word to Two',
-      summary: 'Speech-support video showing how to gently add words to what your child already says.',
-      ages: [1, 2, 3], areas: ['language'], seasons: ['any'], type: 'video', language: 'en',
-      speechVideo: true, minutes: 5,
-      materials: ['Favorite toys'],
-      steps: ['Listen for a single word, like “car.”', 'Repeat it and add one more word: “Blue car!”', 'Don’t ask your child to repeat — just model it.', 'Try again with a new toy or moment.'],
-      why: 'Modeling slightly longer phrases helps children build sentences without pressure.'
-    },
-    {
-      id: 'hablemos-bano',
-      title: 'Hablemos durante el baño',
-      subtitle: 'Let’s Talk at Bath Time',
-      summary: 'Video de apoyo al habla: nombre partes del cuerpo y acciones mientras su hijo se baña.',
-      ages: [0, 1, 2], areas: ['language', 'movement'], seasons: ['any'], type: 'video', language: 'es',
-      speechVideo: true, minutes: 4,
-      materials: ['Hora del baño', 'Juguetes de agua'],
-      steps: ['Nombre cada parte del cuerpo mientras la lava: “Lavamos tu mano.”', 'Cante una canción corta mientras echa agua.', 'Haga pausas para que su bebé responda con sonidos o palabras.'],
-      why: 'Hablar en su idioma de casa construye una base fuerte para aprender cualquier idioma.',
-      cultural: 'Families are encouraged to use the language they are most comfortable speaking at home.'
-    },
-    {
-      id: 'con-co-be-be',
-      title: 'Hát “Con Cò Bé Bé”',
-      subtitle: 'Sing “Little Stork”',
-      summary: 'Hát bài đồng dao quen thuộc và cùng bé làm động tác vỗ cánh như con cò.',
-      ages: [1, 2, 3], areas: ['language', 'movement'], seasons: ['any'], type: 'song', language: 'vi',
-      speechVideo: false, minutes: 5,
-      materials: ['Không cần dụng cụ'],
-      steps: ['Hát chậm rãi từng câu cho bé nghe.', 'Dang tay vỗ cánh như con cò.', 'Dừng lại giữa câu để bé hát tiếp từ cuối.'],
-      why: 'Bài hát có vần điệu giúp trẻ nghe được âm thanh của ngôn ngữ và nhớ từ mới.',
-      cultural: 'A traditional Vietnamese children’s song many grandparents know — a great way to bring generations together.'
-    },
-    {
-      id: 'keo-cua-lua-xe',
-      title: 'Kéo Cưa Lừa Xẻ',
-      subtitle: 'See-Saw Rhyme for Babies',
-      summary: 'Ngồi đối diện, nắm tay bé và đung đưa qua lại theo nhịp bài đồng dao.',
-      ages: [0, 1, 2], areas: ['movement', 'social', 'language'], seasons: ['any'], type: 'song', language: 'vi',
-      speechVideo: true, minutes: 5,
-      materials: ['Không cần dụng cụ'],
-      steps: ['Đặt bé ngồi trên đùi hoặc đối diện bạn.', 'Nắm hai tay bé và đung đưa nhẹ nhàng tới lui.', 'Đọc bài đồng dao theo nhịp, nhấn mạnh từ cuối mỗi câu.'],
-      why: 'Nhịp điệu và chuyển động cùng nhau giúp bé gắn kết và phát triển khả năng nghe.',
-      cultural: 'A rhythm game passed down in many Vietnamese families. Video shows a caregiver modeling the rhyme slowly.'
-    },
-    {
-      id: 'trung-thu-lantern',
-      title: 'Làm Lồng Đèn Trung Thu',
-      subtitle: 'Mid-Autumn Paper Lantern',
-      summary: 'Cùng bé làm lồng đèn giấy đơn giản để đón Tết Trung Thu.',
-      ages: [3, 4, 5], areas: ['thinking', 'movement'], seasons: ['fall'], type: 'art', language: 'vi',
-      speechVideo: false, minutes: 20,
-      materials: ['Giấy màu', 'Kéo an toàn cho trẻ', 'Băng keo', 'Bút màu'],
-      steps: ['Gấp đôi tờ giấy theo chiều dài.', 'Giúp bé cắt các đường thẳng từ mép gấp.', 'Mở ra, cuộn tròn và dán lại thành lồng đèn.', 'Trang trí bằng bút màu và kể cho bé nghe về Trung Thu.'],
-      why: 'Cắt, gấp và dán giúp phát triển cơ tay nhỏ, đồng thời kết nối bé với truyền thống gia đình.',
-      cultural: 'Tết Trung Thu (Mid-Autumn Festival) is celebrated by many Vietnamese American families in Orange County.'
-    },
-    {
-      id: 'los-pollitos',
-      title: '“Los Pollitos Dicen”',
-      subtitle: 'The Little Chicks Say',
-      summary: 'Cante esta canción clásica y use las manos para mostrar a los pollitos y a la gallina.',
-      ages: [0, 1, 2, 3], areas: ['language', 'social'], seasons: ['any'], type: 'song', language: 'es',
-      speechVideo: false, minutes: 5,
-      materials: ['No se necesita nada'],
-      steps: ['Cante despacio y con mucha expresión.', 'Abra y cierre la mano como un pico: “pío, pío, pío.”', 'Abrace a su hijo cuando la gallina “busca el maíz y el trigo.”'],
-      why: 'Las canciones con gestos ayudan a los niños a conectar palabras con significados.',
-      cultural: 'A song known across many Latin American countries — ask relatives to share their version.'
-    },
-    {
-      id: 'loteria-animales',
-      title: 'Lotería de animales',
-      subtitle: 'Animal Lotería',
-      summary: 'Juegue una versión sencilla de lotería con dibujos de animales para practicar palabras y turnos.',
-      ages: [3, 4, 5], areas: ['thinking', 'language', 'social'], seasons: ['any'], type: 'game', language: 'es',
-      speechVideo: false, minutes: 15,
-      materials: ['Tarjetas de lotería (imprimibles)', 'Frijoles o botones como fichas'],
-      steps: ['Reparta una tabla a cada jugador.', 'Saque una carta y diga el nombre del animal con un sonido.', 'Los niños buscan y marcan el animal con un frijol.', '¡Gana quien llene una fila primero!'],
-      why: 'Esperar turnos, escuchar y emparejar imágenes fortalecen la atención y la memoria.',
-      cultural: 'Inspired by lotería, a game many Mexican and Mexican American families play together.'
-    },
-    {
-      id: 'arroz-con-leche',
-      title: 'Cocinemos: arroz con leche',
-      subtitle: 'Let’s Cook: Rice Pudding',
-      summary: 'Los niños ayudan a medir, mezclar y contar mientras preparan un postre familiar.',
-      ages: [3, 4, 5], areas: ['thinking', 'language'], seasons: ['winter', 'fall'], type: 'kitchen', language: 'es',
-      speechVideo: false, minutes: 30,
-      materials: ['Arroz', 'Leche', 'Canela', 'Tazas de medir'],
-      steps: ['Deje que su hijo cuente las tazas de arroz.', 'Hablen sobre cómo cambia el arroz al cocinarse.', 'Su hijo puede espolvorear la canela (¡con supervisión!).'],
-      why: 'Cocinar juntos enseña números, palabras nuevas y paciencia.'
-    },
-    {
-      id: 'tummy-time-mirror',
-      title: 'Tummy Time Mirror Play',
-      summary: 'Place a baby-safe mirror in front of your baby during tummy time to encourage lifting and looking.',
-      ages: [0], areas: ['movement', 'social'], seasons: ['any'], type: 'game', language: 'en',
-      speechVideo: false, minutes: 5,
-      materials: ['Baby-safe mirror', 'Soft blanket'],
-      steps: ['Lay your baby on their tummy on a blanket.', 'Set the mirror just in front of them.', 'Talk about the face they see: “Who’s that? It’s you!”', 'Stop when your baby gets tired — a few minutes is plenty.'],
-      why: 'Tummy time builds neck and shoulder strength needed for rolling, sitting and crawling.'
-    },
-    {
-      id: 'peekaboo-scarf',
-      title: 'Peekaboo Scarf',
-      summary: 'Hide your face or a toy under a light scarf and let your baby discover it again.',
-      ages: [0, 1], areas: ['thinking', 'social'], seasons: ['any'], type: 'game', language: 'en',
-      speechVideo: false, minutes: 5,
-      materials: ['Light scarf or cloth'],
-      steps: ['Cover a toy with the scarf while your baby watches.', 'Ask, “Where did it go?”', 'Lift the scarf: “There it is!”', 'Let your baby try pulling the scarf off.'],
-      why: 'Peekaboo teaches that things still exist when hidden — a big thinking milestone.'
-    },
-    {
-      id: 'sidewalk-chalk-shapes',
-      title: 'Sidewalk Chalk Shape Hop',
-      summary: 'Draw big shapes outside and call out which one to jump to.',
-      ages: [3, 4, 5], areas: ['movement', 'thinking'], seasons: ['spring', 'summer'], type: 'outdoor', language: 'en',
-      speechVideo: false, minutes: 15,
-      materials: ['Sidewalk chalk'],
-      steps: ['Draw a circle, square, triangle and star.', 'Call out a shape and have your child hop to it.', 'Add colors: “Hop to the blue triangle!”', 'Let your child be the caller.'],
-      why: 'Jumping builds balance, and following directions builds listening and shape recognition.'
-    },
-    {
-      id: 'leaf-sort',
-      title: 'Leaf Sorting Walk',
-      summary: 'Collect leaves on a walk, then sort them by size, color or shape.',
-      ages: [2, 3, 4, 5], areas: ['thinking', 'language'], seasons: ['fall'], type: 'outdoor', language: 'en',
-      speechVideo: false, minutes: 20,
-      materials: ['A bag for collecting', 'Leaves from a park or yard'],
-      steps: ['Collect 8–10 leaves together.', 'At home, sort them into piles: big and small, or by color.', 'Count each pile.', 'Use describing words: crunchy, smooth, pointy.'],
-      why: 'Sorting and comparing are early math skills, and describing builds vocabulary.'
-    },
-    {
-      id: 'water-play-pour',
-      title: 'Backyard Pouring Station',
-      summary: 'Cups, spoons and a tub of water make a simple science lab on a warm day.',
-      ages: [1, 2, 3], areas: ['thinking', 'movement'], seasons: ['summer'], type: 'outdoor', language: 'en',
-      speechVideo: false, minutes: 20,
-      materials: ['Shallow tub of water', 'Cups and spoons of different sizes'],
-      steps: ['Always stay within arm’s reach near water.', 'Show your child how to pour from one cup to another.', 'Talk about full, empty, more and less.'],
-      why: 'Pouring builds hand control and introduces early ideas about measurement.'
-    },
-    {
-      id: 'feelings-faces',
-      title: 'Feelings Faces',
-      summary: 'Make happy, sad, surprised and mad faces together in the mirror and name each feeling.',
-      ages: [2, 3, 4], areas: ['social', 'language'], seasons: ['any'], type: 'game', language: 'en',
-      speechVideo: false, minutes: 10,
-      materials: ['Mirror (optional)'],
-      steps: ['Make a feeling face and name it.', 'Ask your child to copy you.', 'Talk about a time you felt that way.', 'Switch — let your child make a face for you to guess.'],
-      why: 'Naming feelings is the first step toward managing them.'
-    },
-    {
-      id: 'story-retell',
-      title: 'Tell It Back With Toys',
-      summary: 'After reading a favorite book, act out the story with stuffed animals or toys.',
-      ages: [3, 4, 5], areas: ['language', 'thinking'], seasons: ['any'], type: 'reading', language: 'en',
-      speechVideo: false, minutes: 15,
-      materials: ['A picture book', 'Toys or stuffed animals'],
-      steps: ['Read the book together.', 'Ask, “What happened first?”', 'Use toys to act out the beginning, middle and end.', 'Let your child change the ending!'],
-      why: 'Retelling builds memory, sequencing and storytelling — key early literacy skills.'
-    },
-    {
-      id: 'library-lap-read',
-      title: 'Lap Reading: Point and Name',
-      summary: 'Snuggle up with a board book and point to pictures while you name them.',
-      ages: [0, 1, 2], areas: ['language', 'social'], seasons: ['any'], type: 'reading', language: 'en',
-      speechVideo: false, minutes: 10,
-      materials: ['Board book'],
-      steps: ['Hold your child on your lap.', 'Point to a picture and name it.', 'Pause so your child can point too.', 'It’s OK to skip words — follow their interest.'],
-      why: 'Reading together every day is one of the strongest predictors of later reading success.'
-    },
-    {
-      id: 'sound-hunt',
-      title: 'Sound Hunt',
-      summary: 'Speech-support video: go on a walk and listen for animal, car and nature sounds, then copy them.',
-      ages: [1, 2, 3], areas: ['language', 'thinking'], seasons: ['spring', 'summer', 'fall'], type: 'video', language: 'en',
-      speechVideo: true, minutes: 4,
-      materials: ['A short walk'],
-      steps: ['Stop and say, “Listen! What do you hear?”', 'Name the sound: “A dog! Woof woof.”', 'Encourage your child to copy the sound.'],
-      why: 'Copying sounds strengthens the mouth movements children use for speech.'
-    },
-    {
-      id: 'cuentos-abuela',
-      title: 'Cuentos con la abuela',
-      subtitle: 'Stories with Grandma',
-      summary: 'Invite a grandparent to tell a story from when they were little — no book needed.',
-      ages: [2, 3, 4, 5], areas: ['language', 'social'], seasons: ['any'], type: 'reading', language: 'es',
-      speechVideo: false, minutes: 15,
-      materials: ['Un abuelo o familiar'],
-      steps: ['Pida a un familiar que cuente un recuerdo de su niñez.', 'Anime a su hijo a hacer preguntas.', 'Después, dibujen juntos una parte del cuento.'],
-      why: 'Las historias familiares fortalecen el idioma y la identidad cultural.'
-    },
-    {
-      id: 'dance-freeze',
-      title: 'Dance and Freeze',
-      summary: 'Play music, dance, and freeze when the music stops. Great for rainy days.',
-      ages: [2, 3, 4, 5], areas: ['movement', 'social'], seasons: ['winter', 'any'], type: 'game', language: 'en',
-      speechVideo: false, minutes: 10,
-      materials: ['Music from a phone or radio'],
-      steps: ['Start the music and dance together.', 'Pause the music — everyone freezes!', 'Try freezing in funny shapes.'],
-      why: 'Stopping and starting on cue builds self-control, an important school-readiness skill.'
-    },
-    {
-      id: 'counting-fruit-vi',
-      title: 'Đếm Trái Cây',
-      subtitle: 'Counting Fruit',
-      summary: 'Cùng bé đếm trái cây khi đi chợ hoặc khi chuẩn bị bữa ăn.',
-      ages: [2, 3, 4], areas: ['thinking', 'language'], seasons: ['any'], type: 'kitchen', language: 'vi',
-      speechVideo: false, minutes: 10,
-      materials: ['Trái cây trong nhà'],
-      steps: ['Xếp trái cây thành hàng.', 'Đếm to từng trái cùng bé.', 'Hỏi bé: “Trái nào to hơn? Trái nào màu đỏ?”'],
-      why: 'Đếm đồ vật thật giúp trẻ hiểu ý nghĩa của con số.'
-    },
-    {
-      id: 'spring-seed-cup',
-      title: 'Grow a Bean in a Cup',
-      summary: 'Plant a bean in a clear cup so your child can watch the roots and sprout grow.',
-      ages: [3, 4, 5], areas: ['thinking', 'language'], seasons: ['spring'], type: 'outdoor', language: 'en',
-      speechVideo: false, minutes: 15,
-      materials: ['Clear cup', 'Paper towel', 'Dry beans', 'Water'],
-      steps: ['Line the cup with a damp paper towel.', 'Tuck a bean between the towel and the cup.', 'Check each day and talk about changes.', 'Draw what you see each week.'],
-      why: 'Watching and predicting is the beginning of scientific thinking.'
-    },
-    {
-      id: 'calm-breathing',
-      title: 'Smell the Flower, Blow the Candle',
-      summary: 'A simple breathing game to help little ones calm down when feelings get big.',
-      ages: [2, 3, 4, 5], areas: ['social'], seasons: ['any'], type: 'video', language: 'en',
-      speechVideo: false, minutes: 3,
-      materials: ['Nothing needed'],
-      steps: ['Hold up a pretend flower and breathe in slowly.', 'Hold up a pretend candle and blow out slowly.', 'Repeat three times together.'],
-      why: 'Slow breathing helps children’s bodies calm down so they can think again.'
-    }
-  ]
+  {
+   "id": "1",
+   "label": "1 Year",
+   "hero": "https://first5oc.wpengine.com/wp-content/uploads/2022/10/kb-home-1-year.png",
+   "page": "https://first5oc.org/kid-builders/one-year-activities/",
+   "summary": "Playing helps babies and toddlers learn new things, practice new skills and build confidence."
+  },
+  {
+   "id": "2",
+   "label": "2 Years",
+   "hero": "https://first5oc.wpengine.com/wp-content/uploads/2022/10/kb-home-2-year.png",
+   "page": "https://first5oc.org/kid-builders/two-year-activities/",
+   "summary": "Playing helps toddlers discover their world while families pause, play and enjoy being together."
+  },
+  {
+   "id": "3",
+   "label": "3 Years",
+   "hero": "https://first5oc.wpengine.com/wp-content/uploads/2022/10/kb-home-3-year.png",
+   "page": "https://first5oc.org/kid-builders/three-year-activities/",
+   "summary": "Three-year activities help children learn new words and skills, build confidence and support mental health."
+  },
+  {
+   "id": "45",
+   "label": "4 and 5 Years",
+   "hero": "https://first5oc.wpengine.com/wp-content/uploads/2022/10/kb-home-4-5-year.png",
+   "page": "https://first5oc.org/kid-builders/four-five-year-activities/",
+   "summary": "Preschoolers prepare for school through play that builds imagination, problem-solving, cooperation and independence."
+  }
+ ],
+ "builders": [
+  {
+   "id": "mind",
+   "label": "Mind Builders",
+   "short": "Mind",
+   "purpose": "Build brain power and problem-solving skills."
+  },
+  {
+   "id": "word",
+   "label": "Word Builders",
+   "short": "Word",
+   "purpose": "Support communication through pictures, sounds and words."
+  },
+  {
+   "id": "body",
+   "label": "Body Builders",
+   "short": "Body",
+   "purpose": "Support healthy physical development using large and small muscles."
+  },
+  {
+   "id": "relationship",
+   "label": "Relationship Builders",
+   "short": "Relationship",
+   "purpose": "Help children develop a positive view of themselves and learn to interact with others."
+  },
+  {
+   "id": "safety",
+   "label": "Safety Builders",
+   "short": "Safety",
+   "purpose": "Practical ideas for helping children grow up safely."
+  },
+  {
+   "id": "health",
+   "label": "Health Builders",
+   "short": "Health",
+   "purpose": "Build healthy habits including dental care, nutrition, movement, handwashing and sleep routines."
+  }
+ ],
+ "categoryCards": {
+  "baby": {
+   "mind": "https://first5oc.wpengine.com/wp-content/uploads/2022/09/baby-home-mind-front.png",
+   "body": "https://first5oc.wpengine.com/wp-content/uploads/2022/09/baby-home-body-front.png",
+   "safety": "https://first5oc.wpengine.com/wp-content/uploads/2022/09/baby-home-safety-front.png",
+   "word": "https://first5oc.wpengine.com/wp-content/uploads/2022/09/baby-home-word-front.png",
+   "relationship": "https://first5oc.wpengine.com/wp-content/uploads/2022/09/baby-home-relationship-front.png",
+   "health": "https://first5oc.wpengine.com/wp-content/uploads/2022/09/baby-home-health-front.png"
+  },
+  "1": {
+   "mind": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/one-home-mind-front.png",
+   "body": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/one-home-body-front.png",
+   "safety": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/one-home-safety-front.png",
+   "word": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/one-home-word-front.png",
+   "relationship": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/one-home-relationship-front.png",
+   "health": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/one-home-health-front.png"
+  },
+  "2": {
+   "mind": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/two-home-mind-front.png",
+   "body": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/two-home-body-front.png",
+   "safety": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/two-home-safety-front.png",
+   "word": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/two-home-word-front.png",
+   "relationship": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/two-home-relationship-front.png",
+   "health": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/two-home-health-front.png"
+  },
+  "45": {
+   "mind": "https://first5oc.org/wp-content/uploads/2022/11/four-home-mind-front.png",
+   "body": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/four-home-body-front.png",
+   "safety": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/four-home-safety-front.png",
+   "word": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/four-home-word-front.png",
+   "relationship": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/four-home-relationship-front.png",
+   "health": "https://first5oc.wpengine.com/wp-content/uploads/2022/11/four-home-health-front.png"
+  }
+ },
+ "speechStrategies": [
+  {
+   "lang": "en",
+   "label": "English",
+   "url": "https://first5oc.org/kid-builders/speech-development-strategies/"
+  },
+  {
+   "lang": "es",
+   "label": "Español",
+   "url": "https://first5oc.org/speech-development-strategies-spanish/"
+  },
+  {
+   "lang": "vi",
+   "label": "Tiếng Việt",
+   "url": "https://first5oc.org/speech-development-strategies-vietnamese/"
+  }
+ ],
+ "activities": [
+  {
+   "id": "baby-mind-little-dropper",
+   "age": "baby",
+   "builder": "mind",
+   "title": "Little Dropper",
+   "description": "Put soft toys or safe household objects in a box or bin and let baby remove, dump, handle, and replace them while the caregiver talks about colors, shapes, sounds, and actions.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2023/01/Baby_Little_Dropper.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-mind-builders/"
+  },
+  {
+   "id": "baby-mind-listen-up",
+   "age": "baby",
+   "builder": "mind",
+   "title": "Listen Up!",
+   "description": "Take baby on a listening walk around the home, yard, or neighborhood and name everyday sounds such as leaves, cars, birds, knocks, and bells.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2023/01/Baby_Listen_Up.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-mind-builders/"
+  },
+  {
+   "id": "baby-mind-time-to-count",
+   "age": "baby",
+   "builder": "mind",
+   "title": "Time to Count!",
+   "description": "Build counting into daily routines by counting fingers, toes, food, toys, or other familiar objects.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2023/03/Baby_TimeToCount.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-mind-builders/"
+  },
+  {
+   "id": "baby-mind-look-baby-look",
+   "age": "baby",
+   "builder": "mind",
+   "title": "Look, Baby, Look!",
+   "description": "Use a colorful object to help baby focus, track movement with their eyes, touch different textures, and hear words describing shape, color, and feel.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2023/01/Baby_Look_Baby_Look.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-mind-builders/"
+  },
+  {
+   "id": "baby-mind-where-did-it-go",
+   "age": "baby",
+   "builder": "mind",
+   "title": "Where Did it Go?",
+   "description": "Play peek-a-boo to help baby begin understanding that people and objects still exist even when hidden.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2023/01/Baby_Where_Did_It_Go.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-mind-builders/"
+  },
+  {
+   "id": "baby-body-reach-up",
+   "age": "baby",
+   "builder": "body",
+   "title": "Reach Up",
+   "description": "Hold a soft or colorful object above baby to encourage focusing and reaching, helping build arm strength and attention.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby_ReachUp_a.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-body-builders/"
+  },
+  {
+   "id": "baby-body-let-s-move-our-legs",
+   "age": "baby",
+   "builder": "body",
+   "title": "Let's Move Our Legs!",
+   "description": "Gently bend, stretch, open, close, and move baby's legs to build strength needed for crawling, standing, and walking.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/Baby_Lets_Move_Our_Legs.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-body-builders/"
+  },
+  {
+   "id": "baby-body-tummy-time",
+   "age": "baby",
+   "builder": "body",
+   "title": "Tummy Time",
+   "description": "Give supervised tummy time with toys or a caregiver nearby to strengthen the neck, back, shoulders, and arms and support rolling and sitting.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby-tummy-time_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-body-builders/"
+  },
+  {
+   "id": "baby-body-let-s-move-our-arms",
+   "age": "baby",
+   "builder": "body",
+   "title": "Let's Move Our Arms!",
+   "description": "Gently move baby's arms up, down, open, closed, and into clapping motions to build upper-body strength and coordination.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/Baby_Lets_Move_Our_Arms.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-body-builders/"
+  },
+  {
+   "id": "baby-body-play-ball",
+   "age": "baby",
+   "builder": "body",
+   "title": "Play Ball",
+   "description": "Roll a soft ball to a baby who can sit and let them reach, touch, push, or eventually roll it back.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby-lets-play-ball_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-body-builders/"
+  },
+  {
+   "id": "baby-safety-make-your-home-baby-ready",
+   "age": "baby",
+   "builder": "safety",
+   "title": "Make Your Home Baby-Ready",
+   "description": "Get down to baby's level and check the home for reachable cords, outlets, small objects, cleaning products, sharp corners, and other hazards.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/Baby_Make_Your_Home_Baby_Ready.png",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-safety-builders/"
+  },
+  {
+   "id": "baby-safety-tub-time-teaching-time",
+   "age": "baby",
+   "builder": "safety",
+   "title": "Tub Time, Teaching Time",
+   "description": "Stay with baby at all times in the bath while using bath time for reading, talking, movement words, and sound imitation.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby_Tub_Time_Teaching_Time.png",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-safety-builders/"
+  },
+  {
+   "id": "baby-safety-hand-on-my-tummy",
+   "age": "baby",
+   "builder": "safety",
+   "title": "Hand on My Tummy",
+   "description": "Keep one hand on baby during diaper changes so they cannot roll or fall from the changing surface.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby-hand-on-my-Tummy_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-safety-builders/"
+  },
+  {
+   "id": "baby-safety-a-safe-car-ride",
+   "age": "baby",
+   "builder": "safety",
+   "title": "A Safe Car Ride",
+   "description": "Use an appropriate car seat, have installation checked if needed, and build safe routines around entering and leaving the car.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/Baby_A_Safe_Car_Ride.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-safety-builders/"
+  },
+  {
+   "id": "baby-safety-remember-me",
+   "age": "baby",
+   "builder": "safety",
+   "title": "Remember Me!",
+   "description": "Use reminders such as placing an essential item in the back seat so a baby is never accidentally left in a vehicle.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby_Remember_Me.png",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-safety-builders/"
+  },
+  {
+   "id": "baby-safety-a-safe-bed",
+   "age": "baby",
+   "builder": "safety",
+   "title": "A Safe Bed",
+   "description": "Use a separate safe sleep space, place baby on their back, remove loose bedding and soft objects, and maintain a safe crib setup.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": null,
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-safety-builders/"
+  },
+  {
+   "id": "baby-word-listen-to-me-talk",
+   "age": "baby",
+   "builder": "word",
+   "title": "Listen to Me Talk!",
+   "description": "Describe what you see and do so baby hears words connected to the world around them.",
+   "isNew": true,
+   "ageRange": "birth to 3 months",
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Listen_to_Me_Talk.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-word-builders/"
+  },
+  {
+   "id": "baby-word-giggles-galore",
+   "age": "baby",
+   "builder": "word",
+   "title": "Giggles Galore!",
+   "description": "Play peek-a-boo with expressions and sounds to support connection and early cause-and-effect learning.",
+   "isNew": true,
+   "ageRange": "4 to 6 months",
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Giggles_Galore.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-word-builders/"
+  },
+  {
+   "id": "baby-word-sing-my-name",
+   "age": "baby",
+   "builder": "word",
+   "title": "Sing My Name!",
+   "description": "Use baby's name often in playful, loving speech and celebrate when baby responds.",
+   "isNew": true,
+   "ageRange": "4 to 6 months",
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Sing_My_Name.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-word-builders/"
+  },
+  {
+   "id": "baby-word-watch-me-babble",
+   "age": "baby",
+   "builder": "word",
+   "title": "Watch Me Babble!",
+   "description": "Repeat baby's babbling sounds and add simple words to model the back-and-forth pattern of conversation.",
+   "isNew": true,
+   "ageRange": "7 to 9 months",
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Watch_Me_Babble.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-word-builders/"
+  },
+  {
+   "id": "baby-word-wave-hello",
+   "age": "baby",
+   "builder": "word",
+   "title": "Wave Hello!",
+   "description": "Pair waving gestures with words such as hello and bye-bye to build social communication.",
+   "isNew": true,
+   "ageRange": "7 to 9 months",
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Wave_Hello.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-word-builders/"
+  },
+  {
+   "id": "baby-word-point-and-play",
+   "age": "baby",
+   "builder": "word",
+   "title": "Point and Play!",
+   "description": "Respond when baby points to an object and name what they are communicating about.",
+   "isNew": true,
+   "ageRange": "10 to 12 months",
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Point_and_Play_01.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-word-builders/"
+  },
+  {
+   "id": "baby-word-sing-about-my-day",
+   "age": "baby",
+   "builder": "word",
+   "title": "Sing About My Day!",
+   "description": "Change familiar song lyrics to describe daily routines and introduce new words.",
+   "isNew": true,
+   "ageRange": "10 to 12 months",
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Sing_About_My_Day.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-word-builders/"
+  },
+  {
+   "id": "baby-word-let-s-keep-talking",
+   "age": "baby",
+   "builder": "word",
+   "title": "Let's Keep Talking",
+   "description": "Treat baby's coos, babbles, faces, and movements as conversation and respond with interest.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/Baby_Lets_Keep_Talking.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-word-builders/"
+  },
+  {
+   "id": "baby-word-animal-sounds",
+   "age": "baby",
+   "builder": "word",
+   "title": "Animal Sounds",
+   "description": "Use animal pictures or books to practice animal names and sounds.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby_Animal_Sounds.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-word-builders/"
+  },
+  {
+   "id": "baby-word-sing-with-me",
+   "age": "baby",
+   "builder": "word",
+   "title": "Sing with Me!",
+   "description": "Sing familiar or made-up songs during routines to build language, rhythm, and a sense of security.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby-sing-with-me_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-word-builders/"
+  },
+  {
+   "id": "baby-word-everyday-reading",
+   "age": "baby",
+   "builder": "word",
+   "title": "Everyday Reading",
+   "description": "Use books or pictures throughout the day, point to images, name them, and talk about what baby sees.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby_Everyday_Reading.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-word-builders/"
+  },
+  {
+   "id": "baby-word-rhyme-with-me",
+   "age": "baby",
+   "builder": "word",
+   "title": "Rhyme With Me!",
+   "description": "Use simple, repetitive, playful rhymes to help baby hear patterns in sounds and words.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/Baby_Rhyme_with_Me.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-word-builders/"
+  },
+  {
+   "id": "baby-relationship-baby-play",
+   "age": "baby",
+   "builder": "relationship",
+   "title": "Baby Play",
+   "description": "Let babies spend supervised time near another baby so they can observe and explore social interaction.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby_Play2a.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-relationship-builders/"
+  },
+  {
+   "id": "baby-relationship-hello-park-goodbye-park",
+   "age": "baby",
+   "builder": "relationship",
+   "title": "Hello Park, Goodbye Park",
+   "description": "Use hello and goodbye routines to help baby transition into and out of activities.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/Baby_Hello_Park_Goodbye_Park.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-relationship-builders/"
+  },
+  {
+   "id": "baby-relationship-i-am-right-here",
+   "age": "baby",
+   "builder": "relationship",
+   "title": "I am Right Here",
+   "description": "Respond to crying and distress with comfort, soothing, touch, and reassurance to build trust and security.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby_Im_Right_Here.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-relationship-builders/"
+  },
+  {
+   "id": "baby-relationship-cuddle-with-me",
+   "age": "baby",
+   "builder": "relationship",
+   "title": "Cuddle With Me",
+   "description": "Make time for daily holding, cuddling, talking, reading, singing, and gentle touch.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby_Cuddlebugs.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-relationship-builders/"
+  },
+  {
+   "id": "baby-relationship-so-happy-to-see-you",
+   "age": "baby",
+   "builder": "relationship",
+   "title": "So Happy to See You!",
+   "description": "Use eye contact, smiles, words, and focused attention to show baby how important they are.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby_Happy-SeeyouV3.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-relationship-builders/"
+  },
+  {
+   "id": "baby-health-a-healthy-mouth",
+   "age": "baby",
+   "builder": "health",
+   "title": "A Healthy Mouth",
+   "description": "Clean baby's gums and teeth as part of a healthy routine and make it playful with talking, singing, or counting.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby_A_Healthy_Mouth.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-health-builders/"
+  },
+  {
+   "id": "baby-health-my-sleep-song",
+   "age": "baby",
+   "builder": "health",
+   "title": "My Sleep Song",
+   "description": "Create a predictable bedtime routine using a song, book, rhyme, bath, or soothing words.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby_My_Sleep_Song.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-health-builders/"
+  },
+  {
+   "id": "baby-health-let-s-move",
+   "age": "baby",
+   "builder": "health",
+   "title": "Let's Move",
+   "description": "Make movement part of family life through walks, dancing, stairs, stroller time, or age-appropriate active play.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/Baby_Lets_Move.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-health-builders/"
+  },
+  {
+   "id": "baby-health-rainbow-dinner",
+   "age": "baby",
+   "builder": "health",
+   "title": "Rainbow Dinner",
+   "description": "Offer baby a variety of food colors, textures, and flavors as appropriate for their stage.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby_Rainbow_Dinner.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-health-builders/"
+  },
+  {
+   "id": "baby-health-i-can-drink-it",
+   "age": "baby",
+   "builder": "health",
+   "title": "I Can Drink It!",
+   "description": "Around the appropriate developmental stage, introduce drinking from a cup using safe, manageable options.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/Baby_I_Can_Drink_It.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/baby-activities/baby-health-builders/"
+  },
+  {
+   "id": "1-mind-making-noise",
+   "age": "1",
+   "builder": "mind",
+   "title": "Making Noise",
+   "description": "Use pots, boxes, sealed containers, spoons, and other safe objects to explore different sounds and rhythms.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_Making_Noise.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-mind-builders/"
+  },
+  {
+   "id": "1-mind-fun-with-water",
+   "age": "1",
+   "builder": "mind",
+   "title": "Fun with Water!",
+   "description": "Pour, stir, transfer, touch, and \"paint\" with water while discussing wet and dry, high and low, big and small.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_Fun_With_Water.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-mind-builders/"
+  },
+  {
+   "id": "1-mind-find-the-toy",
+   "age": "1",
+   "builder": "mind",
+   "title": "Find the Toy",
+   "description": "Hide a familiar toy under a cup, towel, or nearby location and help the child search for it.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/1Y_Find_the_Toy.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-mind-builders/"
+  },
+  {
+   "id": "1-mind-counting-games",
+   "age": "1",
+   "builder": "mind",
+   "title": "Counting Games",
+   "description": "Count everyday objects, food, steps, clothing pieces, pushes on a swing, and body parts.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_Counting_Games.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-mind-builders/"
+  },
+  {
+   "id": "1-mind-let-s-pretend",
+   "age": "1",
+   "builder": "mind",
+   "title": "Let's Pretend",
+   "description": "Use books and pictures as a starting point for simple pretend play and imaginative language.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_Let_s_Pretend_a.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-mind-builders/"
+  },
+  {
+   "id": "1-body-push-and-pull",
+   "age": "1",
+   "builder": "body",
+   "title": "Push and Pull",
+   "description": "Let the child push and pull boxes, bins, laundry baskets, towels, or stroller handles to build strength.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/1Y_Push_and_Pull.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-body-builders/"
+  },
+  {
+   "id": "1-body-let-s-dance",
+   "age": "1",
+   "builder": "body",
+   "title": "Let's Dance!",
+   "description": "Dance together standing, sitting, holding hands, or in a caregiver's arms to develop balance and rhythm.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_Lets_Dance.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-body-builders/"
+  },
+  {
+   "id": "1-body-jump",
+   "age": "1",
+   "builder": "body",
+   "title": "Jump",
+   "description": "Practice bouncing and assisted jumping so the child learns the movement pattern and builds leg strength.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/1Y_Jump_3.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-body-builders/"
+  },
+  {
+   "id": "1-body-over-under-around",
+   "age": "1",
+   "builder": "body",
+   "title": "Over, Under, Around",
+   "description": "Create a simple indoor obstacle course using pillows, chairs, boxes, baskets, scarves, or paper.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/1Y_Over_Under_Around.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-body-builders/"
+  },
+  {
+   "id": "1-body-kick-a-ball",
+   "age": "1",
+   "builder": "body",
+   "title": "Kick a Ball",
+   "description": "Use a lightweight ball to practice balance, leg strength, following the ball, and early kicking.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_Kick_a_Ball.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-body-builders/"
+  },
+  {
+   "id": "1-safety-tub-time-teaching-time",
+   "age": "1",
+   "builder": "safety",
+   "title": "Tub Time, Teaching Time",
+   "description": "Stay with the child during bath time and use the time for talking, reading, counting, body-part names, and simple games.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2023/03/1Y_Tub_Time_Teaching_Time.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-safety-builders/"
+  },
+  {
+   "id": "1-safety-my-safe-space",
+   "age": "1",
+   "builder": "safety",
+   "title": "My Safe Space",
+   "description": "View the home from the child's level and secure reachable medicines, cleaners, small choking hazards, drawers, and cabinets.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/1Y_My_Safe_Space.png",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-safety-builders/"
+  },
+  {
+   "id": "1-safety-update-your-information-list",
+   "age": "1",
+   "builder": "safety",
+   "title": "Update Your Information List",
+   "description": "Keep emergency contacts, doctor and dentist numbers, insurance information, Poison Control, and the home address easy to find.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/1Y_Update_Your_Info_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-safety-builders/"
+  },
+  {
+   "id": "1-safety-toy-drop",
+   "age": "1",
+   "builder": "safety",
+   "title": "Toy Drop",
+   "description": "Use an empty toilet paper roll as a simple choking-hazard test for small toys and objects.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1_Toy-Drop_a.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-safety-builders/"
+  },
+  {
+   "id": "1-safety-let-s-climb-together",
+   "age": "1",
+   "builder": "safety",
+   "title": "Let's Climb Together",
+   "description": "Create a supervised climbing course and help the child learn safe climbing up and down.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_Lets_Climb_Together_1.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-safety-builders/"
+  },
+  {
+   "id": "1-word-repeat-and-expand",
+   "age": "1",
+   "builder": "word",
+   "title": "Repeat and Expand!",
+   "description": "Repeat the child's word attempt and add more information to grow vocabulary and confidence.",
+   "isNew": true,
+   "ageRange": "13 to 18 months",
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Repeat_and_Expand.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-word-builders/"
+  },
+  {
+   "id": "1-word-sing-and-gesture",
+   "age": "1",
+   "builder": "word",
+   "title": "Sing and Gesture!",
+   "description": "Use action songs to practice movements and words together.",
+   "isNew": true,
+   "ageRange": "13 to 18 months",
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Sing_and_Gesture.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-word-builders/"
+  },
+  {
+   "id": "1-word-let-s-read-together",
+   "age": "1",
+   "builder": "word",
+   "title": "Let's Read Together!",
+   "description": "Read simple picture books, ask questions, expand the child's answers, and celebrate participation.",
+   "isNew": true,
+   "ageRange": "19 to 24 months",
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Lets_Read_Together.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-word-builders/"
+  },
+  {
+   "id": "1-word-use-my-words",
+   "age": "1",
+   "builder": "word",
+   "title": "Use My Words!",
+   "description": "Expand two-word phrases into longer sentences and encourage the child to repeat them.",
+   "isNew": true,
+   "ageRange": "19 to 24 months",
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Use_My_Words.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-word-builders/"
+  },
+  {
+   "id": "1-word-i-am-an-artist",
+   "age": "1",
+   "builder": "word",
+   "title": "I am an Artist!",
+   "description": "Draw and scribble together while talking about colors, shapes, lines, and the child's artwork.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_Im_an_Artist_1.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-word-builders/"
+  },
+  {
+   "id": "1-word-you-say-i-say",
+   "age": "1",
+   "builder": "word",
+   "title": "You Say, I Say!",
+   "description": "Build longer sentences by adding one word to what the child already says.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/1Y_You_say_I_say.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-word-builders/"
+  },
+  {
+   "id": "1-word-read-read-read-again",
+   "age": "1",
+   "builder": "word",
+   "title": "Read, Read, Read Again",
+   "description": "Read the same book several times, adding more detail and helping the child point to named objects.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Read_Read_Read_Again_01.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-word-builders/"
+  },
+  {
+   "id": "1-word-sing-and-move",
+   "age": "1",
+   "builder": "word",
+   "title": "Sing and Move!",
+   "description": "Sing a familiar song repeatedly, pause for the child to complete words, and add hand or body motions.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_Singing_and_Motion_V3.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-word-builders/"
+  },
+  {
+   "id": "1-word-let-s-talk-about-the-weather",
+   "age": "1",
+   "builder": "word",
+   "title": "Let's Talk About the Weather",
+   "description": "Talk about daily weather, clothing, temperature, and how weather feels.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_Talk_About_The_Wheater.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-word-builders/"
+  },
+  {
+   "id": "1-relationship-the-same-old-thing",
+   "age": "1",
+   "builder": "relationship",
+   "title": "The Same Old Thing",
+   "description": "Use predictable daily routines and narrate what is happening so the child knows what to expect.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/1Y_The_Same_Old_Thing_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-relationship-builders/"
+  },
+  {
+   "id": "1-relationship-playing-side-by-side",
+   "age": "1",
+   "builder": "relationship",
+   "title": "Playing Side by Side",
+   "description": "Give the child opportunities to play near other children and begin learning about sharing and turns.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_Playing_Side_by_Side_1.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-relationship-builders/"
+  },
+  {
+   "id": "1-relationship-we-are-sharing",
+   "age": "1",
+   "builder": "relationship",
+   "title": "We Are Sharing",
+   "description": "Practice giving and receiving food or toys and praise the child when they share.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/1Y_We_are_Sharing_3.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-relationship-builders/"
+  },
+  {
+   "id": "1-relationship-following-directions",
+   "age": "1",
+   "builder": "relationship",
+   "title": "Following Directions",
+   "description": "Start with simple one-step directions and gradually move toward two-part directions.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/1Y_Following_Directions.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-relationship-builders/"
+  },
+  {
+   "id": "1-relationship-a-safe-space-for-big-feelings",
+   "age": "1",
+   "builder": "relationship",
+   "title": "A Safe Space for Big Feelings",
+   "description": "Create a safe place and stay nearby when the child has a tantrum or overwhelming emotion.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/1Y_A_Safe_Space_For_Big_Feelings.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-relationship-builders/"
+  },
+  {
+   "id": "1-health-so-many-colors",
+   "age": "1",
+   "builder": "health",
+   "title": "So Many Colors!",
+   "description": "Compare fruits and vegetables by color, taste, smell, and texture and encourage a varied diet.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_So_Many_Colors.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-health-builders/"
+  },
+  {
+   "id": "1-health-make-leaving-easier",
+   "age": "1",
+   "builder": "health",
+   "title": "Make Leaving Easier",
+   "description": "Create a predictable goodbye routine using a gesture, words, a comfort item, or a family photo.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/1Y_Making_Leaving_Easier.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-health-builders/"
+  },
+  {
+   "id": "1-health-counting-and-cleaning",
+   "age": "1",
+   "builder": "health",
+   "title": "Counting and Cleaning",
+   "description": "Turn toothbrushing into a predictable counting routine.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/1Y_Counting_and_Cleaning2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-health-builders/"
+  },
+  {
+   "id": "1-health-sweet-sleep",
+   "age": "1",
+   "builder": "health",
+   "title": "Sweet Sleep",
+   "description": "Use a consistent bedtime routine with quiet activities such as bath time, reading, brushing teeth, songs, or talking.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_Sweet_Sleep.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-health-builders/"
+  },
+  {
+   "id": "1-health-keeping-hands-clean",
+   "age": "1",
+   "builder": "health",
+   "title": "Keeping Hands Clean!",
+   "description": "Practice washing with soap and water, scrubbing for about 20 seconds, and building handwashing into daily routines.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/1Y_Keep_Hands_Clean_1.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/one-year-activities/one-year-health-builders/"
+  },
+  {
+   "id": "2-mind-play-dress-up",
+   "age": "2",
+   "builder": "mind",
+   "title": "Play Dress Up",
+   "description": "Use clothing, shoes, bags, toys, blankets, and pillows for imaginative role play.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/2Y_Play_Dress_Up.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-mind-builders/"
+  },
+  {
+   "id": "2-mind-pretend-soup",
+   "age": "2",
+   "builder": "mind",
+   "title": "Pretend Soup",
+   "description": "Use outdoor materials, water, buckets, cups, and utensils for messy pretend cooking and sequencing.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/2Y_Pretend_Soup.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-mind-builders/"
+  },
+  {
+   "id": "2-mind-let-s-start-a-band",
+   "age": "2",
+   "builder": "mind",
+   "title": "Let's Start a Band!",
+   "description": "Make simple instruments from household containers, beans, rice, pasta, pots, and blocks and play along with music.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/2Y_Create_Band_V3.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-mind-builders/"
+  },
+  {
+   "id": "2-mind-what-is-in-the-box",
+   "age": "2",
+   "builder": "mind",
+   "title": "What is in the Box?",
+   "description": "Match objects by touch and appearance using paired household items hidden in a box or bag.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/2Y_What_s_in_the_Box-Girl.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-mind-builders/"
+  },
+  {
+   "id": "2-mind-scavenger-hunt",
+   "age": "2",
+   "builder": "mind",
+   "title": "Scavenger Hunt!",
+   "description": "Hide familiar objects and help the child find them using memory and simple location clues.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/2Y_ScavengerHunt_1.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-mind-builders/"
+  },
+  {
+   "id": "2-body-jump-off-jump-on",
+   "age": "2",
+   "builder": "body",
+   "title": "Jump Off, Jump On!",
+   "description": "Practice jumping on, off, over, and into marked spaces using rugs, lines, circles, or chalk.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/2Y_Jump_Jump_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-body-builders/"
+  },
+  {
+   "id": "2-body-stack-the-blocks",
+   "age": "2",
+   "builder": "body",
+   "title": "Stack the Blocks!",
+   "description": "Carry and stack blocks, boxes, or containers to practice reaching, lifting, coordination, and persistence.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_Stack_the_Blocks.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-body-builders/"
+  },
+  {
+   "id": "2-body-dance-together",
+   "age": "2",
+   "builder": "body",
+   "title": "Dance Together",
+   "description": "Move to different kinds of music and use dance as physical activity, expression, and shared fun.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_Dance_Together.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-body-builders/"
+  },
+  {
+   "id": "2-body-use-your-fingers",
+   "age": "2",
+   "builder": "body",
+   "title": "Use Your Fingers!",
+   "description": "Use finger-play songs and hand motions to strengthen fingers and hands needed for later drawing, scissors, and self-care skills.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2023/03/2Y_Use_Your_Fingers.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-body-builders/"
+  },
+  {
+   "id": "2-body-move-like-me",
+   "age": "2",
+   "builder": "body",
+   "title": "Move Like Me",
+   "description": "Take turns copying body movements, animal motions, sports motions, and mirror-style movements.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_Move_Like_Me.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-body-builders/"
+  },
+  {
+   "id": "2-safety-buckle-up-buddy",
+   "age": "2",
+   "builder": "safety",
+   "title": "Buckle-Up Buddy",
+   "description": "Give the child the job of reminding adults to buckle seat belts and reinforce safe car habits.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/2Y_Buckle_Up_Buddy.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-safety-builders/"
+  },
+  {
+   "id": "2-safety-helmets-on-please",
+   "age": "2",
+   "builder": "safety",
+   "title": "Helmets on Please!",
+   "description": "Build the habit of wearing a helmet for bikes, scooters, tricycles, and riding as a bicycle passenger.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_Helmets_On_Please.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-safety-builders/"
+  },
+  {
+   "id": "2-safety-tub-time-teaching-time",
+   "age": "2",
+   "builder": "safety",
+   "title": "Tub Time, Teaching Time",
+   "description": "Keep constant supervision during baths and use the time for conversation, songs, rhymes, and word games.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_Tub_Time_Teaching_Time.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-safety-builders/"
+  },
+  {
+   "id": "2-safety-stop-look-listen",
+   "age": "2",
+   "builder": "safety",
+   "title": "Stop, Look, Listen",
+   "description": "Practice stopping, looking both ways, listening for traffic, and using hand motions before crossing streets.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_Stop_Look_Listen.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-safety-builders/"
+  },
+  {
+   "id": "2-safety-my-name",
+   "age": "2",
+   "builder": "safety",
+   "title": "My Name",
+   "description": "Teach the child their full name and caregiver's name using repetition, rhythm, or songs.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/2Y_My_Name_Is_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-safety-builders/"
+  },
+  {
+   "id": "2-word-ready-set-go",
+   "age": "2",
+   "builder": "word",
+   "title": "Ready, Set, Go!",
+   "description": "Pause after \"Ready, set...\" so the child says \"Go\" before an action starts.",
+   "isNew": true,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Ready_Set_Go.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-word-builders/"
+  },
+  {
+   "id": "2-word-describe-the-world",
+   "age": "2",
+   "builder": "word",
+   "title": "Describe the World!",
+   "description": "Use descriptive words such as big, small, bigger, and other comparison language during play and routines.",
+   "isNew": true,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Describe_the_World_01.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-word-builders/"
+  },
+  {
+   "id": "2-word-teaches-location-words-and-problem-solving",
+   "age": "2",
+   "builder": "word",
+   "title": "Teaches Location Words and Problem-Solving",
+   "description": "Hide a toy and use clues with words such as in, on, under, and behind.",
+   "isNew": true,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Teaches_Location_Words_and_Problem-Solving.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-word-builders/"
+  },
+  {
+   "id": "2-word-tell-me-more",
+   "age": "2",
+   "builder": "word",
+   "title": "Tell Me More",
+   "description": "Add descriptive words to the child's simple object labels and phrases.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/2Y_Tell_Me_More_.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-word-builders/"
+  },
+  {
+   "id": "2-word-fill-in-the-blanks",
+   "age": "2",
+   "builder": "word",
+   "title": "Fill in the Blanks",
+   "description": "Use a familiar story and pause so the child can remember and supply missing events or words.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/2Y_Fill_In_The_Blanks.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-word-builders/"
+  },
+  {
+   "id": "2-word-read-with-me",
+   "age": "2",
+   "builder": "word",
+   "title": "Read with Me!",
+   "description": "Read daily, let the child sit close, revisit favorite books, and act out characters or actions afterward.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_Read_with_Me.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-word-builders/"
+  },
+  {
+   "id": "2-word-learning-opposites",
+   "age": "2",
+   "builder": "word",
+   "title": "Learning Opposites",
+   "description": "Find and compare opposites such as big and small, smooth and rough, or hot and cold.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_Learning_Opposites.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-word-builders/"
+  },
+  {
+   "id": "2-word-categories",
+   "age": "2",
+   "builder": "word",
+   "title": "Categories!",
+   "description": "Name a category and help the child list things that belong in it.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/2Y_Categories.png",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-word-builders/"
+  },
+  {
+   "id": "2-relationship-happy-sad-surprised",
+   "age": "2",
+   "builder": "relationship",
+   "title": "Happy, Sad, Surprised",
+   "description": "Use a mirror and facial expressions to name, copy, and discuss emotions.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/2Y_Happy_Sad_Surprised.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-relationship-builders/"
+  },
+  {
+   "id": "2-relationship-speak-to-the-future",
+   "age": "2",
+   "builder": "relationship",
+   "title": "Speak to the Future",
+   "description": "Notice and name positive qualities such as kindness and helpfulness when the child demonstrates them.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_Speak_to_the_Future.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-relationship-builders/"
+  },
+  {
+   "id": "2-relationship-here-s-what-we-did-today",
+   "age": "2",
+   "builder": "relationship",
+   "title": "Here's What We Did Today",
+   "description": "Review the day's events together to build memory, language, and connection.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_Heres_What_We_Did_Today.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-relationship-builders/"
+  },
+  {
+   "id": "2-relationship-a-story-about-you",
+   "age": "2",
+   "builder": "relationship",
+   "title": "A Story About You",
+   "description": "Make the child the main character in a positive imaginative story.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_A_Story_About_You.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-relationship-builders/"
+  },
+  {
+   "id": "2-relationship-important-routines",
+   "age": "2",
+   "builder": "relationship",
+   "title": "Important Routines",
+   "description": "Build consistent daily routines for waking, meals, travel, reading, pajamas, and bedtime.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/2Y_Important_Routines.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-relationship-builders/"
+  },
+  {
+   "id": "2-health-helping-hands",
+   "age": "2",
+   "builder": "health",
+   "title": "Helping Hands",
+   "description": "Let the child safely help prepare food and talk about color, smell, texture, and healthy eating.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_Helping_Hands.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-health-builders/"
+  },
+  {
+   "id": "2-health-all-about-teeth",
+   "age": "2",
+   "builder": "health",
+   "title": "All About Teeth",
+   "description": "Explore teeth with a mirror, count them, discuss what teeth do, and practice brushing.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/2Y_All_About_Teeth.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-health-builders/"
+  },
+  {
+   "id": "2-health-a-sunscreen-game",
+   "age": "2",
+   "builder": "health",
+   "title": "A Sunscreen Game",
+   "description": "Turn sunscreen application into a body-part naming and self-care routine.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_A_Sunscreen_Game_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-health-builders/"
+  },
+  {
+   "id": "2-health-washing-hands",
+   "age": "2",
+   "builder": "health",
+   "title": "Washing Hands",
+   "description": "Practice washing after bathroom use, eating, coughing, nose blowing, and other routine moments.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/2Y_Washing_Hands.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-health-builders/"
+  },
+  {
+   "id": "2-health-take-5",
+   "age": "2",
+   "builder": "health",
+   "title": "Take 5",
+   "description": "Practice slow belly breathing together so the child has a calming strategy to use during strong emotions.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/2Y_Take_Five.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/two-year-activities/two-year-health-builders/"
+  },
+  {
+   "id": "3-mind-number-of-the-day",
+   "age": "3",
+   "builder": "mind",
+   "title": "Number of the Day",
+   "description": "Choose a number and look for examples of it throughout the day in objects, body parts, steps, and written numerals.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Number_of_the_Day2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-mind-builders/"
+  },
+  {
+   "id": "3-mind-what-is-different",
+   "age": "3",
+   "builder": "mind",
+   "title": "What is Different?",
+   "description": "Sort pictures into groups and identify the item that does not belong.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/3Y_What_is_Different_a.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-mind-builders/"
+  },
+  {
+   "id": "3-mind-what-s-the-missing-word",
+   "age": "3",
+   "builder": "mind",
+   "title": "What's the Missing Word?",
+   "description": "Read or sing a familiar story or song and pause so the child supplies a missing word.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Whats_The_Missing_Word.png",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-mind-builders/"
+  },
+  {
+   "id": "3-mind-treasure-hunt",
+   "age": "3",
+   "builder": "mind",
+   "title": "Treasure Hunt",
+   "description": "Hide several objects and use \"close\" and \"far\" clues to help the child search.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/3Y_Treasure_Hunt.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-mind-builders/"
+  },
+  {
+   "id": "3-mind-i-spy",
+   "age": "3",
+   "builder": "mind",
+   "title": "I Spy!",
+   "description": "Describe an item by color, shape, or other features and let the child guess, then switch roles.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/3Y_I_Spy.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-mind-builders/"
+  },
+  {
+   "id": "3-body-balance-like-a-flamingo",
+   "age": "3",
+   "builder": "body",
+   "title": "Balance Like a Flamingo",
+   "description": "Practice standing on one leg, switching legs, standing on tiptoes, and other balance positions.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Balancing_Like_a_Flamingo.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-body-builders/"
+  },
+  {
+   "id": "3-body-playing-catch",
+   "age": "3",
+   "builder": "body",
+   "title": "Playing Catch",
+   "description": "Use a lightweight ball to practice catching first with the arms and later with the hands.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Playing_Catch.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-body-builders/"
+  },
+  {
+   "id": "3-body-bubble-chase",
+   "age": "3",
+   "builder": "body",
+   "title": "Bubble Chase",
+   "description": "Chase, stomp, count, and catch bubbles to build coordination and leg strength.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Bubble_Chase_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-body-builders/"
+  },
+  {
+   "id": "3-body-freeze-dance",
+   "age": "3",
+   "builder": "body",
+   "title": "Freeze Dance",
+   "description": "Dance while music plays and freeze when it stops.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Freeze_Dance.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-body-builders/"
+  },
+  {
+   "id": "3-body-follow-the-leader",
+   "age": "3",
+   "builder": "body",
+   "title": "Follow the Leader",
+   "description": "Take turns leading and copying movements such as clapping, jumping, marching, hopping, and swinging arms.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Follow_The_Leader.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-body-builders/"
+  },
+  {
+   "id": "3-safety-more-about-me",
+   "age": "3",
+   "builder": "safety",
+   "title": "More About Me",
+   "description": "Practice the child's full name, caregiver's full name, home address, and phone number.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_More_about_Me.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-safety-builders/"
+  },
+  {
+   "id": "3-safety-fun-in-the-sun",
+   "age": "3",
+   "builder": "safety",
+   "title": "Fun in the Sun",
+   "description": "Make a simple checklist for sunscreen, hats, water, and other sun-safety items.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/3Y_Fun_in_the_Sun.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-safety-builders/"
+  },
+  {
+   "id": "3-safety-i-love-my-helmet",
+   "age": "3",
+   "builder": "safety",
+   "title": "I Love My Helmet!",
+   "description": "Personalize a helmet and model consistent helmet use for bikes, scooters, skateboards, and riding as a passenger.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_I_Love_My_Helmet.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-safety-builders/"
+  },
+  {
+   "id": "3-safety-red-light-green-light",
+   "age": "3",
+   "builder": "safety",
+   "title": "Red Light/Green Light",
+   "description": "Use the classic movement game to reinforce the concepts of stop and go.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Red_light_Green_light.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-safety-builders/"
+  },
+  {
+   "id": "3-safety-fire-drill-time",
+   "age": "3",
+   "builder": "safety",
+   "title": "Fire Drill Time",
+   "description": "Practice a family fire escape route and talk about smoke alarms and fire safety.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Fire_Drill.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-safety-builders/"
+  },
+  {
+   "id": "3-word-ask-me-questions",
+   "age": "3",
+   "builder": "word",
+   "title": "Ask Me Questions!",
+   "description": "Ask open-ended questions during reading or play and encourage the child to ask questions too.",
+   "isNew": true,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Ask_Me_Questions.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-word-builders/"
+  },
+  {
+   "id": "3-word-let-me-tell-you-a-story",
+   "age": "3",
+   "builder": "word",
+   "title": "Let Me Tell You a Story!",
+   "description": "Prompt the child to create a story by asking who is in it, what happened first, next, and how it ended.",
+   "isNew": true,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Let_Me_Tell_You_a_Story_01.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-word-builders/"
+  },
+  {
+   "id": "3-word-how-was-your-day",
+   "age": "3",
+   "builder": "word",
+   "title": "How was Your Day?",
+   "description": "Have a daily conversation about events, friends, songs, meals, and favorite moments.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_How_Was_Your_Day.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-word-builders/"
+  },
+  {
+   "id": "3-word-you-talk-i-write",
+   "age": "3",
+   "builder": "word",
+   "title": "You Talk, I Write",
+   "description": "Write down a message dictated by the child and read it back so they see how spoken words become written words.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2023/03/3Y_You_Talk_I_Write.png",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-word-builders/"
+  },
+  {
+   "id": "3-word-let-s-draw",
+   "age": "3",
+   "builder": "word",
+   "title": "Let's Draw!",
+   "description": "Draw together on a large surface and talk about colors, shapes, marks, and the child's ideas.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Lets_Draw_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-word-builders/"
+  },
+  {
+   "id": "3-word-tell-me-a-story",
+   "age": "3",
+   "builder": "word",
+   "title": "Tell Me A Story!",
+   "description": "After reading a familiar book several times, ask the child to retell it using the pictures.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Tell_Me_a_Story.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-word-builders/"
+  },
+  {
+   "id": "3-word-silly-rhyme-time",
+   "age": "3",
+   "builder": "word",
+   "title": "Silly Rhyme Time!",
+   "description": "Create simple rhyming sentences and encourage playful made-up rhyming words.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Silly_Rhyme_Time.png",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-word-builders/"
+  },
+  {
+   "id": "3-relationship-highs-and-lows",
+   "age": "3",
+   "builder": "relationship",
+   "title": "Highs and Lows",
+   "description": "Talk about happy and difficult moments from the day and model naming feelings.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/3Y_HighsAndLows_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-relationship-builders/"
+  },
+  {
+   "id": "3-relationship-hello-goodbye",
+   "age": "3",
+   "builder": "relationship",
+   "title": "Hello/Goodbye",
+   "description": "Give the child a greeter role during gatherings to practice social greetings and conversation.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Hello_Goodbye.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-relationship-builders/"
+  },
+  {
+   "id": "3-relationship-simon-says",
+   "age": "3",
+   "builder": "relationship",
+   "title": "Simon Says",
+   "description": "Use the game to practice careful listening, following directions, movement, and emotion expressions.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Simon_Says_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-relationship-builders/"
+  },
+  {
+   "id": "3-relationship-taking-turns",
+   "age": "3",
+   "builder": "relationship",
+   "title": "Taking Turns",
+   "description": "Point out real-life examples of taking turns and practice turn-taking during play and routines.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Taking_Turns_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-relationship-builders/"
+  },
+  {
+   "id": "3-relationship-my-job",
+   "age": "3",
+   "builder": "relationship",
+   "title": "My Job!",
+   "description": "Give the child simple recurring household jobs and praise their effort and contribution.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_My_Job.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-relationship-builders/"
+  },
+  {
+   "id": "3-health-a-tasting-party",
+   "age": "3",
+   "builder": "health",
+   "title": "A Tasting Party",
+   "description": "Sample foods from different food groups and discuss taste, texture, color, and how foods help the body.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_A_Tasting_Party.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-health-builders/"
+  },
+  {
+   "id": "3-health-my-teeth",
+   "age": "3",
+   "builder": "health",
+   "title": "My Teeth",
+   "description": "Turn brushing into a counting or singing routine and help the child clean all tooth surfaces.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_My_Teeth.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-health-builders/"
+  },
+  {
+   "id": "3-health-keep-moving",
+   "age": "3",
+   "builder": "health",
+   "title": "Keep Moving",
+   "description": "Use dancing, marching, playground play, running, jumping, swinging, kicking, and catching to keep the child active.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Keep_Moving.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-health-builders/"
+  },
+  {
+   "id": "3-health-sweet-sleep",
+   "age": "3",
+   "builder": "health",
+   "title": "Sweet Sleep",
+   "description": "Create a consistent bedtime routine with calm activities and adequate sleep.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/3Y_Sweet_Sleep.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-health-builders/"
+  },
+  {
+   "id": "3-health-what-is-that-i-hear",
+   "age": "3",
+   "builder": "health",
+   "title": "What is That I Hear?",
+   "description": "Take a listening walk, identify familiar environmental sounds, and pay attention to hearing.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/3Y_Whats_that_I_Hear.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/three-year-activities/three-year-health-builders/"
+  },
+  {
+   "id": "45-mind-let-s-get-organized",
+   "age": "45",
+   "builder": "mind",
+   "title": "Let's Get Organized",
+   "description": "Sort toys into labeled containers and help the child learn categories, printed words, and cleanup routines.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Let_s_Get_Organized.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-mind-builders/"
+  },
+  {
+   "id": "45-mind-nature-explorer",
+   "age": "45",
+   "builder": "mind",
+   "title": "Nature Explorer",
+   "description": "Observe insects, lizards, birds, and other living things and keep a simple nature book with drawings or notes.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Nature_Explorer.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-mind-builders/"
+  },
+  {
+   "id": "45-mind-a-new-ending",
+   "age": "45",
+   "builder": "mind",
+   "title": "A New Ending",
+   "description": "Stop a familiar story before the end and invite the child to create a different ending.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/4_5Y_A_New_Ending.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-mind-builders/"
+  },
+  {
+   "id": "45-mind-laundry-helper",
+   "age": "45",
+   "builder": "mind",
+   "title": "Laundry Helper",
+   "description": "Sort clothing by person, type, size, color, or matching pairs and practice simple folding.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Laundry_Helper.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-mind-builders/"
+  },
+  {
+   "id": "45-mind-sink-or-float",
+   "age": "45",
+   "builder": "mind",
+   "title": "Sink or Float?",
+   "description": "Predict whether household or outdoor objects will sink or float, test them, and talk about the results.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Sink_or_Float.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-mind-builders/"
+  },
+  {
+   "id": "45-body-act-it-out",
+   "age": "45",
+   "builder": "body",
+   "title": "Act it Out",
+   "description": "Pretend to move like animals, athletes, explorers, or silly imaginary characters to practice coordination and strength.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Act_it_Out2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-body-builders/"
+  },
+  {
+   "id": "45-body-little-chef",
+   "age": "45",
+   "builder": "body",
+   "title": "Little Chef",
+   "description": "Help with age-appropriate kitchen jobs such as tearing lettuce, mixing, washing produce, peeling, mashing, spreading, and pouring.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Little_Chef.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-body-builders/"
+  },
+  {
+   "id": "45-body-kick-ball",
+   "age": "45",
+   "builder": "body",
+   "title": "Kick Ball",
+   "description": "Practice kicking a stationary and then rolling lightweight ball, using both feet and eventually aiming at a goal.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Kick_Ball.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-body-builders/"
+  },
+  {
+   "id": "45-body-silly-walk",
+   "age": "45",
+   "builder": "body",
+   "title": "Silly Walk",
+   "description": "Experiment with slow, fast, sideways, backward, tiptoe, and animal-style walking.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/4_5Y_Silly_Walk2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-body-builders/"
+  },
+  {
+   "id": "45-body-dance-with-me",
+   "age": "45",
+   "builder": "body",
+   "title": "Dance with Me!",
+   "description": "Dance freely, copy movements from familiar songs, or learn simple choreographed dances.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Dance_with_Me.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-body-builders/"
+  },
+  {
+   "id": "45-safety-neighborhood-helpers",
+   "age": "45",
+   "builder": "safety",
+   "title": "Neighborhood Helpers",
+   "description": "Identify community helpers such as crossing guards, postal workers, librarians, and firefighters and discuss how they help keep people safe.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/03/4_5Y_Neighboorhood__Helpers_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-safety-builders/"
+  },
+  {
+   "id": "45-safety-safety-walk",
+   "age": "45",
+   "builder": "safety",
+   "title": "Safety Walk",
+   "description": "Walk through the home and neighborhood and sort situations into safe, safe with a grownup, or not safe.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/4_5Y_Three_Signs.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-safety-builders/"
+  },
+  {
+   "id": "45-safety-helmets-on-please",
+   "age": "45",
+   "builder": "safety",
+   "title": "Helmets On Please!",
+   "description": "Choose and consistently wear a helmet for bicycles, scooters, and skateboards, with adults modeling the same habit.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/4_5Y_Helmets_on_please.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-safety-builders/"
+  },
+  {
+   "id": "45-safety-road-rules",
+   "age": "45",
+   "builder": "safety",
+   "title": "Road Rules",
+   "description": "Identify common traffic signs, crosswalks, and railroad signs and talk about what they mean.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Road_Rules.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-safety-builders/"
+  },
+  {
+   "id": "45-safety-stranger-things",
+   "age": "45",
+   "builder": "safety",
+   "title": "Stranger Things",
+   "description": "Teach the child how to respond if an unknown adult approaches, including saying no, moving away, yelling for help, and telling a trusted grownup.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/4_5Y_Stranger_Things.png",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-safety-builders/"
+  },
+  {
+   "id": "45-word-ask-me-why",
+   "age": "45",
+   "builder": "word",
+   "title": "Ask Me Why!",
+   "description": "Ask open-ended why, how, and what questions and encourage the child to ask their own questions.",
+   "isNew": true,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Ask_Me_Why.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-word-builders/"
+  },
+  {
+   "id": "45-word-act-it-out",
+   "age": "45",
+   "builder": "word",
+   "title": "Act It Out!",
+   "description": "Act out a story using costumes, puppets, or props and discuss what happens next or how it ends.",
+   "isNew": true,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Act_It_Out_01.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-word-builders/"
+  },
+  {
+   "id": "45-word-word-wizard",
+   "age": "45",
+   "builder": "word",
+   "title": "Word Wizard!",
+   "description": "Sort words into categories, identify an item that does not belong, and explore opposites.",
+   "isNew": true,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Word_Wizard_01.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-word-builders/"
+  },
+  {
+   "id": "45-word-make-a-list",
+   "age": "45",
+   "builder": "word",
+   "title": "Make a List!",
+   "description": "Create practical lists together, say and write each item, number the list, and cross items off.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/3_4Y_Make_a_List_1.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-word-builders/"
+  },
+  {
+   "id": "45-word-describe-five",
+   "age": "45",
+   "builder": "word",
+   "title": "Describe Five!",
+   "description": "Describe an object using five clues and take turns guessing.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Describe-five.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-word-builders/"
+  },
+  {
+   "id": "45-word-make-a-story-with-me",
+   "age": "45",
+   "builder": "word",
+   "title": "Make a Story with Me!",
+   "description": "Build a story together by filling in missing characters, places, events, and details, then write it down if desired.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/4_5Y_Make_a_Story_with_Me.png",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-word-builders/"
+  },
+  {
+   "id": "45-word-read-to-me",
+   "age": "45",
+   "builder": "word",
+   "title": "Read to Me!",
+   "description": "Read together daily, point to words, use character voices, ask open-ended questions, and let the child revisit favorite books.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2023/02/4_5Y_Read_to_Me_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-word-builders/"
+  },
+  {
+   "id": "45-word-i-spy",
+   "age": "45",
+   "builder": "word",
+   "title": "I Spy...",
+   "description": "Use beginning letter sounds as clues in an I Spy game.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_I_Spy.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-word-builders/"
+  },
+  {
+   "id": "45-relationship-i-feel",
+   "age": "45",
+   "builder": "relationship",
+   "title": "I Feel...",
+   "description": "Use a feelings chart, drawing, facial expressions, or playdough to identify and talk about emotions.",
+   "isNew": true,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.org/wp-content/uploads/2025/04/Playdough_Activity_Illustration.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-relationship-builders/"
+  },
+  {
+   "id": "45-relationship-oh-goodness",
+   "age": "45",
+   "builder": "relationship",
+   "title": "Oh Goodness!",
+   "description": "Notice and specifically praise kind, helpful, gentle, cooperative, or responsible behavior.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Oh_Goodness-2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-relationship-builders/"
+  },
+  {
+   "id": "45-relationship-express-yourself",
+   "age": "45",
+   "builder": "relationship",
+   "title": "Express Yourself",
+   "description": "Help the child name strong emotions and practice safer ways to solve problems or express feelings.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Express_Yourself.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-relationship-builders/"
+  },
+  {
+   "id": "45-relationship-i-am-listening",
+   "age": "45",
+   "builder": "relationship",
+   "title": "I am Listening",
+   "description": "Give the child full attention, ask follow-up questions, and show that their ideas and feelings matter.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/4_5Y_I_m_Listening.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-relationship-builders/"
+  },
+  {
+   "id": "45-relationship-i-can-help",
+   "age": "45",
+   "builder": "relationship",
+   "title": "I Can Help",
+   "description": "Give the child meaningful ways to help with household routines and recognize their contribution.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_I_Can_Help.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-relationship-builders/"
+  },
+  {
+   "id": "45-relationship-just-breathe",
+   "age": "45",
+   "builder": "relationship",
+   "title": "Just Breathe",
+   "description": "Practice slow belly breathing so the child can use it to calm their body during strong emotions.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/4_5Y_Just_Breathe.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-relationship-builders/"
+  },
+  {
+   "id": "45-health-scrub-a-dub",
+   "age": "45",
+   "builder": "health",
+   "title": "Scrub-a-Dub",
+   "description": "Use washable paint as pretend germs and practice washing every part of the hands for about 20 seconds.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/4_5Y_Scrub_a_Dub.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-health-builders/"
+  },
+  {
+   "id": "45-health-good-night-great-day",
+   "age": "45",
+   "builder": "health",
+   "title": "Good Night & Great Day!",
+   "description": "Build a predictable bedtime routine that supports adequate sleep before school days.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Good_Night_V3.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-health-builders/"
+  },
+  {
+   "id": "45-health-snack-time",
+   "age": "45",
+   "builder": "health",
+   "title": "Snack Time!",
+   "description": "Let the child help prepare a snack using foods from several food groups.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/4_5Y_Snack_Time_2.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-health-builders/"
+  },
+  {
+   "id": "45-health-it-is-fun-to-move",
+   "age": "45",
+   "builder": "health",
+   "title": "It is Fun to Move",
+   "description": "Choose daily family movement such as walking, dancing, exercise videos, tag, or sports and talk about how the body feels afterward.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/02/4_5Y_Its_Fun_to_Move.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-health-builders/"
+  },
+  {
+   "id": "45-health-sing-and-brush",
+   "age": "45",
+   "builder": "health",
+   "title": "Sing and Brush",
+   "description": "Brush teeth twice daily and use a song as a simple timer while cleaning all tooth surfaces.",
+   "isNew": false,
+   "ageRange": null,
+   "imageUrl": "https://first5oc.wpengine.com/wp-content/uploads/2023/01/4_5Y_Sing_and_Brush.gif",
+   "sourcePage": "https://first5oc.org/kid-builders/four-five-year-activities/four-five-year-health-builders/"
+  }
+ ]
 };
