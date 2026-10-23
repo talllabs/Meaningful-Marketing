@@ -203,24 +203,17 @@
       will-change: transform;
     }
 
-    .tile img,
+    .tile canvas,
     .tile video {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: 0;
+      transition: opacity 600ms ease;
     }
 
-    .tile figcaption {
-      position: absolute;
-      left: 12px;
-      bottom: 10px;
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
-    }
+    .tile .ready { opacity: 1; }
 
     /* Desktop collage positions (left/top/width/height as % of the stage) */
     .t1 { left: 5%;  top: 14%; width: 20%; height: 30%; }
@@ -631,38 +624,29 @@
          middle of a photo collage. Tiles carry their own parallax speed. -->
     <section class="collage" id="collage" aria-label="Europe, entirely yours">
       <div class="collage-stage" id="stage">
-        <figure class="tile t1" data-speed="0.9" style="margin:0">
-          <img src="https://images.unsplash.com/photo-1540946485063-a40da27545f8?auto=format&fit=crop&w=900&q=80" alt="Guests relaxing on a river ship deck" />
-          <figcaption>On deck</figcaption>
-        </figure>
-        <figure class="tile t2" data-speed="1.6" style="margin:0">
-          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80" alt="A plated dinner course" />
-        </figure>
-        <figure class="tile t3" data-speed="1.2" style="margin:0">
-          <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-            <source src="https://transcendcruises.com/wp-content/uploads/2026/10/Transcend-Hero-Long-Version-web-1080p.mp4#t=18" type="video/mp4" />
+        <!-- Every tile is cut from Transcend's own film. data-at is the moment
+             to use, as a share of the film's length (0.5 = halfway). -->
+        <div class="tile t1" data-speed="0.9"><canvas class="still" data-at="0.12" width="640" height="360"></canvas></div>
+        <div class="tile t2" data-speed="1.6"><canvas class="still" data-at="0.24" width="640" height="360"></canvas></div>
+        <div class="tile t3" data-speed="1.2">
+          <video class="clip" data-at="0.36" muted playsinline preload="metadata" aria-hidden="true">
+            <source src="https://transcendcruises.com/wp-content/uploads/2026/10/Transcend-Hero-Long-Version-web-1080p.mp4" type="video/mp4" />
           </video>
-          <figcaption>Onboard</figcaption>
-        </figure>
-        <figure class="tile t4" data-speed="0.6" style="margin:0">
-          <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=600&q=80" alt="River valley at dusk" />
-        </figure>
-        <figure class="tile t5" data-speed="1.1" style="margin:0">
-          <img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1000&q=80" alt="A European city on the river" />
-          <figcaption>The Danube</figcaption>
-        </figure>
-        <figure class="tile t6" data-speed="1.45" style="margin:0">
-          <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-            <source src="https://transcendcruises.com/wp-content/uploads/2026/10/Transcend-Hero-Long-Version-web-1080p.mp4#t=42" type="video/mp4" />
+        </div>
+        <div class="tile t4" data-speed="0.6"><canvas class="still" data-at="0.48" width="640" height="360"></canvas></div>
+        <div class="tile t5" data-speed="1.1"><canvas class="still" data-at="0.58" width="640" height="360"></canvas></div>
+        <div class="tile t6" data-speed="1.45">
+          <video class="clip" data-at="0.7" muted playsinline preload="metadata" aria-hidden="true">
+            <source src="https://transcendcruises.com/wp-content/uploads/2026/10/Transcend-Hero-Long-Version-web-1080p.mp4" type="video/mp4" />
           </video>
-        </figure>
-        <figure class="tile t7" data-speed="0.75" style="margin:0">
-          <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600&q=80" alt="A group meeting in progress" />
-          <figcaption>Meet</figcaption>
-        </figure>
-        <figure class="tile t8" data-speed="1.8" style="margin:0">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80" alt="European countryside" />
-        </figure>
+        </div>
+        <div class="tile t7" data-speed="0.75"><canvas class="still" data-at="0.82" width="640" height="360"></canvas></div>
+        <div class="tile t8" data-speed="1.8"><canvas class="still" data-at="0.92" width="640" height="360"></canvas></div>
+
+        <!-- hidden copy of the film, used only to grab the still frames -->
+        <video id="frameSource" muted playsinline preload="auto" aria-hidden="true" hidden>
+          <source src="https://transcendcruises.com/wp-content/uploads/2026/10/Transcend-Hero-Long-Version-web-1080p.mp4" type="video/mp4" />
+        </video>
 
         <div class="hero-frame" id="heroFrame">
           <video id="heroVideo" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
@@ -677,7 +661,7 @@
 
         <div class="scroll-cue" id="scrollCue">Scroll</div>
 
-        <div class="why why--stage"><b>1</b><span>Scroll to try it. The film opens full screen, then your scroll shrinks it into a collage of moments onboard. Each photo moves at its own speed, which gives the page depth.</span></div>
+        <div class="why why--stage"><b>1</b><span>Scroll to try it. The film opens full screen, then your scroll shrinks it into a collage. Every photo and clip around it is a different moment from the same film, and each moves at its own speed, which gives the page depth.</span></div>
       </div>
     </section>
 
@@ -753,7 +737,7 @@
             Share your timing, group size and ambition. We will show you how a river voyage could be shaped around it.
           </p>
           <a class="text-link" href="https://transcendcruises.com/contact-us/">Talk to Transcend</a>
-          <div class="why"><b>4</b><span>In the real build, the collage would use Transcend's own photos and short clips, and this button would open a short brief form.</span></div>
+          <div class="why"><b>4</b><span>The collage needs no extra photography: it is cut from Transcend's existing film. In the real build, this button would open a short brief form.</span></div>
         </div>
       </div>
     </section>
@@ -862,7 +846,7 @@
       const section = document.getElementById("collage");
       const stage = document.getElementById("stage");
       const frame = document.getElementById("heroFrame");
-      const video = document.getElementById("heroVideo");
+      const heroVideo = document.getElementById("heroVideo");
       const title = document.getElementById("heroTitle");
       const cue = document.getElementById("scrollCue");
       const tiles = [...stage.querySelectorAll(".tile")];
@@ -898,7 +882,7 @@
         const b = e * frameBottom * h;
         frame.style.clipPath = `inset(${t}px ${x}px ${b}px ${x}px round ${e * 4}px)`;
         // Scale: the film itself shrinks a little too, so more of the scene stays in view
-        video.style.transform = `scale(${1 - e * 0.22})`;
+        heroVideo.style.transform = `scale(${1 - e * 0.22})`;
 
         // Headline shrinks with the window and follows its centre
         const shift = ((t - b) / 2);
@@ -926,11 +910,55 @@
       render();
       window.addEventListener("scroll", request, { passive: true });
       window.addEventListener("resize", () => { measure(); request(); });
+      // the password gate hides the page at first, so measure again once the stage has a real size
+      if ("ResizeObserver" in window) new ResizeObserver(() => { measure(); request(); }).observe(stage);
       window.addEventListener("load", () => { measure(); request(); });
       reduceMotion.addEventListener?.("change", () => { measure(); request(); });
 
+      // Moving tiles: each clip loops a few seconds from its own point in the film
+      const clips = [...stage.querySelectorAll("video.clip")];
+      clips.forEach((clip) => {
+        let start = 0;
+        clip.addEventListener("loadedmetadata", () => {
+          start = (parseFloat(clip.dataset.at) || 0) * clip.duration;
+          clip.currentTime = start;
+          clip.play().catch(() => {});
+        });
+        clip.addEventListener("seeked", () => clip.classList.add("ready"), { once: true });
+        clip.addEventListener("timeupdate", () => {
+          if (clip.currentTime > start + 6 || clip.currentTime < start - 0.5) clip.currentTime = start;
+        });
+        clip.addEventListener("ended", () => { clip.currentTime = start; clip.play().catch(() => {}); });
+      });
+
+      // Still tiles: one hidden copy of the film jumps to each moment and paints it onto a canvas
+      const source = document.getElementById("frameSource");
+      const stills = [...stage.querySelectorAll("canvas.still")];
+      const grabStills = () => {
+        let i = 0;
+        const next = () => {
+          if (i >= stills.length) { source.removeAttribute("src"); source.load(); return; }
+          source.currentTime = (parseFloat(stills[i].dataset.at) || 0) * source.duration;
+        };
+        source.addEventListener("seeked", () => {
+          const canvas = stills[i++];
+          try {
+            canvas.getContext("2d").drawImage(source, 0, 0, canvas.width, canvas.height);
+            canvas.classList.add("ready");
+          } catch (err) { /* leave the navy backdrop showing */ }
+          next();
+        });
+        next();
+      };
+      source.addEventListener("loadedmetadata", () => {
+        const ratio = source.videoWidth && source.videoHeight ? source.videoHeight / source.videoWidth : 9 / 16;
+        stills.forEach((c) => { c.height = Math.round(c.width * ratio); });
+        // some phones only fetch video data after a play() call
+        source.play().then(() => { source.pause(); grabStills(); }).catch(grabStills);
+      }, { once: true });
+
       // Pause the clips while the collage is off screen, to save battery
-      const videos = [...section.querySelectorAll("video")];
+      const videos = [heroVideo, ...clips];
       if ("IntersectionObserver" in window) {
         new IntersectionObserver(([entry]) => {
           videos.forEach((v) => {
