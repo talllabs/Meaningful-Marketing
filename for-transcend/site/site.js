@@ -163,7 +163,6 @@
   /* ---------- 2. Film: every still and clip is a moment from the same film ---------- */
   // data-at is the moment to use, as a share of the film's length (0.5 = halfway)
   const at = (el) => parseFloat(el.dataset.at) || 0;
-  const timecode = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
 
   const heroVideo = document.getElementById("heroVideo");
   if (heroVideo) heroVideo.src = FILM;
@@ -220,14 +219,6 @@
   source.setAttribute("aria-hidden", "true");
   document.body.appendChild(source);
 
-  const fillTimecodes = (duration) => {
-    document.querySelectorAll(".tc").forEach((tc) => {
-      const media = tc.closest("figure").querySelector("[data-at]");
-      if (!media) return;
-      tc.textContent = `${media.tagName === "VIDEO" ? "Film" : "Still"} · ${timecode(at(media) * duration)}`;
-    });
-  };
-
   const grabStills = () => {
     let i = 0;
     let timer;
@@ -257,7 +248,6 @@
       c.width = parseInt(c.dataset.w, 10) || 960;
       c.height = Math.round(c.width * ratio);
     });
-    fillTimecodes(source.duration);
     // some phones only fetch video data after a play() call
     source.play().then(() => { source.pause(); grabStills(); }).catch(grabStills);
   }, { once: true });
