@@ -560,7 +560,7 @@
     var STORAGE_KEY = 'mdd-page-unlocked';
 
     try {
-      if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
+      if (localStorage.getItem(STORAGE_KEY) === 'true') {
         body.classList.remove('mdd-locked');
       }
     } catch (e) {}
@@ -570,7 +570,7 @@
       if ((input.value || '').trim().toLowerCase() === CORRECT_PW) {
         body.classList.remove('mdd-locked');
         error.style.display = 'none';
-        try { sessionStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
+        try { localStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
       } else {
         error.style.display = 'block';
         input.value = '';

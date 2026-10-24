@@ -500,7 +500,7 @@
     var STORAGE_KEY = 'merschen-page-unlocked';
 
     try {
-      if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
+      if (localStorage.getItem(STORAGE_KEY) === 'true') {
         body.classList.remove('f5-locked');
       }
     } catch (e) {}
@@ -510,7 +510,7 @@
       if ((input.value || '').trim().toLowerCase() === CORRECT_PW) {
         body.classList.remove('f5-locked');
         error.style.display = 'none';
-        try { sessionStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
+        try { localStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
       } else {
         error.style.display = 'block';
         input.value = '';

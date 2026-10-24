@@ -1,10 +1,10 @@
 /* Password gate for the Andean Health & Development website concept.
-   Unlocking once (per browser tab session) unlocks every page. */
+   Unlocking once unlocks every page, and the browser remembers it. */
 (function () {
   var KEY = 'ahd-mockup-unlocked';
   var PW = 'mockup';
   var unlocked = false;
-  try { unlocked = sessionStorage.getItem(KEY) === 'true'; } catch (e) {}
+  try { unlocked = localStorage.getItem(KEY) === 'true'; } catch (e) {}
   if (unlocked) return;
 
   var root = document.documentElement;
@@ -45,7 +45,7 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if ((input.value || '').trim().toLowerCase() === PW) {
-        try { sessionStorage.setItem(KEY, 'true'); } catch (x) {}
+        try { localStorage.setItem(KEY, 'true'); } catch (x) {}
         root.classList.remove('ahd-locked');
         gate.remove();
       } else {
