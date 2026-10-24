@@ -24,6 +24,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
+    /* ============ GATE ============ */
+    .mdd-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--off-white, #f4f1ea);
+      padding: 20px;
+    }
+    .mdd-gate__box {
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      background: var(--white, #fff);
+      border-radius: var(--radius, 18px);
+      box-shadow: 0 24px 64px rgba(12, 12, 12, 0.14);
+      padding: 40px 32px;
+      border: 1px solid rgba(12, 12, 12, 0.06);
+    }
+    .mdd-gate__box h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .mdd-gate__box p {
+      margin: 0 0 22px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+    .mdd-gate__box input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(12, 12, 12, 0.15);
+      font-family: inherit;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+    .mdd-gate__error {
+      display: none;
+      color: #b3261e;
+      font-size: 13px;
+      margin: -6px 0 14px;
+    }
+    body.mdd-locked .mdd-page-content { display: none; }
+    body:not(.mdd-locked) .mdd-gate { display: none; }
+
     /* ============ MDD VIDEO PORTFOLIO PAGE ============ */
     .mdd-hero {
       padding: calc(var(--nav-h) + 72px) 0 20px;
@@ -179,7 +230,22 @@
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
-<body>
+<body class="mdd-locked">
+
+<!-- ============ PASSWORD GATE ============ -->
+<div class="mdd-gate" id="mddGate">
+  <div class="mdd-gate__box">
+    <h1>Storytelling Samples for MDD</h1>
+    <p>Prepared by Meaningful Marketing. Please enter the password to continue.</p>
+    <form id="mddGateForm" autocomplete="off">
+      <input type="password" id="mddGatePw" placeholder="Password" autocomplete="off" />
+      <p class="mdd-gate__error" id="mddGateError">That password isn't quite right — please try again.</p>
+      <button type="submit" class="btn btn--gold btn--lg" style="width:100%;">Enter →</button>
+    </form>
+  </div>
+</div>
+
+<div class="mdd-page-content">
 
 <!-- ============ NAVIGATION ============ -->
 <nav class="nav" id="nav">
@@ -482,6 +548,36 @@
     </div>
   </div>
 </div>
+</div><!-- /.mdd-page-content -->
 <script src="js/script.js"></script>
+<script>
+  (function () {
+    var CORRECT_PW = 'fyc';
+    var body = document.body;
+    var form = document.getElementById('mddGateForm');
+    var input = document.getElementById('mddGatePw');
+    var error = document.getElementById('mddGateError');
+    var STORAGE_KEY = 'mdd-page-unlocked';
+
+    try {
+      if (localStorage.getItem(STORAGE_KEY) === 'true') {
+        body.classList.remove('mdd-locked');
+      }
+    } catch (e) {}
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if ((input.value || '').trim().toLowerCase() === CORRECT_PW) {
+        body.classList.remove('mdd-locked');
+        error.style.display = 'none';
+        try { localStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
+      } else {
+        error.style.display = 'block';
+        input.value = '';
+        input.focus();
+      }
+    });
+  })();
+</script>
 </body>
 </html>
