@@ -4,5 +4,6 @@ Disallow: /for-landforce/
 Disallow: /for-transcend/
 Disallow: /for-ahd/
 Disallow: /admin/
+Disallow: /pitcairn-portal-faq/
 
 Sitemap: https://www.meaningfulmarketinghouse.com/sitemap.xml

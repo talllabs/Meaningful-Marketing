@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Pitcairn Portal Q&amp;A | Pitcairn Islands Tourism</title>
+  <meta name="description" content="Straight answers about the new Pitcairn Portal for booking and managing travel to Pitcairn Islands.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #22304d;
+      --navy-deep: #19243b;
+      --ocean: #3a56b8;
+      --sky: #e9effa;
+      --orange: #e8823a;
+      --orange-dark: #c96a26;
+      --ink: #1d2638;
+      --muted: #5d6679;
+      --line: #dfe4ee;
+      --bg: #f6f8fc;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: "Poppins", system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a { color: var(--ocean); }
+    button, input { font: inherit; }
+
+    /* Header — mirrors visitpitcairn.pn */
+    .top { background: var(--navy); }
+    .top-inner {
+      max-width: 1040px; margin: 0 auto; padding: 18px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .brand { display: block; line-height: 0; }
+    .brand img { height: 64px; width: auto; display: block; }
+    .pill {
+      background: var(--white); color: var(--navy); border-radius: 8px;
+      padding: 8px 16px; font-size: 14px; font-weight: 500; white-space: nowrap;
+    }
+
+    /* Hero + ask box */
+    .hero {
+      background:
+        radial-gradient(1200px 400px at 70% -10%, rgba(255,255,255,.18), transparent 60%),
+        linear-gradient(180deg, var(--navy) 0%, #2c4382 45%, var(--ocean) 100%);
+      color: var(--white);
+      padding: 56px 20px 120px;
+      text-align: center;
+    }
+    .hero h1 { margin: 0 auto 10px; max-width: 760px; font-weight: 500; font-size: clamp(30px, 5.5vw, 48px); line-height: 1.15; }
+    .hero p { margin: 0 auto; max-width: 560px; font-size: 17px; opacity: .92; }
+
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+    .card {
+      background: var(--white); border-radius: 16px;
+      box-shadow: 0 18px 48px rgba(25, 36, 59, .16);
+      padding: 22px;
+    }
+    .ask-card { margin-top: -84px; position: relative; }
+    .ask-form { display: flex; gap: 10px; }
+    .ask-form input {
+      flex: 1; min-width: 0; padding: 14px 16px; font-size: 16px;
+      border: 1.5px solid var(--line); border-radius: 10px; color: var(--ink); background: var(--white);
+    }
+    .ask-form input:focus { outline: none; border-color: var(--ocean); box-shadow: 0 0 0 3px rgba(58, 86, 184, .15); }
+    .btn {
+      border: 0; border-radius: 10px; padding: 14px 22px; cursor: pointer;
+      background: var(--orange); color: var(--white); font-weight: 600; font-size: 16px;
+    }
+    .btn:hover { background: var(--orange-dark); }
+    .btn:disabled { opacity: .6; cursor: wait; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .chip {
+      border: 1px solid var(--line); background: var(--sky); color: var(--navy);
+      border-radius: 999px; padding: 7px 14px; font-size: 14px; cursor: pointer; text-align: left;
+    }
+    .chip:hover { border-color: var(--ocean); }
+    .note { margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+
+    /* Conversation */
+    .thread { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
+    .thread:empty { display: none; }
+    .msg { padding: 12px 16px; border-radius: 14px; max-width: 92%; overflow-wrap: anywhere; }
+    .msg p { margin: 0 0 8px; } .msg p:last-child { margin-bottom: 0; }
+    .msg ul { margin: 4px 0 8px; padding-left: 20px; }
+    .msg.you { align-self: flex-end; background: var(--navy); color: var(--white); border-bottom-right-radius: 4px; }
+    .msg.bot { align-self: flex-start; background: var(--sky); border-bottom-left-radius: 4px; }
+    .msg.err { background: #fdecea; color: #8a1f17; }
+    .dots span {
+      display: inline-block; width: 7px; height: 7px; margin-right: 4px; border-radius: 50%;
+      background: var(--ocean); opacity: .35; animation: blink 1.2s infinite;
+    }
+    .dots span:nth-child(2) { animation-delay: .2s; } .dots span:nth-child(3) { animation-delay: .4s; }
+    @keyframes blink { 50% { opacity: 1; } }
+    .reset { margin-top: 12px; background: none; border: 0; color: var(--muted); font-size: 13px; cursor: pointer; text-decoration: underline; padding: 0; }
+
+    /* FAQ list */
+    .faq { padding: 48px 0 24px; }
+    .faq h2 { font-weight: 500; font-size: 26px; margin: 0 0 4px; color: var(--navy); }
+    .faq .sub { margin: 0 0 20px; color: var(--muted); }
+    .topic { margin: 26px 0 8px; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--orange-dark); }
+    details { background: var(--white); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 8px; }
+    summary {
+      list-style: none; cursor: pointer; padding: 15px 48px 15px 18px; position: relative;
+      font-weight: 500; color: var(--navy);
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+      font-size: 22px; font-weight: 400; color: var(--ocean);
+    }
+    details[open] summary::after { content: "–"; }
+    details p { margin: 0; padding: 0 18px 16px; color: #3b4458; }
+
+    footer { text-align: center; color: var(--muted); font-size: 13px; padding: 24px 20px 40px; }
+
+    @media (max-width: 560px) {
+      .brand img { height: 46px; }
+      .pill { font-size: 13px; padding: 7px 12px; }
+      .hero { padding: 40px 16px 110px; }
+      .wrap { padding: 0 16px; }
+      .card { padding: 16px; }
+      .ask-form { flex-direction: column; }
+      .btn { width: 100%; }
+      .msg { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="https://www.visitpitcairn.pn/"><img src="https://images.squarespace-cdn.com/content/v1/6286c6a1e9bca31a05831577/9b265aed-c1e7-4e51-985b-cb65ea0d8ae5/Pitcairn-Logo.png?format=500w" alt="Pitcairn Islands Tourism"></a>
+      <span class="pill">Portal Q&amp;A</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Questions about the Pitcairn Portal?</h1>
+    <p>Get straight answers about the new booking system. If something hasn't been decided yet, we'll tell you.</p>
+  </section>
+
+  <main class="wrap">
+    <div class="card ask-card">
+      <form class="ask-form" id="askForm">
+        <label for="askInput" class="sr-only" style="position:absolute;left:-9999px">Your question</label>
+        <input id="askInput" type="text" maxlength="500" autocomplete="off" placeholder="Ask anything, e.g. can people pay online?">
+        <button class="btn" id="askBtn" type="submit">Ask</button>
+      </form>
+      <div class="chips" id="chips">
+        <button class="chip" type="button">When will the portal go live?</button>
+        <button class="chip" type="button">How do I block out dates for my guesthouse?</button>
+        <button class="chip" type="button">Has the payment company been chosen?</button>
+        <button class="chip" type="button">How does the Island Pass work?</button>
+      </div>
+      <div class="thread" id="thread" aria-live="polite"></div>
+      <button class="reset" id="reset" type="button" hidden>Start a new question</button>
+      <p class="note">Answers come only from the approved project information. Please don't include personal details.</p>
+    </div>
+
+    <section class="faq" aria-labelledby="faqTitle">
+      <h2 id="faqTitle">Common questions</h2>
+      <p class="sub" id="updated">Quick answers to what people ask most.</p>
+      <div id="faqList"></div>
+    </section>
+  </main>
+
+  <footer>Pitcairn Islands Tourism &middot; Portal Q&amp;A</footer>
+
+  <script>
+  (function () {
+    var form = document.getElementById('askForm');
+    var input = document.getElementById('askInput');
+    var btn = document.getElementById('askBtn');
+    var thread = document.getElementById('thread');
+    var reset = document.getElementById('reset');
+    var history = [];
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    // Tiny, safe formatter: **bold**, "- " bullet lists and paragraphs.
+    function format(text) {
+      var html = '';
+      var inList = false;
+      text.split('\n').forEach(function (raw) {
+        var line = escapeHtml(raw.trim()).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        var bullet = /^[-*•]\s+/.test(line);
+        if (bullet && !inList) { html += '<ul>'; inList = true; }
+        if (!bullet && inList) { html += '</ul>'; inList = false; }
+        if (bullet) html += '<li>' + line.replace(/^[-*•]\s+/, '') + '</li>';
+        else if (line) html += '<p>' + line + '</p>';
+      });
+      if (inList) html += '</ul>';
+      return html;
+    }
+
+    function addMsg(cls, html) {
+      var el = document.createElement('div');
+      el.className = 'msg ' + cls;
+      el.innerHTML = html;
+      thread.appendChild(el);
+      return el;
+    }
+
+    function ask(question) {
+      question = question.trim();
+      if (!question || btn.disabled) return;
+      addMsg('you', escapeHtml(question));
+      var pending = addMsg('bot', '<span class="dots" aria-label="Thinking"><span></span><span></span><span></span></span>');
+      input.value = '';
+      btn.disabled = true;
+      reset.hidden = false;
+      pending.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      fetch('/api/ask-pitcairn-portal', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: question, history: history })
+      })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+        .then(function (res) {
+          if (!res.ok || !res.data.answer) throw new Error(res.data.error || 'error');
+          pending.innerHTML = format(res.data.answer);
+          history.push({ role: 'user', content: question }, { role: 'assistant', content: res.data.answer });
+          history = history.slice(-6);
+        })
+        .catch(function (err) {
+          pending.className = 'msg bot err';
+          pending.textContent = err.message && err.message !== 'error' && err.message.indexOf('fetch') === -1
+            ? err.message
+            : "Sorry, I couldn't get an answer just now. Please try again in a moment.";
+        })
+        .then(function () {
+          btn.disabled = false;
+          input.focus();
+        });
+    }
+
+    form.addEventListener('submit', function (e) { e.preventDefault(); ask(input.value); });
+    document.getElementById('chips').addEventListener('click', function (e) {
+      if (e.target.classList.contains('chip')) ask(e.target.textContent);
+    });
+    reset.addEventListener('click', function () {
+      thread.innerHTML = '';
+      history = [];
+      reset.hidden = true;
+      input.focus();
+    });
+
+    // Common questions come from /data/pitcairn-portal-faq.json — add new ones there.
+    fetch('/data/pitcairn-portal-faq.json')
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var list = document.getElementById('faqList');
+        var lastTopic = '';
+        data.faqs.forEach(function (f) {
+          if (f.topic && f.topic !== lastTopic) {
+            var h = document.createElement('h3');
+            h.className = 'topic';
+            h.textContent = f.topic;
+            list.appendChild(h);
+            lastTopic = f.topic;
+          }
+          var d = document.createElement('details');
+          var s = document.createElement('summary');
+          var p = document.createElement('p');
+          s.textContent = f.q;
+          p.textContent = f.a;
+          d.appendChild(s);
+          d.appendChild(p);
+          list.appendChild(d);
+        });
+        if (data.updated) {
+          document.getElementById('updated').textContent = 'Quick answers to what people ask most. Last updated ' + data.updated + '.';
+        }
+      })
+      .catch(function () {});
+  })();
+  </script>
+</body>
+</html>
