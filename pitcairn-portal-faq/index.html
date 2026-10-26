@@ -41,9 +41,8 @@
       max-width: 1040px; margin: 0 auto; padding: 18px 20px;
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
-    .brand { text-decoration: none; line-height: 1; color: var(--orange); }
-    .brand b { display: block; font-weight: 500; font-size: 30px; letter-spacing: -.01em; }
-    .brand span { display: block; font-size: 15px; margin-top: 2px; }
+    .brand { display: block; line-height: 0; }
+    .brand img { height: 64px; width: auto; display: block; }
     .pill {
       background: var(--white); color: var(--navy); border-radius: 8px;
       padding: 8px 16px; font-size: 14px; font-weight: 500; white-space: nowrap;
@@ -126,7 +125,7 @@
     footer { text-align: center; color: var(--muted); font-size: 13px; padding: 24px 20px 40px; }
 
     @media (max-width: 560px) {
-      .brand b { font-size: 24px; } .brand span { font-size: 13px; }
+      .brand img { height: 46px; }
       .pill { font-size: 13px; padding: 7px 12px; }
       .hero { padding: 40px 16px 110px; }
       .wrap { padding: 0 16px; }
@@ -140,7 +139,7 @@
 <body>
   <header class="top">
     <div class="top-inner">
-      <a class="brand" href="https://www.visitpitcairn.pn/"><b>Pitcairn</b><span>Islands Tourism</span></a>
+      <a class="brand" href="https://www.visitpitcairn.pn/"><img src="https://images.squarespace-cdn.com/content/v1/6286c6a1e9bca31a05831577/9b265aed-c1e7-4e51-985b-cb65ea0d8ae5/Pitcairn-Logo.png?format=500w" alt="Pitcairn Islands Tourism"></a>
       <span class="pill">Portal Q&amp;A</span>
     </div>
   </header>
