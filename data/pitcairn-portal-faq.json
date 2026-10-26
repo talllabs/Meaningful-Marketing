@@ -1,0 +1,75 @@
+{
+  "updated": "October 26, 2026",
+  "faqs": [
+    {
+      "topic": "The basics",
+      "q": "What is the Pitcairn Portal?",
+      "a": "A new online system for planning and booking travel to Pitcairn. Visitors can book a berth on the Silver Supporter and a place to stay in one go, and the tourism office, accommodation owners, travel agents and the finance team each get their own simple screen to manage their part."
+    },
+    {
+      "topic": "The basics",
+      "q": "Is it live yet?",
+      "a": "Not yet. As of late October 2026 it's a working demo that's being refined. The next steps are a design review, walk-throughs with the people who will use it every day (tourism and finance), and connecting it to the website and to payments. No launch date has been set."
+    },
+    {
+      "topic": "The basics",
+      "q": "Who is it for?",
+      "a": "Everyone who travels to or works with Pitcairn: tourists (including people who book through travel agents), government staff and visitors, scientists and contractors, islander families, and islanders who are travelling. Each group sees only what they need."
+    },
+    {
+      "topic": "Booking a trip",
+      "q": "How does a traveller book?",
+      "a": "They pick their travel dates on a calendar (only real sailing dates can be chosen) or browse places to stay first. Then they create an account and are walked through each step: their details, who's travelling with them, and their accommodation."
+    },
+    {
+      "topic": "Booking a trip",
+      "q": "Does everyone in a group have to fill in their own details?",
+      "a": "Yes. The person booking adds everyone's email address, and each traveller gets a link to upload their own passport, emergency contact, medical, travel insurance and flight details. The booking can't be finished until those steps are done."
+    },
+    {
+      "topic": "Booking a trip",
+      "q": "Can travellers choose their cabin on the ship?",
+      "a": "No. Single cabins aren't available on the Silver Supporter, and the tourism office assigns cabins. The plan is to give travellers one open text box to tell us anything we should consider when assigning rooms, such as who they'd prefer to share with."
+    },
+    {
+      "topic": "Booking a trip",
+      "q": "Can people pay online through the portal?",
+      "a": "The portal is built to take payments, but which payment company to use hasn't been decided yet (Stripe or Shopify are the options being discussed). Until that's settled, online payment isn't switched on."
+    },
+    {
+      "topic": "Accommodation owners",
+      "q": "How do accommodation owners use it?",
+      "a": "Through a phone-friendly vendor portal. They can see and confirm booking requests, block out dates (for the whole house or a single bedroom) and update their listing. If they'd rather not use technology, the tourism office can do all of this for them."
+    },
+    {
+      "topic": "Accommodation owners",
+      "q": "What if family is visiting or the owner is off island?",
+      "a": "Owners (or the tourism office for them) block those dates on the calendar so nobody can book them. Keeping calendars up to date really matters: a turned-down booking is a bad experience for visitors."
+    },
+    {
+      "topic": "Accommodation owners",
+      "q": "Can a place be taken off the website for a while?",
+      "a": "Yes. A listing can be unpublished, which hides it from the public site without deleting anything. It can be switched back on at any time."
+    },
+    {
+      "topic": "Island Pass",
+      "q": "What is the Island Pass?",
+      "a": "An optional 'sign for it' system, like charging to your room at a resort. Visitors (including cruise ship passengers) register a card and get a short number. Vendors record what they bought, the visitor signs, and the charges go through shortly after they leave. Vendors are then paid out."
+    },
+    {
+      "topic": "Island Pass",
+      "q": "Does a vendor need a phone or internet to use it?",
+      "a": "No. It works on a phone, even offline (it syncs when back online), or on paper slips that the tourism office enters for them."
+    },
+    {
+      "topic": "Travel agents & groups",
+      "q": "Can travel agents and groups book through it?",
+      "a": "Yes. Approved agents get their own booking screen, and the tourism office can use it for groups like scientific teams, contractors and government visitors. The organiser sets up the trip, and each traveller gets their own link to finish their personal details."
+    },
+    {
+      "topic": "Money",
+      "q": "How will vendors get paid?",
+      "a": "A finance screen shows exactly how much each vendor is owed from each lump-sum payment, so paying everyone out is a quick job. Vendors can also see a breakdown of what each payment covers."
+    }
+  ]
+}
