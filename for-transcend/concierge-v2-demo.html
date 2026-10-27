@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f3f0e9">
+<title>Charter Concierge v2 | Transcend Demo</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/images/favicon/favicon.ico" sizes="any">
+<script src="/for-transcend/gate.js"></script>
+<style>
+:root{--ink:#172b38;--muted:#68787c;--cream:#f3f0e9;--paper:#fbfaf7;--line:#d9ddd7;--navy:#132c3b;--gold:#c5a16b;--sage:#e7ece7;--serif:Georgia,"Times New Roman",serif;--sans:Inter,"Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font:14px/1.55 var(--sans)}button,input{font:inherit}a{color:inherit;text-decoration:none}
+header{height:74px;padding:0 clamp(22px,6vw,88px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #172b3818}.brand{font:17px var(--serif);letter-spacing:.16em;text-transform:uppercase}.brand small{display:block;font:9px var(--sans);letter-spacing:.3em;text-align:center;color:var(--muted);margin-top:-2px}.nav{display:flex;align-items:center;gap:30px;font-size:10px;letter-spacing:.14em;text-transform:uppercase}.nav a{opacity:.78}.nav .enquire{border:1px solid var(--ink);padding:11px 16px;opacity:1}
+main{max-width:1460px;margin:auto}.intro{padding:58px clamp(22px,6vw,88px) 34px;display:flex;justify-content:space-between;gap:30px;align-items:end}.kicker{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#71827e}.intro h1{font:clamp(43px,5.6vw,72px)/1.02 var(--serif);letter-spacing:-.03em;font-weight:400;margin:12px 0 10px;max-width:720px}.intro p{max-width:530px;color:#5e6e72;margin:0;font-size:14px}.intro-note{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#73817e;white-space:nowrap;padding-bottom:7px}
+.planner{margin:0 clamp(18px,4vw,58px) 82px;min-height:650px;display:grid;grid-template-columns:minmax(0,1.38fr) minmax(275px,.62fr);box-shadow:0 25px 65px #172b3816;background:var(--paper);border:1px solid #dce0d8}
+.conversation{display:flex;flex-direction:column;min-height:650px;border-right:1px solid var(--line)}
+.convo-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--line);background:#fbfaf7}
+.concierge-title{display:flex;align-items:center;gap:11px}.monogram{height:34px;width:34px;border-radius:50%;background:var(--navy);color:#f5f1e8;display:grid;place-items:center;font:15px var(--serif)}.concierge-title strong{font:16px var(--serif);font-weight:400;display:block}.concierge-title small{display:block;color:var(--muted);font-size:9px;letter-spacing:.1em;text-transform:uppercase}.status{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#668075}.status:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#77a18c;margin:0 7px 1px 0}
+.messages{flex:1;padding:26px clamp(16px,4vw,50px);overflow:auto;max-height:570px;scroll-behavior:smooth}
+.start-label{text-align:center;font-size:9px;letter-spacing:.17em;text-transform:uppercase;color:#8a9793;margin:0 0 24px}.bubble{font-size:12px;line-height:1.7;padding:13px 16px;max-width:min(83%,520px);margin:0 0 13px;white-space:pre-wrap;animation:appear .2s ease-out}.bubble.assistant{background:#e9ece7;border-radius:2px 13px 13px 13px;color:#263c44}.bubble.visitor{background:#dce6e2;border-radius:13px 2px 13px 13px;margin-left:auto;color:#263c44}.bubble strong{font-weight:600}
+.quick-actions{display:flex;gap:8px;flex-wrap:wrap;margin:7px 0 21px;max-width:90%}.quick-actions button,.pill{background:transparent;border:1px solid #aebbb7;color:#344e55;padding:9px 13px;border-radius:30px;font-size:10px;cursor:pointer;transition:.18s}.quick-actions button:hover,.quick-actions button:focus,.quick-actions button.selected{background:#e2eae5;border-color:#718d83;outline:none}.quick-actions .continue{background:var(--navy);border-color:var(--navy);color:white}.chat-form{display:flex;gap:8px;padding:13px;border-top:1px solid var(--line);background:#fbfaf7}.chat-form input{flex:1;min-width:0;padding:12px 14px;border:1px solid #d5dcd7;background:white;outline:none;font-size:11px}.chat-form input:focus{border-color:#6e8a82}.chat-form button,.primary{background:var(--navy);color:white;border:0;padding:0 19px;font-size:9px;letter-spacing:.13em;text-transform:uppercase;cursor:pointer}.privacy{font-size:9px;color:#87918e;text-align:center;padding:0 12px 13px;background:#fbfaf7}
+.trip-aside{padding:28px 25px;background:#f5f3ed}.aside-top{font-size:9px;text-transform:uppercase;letter-spacing:.17em;color:#71817d}.aside-title{font:26px/1.2 var(--serif);font-weight:400;margin:8px 0 16px}.river-art{height:160px;position:relative;overflow:hidden;background:linear-gradient(180deg,#8da2a1 0%,#dfc19b 63%,#49656a 64%,#263f4a 100%);margin-bottom:20px}.river-art:before{content:"";position:absolute;width:65px;height:65px;right:22%;top:24px;border-radius:50%;background:#f3d9b5;opacity:.8;filter:blur(1px)}.hills{position:absolute;left:-5%;right:-5%;height:50px;top:81px;background:#637b76;clip-path:polygon(0 50%,15% 20%,29% 52%,48% 8%,62% 48%,80% 22%,100% 60%,100% 100%,0 100%)}.boat{position:absolute;left:37%;top:90px;width:130px;height:40px;background:#eeeae0;clip-path:polygon(12% 0,86% 0,100% 63%,0 63%)}.boat:after{content:"";position:absolute;width:100%;height:9px;background:#203945;top:28px;left:0}.boat-window{position:absolute;z-index:1;top:97px;left:43%;width:68px;height:8px;background:repeating-linear-gradient(90deg,#789091 0 10px,#eeeae0 10px 15px)}.water-line{position:absolute;top:133px;left:9%;height:1px;width:80%;background:#b6c1b8;opacity:.55;box-shadow:30px 10px #b6c1b8,130px 20px #b6c1b8,210px 4px #b6c1b8}
+.summary-label{font-size:9px;letter-spacing:.17em;text-transform:uppercase;color:#74827d;margin-bottom:8px}.summary-list{border-top:1px solid #d8dcd5}.summary-row{display:grid;grid-template-columns:82px 1fr;gap:8px;padding:11px 0;border-bottom:1px solid #d8dcd5;font-size:10px}.summary-row dt{color:#73817e}.summary-row dd{margin:0;color:#243b44}.summary-empty{color:#87918e;font-style:italic}.aside-foot{font-size:9px;line-height:1.65;color:#788582;margin:17px 0 0}
+.request-card{background:white;border:1px solid var(--line);padding:16px;margin:12px 0 18px;max-width:500px;box-shadow:0 8px 22px #1d34410d}.request-card h3{font:20px var(--serif);font-weight:400;margin:0 0 7px}.request-card p{font-size:10px;color:#637278;margin:0 0 13px}.request-details{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:11px}.request-details span{font-size:9px;background:#f1f3ee;padding:6px 8px;color:#405a60}.request-card button{background:var(--navy);border:0;color:#fff;padding:11px 13px;text-transform:uppercase;letter-spacing:.12em;font-size:9px;cursor:pointer}
+.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 20px;max-width:500px}.contact-form label{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#607176}.contact-form label.wide{grid-column:1/-1}.contact-form input{display:block;width:100%;padding:10px;border:1px solid #d5dcd7;background:white;margin-top:5px;font-size:11px}.contact-form button{grid-column:1/-1;background:var(--navy);border:0;color:white;padding:12px;text-transform:uppercase;letter-spacing:.12em;font-size:9px;cursor:pointer}
+footer{background:var(--navy);color:#e9e9e2;padding:25px clamp(22px,6vw,88px) 84px;display:flex;justify-content:space-between;align-items:center;font-size:9px;text-transform:uppercase;letter-spacing:.12em}.footer-brand{font:12px var(--serif);letter-spacing:.14em}.footer-note{color:#b8c4c0}
+@keyframes appear{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.intro{display:block}.intro-note{display:inline-block;margin-top:15px}.planner{grid-template-columns:1fr;margin-left:18px;margin-right:18px}.conversation{border-right:0;border-bottom:1px solid var(--line)}.trip-aside{display:grid;grid-template-columns:.85fr 1fr;column-gap:22px}.aside-top,.aside-title,.river-art{grid-column:1}.summary-label,.summary-list,.aside-foot{grid-column:2}.summary-label{grid-row:1}.summary-list{grid-row:2}.aside-foot{grid-row:3}.river-art{height:150px}}
+@media(max-width:600px){header{height:64px}.brand{font-size:14px}.nav{gap:0}.nav a:first-child{display:none}.nav .enquire{padding:9px 11px;font-size:9px}.intro{padding-top:42px}.intro h1{font-size:48px}.intro p{font-size:13px}.planner{margin:0 10px 52px}.conversation{min-height:620px}.convo-head{padding:15px}.messages{padding:22px 14px;max-height:540px}.bubble{max-width:94%}.quick-actions{max-width:100%}.quick-actions button{padding:9px 11px}.chat-form{padding:9px}.chat-form button{padding:0 12px}.trip-aside{display:block;padding:22px 18px}.river-art{height:140px}.summary-label{margin-top:18px}.contact-form{grid-template-columns:1fr}.contact-form label.wide,.contact-form button{grid-column:1}footer{align-items:flex-start;flex-direction:column;gap:12px}}
+/* Demo bar (shared look with the other Transcend demos) */
+.demo-pill{position:fixed;left:16px;bottom:16px;z-index:200;display:flex;flex-wrap:wrap;gap:4px;align-items:center;padding:6px;border-radius:999px;background:#0c0c0c;color:#fff;font:600 12px/1.2 var(--sans);box-shadow:0 10px 30px rgba(0,0,0,.25)}.demo-pill a{padding:7px 12px;border-radius:999px}.demo-pill a:hover{background:rgba(255,255,255,.12)}.demo-pill span{padding:0 8px;color:#4DBDB8;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:600px){.demo-pill .pill-v1,.demo-pill span{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="#top">Transcend<small>Cruises</small></a>
+  <nav class="nav" aria-label="Main navigation"><a href="#planner">Plan your charter</a><a class="enquire" href="#planner">Start planning</a></nav>
+</header>
+<main id="top">
+  <section class="intro">
+    <div>
+      <div class="kicker">Private river journeys across Europe</div>
+      <h1>A river journey shaped around you.</h1>
+      <p>Tell us what you’re dreaming up. Your Charter Concierge will help you explore the possibilities and prepare a thoughtful starting point for your trip.</p>
+    </div>
+    <div class="intro-note">Personal planning, at your own pace</div>
+  </section>
+  <section class="planner" id="planner">
+    <div class="conversation">
+      <div class="convo-head">
+        <div class="concierge-title"><div class="monogram">T</div><div><strong>Charter Concierge</strong><small>Transcend Cruises</small></div></div>
+        <div class="status">Ready when you are</div>
+      </div>
+      <div class="messages" id="messages" aria-live="polite">
+        <div class="start-label">A conversation about your charter</div>
+        <div class="bubble assistant">Welcome. What brings you to a private river journey?</div>
+        <div class="quick-actions" id="choices">
+          <button data-value="A special celebration">A special celebration</button>
+          <button data-value="Time with family and friends">Time with family and friends</button>
+          <button data-value="A company or client gathering">A company gathering</button>
+          <button data-value="I’m exploring ideas">I’m exploring ideas</button>
+        </div>
+      </div>
+      <form class="chat-form" id="chat-form">
+        <input id="chat-input" type="text" placeholder="Type a message..." aria-label="Type a message" autocomplete="off">
+        <button type="submit">Send&nbsp; ↗</button>
+      </form>
+      <div class="privacy">Your details stay with the Transcend charter team.</div>
+    </div>
+    <aside class="trip-aside" aria-label="Your trip summary">
+      <div class="aside-top">Your trip, taking shape</div>
+      <h2 class="aside-title">A few details make it yours.</h2>
+      <div class="river-art" aria-hidden="true"><div class="hills"></div><div class="boat"></div><div class="boat-window"></div><div class="water-line"></div></div>
+      <div class="summary-label">Your preferences</div>
+      <dl class="summary-list">
+        <div class="summary-row"><dt>Occasion</dt><dd id="sum-occasion" class="summary-empty">To be explored</dd></div>
+        <div class="summary-row"><dt>River</dt><dd id="sum-river" class="summary-empty">To be explored</dd></div>
+        <div class="summary-row"><dt>Travel window</dt><dd id="sum-dates" class="summary-empty">To be explored</dd></div>
+        <div class="summary-row"><dt>Guests</dt><dd id="sum-guests" class="summary-empty">To be explored</dd></div>
+        <div class="summary-row"><dt>Interests</dt><dd id="sum-interests" class="summary-empty">To be explored</dd></div>
+      </dl>
+      <p class="aside-foot">This is a first conversation. The Transcend team will confirm itinerary details, ship availability, and pricing with you.</p>
+    </aside>
+  </section>
+</main>
+<footer><a class="footer-brand" href="#top">Transcend Cruises</a><span class="footer-note">Private river journeys, made personal</span><span>Europe, entirely yours</span></footer>
+
+<div class="demo-pill" role="navigation" aria-label="Demo navigation">
+  <a href="/for-transcend/">← Back to the proposal</a>
+  <a class="pill-v1" href="/for-transcend/assistant-demo.html">See concierge v1</a>
+  <span>Charter Concierge v2</span>
+</div>
+
+<script>
+const state={occasion:"",river:"",dates:"",guests:"",interests:[]};
+const messages=document.getElementById("messages");
+const choices=document.getElementById("choices");
+const form=document.getElementById("chat-form");
+const input=document.getElementById("chat-input");
+let step="occasion";
+function updateSummary(key,value){
+  const el=document.getElementById("sum-"+key);
+  el.textContent=value||"To be explored";
+  el.classList.toggle("summary-empty",!value);
+}
+function bubble(text,who="assistant"){
+  const el=document.createElement("div");
+  el.className="bubble "+who;
+  el.textContent=text;
+  messages.appendChild(el);
+  messages.scrollTop=messages.scrollHeight;
+  return el;
+}
+function actions(items,onPick){
+  const wrap=document.createElement("div");
+  wrap.className="quick-actions";
+  items.forEach(item=>{
+    const button=document.createElement("button");
+    button.type="button";
+    button.textContent=item.label||item;
+    button.addEventListener("click",()=>onPick(item.value||item,button,wrap));
+    wrap.appendChild(button);
+  });
+  messages.appendChild(wrap);
+  messages.scrollTop=messages.scrollHeight;
+  return wrap;
+}
+function advance(value){
+  if(step==="occasion"){
+    state.occasion=value;updateSummary("occasion",value);
+    bubble(value,"visitor");
+    bubble("Lovely. Which river would you most like to explore?");
+    step="river";
+    actions(["The Rhine","The Danube","I’d like help choosing"],v=>advance(v));
+  }else if(step==="river"){
+    state.river=value;updateSummary("river",value==="I’d like help choosing"?"Open to suggestions":value);
+    bubble(value,"visitor");
+    bubble(value==="The Rhine"?"The Rhine brings together vineyard landscapes, historic towns, and beautiful stretches of river. When might you like to travel?":value==="The Danube"?"The Danube offers grand cities, riverside culture, and a rich variety of scenery. When might you like to travel?":"I can help narrow the options around what your group enjoys. When might you like to travel?");
+    step="dates";
+    actions(["May to June 2027","July to August 2027","September to October 2027","We’re still deciding"],v=>advance(v));
+  }else if(step==="dates"){
+    state.dates=value;updateSummary("dates",value);
+    bubble(value,"visitor");
+    bubble("Great. About how many guests are you planning for?");
+    step="guests";
+    // Transcend charters host 30 to 120 guests per ship
+    actions(["30 to 50","51 to 80","81 to 120","Not sure yet"],v=>advance(v));
+  }else if(step==="guests"){
+    state.guests=value;updateSummary("guests",value);
+    bubble(value,"visitor");
+    bubble("What would make the trip especially memorable? Choose any that appeal, then continue.");
+    step="interests";
+    const selected=new Set();
+    const wrap=actions(["Food and wine","Culture and history","Scenery and slow days","Time together on board"],(v,button)=>{
+      if(selected.has(v)){selected.delete(v);button.classList.remove("selected")}
+      else{selected.add(v);button.classList.add("selected")}
+    });
+    const go=document.createElement("button");
+    go.type="button";go.className="continue";go.textContent="Continue";
+    go.addEventListener("click",()=>{
+      state.interests=[...selected];
+      const val=state.interests.length?state.interests.join(", "):"A little of everything";
+      updateSummary("interests",val);
+      wrap.remove();
+      bubble(val,"visitor");
+      showTripIdea();
+    });
+    wrap.appendChild(go);
+  }
+}
+function showTripIdea(){
+  step="proposal";
+  const route=state.river==="I’d like help choosing"?"A route chosen around your group":state.river;
+  const season=state.dates==="We’re still deciding"?"Flexible dates":state.dates;
+  const scenic=state.river==="The Danube"?"historic cities and riverside culture":state.river==="The Rhine"?"vineyard scenery and historic river towns":"beautiful scenery and memorable river towns";
+  bubble("Here’s a first direction based on what you’ve shared. Your charter team can refine the route and details with you.");
+  const card=document.createElement("div");
+  card.className="request-card";
+  const title=document.createElement("h3");title.textContent="Your private river journey";
+  const desc=document.createElement("p");desc.textContent="A personal starting point for your charter conversation.";
+  const tags=document.createElement("div");tags.className="request-details";
+  [route,season,state.guests,state.occasion].forEach(t=>{const s=document.createElement("span");s.textContent=t;tags.appendChild(s)});
+  const copy=document.createElement("p");
+  copy.textContent="Picture time together on board, with space to enjoy "+scenic+". We’ll use your interests in "+(state.interests.length?state.interests.join(", ").toLowerCase():"a mix of experiences")+" to help shape the conversation.";
+  const button=document.createElement("button");button.type="button";button.textContent="Request my trip outline";
+  button.addEventListener("click",requestDetails);
+  card.append(title,desc,tags,copy,button);messages.appendChild(card);messages.scrollTop=messages.scrollHeight;
+}
+function requestDetails(){
+  if(step==="contact")return;
+  step="contact";
+  bubble("I’ll prepare your trip details for a personal follow-up. What name and email should the charter team use?");
+  const box=document.createElement("form");box.className="contact-form";box.id="contact-form";
+  box.innerHTML='<label>Your name<input name="name" required placeholder="Full name"></label><label>Email address<input name="email" type="email" required placeholder="you@example.com"></label><label class="wide">Anything else you’d like us to know<input name="note" placeholder="Optional"></label><button type="submit">Prepare my request</button>';
+  messages.appendChild(box);messages.scrollTop=messages.scrollHeight;
+  box.addEventListener("submit",e=>{
+    e.preventDefault();
+    const name=new FormData(box).get("name").trim();
+    box.remove();
+    bubble("Thank you, "+name+". Your trip brief is ready for the Transcend charter team to review. In this concept demo, your details are not sent or stored.");
+    const done=document.createElement("div");done.className="quick-actions";
+    const restart=document.createElement("button");restart.type="button";restart.textContent="Plan another trip";restart.addEventListener("click",()=>location.reload());done.appendChild(restart);messages.appendChild(done);
+    messages.scrollTop=messages.scrollHeight;
+  });
+}
+choices.querySelectorAll("button").forEach(button=>button.addEventListener("click",()=>{choices.remove();advance(button.dataset.value)}));
+form.addEventListener("submit",e=>{
+  e.preventDefault();
+  const text=input.value.trim();if(!text)return;
+  input.value="";
+  if(step==="occasion")choices.remove();
+  if(["occasion","river","dates","guests"].includes(step))advance(text);
+  else if(step==="interests"){
+    state.interests=[text];updateSummary("interests",text);bubble(text,"visitor");showTripIdea();
+  }else if(step==="proposal")requestDetails();
+  else{bubble(text,"visitor");bubble("Thanks, I’ve noted that.");}
+});
+</script>
+</body>
+</html>
