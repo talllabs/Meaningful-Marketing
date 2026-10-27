@@ -99,20 +99,12 @@
       <div class="footer-bottom">
         <span>© 2026 Transcend Cruises. All Rights Reserved.</span>
         <a href="https://transcendcruises.com/privacy-policy/">Privacy Policy</a>
+        <button type="button" class="notes-toggle" id="notesToggle" aria-pressed="false">Show the “why” notes</button>
       </div>
     </div>`;
 
-  const pill = document.createElement("div");
-  pill.className = "demo-pill";
-  pill.setAttribute("role", "navigation");
-  pill.setAttribute("aria-label", "Demo navigation");
-  pill.innerHTML = `
-    <a href="/for-transcend/">← Back to the proposal</a>
-    <a class="pill-c" href="/for-transcend/homepage-demo.html">Concept 1</a>
-    <a class="pill-c" href="/for-transcend/homepage-editorial-demo.html">Concept 2</a>
-    <button type="button" id="notesToggle" aria-pressed="true">Hide the “why” notes</button>
-    <span>Concept 3 · Full site</span>`;
-  document.body.appendChild(pill);
+  // "Why" notes start hidden; the switch in the footer shows them
+  document.body.classList.add("hide-notes");
 
   // Logo falls back to the larger file, then to a text wordmark
   document.querySelectorAll("img[data-logo]").forEach((img) => {

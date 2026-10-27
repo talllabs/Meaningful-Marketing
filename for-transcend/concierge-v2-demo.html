@@ -24,13 +24,10 @@ main{max-width:1460px;margin:auto}.intro{padding:58px clamp(22px,6vw,88px) 34px;
 .summary-label{font-size:9px;letter-spacing:.17em;text-transform:uppercase;color:#74827d;margin-bottom:8px}.summary-list{border-top:1px solid #d8dcd5}.summary-row{display:grid;grid-template-columns:82px 1fr;gap:8px;padding:11px 0;border-bottom:1px solid #d8dcd5;font-size:10px}.summary-row dt{color:#73817e}.summary-row dd{margin:0;color:#243b44}.summary-empty{color:#87918e;font-style:italic}.aside-foot{font-size:9px;line-height:1.65;color:#788582;margin:17px 0 0}
 .request-card{background:white;border:1px solid var(--line);padding:16px;margin:12px 0 18px;max-width:500px;box-shadow:0 8px 22px #1d34410d}.request-card h3{font:20px var(--serif);font-weight:400;margin:0 0 7px}.request-card p{font-size:10px;color:#637278;margin:0 0 13px}.request-details{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:11px}.request-details span{font-size:9px;background:#f1f3ee;padding:6px 8px;color:#405a60}.request-card button{background:var(--navy);border:0;color:#fff;padding:11px 13px;text-transform:uppercase;letter-spacing:.12em;font-size:9px;cursor:pointer}
 .contact-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 20px;max-width:500px}.contact-form label{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#607176}.contact-form label.wide{grid-column:1/-1}.contact-form input{display:block;width:100%;padding:10px;border:1px solid #d5dcd7;background:white;margin-top:5px;font-size:11px}.contact-form button{grid-column:1/-1;background:var(--navy);border:0;color:white;padding:12px;text-transform:uppercase;letter-spacing:.12em;font-size:9px;cursor:pointer}
-footer{background:var(--navy);color:#e9e9e2;padding:25px clamp(22px,6vw,88px) 84px;display:flex;justify-content:space-between;align-items:center;font-size:9px;text-transform:uppercase;letter-spacing:.12em}.footer-brand{font:12px var(--serif);letter-spacing:.14em}.footer-note{color:#b8c4c0}
+footer{background:var(--navy);color:#e9e9e2;padding:25px clamp(22px,6vw,88px);display:flex;justify-content:space-between;align-items:center;font-size:9px;text-transform:uppercase;letter-spacing:.12em}.footer-brand{font:12px var(--serif);letter-spacing:.14em}.footer-note{color:#b8c4c0}
 @keyframes appear{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:900px){.intro{display:block}.intro-note{display:inline-block;margin-top:15px}.planner{grid-template-columns:1fr;margin-left:18px;margin-right:18px}.conversation{border-right:0;border-bottom:1px solid var(--line)}.trip-aside{display:grid;grid-template-columns:.85fr 1fr;column-gap:22px}.aside-top,.aside-title,.river-art{grid-column:1}.summary-label,.summary-list,.aside-foot{grid-column:2}.summary-label{grid-row:1}.summary-list{grid-row:2}.aside-foot{grid-row:3}.river-art{height:150px}}
 @media(max-width:600px){header{height:64px}.brand{font-size:14px}.nav{gap:0}.nav a:first-child{display:none}.nav .enquire{padding:9px 11px;font-size:9px}.intro{padding-top:42px}.intro h1{font-size:48px}.intro p{font-size:13px}.planner{margin:0 10px 52px}.conversation{min-height:620px}.convo-head{padding:15px}.messages{padding:22px 14px;max-height:540px}.bubble{max-width:94%}.quick-actions{max-width:100%}.quick-actions button{padding:9px 11px}.chat-form{padding:9px}.chat-form button{padding:0 12px}.trip-aside{display:block;padding:22px 18px}.river-art{height:140px}.summary-label{margin-top:18px}.contact-form{grid-template-columns:1fr}.contact-form label.wide,.contact-form button{grid-column:1}footer{align-items:flex-start;flex-direction:column;gap:12px}}
-/* Demo bar (shared look with the other Transcend demos) */
-.demo-pill{position:fixed;left:16px;bottom:16px;z-index:200;display:flex;flex-wrap:wrap;gap:4px;align-items:center;padding:6px;border-radius:999px;background:#0c0c0c;color:#fff;font:600 12px/1.2 var(--sans);box-shadow:0 10px 30px rgba(0,0,0,.25)}.demo-pill a{padding:7px 12px;border-radius:999px}.demo-pill a:hover{background:rgba(255,255,255,.12)}.demo-pill span{padding:0 8px;color:#4DBDB8;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
-@media(max-width:600px){.demo-pill .pill-v1,.demo-pill span{display:none}}
 </style>
 </head>
 <body>
@@ -87,11 +84,6 @@ footer{background:var(--navy);color:#e9e9e2;padding:25px clamp(22px,6vw,88px) 84
 </main>
 <footer><a class="footer-brand" href="#top">Transcend Cruises</a><span class="footer-note">Private river journeys, made personal</span><span>Europe, entirely yours</span></footer>
 
-<div class="demo-pill" role="navigation" aria-label="Demo navigation">
-  <a href="/for-transcend/">← Back to the proposal</a>
-  <a class="pill-v1" href="/for-transcend/assistant-demo.html">See concierge v1</a>
-  <span>Charter Concierge v2</span>
-</div>
 
 <script>
 const state={occasion:"",river:"",dates:"",guests:"",interests:[]};
