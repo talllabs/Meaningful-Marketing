@@ -291,7 +291,8 @@ h3 {
 
 /* ===== Film media: every still and clip is cut from the Transcend film ===== */
 canvas.still,
-video.clip {
+video.clip,
+img.photo {
   display: block;
   width: 100%;
   height: 100%;
@@ -300,7 +301,8 @@ video.clip {
   transition: opacity 700ms ease;
 }
 
-.ready { opacity: 1 !important; }
+.ready,
+img.photo { opacity: 1 !important; }
 
 .frame { margin: 0; }
 
@@ -311,7 +313,8 @@ video.clip {
 }
 
 .plx > canvas,
-.plx > video { transform: scale(1.16); will-change: transform; }
+.plx > video,
+.plx > img { transform: scale(1.16); will-change: transform; }
 
 .r-tall { aspect-ratio: 4 / 5; }
 .r-port { aspect-ratio: 3 / 4; }
@@ -680,6 +683,51 @@ video.clip {
   text-transform: uppercase;
 }
 
+/* Featured cities: three small photos under each river */
+.port-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 22px;
+}
+
+/* Map of the rivers and the deck plans: shown whole, never cropped */
+.rivers-map img,
+.decks img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+.rivers-map { max-width: 1100px; margin: 0 auto; }
+
+.decks {
+  display: grid;
+  gap: clamp(28px, 4vw, 56px);
+  margin-top: clamp(60px, 8vw, 110px);
+  padding-top: clamp(40px, 5vw, 64px);
+  border-top: 1px solid var(--line);
+}
+
+/* Excursion photos under the big serif list */
+.excursions {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: clamp(40px, 5vw, 70px);
+}
+
+/* Press logos */
+.press { text-align: center; }
+
+.press-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px clamp(24px, 4vw, 56px);
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.press-logos img { display: block; height: 120px; width: auto; mix-blend-mode: multiply; }
+
 /* Filmstrip of moments that drifts sideways */
 .moments { overflow: hidden; }
 
@@ -789,6 +837,27 @@ video.clip {
   padding: clamp(40px, 5vw, 64px) 0;
   border-bottom: 1px solid var(--line);
   align-items: start;
+}
+
+.headshot {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--paper-warm);
+}
+
+.leader .headshot { display: block; width: 88px; height: 88px; margin-bottom: 22px; }
+
+.headshot--initials,
+.leader .headshot--initials {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--navy);
+  background: none;
+  color: var(--navy);
+  font-family: var(--serif);
+  font-size: 1.8rem;
 }
 
 .monogram {
@@ -981,6 +1050,8 @@ footer {
   .facts-row p { grid-column: 2; }
 
   .person { grid-template-columns: 96px 1fr; }
+  .person .headshot { width: 96px; height: 96px; }
+  .excursions { grid-template-columns: repeat(3, 1fr); }
   .person blockquote,
   .person > div:last-child { grid-column: 1 / -1; }
 
@@ -1037,6 +1108,9 @@ footer {
 
   .connect-form { grid-template-columns: 1fr; }
   .leaders { grid-template-columns: 1fr; }
+  .excursions { grid-template-columns: repeat(2, 1fr); }
+  .port-photos { gap: 8px; }
+  .press-logos img { height: 84px; }
 
   .interlude { min-height: 640px; }
   .interlude h2 { font-size: clamp(3.2rem, 14vw, 5rem); }
@@ -1053,7 +1127,7 @@ footer {
   .scroll-cue { display: none; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
   .ticker-track { animation: none; }
-  .plx > canvas, .plx > video { transform: none; }
+  .plx > canvas, .plx > video, .plx > img { transform: none; }
 }
 
 /* ===== Demo helpers (shared with concepts 1 and 2) ===== */

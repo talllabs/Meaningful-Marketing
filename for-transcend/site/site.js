@@ -4,7 +4,7 @@
    3. Scroll effects: the home collage, parallax drift and fade-ins */
 (() => {
   const FILM = "https://transcendcruises.com/wp-content/uploads/2026/10/Transcend-Hero-Long-Version-web-1080p.mp4";
-  const LOGO = "https://transcendcruises.com/wp-content/uploads/2026/08/Transcend-Lockup-Navy-FA-768x197.png";
+  const LOGO = "/for-transcend/site/photos/transcend-lockup-navy.png";
   const LOGO_LARGE = "https://transcendcruises.com/wp-content/uploads/2026/08/Transcend-Lockup-Navy-FA-1024x263.png";
   const SITE = "/for-transcend/site/";
   const page = document.body.dataset.page || "";
