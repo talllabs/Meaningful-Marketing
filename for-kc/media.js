@@ -2,8 +2,7 @@
    Photos load straight from KC's site (kenchrisbrown.com) and films from Vimeo.
    Film stills are fetched from Vimeo automatically, so a film only needs its link.
 
-   hero:      the big opening image. heroBackup shows if it ever fails to load
-              (the LinkedIn link below expires, so swap in a saved copy when you can).
+   hero:      the big opening image. heroBackup shows if it ever fails to load.
    reel:      the film that plays from the "Watch the reel" button.
    tiles:     eight photos the opening image shrinks into as you scroll.
    gallery:   photos shown beside the About section.
@@ -14,7 +13,7 @@
     `https://images.squarespace-cdn.com/content/v1/530d82afe4b0e5f490d7e8e8/${path}?format=${size || "1000w"}`;
 
   window.KC_MEDIA = {
-    hero: "https://media.licdn.com/dms/image/v2/D5616AQFvR57FSP0yEg/profile-displaybackgroundimage-shrink_200_800/B56ZdRoCUEGoAU-/0/1749421140675?e=1795046400&v=beta&t=qXPi4hBg339aPgkOF3uL08w4ULaCQZAOyJjx_SI1NhA",
+    hero: sq("1439958245699-OIYL3ASWB1V2ZP7U89FR/IMG_0438-2.jpg", "2500w"),
     heroBackup: sq("1566279623266-VI13OJH7IAUUC0E5WLPX/DSC02171.jpg", "2500w"),
     reel: "https://vimeo.com/354113974",
 
@@ -33,7 +32,6 @@
       sq("1394402868561-M93HYZISWD89SNHK7Z1B/Patrick+Torres+Wright-1.jpg"),
       sq("1552282762211-BU79TYADY1Q2NF47W6Y8/IPIN9522.JPG"),
       sq("1394402852524-X05ZSSB1NAQD5R1SK1IG/Kevin+Lemos.jpg"),
-      sq("1439958245699-OIYL3ASWB1V2ZP7U89FR/IMG_0438-2.jpg"),
       sq("1552282815816-YSZG58FSTXFHU7G541CN/KKAG8987.JPG"),
       sq("1394402706539-GJAIF4CES4NW0TQL7Q0S/0001390-R1-018-7A.jpg")
     ],
