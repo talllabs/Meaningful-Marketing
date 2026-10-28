@@ -31,7 +31,7 @@
   /* ---------- 1. Photos and film stills ---------- */
   document.querySelectorAll("[data-media]").forEach((box) => {
     const key = box.dataset.media;
-    addImage(box, lookup(key), key === "hero" ? M.heroBackup : null);
+    addImage(box, lookup(key), (M.backups || {})[key]);
   });
 
   // Vimeo gives each film's still through its public oEmbed lookup
@@ -161,15 +161,27 @@
   const films = [...(M.featured || []), ...(M.more || [])];
   let hoverTimer = 0, lastScroll = 0;
   window.addEventListener("scroll", () => { lastScroll = Date.now(); clearTimeout(hoverTimer); }, { passive: true });
-  const loop = (tile) => {
+  // a silent looping Vimeo film filling a frame, over its still
+  const loopFilm = (box, id) => {
     const frame = document.createElement("iframe");
-    frame.src = `https://player.vimeo.com/video/${tile.dataset.id}?background=1&autoplay=1&loop=1&muted=1&autopause=0&dnt=1`;
+    frame.src = `https://player.vimeo.com/video/${id}?background=1&autoplay=1&loop=1&muted=1&autopause=0&dnt=1`;
     frame.allow = "autoplay";
     frame.title = "";
     frame.tabIndex = -1;
     frame.setAttribute("aria-hidden", "true");
-    tile.querySelector(".media").append(frame);
+    box.classList.add("looping");
+    box.append(frame);
   };
+  const loop = (tile) => loopFilm(tile.querySelector(".media"), tile.dataset.id);
+
+  // the opening collage: half its tiles are films
+  document.querySelectorAll("[data-loop]").forEach((box) => {
+    const id = vimeoId(lookup(box.dataset.loop));
+    if (!id) return;
+    box.dataset.vimeo = id;
+    loadStill(box);
+    if (!reduceMotion.matches) loopFilm(box, id);
+  });
   const loopWatcher = "IntersectionObserver" in window
     ? new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -177,12 +189,13 @@
         });
       }, { rootMargin: "300px" })
     : null;
-  films.forEach((film) => {
+  films.forEach((film, i) => {
     const id = vimeoId(film.watch);
     if (!wall || !id) return;
     const tile = document.createElement("button");
     tile.type = "button";
-    tile.className = "wall-tile";
+    // two films take a double-wide tile so 30 films fill 8 columns by 4 rows exactly
+    tile.className = "wall-tile" + (i === 0 || i === 17 ? " wide" : "");
     tile.dataset.id = id;
     tile.setAttribute("aria-label", `Play ${film.title} with sound`);
     const frame = document.createElement("div");
