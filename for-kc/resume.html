@@ -9,38 +9,37 @@
   <script src="/for-kc/gate.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/for-kc/kc.css" />
   <style>
     /* The résumé uses the portfolio's identity, sized for one printed page */
-    body { background: var(--bone); }
-    .sheet { width: min(100% - 32px, 860px); margin: 32px auto; background: var(--paper); box-shadow: 0 20px 60px rgba(20, 17, 15, 0.12); }
-    .band { background: var(--ink); color: var(--bone); padding: 44px 52px 36px; display: grid; gap: 18px; }
-    .band h1 { font-size: clamp(2.8rem, 7vw, 4.4rem); line-height: 0.9; letter-spacing: -0.045em; }
-    .band h1 span { color: var(--ember); }
-    .band .role { font: 600 0.78rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember-soft); }
-    .band .line { font: 400 1.25rem/1.35 var(--display); color: var(--bone); max-width: 46ch; margin: 0; }
-    .band .links { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 0.88rem; color: var(--muted-on-ink); }
-    .band .links a { color: var(--bone); }
+    body { background: var(--ocean); }
+    .sheet { width: min(100% - 32px, 860px); margin: 32px auto; background: var(--paper); box-shadow: 0 20px 60px rgba(31, 106, 130, 0.12); }
+    .band { background: var(--ocean-2); padding: 44px 52px 34px; display: grid; gap: 14px; }
+    .band h1 { font-size: clamp(2.8rem, 7vw, 4.6rem); line-height: 0.92; letter-spacing: -0.04em; }
+    .band .role { font: 600 0.78rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); }
+    .band .line { font-size: 1.2rem; line-height: 1.45; max-width: 46ch; margin: 0; }
+    .band .links { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 0.9rem; color: var(--muted); }
+    .band .links a { color: var(--teal); font-weight: 600; }
     .body { padding: 36px 52px 44px; display: grid; gap: 28px 44px; }
     @media (min-width: 720px) { .body { grid-template-columns: 2fr 1fr; } }
-    .body h2 { font: 600 0.72rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember); margin: 0 0 14px; }
-    .job { padding: 14px 0; border-top: 1px solid var(--line); }
-    .job:first-of-type { border-top: 2px solid var(--ink); }
-    .job strong { font: 600 1.15rem/1.2 var(--display); letter-spacing: -0.01em; }
+    .body h2 { font: 600 0.74rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin: 0 0 14px; }
+    .job { padding: 0 0 18px 22px; border-left: 2px solid var(--line); position: relative; }
+    .job::before { content: ""; position: absolute; left: -7px; top: 0.35em; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--teal); }
+    .job strong { font: 700 1.1rem/1.25 var(--display); letter-spacing: -0.01em; }
     .job .meta { display: block; color: var(--muted); font-size: 0.85rem; margin: 2px 0 6px; }
-    .job p { margin: 0; font-size: 0.93rem; color: var(--ink-2); }
-    .side ul { list-style: none; margin: 0 0 26px; padding: 0; border-top: 2px solid var(--ink); }
-    .side li { padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 0.93rem; }
+    .job p { margin: 0; font-size: 0.93rem; }
+    .side ul { list-style: none; margin: 0 0 26px; padding: 0; }
+    .side li { padding: 6px 0 6px 12px; border-left: 4px solid var(--sky); margin-bottom: 8px; font-size: 0.93rem; }
     .actions { width: min(100% - 32px, 860px); margin: 24px auto 0; display: flex; gap: 12px; justify-content: space-between; align-items: center; font-size: 0.9rem; }
-    .actions button { all: unset; cursor: pointer; background: var(--ember); color: #fff; padding: 12px 20px; border-radius: 999px; font-weight: 600; }
+    .actions button { all: unset; cursor: pointer; background: var(--teal); color: #fff; padding: 12px 20px; border-radius: 999px; font-weight: 600; }
     @media (max-width: 560px) { .band, .body { padding-left: 24px; padding-right: 24px; } }
     @media print {
       @page { size: A4; margin: 0; }
       body { background: #fff; }
       .actions { display: none; }
       .sheet { width: auto; margin: 0; box-shadow: none; }
-      .band, .contact { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .band { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .body { grid-template-columns: 2fr 1fr; }
       .todo { background: none; border: 0; }
     }
@@ -55,7 +54,7 @@
   <article class="sheet">
     <header class="band">
       <span class="role">Creative Director</span>
-      <h1>KC Brown<span>.</span></h1>
+      <h1>KC Brown</h1>
       <p class="line">Creative director and hands-on creative leader. I guide strategy, campaigns, teams and production for brands with something to say.</p>
       <div class="links">
         <span>Ōmokoroa, New Zealand</span>
@@ -88,7 +87,7 @@
           <li>TOMS · Giving Manifesto</li>
           <li>TOMS · Camp TOMS</li>
           <li>K12 · Celebrating 25 Years</li>
-          <li>WiddyUP · Brand launch</li>
+          <li>Madefor · Why It Works</li>
         </ul>
         <h2>Education</h2>
         <ul><li>University of California, Santa Barbara</li></ul>

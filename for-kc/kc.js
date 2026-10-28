@@ -1,6 +1,6 @@
 /* KC Brown portfolio
-   1. Fills every photo and film from media.js
-   2. The opener: the reel starts full screen and shrinks into a collage
+   1. Fills every photo from media.js, and film stills from Vimeo
+   2. The opener: the hero image starts full screen and shrinks into a collage
    3. The film showcase and its player
    4. Header, fade-ins */
 (() => {
@@ -10,55 +10,55 @@
 
   // "tiles.3" -> M.tiles[3]
   const lookup = (path) => path.split(".").reduce((o, k) => (o == null ? o : o[k]), M);
+  const vimeoId = (url) => ((url || "").match(/vimeo\.com\/(?:video\/)?(\d+)/) || [])[1];
 
-  const vimeoId = (url) => (url.match(/vimeo\.com\/(?:video\/)?(\d+)/) || [])[1];
-  const youtubeId = (url) => (url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/) || [])[1];
-
-  const addImage = (box, src, alt) => {
+  // Puts a photo in a frame; tries the backup if the first link fails
+  const addImage = (box, src, backup) => {
     if (!src) return;
     const img = new Image();
-    img.alt = alt || "";
-    img.loading = "lazy";
+    img.alt = box.dataset.alt || "";
     img.decoding = "async";
+    if (!box.closest("#heroFrame")) img.loading = "lazy";
     img.onload = () => img.classList.add("ready");
+    img.onerror = () => {
+      if (backup && img.src !== backup) img.src = backup;
+      else img.remove();
+    };
     img.src = src;
     box.prepend(img);
-    box.classList.add("has-media");
   };
 
-  /* ---------- 1. Photos ---------- */
+  /* ---------- 1. Photos and film stills ---------- */
   document.querySelectorAll("[data-media]").forEach((box) => {
-    addImage(box, lookup(box.dataset.media), box.dataset.alt);
+    const key = box.dataset.media;
+    addImage(box, lookup(key), key === "hero" ? M.heroBackup : null);
   });
 
-  // The opening reel: an mp4 plays directly, a Vimeo link plays as a silent background loop
-  const heroBox = document.getElementById("heroMedia");
-  if (heroBox) {
-    const hero = M.hero || "";
-    if (/\.(mp4|webm|mov)(\?|$)/i.test(hero)) {
-      const v = document.createElement("video");
-      Object.assign(v, { src: hero, muted: true, loop: true, autoplay: true, playsInline: true });
-      if (M.poster) v.poster = M.poster;
-      v.setAttribute("aria-hidden", "true");
-      heroBox.prepend(v);
-      heroBox.classList.add("has-media");
-    } else if (vimeoId(hero)) {
-      const f = document.createElement("iframe");
-      f.src = `https://player.vimeo.com/video/${vimeoId(hero)}?background=1&autoplay=1&loop=1&muted=1`;
-      f.allow = "autoplay; fullscreen";
-      f.title = "KC Brown reel";
-      f.setAttribute("aria-hidden", "true");
-      f.tabIndex = -1;
-      heroBox.prepend(f);
-      heroBox.classList.add("has-media");
-    } else {
-      addImage(heroBox, M.poster, "");
-    }
-  }
+  // Vimeo gives each film's still through its public oEmbed lookup
+  const stills = {};
+  const vimeoStill = (id) =>
+    (stills[id] ||= fetch(`https://vimeo.com/api/oembed.json?url=${encodeURIComponent("https://vimeo.com/" + id)}&width=1280`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => (d && d.thumbnail_url) || null)
+      .catch(() => null));
+
+  const loadStill = (box) => {
+    vimeoStill(box.dataset.vimeo).then((src) => addImage(box, src));
+  };
+  const stillWatcher = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { loadStill(entry.target); stillWatcher.unobserve(entry.target); }
+        });
+      }, { rootMargin: "400px" })
+    : null;
+  const watchStill = (box) => (stillWatcher ? stillWatcher.observe(box) : loadStill(box));
+  document.querySelectorAll("[data-vimeo]").forEach(watchStill);
 
   /* ---------- 2. The opener ---------- */
   const collage = document.getElementById("collage");
   const stage = document.getElementById("stage");
+  const heroBox = document.getElementById("heroMedia");
   let top = 0, range = 1, w = 0, h = 0, frameX = 0, frameTop = 0, frameBottom = 0, ticking = false;
 
   const measure = () => {
@@ -79,14 +79,14 @@
     const cue = document.getElementById("scrollCue");
     // 0 at the top of the section, 1 when the stage is about to un-stick
     const p = reduceMotion.matches ? 0.8 : clamp((window.scrollY - top) / range, 0, 1);
-    // the reel finishes shrinking at 70% of the way, the rest is a short hold
+    // the hero finishes shrinking at 70% of the way, the rest is a short hold
     const e = 1 - Math.pow(1 - clamp(p / 0.7, 0, 1), 3);
     const x = e * frameX * w;
     const t = e * frameTop * h;
     const b = e * frameBottom * h;
     frame.style.clipPath = `inset(${t}px ${x}px ${b}px ${x}px round ${e * 4}px)`;
-    heroBox.style.transform = `scale(${1 - e * 0.2})`;
-    title.style.transform = `translateY(${(t - b) / 2}px) scale(${1 - e * 0.5})`;
+    heroBox.style.transform = `scale(${1.08 - e * 0.2})`;
+    title.style.transform = `translateY(${(t - b) / 2}px) scale(${1 - e * 0.45})`;
     cue.style.opacity = String(1 - clamp(p / 0.12, 0, 1));
     // each tile rises at its own speed and keeps drifting slightly while the collage holds
     stage.querySelectorAll(".tile").forEach((tile) => {
@@ -101,6 +101,8 @@
   const renderHeader = () => {
     const past = collage ? window.scrollY > top + collage.offsetHeight - 80 : window.scrollY > 40;
     header.classList.toggle("solid", past);
+    // dark text as soon as the hero starts shrinking off the light background
+    header.classList.toggle("ink", !!collage && window.scrollY > top + range * 0.12);
   };
 
   const render = () => {
@@ -122,50 +124,79 @@
   if (collage && "ResizeObserver" in window) new ResizeObserver(() => { measure(); request(); }).observe(stage);
 
   /* ---------- 3. Films ---------- */
-  const films = M.films || [];
-  const filmCard = (film, i) => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "film reveal" + (i === 0 ? " film-featured" : "");
-    btn.setAttribute("aria-label", `Play ${film.title}, ${film.client}`);
-    btn.innerHTML =
-      `<div class="media"><span class="label">${film.title}</span></div>` +
-      `<span class="play"><i></i><span><b>${film.title}</b><small>${film.client} · ${film.role}</small></span></span>`;
-    addImage(btn.querySelector(".media"), film.still, "");
-    btn.addEventListener("click", () => openPlayer(film));
-    return btn;
-  };
-  const featured = document.getElementById("filmFeatured");
-  const row = document.getElementById("filmRow");
-  if (featured && films.length) {
-    featured.append(filmCard(films[0], 0));
-    films.slice(1).forEach((f, i) => row.append(filmCard(f, i + 1)));
-  }
-
   const box = document.getElementById("lightbox");
-  const player = box && box.querySelector(".player");
+  const player = box.querySelector(".player");
   let lastFocus = null;
-  const openPlayer = (film) => {
-    const url = film.watch || "";
-    let html = `<div class="soon"><div><span class="kicker">${film.client}</span><h3 style="margin-top:12px">${film.title}</h3><p>Film link coming soon.</p></div></div>`;
-    if (vimeoId(url)) html = `<iframe src="https://player.vimeo.com/video/${vimeoId(url)}?autoplay=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${film.title}"></iframe>`;
-    else if (youtubeId(url)) html = `<iframe src="https://www.youtube.com/embed/${youtubeId(url)}?autoplay=1&rel=0" allow="autoplay; fullscreen" allowfullscreen title="${film.title}"></iframe>`;
-    else if (/\.(mp4|webm|mov)(\?|$)/i.test(url)) html = `<video src="${url}" controls autoplay playsinline></video>`;
-    player.innerHTML = html;
+
+  const openPlayer = (url, title) => {
+    const id = vimeoId(url);
+    if (!id) return;
+    const frame = document.createElement("iframe");
+    frame.src = `https://player.vimeo.com/video/${id}?autoplay=1&title=0&byline=0&portrait=0`;
+    frame.allow = "autoplay; fullscreen; picture-in-picture";
+    frame.allowFullscreen = true;
+    frame.title = title || "Film";
+    player.replaceChildren(frame);
     lastFocus = document.activeElement;
     box.classList.add("open");
     box.querySelector(".close").focus();
   };
   const closePlayer = () => {
     box.classList.remove("open");
-    player.innerHTML = "";
+    player.replaceChildren();
     if (lastFocus) lastFocus.focus();
   };
-  if (box) {
-    box.querySelector(".close").addEventListener("click", closePlayer);
-    box.addEventListener("click", (e) => { if (e.target === box) closePlayer(); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && box.classList.contains("open")) closePlayer(); });
+  box.querySelector(".close").addEventListener("click", closePlayer);
+  box.addEventListener("click", (e) => { if (e.target === box) closePlayer(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && box.classList.contains("open")) closePlayer(); });
+
+  // Anything with data-watch plays that film
+  document.querySelectorAll("[data-watch]").forEach((el) => {
+    el.addEventListener("click", () => openPlayer(el.dataset.watch || M.reel, el.dataset.title));
+  });
+
+  const chip = (text) => {
+    const c = document.createElement("span");
+    c.className = "play-chip";
+    c.innerHTML = '<span class="tri"></span>';
+    c.append(text);
+    return c;
+  };
+
+  const filmCard = (film) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "film";
+    btn.setAttribute("aria-label", `Play ${film.title}`);
+    const frame = document.createElement("div");
+    frame.className = "media";
+    frame.dataset.vimeo = vimeoId(film.watch);
+    frame.append(chip("Play"));
+    const name = document.createElement("h3");
+    name.textContent = film.title;
+    btn.append(frame, name);
+    btn.addEventListener("click", () => openPlayer(film.watch, film.title));
+    watchStill(frame);
+    return btn;
+  };
+
+  const featured = M.featured || [];
+  const lead = document.getElementById("filmLead");
+  if (lead && featured.length) {
+    const first = featured[0];
+    const card = filmCard(first);
+    card.querySelector("h3").remove();
+    card.querySelector(".play-chip").lastChild.textContent = "Play film";
+    const text = document.createElement("div");
+    text.innerHTML = '<span class="kicker">Featured film</span><h3></h3><p>TOMS. Creative direction, video.</p>';
+    text.querySelector("h3").textContent = first.title;
+    lead.append(card, text);
+    featured.slice(1).forEach((f) => document.getElementById("filmGrid").append(filmCard(f)));
   }
+  const moreGrid = document.getElementById("moreGrid");
+  (M.more || []).forEach((f) => moreGrid && moreGrid.append(filmCard(f)));
+  const moreCount = document.getElementById("moreCount");
+  if (moreCount) moreCount.textContent = String((M.more || []).length);
 
   /* ---------- 4. Fade sections in as they arrive ---------- */
   const reveals = document.querySelectorAll(".reveal");
