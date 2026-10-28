@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KC Brown | Résumé</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/images/favicon/favicon.ico" sizes="any" />
+  <script src="/for-kc/gate.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/for-kc/kc.css" />
+  <style>
+    /* The résumé uses the portfolio's identity, sized for one printed page */
+    body { background: var(--ocean); }
+    .sheet { width: min(100% - 32px, 860px); margin: 32px auto; background: var(--paper); box-shadow: 0 20px 60px rgba(31, 106, 130, 0.12); }
+    .band { background: var(--ocean-2); padding: 44px 52px 34px; display: grid; gap: 14px; }
+    .band h1 { font-size: clamp(2.8rem, 7vw, 4.6rem); line-height: 0.92; letter-spacing: -0.04em; }
+    .band .role { font: 600 0.78rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); }
+    .band .line { font-size: 1.2rem; line-height: 1.45; max-width: 46ch; margin: 0; }
+    .band .links { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 0.9rem; color: var(--muted); }
+    .band .links a { color: var(--teal); font-weight: 600; }
+    .body { padding: 36px 52px 44px; display: grid; gap: 28px 44px; }
+    @media (min-width: 720px) { .body { grid-template-columns: 2fr 1fr; } }
+    .body h2 { font: 600 0.74rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin: 0 0 14px; }
+    .job { padding: 0 0 18px 22px; border-left: 2px solid var(--line); position: relative; }
+    .job::before { content: ""; position: absolute; left: -7px; top: 0.35em; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--teal); }
+    .job strong { font: 700 1.1rem/1.25 var(--display); letter-spacing: -0.01em; }
+    .job .meta { display: block; color: var(--muted); font-size: 0.85rem; margin: 2px 0 6px; }
+    .job p { margin: 0; font-size: 0.93rem; }
+    .side ul { list-style: none; margin: 0 0 26px; padding: 0; }
+    .side li { padding: 6px 0 6px 12px; border-left: 4px solid var(--sky); margin-bottom: 8px; font-size: 0.93rem; }
+    .actions { width: min(100% - 32px, 860px); margin: 24px auto 0; display: flex; gap: 12px; justify-content: space-between; align-items: center; font-size: 0.9rem; }
+    .actions button { all: unset; cursor: pointer; background: var(--teal); color: #fff; padding: 12px 20px; border-radius: 999px; font-weight: 600; }
+    @media (max-width: 560px) { .band, .body { padding-left: 24px; padding-right: 24px; } }
+    @media print {
+      @page { size: A4; margin: 0; }
+      body { background: #fff; }
+      .actions { display: none; }
+      .sheet { width: auto; margin: 0; box-shadow: none; }
+      .band { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .body { grid-template-columns: 2fr 1fr; }
+      .todo { background: none; border: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="actions">
+    <a href="/for-kc/">← Back to the portfolio</a>
+    <button type="button" onclick="window.print()">Save as PDF</button>
+  </div>
+
+  <article class="sheet">
+    <header class="band">
+      <span class="role">Creative Director</span>
+      <h1>KC Brown</h1>
+      <p class="line">Creative director and hands-on creative leader. I guide strategy, campaigns, teams and production for brands with something to say.</p>
+      <div class="links">
+        <span>Ōmokoroa, New Zealand</span>
+        <span class="todo">Email to confirm</span>
+        <a href="https://www.linkedin.com/in/kc-brown-8183088a/">LinkedIn</a>
+        <a href="https://meaningfulmarketing.com/for-kc/">Portfolio</a>
+      </div>
+    </header>
+
+    <div class="body">
+      <section>
+        <h2>Experience</h2>
+        <div class="job"><strong>Director, Head of Video</strong><span class="meta">K12 · 2024 to 2026</span><p>Led video for the brand, including the Celebrating 25 Years campaign. <span class="todo">Team size and a standout result.</span></p></div>
+        <div class="job"><strong>Creative Director</strong><span class="meta">WiddyUP · 2021 to 2024</span><p>Set creative direction for the brand launch and kept email, paid social, video and print true to one idea.</p></div>
+        <div class="job"><strong>Content Director</strong><span class="meta">Madefor · 2020 to 2021</span><p>Video creative direction and long-term content strategy; produced and directed video content.</p></div>
+        <div class="job"><strong>Creative Partner to Blake Mycoskie</strong><span class="meta">Jackson Hole · 2020 to 2021</span><p>Creative direction, content strategy and channel development for the TOMS founder.</p></div>
+        <div class="job"><strong>Media Content Manager</strong><span class="meta">TOMS · 2010 to 2020</span><p>Grew from media intern to leading creative direction for all TOMS video. Owned production from concept to final cut and managed editors, cinematographers, photographers and outside partners.</p></div>
+      </section>
+
+      <aside class="side">
+        <h2>What I lead</h2>
+        <ul>
+          <li>Creative strategy</li>
+          <li>Integrated campaigns</li>
+          <li>Film and production</li>
+          <li>Teams and agencies</li>
+        </ul>
+        <h2>Selected work</h2>
+        <ul>
+          <li>TOMS · Giving Manifesto</li>
+          <li>TOMS · Camp TOMS</li>
+          <li>K12 · Celebrating 25 Years</li>
+          <li>Madefor · Why It Works</li>
+        </ul>
+        <h2>Education</h2>
+        <ul><li>University of California, Santa Barbara</li></ul>
+      </aside>
+    </div>
+  </article>
+</body>
+</html>
