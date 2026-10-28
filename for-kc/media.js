@@ -5,7 +5,8 @@
    hero:      the big opening image. heroBackup shows if it ever fails to load.
    reel:      the film that plays from the "Watch the reel" button.
    tiles:     eight photos the opening image shrinks into as you scroll.
-   gallery:   photos shown beside the About section.
+   editorial: the big photos between sections: What I do, the About band,
+              the full-screen quote, and the band above Contact.
    featured:  the curated showcase (the first is the big one).
    more:      the rest of KC's films, in the archive below the showcase. */
 (() => {
@@ -28,12 +29,11 @@
       sq("1394402716683-UXQQWGM8RAZVAELH63ZA/0001390-R3-011-4.jpg")
     ],
 
-    gallery: [
-      sq("1394402868561-M93HYZISWD89SNHK7Z1B/Patrick+Torres+Wright-1.jpg"),
-      sq("1552282762211-BU79TYADY1Q2NF47W6Y8/IPIN9522.JPG"),
-      sq("1394402852524-X05ZSSB1NAQD5R1SK1IG/Kevin+Lemos.jpg"),
-      sq("1552282815816-YSZG58FSTXFHU7G541CN/KKAG8987.JPG"),
-      sq("1394402706539-GJAIF4CES4NW0TQL7Q0S/0001390-R1-018-7A.jpg")
+    editorial: [
+      sq("1398888498264-R37YPHUS75RQM6CH35ML/IMG_8930.jpg", "1500w"),
+      sq("1439959251741-JLHU4G11JP7SPG60CTIL/image-asset.jpeg", "2500w"),
+      sq("1552119726501-IJPX87JT48O28U726KU0/image-asset.jpeg", "2500w"),
+      sq("1552282700523-J6X9A3QWSF4VGPR5JAUF/IMG_5892.JPG", "2500w")
     ],
 
     featured: [
