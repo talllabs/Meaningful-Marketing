@@ -2,9 +2,12 @@
    Photos load straight from KC's site (kenchrisbrown.com) and films from Vimeo.
    Film stills are fetched from Vimeo automatically, so a film only needs its link.
 
-   hero:      the big opening image. heroBackup shows if it ever fails to load.
+   hero:      the big opening image.
+   backups:   a photo to show instead if one of the links above ever fails
+              (the LinkedIn banner link expires, so it has one).
    reel:      the film that plays from the "Watch the reel" button.
-   tiles:     eight photos the opening image shrinks into as you scroll.
+   tileFilms: films looping in four of the collage tiles the opening image shrinks into.
+   tiles:     photos for the other four collage tiles.
    editorial: the big photos between sections: What I do, the About band,
               the full-screen quote, and the band above Contact.
    featured:  the curated showcase (the first is the big one).
@@ -14,26 +17,33 @@
     `https://images.squarespace-cdn.com/content/v1/530d82afe4b0e5f490d7e8e8/${path}?format=${size || "1000w"}`;
 
   window.KC_MEDIA = {
-    hero: sq("1439958245699-OIYL3ASWB1V2ZP7U89FR/IMG_0438-2.jpg", "2500w"),
-    heroBackup: sq("1566279623266-VI13OJH7IAUUC0E5WLPX/DSC02171.jpg", "2500w"),
+    hero: sq("1552282700523-J6X9A3QWSF4VGPR5JAUF/IMG_5892.JPG", "2500w"),
+    backups: {
+      hero: sq("1566279623266-VI13OJH7IAUUC0E5WLPX/DSC02171.jpg", "2500w"),
+      "editorial.0": sq("1398888498264-R37YPHUS75RQM6CH35ML/IMG_8930.jpg", "1500w")
+    },
     reel: "https://vimeo.com/354113974",
 
+    // the four big collage tiles play these films; the other four show photos
+    tileFilms: [
+      "https://vimeo.com/430135095",
+      "https://vimeo.com/866610422",
+      "https://vimeo.com/257223094",
+      "https://vimeo.com/136686992"
+    ],
+
     tiles: [
-      sq("1552278471420-HVRZRDP70H35AD67O9XA/000036930001+copy.jpg"),
       sq("1394402715996-O9CU6LM5N3LBY37JO1S3/0001390-R2-051-24.jpg"),
-      sq("1552278951387-U5N9AAAWF5R2GTHF4ULK/L1186111.jpg"),
       sq("1394595768995-TIP75E78LFGBEKQDE2F3/TOMS_RoastingCo_Bag_Front_Wood.jpg"),
-      sq("1552278735851-REIWNMPU4KXUGRS0MMXQ/000092940003.jpg"),
-      sq("1439958890571-VZPXKQWHPGGI5YHE4JNE/IMG_9222-2.jpg"),
-      sq("1552282837220-A7Z5UN1YL0F1MS5ZWVX3/L1000659.JPG"),
+      sq("1552278951387-U5N9AAAWF5R2GTHF4ULK/L1186111.jpg"),
       sq("1394402716683-UXQQWGM8RAZVAELH63ZA/0001390-R3-011-4.jpg")
     ],
 
     editorial: [
-      sq("1398888498264-R37YPHUS75RQM6CH35ML/IMG_8930.jpg", "1500w"),
-      sq("1439959251741-JLHU4G11JP7SPG60CTIL/image-asset.jpeg", "2500w"),
-      sq("1552119726501-IJPX87JT48O28U726KU0/image-asset.jpeg", "2500w"),
-      sq("1552282700523-J6X9A3QWSF4VGPR5JAUF/IMG_5892.JPG", "2500w")
+      "https://media.licdn.com/dms/image/v2/D5616AQFvR57FSP0yEg/profile-displaybackgroundimage-shrink_200_800/B56ZdRoCUEGoAU-/0/1749421140675?e=1795046400&v=beta&t=qXPi4hBg339aPgkOF3uL08w4ULaCQZAOyJjx_SI1NhA",
+      sq("1552282837220-A7Z5UN1YL0F1MS5ZWVX3/L1000659.JPG", "1000w"),
+      sq("1394402868561-M93HYZISWD89SNHK7Z1B/Patrick+Torres+Wright-1.jpg", "2500w"),
+      sq("1439958245699-OIYL3ASWB1V2ZP7U89FR/IMG_0438-2.jpg", "2500w")
     ],
 
     featured: [
