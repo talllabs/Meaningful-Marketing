@@ -155,48 +155,58 @@
     el.addEventListener("click", () => openPlayer(el.dataset.watch || M.reel, el.dataset.title));
   });
 
-  const chip = (text) => {
-    const c = document.createElement("span");
-    c.className = "play-chip";
-    c.innerHTML = '<span class="tri"></span>';
-    c.append(text);
-    return c;
+  // The film wall: every film plays silently in its tile. Hovering a tile
+  // (or tapping it) opens it in the player with sound.
+  const wall = document.getElementById("filmWall");
+  const films = [...(M.featured || []), ...(M.more || [])];
+  let hoverTimer = 0, lastScroll = 0;
+  window.addEventListener("scroll", () => { lastScroll = Date.now(); clearTimeout(hoverTimer); }, { passive: true });
+  const loop = (tile) => {
+    const frame = document.createElement("iframe");
+    frame.src = `https://player.vimeo.com/video/${tile.dataset.id}?background=1&autoplay=1&loop=1&muted=1&autopause=0&dnt=1`;
+    frame.allow = "autoplay";
+    frame.title = "";
+    frame.tabIndex = -1;
+    frame.setAttribute("aria-hidden", "true");
+    tile.querySelector(".media").append(frame);
   };
-
-  const filmCard = (film) => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "film";
-    btn.setAttribute("aria-label", `Play ${film.title}`);
+  const loopWatcher = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { loop(entry.target); loopWatcher.unobserve(entry.target); }
+        });
+      }, { rootMargin: "300px" })
+    : null;
+  films.forEach((film) => {
+    const id = vimeoId(film.watch);
+    if (!wall || !id) return;
+    const tile = document.createElement("button");
+    tile.type = "button";
+    tile.className = "wall-tile";
+    tile.dataset.id = id;
+    tile.setAttribute("aria-label", `Play ${film.title} with sound`);
     const frame = document.createElement("div");
     frame.className = "media";
-    frame.dataset.vimeo = vimeoId(film.watch);
-    frame.append(chip("Play"));
-    const name = document.createElement("h3");
+    frame.dataset.vimeo = id;
+    const name = document.createElement("span");
+    name.className = "wall-name";
     name.textContent = film.title;
-    btn.append(frame, name);
-    btn.addEventListener("click", () => openPlayer(film.watch, film.title));
+    tile.append(frame, name);
+    // a short pause before opening, so the player doesn't pop up while the mouse is just passing over,
+    // and never while the page is scrolling tiles under a resting mouse
+    tile.addEventListener("mouseenter", () => {
+      clearTimeout(hoverTimer);
+      if (Date.now() - lastScroll < 500) return;
+      hoverTimer = setTimeout(() => {
+        if (!box.classList.contains("open") && Date.now() - lastScroll > 500) openPlayer(film.watch, film.title);
+      }, 450);
+    });
+    tile.addEventListener("mouseleave", () => clearTimeout(hoverTimer));
+    tile.addEventListener("click", () => { clearTimeout(hoverTimer); if (!box.classList.contains("open")) openPlayer(film.watch, film.title); });
+    wall.append(tile);
     watchStill(frame);
-    return btn;
-  };
-
-  const featured = M.featured || [];
-  const lead = document.getElementById("filmLead");
-  if (lead && featured.length) {
-    const first = featured[0];
-    const card = filmCard(first);
-    card.querySelector("h3").remove();
-    card.querySelector(".play-chip").lastChild.textContent = "Play film";
-    const text = document.createElement("div");
-    text.innerHTML = '<span class="kicker">Featured film</span><h3></h3><p>TOMS. Creative direction, video.</p>';
-    text.querySelector("h3").textContent = first.title;
-    lead.append(card, text);
-    featured.slice(1).forEach((f) => document.getElementById("filmGrid").append(filmCard(f)));
-  }
-  const moreGrid = document.getElementById("moreGrid");
-  (M.more || []).forEach((f) => moreGrid && moreGrid.append(filmCard(f)));
-  const moreCount = document.getElementById("moreCount");
-  if (moreCount) moreCount.textContent = String((M.more || []).length);
+    if (!reduceMotion.matches) (loopWatcher ? loopWatcher.observe(tile) : loop(tile));
+  });
 
   /* ---------- 4. Fade sections in as they arrive ---------- */
   const reveals = document.querySelectorAll(".reveal");
