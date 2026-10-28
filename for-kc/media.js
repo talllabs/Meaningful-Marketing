@@ -3,8 +3,7 @@
    Film stills are fetched from Vimeo automatically, so a film only needs its link.
 
    hero:      the big opening image.
-   backups:   a photo to show instead if one of the links above ever fails
-              (the LinkedIn banner link expires, so it has one).
+   backups:   a photo to show instead if one of the links above ever fails.
    reel:      the film that plays from the "Watch the reel" button.
    tileFilms: films looping in four of the collage tiles the opening image shrinks into.
    tiles:     photos for the other four collage tiles.
@@ -19,8 +18,7 @@
   window.KC_MEDIA = {
     hero: sq("1552282700523-J6X9A3QWSF4VGPR5JAUF/IMG_5892.JPG", "2500w"),
     backups: {
-      hero: sq("1566279623266-VI13OJH7IAUUC0E5WLPX/DSC02171.jpg", "2500w"),
-      "editorial.0": sq("1398888498264-R37YPHUS75RQM6CH35ML/IMG_8930.jpg", "1500w")
+      hero: sq("1566279623266-VI13OJH7IAUUC0E5WLPX/DSC02171.jpg", "2500w")
     },
     reel: "https://vimeo.com/354113974",
 
@@ -40,10 +38,10 @@
     ],
 
     editorial: [
-      "https://media.licdn.com/dms/image/v2/D5616AQFvR57FSP0yEg/profile-displaybackgroundimage-shrink_200_800/B56ZdRoCUEGoAU-/0/1749421140675?e=1795046400&v=beta&t=qXPi4hBg339aPgkOF3uL08w4ULaCQZAOyJjx_SI1NhA",
+      sq("1439958245699-OIYL3ASWB1V2ZP7U89FR/IMG_0438-2.jpg", "2500w"),
       sq("1552282837220-A7Z5UN1YL0F1MS5ZWVX3/L1000659.JPG", "1000w"),
       sq("1394402868561-M93HYZISWD89SNHK7Z1B/Patrick+Torres+Wright-1.jpg", "2500w"),
-      sq("1439958245699-OIYL3ASWB1V2ZP7U89FR/IMG_0438-2.jpg", "2500w")
+      sq("1398888498264-R37YPHUS75RQM6CH35ML/IMG_8930.jpg", "2500w")
     ],
 
     featured: [
