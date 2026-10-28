@@ -42,7 +42,7 @@
     editorial: [
       "https://media.licdn.com/dms/image/v2/D5616AQFvR57FSP0yEg/profile-displaybackgroundimage-shrink_200_800/B56ZdRoCUEGoAU-/0/1749421140675?e=1795046400&v=beta&t=qXPi4hBg339aPgkOF3uL08w4ULaCQZAOyJjx_SI1NhA",
       sq("1552282837220-A7Z5UN1YL0F1MS5ZWVX3/L1000659.JPG", "1000w"),
-      sq("1552119726501-IJPX87JT48O28U726KU0/image-asset.jpeg", "2500w"),
+      sq("1394402868561-M93HYZISWD89SNHK7Z1B/Patrick+Torres+Wright-1.jpg", "2500w"),
       sq("1439958245699-OIYL3ASWB1V2ZP7U89FR/IMG_0438-2.jpg", "2500w")
     ],
 
