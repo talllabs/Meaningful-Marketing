@@ -104,6 +104,8 @@ h3 { font-size: 1.25rem; line-height: 1.3; font-weight: 700; letter-spacing: -0.
 
 .hero-frame { position: absolute; inset: 0; z-index: 5; will-change: clip-path; }
 .hero-frame .media { position: absolute; inset: 0; will-change: transform; }
+/* keep the bottom of the hero photo in view when it is cropped */
+.hero-frame .media > img { object-position: center bottom; }
 .hero-frame::after {
   content: "";
   position: absolute;
