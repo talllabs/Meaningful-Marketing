@@ -8,26 +8,28 @@
   <title>Plan a Trip | Iditarod Historic Trail Alliance (Concept)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css">
   <style>
     .layout{display:grid;grid-template-columns:280px 1fr;gap:30px;align-items:start}
     .side{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;position:sticky;top:100px}
-    .side h3{font-family:"Work Sans",sans-serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:16px 0 10px}
+    .side h3{font-family:Barlow,sans-serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:16px 0 10px}
     .side h3:first-child{margin-top:0}
     .side .filters{margin:0}
     .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .sec{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:10px}
+    .sec{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+    .sec .pic{height:140px;background-size:cover;background-position:center}
+    .sec .sb{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
     .sec h3{font-size:1.35rem}
     .sec p{margin:0;color:var(--muted);font-size:.93rem}
     .sec .meta{display:flex;flex-wrap:wrap;gap:6px}
     .sec .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:.82rem;background:var(--snow);border-radius:12px;padding:12px}
     .sec .facts b{display:block;font-size:.95rem;color:var(--spruce)}
     .sec .actions{display:flex;gap:10px;margin-top:auto;padding-top:6px;flex-wrap:wrap}
-    .sec .actions button{border:0;background:none;color:var(--ember);font-weight:700;cursor:pointer;padding:0;font:700 .92rem "Work Sans",sans-serif}
+    .sec .actions button{border:0;background:none;color:var(--spruce-2);cursor:pointer;padding:0;font:700 1rem Barlow,sans-serif}
     .empty{display:none;padding:40px;text-align:center;background:#fff;border-radius:var(--r);border:1px dashed var(--line)}
     .safety{margin-top:30px;background:var(--glacier-2);border-radius:var(--r);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
-    .safety b{font-family:Fraunces,serif;font-size:1.2rem}
+    .safety b{font-family:Barlow,sans-serif;font-size:1.2rem}
     .safety p{margin:4px 0 0;color:var(--spruce-2)}
     @media (max-width:960px){.layout{grid-template-columns:1fr}.side{position:static}.cards{grid-template-columns:1fr}}
   </style>
@@ -35,7 +37,7 @@
 <body data-page="plan">
 <div id="site-header"></div>
 <main id="main">
-  <section class="banner" data-scene="420">
+  <section class="banner" data-photo="eagleSummer">
     <div class="wrap">
       <div class="crumbs"><a href="index.html">Home</a> / Plan a Trip</div>
       <span class="eyebrow">Plan a Trip</span>
@@ -66,7 +68,7 @@
         <div class="cards" id="cards"></div>
         <div class="empty" id="empty">No sections match those filters yet. Try another season or activity.</div>
         <div class="safety">
-          <span style="font-size:1.8rem" aria-hidden="true">⚠️</span>
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" style="width:30px;height:30px;color:var(--spruce-2);flex-shrink:0"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg>
           <div><b>Before you go</b><p>Conditions change quickly. Check land manager updates, avalanche forecasts and community guidance, and tell someone your plans.</p></div>
         </div>
       </div>
@@ -90,6 +92,8 @@
     {name:'Nome Historic Walk',region:'Western',season:['summer','winter'],use:['history','hike'],miles:'2',access:'Nome',level:'Easy',desc:'The end of the Trail: the serum run, the burled arch and gold-rush Nome.'},
     {name:'Nome Beach Fat Bike',region:'Western',season:['winter','summer'],use:['bike'],miles:'10',access:'Nome',level:'Moderate',desc:'Ride along the coast where the Trail meets the Bering Sea.'}
   ];
+  var P = window.IH_PHOTOS || {};
+  var PH = {Southcentral:P.eagleSummer, 'Mat-Su':P.eagleSpring, Interior:P.fireweed, Western:P.wildflowers};
   var LABEL = {hike:'Hiking',ski:'Skiing',mush:'Mushing',snowmachine:'Snowmachine',bike:'Biking',history:'History'};
   var state = {season:'all',use:'all',region:'all'};
   var q = new URLSearchParams(location.search).get('use');
@@ -104,11 +108,11 @@
     document.getElementById('count').textContent = list.length + ' section' + (list.length===1?'':'s') + ' found';
     document.getElementById('empty').style.display = list.length ? 'none' : 'block';
     document.getElementById('cards').innerHTML = list.map(function(s){
-      return '<article class="sec"><div class="meta"><span class="tag">'+s.region+'</span>'+s.season.map(function(x){return '<span class="tag gold">'+(x==='summer'?'Summer':'Winter')+'</span>';}).join('')+'</div>'+
+      return '<article class="sec"><div class="pic" style="background-image:url(\''+PH[s.region]+'\')"></div><div class="sb"><div class="meta"><span class="tag">'+s.region+'</span>'+s.season.map(function(x){return '<span class="tag gold">'+(x==='summer'?'Summer':'Winter')+'</span>';}).join('')+'</div>'+
         '<h3>'+s.name+'</h3><p>'+s.desc+'</p>'+
         '<div class="facts"><div><b>'+s.miles+'</b>miles</div><div><b>'+s.access+'</b>access</div><div><b>'+s.level+'</b>level</div></div>'+
         '<div class="meta">'+s.use.map(function(u){return '<span class="tag ember">'+LABEL[u]+'</span>';}).join('')+'</div>'+
-        '<div class="actions"><button type="button" onclick="ihToast(\'Directions would open in your maps app.\')">Get Directions →</button><button type="button" onclick="ihToast(\'Added to your Passport checklist.\')">＋ Passport Stamp</button></div></article>';
+        '<div class="actions"><button type="button" onclick="ihToast(\'Directions would open in your maps app.\')">Get Directions →</button><button type="button" onclick="ihToast(\'Added to your Passport checklist.\')">+ Passport Stamp</button></div></div></article>';
     }).join('');
   }
   document.querySelectorAll('[data-group]').forEach(function(g){

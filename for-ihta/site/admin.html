@@ -8,52 +8,54 @@
   <title>IHTA Staff Portal (Concept)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--spruce:#0f2a33;--spruce-2:#1d4b57;--glacier:#9cc9d6;--glacier-2:#e3f1f4;--ember:#c8562a;--gold:#f3c26b;--green:#2f8f5b;--ink:#14262c;--muted:#5f7379;--line:#dde6e8;--bg:#f3f6f6}
+    :root{--spruce:#0b2266;--spruce-2:#1f3fa6;--glacier:#a9bbec;--glacier-2:#e8eefb;--ember:#f8cb00;--gold:#f8cb00;--green:#2f8f5b;--ink:#0f1b3d;--muted:#55607a;--line:#dde3ef;--bg:#f4f6fb;--label:"Barlow Semi Condensed",Barlow,sans-serif}
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Work Sans",system-ui,sans-serif}
+    body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Barlow,system-ui,sans-serif}
     button,input,textarea,select{font:inherit}
     button{cursor:pointer}
-    :focus-visible{outline:3px solid var(--ember);outline-offset:2px}
+    :focus-visible{outline:3px solid var(--spruce-2);outline-offset:2px}
     .app{min-height:100vh;display:grid;grid-template-columns:250px 1fr}
     .sidebar{background:var(--spruce);color:#fff;padding:22px 16px;position:sticky;top:0;height:100vh;overflow:auto;display:flex;flex-direction:column}
     .brand{display:flex;gap:11px;align-items:center;padding:0 8px 20px;border-bottom:1px solid rgba(255,255,255,.14)}
-    .mark{width:42px;height:42px;border-radius:11px;background:var(--spruce-2);display:grid;place-items:center}
+    .mark{width:46px;height:auto;display:block;flex-shrink:0}
     .mark svg{width:28px;height:28px}
-    .brand strong{font:700 1.02rem/1.1 Fraunces,serif;display:block}
-    .brand small{color:#a9c6cd;font-size:.72rem}
-    .label{font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;color:#86aab3;margin:20px 10px 6px}
+    .brand strong{font:700 1.02rem/1.1 Barlow,sans-serif;display:block}
+    .brand small{color:#c3cdea;font-size:.72rem}
+    .label{font-family:var(--label);font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;color:#9fb0dd;margin:20px 10px 6px}
     .nav{display:grid;gap:2px}
-    .nav button{border:0;background:none;color:#d6e7eb;text-align:left;padding:10px 12px;border-radius:9px;font-weight:600;display:flex;gap:10px;align-items:center}
+    .nav button{border:0;background:none;color:#dfe6f8;text-align:left;padding:10px 12px;border-radius:9px;font-weight:600;display:flex;gap:10px;align-items:center}
     .nav button:hover,.nav button.active{background:rgba(255,255,255,.12);color:#fff}
-    .nav .ic{width:20px;text-align:center}
-    .nav .badge{margin-left:auto;background:var(--ember);color:#fff;border-radius:999px;font-size:.7rem;padding:1px 7px}
+    .nav .ic{width:20px;display:grid;place-items:center}
+    .nav .badge{margin-left:auto;background:var(--ember);color:var(--spruce);border-radius:999px;font-size:.7rem;padding:1px 7px}
     .user{margin-top:auto;border-top:1px solid rgba(255,255,255,.14);padding-top:14px;display:flex;gap:10px;align-items:center}
     .avatar{width:36px;height:36px;border-radius:50%;background:var(--gold);color:var(--spruce);display:grid;place-items:center;font-weight:700}
-    .user small{display:block;color:#a9c6cd}
+    .user small{display:block;color:#c3cdea}
     .main{min-width:0}
     .top{height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 28px;position:sticky;top:0;z-index:5}
     .search{flex:1;max-width:460px}
     .search input{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 14px}
     .actions{margin-left:auto;display:flex;gap:8px}
-    .btn{border:0;border-radius:9px;padding:9px 14px;font-weight:600}
-    .primary{background:var(--ember);color:#fff}
+    .btn{border:0;border-radius:9px;padding:9px 14px;font-weight:700}
+    .primary{background:var(--ember);color:var(--spruce)}
     .secondary{background:var(--glacier-2);color:var(--spruce)}
     .plain{background:#fff;border:1px solid var(--line);color:var(--ink)}
     .content{padding:28px;max-width:1400px}
     .view{display:none}.view.active{display:block}
     .title{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:22px;flex-wrap:wrap}
     h1,h2,h3{margin:0;line-height:1.15}
-    h1{font:700 2.1rem Fraunces,serif}
-    h2{font:700 1.3rem Fraunces,serif}
+    h1{font:800 2rem Barlow,sans-serif}
+    h2{font:700 1.3rem Barlow,sans-serif}
     h3{font-size:1rem}
     .sub{color:var(--muted);margin:4px 0 0}
+    .welcome{border-radius:16px;padding:34px 30px;margin-bottom:18px;color:#fff;background:linear-gradient(90deg,rgba(8,22,70,.88),rgba(8,22,70,.35)),url("images/hero-lake-panorama.webp") center 40%/cover no-repeat,var(--spruce)}
+    .welcome h1{color:#fff}.welcome p{margin:6px 0 0;color:#dfe6f8}
     .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
     .card,.panel,.stat{background:#fff;border:1px solid var(--line);border-radius:14px}
     .stat{padding:18px}
     .stat small{color:var(--muted);font-weight:600}
-    .stat b{display:block;font:700 1.9rem Fraunces,serif;margin:4px 0}
+    .stat b{display:block;font:700 1.9rem Barlow,sans-serif;margin:4px 0}
     .stat .up{color:var(--green);font-size:.82rem;font-weight:600}
     .grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
     .panel{padding:20px}
@@ -61,7 +63,7 @@
     .list{display:grid;gap:0}
     .li{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
     .li:last-child{border-bottom:0}
-    .li .dot{width:34px;height:34px;border-radius:10px;background:var(--glacier-2);display:grid;place-items:center;flex-shrink:0}
+    .li .dot{width:34px;height:34px;border-radius:10px;background:var(--glacier-2);color:var(--spruce-2);display:grid;place-items:center;flex-shrink:0}
     .li small{display:block;color:var(--muted)}
     .li .r{margin-left:auto;color:var(--muted);font-size:.84rem;white-space:nowrap}
     .status{display:inline-block;font-size:.74rem;font-weight:700;padding:3px 9px;border-radius:999px;background:#fbefd3;color:#7a5410}
@@ -82,9 +84,11 @@
     .blocks{display:grid;gap:10px}
     .block{border:1.5px dashed var(--line);border-radius:12px;padding:14px;background:#fff;display:flex;gap:12px;align-items:flex-start}
     .block .handle{color:var(--muted);cursor:grab}
-    .block b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ember)}
+    .block b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--spruce-2)}
     .block [contenteditable]{outline:none;border-radius:6px;padding:2px 4px}
     .block [contenteditable]:focus{background:var(--glacier-2)}
+    .feat{height:140px;border-radius:10px;background:var(--spruce-2) center/cover no-repeat;margin:8px 0;display:flex;align-items:flex-end;justify-content:flex-end;padding:10px}
+    .feat span{background:#fff;border-radius:8px;padding:6px 10px;font-size:.8rem;font-weight:700}
     .add-block{border:1.5px dashed var(--glacier);background:var(--glacier-2);color:var(--spruce);border-radius:12px;padding:12px;font-weight:600;width:100%}
     .menu-pop{display:none;gap:8px;flex-wrap:wrap;margin-top:8px}
     .menu-pop.open{display:flex}
@@ -93,7 +97,10 @@
     .drop{border:2px dashed var(--glacier);border-radius:14px;background:var(--glacier-2);padding:26px;text-align:center;margin-bottom:16px}
     .help-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     .help{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
-    .help .play{width:100%;aspect-ratio:16/9;border-radius:10px;background:linear-gradient(135deg,var(--spruce),var(--spruce-2));display:grid;place-items:center;color:#fff;font-size:2rem;margin-bottom:10px}
+    .help .play{width:100%;aspect-ratio:16/9;border-radius:10px;background:var(--spruce-2) center/cover no-repeat;display:grid;place-items:center;margin-bottom:10px;position:relative}
+    .help .tri{width:54px;height:54px;border-radius:50%;background:rgba(8,22,70,.75);position:relative}
+    .help .tri:after{content:"";position:absolute;left:21px;top:16px;border-left:16px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent}
+    .help .doc-label{background:rgba(8,22,70,.8);color:#fff;font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;border-radius:999px}
     .help p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
     .bar{height:8px;border-radius:999px;background:var(--line);overflow:hidden;margin-top:6px}
     .bar span{display:block;height:100%;background:var(--ember)}
@@ -108,27 +115,27 @@
 <div class="app">
   <aside class="sidebar">
     <div class="brand">
-      <span class="mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 25 L12 11 L17 18 L21 13 L29 25Z" fill="#9cc9d6"/><path d="M12 11 L14.5 15 L12 14 L9.6 15Z" fill="#fff"/></svg></span>
+      <img class="mark" src="images/ihta-logo-sm.webp" alt="Iditarod National Historic Trail logo">
       <div><strong>IHTA Staff Portal</strong><small>iditarod100.org</small></div>
     </div>
     <div class="label">Website</div>
     <nav class="nav">
-      <button class="active" data-view="dash"><span class="ic">🏠</span>Dashboard</button>
-      <button data-view="pages"><span class="ic">📄</span>Pages</button>
-      <button data-view="news"><span class="ic">📰</span>News &amp; Projects</button>
-      <button data-view="docs"><span class="ic">📚</span>Document Library</button>
-      <button data-view="redirects"><span class="ic">↪️</span>Redirects</button>
+      <button class="active" data-view="dash"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M3 11l9-7 9 7v9H3z"/><path d="M9 20v-6h6v6"/></svg></span>Dashboard</button>
+      <button data-view="pages"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg></span>Pages</button>
+      <button data-view="news"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h6M7 13h10M7 16h10"/></svg></span>News &amp; Projects</button>
+      <button data-view="docs"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M4 4h5v16H4zM10 4h5v16h-5zM16 5l4 1-3 14-4-1"/></svg></span>Document Library</button>
+      <button data-view="redirects"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M4 7h11a5 5 0 0 1 0 10H8"/><path d="M8 13l-4 4 4 4"/></svg></span>Redirects</button>
     </nav>
     <div class="label">Supporters</div>
     <nav class="nav">
-      <button data-view="contacts"><span class="ic">👥</span>Contacts<span class="badge">3</span></button>
-      <button data-view="store"><span class="ic">🛒</span>Store Orders</button>
-      <button data-view="email"><span class="ic">✉️</span>Trail Notes Email</button>
+      <button data-view="contacts"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M18 14a5 5 0 0 1 3 6"/></svg></span>Contacts<span class="badge">3</span></button>
+      <button data-view="store"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M3 4h2l2 12h11l2-8H6"/><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg></span>Store Orders</button>
+      <button data-view="email"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>Trail Notes Email</button>
     </nav>
     <div class="label">Settings</div>
     <nav class="nav">
-      <button data-view="users"><span class="ic">🔐</span>Users &amp; Roles</button>
-      <button data-view="help"><span class="ic">🎓</span>Training &amp; Help</button>
+      <button data-view="users"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>Users &amp; Roles</button>
+      <button data-view="help"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></span>Training &amp; Help</button>
     </nav>
     <div class="user"><span class="avatar">BO</span><div><strong>Betsi Oliver</strong><small>Executive Director</small></div></div>
   </aside>
@@ -146,7 +153,7 @@
 
       <!-- DASHBOARD -->
       <section class="view active" id="dash">
-        <div class="title"><div><h1>Good morning, Betsi</h1><p class="sub">Here's what's happening on the Trail website this month.</p></div></div>
+        <div class="welcome"><div><h1>Good morning, Betsi</h1><p>Here's what's happening on the Trail website this month.</p></div></div>
         <div class="stats">
           <div class="stat"><small>Members</small><b>24</b><span class="up">▲ 6 new this month</span></div>
           <div class="stat"><small>Donations (month)</small><b>$1,840</b><span class="up">▲ 3 monthly donors</span></div>
@@ -157,20 +164,20 @@
           <div class="panel">
             <h2>Recent activity</h2>
             <div class="list">
-              <div class="li"><span class="dot">🎉</span><div><strong>New Family membership</strong><small>Added to Contacts and Trail Notes automatically</small></div><span class="r">10 min ago</span></div>
-              <div class="li"><span class="dot">💚</span><div><strong>$100 donation</strong><small>Tax receipt sent automatically</small></div><span class="r">1 hr ago</span></div>
-              <div class="li"><span class="dot">🛒</span><div><strong>Order: 2 × Passport Booklet</strong><small>Buyer opted in to Trail Notes</small></div><span class="r">Yesterday</span></div>
-              <div class="li"><span class="dot">📄</span><div><strong>Annette updated “Plan a Trip”</strong><small>Published after review</small></div><span class="r">Yesterday</span></div>
-              <div class="li"><span class="dot">📚</span><div><strong>Winter 2026 newsletter uploaded</strong><small>Tagged: Newsletter, 2026</small></div><span class="r">2 days ago</span></div>
+              <div class="li"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><div><strong>New Family membership</strong><small>Added to Contacts and Trail Notes automatically</small></div><span class="r">10 min ago</span></div>
+              <div class="li"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 20s-8-5-8-11a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 6-8 11-8 11z"/></svg></span><div><strong>$100 donation</strong><small>Tax receipt sent automatically</small></div><span class="r">1 hr ago</span></div>
+              <div class="li"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M3 4h2l2 12h11l2-8H6"/><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg></span><div><strong>Order: 2 × Passport Booklet</strong><small>Buyer opted in to Trail Notes</small></div><span class="r">Yesterday</span></div>
+              <div class="li"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg></span><div><strong>Annette updated “Plan a Trip”</strong><small>Published after review</small></div><span class="r">Yesterday</span></div>
+              <div class="li"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M4 4h5v16H4zM10 4h5v16h-5zM16 5l4 1-3 14-4-1"/></svg></span><div><strong>Winter 2026 newsletter uploaded</strong><small>Tagged: Newsletter, 2026</small></div><span class="r">2 days ago</span></div>
             </div>
           </div>
           <div class="panel">
             <h2>Quick actions</h2>
             <div style="display:grid;gap:8px">
-              <button class="btn secondary" data-goto="news" style="text-align:left">📰 Post a project update</button>
-              <button class="btn secondary" data-goto="docs" style="text-align:left">📚 Upload a document</button>
-              <button class="btn secondary" data-goto="email" style="text-align:left">✉️ Draft the next Trail Notes</button>
-              <button class="btn secondary" data-goto="contacts" style="text-align:left">👥 See renewals due</button>
+              <button class="btn secondary" data-goto="news" style="text-align:left">Post a project update</button>
+              <button class="btn secondary" data-goto="docs" style="text-align:left">Upload a document</button>
+              <button class="btn secondary" data-goto="email" style="text-align:left">Draft the next Trail Notes</button>
+              <button class="btn secondary" data-goto="contacts" style="text-align:left">See renewals due</button>
             </div>
             <h2 style="margin-top:20px">Site health</h2>
             <p class="sub" style="margin-bottom:4px">Accessibility checks passing</p>
@@ -204,7 +211,7 @@
           <div>
             <div class="field"><label for="page-title">Page title</label><input id="page-title" value="Communities: Unalakleet"></div>
             <div class="blocks" id="blocks">
-              <div class="block"><span class="handle">⋮⋮</span><div style="flex:1"><b>Hero banner</b><div contenteditable="true">Unalakleet: where the Trail meets Norton Sound</div></div></div>
+              <div class="block"><span class="handle">⋮⋮</span><div style="flex:1"><b>Hero banner</b><div class="feat" style="background-image:url('https://www.iditarod100.org/uploads/5/2/4/5/52459009/20210804-173948-0_orig.jpg')"><span>Change image</span></div><div contenteditable="true">Unalakleet: where the Trail meets Norton Sound</div></div></div>
               <div class="block"><span class="handle">⋮⋮</span><div style="flex:1"><b>Text</b><div contenteditable="true">Click any text to edit it. Add local history, how to visit respectfully and who to contact.</div></div></div>
               <div class="block"><span class="handle">⋮⋮</span><div style="flex:1"><b>Photo gallery</b><div>3 photos · alt text added ✓</div></div></div>
               <div class="block"><span class="handle">⋮⋮</span><div style="flex:1"><b>Related documents</b><div>Pulls in Library items tagged “Unalakleet”</div></div></div>
@@ -327,9 +334,9 @@ This season we wrapped up improvements on the Meridian Lake Trail with our partn
       <section class="view" id="help">
         <div class="title"><div><h1>Training &amp; Help</h1><p class="sub">Recorded trainings and step-by-step guides that stay with IHTA.</p></div></div>
         <div class="help-grid">
-          <div class="help"><div class="play">▶</div><strong>Training 1: Editing pages &amp; posting news</strong><p>Recorded live session · 60 min</p></div>
-          <div class="help"><div class="play">▶</div><strong>Training 2: Documents, store &amp; Trail Notes</strong><p>Recorded live session · 60 min</p></div>
-          <div class="help"><div class="play" style="background:linear-gradient(135deg,var(--ember),#d97a3e)">📘</div><strong>Written how-to guide</strong><p>Common updates, keeping content accessible, who to call.</p></div>
+          <div class="help"><div class="play" style="background-image:url('https://www.iditarod100.org/uploads/5/2/4/5/52459009/20210604-163357_orig.jpg')"><span class="tri"></span></div><strong>Training 1: Editing pages &amp; posting news</strong><p>Recorded live session · 60 min</p></div>
+          <div class="help"><div class="play" style="background-image:url('https://www.iditarod100.org/uploads/5/2/4/5/52459009/20210511-133544_orig.jpg')"><span class="tri"></span></div><strong>Training 2: Documents, store &amp; Trail Notes</strong><p>Recorded live session · 60 min</p></div>
+          <div class="help"><div class="play" style="background-image:url('https://www.iditarod100.org/uploads/5/2/4/5/52459009/20210613-103424_orig.jpg')"><span class="doc-label">PDF Guide</span></div><strong>Written how-to guide</strong><p>Common updates, keeping content accessible, who to call.</p></div>
         </div>
       </section>
 
