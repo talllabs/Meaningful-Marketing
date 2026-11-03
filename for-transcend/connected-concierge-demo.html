@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Charter Concierge Connected | Transcend Demo</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/images/favicon/favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="/for-transcend/gate.js"></script>
+  <style>
+/* Matches the other Transcend demos: navy, gold and teal, Saol/Playfair headings, Helvetica body. */
+:root{
+  --bg:#F6F4EF; --surface:#FFFFFF; --sunk:#EFECE5; --line:#E2E5EA;
+  --ink:#16202E; --muted:#5E6878; --accent:#14284B; --accent-ink:#FFFFFF;
+  --brass:#A9853A; --good:#2c7a3f; --warn:#9a6400;
+  --guest:#14284B; --agent-bubble:#EEF0F4; --code:#0E1A30; --code-fg:#d3dbea; --code-key:#7fd6d1; --code-str:#e2c58a;
+  --f-display:"SaolDisplay-Regular","Saol Display","Playfair Display",Georgia,serif;
+  --f-body:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-block:28px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass)}
+h1{font-family:var(--f-display);font-weight:500;font-size:clamp(26px,4vw,38px);line-height:1.1;margin:4px 0 6px;text-wrap:balance;max-width:24ch}
+.lede{color:var(--muted);max-width:64ch;margin:0}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 14px;font-weight:500}
+button:hover{border-color:var(--accent)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+button:disabled{opacity:.5;cursor:not-allowed}
+
+.inspired{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brass);border-radius:10px;padding:12px 16px;font-size:14px}
+.inspired .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+@media (max-width:640px){.inspired{grid-template-columns:minmax(0,1fr)}}
+
+.roi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.roi > div{padding:14px 16px;border-right:1px solid var(--line);min-width:0}
+.roi > div:last-child{border-right:0;background:var(--sunk)}
+.roi .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.roi .v{font-family:var(--f-display);font-weight:500;font-size:28px;font-variant-numeric:tabular-nums;line-height:1.2}
+.roi .s{font-size:12.5px;color:var(--muted)}
+.roi .big{color:var(--brass)}
+@media (max-width:720px){.roi{grid-template-columns:repeat(2,minmax(0,1fr))}.roi > div:nth-child(2){border-right:0}.roi > div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+.panes{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:20px;align-items:start}
+@media (max-width:900px){.panes{grid-template-columns:minmax(0,1fr)}}
+.pane{background:var(--surface);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;min-width:0}
+.pane-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.pane-head h2{font-family:var(--f-display);font-size:19px;font-weight:500;margin:0}
+.pane-head .tag{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--good);margin-right:6px;vertical-align:middle}
+
+.chat{height:580px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.msg{flex-shrink:0;max-width:88%;padding:10px 13px;border-radius:14px;white-space:pre-wrap;min-width:0}
+.msg.guest{align-self:flex-end;background:var(--guest);color:#fff;border-bottom-right-radius:4px}
+.msg.agent{align-self:flex-start;background:var(--agent-bubble);border-bottom-left-radius:4px}
+.who{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.msg.guest .who{color:#d6e0f5}
+.typing{align-self:flex-start;color:var(--muted);font-size:13px;font-style:italic}
+.opt{margin-top:8px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);white-space:normal}
+.opt b{display:block}
+.opt span{font-size:13px;color:var(--muted)}
+
+.proposal{flex-shrink:0;align-self:flex-start;width:min(100%,400px);border:2px solid var(--accent);border-radius:12px;background:var(--surface);overflow:hidden}
+.proposal .ph{background:var(--accent);color:var(--accent-ink);padding:10px 14px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.proposal .ph b{font-family:var(--f-display);font-size:17px;font-weight:500}
+.proposal .ph span{font-family:var(--f-mono);font-size:11px}
+.proposal .pb{padding:12px 14px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.row{display:flex;justify-content:space-between;gap:12px}
+.row span:last-child{font-variant-numeric:tabular-nums;text-align:right}
+.row.total{border-top:1px solid var(--line);padding-top:6px;font-weight:600}
+.timeline{font-family:var(--f-mono);font-size:12px;background:var(--sunk);border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;gap:2px}
+.note{color:var(--good);font-size:13px;font-weight:500}
+.hold{color:var(--warn);font-size:12.5px}
+.proposal button{margin-top:4px;width:100%}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:10px 16px 0}
+.chips button{font-size:13.5px;border-radius:999px;padding:6px 12px;text-align:left}
+.composer{display:flex;gap:8px;padding:12px 16px 16px}
+.composer input{flex:1;min-width:0;font:inherit;padding:9px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+
+.log{height:640px;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:12px}
+.empty{color:var(--muted);font-size:14px;border:1px dashed var(--line);border-radius:10px;padding:16px}
+.call{flex-shrink:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;min-width:0}
+.call-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 12px;background:var(--sunk)}
+.sys{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 6px;color:var(--brass)}
+.fn{font-family:var(--f-mono);font-weight:500;font-size:13.5px}
+.pill{font-family:var(--f-mono);font-size:11px;border-radius:999px;padding:1px 8px;border:1px solid currentColor}
+.pill.run{color:var(--warn)} .pill.ok{color:var(--good)}
+.meta{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.why{padding:6px 12px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--line)}
+pre{margin:0;padding:10px 12px;background:var(--code);color:var(--code-fg);font-family:var(--f-mono);font-size:12px;line-height:1.5;overflow-x:auto}
+pre .k{color:var(--code-key)} pre .s{color:var(--code-str)}
+.lbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#93a2c0;display:block;margin-bottom:2px}
+
+.manual{padding:12px 16px 16px;border-top:1px solid var(--line)}
+.manual h3{font-size:13px;margin:0 0 8px;font-weight:600}
+.manual ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;font-size:13.5px}
+.manual li{display:flex;justify-content:space-between;gap:10px;color:var(--muted)}
+.manual li.done{color:var(--ink)}
+.manual li.done .m{color:var(--good)}
+.manual .m{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.foot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;font-size:14px;color:var(--muted)}
+.foot b{display:block;color:var(--ink);font-family:var(--f-display);font-weight:500;font-size:17px;margin-bottom:2px}
+@media (max-width:720px){.foot{grid-template-columns:minmax(0,1fr)}}
+.disclaimer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+
+[hidden]{display:none!important}
+.demo-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:10px 22px;background:#0C0C0C;color:#fff;font-size:13px}
+.demo-bar a{color:#fff;font-weight:700;text-decoration:none}
+.demo-bar a:hover{color:#4DBDB8}
+.demo-bar span{color:#4DBDB8;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:12px}
+.tc-logo{height:30px;width:auto;display:block;margin-bottom:10px}
+</style>
+</head>
+<body>
+<div class="demo-bar"><a href="/for-transcend/">← All Transcend demos</a><span>Charter Concierge · Connected (Phase 2 concept)</span></div>
+<div class="wrap">
+  <header>
+    <div>
+      <img class="tc-logo" src="/for-transcend/workspace/transcend-logo-navy.png" alt="Transcend Cruises">
+      <div class="eyebrow">Concept demo for Transcend · Prepared by Meaningful Marketing</div>
+      <h1>A planner asks. The agent checks the ship, then hands back a ready-to-hold river charter.</h1>
+      <p class="lede">Left: what a corporate event planner sees in chat on transcendcruises.com. Right: the agent working across the deployment calendar, NetSuite and HubSpot in real time, the same tools the team now bridges by hand.</p>
+    </div>
+    <div class="controls">
+      <button class="primary" id="play">▶ Play demo</button>
+      <button id="reset">Reset</button>
+    </div>
+  </header>
+
+  <section class="inspired" aria-label="Case study this is based on">
+    <span class="k">The proof point</span>
+    <span>Alaska Shore Tours connected an AI agent to their reservation system through an MCP server. Mid-chat, it checks a guest's cruise schedule and drops a ready-to-book proposal. They measure AI spend against staff minutes saved and see roughly a <b>9,000% return</b>. And <b>80% of their customers book within 24 hours</b>, so a fast answer wins the sale. This demo applies that pattern to Transcend's charter business.</span>
+  </section>
+
+  <section class="roi" aria-label="Return on AI spend for this conversation">
+    <div><div class="k">Team minutes saved</div><div class="v" id="mins">0</div><div class="s">vs. building it by hand</div></div>
+    <div><div class="k">Value of that time</div><div class="v" id="val">$0.00</div><div class="s">at $45/hr loaded rate</div></div>
+    <div><div class="k">AI spend</div><div class="v" id="cost">$0.00</div><div class="s">model + system calls, this chat</div></div>
+    <div><div class="k">Return on AI spend</div><div class="v big" id="roi">—</div><div class="s">(value − spend) ÷ spend</div></div>
+  </section>
+
+  <div class="panes">
+    <section class="pane" aria-label="Planner web chat">
+      <div class="pane-head"><h2>Transcend Charter Concierge</h2><span class="tag"><span class="dot"></span>Chat · online</span></div>
+      <div class="chat" id="chat" aria-live="polite"></div>
+      <div class="chips" id="chips"></div>
+      <form class="composer" id="composer">
+        <input id="msg" autocomplete="off" placeholder="Type as the planner, or pick the suggestion above">
+        <button class="primary" type="submit">Send</button>
+      </form>
+    </section>
+
+    <section class="pane" aria-label="Agent system calls">
+      <div class="pane-head"><h2>Behind the chat</h2><span class="tag">MCP server → Transcend systems</span></div>
+      <div class="log" id="log"></div>
+      <div class="manual">
+        <h3>What the team does by hand today</h3>
+        <ul id="manual"></ul>
+      </div>
+    </section>
+  </div>
+
+  <section class="foot">
+    <div><b>Connects the gaps</b>One agent reads the deployment calendar, pulls pricing from NetSuite, logs the deal in HubSpot and routes it to the right specialist. No retyping between tools.</div>
+    <div><b>Speed wins the charter</b>The planner gets dates, a run of show and pricing in minutes, while they are still comparing venues.</div>
+    <div><b>Ready for more ships</b>Transcend Connect today, three more ships coming. Each one joins the same calendar and the same agent, low-water plans included.</div>
+  </section>
+  <p class="disclaimer">Illustrative concept demo. Ship spaces, capacity and rivers come from transcendcruises.com. Dates, prices, the itinerary and the $45/hr rate are sample data, to be replaced with Transcend's real figures. Case-study figures are from the Alaska Shore Tours interview.</p>
+</div>
+
+<script>
+(function(){
+const RATE_PER_MIN = 45/60;
+const $ = id => document.getElementById(id);
+const chat=$('chat'), log=$('log'), chips=$('chips'), manualEl=$('manual');
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const sleep = ms => new Promise(r=>setTimeout(r, reduce? Math.min(ms,120): ms));
+const EMPTY = '<div class="empty">System calls appear here as the agent works. Press <b>Play demo</b>, or send the first planner message.</div>';
+
+const MANUAL = [
+  {id:'cal',   label:'Check open dates in the deployment calendar', m:6},
+  {id:'route', label:'Confirm capacity, route and low-water backup', m:8},
+  {id:'price', label:'Pull charter pricing from NetSuite', m:10},
+  {id:'prop',  label:'Build the proposal and run of show', m:25},
+  {id:'crm',   label:'Log the deal and hold in HubSpot', m:5},
+];
+
+let state, runId=0;
+function resetState(){
+  state={step:0, mins:0, cost:0, busy:false, done:new Set()};
+  chat.innerHTML=''; log.innerHTML=EMPTY;
+  renderManual(); renderROI(); renderChips();
+  addAgent("Welcome aboard! I can check ship availability and put together a charter plan for your group. What are you planning?");
+}
+function renderManual(){
+  const total=MANUAL.reduce((a,t)=>a+t.m,0);
+  manualEl.innerHTML = MANUAL.map(t=>`<li class="${state.done.has(t.id)?'done':''}"><span>${state.done.has(t.id)?'✓ ':''}${t.label}</span><span class="m">${t.m} min</span></li>`).join('')
+    + `<li class="${state.done.size===MANUAL.length?'done':''}" style="border-top:1px solid var(--line);padding-top:4px;margin-top:2px"><span><b>Total replaced</b></span><span class="m"><b>${total} min</b></span></li>`;
+}
+function renderROI(){
+  const val = state.mins*RATE_PER_MIN;
+  $('mins').textContent = state.mins;
+  $('val').textContent = '$'+val.toFixed(2);
+  $('cost').textContent = '$'+state.cost.toFixed(2);
+  $('roi').textContent = state.cost>0 ? Math.round((val-state.cost)/state.cost*100).toLocaleString()+'%' : '—';
+}
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function bubble(cls, who, html){
+  const d=document.createElement('div'); d.className='msg '+cls;
+  d.innerHTML=`<div class="who">${who}</div>`+html;
+  chat.appendChild(d); chat.scrollTop=chat.scrollHeight; return d;
+}
+const addGuest=t=>bubble('guest','Event planner',esc(t));
+const addAgent=html=>bubble('agent','Concierge',html);
+async function typing(ms,my){
+  const t=document.createElement('div'); t.className='typing'; t.textContent='Concierge is checking…';
+  chat.appendChild(t); chat.scrollTop=chat.scrollHeight; await sleep(ms); t.remove(); return my===runId;
+}
+function hl(obj){
+  return esc(JSON.stringify(obj,null,2))
+    .replace(/&quot;([^&]+?)&quot;:/g,'<span class="k">"$1"</span>:')
+    .replace(/: &quot;(.*?)&quot;/g,': <span class="s">"$1"</span>');
+}
+async function tool(my,{sys,fn,why,args,result,ms,manual,cost}){
+  if(log.querySelector('.empty')) log.innerHTML='';
+  const c=document.createElement('div'); c.className='call';
+  c.innerHTML=`<div class="call-head"><span class="sys">${sys}</span><span class="fn">${fn}</span><span class="pill run">running</span><span class="meta"></span></div>
+    <div class="why">${why}</div><pre><span class="lbl">request</span>${hl(args)}</pre>`;
+  log.appendChild(c); log.scrollTop=log.scrollHeight;
+  await sleep(ms); if(my!==runId) return false;
+  const p=c.querySelector('.pill'); p.className='pill ok'; p.textContent='200 OK';
+  c.querySelector('.meta').textContent=ms+' ms';
+  const r=document.createElement('pre'); r.innerHTML=`<span class="lbl">response</span>${hl(result)}`; c.appendChild(r);
+  log.scrollTop=log.scrollHeight;
+  if(manual){state.done.add(manual); state.mins+=MANUAL.find(t=>t.id===manual).m; renderManual();}
+  state.cost+=cost||0; renderROI();
+  return true;
+}
+
+const STEPS = [
+  { chip:"We're planning a 4-night incentive trip for our top 110 sales reps in October 2027. Could Transcend Connect work?",
+    async run(my){
+      if(!await typing(500,my)) return;
+      if(!await tool(my,{sys:'Deployment calendar',fn:'find_open_windows',why:'Where is the ship in October 2027, and which 4-night windows are open?',ms:680,manual:'cal',cost:0.08,
+        args:{ship:"Transcend Connect", month:"2027-10", nights:4, guests:110, segment:"MICE / incentive"},
+        result:{open:[{window:"Oct 10–14",river:"Rhine",route:"Cologne → Mainz"},{window:"Oct 17–21",river:"Danube",route:"Passau → Budapest"}],
+          unavailable:[{window:"Oct 3–7",reason:"chartered"},{window:"Oct 24–28",reason:"tentative hold, another client"}]}})) return;
+      if(!await tool(my,{sys:'Ship + route data',fn:'check_fit_and_water',why:'Do 110 guests fit the ship and its event spaces? What is the low-water risk?',ms:720,manual:'route',cost:0.07,
+        args:{windows:["Oct 10–14","Oct 17–21"], guests:110, needs:["general_session","awards_dinner","brand_launch"]},
+        result:{max_guests:120, capacity_ok:true,
+          spaces:{general_session:"The Forum · 120 seats",awards_dinner:"Vine Lounge · 120+",brand_launch:"Sundeck · 144-inch screen"},
+          low_water_risk:{"Oct 10–14 Rhine":"moderate","Oct 17–21 Danube":"low"}, backup_plan_on_file:true}})) return;
+      addAgent(`Yes, 110 guests fits well. The ship hosts up to 120, and the Forum seats everyone together. Two October windows are open:
+<div class="opt"><b>Oct 10–14 · Rhine, Cologne → Mainz</b><span>Castles, vineyards, Rüdesheim wine country. Moderate low-water risk, backup plan on file.</span></div><div class="opt"><b>Oct 17–21 · Danube, Passau → Budapest</b><span>Vienna and Budapest. Low low-water risk.</span></div>
+What should the trip include? For example a general session, awards night, or a brand reveal.`);
+    }},
+  { chip:"Oct 17–21 on the Danube. We need a general session, an awards dinner, a private wine tasting, and our branding everywhere.",
+    async run(my){
+      if(!await typing(400,my)) return;
+      if(!await tool(my,{sys:'NetSuite',fn:'get_charter_pricing',why:'All-inclusive charter rate plus the add-ons they asked for.',ms:640,manual:'price',cost:0.09,
+        args:{ship:"Transcend Connect", window:"Oct 17–21", guests:110, add_ons:["full_ship_branding","private_wine_tasting","exec_suite_conversions"]},
+        result:{all_inclusive_charter:396000, full_ship_branding:14500, private_wine_tasting:9800, exec_suite_conversions:{count:6,price:7200}, forum_av:"included", currency:"USD", rate_card:"2027-v3"}})) return;
+      if(!await tool(my,{sys:'Proposal builder',fn:'create_proposal',why:'Turn dates, spaces, add-ons and pricing into a proposal with a run of show.',ms:900,manual:'prop',cost:0.16,
+        args:{window:"Oct 17–21", river:"Danube", guests:110, segment:"incentive", spaces:["Forum","Vine Lounge","Sundeck","Parlor"]},
+        result:{proposal_id:"TC-27-0142", per_guest:3880, total:427500, client_portal:"ready", hold_days:7}})) return;
+      addAgent("Here's your charter plan. Every line comes from live availability and current pricing:");
+      const card=document.createElement('div'); card.className='proposal';
+      card.innerHTML=`<div class="ph"><b>Danube Sales Incentive</b><span>TC-27-0142</span></div>
+        <div class="pb">
+          <div class="timeline"><div>Oct 17  Embark Passau · brand reveal on the Sundeck</div><div>Oct 18  Linz · general session in the Forum</div><div>Oct 19  Dürnstein · private wine tasting</div><div>Oct 20  Vienna · awards dinner, Vine Lounge</div><div>Oct 21  Budapest · disembark</div></div>
+          <div class="row"><span>All-inclusive charter · 4 nights</span><span>$396,000</span></div>
+          <div class="row"><span>Full-ship branding (colors, lighting, signage, playlists)</span><span>$14,500</span></div>
+          <div class="row"><span>Private wine tasting, Wachau Valley</span><span>$9,800</span></div>
+          <div class="row"><span>6 staterooms converted to executive suites</span><span>$7,200</span></div>
+          <div class="row"><span>Forum AV for general session</span><span>Included</span></div>
+          <div class="row total"><span>Total · about $3,880 per guest</span><span>$427,500</span></div>
+          <div class="note">The whole ship is yours. Low-water risk for these dates is low.</div>
+          <div class="hold">Dates can be held for 7 days</div>
+          <button class="primary" id="holdBtn">Hold these dates</button>
+        </div>`;
+      chat.appendChild(card); chat.scrollTop=chat.scrollHeight;
+      card.querySelector('#holdBtn').addEventListener('click',()=>advance("Please hold the dates."));
+    }},
+  { chip:"Please hold the dates.",
+    async run(my){
+      const b=$('holdBtn'); if(b){b.disabled=true;b.textContent='Dates held ✓';}
+      if(!await typing(400,my)) return;
+      if(!await tool(my,{sys:'Deployment calendar',fn:'place_hold',why:'Block Oct 17–21 so nobody else books it.',ms:480,cost:0.02,
+        args:{ship:"Transcend Connect", window:"Oct 17–21", proposal_id:"TC-27-0142", expires_in_days:7},
+        result:{status:"tentative_hold", expires:"7 days"}})) return;
+      if(!await tool(my,{sys:'HubSpot',fn:'create_deal',why:'Log the lead and proposal and route it to the right specialist.',ms:520,manual:'crm',cost:0.02,
+        args:{deal_name:"Danube Sales Incentive · Oct 2027", amount:427500, stage:"Proposal sent", segment:"MICE", proposal_id:"TC-27-0142"},
+        result:{deal_id:"hs-88412", routed_to:"MICE specialist", follow_up_task:"call within 1 business day"}})) return;
+      addAgent("Done! October 17–21 is on hold for you for 7 days. Your proposal is in your client portal, and Transcend's MICE specialist will call you within one business day to tailor the program.");
+    }},
+];
+
+function renderChips(){
+  chips.innerHTML='';
+  const s=STEPS[state.step];
+  if(!s || state.busy || state.step===2) return;
+  const b=document.createElement('button'); b.type='button'; b.textContent=s.chip;
+  b.addEventListener('click',()=>advance(s.chip)); chips.appendChild(b);
+}
+async function advance(text){
+  if(state.busy || state.step>=STEPS.length) return;
+  state.busy=true; renderChips(); $('play').disabled=true;
+  const my=runId;
+  addGuest(text);
+  await STEPS[state.step].run(my);
+  if(my!==runId) return;
+  state.step++; state.busy=false; renderChips(); $('play').disabled=state.step>=STEPS.length;
+}
+$('composer').addEventListener('submit',e=>{
+  e.preventDefault(); const v=$('msg').value.trim();
+  if(!v || state.busy || state.step>=STEPS.length) return;
+  $('msg').value=''; advance(v);
+});
+$('play').addEventListener('click', async ()=>{
+  const my=runId;
+  while(state.step<STEPS.length && my===runId){ await advance(STEPS[state.step].chip); await sleep(900); }
+});
+$('reset').addEventListener('click',()=>{ runId++; resetState(); $('play').disabled=false; });
+resetState();
+})();
+</script>
+</body>
+</html>
