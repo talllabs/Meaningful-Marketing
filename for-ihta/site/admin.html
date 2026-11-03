@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="gate.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>IHTA Staff Portal (Concept)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--spruce:#0f2a33;--spruce-2:#1d4b57;--glacier:#9cc9d6;--glacier-2:#e3f1f4;--ember:#c8562a;--gold:#f3c26b;--green:#2f8f5b;--ink:#14262c;--muted:#5f7379;--line:#dde6e8;--bg:#f3f6f6}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Work Sans",system-ui,sans-serif}
+    button,input,textarea,select{font:inherit}
+    button{cursor:pointer}
+    :focus-visible{outline:3px solid var(--ember);outline-offset:2px}
+    .app{min-height:100vh;display:grid;grid-template-columns:250px 1fr}
+    .sidebar{background:var(--spruce);color:#fff;padding:22px 16px;position:sticky;top:0;height:100vh;overflow:auto;display:flex;flex-direction:column}
+    .brand{display:flex;gap:11px;align-items:center;padding:0 8px 20px;border-bottom:1px solid rgba(255,255,255,.14)}
+    .mark{width:42px;height:42px;border-radius:11px;background:var(--spruce-2);display:grid;place-items:center}
+    .mark svg{width:28px;height:28px}
+    .brand strong{font:700 1.02rem/1.1 Fraunces,serif;display:block}
+    .brand small{color:#a9c6cd;font-size:.72rem}
+    .label{font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;color:#86aab3;margin:20px 10px 6px}
+    .nav{display:grid;gap:2px}
+    .nav button{border:0;background:none;color:#d6e7eb;text-align:left;padding:10px 12px;border-radius:9px;font-weight:600;display:flex;gap:10px;align-items:center}
+    .nav button:hover,.nav button.active{background:rgba(255,255,255,.12);color:#fff}
+    .nav .ic{width:20px;text-align:center}
+    .nav .badge{margin-left:auto;background:var(--ember);color:#fff;border-radius:999px;font-size:.7rem;padding:1px 7px}
+    .user{margin-top:auto;border-top:1px solid rgba(255,255,255,.14);padding-top:14px;display:flex;gap:10px;align-items:center}
+    .avatar{width:36px;height:36px;border-radius:50%;background:var(--gold);color:var(--spruce);display:grid;place-items:center;font-weight:700}
+    .user small{display:block;color:#a9c6cd}
+    .main{min-width:0}
+    .top{height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 28px;position:sticky;top:0;z-index:5}
+    .search{flex:1;max-width:460px}
+    .search input{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 14px}
+    .actions{margin-left:auto;display:flex;gap:8px}
+    .btn{border:0;border-radius:9px;padding:9px 14px;font-weight:600}
+    .primary{background:var(--ember);color:#fff}
+    .secondary{background:var(--glacier-2);color:var(--spruce)}
+    .plain{background:#fff;border:1px solid var(--line);color:var(--ink)}
+    .content{padding:28px;max-width:1400px}
+    .view{display:none}.view.active{display:block}
+    .title{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+    h1,h2,h3{margin:0;line-height:1.15}
+    h1{font:700 2.1rem Fraunces,serif}
+    h2{font:700 1.3rem Fraunces,serif}
+    h3{font-size:1rem}
+    .sub{color:var(--muted);margin:4px 0 0}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+    .card,.panel,.stat{background:#fff;border:1px solid var(--line);border-radius:14px}
+    .stat{padding:18px}
+    .stat small{color:var(--muted);font-weight:600}
+    .stat b{display:block;font:700 1.9rem Fraunces,serif;margin:4px 0}
+    .stat .up{color:var(--green);font-size:.82rem;font-weight:600}
+    .grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+    .panel{padding:20px}
+    .panel h2{margin-bottom:12px}
+    .list{display:grid;gap:0}
+    .li{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+    .li:last-child{border-bottom:0}
+    .li .dot{width:34px;height:34px;border-radius:10px;background:var(--glacier-2);display:grid;place-items:center;flex-shrink:0}
+    .li small{display:block;color:var(--muted)}
+    .li .r{margin-left:auto;color:var(--muted);font-size:.84rem;white-space:nowrap}
+    .status{display:inline-block;font-size:.74rem;font-weight:700;padding:3px 9px;border-radius:999px;background:#fbefd3;color:#7a5410}
+    .status.live{background:#dff2e7;color:#1f6b42}
+    .status.blue{background:var(--glacier-2);color:var(--spruce-2)}
+    .table{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .thead,.row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 120px;gap:12px;align-items:center;padding:13px 18px}
+    .thead{background:var(--bg);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+    .row{border-top:1px solid var(--line)}
+    .row small{display:block;color:var(--muted)}
+    .tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+    .tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-weight:600}
+    .tabs button.on{background:var(--spruce);color:#fff;border-color:var(--spruce)}
+    .editor{display:grid;grid-template-columns:1fr 300px;gap:18px}
+    .field{margin-bottom:14px}
+    .field label{display:block;font-weight:600;font-size:.86rem;margin-bottom:5px}
+    .field input,.field textarea,.field select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:#fff}
+    .blocks{display:grid;gap:10px}
+    .block{border:1.5px dashed var(--line);border-radius:12px;padding:14px;background:#fff;display:flex;gap:12px;align-items:flex-start}
+    .block .handle{color:var(--muted);cursor:grab}
+    .block b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ember)}
+    .block [contenteditable]{outline:none;border-radius:6px;padding:2px 4px}
+    .block [contenteditable]:focus{background:var(--glacier-2)}
+    .add-block{border:1.5px dashed var(--glacier);background:var(--glacier-2);color:var(--spruce);border-radius:12px;padding:12px;font-weight:600;width:100%}
+    .menu-pop{display:none;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .menu-pop.open{display:flex}
+    .check{display:flex;gap:8px;align-items:center;margin:8px 0;font-size:.92rem}
+    .a11y{background:#dff2e7;color:#1f6b42;border-radius:10px;padding:10px 12px;font-size:.86rem;margin-top:10px}
+    .drop{border:2px dashed var(--glacier);border-radius:14px;background:var(--glacier-2);padding:26px;text-align:center;margin-bottom:16px}
+    .help-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .help{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+    .help .play{width:100%;aspect-ratio:16/9;border-radius:10px;background:linear-gradient(135deg,var(--spruce),var(--spruce-2));display:grid;place-items:center;color:#fff;font-size:2rem;margin-bottom:10px}
+    .help p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
+    .bar{height:8px;border-radius:999px;background:var(--line);overflow:hidden;margin-top:6px}
+    .bar span{display:block;height:100%;background:var(--ember)}
+    .toast{position:fixed;right:22px;bottom:22px;background:var(--spruce);color:#fff;padding:12px 18px;border-radius:12px;font-weight:600;opacity:0;transform:translateY(16px);transition:.25s;z-index:50;pointer-events:none}
+    .toast.show{opacity:1;transform:none}
+    .concept{background:var(--gold);color:var(--spruce);text-align:center;font-size:.78rem;font-weight:600;padding:5px}
+    @media (max-width:1000px){.app{grid-template-columns:1fr}.sidebar{position:static;height:auto}.nav{grid-template-columns:repeat(2,1fr)}.user{display:none}.stats{grid-template-columns:1fr 1fr}.grid2,.editor{grid-template-columns:1fr}.thead{display:none}.row{grid-template-columns:1fr 1fr}.help-grid{grid-template-columns:1fr}.top{padding:0 16px}.actions .plain{display:none}}
+  </style>
+</head>
+<body>
+<div class="concept">Concept mockup by Meaningful Marketing House · placeholder data · nothing here is saved</div>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 25 L12 11 L17 18 L21 13 L29 25Z" fill="#9cc9d6"/><path d="M12 11 L14.5 15 L12 14 L9.6 15Z" fill="#fff"/></svg></span>
+      <div><strong>IHTA Staff Portal</strong><small>iditarod100.org</small></div>
+    </div>
+    <div class="label">Website</div>
+    <nav class="nav">
+      <button class="active" data-view="dash"><span class="ic">🏠</span>Dashboard</button>
+      <button data-view="pages"><span class="ic">📄</span>Pages</button>
+      <button data-view="news"><span class="ic">📰</span>News &amp; Projects</button>
+      <button data-view="docs"><span class="ic">📚</span>Document Library</button>
+      <button data-view="redirects"><span class="ic">↪️</span>Redirects</button>
+    </nav>
+    <div class="label">Supporters</div>
+    <nav class="nav">
+      <button data-view="contacts"><span class="ic">👥</span>Contacts<span class="badge">3</span></button>
+      <button data-view="store"><span class="ic">🛒</span>Store Orders</button>
+      <button data-view="email"><span class="ic">✉️</span>Trail Notes Email</button>
+    </nav>
+    <div class="label">Settings</div>
+    <nav class="nav">
+      <button data-view="users"><span class="ic">🔐</span>Users &amp; Roles</button>
+      <button data-view="help"><span class="ic">🎓</span>Training &amp; Help</button>
+    </nav>
+    <div class="user"><span class="avatar">BO</span><div><strong>Betsi Oliver</strong><small>Executive Director</small></div></div>
+  </aside>
+
+  <main class="main">
+    <div class="top">
+      <div class="search"><label for="gs" style="position:absolute;left:-9999px">Search</label><input id="gs" placeholder="Search pages, documents, contacts…"></div>
+      <div class="actions">
+        <a class="btn plain" href="index.html" target="_blank" rel="noopener" style="text-decoration:none">View Site ↗</a>
+        <button class="btn primary" data-goto="editor">＋ New Page</button>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- DASHBOARD -->
+      <section class="view active" id="dash">
+        <div class="title"><div><h1>Good morning, Betsi</h1><p class="sub">Here's what's happening on the Trail website this month.</p></div></div>
+        <div class="stats">
+          <div class="stat"><small>Members</small><b>24</b><span class="up">▲ 6 new this month</span></div>
+          <div class="stat"><small>Donations (month)</small><b>$1,840</b><span class="up">▲ 3 monthly donors</span></div>
+          <div class="stat"><small>Trail Notes subscribers</small><b>162</b><span class="up">▲ 37 since launch</span></div>
+          <div class="stat"><small>Store orders</small><b>11</b><span class="up">▲ Passport booklets top seller</span></div>
+        </div>
+        <div class="grid2">
+          <div class="panel">
+            <h2>Recent activity</h2>
+            <div class="list">
+              <div class="li"><span class="dot">🎉</span><div><strong>New Family membership</strong><small>Added to Contacts and Trail Notes automatically</small></div><span class="r">10 min ago</span></div>
+              <div class="li"><span class="dot">💚</span><div><strong>$100 donation</strong><small>Tax receipt sent automatically</small></div><span class="r">1 hr ago</span></div>
+              <div class="li"><span class="dot">🛒</span><div><strong>Order: 2 × Passport Booklet</strong><small>Buyer opted in to Trail Notes</small></div><span class="r">Yesterday</span></div>
+              <div class="li"><span class="dot">📄</span><div><strong>Annette updated “Plan a Trip”</strong><small>Published after review</small></div><span class="r">Yesterday</span></div>
+              <div class="li"><span class="dot">📚</span><div><strong>Winter 2026 newsletter uploaded</strong><small>Tagged: Newsletter, 2026</small></div><span class="r">2 days ago</span></div>
+            </div>
+          </div>
+          <div class="panel">
+            <h2>Quick actions</h2>
+            <div style="display:grid;gap:8px">
+              <button class="btn secondary" data-goto="news" style="text-align:left">📰 Post a project update</button>
+              <button class="btn secondary" data-goto="docs" style="text-align:left">📚 Upload a document</button>
+              <button class="btn secondary" data-goto="email" style="text-align:left">✉️ Draft the next Trail Notes</button>
+              <button class="btn secondary" data-goto="contacts" style="text-align:left">👥 See renewals due</button>
+            </div>
+            <h2 style="margin-top:20px">Site health</h2>
+            <p class="sub" style="margin-bottom:4px">Accessibility checks passing</p>
+            <div class="bar"><span style="width:96%"></span></div>
+            <p class="sub" style="margin:10px 0 4px">Old Weebly links redirected</p>
+            <div class="bar"><span style="width:100%;background:var(--green)"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGES -->
+      <section class="view" id="pages">
+        <div class="title"><div><h1>Pages</h1><p class="sub">Organized to match the site navigation. Click Edit to change any page.</p></div><button class="btn primary" data-goto="editor">＋ New Page</button></div>
+        <div class="table">
+          <div class="thead"><span>Page</span><span>Section</span><span>Status</span><span>Updated</span><span></span></div>
+          <div class="row"><div><strong>Home</strong><small>/</small></div><span>—</span><span class="status live">Live</span><span>Today</span><button class="btn plain edit">Edit</button></div>
+          <div class="row"><div><strong>Plan a Trip</strong><small>/plan-a-trip</small></div><span>Plan a Trip</span><span class="status live">Live</span><span>Yesterday</span><button class="btn plain edit">Edit</button></div>
+          <div class="row"><div><strong>Passport Program</strong><small>/plan-a-trip/passport</small></div><span>Plan a Trip</span><span class="status live">Live</span><span>Oct 28</span><button class="btn plain edit">Edit</button></div>
+          <div class="row"><div><strong>History of the Trail</strong><small>/learn/history</small></div><span>Learn</span><span class="status live">Live</span><span>Oct 20</span><button class="btn plain edit">Edit</button></div>
+          <div class="row"><div><strong>Communities: McGrath</strong><small>/learn/communities/mcgrath</small></div><span>Learn</span><span class="status">Draft</span><span>Oct 18</span><button class="btn plain edit">Edit</button></div>
+          <div class="row"><div><strong>Volunteer</strong><small>/get-involved/volunteer</small></div><span>Get Involved</span><span class="status live">Live</span><span>Oct 12</span><button class="btn plain edit">Edit</button></div>
+          <div class="row"><div><strong>Board &amp; Staff</strong><small>/about/board-staff</small></div><span>About</span><span class="status live">Live</span><span>Oct 2</span><button class="btn plain edit">Edit</button></div>
+        </div>
+      </section>
+
+      <!-- EDITOR -->
+      <section class="view" id="editor">
+        <div class="title"><div><h1 id="editor-title">New page</h1><p class="sub">Build pages from ready-made blocks. Everything stays on-brand and accessible.</p></div>
+          <div style="display:flex;gap:8px"><button class="btn plain action" data-message="Preview opened in a new tab. (Demo)">Preview</button><button class="btn primary action" data-message="Page published! (Demo — nothing was saved)">Publish</button></div></div>
+        <div class="editor">
+          <div>
+            <div class="field"><label for="page-title">Page title</label><input id="page-title" value="Communities: Unalakleet"></div>
+            <div class="blocks" id="blocks">
+              <div class="block"><span class="handle">⋮⋮</span><div style="flex:1"><b>Hero banner</b><div contenteditable="true">Unalakleet: where the Trail meets Norton Sound</div></div></div>
+              <div class="block"><span class="handle">⋮⋮</span><div style="flex:1"><b>Text</b><div contenteditable="true">Click any text to edit it. Add local history, how to visit respectfully and who to contact.</div></div></div>
+              <div class="block"><span class="handle">⋮⋮</span><div style="flex:1"><b>Photo gallery</b><div>3 photos · alt text added ✓</div></div></div>
+              <div class="block"><span class="handle">⋮⋮</span><div style="flex:1"><b>Related documents</b><div>Pulls in Library items tagged “Unalakleet”</div></div></div>
+            </div>
+            <div style="margin-top:10px">
+              <button class="add-block" id="addBlock" type="button">＋ Add a block</button>
+              <div class="menu-pop" id="blockMenu">
+                <button class="btn secondary" data-block="Text">Text</button><button class="btn secondary" data-block="Photo gallery">Photo gallery</button><button class="btn secondary" data-block="Call to action">Call to action</button><button class="btn secondary" data-block="Map embed">Map embed</button><button class="btn secondary" data-block="Event list">Event list</button><button class="btn secondary" data-block="Donate / Join button">Donate / Join button</button>
+              </div>
+            </div>
+          </div>
+          <aside class="panel">
+            <h2>Page settings</h2>
+            <div class="field"><label for="sec">Menu section</label><select id="sec"><option>Learn → Communities</option><option>Plan a Trip</option><option>Get Involved</option><option>About</option></select></div>
+            <div class="field"><label for="url">Web address</label><input id="url" value="/learn/communities/unalakleet"></div>
+            <div class="field"><label for="seo">Search description</label><textarea id="seo" rows="3">Visit Unalakleet on the Iditarod National Historic Trail: history, access and community contacts.</textarea></div>
+            <label class="check"><input type="checkbox" checked> Show in navigation</label>
+            <label class="check"><input type="checkbox"> Send to a reviewer before publishing</label>
+            <div class="a11y">✓ Accessibility check: headings in order, all images have alt text, color contrast passes.</div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- NEWS -->
+      <section class="view" id="news">
+        <div class="title"><div><h1>News &amp; Projects</h1><p class="sub">Updates appear on the homepage and the News page automatically.</p></div><button class="btn primary action" data-message="New post started. (Demo)">＋ New Post</button></div>
+        <div class="table">
+          <div class="thead"><span>Post</span><span>Category</span><span>Status</span><span>Date</span><span></span></div>
+          <div class="row"><div><strong>Meridian Lake Trail improvements</strong><small>Trail Work</small></div><span>Stewardship</span><span class="status live">Live</span><span>Oct 30</span><button class="btn plain action" data-message="Post opened for editing. (Demo)">Edit</button></div>
+          <div class="row"><div><strong>Working with Alaska Trails</strong><small>Partnership</small></div><span>Partners</span><span class="status live">Live</span><span>Oct 14</span><button class="btn plain action" data-message="Post opened for editing. (Demo)">Edit</button></div>
+          <div class="row"><div><strong>Volunteer day with REI Anchorage</strong><small>Volunteer</small></div><span>Events</span><span class="status blue">Scheduled</span><span>Nov 15</span><button class="btn plain action" data-message="Post opened for editing. (Demo)">Edit</button></div>
+          <div class="row"><div><strong>Southern Trek season wrap-up</strong><small>U.S. Forest Service</small></div><span>Partners</span><span class="status">Draft</span><span>—</span><button class="btn plain action" data-message="Post opened for editing. (Demo)">Edit</button></div>
+        </div>
+      </section>
+
+      <!-- DOCUMENTS -->
+      <section class="view" id="docs">
+        <div class="title"><div><h1>Document Library</h1><p class="sub">130 documents migrated from the old site, tagged and searchable.</p></div></div>
+        <div class="drop" id="drop"><strong>Drag a PDF here</strong> or <button class="btn primary action" data-message="Uploaded! Add a title and tags, and it appears in the public Library. (Demo)">Choose a File</button><p class="sub">We'll check it's an accessible, tagged PDF before it goes live.</p></div>
+        <div class="tabs" id="docTabs"><button class="on">All (130)</button><button>Reports</button><button>Newsletters</button><button>Guides</button><button>History</button><button>Maps</button></div>
+        <div class="table">
+          <div class="thead"><span>Document</span><span>Type</span><span>Year</span><span>Downloads</span><span></span></div>
+          <div class="row"><div><strong>Trail Notes — Winter 2026</strong><small>trail-notes-winter-2026.pdf</small></div><span>Newsletter</span><span>2026</span><span>48</span><button class="btn plain action" data-message="Replace file, edit tags or archive. (Demo)">Manage</button></div>
+          <div class="row"><div><strong>Annual Report 2025</strong><small>annual-report-2025.pdf</small></div><span>Report</span><span>2025</span><span>112</span><button class="btn plain action" data-message="Replace file, edit tags or archive. (Demo)">Manage</button></div>
+          <div class="row"><div><strong>Southern Trek Visitor Guide</strong><small>southern-trek-guide.pdf</small></div><span>Guide</span><span>2025</span><span>203</span><button class="btn plain action" data-message="Replace file, edit tags or archive. (Demo)">Manage</button></div>
+          <div class="row"><div><strong>The 1925 Serum Run</strong><small>serum-run-history.pdf</small></div><span>History</span><span>2020</span><span>87</span><button class="btn plain action" data-message="Replace file, edit tags or archive. (Demo)">Manage</button></div>
+        </div>
+      </section>
+
+      <!-- REDIRECTS -->
+      <section class="view" id="redirects">
+        <div class="title"><div><h1>Redirects</h1><p class="sub">Old Weebly links send visitors (and Google) to the right new page, so nothing breaks.</p></div><button class="btn primary action" data-message="New redirect added. (Demo)">＋ Add Redirect</button></div>
+        <div class="table">
+          <div class="thead"><span>Old link</span><span>New page</span><span>Type</span><span>Hits</span><span></span></div>
+          <div class="row"><div><strong>/trail-map.html</strong></div><span>/plan-a-trip</span><span>301</span><span>64</span><span class="status live">Working</span></div>
+          <div class="row"><div><strong>/passport-program.html</strong></div><span>/plan-a-trip/passport</span><span>301</span><span>41</span><span class="status live">Working</span></div>
+          <div class="row"><div><strong>/membership.html</strong></div><span>/support#join</span><span>301</span><span>22</span><span class="status live">Working</span></div>
+          <div class="row"><div><strong>/uploads/newsletter-2019.pdf</strong></div><span>/library/newsletter-2019</span><span>301</span><span>9</span><span class="status live">Working</span></div>
+        </div>
+      </section>
+
+      <!-- CONTACTS -->
+      <section class="view" id="contacts">
+        <div class="title"><div><h1>Contacts</h1><p class="sub">Members, donors, store buyers and subscribers in one list — no more separate spreadsheets.</p></div><button class="btn plain action" data-message="CSV exported. (Demo)">Export CSV</button></div>
+        <div class="tabs" id="contactTabs">
+          <button class="on" data-f="all">All</button><button data-f="Member">Members</button><button data-f="Donor">Donors</button><button data-f="Buyer">Store buyers</button><button data-f="Renewal">Renewals due (3)</button>
+        </div>
+        <div class="table" id="contactTable">
+          <div class="thead"><span>Name</span><span>Type</span><span>Since</span><span>Lifetime</span><span></span></div>
+        </div>
+      </section>
+
+      <!-- STORE -->
+      <section class="view" id="store">
+        <div class="title"><div><h1>Store Orders</h1><p class="sub">Online orders and in-person sales at events in one place.</p></div><button class="btn primary action" data-message="New product form opened. (Demo)">＋ Add Product</button></div>
+        <div class="table">
+          <div class="thead"><span>Order</span><span>Items</span><span>Total</span><span>Status</span><span></span></div>
+          <div class="row"><div><strong>#1042 · Sample Buyer A</strong><small>Online</small></div><span>2 × Passport Booklet</span><span>$20</span><span class="status">To ship</span><button class="btn plain ship">Mark Shipped</button></div>
+          <div class="row"><div><strong>#1041 · Sample Buyer B</strong><small>Online</small></div><span>Southern Trek Map</span><span>$12</span><span class="status">To ship</span><button class="btn plain ship">Mark Shipped</button></div>
+          <div class="row"><div><strong>#1040 · Event sale</strong><small>In person (Square)</small></div><span>Trail T-Shirt</span><span>$28</span><span class="status live">Complete</span><span></span></div>
+        </div>
+      </section>
+
+      <!-- EMAIL -->
+      <section class="view" id="email">
+        <div class="title"><div><h1>Trail Notes Email</h1><p class="sub">Write once, send to everyone who opted in — members, donors and buyers included.</p></div><button class="btn primary action" data-message="Test email sent to you. (Demo)">Send Test</button></div>
+        <div class="grid2">
+          <div class="panel">
+            <div class="field"><label for="subj">Subject line</label><input id="subj" value="Trail Notes: Winter on the Trail"></div>
+            <div class="field"><label for="body">Message</label><textarea id="body" rows="8">Hi friends of the Trail,
+
+This season we wrapped up improvements on the Meridian Lake Trail with our partners and volunteers…</textarea></div>
+            <div class="field"><label for="aud">Send to</label><select id="aud"><option>All subscribers (162)</option><option>Members only (24)</option><option>Donors only</option></select></div>
+            <button class="btn primary action" data-message="Scheduled for Tuesday at 9:00 AM AKST. (Demo)">Schedule Send</button>
+          </div>
+          <div class="panel">
+            <h2>Last campaign</h2>
+            <p class="sub">Trail Notes — Fall 2025</p>
+            <p style="margin:14px 0 4px">Opened</p><div class="bar"><span style="width:58%"></span></div>
+            <p style="margin:14px 0 4px">Clicked</p><div class="bar"><span style="width:21%"></span></div>
+            <p class="sub" style="margin-top:14px">Most clicked: “Become a Member”</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- USERS -->
+      <section class="view" id="users">
+        <div class="title"><div><h1>Users &amp; Roles</h1><p class="sub">IHTA owns every account. Each person gets only the access they need, with two-factor sign-in.</p></div><button class="btn primary action" data-message="Invite sent. (Demo)">＋ Invite User</button></div>
+        <div class="table">
+          <div class="thead"><span>User</span><span>Role</span><span>2-step sign-in</span><span>Status</span><span></span></div>
+          <div class="row"><div><strong>Betsi Oliver</strong><small>Executive Director</small></div><span>Owner</span><span class="status live">On</span><span class="status live">Active</span><button class="btn plain action" data-message="Permissions opened. (Demo)">Manage</button></div>
+          <div class="row"><div><strong>Primary Website Editor</strong><small>Staff</small></div><span>Editor</span><span class="status live">On</span><span class="status live">Active</span><button class="btn plain action" data-message="Permissions opened. (Demo)">Manage</button></div>
+          <div class="row"><div><strong>Backup Editor 1</strong><small>Staff</small></div><span>Editor</span><span class="status live">On</span><span class="status live">Active</span><button class="btn plain action" data-message="Permissions opened. (Demo)">Manage</button></div>
+          <div class="row"><div><strong>Backup Editor 2</strong><small>Staff</small></div><span>Contributor</span><span class="status live">On</span><span class="status live">Active</span><button class="btn plain action" data-message="Permissions opened. (Demo)">Manage</button></div>
+          <div class="row"><div><strong>Meaningful Marketing</strong><small>Project team</small></div><span>Temporary Admin</span><span class="status live">On</span><span class="status blue">Removed at handoff</span><button class="btn plain action" data-message="Access can be removed with one click. (Demo)">Remove</button></div>
+        </div>
+      </section>
+
+      <!-- HELP -->
+      <section class="view" id="help">
+        <div class="title"><div><h1>Training &amp; Help</h1><p class="sub">Recorded trainings and step-by-step guides that stay with IHTA.</p></div></div>
+        <div class="help-grid">
+          <div class="help"><div class="play">▶</div><strong>Training 1: Editing pages &amp; posting news</strong><p>Recorded live session · 60 min</p></div>
+          <div class="help"><div class="play">▶</div><strong>Training 2: Documents, store &amp; Trail Notes</strong><p>Recorded live session · 60 min</p></div>
+          <div class="help"><div class="play" style="background:linear-gradient(135deg,var(--ember),#d97a3e)">📘</div><strong>Written how-to guide</strong><p>Common updates, keeping content accessible, who to call.</p></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+<div class="toast" role="status" aria-live="polite"></div>
+<script>
+  var views=document.querySelectorAll('.view'),toast=document.querySelector('.toast'),tt;
+  function go(id){
+    views.forEach(function(v){v.classList.toggle('active',v.id===id);});
+    document.querySelectorAll('.nav button').forEach(function(b){b.classList.toggle('active',b.dataset.view===id||(id==='editor'&&b.dataset.view==='pages'));});
+    window.scrollTo(0,0);
+  }
+  function note(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show');},2400);}
+  document.querySelectorAll('[data-view]').forEach(function(b){b.addEventListener('click',function(){go(b.dataset.view);});});
+  document.querySelectorAll('[data-goto]').forEach(function(b){b.addEventListener('click',function(){if(b.dataset.goto==='editor'){document.getElementById('editor-title').textContent='New page';}go(b.dataset.goto);});});
+  document.addEventListener('click',function(e){var a=e.target.closest('.action');if(a)note(a.dataset.message);});
+  document.querySelectorAll('.edit').forEach(function(b){b.addEventListener('click',function(){var name=b.closest('.row').querySelector('strong').textContent;document.getElementById('editor-title').textContent='Edit: '+name;document.getElementById('page-title').value=name;go('editor');});});
+  document.querySelectorAll('.ship').forEach(function(b){b.addEventListener('click',function(){var s=b.closest('.row').querySelector('.status');s.textContent='Shipped';s.classList.add('live');b.disabled=true;b.textContent='Done';note('Marked shipped. The buyer was emailed a confirmation. (Demo)');});});
+  document.getElementById('addBlock').addEventListener('click',function(){document.getElementById('blockMenu').classList.toggle('open');});
+  document.querySelectorAll('[data-block]').forEach(function(b){b.addEventListener('click',function(){
+    var d=document.createElement('div');d.className='block';d.innerHTML='<span class="handle">⋮⋮</span><div style="flex:1"><b>'+b.dataset.block+'</b><div contenteditable="true">New '+b.dataset.block.toLowerCase()+' block — click to edit.</div></div>';
+    document.getElementById('blocks').appendChild(d);document.getElementById('blockMenu').classList.remove('open');note(b.dataset.block+' block added.');
+  });});
+  document.querySelectorAll('#docTabs button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#docTabs button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');});});
+  var CONTACTS=[
+    ['Sample Member A','Member','2019','$420',true],['Sample Donor B','Donor','2022','$1,250',false],['Sample Family C','Member','2024','$120',true],
+    ['Sample Buyer D','Buyer','2025','$46',false],['Sample Partner E','Member','2016','$1,500',true],['Sample Donor F','Donor','2025','$100',false]
+  ];
+  function renderContacts(f){
+    var t=document.getElementById('contactTable');
+    t.querySelectorAll('.row').forEach(function(r){r.remove();});
+    CONTACTS.filter(function(c){return f==='all'||c[1]===f||(f==='Renewal'&&c[4]);}).forEach(function(c){
+      var r=document.createElement('div');r.className='row';
+      r.innerHTML='<div><strong>'+c[0]+'</strong><small>'+(c[4]?'Renewal due in 30 days':'Opted in to Trail Notes')+'</small></div><span>'+c[1]+'</span><span>'+c[2]+'</span><span>'+c[3]+'</span>'+(c[4]?'<button class="btn secondary action" data-message="Friendly renewal reminder sent. (Demo)">Send Reminder</button>':'<button class="btn plain action" data-message="Contact history opened. (Demo)">View</button>');
+      t.appendChild(r);
+    });
+  }
+  document.querySelectorAll('#contactTabs button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#contactTabs button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');renderContacts(b.dataset.f);});});
+  renderContacts('all');
+</script>
+</body>
+</html>

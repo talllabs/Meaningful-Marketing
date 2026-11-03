@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="gate.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Document Library | Iditarod Historic Trail Alliance (Concept)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+  <style>
+    .types{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:28px}
+    .type{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:16px;text-align:left;cursor:pointer;font:inherit;color:inherit}
+    .type.on{border-color:var(--ember);box-shadow:0 0 0 3px rgba(200,86,42,.12)}
+    .type b{display:block;font:600 1.6rem Fraunces,serif;color:var(--spruce)}
+    .type span{font-size:.86rem;color:var(--muted)}
+    .docs{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+    .doc{display:grid;grid-template-columns:48px 1fr auto auto;gap:16px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
+    .doc:last-child{border-bottom:0}
+    .doc .ic{width:44px;height:52px;border-radius:8px;background:var(--glacier-2);display:grid;place-items:center;font-size:.7rem;font-weight:800;color:var(--spruce-2)}
+    .doc h3{font:600 1.02rem "Work Sans",sans-serif;margin:0 0 3px}
+    .doc small{color:var(--muted)}
+    .doc button{border:0;background:var(--spruce);color:#fff;border-radius:999px;padding:8px 14px;font:600 .85rem "Work Sans",sans-serif;cursor:pointer}
+    .note{margin-top:18px;font-size:.9rem;color:var(--muted)}
+    mark{background:#fbe2a4;padding:0 2px;border-radius:3px}
+    @media (max-width:860px){.types{grid-template-columns:repeat(2,1fr)}.doc{grid-template-columns:40px 1fr}.doc .yr,.doc button{grid-column:2}}
+  </style>
+</head>
+<body data-page="learn">
+<div id="site-header"></div>
+<main id="main">
+  <section class="banner" data-scene="420">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a> / Learn / Document Library</div>
+      <span class="eyebrow">Learn</span>
+      <h1>Document Library</h1>
+      <p>Reports, newsletters, guides and maps in one searchable place. All 130 documents from the current site would be migrated, tagged and redirected from their old links.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="types" id="types"></div>
+      <div class="filters">
+        <label for="q" style="position:absolute;left:-9999px">Search documents</label>
+        <input class="search-box" id="q" type="search" placeholder="Search by title or topic, e.g. “serum run” or “annual report”">
+        <label for="yr" style="position:absolute;left:-9999px">Year</label>
+        <select class="select" id="yr"><option value="all">All years</option></select>
+      </div>
+      <p class="count" id="count" aria-live="polite"></p>
+      <div class="docs" id="docs"></div>
+      <p class="note">Sample titles for illustration. Staff can upload, tag and replace documents from the admin portal without touching any page.</p>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="site.js"></script>
+<script>
+  var DOCS = [
+    ['Annual Report 2025','Report',2025,'Stewardship, finances and partner highlights'],
+    ['Annual Report 2024','Report',2024,'Projects completed and volunteer hours'],
+    ['Annual Report 2023','Report',2023,'Year in review'],
+    ['Trail Notes Newsletter — Winter 2026','Newsletter',2026,'Meridian Lake Trail, volunteer days, events'],
+    ['Trail Notes Newsletter — Fall 2025','Newsletter',2025,'Partner updates and member news'],
+    ['Trail Notes Newsletter — Spring 2025','Newsletter',2025,'Season preview and Passport Program'],
+    ['Trail Notes Newsletter — Winter 2024','Newsletter',2024,'History feature: the 1925 serum run'],
+    ['Southern Trek Visitor Guide','Guide',2025,'Seward to Girdwood access points and seasons'],
+    ['Passport Program Booklet','Guide',2025,'Stamp locations and how to take part'],
+    ['Winter Trail Safety Guide','Guide',2024,'Preparation, conditions and etiquette'],
+    ['Teacher Guide: Trail History for Grades 4–8','Education',2023,'Lesson plans and classroom activities'],
+    ['Roadhouses of the Iditarod Trail','History',2022,'Historic roadhouse sites and stories'],
+    ['The 1908 Route Survey','History',2021,'How the Seward-to-Nome route was mapped'],
+    ['The 1925 Serum Run','History',2020,'Timeline, mushers and communities'],
+    ['Southern Trek Trail Map','Map',2025,'Printable map with access points'],
+    ['Knik Historic Sites Map','Map',2023,'Walking map of the historic townsite'],
+    ['Comprehensive Management Plan Summary','Report',2019,'Plain-language summary of the plan'],
+    ['Community Partnerships Overview','Report',2024,'How IHTA works with Trail communities'],
+    ['Volunteer Handbook','Guide',2025,'What to expect on a volunteer day'],
+    ['Membership Form (Archive, 2013)','Archive',2013,'Replaced by online join and renew']
+  ];
+  var TYPES = ['All','Report','Newsletter','Guide','History','Map','Education','Archive'];
+  var state = {type:'All',q:'',yr:'all'};
+  var years = DOCS.map(function(d){return d[2];}).filter(function(v,i,a){return a.indexOf(v)===i;}).sort(function(a,b){return b-a;});
+  var yr = document.getElementById('yr');
+  years.forEach(function(y){var o=document.createElement('option');o.textContent=y;o.value=y;yr.appendChild(o);});
+
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function hl(s){var t=esc(s);if(!state.q)return t;var re=new RegExp('('+state.q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');return t.replace(re,'<mark>$1</mark>');}
+
+  function renderTypes(){
+    var shown=['All','Report','Newsletter','Guide','History'];
+    document.getElementById('types').innerHTML = shown.map(function(t){
+      var n = t==='All'?130:DOCS.filter(function(d){return d[1]===t;}).length;
+      return '<button class="type'+(state.type===t?' on':'')+'" data-t="'+t+'"><b>'+n+'</b><span>'+(t==='All'?'All documents':t+'s')+'</span></button>';
+    }).join('');
+    document.querySelectorAll('.type').forEach(function(b){b.addEventListener('click',function(){state.type=b.dataset.t;renderTypes();render();});});
+  }
+  function render(){
+    var ql=state.q.toLowerCase();
+    var list=DOCS.filter(function(d){
+      return (state.type==='All'||d[1]===state.type)&&(state.yr==='all'||String(d[2])===state.yr)&&(!ql||(d[0]+' '+d[3]+' '+d[1]).toLowerCase().indexOf(ql)>-1);
+    });
+    document.getElementById('count').textContent='Showing '+list.length+' sample document'+(list.length===1?'':'s');
+    document.getElementById('docs').innerHTML=list.length?list.map(function(d){
+      return '<div class="doc"><div class="ic" aria-hidden="true">PDF</div><div><h3>'+hl(d[0])+'</h3><small>'+d[1]+' · '+hl(d[3])+'</small></div><span class="tag yr">'+d[2]+'</span><button type="button" onclick="ihToast(\'The PDF would open here (accessible, tagged PDF).\')">View</button></div>';
+    }).join(''):'<div class="doc" style="display:block;text-align:center;color:var(--muted)">No documents match. Try a different word.</div>';
+  }
+  document.getElementById('q').addEventListener('input',function(e){state.q=e.target.value.trim();render();});
+  yr.addEventListener('change',function(e){state.yr=e.target.value;render();});
+  renderTypes();render();
+</script>
+</body>
+</html>
