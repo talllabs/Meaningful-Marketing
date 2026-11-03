@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="gate.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Brand Guide | Iditarod Historic Trail Alliance (Concept)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+  <style>
+    .brand-top{display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:center}
+    .brand-top img{width:100%;height:auto}
+    .brand-top h1{font-size:clamp(2.4rem,5vw,3.6rem);margin:10px 0 14px;color:var(--spruce)}
+    .brand-top p{color:var(--muted);font-size:1.1rem;max-width:620px}
+    .block-title{font-size:1.8rem;margin:0 0 6px;color:var(--spruce)}
+    .block-sub{color:var(--muted);margin:0 0 22px}
+    .swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+    .sw{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff}
+    .sw .chipc{height:120px}
+    .sw .info{padding:14px 16px}
+    .sw b{display:block;font-size:1.05rem}
+    .sw code{font-size:.85rem;color:var(--muted)}
+    .sw small{display:block;color:var(--muted);margin-top:4px;font-size:.88rem;line-height:1.4}
+    .types{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .type{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+    .type .sample-h{font:800 2.6rem/1 Barlow,sans-serif;color:var(--spruce);letter-spacing:-.02em}
+    .type .sample-l{font:700 1.4rem var(--label);letter-spacing:.12em;text-transform:uppercase;color:var(--spruce-2)}
+    .type .sample-b{font:400 1.1rem/1.6 Barlow,sans-serif;color:var(--ink)}
+    .type h3{font:700 .9rem var(--label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:16px 0 4px}
+    .type p{margin:0;color:var(--muted);font-size:.95rem}
+    .ui{display:flex;flex-wrap:wrap;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+    .dark-strip{background:var(--spruce);border-radius:16px;padding:24px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:14px}
+    .rules{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .rule{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+    .rule h3{font-size:1.2rem;color:var(--spruce);margin-bottom:6px}
+    .rule p{margin:0;color:var(--muted)}
+    @media (max-width:900px){.brand-top,.rules{grid-template-columns:1fr}.brand-top img{max-width:200px}.swatches{grid-template-columns:1fr 1fr}.types{grid-template-columns:1fr}}
+  </style>
+</head>
+<body data-page="about">
+<div id="site-header"></div>
+<main id="main">
+  <section>
+    <div class="wrap brand-top">
+      <img src="images/ihta-logo.webp" alt="Iditarod National Historic Trail patch logo">
+      <div>
+        <span class="eyebrow">Brand Guide · Concept</span>
+        <h1>Built from the Trail patch.</h1>
+        <p>The website's colors and type come straight from the Iditarod National Historic Trail logo: the navy and royal blue stitching, the sled-dog gold and the bold, sign-like lettering of "National Historic Trail."</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2 class="block-title">Colors</h2>
+      <p class="block-sub">Navy carries text and dark sections. Gold is for buttons and highlights. Royal blue marks links and accents.</p>
+      <div class="swatches">
+        <div class="sw"><div class="chipc" style="background:#0b2266"></div><div class="info"><b>Trail Navy</b><code>#0B2266</code><small>Headlines, body text, dark sections, footer</small></div></div>
+        <div class="sw"><div class="chipc" style="background:#1f3fa6"></div><div class="info"><b>Patch Royal</b><code>#1F3FA6</code><small>Links, labels, icons, focus outlines</small></div></div>
+        <div class="sw"><div class="chipc" style="background:#f8cb00"></div><div class="info"><b>Sled Gold</b><code>#F8CB00</code><small>Buttons, highlights, accents on navy</small></div></div>
+        <div class="sw"><div class="chipc" style="background:#fff4c2"></div><div class="info"><b>Gold Tint</b><code>#FFF4C2</code><small>Selected states, tags, soft callouts</small></div></div>
+        <div class="sw"><div class="chipc" style="background:#f5f7fb"></div><div class="info"><b>Snow</b><code>#F5F7FB</code><small>Page backgrounds and cards</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2 class="block-title">Typography</h2>
+      <p class="block-sub">Barlow was drawn from highway and trail signage, so it feels at home next to the patch. Free from Google Fonts, and works on every platform.</p>
+      <div class="types">
+        <div class="type"><div class="sample-h">One Trail. Many stories.</div><h3>Headlines</h3><p>Barlow ExtraBold (800)</p></div>
+        <div class="type"><div class="sample-l">National Historic Trail</div><h3>Labels, buttons, menu</h3><p>Barlow Semi Condensed Bold, all caps, wide spacing</p></div>
+        <div class="type"><div class="sample-b">The Trail connects communities, recreation, stewardship and history across Alaska.</div><h3>Body text</h3><p>Barlow Regular (400), 17px</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2 class="block-title">Buttons &amp; tags</h2>
+      <p class="block-sub">Gold buttons with navy text pass WCAG AA contrast on both light and dark backgrounds.</p>
+      <div class="ui">
+        <a class="btn btn-ember" href="support.html#donate">Donate</a>
+        <a class="btn btn-outline" href="plan.html">Plan a Trip</a>
+        <span class="tag">Southcentral</span><span class="tag ember">Volunteer</span><span class="tag gold">Winter</span>
+      </div>
+      <div class="dark-strip">
+        <a class="btn btn-ember" href="support.html#join">Become a Member</a>
+        <a class="btn btn-ghost-light" href="index.html#history">Explore the History</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2 class="block-title">Logo use</h2>
+      <p class="block-sub">A few simple rules for staff and partners.</p>
+      <div class="rules">
+        <div class="rule"><h3>Pair it with the name</h3><p>In the site header, the patch sits to the left of "Iditarod Historic Trail Alliance," centered on the name.</p></div>
+        <div class="rule"><h3>Give it room</h3><p>Keep clear space around the patch at least as wide as the "I" in IDITAROD.</p></div>
+        <div class="rule"><h3>Don't recolor or stretch</h3><p>Always use the full-color patch. Scale it evenly; never squash, rotate or outline it.</p></div>
+        <div class="rule"><h3>Works on light or navy</h3><p>The patch has its own white edge, so it reads clearly on white, snow or Trail Navy backgrounds.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="site.js"></script>
+</body>
+</html>

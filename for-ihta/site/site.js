@@ -27,7 +27,7 @@
       '<path d="M470 ' + (h * .33) + ' L 520 ' + (h * .4) + ' L 495 ' + (h * .39) + ' L 470 ' + (h * .43) + ' L 445 ' + (h * .39) + ' L 425 ' + (h * .4) + 'Z M1180 ' + (h * .36) + ' L 1230 ' + (h * .43) + ' L 1200 ' + (h * .42) + ' L 1175 ' + (h * .46) + ' L 1150 ' + (h * .41) + ' L 1130 ' + (h * .42) + 'Z" fill="#e9f3f5"/>' +
       '<path d="M0 ' + (h * .74) + ' L 220 ' + (h * .58) + ' L 420 ' + (h * .7) + ' L 640 ' + (h * .56) + ' L 900 ' + (h * .72) + ' L 1120 ' + (h * .6) + ' L 1440 ' + (h * .72) + ' L 1440 ' + h + ' L 0 ' + h + 'Z" fill="#1d4b57"/>' +
       '<path d="M0 ' + (h * .86) + ' C 300 ' + (h * .78) + ' 700 ' + (h * .9) + ' 1000 ' + (h * .82) + ' S 1300 ' + (h * .8) + ' 1440 ' + (h * .84) + ' L 1440 ' + h + ' L 0 ' + h + 'Z" fill="#e8eef0"/>' +
-      '<path d="M60 ' + (h * .97) + ' C 400 ' + (h * .86) + ' 760 ' + (h * .95) + ' 1380 ' + (h * .85) + '" stroke="#c8562a" stroke-width="4" stroke-dasharray="2 14" stroke-linecap="round" fill="none"/>' +
+      '<path d="M60 ' + (h * .97) + ' C 400 ' + (h * .86) + ' 760 ' + (h * .95) + ' 1380 ' + (h * .85) + '" stroke="#f8cb00" stroke-width="4" stroke-dasharray="2 14" stroke-linecap="round" fill="none"/>' +
       '</svg>';
   };
 
@@ -42,7 +42,7 @@
     '<div class="concept-ribbon">Concept mockup by Meaningful Marketing House · placeholder content for illustration only</div>' +
     '<div class="topbar"><div class="wrap"><span>Seward to Nome · Iditarod National Historic Trail</span><div class="toplinks"><a href="library.html">Document Library</a><a href="support.html#join">Become a Member</a><a href="admin.html">Staff Login</a></div></div></div>' +
     '<header class="site"><div class="wrap nav">' +
-      '<a class="logo" href="index.html"><span class="logo-mark">' + mark + '</span><span class="logo-text">Iditarod Historic<br>Trail Alliance<small>Connecting people to the Trail</small></span></a>' +
+      '<a class="logo" href="index.html" aria-label="Iditarod Historic Trail Alliance home"><img class="logo-img" src="images/ihta-logo-sm.webp" alt="Iditarod National Historic Trail logo"><span class="logo-text">Iditarod Historic<br>Trail Alliance</span></a>' +
       '<nav class="menu-links" id="menuLinks" aria-label="Main">' +
         link('plan.html', 'Plan a Trip', 'plan') +
         link('index.html#learn', 'Learn', 'learn') +
@@ -58,11 +58,11 @@
     '<section class="signup" aria-label="Email signup"><div class="wrap"><div><span class="eyebrow">Trail Notes</span><h2>Get Trail news, projects and events in your inbox.</h2></div>' +
     '<form class="js-signup"><label for="nl-email" style="position:absolute;left:-9999px">Email</label><input id="nl-email" type="email" placeholder="Your email address" required><button class="btn btn-ember" type="submit">Sign Up</button></form></div></section>' +
     '<footer class="site"><div class="wrap"><div class="foot-grid">' +
-      '<div><span class="logo-text" style="color:#fff">Iditarod Historic Trail Alliance</span><p style="margin:12px 0 0;max-width:300px">A nonprofit partner helping people find, use and care for the Iditarod National Historic Trail.</p></div>' +
+      '<div><span class="foot-logo"><img src="images/ihta-logo-sm.webp" alt=""><span class="logo-text" style="color:#fff">Iditarod Historic<br>Trail Alliance</span></span><p style="margin:12px 0 0;max-width:300px">A nonprofit partner helping people find, use and care for the Iditarod National Historic Trail.</p></div>' +
       '<div><h4>Plan a Trip</h4><a href="plan.html">Trail Sections</a><a href="plan.html">Access Points</a><a href="plan.html">Passport Program</a></div>' +
       '<div><h4>Learn</h4><a href="index.html#history">History</a><a href="index.html#communities">Communities</a><a href="library.html">Document Library</a></div>' +
       '<div><h4>Get Involved</h4><a href="support.html#join">Join or Renew</a><a href="support.html#donate">Donate</a><a href="support.html#involved">Volunteer</a></div>' +
-      '<div><h4>About</h4><a href="index.html#about">Our Mission</a><a href="index.html#news">Projects &amp; News</a><a href="admin.html">Staff Login</a></div>' +
+      '<div><h4>About</h4><a href="index.html#about">Our Mission</a><a href="index.html#news">Projects &amp; News</a><a href="brand.html">Brand Guide</a><a href="admin.html">Staff Login</a></div>' +
     '</div><div class="foot-bottom"><span>© Iditarod Historic Trail Alliance · concept mockup</span><span>Accessible to WCAG 2.2 AA · Secure payments</span></div></div></footer>' +
     '<div class="toast" role="status" aria-live="polite"></div>';
 

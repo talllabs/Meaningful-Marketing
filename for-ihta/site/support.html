@@ -8,11 +8,11 @@
   <title>Support the Trail | Iditarod Historic Trail Alliance (Concept)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css">
   <style>
     .tabs{display:flex;gap:8px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px;width:max-content;max-width:100%;margin:-34px auto 40px;position:relative;z-index:2;box-shadow:var(--shadow)}
-    .tabs button{border:0;background:none;border-radius:999px;padding:12px 22px;font:600 .95rem "Work Sans",sans-serif;cursor:pointer;color:var(--ink)}
+    .tabs button{border:0;background:none;border-radius:999px;padding:12px 22px;font:600 .95rem Barlow,sans-serif;cursor:pointer;color:var(--ink)}
     .tabs button.on{background:var(--spruce);color:#fff}
     .panel{display:none}.panel.on{display:block}
     .panel-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:start}
@@ -21,13 +21,13 @@
     .box > p{color:var(--muted);margin-top:0}
     .tiers{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
     .tier{border:1.5px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;text-align:left;background:#fff;font:inherit;color:inherit}
-    .tier.on{border-color:var(--ember);background:#fdf3ee}
-    .tier b{display:block;font:700 1.1rem Archivo,"Work Sans",sans-serif}
-    .tier span{font-size:1.4rem;font-weight:700;color:var(--ember)}
+    .tier.on{border-color:var(--ember);background:var(--gold-soft)}
+    .tier b{display:block;font:700 1.1rem Barlow,sans-serif}
+    .tier span{font-size:1.4rem;font-weight:800;color:var(--spruce)}
     .tier small{display:block;color:var(--muted);font-size:.84rem;margin-top:4px}
     .amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
-    .amt{border:1.5px solid var(--line);border-radius:12px;padding:14px;font:700 1.15rem "Work Sans",sans-serif;cursor:pointer;background:#fff;color:var(--ink)}
-    .amt.on{border-color:var(--ember);background:#fdf3ee;color:var(--ember-2)}
+    .amt{border:1.5px solid var(--line);border-radius:12px;padding:14px;font:700 1.15rem Barlow,sans-serif;cursor:pointer;background:#fff;color:var(--ink)}
+    .amt.on{border-color:var(--ember);background:var(--gold-soft);color:var(--spruce)}
     .freq{display:flex;gap:8px;margin-top:10px}
     .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
     .field label{display:block;font-size:.84rem;font-weight:600;margin-bottom:5px}
@@ -35,18 +35,18 @@
     .check{display:flex;gap:10px;align-items:flex-start;margin:16px 0;font-size:.92rem}
     .side-card{background:var(--spruce);color:#fff;border-radius:var(--r);padding:26px}
     .side-pic{height:150px;border-radius:12px;margin-bottom:18px}
-    .side-card h3{font-size:1.4rem;margin-bottom:10px}
-    .side-card ul{margin:0;padding-left:18px;color:#d2e4e9}
+    .side-card h3{color:#fff;font-size:1.4rem;margin-bottom:10px}
+    .side-card ul{margin:0;padding-left:18px;color:#dfe6f8}
     .side-card li{margin:6px 0}
     .secure{display:flex;gap:8px;align-items:center;font-size:.84rem;color:var(--muted);margin-top:12px}
     .products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .prod{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
-    .prod .pic{height:170px;background-size:cover;background-position:center;background-color:var(--glacier-2);display:grid;place-items:center;color:var(--spruce-2);font:700 .8rem "Work Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    .prod .pic{height:170px;background-size:cover;background-position:center;background-color:var(--glacier-2);display:grid;place-items:center;color:var(--spruce-2);font:700 .8rem Barlow,sans-serif;letter-spacing:.12em;text-transform:uppercase}
     .prod .b{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
-    .prod h3{font:600 1.05rem "Work Sans",sans-serif}
-    .prod .price{font-weight:700;color:var(--ember)}
+    .prod h3{font:600 1.05rem Barlow,sans-serif}
+    .prod .price{font-weight:800;color:var(--spruce-2)}
     .prod button{margin-top:auto}
-    .cart{position:fixed;right:20px;bottom:20px;background:var(--ember);color:#fff;border-radius:999px;padding:12px 18px;font-weight:700;box-shadow:var(--shadow);display:none;z-index:50}
+    .cart{position:fixed;right:20px;bottom:20px;background:var(--ember);color:var(--spruce);border-radius:999px;padding:12px 18px;font-weight:700;box-shadow:var(--shadow);display:none;z-index:50}
     .vol{background:var(--snow)}
     .vol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .vol-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}

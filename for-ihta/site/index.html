@@ -8,28 +8,28 @@
   <title>Iditarod Historic Trail Alliance | Concept</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css">
   <style>
-    .hero{position:relative;min-height:640px;color:#fff;display:flex;align-items:center;overflow:hidden;padding:0;background:linear-gradient(90deg,rgba(11,31,39,.88) 0%,rgba(11,31,39,.6) 50%,rgba(11,31,39,.2) 100%),url("images/hero-lake-panorama.webp") center 40%/cover no-repeat,#173f4b}
+    .hero{position:relative;min-height:640px;color:#fff;display:flex;align-items:center;overflow:hidden;padding:0;background:linear-gradient(90deg,rgba(8,22,70,.88) 0%,rgba(8,22,70,.6) 50%,rgba(8,22,70,.2) 100%),url("images/hero-lake-panorama.webp") center 40%/cover no-repeat,#173f4b}
     .hero .wrap{position:relative;padding:90px 0 170px}
     .hero h1{font-size:clamp(3rem,6.6vw,5.8rem);max-width:900px;margin:16px 0 20px}
     .hero h1 em{font-style:normal;color:var(--gold)}
-    .hero p{font-size:1.2rem;max-width:620px;color:#dcebef;margin:0 0 28px}
+    .hero p{font-size:1.25rem;max-width:620px;color:#eef2fc;margin:0 0 28px}
     .hero .eyebrow{color:var(--gold)}
     .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
     .stats{position:relative;margin-top:-70px;z-index:2}
     .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
     .stat{padding:26px 24px;border-right:1px solid var(--line)}
     .stat:last-child{border-right:0}
-    .stat b{display:block;font:700 2rem/1.05 Archivo,"Work Sans",sans-serif;color:var(--spruce);letter-spacing:-.02em}
+    .stat b{display:block;font:700 2rem/1.05 Barlow,sans-serif;color:var(--spruce);letter-spacing:-.02em}
     .stat span{font-size:.9rem;color:var(--muted)}
     .story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
     .story h2{font-size:clamp(2.2rem,4vw,3.4rem);margin:12px 0 18px}
     .story p{color:var(--muted);font-size:1.06rem}
     .map-card{background:var(--spruce);border-radius:24px;padding:26px;color:#fff;box-shadow:var(--shadow)}
     .map-card svg{width:100%;height:auto;display:block}
-    .map-card small{display:block;margin-top:10px;color:#a9c6cd;font-size:.8rem}
+    .map-card small{display:block;margin-top:10px;color:#c3cdea;font-size:.85rem}
     .regions{background:#fff}
     .region-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .region{border-radius:var(--r);overflow:hidden;background:var(--snow);border:1px solid var(--line);display:flex;flex-direction:column;text-decoration:none;transition:.2s}
@@ -42,17 +42,17 @@
     .use{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 14px;text-align:center;text-decoration:none;transition:.2s}
     .use:hover{border-color:var(--ember);transform:translateY(-3px)}
     .use .ic{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:14px;background:var(--glacier-2);color:var(--spruce-2)}
-    .use:hover .ic{background:var(--ember);color:#fff}
+    .use:hover .ic{background:var(--ember);color:var(--spruce)}
     .use strong{display:block;margin-top:8px}
     .use span{font-size:.82rem;color:var(--muted)}
     .history{background:var(--spruce);color:#fff}
-    .history .section-head p{color:#bcd3d9}
+    .history .section-head p{color:#c3cdea}
     .history .eyebrow{color:var(--gold)}
     .timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:2px dashed rgba(243,194,107,.6);padding-top:0}
     .tl{padding:26px 18px 0 0;position:relative}
     .tl:before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:var(--gold)}
-    .tl b{font:700 1.5rem Archivo,"Work Sans",sans-serif;color:var(--gold)}
-    .tl p{margin:6px 0 0;color:#d4e5e9;font-size:.92rem}
+    .tl b{font:700 1.5rem Barlow,sans-serif;color:var(--gold)}
+    .tl p{margin:6px 0 0;color:#dfe6f8;font-size:.95rem}
     .communities{background:var(--snow)}
     .comm-list{display:flex;flex-wrap:wrap;gap:10px}
     .comm{background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-weight:600;text-decoration:none}
@@ -64,16 +64,17 @@
     .news .nb{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
     .news h3{font-size:1.2rem}
     .news p{margin:0;font-size:.92rem;color:var(--muted)}
-    .news a{margin-top:auto;font-weight:700;color:var(--ember);text-decoration:none}
-    .involve{background:linear-gradient(120deg,rgba(15,42,51,.92) 0%,rgba(15,42,51,.7) 100%),var(--photo) center/cover no-repeat,var(--spruce);color:#fff}
-    .involve .card:hover{background:rgba(255,255,255,.22)}
+    .news a{margin-top:auto;font-weight:700;color:var(--spruce-2);text-decoration:none}
+    .involve{background-color:var(--spruce);background-image:linear-gradient(120deg,rgba(8,22,70,.94) 0%,rgba(8,22,70,.78) 100%),var(--photo,none);background-size:cover;background-position:center;color:#fff}
+    .involve .card:hover{background:#13307f}
     .involve .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
-    .involve .card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:var(--r);padding:24px;text-decoration:none}
+    .involve .card{background:var(--spruce);border:1px solid rgba(255,255,255,.22);border-top:4px solid var(--ember);border-radius:var(--r);padding:24px;text-decoration:none;color:#fff}
+    .involve .card h3{color:#fff}
     .involve .card:hover{background:rgba(255,255,255,.2)}
-    .involve h2{font-size:clamp(2.2rem,4vw,3.2rem);max-width:700px;margin-top:10px}
+    .involve h2{color:#fff;font-size:clamp(2.2rem,4vw,3.2rem);max-width:700px;margin-top:10px}
     .involve .eyebrow{color:var(--gold)}
     .involve h3{font-size:1.4rem;margin-bottom:6px}
-    .involve p{margin:0;color:#d7e8ec;font-size:.94rem}
+    .involve p{margin:0;color:#dfe6f8;font-size:.98rem}
     .about{display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center}
     .about h2{font-size:clamp(2rem,3.6vw,3rem);margin:12px 0 16px}
     .about p{color:var(--muted)}
@@ -127,16 +128,16 @@
       </div>
       <div class="map-card" aria-label="Simplified map of the Trail from Seward to Nome">
         <svg viewBox="0 0 400 300" role="img" aria-label="Stylized route map from Seward to Nome">
-          <rect width="400" height="300" rx="14" fill="#173f4b"/>
-          <path d="M40 60 C 70 40 110 60 120 80 S 160 120 140 160 S 120 230 170 250 S 280 270 330 230 S 380 180 360 120 S 300 50 250 40 S 150 20 40 60Z" fill="#1f5260"/>
+          <rect width="400" height="300" rx="14" fill="#13307f"/>
+          <path d="M40 60 C 70 40 110 60 120 80 S 160 120 140 160 S 120 230 170 250 S 280 270 330 230 S 380 180 360 120 S 300 50 250 40 S 150 20 40 60Z" fill="#1f3fa6"/>
           <path d="M330 250 C 300 220 280 200 250 190 C 220 180 200 150 175 140 C 150 130 120 120 100 100 C 85 85 70 75 52 70" stroke="#f3c26b" stroke-width="3.5" stroke-dasharray="3 7" stroke-linecap="round" fill="none"/>
-          <g font-family="Work Sans, sans-serif" font-size="11" fill="#fff" font-weight="600">
-            <circle cx="330" cy="250" r="5" fill="#c8562a"/><text x="292" y="272">Seward</text>
-            <circle cx="290" cy="208" r="4" fill="#9cc9d6"/><text x="298" y="204">Girdwood</text>
-            <circle cx="255" cy="190" r="4" fill="#9cc9d6"/><text x="196" y="208">Knik</text>
-            <circle cx="175" cy="140" r="4" fill="#9cc9d6"/><text x="183" y="136">McGrath</text>
-            <circle cx="100" cy="100" r="4" fill="#9cc9d6"/><text x="108" y="96">Unalakleet</text>
-            <circle cx="52" cy="70" r="5" fill="#c8562a"/><text x="30" y="58">Nome</text>
+          <g font-family="Barlow, sans-serif" font-size="11" fill="#fff" font-weight="600">
+            <circle cx="330" cy="250" r="5" fill="#f8cb00"/><text x="292" y="272">Seward</text>
+            <circle cx="290" cy="208" r="4" fill="#fff"/><text x="298" y="204">Girdwood</text>
+            <circle cx="255" cy="190" r="4" fill="#fff"/><text x="196" y="208">Knik</text>
+            <circle cx="175" cy="140" r="4" fill="#fff"/><text x="183" y="136">McGrath</text>
+            <circle cx="100" cy="100" r="4" fill="#fff"/><text x="108" y="96">Unalakleet</text>
+            <circle cx="52" cy="70" r="5" fill="#f8cb00"/><text x="30" y="58">Nome</text>
           </g>
         </svg>
         <small>Simplified illustration. The interactive trail map (built by others) would embed here.</small>
