@@ -19,7 +19,7 @@
       'background:linear-gradient(170deg,#0f2a33 0%,#1d4b57 55%,#e9eef0 55.2%);font-family:"Work Sans",system-ui,sans-serif;}' +
     '#ihGate form{width:100%;max-width:400px;text-align:center;background:#fff;border-radius:18px;padding:36px 30px;box-shadow:0 24px 64px rgba(5,25,32,.35);}' +
     '#ihGate .mark{display:inline-grid;place-items:center;width:56px;height:56px;border-radius:14px;background:#0f2a33;color:#f3c26b;font-size:26px;margin-bottom:14px;}' +
-    '#ihGate h1{margin:0 0 8px;font:600 24px Fraunces,Georgia,serif;color:#0f2a33;}' +
+    '#ihGate h1{margin:0 0 8px;font:700 24px Archivo,"Work Sans",sans-serif;color:#0f2a33;}' +
     '#ihGate p{margin:0 0 20px;color:#4b6067;font-size:15px;line-height:1.5;}' +
     '#ihGate input{width:100%;box-sizing:border-box;padding:13px 16px;border-radius:10px;border:2px solid #d3dee1;font:inherit;font-size:16px;margin-bottom:14px;}' +
     '#ihGate input:focus{outline:3px solid #2b7a8c;outline-offset:2px;}' +
@@ -32,7 +32,7 @@
     gate.id = 'ihGate';
     gate.innerHTML =
       '<form autocomplete="off">' +
-      '<span class="mark" aria-hidden="true">▲</span>' +
+      '<span class="mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="30" height="30"><path d="M3 25 L12 11 L17 18 L21 13 L29 25Z" fill="#9cc9d6"/><path d="M12 11 L14.5 15 L12 14 L9.6 15Z" fill="#fff"/></svg></span>' +
       '<h1>Website concept for IHTA</h1>' +
       '<p>Prepared by Meaningful Marketing House for the Iditarod Historic Trail Alliance. Please enter the password to continue.</p>' +
       '<label for="ihGatePw" style="position:absolute;left:-9999px">Password</label>' +

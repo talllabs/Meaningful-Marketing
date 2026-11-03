@@ -1,5 +1,14 @@
 /* IHTA concept site — shared header, footer, scene art and toast */
 (function () {
+  var U = 'https://www.iditarod100.org/uploads/5/2/4/5/52459009/';
+  window.IH_PHOTOS = {
+    fireweed: U + '20210804-173948-0_orig.jpg',
+    wildflowers: U + '20210613-103424_orig.jpg',
+    eagleSummer: U + '20210604-163357_orig.jpg',
+    eagleSpring: U + '20210511-133544_orig.jpg',
+    panorama: U + 'iditarod-panoramic-1024x338-jt_orig.jpg',
+    hero: 'images/hero-lake-panorama.webp'
+  };
   var page = document.body.getAttribute('data-page') || '';
 
   // Illustrated Alaska scene (aurora, peaks, trail) used in hero + banners
@@ -42,7 +51,7 @@
         link('support.html#store', 'Store', 'store') +
       '</nav>' +
       '<a class="btn btn-ember" href="support.html#donate">Donate</a>' +
-      '<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>' +
+      '<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>' +
     '</div></header>';
 
   var footer =
@@ -64,6 +73,12 @@
 
   document.querySelectorAll('[data-scene]').forEach(function (el) {
     el.insertAdjacentHTML('afterbegin', window.IH_SCENE(parseInt(el.getAttribute('data-scene'), 10) || 600));
+  });
+
+  document.querySelectorAll('[data-photo]').forEach(function (el) {
+    var src = window.IH_PHOTOS[el.getAttribute('data-photo')];
+    if (src) el.style.setProperty('--photo', 'url("' + src + '")');
+    if (src && el.classList.contains('photo')) el.style.backgroundImage = 'url("' + src + '")';
   });
 
   var toastEl = document.querySelector('.toast'), t;

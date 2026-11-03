@@ -8,13 +8,13 @@
   <title>Iditarod Historic Trail Alliance | Concept</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css">
   <style>
-    .hero{position:relative;min-height:640px;color:#fff;display:flex;align-items:center;overflow:hidden;padding:0;background:linear-gradient(90deg,rgba(11,31,39,.88) 0%,rgba(11,31,39,.6) 50%,rgba(11,31,39,.2) 100%),url("https://www.iditarod100.org/uploads/5/2/4/5/52459009/iditarod-panoramic-1024x338-jt_orig.jpg") center/cover no-repeat,#173f4b}
+    .hero{position:relative;min-height:640px;color:#fff;display:flex;align-items:center;overflow:hidden;padding:0;background:linear-gradient(90deg,rgba(11,31,39,.88) 0%,rgba(11,31,39,.6) 50%,rgba(11,31,39,.2) 100%),url("images/hero-lake-panorama.webp") center 40%/cover no-repeat,#173f4b}
     .hero .wrap{position:relative;padding:90px 0 170px}
     .hero h1{font-size:clamp(3rem,6.6vw,5.8rem);max-width:900px;margin:16px 0 20px}
-    .hero h1 em{font-style:italic;color:var(--gold)}
+    .hero h1 em{font-style:normal;color:var(--gold)}
     .hero p{font-size:1.2rem;max-width:620px;color:#dcebef;margin:0 0 28px}
     .hero .eyebrow{color:var(--gold)}
     .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
@@ -22,7 +22,7 @@
     .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
     .stat{padding:26px 24px;border-right:1px solid var(--line)}
     .stat:last-child{border-right:0}
-    .stat b{display:block;font:600 2.2rem/1 Fraunces,serif;color:var(--spruce)}
+    .stat b{display:block;font:700 2rem/1.05 Archivo,"Work Sans",sans-serif;color:var(--spruce);letter-spacing:-.02em}
     .stat span{font-size:.9rem;color:var(--muted)}
     .story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
     .story h2{font-size:clamp(2.2rem,4vw,3.4rem);margin:12px 0 18px}
@@ -34,15 +34,15 @@
     .region-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .region{border-radius:var(--r);overflow:hidden;background:var(--snow);border:1px solid var(--line);display:flex;flex-direction:column;text-decoration:none;transition:.2s}
     .region:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-    .region .art{height:130px;position:relative;overflow:hidden}
-    .region .art svg{position:absolute;inset:0;width:100%;height:100%}
+    .region .art{height:170px;background-size:cover;background-position:center;background-color:var(--spruce-2)}
     .region .body{padding:18px 18px 22px}
     .region h3{font-size:1.35rem;margin:6px 0 6px}
     .region p{margin:0;font-size:.92rem;color:var(--muted)}
     .uses-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
     .use{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 14px;text-align:center;text-decoration:none;transition:.2s}
     .use:hover{border-color:var(--ember);transform:translateY(-3px)}
-    .use .ic{font-size:2rem}
+    .use .ic{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:14px;background:var(--glacier-2);color:var(--spruce-2)}
+    .use:hover .ic{background:var(--ember);color:#fff}
     .use strong{display:block;margin-top:8px}
     .use span{font-size:.82rem;color:var(--muted)}
     .history{background:var(--spruce);color:#fff}
@@ -51,7 +51,7 @@
     .timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:2px dashed rgba(243,194,107,.6);padding-top:0}
     .tl{padding:26px 18px 0 0;position:relative}
     .tl:before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:var(--gold)}
-    .tl b{font:600 1.6rem Fraunces,serif;color:var(--gold)}
+    .tl b{font:700 1.5rem Archivo,"Work Sans",sans-serif;color:var(--gold)}
     .tl p{margin:6px 0 0;color:#d4e5e9;font-size:.92rem}
     .communities{background:var(--snow)}
     .comm-list{display:flex;flex-wrap:wrap;gap:10px}
@@ -59,21 +59,25 @@
     .comm:hover{background:var(--spruce);color:#fff}
     .comm-note{margin-top:22px;color:var(--muted);max-width:720px}
     .news-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .news{background:#fff;border-radius:var(--r);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:10px}
+    .news{background:#fff;border-radius:var(--r);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column}
+    .news .pic{height:150px}
+    .news .nb{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
     .news h3{font-size:1.2rem}
     .news p{margin:0;font-size:.92rem;color:var(--muted)}
     .news a{margin-top:auto;font-weight:700;color:var(--ember);text-decoration:none}
-    .involve{background:linear-gradient(120deg,var(--ember) 0%,#d97a3e 100%);color:#fff}
+    .involve{background:linear-gradient(120deg,rgba(15,42,51,.92) 0%,rgba(15,42,51,.7) 100%),var(--photo) center/cover no-repeat,var(--spruce);color:#fff}
+    .involve .card:hover{background:rgba(255,255,255,.22)}
     .involve .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
     .involve .card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:var(--r);padding:24px;text-decoration:none}
     .involve .card:hover{background:rgba(255,255,255,.2)}
     .involve h2{font-size:clamp(2.2rem,4vw,3.2rem);max-width:700px;margin-top:10px}
-    .involve .eyebrow{color:#fff}
+    .involve .eyebrow{color:var(--gold)}
     .involve h3{font-size:1.4rem;margin-bottom:6px}
-    .involve p{margin:0;color:#fde9de;font-size:.94rem}
+    .involve p{margin:0;color:#d7e8ec;font-size:.94rem}
     .about{display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center}
     .about h2{font-size:clamp(2rem,3.6vw,3rem);margin:12px 0 16px}
     .about p{color:var(--muted)}
+    .about-pic{height:200px;border-radius:var(--r);margin-bottom:14px}
     .partners{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .partner{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;font-weight:600;text-align:center;color:var(--spruce-2)}
     @media (max-width:960px){
@@ -148,10 +152,10 @@
         <p>Choose a region to see access points, seasons and the stories tied to each place.</p>
       </div>
       <div class="region-grid">
-        <a class="region" href="plan.html"><div class="art" data-scene="260"></div><div class="body"><span class="tag">Southcentral</span><h3>Southern Trek</h3><p>Seward to Girdwood through the Chugach National Forest — the most accessible summer sections.</p></div></a>
-        <a class="region" href="plan.html"><div class="art" data-scene="260"></div><div class="body"><span class="tag">Mat-Su</span><h3>Knik &amp; the Susitna</h3><p>Historic roadhouse sites, river crossings and winter routes north of Anchorage.</p></div></a>
-        <a class="region" href="plan.html"><div class="art" data-scene="260"></div><div class="body"><span class="tag">Interior</span><h3>The Alaska Range &amp; Beyond</h3><p>Rainy Pass, McGrath and the gold-rush country around Iditarod and Flat.</p></div></a>
-        <a class="region" href="plan.html"><div class="art" data-scene="260"></div><div class="body"><span class="tag">Western</span><h3>The Coast to Nome</h3><p>Yukon River villages, Norton Sound and the final miles into Nome.</p></div></a>
+        <a class="region" href="plan.html"><div class="art photo" data-photo="eagleSummer"></div><div class="body"><span class="tag">Southcentral</span><h3>Southern Trek</h3><p>Seward to Girdwood through the Chugach National Forest — the most accessible summer sections.</p></div></a>
+        <a class="region" href="plan.html"><div class="art photo" data-photo="fireweed"></div><div class="body"><span class="tag">Mat-Su</span><h3>Knik &amp; the Susitna</h3><p>Historic roadhouse sites, river crossings and winter routes north of Anchorage.</p></div></a>
+        <a class="region" href="plan.html"><div class="art photo" data-photo="eagleSpring"></div><div class="body"><span class="tag">Interior</span><h3>The Alaska Range &amp; Beyond</h3><p>Rainy Pass, McGrath and the gold-rush country around Iditarod and Flat.</p></div></a>
+        <a class="region" href="plan.html"><div class="art photo" data-photo="wildflowers"></div><div class="body"><span class="tag">Western</span><h3>The Coast to Nome</h3><p>Yukon River villages, Norton Sound and the final miles into Nome.</p></div></a>
       </div>
     </div>
   </section>
@@ -164,12 +168,12 @@
         <p>Pick an activity to find sections, seasons and safety information that fit.</p>
       </div>
       <div class="uses-grid">
-        <a class="use" href="plan.html?use=hike"><div class="ic" aria-hidden="true">🥾</div><strong>Hiking</strong><span>Summer</span></a>
-        <a class="use" href="plan.html?use=ski"><div class="ic" aria-hidden="true">⛷️</div><strong>Skiing</strong><span>Winter</span></a>
-        <a class="use" href="plan.html?use=mush"><div class="ic" aria-hidden="true">🐕</div><strong>Mushing</strong><span>Winter</span></a>
-        <a class="use" href="plan.html?use=snowmachine"><div class="ic" aria-hidden="true">🛷</div><strong>Snowmachine</strong><span>Winter</span></a>
-        <a class="use" href="plan.html?use=bike"><div class="ic" aria-hidden="true">🚲</div><strong>Biking</strong><span>Year-round</span></a>
-        <a class="use" href="plan.html?use=history"><div class="ic" aria-hidden="true">🏛️</div><strong>History Stops</strong><span>Year-round</span></a>
+        <a class="use" href="plan.html?use=hike"><div class="ic" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M5 20h14l-1-4-5-2-1-6H7l-2 12z"/><path d="M9 12h3"/></svg></div><strong>Hiking</strong><span>Summer</span></a>
+        <a class="use" href="plan.html?use=ski"><div class="ic" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><circle cx="14" cy="4" r="2"/><path d="M3 20l18-6M8 12l4-4 3 3 3-1M10 15l2-4"/></svg></div><strong>Skiing</strong><span>Winter</span></a>
+        <a class="use" href="plan.html?use=mush"><div class="ic" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M4 18h16M6 18l2-6h6l2-3h3l1 3-3 1-1 5"/><path d="M9 12l-2-3"/></svg></div><strong>Mushing</strong><span>Winter</span></a>
+        <a class="use" href="plan.html?use=snowmachine"><div class="ic" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M3 17h15a3 3 0 0 0 3-3M6 17v-4h9l3 4M9 13l1-5h3"/></svg></div><strong>Snowmachine</strong><span>Winter</span></a>
+        <a class="use" href="plan.html?use=bike"><div class="ic" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><circle cx="6" cy="16" r="4"/><circle cx="18" cy="16" r="4"/><path d="M6 16l4-8h5l3 8M10 8l2 8h-6M14 5h3"/></svg></div><strong>Biking</strong><span>Year-round</span></a>
+        <a class="use" href="plan.html?use=history"><div class="ic" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M3 9l9-5 9 5M5 9v9M10 9v9M14 9v9M19 9v9M3 20h18"/></svg></div><strong>History Stops</strong><span>Year-round</span></a>
       </div>
     </div>
   </section>
@@ -214,16 +218,16 @@
         <p>Staff post updates in minutes from the admin portal. (Sample stories shown.)</p>
       </div>
       <div class="news-grid">
-        <article class="news"><span class="tag ember">Trail Work</span><h3>Meridian Lake Trail improvements</h3><p>Volunteers and partners improve tread and drainage on a popular Southern Trek connector.</p><a href="#news">Read more →</a></article>
-        <article class="news"><span class="tag">Partnership</span><h3>Working with Alaska Trails</h3><p>A shared approach to planning, maintenance and trail information.</p><a href="#news">Read more →</a></article>
-        <article class="news"><span class="tag gold">Volunteer</span><h3>Volunteer day with REI Anchorage</h3><p>Community members spend a day caring for the Trail.</p><a href="#news">Read more →</a></article>
-        <article class="news"><span class="tag">Agency Partners</span><h3>With the U.S. Forest Service</h3><p>Ongoing collaboration on the Chugach National Forest sections.</p><a href="#news">Read more →</a></article>
+        <article class="news"><div class="pic photo" data-photo="eagleSpring"></div><div class="nb"><span class="tag ember">Trail Work</span><h3>Meridian Lake Trail improvements</h3><p>Volunteers and partners improve tread and drainage on a popular Southern Trek connector.</p><a href="#news">Read more →</a></div></article>
+        <article class="news"><div class="pic photo" data-photo="wildflowers"></div><div class="nb"><span class="tag">Partnership</span><h3>Working with Alaska Trails</h3><p>A shared approach to planning, maintenance and trail information.</p><a href="#news">Read more →</a></div></article>
+        <article class="news"><div class="pic photo" data-photo="fireweed"></div><div class="nb"><span class="tag gold">Volunteer</span><h3>Volunteer day with REI Anchorage</h3><p>Community members spend a day caring for the Trail.</p><a href="#news">Read more →</a></div></article>
+        <article class="news"><div class="pic photo" data-photo="eagleSummer"></div><div class="nb"><span class="tag">Agency Partners</span><h3>With the U.S. Forest Service</h3><p>Ongoing collaboration on the Chugach National Forest sections.</p><a href="#news">Read more →</a></div></article>
       </div>
     </div>
   </section>
 
   <!-- GET INVOLVED -->
-  <section class="involve" id="involved">
+  <section class="involve" id="involved" data-photo="fireweed">
     <div class="wrap">
       <span class="eyebrow">Get Involved</span>
       <h2>Help more people find, use and care for the Trail.</h2>
@@ -246,14 +250,14 @@
         <p>Learn about our board and staff, read our annual reports, or get in touch.</p>
         <a class="btn btn-outline" href="library.html">Read Our Reports</a>
       </div>
-      <div class="partners" aria-label="Partners (sample)">
+      <div><div class="photo about-pic" data-photo="panorama" role="img" aria-label="Mountain lake panorama along the Trail"></div><div class="partners" aria-label="Partners (sample)">
         <div class="partner">Bureau of Land Management</div>
         <div class="partner">U.S. Forest Service</div>
         <div class="partner">Alaska Trails</div>
         <div class="partner">REI Anchorage</div>
         <div class="partner">Trail Communities</div>
         <div class="partner">Members &amp; Volunteers</div>
-      </div>
+      </div></div>
     </div>
   </section>
 
