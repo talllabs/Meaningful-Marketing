@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="gate.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Plan a Trip | Iditarod Historic Trail Alliance (Concept)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+  <style>
+    .layout{display:grid;grid-template-columns:280px 1fr;gap:30px;align-items:start}
+    .side{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;position:sticky;top:100px}
+    .side h3{font-family:"Work Sans",sans-serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:16px 0 10px}
+    .side h3:first-child{margin-top:0}
+    .side .filters{margin:0}
+    .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .sec{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:10px}
+    .sec h3{font-size:1.35rem}
+    .sec p{margin:0;color:var(--muted);font-size:.93rem}
+    .sec .meta{display:flex;flex-wrap:wrap;gap:6px}
+    .sec .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:.82rem;background:var(--snow);border-radius:12px;padding:12px}
+    .sec .facts b{display:block;font-size:.95rem;color:var(--spruce)}
+    .sec .actions{display:flex;gap:10px;margin-top:auto;padding-top:6px;flex-wrap:wrap}
+    .sec .actions button{border:0;background:none;color:var(--ember);font-weight:700;cursor:pointer;padding:0;font:700 .92rem "Work Sans",sans-serif}
+    .empty{display:none;padding:40px;text-align:center;background:#fff;border-radius:var(--r);border:1px dashed var(--line)}
+    .safety{margin-top:30px;background:var(--glacier-2);border-radius:var(--r);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+    .safety b{font-family:Fraunces,serif;font-size:1.2rem}
+    .safety p{margin:4px 0 0;color:var(--spruce-2)}
+    @media (max-width:960px){.layout{grid-template-columns:1fr}.side{position:static}.cards{grid-template-columns:1fr}}
+  </style>
+</head>
+<body data-page="plan">
+<div id="site-header"></div>
+<main id="main">
+  <section class="banner" data-scene="420">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a> / Plan a Trip</div>
+      <span class="eyebrow">Plan a Trip</span>
+      <h1>Find the right section of Trail for you.</h1>
+      <p>Filter by season, activity and region to see access points, distances and what to expect. Sample sections shown for illustration.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap layout">
+      <aside class="side" aria-label="Filters">
+        <h3>Season</h3>
+        <div class="filters" data-group="season">
+          <button class="chip on" data-v="all">Any</button><button class="chip" data-v="summer">Summer</button><button class="chip" data-v="winter">Winter</button>
+        </div>
+        <h3>Activity</h3>
+        <div class="filters" data-group="use">
+          <button class="chip on" data-v="all">Any</button><button class="chip" data-v="hike">Hiking</button><button class="chip" data-v="ski">Skiing</button><button class="chip" data-v="mush">Mushing</button><button class="chip" data-v="snowmachine">Snowmachine</button><button class="chip" data-v="bike">Biking</button><button class="chip" data-v="history">History</button>
+        </div>
+        <h3>Region</h3>
+        <select class="select" id="region" aria-label="Region" style="width:100%">
+          <option value="all">All regions</option><option>Southcentral</option><option>Mat-Su</option><option>Interior</option><option>Western</option>
+        </select>
+      </aside>
+
+      <div>
+        <p class="count" id="count" aria-live="polite"></p>
+        <div class="cards" id="cards"></div>
+        <div class="empty" id="empty">No sections match those filters yet. Try another season or activity.</div>
+        <div class="safety">
+          <span style="font-size:1.8rem" aria-hidden="true">⚠️</span>
+          <div><b>Before you go</b><p>Conditions change quickly. Check land manager updates, avalanche forecasts and community guidance, and tell someone your plans.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="site.js"></script>
+<script>
+  var SECTIONS = [
+    {name:'Johnson Pass Trail',region:'Southcentral',season:['summer','winter'],use:['hike','bike','ski','history'],miles:'23',access:'Seward Hwy',level:'Moderate',desc:'A classic Southern Trek section through alpine passes and lakes in the Chugach National Forest.'},
+    {name:'Crow Pass Crossing',region:'Southcentral',season:['summer'],use:['hike','history'],miles:'21',access:'Girdwood',level:'Challenging',desc:'High-country route past glaciers and historic mining remains between Girdwood and Eagle River.'},
+    {name:'Meridian Lake Trail',region:'Southcentral',season:['summer','winter'],use:['hike','ski','bike'],miles:'3',access:'Seward',level:'Easy',desc:'A short, family-friendly connector recently improved by volunteers and partners.'},
+    {name:'Lost Lake & Primrose',region:'Southcentral',season:['summer','winter'],use:['hike','bike','ski'],miles:'15',access:'Seward',level:'Moderate',desc:'Big views of Resurrection Bay and wildflower meadows in summer.'},
+    {name:'Knik Historic Sites',region:'Mat-Su',season:['summer','winter'],use:['history','hike'],miles:'2',access:'Knik-Goose Bay Rd',level:'Easy',desc:'Visit the historic townsite and learn how Knik served as a hub of early Trail travel.'},
+    {name:'Susitna River Winter Route',region:'Mat-Su',season:['winter'],use:['mush','snowmachine','ski'],miles:'60+',access:'Willow',level:'Expert',desc:'Frozen-river travel corridor used by mushers, snowmachiners and skiers in deep winter.'},
+    {name:'Rainy Pass Approach',region:'Interior',season:['winter'],use:['mush','snowmachine'],miles:'80+',access:'Fly-in',level:'Expert',desc:'Remote crossing of the Alaska Range. Experienced, well-equipped travelers only.'},
+    {name:'McGrath & Takotna',region:'Interior',season:['winter','summer'],use:['history','mush','snowmachine'],miles:'20',access:'Fly-in',level:'Moderate',desc:'Trail communities with deep mail-route and gold-rush history.'},
+    {name:'Iditarod Ghost Town',region:'Interior',season:['summer'],use:['history'],miles:'—',access:'Fly-in',level:'Remote',desc:'The gold-rush town that gave the Trail its name. Plan with local guidance.'},
+    {name:'Unalakleet to Shaktoolik',region:'Western',season:['winter'],use:['mush','snowmachine'],miles:'40',access:'Unalakleet',level:'Expert',desc:'Coastal winter route along Norton Sound, exposed to strong winds.'},
+    {name:'Nome Historic Walk',region:'Western',season:['summer','winter'],use:['history','hike'],miles:'2',access:'Nome',level:'Easy',desc:'The end of the Trail: the serum run, the burled arch and gold-rush Nome.'},
+    {name:'Nome Beach Fat Bike',region:'Western',season:['winter','summer'],use:['bike'],miles:'10',access:'Nome',level:'Moderate',desc:'Ride along the coast where the Trail meets the Bering Sea.'}
+  ];
+  var LABEL = {hike:'Hiking',ski:'Skiing',mush:'Mushing',snowmachine:'Snowmachine',bike:'Biking',history:'History'};
+  var state = {season:'all',use:'all',region:'all'};
+  var q = new URLSearchParams(location.search).get('use');
+  if (q && LABEL[q]) state.use = q;
+
+  function render(){
+    var list = SECTIONS.filter(function(s){
+      return (state.season==='all'||s.season.indexOf(state.season)>-1) &&
+             (state.use==='all'||s.use.indexOf(state.use)>-1) &&
+             (state.region==='all'||s.region===state.region);
+    });
+    document.getElementById('count').textContent = list.length + ' section' + (list.length===1?'':'s') + ' found';
+    document.getElementById('empty').style.display = list.length ? 'none' : 'block';
+    document.getElementById('cards').innerHTML = list.map(function(s){
+      return '<article class="sec"><div class="meta"><span class="tag">'+s.region+'</span>'+s.season.map(function(x){return '<span class="tag gold">'+(x==='summer'?'Summer':'Winter')+'</span>';}).join('')+'</div>'+
+        '<h3>'+s.name+'</h3><p>'+s.desc+'</p>'+
+        '<div class="facts"><div><b>'+s.miles+'</b>miles</div><div><b>'+s.access+'</b>access</div><div><b>'+s.level+'</b>level</div></div>'+
+        '<div class="meta">'+s.use.map(function(u){return '<span class="tag ember">'+LABEL[u]+'</span>';}).join('')+'</div>'+
+        '<div class="actions"><button type="button" onclick="ihToast(\'Directions would open in your maps app.\')">Get Directions →</button><button type="button" onclick="ihToast(\'Added to your Passport checklist.\')">＋ Passport Stamp</button></div></article>';
+    }).join('');
+  }
+  document.querySelectorAll('[data-group]').forEach(function(g){
+    g.querySelectorAll('.chip').forEach(function(c){
+      if (c.dataset.v === state[g.dataset.group]) { g.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on');}); c.classList.add('on'); }
+      c.addEventListener('click',function(){
+        g.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on');});
+        c.classList.add('on'); state[g.dataset.group]=c.dataset.v; render();
+      });
+    });
+  });
+  document.getElementById('region').addEventListener('change',function(e){state.region=e.target.value;render();});
+  render();
+</script>
+</body>
+</html>

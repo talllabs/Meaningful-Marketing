@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="gate.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Support the Trail | Iditarod Historic Trail Alliance (Concept)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+  <style>
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px;width:max-content;max-width:100%;margin:-34px auto 40px;position:relative;z-index:2;box-shadow:var(--shadow)}
+    .tabs button{border:0;background:none;border-radius:999px;padding:12px 22px;font:600 .95rem "Work Sans",sans-serif;cursor:pointer;color:var(--ink)}
+    .tabs button.on{background:var(--spruce);color:#fff}
+    .panel{display:none}.panel.on{display:block}
+    .panel-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:start}
+    .box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px}
+    .box h2{font-size:2rem;margin-bottom:8px}
+    .box > p{color:var(--muted);margin-top:0}
+    .tiers{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+    .tier{border:1.5px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;text-align:left;background:#fff;font:inherit;color:inherit}
+    .tier.on{border-color:var(--ember);background:#fdf3ee}
+    .tier b{display:block;font:600 1.15rem Fraunces,serif}
+    .tier span{font-size:1.4rem;font-weight:700;color:var(--ember)}
+    .tier small{display:block;color:var(--muted);font-size:.84rem;margin-top:4px}
+    .amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+    .amt{border:1.5px solid var(--line);border-radius:12px;padding:14px;font:700 1.15rem "Work Sans",sans-serif;cursor:pointer;background:#fff;color:var(--ink)}
+    .amt.on{border-color:var(--ember);background:#fdf3ee;color:var(--ember-2)}
+    .freq{display:flex;gap:8px;margin-top:10px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    .field label{display:block;font-size:.84rem;font-weight:600;margin-bottom:5px}
+    .field input{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font:inherit}
+    .check{display:flex;gap:10px;align-items:flex-start;margin:16px 0;font-size:.92rem}
+    .side-card{background:var(--spruce);color:#fff;border-radius:var(--r);padding:26px}
+    .side-card h3{font-size:1.4rem;margin-bottom:10px}
+    .side-card ul{margin:0;padding-left:18px;color:#d2e4e9}
+    .side-card li{margin:6px 0}
+    .secure{display:flex;gap:8px;align-items:center;font-size:.84rem;color:var(--muted);margin-top:12px}
+    .products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .prod{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+    .prod .pic{height:150px;display:grid;place-items:center;font-size:3rem;background:var(--glacier-2)}
+    .prod .b{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+    .prod h3{font:600 1.05rem "Work Sans",sans-serif}
+    .prod .price{font-weight:700;color:var(--ember)}
+    .prod button{margin-top:auto}
+    .cart{position:fixed;right:20px;bottom:20px;background:var(--ember);color:#fff;border-radius:999px;padding:12px 18px;font-weight:700;box-shadow:var(--shadow);display:none;z-index:50}
+    .vol{background:var(--snow)}
+    .vol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .vol-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}
+    .vol-card h3{font-size:1.25rem;margin:8px 0 6px}
+    .vol-card p{margin:0 0 14px;color:var(--muted);font-size:.93rem}
+    @media (max-width:960px){.panel-grid{grid-template-columns:1fr}.products{grid-template-columns:1fr 1fr}.vol-grid{grid-template-columns:1fr}.amounts{grid-template-columns:1fr 1fr}.tabs{margin-top:-28px}}
+    @media (max-width:520px){.tiers,.row,.products{grid-template-columns:1fr}.tabs button{padding:10px 14px}}
+  </style>
+</head>
+<body data-page="involved">
+<div id="site-header"></div>
+<main id="main">
+  <section class="banner" data-scene="420">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a> / Get Involved</div>
+      <span class="eyebrow">Support the Trail</span>
+      <h1>Join, renew, donate or shop — all in one place.</h1>
+      <p>Every option takes a couple of minutes, sends a receipt automatically and adds you to Trail Notes if you'd like. Sample amounts shown.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="tabs" role="tablist">
+      <button role="tab" data-tab="join" class="on">Join</button>
+      <button role="tab" data-tab="renew">Renew</button>
+      <button role="tab" data-tab="donate">Donate</button>
+      <button role="tab" data-tab="store">Store</button>
+    </div>
+
+    <!-- JOIN -->
+    <div class="panel on" id="p-join">
+      <div class="panel-grid">
+        <form class="box js-checkout" data-msg="Welcome to the Alliance! Membership, receipt and contact record created. (Demo)">
+          <h2>Become a Member</h2>
+          <p>Choose a membership level. Members receive Trail Notes, event invitations and member pricing in the store.</p>
+          <div class="tiers" data-pick>
+            <button type="button" class="tier on"><b>Individual</b><span>$35</span><small>per year</small></button>
+            <button type="button" class="tier"><b>Family</b><span>$60</span><small>per year, one household</small></button>
+            <button type="button" class="tier"><b>Trail Partner</b><span>$150</span><small>per year, plus recognition</small></button>
+            <button type="button" class="tier"><b>Business</b><span>$300</span><small>per year, listed on our partners page</small></button>
+          </div>
+          <div class="row">
+            <div class="field"><label for="j-name">Full name</label><input id="j-name" required autocomplete="name"></div>
+            <div class="field"><label for="j-email">Email</label><input id="j-email" type="email" required autocomplete="email"></div>
+          </div>
+          <label class="check"><input type="checkbox" checked> Renew automatically each year (you can cancel anytime)</label>
+          <label class="check" style="margin-top:-8px"><input type="checkbox" checked> Send me Trail Notes by email</label>
+          <button class="btn btn-ember" type="submit" style="width:100%">Continue to Secure Payment →</button>
+          <div class="secure">🔒 Payments handled by a PCI-compliant processor. Card details never touch this website.</div>
+        </form>
+        <aside class="side-card">
+          <h3>Why join?</h3>
+          <ul>
+            <li>Support stewardship projects like the Meridian Lake Trail</li>
+            <li>Help Trail communities share their stories</li>
+            <li>Get member pricing on maps, guides and gear</li>
+            <li>Invitations to volunteer days and events</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+
+    <!-- RENEW -->
+    <div class="panel" id="p-renew">
+      <div class="panel-grid">
+        <form class="box js-checkout" data-msg="We found your membership and sent a renewal link to your email. (Demo)">
+          <h2>Renew Your Membership</h2>
+          <p>Enter the email you used before. We'll find your record and send a one-click renewal link — no password to remember.</p>
+          <div class="field"><label for="r-email">Email</label><input id="r-email" type="email" required autocomplete="email"></div>
+          <br>
+          <button class="btn btn-ember" type="submit" style="width:100%">Find My Membership →</button>
+        </form>
+        <aside class="side-card"><h3>Reminders, automatically</h3><ul><li>Members get a friendly reminder before their renewal date</li><li>Staff no longer track renewals by hand</li><li>Every renewal updates the same contact record</li></ul></aside>
+      </div>
+    </div>
+
+    <!-- DONATE -->
+    <div class="panel" id="p-donate">
+      <div class="panel-grid">
+        <form class="box js-checkout" data-msg="Thank you! Your gift was recorded and a tax receipt was emailed. (Demo)">
+          <h2>Make a Gift</h2>
+          <p>Your donation helps protect, promote and improve the Iditarod National Historic Trail.</p>
+          <div class="freq" data-pick>
+            <button type="button" class="chip on">One-time</button><button type="button" class="chip">Monthly</button>
+          </div>
+          <div class="amounts" data-pick>
+            <button type="button" class="amt">$25</button><button type="button" class="amt on">$50</button><button type="button" class="amt">$100</button><button type="button" class="amt">$250</button>
+          </div>
+          <div class="row">
+            <div class="field"><label for="d-name">Full name</label><input id="d-name" required autocomplete="name"></div>
+            <div class="field"><label for="d-email">Email</label><input id="d-email" type="email" required autocomplete="email"></div>
+          </div>
+          <label class="check"><input type="checkbox"> Make this gift in honor or memory of someone</label>
+          <button class="btn btn-ember" type="submit" style="width:100%">Continue to Secure Payment →</button>
+          <div class="secure">🔒 Secure payment · Automatic tax receipt</div>
+        </form>
+        <aside class="side-card"><h3>Where your gift goes</h3><ul><li>Trail maintenance and volunteer days</li><li>Historic markers and interpretation</li><li>Education and community storytelling</li><li>Passport Program and visitor information</li></ul></aside>
+      </div>
+    </div>
+
+    <!-- STORE -->
+    <div class="panel" id="p-store">
+      <div class="box" style="margin-bottom:20px"><h2>Trail Store</h2><p style="margin:0">Maps, guides and gear. Every purchase supports the Trail. Buyers can opt in to Trail Notes at checkout.</p></div>
+      <div class="products">
+        <div class="prod"><div class="pic" aria-hidden="true">🗺️</div><div class="b"><h3>Southern Trek Map</h3><span class="price">$12</span><button class="btn btn-outline js-add" type="button">Add to Cart</button></div></div>
+        <div class="prod"><div class="pic" aria-hidden="true">📘</div><div class="b"><h3>Passport Booklet</h3><span class="price">$10</span><button class="btn btn-outline js-add" type="button">Add to Cart</button></div></div>
+        <div class="prod"><div class="pic" aria-hidden="true">👕</div><div class="b"><h3>Trail T-Shirt</h3><span class="price">$28</span><button class="btn btn-outline js-add" type="button">Add to Cart</button></div></div>
+        <div class="prod"><div class="pic" aria-hidden="true">🧢</div><div class="b"><h3>Trail Cap</h3><span class="price">$24</span><button class="btn btn-outline js-add" type="button">Add to Cart</button></div></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="vol" id="involved" style="margin-top:70px">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">More Ways to Help</span><h2>Volunteer, partner or spread the word.</h2></div></div>
+      <div class="vol-grid">
+        <div class="vol-card"><span class="tag ember">Volunteer</span><h3>Trail work days</h3><p>Join a crew for a day of hands-on stewardship. No experience needed.</p><button class="btn btn-outline" type="button" onclick="ihToast('Volunteer sign-up form would open. (Demo)')">Sign Up</button></div>
+        <div class="vol-card"><span class="tag">Partners</span><h3>Organizations &amp; agencies</h3><p>Work with IHTA on projects, events and shared trail information.</p><button class="btn btn-outline" type="button" onclick="ihToast('Partner inquiry form would open. (Demo)')">Get in Touch</button></div>
+        <div class="vol-card"><span class="tag gold">Communities</span><h3>Share your community's story</h3><p>Help shape your community page with local history, photos and events.</p><button class="btn btn-outline" type="button" onclick="ihToast('Community contact form would open. (Demo)')">Share a Story</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="cart" id="cart">🛒 <span id="cartN">0</span> in cart · Checkout</div>
+<div id="site-footer"></div>
+<script src="site.js"></script>
+<script>
+  function show(tab){
+    document.querySelectorAll('.tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.tab===tab);b.setAttribute('aria-selected',b.dataset.tab===tab);});
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('on',p.id==='p-'+tab);});
+  }
+  document.querySelectorAll('.tabs button').forEach(function(b){b.addEventListener('click',function(){show(b.dataset.tab);});});
+  function fromHash(){var h=location.hash.replace('#','');if(['join','renew','donate','store'].indexOf(h)>-1){show(h);var t=document.querySelector('.tabs');if(t)t.scrollIntoView({block:'center'});}}
+  window.addEventListener('hashchange',fromHash);fromHash();
+  document.querySelectorAll('[data-pick]').forEach(function(g){
+    g.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){g.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');});});
+  });
+  document.querySelectorAll('.js-checkout').forEach(function(f){
+    f.addEventListener('submit',function(e){e.preventDefault();ihToast(f.dataset.msg);f.reset();});
+  });
+  var n=0;
+  document.querySelectorAll('.js-add').forEach(function(b){
+    b.addEventListener('click',function(){n++;document.getElementById('cartN').textContent=n;document.getElementById('cart').style.display='block';ihToast('Added to cart. (Demo)');});
+  });
+</script>
+</body>
+</html>
