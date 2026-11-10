@@ -195,11 +195,13 @@ const mobileClose = document.getElementById('mobileClose');
 function openMobileMenu() {
   mobileMenu.classList.add('open');
   document.body.style.overflow = 'hidden';
+  burger.setAttribute('aria-expanded', 'true');
 }
 
 function closeMobileMenu() {
   mobileMenu.classList.remove('open');
   document.body.style.overflow = '';
+  burger.setAttribute('aria-expanded', 'false');
 }
 
 burger.addEventListener('click', openMobileMenu);
@@ -316,19 +318,50 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
   if (slides.length < 2) return;
   let current = 0;
 
+  const carousel = document.querySelector('.hero__carousel');
+  const pauseBtn = document.getElementById('heroPause');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let paused = reduceMotion; // people who ask for less motion get a still image
+  let hovering = false;
+
   function goTo(index) {
     slides[current].classList.remove('hero__slide--active');
-    dots[current].classList.remove('hero__dot--active');
+    if (dots[current]) {
+      dots[current].classList.remove('hero__dot--active');
+      dots[current].removeAttribute('aria-current');
+    }
     current = index;
     slides[current].classList.add('hero__slide--active');
-    dots[current].classList.add('hero__dot--active');
+    if (dots[current]) {
+      dots[current].classList.add('hero__dot--active');
+      dots[current].setAttribute('aria-current', 'true');
+    }
+  }
+
+  function updatePauseBtn() {
+    if (!pauseBtn) return;
+    pauseBtn.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
+    pauseBtn.firstElementChild.textContent = paused ? '▶' : '❚❚';
   }
 
   dots.forEach(dot => {
     dot.addEventListener('click', () => goTo(Number(dot.dataset.index)));
   });
 
-  setInterval(() => goTo((current + 1) % slides.length), 4000);
+  if (pauseBtn) {
+    pauseBtn.addEventListener('click', () => { paused = !paused; updatePauseBtn(); });
+    updatePauseBtn();
+  }
+  if (carousel) {
+    carousel.addEventListener('mouseenter', () => { hovering = true; });
+    carousel.addEventListener('mouseleave', () => { hovering = false; });
+    carousel.addEventListener('focusin', () => { hovering = true; });
+    carousel.addEventListener('focusout', () => { hovering = false; });
+  }
+
+  setInterval(() => {
+    if (!paused && !hovering) goTo((current + 1) % slides.length);
+  }, 4000);
 })();
 
 /* --------------------------------------------------
@@ -388,8 +421,12 @@ document.querySelectorAll('.about__squiggle, .ai__squiggle').forEach(svg => {
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('is-active'));
+      filterBtns.forEach(b => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('is-active');
+      btn.setAttribute('aria-pressed', 'true');
       activeFilter = btn.dataset.filter;
       applyFilter();
     });

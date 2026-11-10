@@ -61,11 +61,12 @@
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- ============ NAVIGATION ============ -->
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" aria-label="Main navigation">
   <div class="nav__inner container">
-    <a href="#home" class="nav__logo">
+    <a href="#home" class="nav__logo" aria-label="Meaningful Marketing — back to top">
       <div class="logo-mark">
         <span class="logo-mark__top">MEANINGFUL</span>
         <span class="logo-mark__bot">MARKETING</span>
@@ -77,17 +78,17 @@
       <li><a href="#about">About</a></li>
       <li><a href="#ai">AI</a></li>
     </ul>
-    <button class="btn btn--nav js-open-contact">Schedule a Call</button>
-    <button class="nav__burger" id="burger" aria-label="Open menu">
+    <button type="button" class="btn btn--nav js-open-contact">Schedule a Call</button>
+    <button type="button" class="nav__burger" id="burger" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">
+  <button type="button" class="mobile-menu__close" id="mobileClose" aria-label="Close menu">
     <span class="mobile-menu__close-label">CLOSE MENU</span>
-    <span class="mobile-menu__close-x">✕</span>
+    <span class="mobile-menu__close-x" aria-hidden="true">✕</span>
   </button>
   <ul>
     <li>
@@ -123,6 +124,8 @@
   </ul>
 </div>
 
+<main id="main">
+
 <!-- ============ HERO ============ -->
 <section class="hero" id="home">
   <div class="hero__noise"></div>
@@ -135,19 +138,19 @@
       </h1>
       <p class="hero__sub-mobile reveal-up" style="--delay:.2s">Websites, campaigns, video and AI for mission-driven organizations.</p>
 <div class="hero__ctas reveal-up" style="--delay:.3s">
-        <button class="btn btn--primary js-open-calendly">Schedule an Intro Call</button>
+        <button type="button" class="btn btn--primary js-open-calendly">Schedule an Intro Call</button>
         <a href="#work" class="btn btn--ghost">See Our Work ↓</a>
       </div>
     </div>
     <div class="hero__image hero__carousel">
-      <img class="hero__slide hero__slide--active" src="images/hero1.webp" alt="Meaningful Marketing — mission-driven storytelling" width="1334" height="1232" fetchpriority="high" decoding="async" />
-      <img class="hero__slide" src="images/hero2.webp" alt="Meaningful Marketing" width="1600" height="1200" loading="lazy" decoding="async" />
-      <img class="hero__slide" src="images/hero3.webp" alt="Meaningful Marketing" width="1067" height="1600" loading="lazy" decoding="async" />
-      <img class="hero__slide" src="images/hero4.webp" alt="Meaningful Marketing" width="1066" height="1600" loading="lazy" decoding="async" />
-      <img class="hero__slide" src="images/hero5.webp" alt="Meaningful Marketing" width="1600" height="1600" loading="lazy" decoding="async" />
-      <img class="hero__slide" src="images/hero6.webp" alt="Meaningful Marketing" width="900" height="1600" loading="lazy" decoding="async" />
-      <img class="hero__slide" src="images/hero7.webp" alt="Meaningful Marketing" width="1600" height="1600" loading="lazy" decoding="async" />
-      <img class="hero__slide" src="images/hero8.webp" alt="Meaningful Marketing" width="1600" height="1600" loading="lazy" decoding="async" />
+      <img class="hero__slide hero__slide--active" src="images/hero1.webp" alt="Sunrise over thatched huts in a lush mountain valley" width="1334" height="1232" fetchpriority="high" decoding="async" />
+      <img class="hero__slide" src="images/hero2.webp" alt="Turquoise cove and white cliffs along a sparkling coastline" width="1600" height="1200" loading="lazy" decoding="async" />
+      <img class="hero__slide" src="images/hero3.webp" alt="Hand holding a phone that lines up with the forest road behind it" width="1067" height="1600" loading="lazy" decoding="async" />
+      <img class="hero__slide" src="images/hero4.webp" alt="Long sunlit corridor of white stone arches" width="1066" height="1600" loading="lazy" decoding="async" />
+      <img class="hero__slide" src="images/hero5.webp" alt="Dreamy landscape of glowing glass cubes under soft light beams" width="1600" height="1600" loading="lazy" decoding="async" />
+      <img class="hero__slide" src="images/hero6.webp" alt="Overhead view of colourful game pieces scattered on a pale board" width="900" height="1600" loading="lazy" decoding="async" />
+      <img class="hero__slide" src="images/hero7.webp" alt="Bold, colourful illustration of geometric shapes and flowers on red" width="1600" height="1600" loading="lazy" decoding="async" />
+      <img class="hero__slide" src="images/hero8.webp" alt="Playful 3D shapes in pink, green and gold stacked together" width="1600" height="1600" loading="lazy" decoding="async" />
       <div class="hero__logo-overlay" aria-hidden="true">
         <div class="hero__logo-group">
           <p class="hero__logo-tagline">Serving Mission-Driven Organizations Since 2009</p>
@@ -157,22 +160,28 @@
           </div>
         </div>
       </div>
-      <div class="hero__dots" role="tablist" aria-label="Slide indicators">
-        <button class="hero__dot hero__dot--active" data-index="0"></button>
-        <button class="hero__dot" data-index="1"></button>
-        <button class="hero__dot" data-index="2"></button>
-        <button class="hero__dot" data-index="3"></button>
-        <button class="hero__dot" data-index="4"></button>
-        <button class="hero__dot" data-index="5"></button>
-        <button class="hero__dot" data-index="6"></button>
-        <button class="hero__dot" data-index="7"></button>
+      <div class="hero__dots" role="group" aria-label="Slideshow controls">
+        <button type="button" class="hero__dot hero__dot--active" data-index="0" aria-label="Show slide 1 of 8" aria-current="true"></button>
+        <button type="button" class="hero__dot" data-index="1" aria-label="Show slide 2 of 8"></button>
+        <button type="button" class="hero__dot" data-index="2" aria-label="Show slide 3 of 8"></button>
+        <button type="button" class="hero__dot" data-index="3" aria-label="Show slide 4 of 8"></button>
+        <button type="button" class="hero__dot" data-index="4" aria-label="Show slide 5 of 8"></button>
+        <button type="button" class="hero__dot" data-index="5" aria-label="Show slide 6 of 8"></button>
+        <button type="button" class="hero__dot" data-index="6" aria-label="Show slide 7 of 8"></button>
+        <button type="button" class="hero__dot" data-index="7" aria-label="Show slide 8 of 8"></button>
+        <button type="button" class="hero__pause" id="heroPause" aria-label="Pause slideshow"><span aria-hidden="true">❚❚</span></button>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ CLIENT TICKER ============ -->
-<div class="ticker-band" aria-label="Our clients">
+<section class="ticker-band" aria-label="Our clients">
+  <ul class="sr-only">
+    <li>United Nations Foundation</li><li>USTOA</li><li>Lutheran World Relief</li><li>Webster University</li>
+    <li>Pitcairn Islands Tourism</li><li>Andean Health &amp; Development</li><li>Papua New Guinea Tourism Authority</li>
+    <li>The Lobiko Initiative</li><li>AAA</li><li>Stone + Cloth</li><li>World Vision</li><li>Outpatch</li>
+  </ul>
   <div class="ticker-track" aria-hidden="true">
     <div class="ticker-inner">
       <span>United Nations Foundation</span><span class="dot" aria-hidden="true">·</span>
@@ -202,7 +211,7 @@
       <span>Outpatch</span><span class="dot" aria-hidden="true">·</span>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ============ SERVICES ============ -->
 <section class="services" id="services">
@@ -216,34 +225,34 @@
     </div>
 
     <div class="services__grid">
-      <article class="svc-card reveal-up" style="--delay:.0s">
+      <article tabindex="0" class="svc-card reveal-up" style="--delay:.0s">
         <div class="svc-card__num">01</div>
-        <h3 class="svc-card__title"><a href="lets-talk-websites.html" id="websitesPromoLink" style="color:inherit;text-decoration:none;">Websites That Work</a> <span class="svc-card__toggle">+</span></h3>
+        <h3 class="svc-card__title"><a href="lets-talk-websites.html" id="websitesPromoLink" style="color:inherit;text-decoration:none;">Websites That Work</a> <span class="svc-card__toggle" aria-hidden="true">+</span></h3>
         <p class="svc-card__body">We build clear, welcoming websites that explain who you are and what you do in a way that feels natural and easy to understand. The focus is on helping visitors find what they need and take the next step with confidence.</p>
       </article>
-      <article class="svc-card reveal-up" style="--delay:.07s">
+      <article tabindex="0" class="svc-card reveal-up" style="--delay:.07s">
         <div class="svc-card__num">02</div>
-        <h3 class="svc-card__title">Easier Social Media <span class="svc-card__toggle">+</span></h3>
+        <h3 class="svc-card__title">Easier Social Media <span class="svc-card__toggle" aria-hidden="true">+</span></h3>
         <p class="svc-card__body">We plan, create, and post content for you, keeping your channels consistent and thoughtful. Our goal is to help you stay visible and connected without adding more to your to-do list.</p>
       </article>
-      <article class="svc-card reveal-up" style="--delay:.14s">
+      <article tabindex="0" class="svc-card reveal-up" style="--delay:.14s">
         <div class="svc-card__num">03</div>
-        <h3 class="svc-card__title">Videos That Connect <span class="svc-card__toggle">+</span></h3>
+        <h3 class="svc-card__title">Videos That Connect <span class="svc-card__toggle" aria-hidden="true">+</span></h3>
         <p class="svc-card__body">We build simple, engaging videos that help people quickly understand your work. From shaping the story to the final edit, we create videos that feel approachable and work across platforms.</p>
       </article>
-      <article class="svc-card reveal-up" style="--delay:.21s">
+      <article tabindex="0" class="svc-card reveal-up" style="--delay:.21s">
         <div class="svc-card__num">04</div>
-        <h3 class="svc-card__title">Human Emails <span class="svc-card__toggle">+</span></h3>
+        <h3 class="svc-card__title">Human Emails <span class="svc-card__toggle" aria-hidden="true">+</span></h3>
         <p class="svc-card__body">We build and write clear, human emails that keep your audience informed and engaged. The emphasis is on clarity, warmth, and steady communication that supports long-term relationships.</p>
       </article>
-      <article class="svc-card reveal-up" style="--delay:.28s">
+      <article tabindex="0" class="svc-card reveal-up" style="--delay:.28s">
         <div class="svc-card__num">05</div>
-        <h3 class="svc-card__title">Smart AI Platforms <span class="svc-card__toggle">+</span></h3>
+        <h3 class="svc-card__title">Smart AI Platforms <span class="svc-card__toggle" aria-hidden="true">+</span></h3>
         <p class="svc-card__body">We set up and build powerful AI-powered platforms — combining chatbots, automations, custom digital assistants, and AI-driven data dashboards into a single, cohesive system.</p>
       </article>
-      <article class="svc-card reveal-up" style="--delay:.35s">
+      <article tabindex="0" class="svc-card reveal-up" style="--delay:.35s">
         <div class="svc-card__num">06</div>
-        <h3 class="svc-card__title">AI Training for Teams <span class="svc-card__toggle">+</span></h3>
+        <h3 class="svc-card__title">AI Training for Teams <span class="svc-card__toggle" aria-hidden="true">+</span></h3>
         <p class="svc-card__body">We guide teams through hands-on AI training that builds confidence and comfort. The focus is on using AI in everyday work in ways that feel manageable, useful, and supportive.</p>
       </article>
     </div>
@@ -276,12 +285,12 @@
         </div>
       </div>
       <div class="about__text">
-        <p class="about__hello reveal-up">Hello!</p>
+        <h2 class="about__hello reveal-up">Hello!</h2>
         <svg class="about__squiggle reveal-up" viewBox="0 0 260 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <polyline points="0,14 22,4 44,14 66,4 88,14 110,4 132,14 154,4 176,14 198,4 220,14 242,4 260,12" stroke="#D4A020" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <p class="about__body about__body--lead reveal-up">We're Ally and Brad, a team with <strong>over 15 years</strong> of experience helping mission-driven organisations with websites, digital marketing, video, AI and everything in between.</p>
-        <button class="btn btn--dark reveal-up js-open-contact" style="--delay:.2s">Let's Talk →</button>
+        <button type="button" class="btn btn--dark reveal-up js-open-contact" style="--delay:.2s">Let's Talk →</button>
       </div>
     </div>
   </div>
@@ -347,19 +356,19 @@
           <a href="https://adventure-international.com" target="_blank" rel="noopener" class="btn btn--outline-dark reveal-up" style="--delay:.15s; margin-top:16px; display:inline-block; width:fit-content;">Visit Website →</a>
         </div>
         <div class="cs__visual reveal-up" style="--delay:.15s">
-          <div class="cs-mock cs-mock--adv">
-            <img class="cs-mock__logo" src="https://base44.app/api/apps/6a346c8a26f2040400f1384c/files/mp/public/6a346c8a26f2040400f1384c/7809c55bf_adventure-international-logo.svg" alt="Adventure International logo" />
+          <div class="cs-mock cs-mock--adv" role="img" aria-label="Adventure International logo surrounded by the logos of its family of travel brands">
+            <img class="cs-mock__logo" src="https://base44.app/api/apps/6a346c8a26f2040400f1384c/files/mp/public/6a346c8a26f2040400f1384c/7809c55bf_adventure-international-logo.svg" alt="" />
             <div class="adv-orbit-logo adv-orbit-logo--1">
-              <img src="https://media.base44.com/images/public/6a346c8a26f2040400f1384c/35907a358_66e20f6fa_cj-removebg-preview.png" alt="Adventure International brand logo" />
+              <img src="https://media.base44.com/images/public/6a346c8a26f2040400f1384c/35907a358_66e20f6fa_cj-removebg-preview.png" alt="" />
             </div>
             <div class="adv-orbit-logo adv-orbit-logo--2">
-              <img src="https://media.base44.com/images/public/6a346c8a26f2040400f1384c/2955aa649_41346b622_nj-removebg-preview.png" alt="Adventure International brand logo" />
+              <img src="https://media.base44.com/images/public/6a346c8a26f2040400f1384c/2955aa649_41346b622_nj-removebg-preview.png" alt="" />
             </div>
             <div class="adv-orbit-logo adv-orbit-logo--3">
-              <img src="https://media.base44.com/images/public/6a346c8a26f2040400f1384c/89e0dd183_cd84decf8_ls-removebg-preview.png" alt="Adventure International brand logo" />
+              <img src="https://media.base44.com/images/public/6a346c8a26f2040400f1384c/89e0dd183_cd84decf8_ls-removebg-preview.png" alt="" />
             </div>
             <div class="adv-orbit-logo adv-orbit-logo--4">
-              <img src="https://media.base44.com/images/public/6a346c8a26f2040400f1384c/3f21469dd_7dee83982_ap-removebg-preview.png" alt="Adventure International brand logo" />
+              <img src="https://media.base44.com/images/public/6a346c8a26f2040400f1384c/3f21469dd_7dee83982_ap-removebg-preview.png" alt="" />
             </div>
           </div>
         </div>
@@ -394,7 +403,7 @@
             </div>
             <div class="cc-body">
               <div class="cc-quote">
-                <span class="cc-quote__mark">&ldquo;</span>
+                <span class="cc-quote__mark" aria-hidden="true">&ldquo;</span>
                 <p>Magellan, you sailed into the unknown and they said you'd literally fall off the earth. What's your secret?</p>
               </div>
             </div>
@@ -417,7 +426,7 @@
         </div>
       </div>
       <div class="cs__watch-row reveal-up" style="--delay:.3s">
-        <button class="btn btn--yellow js-open-video" data-youtube="40-gHqDVkRs">Watch the Event →</button>
+        <button type="button" class="btn btn--yellow js-open-video" data-youtube="40-gHqDVkRs">Watch the Event →</button>
       </div>
     </div>
   </div>
@@ -507,7 +516,7 @@
               <span class="lifecycle-num">1</span>
               <span class="lifecycle-word">VIDEO</span>
             </div>
-            <div class="lifecycle-arrow">→</div>
+            <div class="lifecycle-arrow" aria-hidden="true">→</div>
             <div class="lifecycle-outputs">
               <div class="lifecycle-out">Landscape Content</div>
               <div class="lifecycle-out">Square Format</div>
@@ -530,7 +539,7 @@
             <span>Social Media</span>
             <span>Digital Campaigns</span>
           </div>
-          <button class="btn btn--outline-light js-open-video reveal-up" style="--delay:.15s; margin-top:16px;" data-youtube="B3wrnDvipnE">Watch Video →</button>
+          <button type="button" class="btn btn--outline-light js-open-video reveal-up" style="--delay:.15s; margin-top:16px;" data-youtube="B3wrnDvipnE">Watch Video →</button>
         </div>
       </div>
     </div>
@@ -552,10 +561,10 @@
             <span>Location Filming</span>
             <span>Storytelling</span>
           </div>
-          <button class="btn btn--outline-dark js-open-video" data-vimeo="221464315">Watch Video →</button>
+          <button type="button" class="btn btn--outline-dark js-open-video" data-vimeo="221464315">Watch Video →</button>
         </div>
         <div class="cs__visual reveal-up" style="--delay:.15s">
-          <button class="cs__video-thumb js-open-video" data-vimeo="221464315" aria-label="Play Lutheran World Relief video">
+          <button type="button" class="cs__video-thumb js-open-video" data-vimeo="221464315" aria-label="Play Lutheran World Relief video">
             <img src="images/lwr%20case.png" alt="Lutheran World Relief — Farmers Market Coffee video thumbnail" loading="lazy" decoding="async" />
             <span class="cs__play-btn" aria-hidden="true">▶</span>
           </button>
@@ -594,7 +603,7 @@
     <div class="ai__cards reveal-up">
 
       <div class="ai-card ai-card--teal">
-        <div class="ai-card__icon">✦</div>
+        <div class="ai-card__icon" aria-hidden="true">✦</div>
         <h3 class="ai-card__title">Content Creation</h3>
         <p class="ai-card__desc">Custom avatars, AI visuals, graphics, and voiceovers — built for your campaigns and brand.</p>
         <ul class="ai-card__list">
@@ -605,7 +614,7 @@
       </div>
 
       <div class="ai-card ai-card--gold">
-        <div class="ai-card__icon">◈</div>
+        <div class="ai-card__icon" aria-hidden="true">◈</div>
         <h3 class="ai-card__title">Consulting &amp; Strategy</h3>
         <p class="ai-card__desc">We look at how your team works and find the right AI tools to make things faster and easier.</p>
         <ul class="ai-card__list">
@@ -616,7 +625,7 @@
       </div>
 
       <div class="ai-card ai-card--light">
-        <div class="ai-card__icon">❋</div>
+        <div class="ai-card__icon" aria-hidden="true">❋</div>
         <h3 class="ai-card__title">Training &amp; Workshops</h3>
         <p class="ai-card__desc">Hands-on sessions that give your team real confidence — from AI basics to everyday storytelling tools.</p>
         <ul class="ai-card__list">
@@ -630,7 +639,7 @@
 
     <div class="ai__bottom reveal-up">
       <p>AI should work <em>for</em> your mission — not complicate it.</p>
-      <button class="btn btn--gold js-open-contact">Let's talk AI →</button>
+      <button type="button" class="btn btn--gold js-open-contact">Let's talk AI →</button>
     </div>
 
     <div class="ai__chat-mobile reveal-up">
@@ -657,27 +666,27 @@
     <div class="video-filters reveal-up">
       <p class="video-filters__label">Filter by Type</p>
       <div class="video-filters__list" role="group" aria-label="Filter videos by type">
-        <button type="button" class="video-filter is-active" data-filter="all">All</button>
-        <button type="button" class="video-filter" data-filter="Commercial">Commercial</button>
-        <button type="button" class="video-filter" data-filter="Brand Launch">Brand Launch</button>
-        <button type="button" class="video-filter" data-filter="Documentary">Documentary</button>
-        <button type="button" class="video-filter" data-filter="Event Video">Event Video</button>
-        <button type="button" class="video-filter" data-filter="Product Demo">Product Demo</button>
-        <button type="button" class="video-filter" data-filter="Travel">Travel</button>
-        <button type="button" class="video-filter" data-filter="Social Impact">Social Impact</button>
-        <button type="button" class="video-filter" data-filter="Lifestyle">Lifestyle</button>
-        <button type="button" class="video-filter" data-filter="Music">Music</button>
+        <button type="button" class="video-filter is-active" aria-pressed="true" data-filter="all">All</button>
+        <button type="button" class="video-filter" aria-pressed="false" data-filter="Commercial">Commercial</button>
+        <button type="button" class="video-filter" aria-pressed="false" data-filter="Brand Launch">Brand Launch</button>
+        <button type="button" class="video-filter" aria-pressed="false" data-filter="Documentary">Documentary</button>
+        <button type="button" class="video-filter" aria-pressed="false" data-filter="Event Video">Event Video</button>
+        <button type="button" class="video-filter" aria-pressed="false" data-filter="Product Demo">Product Demo</button>
+        <button type="button" class="video-filter" aria-pressed="false" data-filter="Travel">Travel</button>
+        <button type="button" class="video-filter" aria-pressed="false" data-filter="Social Impact">Social Impact</button>
+        <button type="button" class="video-filter" aria-pressed="false" data-filter="Lifestyle">Lifestyle</button>
+        <button type="button" class="video-filter" aria-pressed="false" data-filter="Music">Music</button>
       </div>
     </div>
 
     <div class="video-toolbar reveal-up">
-      <span class="video-toolbar__count" id="videoCount">18 projects</span>
+      <span class="video-toolbar__count" id="videoCount" aria-live="polite">18 projects</span>
     </div>
 
     <div class="video-grid" id="videoGrid">
       <div class="vid-card reveal-up" style="--delay:.00s" data-categories="Commercial,Event Video">
         <div class="vid-card__thumb" style="background-image:url('https://img.youtube.com/vi/eTsmhJHWClQ/hqdefault.jpg')">
-          <button class="vid-card__play js-open-video" data-youtube="eTsmhJHWClQ" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-youtube="eTsmhJHWClQ" aria-label="Play video: Inspire — 20th Anniversary">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Inspire</span>
@@ -691,7 +700,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.05s" data-categories="Documentary,Social Impact">
         <div class="vid-card__thumb" style="background-image:url('https://img.youtube.com/vi/B3wrnDvipnE/hqdefault.jpg')">
-          <button class="vid-card__play js-open-video" data-youtube="B3wrnDvipnE" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-youtube="B3wrnDvipnE" aria-label="Play video: Andean Health &amp; Development — AHD Cotopaxi">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Andean Health &amp; Development</span>
@@ -705,7 +714,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.10s" data-categories="Commercial,Product Demo">
         <div class="vid-card__thumb" data-vimeo-id="146186425">
-          <button class="vid-card__play js-open-video" data-vimeo="146186425" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="146186425" aria-label="Play video: SideChef — Brand Video">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">SideChef</span>
@@ -719,7 +728,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.15s" data-categories="Commercial,Lifestyle">
         <div class="vid-card__thumb" data-vimeo-id="221464315">
-          <button class="vid-card__play js-open-video" data-vimeo="221464315" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="221464315" aria-label="Play video: Lutheran World Relief — Coffee Is Life">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Lutheran World Relief</span>
@@ -733,7 +742,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.20s" data-categories="Brand Launch">
         <div class="vid-card__thumb" data-vimeo-id="137018485">
-          <button class="vid-card__play js-open-video" data-vimeo="137018485" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="137018485" aria-label="Play video: Stone + Cloth — Brand Story">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Stone + Cloth</span>
@@ -746,7 +755,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.25s" data-categories="Documentary,Social Impact">
         <div class="vid-card__thumb" data-vimeo-id="221464023">
-          <button class="vid-card__play js-open-video" data-vimeo="221464023" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="221464023" aria-label="Play video: Lutheran World Relief — Coffee Farmer">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Lutheran World Relief</span>
@@ -760,7 +769,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.30s" data-categories="Commercial,Social Impact">
         <div class="vid-card__thumb" data-vimeo-id="638855073">
-          <button class="vid-card__play js-open-video" data-vimeo="638855073" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="638855073" aria-label="Play video: Outpatch — Give Where You Live">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Outpatch</span>
@@ -774,7 +783,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.35s" data-categories="Brand Launch,Lifestyle">
         <div class="vid-card__thumb" data-vimeo-id="561585470">
-          <button class="vid-card__play js-open-video" data-vimeo="561585470" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="561585470" aria-label="Play video: Sigmund — The Power of Collaboration">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Sigmund</span>
@@ -788,7 +797,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.40s" data-categories="Documentary,Lifestyle">
         <div class="vid-card__thumb" data-vimeo-id="384909934">
-          <button class="vid-card__play js-open-video" data-vimeo="384909934" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="384909934" aria-label="Play video: Lutheran World Relief — Coffee Couple">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Lutheran World Relief</span>
@@ -802,7 +811,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.45s" data-categories="Documentary,Social Impact">
         <div class="vid-card__thumb" data-vimeo-id="822827038">
-          <button class="vid-card__play js-open-video" data-vimeo="822827038" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="822827038" aria-label="Play video: Andean Health &amp; Development — What We Do Every Day">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Andean Health &amp; Development</span>
@@ -816,7 +825,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.50s" data-categories="Documentary,Travel">
         <div class="vid-card__thumb" data-vimeo-id="109343274">
-          <button class="vid-card__play js-open-video" data-vimeo="109343274" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="109343274" aria-label="Play video: Papua New Guinea Tourism — Papua New Guinea">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Papua New Guinea Tourism</span>
@@ -830,7 +839,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.55s" data-categories="Commercial,Brand Launch">
         <div class="vid-card__thumb" data-vimeo-id="282919808">
-          <button class="vid-card__play js-open-video" data-vimeo="282919808" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="282919808" aria-label="Play video: Novo — Impact Report">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Novo</span>
@@ -844,7 +853,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.60s" data-categories="Documentary,Social Impact">
         <div class="vid-card__thumb" style="background-image:url('https://img.youtube.com/vi/FmfJgx94u7Q/hqdefault.jpg')">
-          <button class="vid-card__play js-open-video" data-youtube="FmfJgx94u7Q" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-youtube="FmfJgx94u7Q" aria-label="Play video: Lutheran World Relief — VR Doc">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Lutheran World Relief</span>
@@ -858,7 +867,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.65s" data-categories="Documentary,Travel">
         <div class="vid-card__thumb" data-vimeo-id="77809770">
-          <button class="vid-card__play js-open-video" data-vimeo="77809770" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="77809770" aria-label="Play video: Lutheran World Relief — Mini Doc — Daisy, Peru">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Lutheran World Relief</span>
@@ -872,7 +881,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.70s" data-categories="Documentary,Event Video">
         <div class="vid-card__thumb" data-vimeo-id="132164108">
-          <button class="vid-card__play js-open-video" data-vimeo="132164108" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="132164108" aria-label="Play video: Papua New Guinea Tourism — PNG Media Lunch">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Papua New Guinea Tourism</span>
@@ -886,7 +895,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.75s" data-categories="Documentary,Travel">
         <div class="vid-card__thumb" data-vimeo-id="71029708">
-          <button class="vid-card__play js-open-video" data-vimeo="71029708" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="71029708" aria-label="Play video: Galapagos Conservancy — Galapagos">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Galapagos Conservancy</span>
@@ -900,7 +909,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.80s" data-categories="Documentary,Social Impact">
         <div class="vid-card__thumb" data-vimeo-id="301280352">
-          <button class="vid-card__play js-open-video" data-vimeo="301280352" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="301280352" aria-label="Play video: Lutheran World Relief — Mini Doc — Champa, India">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">Lutheran World Relief</span>
@@ -914,7 +923,7 @@
       </div>
       <div class="vid-card reveal-up" style="--delay:.85s" data-categories="Commercial,Music">
         <div class="vid-card__thumb" data-vimeo-id="115654417">
-          <button class="vid-card__play js-open-video" data-vimeo="115654417" aria-label="Play video">▶</button>
+          <button type="button" class="vid-card__play js-open-video" data-vimeo="115654417" aria-label="Play video: The Collection — Live Recording">▶</button>
         </div>
         <div class="vid-card__meta">
           <span class="vid-card__client">The Collection</span>
@@ -929,7 +938,7 @@
     </div>
     <p class="video-empty" id="videoEmpty" hidden>No videos match this filter yet — try another type.</p>
     <div class="videos__show-more">
-      <button class="btn btn--outline-dark" id="videoShowMore">Show More Videos ↓</button>
+      <button type="button" class="btn btn--outline-dark" id="videoShowMore">Show More Videos ↓</button>
     </div>
   </div>
 </section>
@@ -953,7 +962,7 @@
   <div class="mm-testimonial-stage">
 
     <article class="mm-testimonial mm-card-1" data-speed="0.10">
-      <div class="mm-quote">"</div>
+      <div class="mm-quote" aria-hidden="true">"</div>
 
       <p>
         Working with Meaningful Marketing was a genuine pleasure.
@@ -968,13 +977,13 @@
           <span>Marketing & Strategy</span>
         </div>
 
-        <div class="mm-stars" aria-label="5 stars">★★★★★</div>
+        <div class="mm-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
       </div>
     </article>
 
 
     <article class="mm-testimonial mm-card-2" data-speed="0.22">
-      <div class="mm-quote">"</div>
+      <div class="mm-quote" aria-hidden="true">"</div>
 
       <p>
         Their expertise in delivering high-quality video content was
@@ -988,13 +997,13 @@
           <span>Content & Video</span>
         </div>
 
-        <div class="mm-stars" aria-label="5 stars">★★★★★</div>
+        <div class="mm-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
       </div>
     </article>
 
 
     <article class="mm-testimonial mm-card-3" data-speed="0.14">
-      <div class="mm-quote">"</div>
+      <div class="mm-quote" aria-hidden="true">"</div>
 
       <p>
         Their AI consulting and team training sessions were the most
@@ -1008,13 +1017,13 @@
           <span>AI Training</span>
         </div>
 
-        <div class="mm-stars" aria-label="5 stars">★★★★★</div>
+        <div class="mm-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
       </div>
     </article>
 
 
     <article class="mm-testimonial mm-card-4" data-speed="0.26">
-      <div class="mm-quote">"</div>
+      <div class="mm-quote" aria-hidden="true">"</div>
 
       <p>
         They don't just deliver content. They deliver strategy that works.
@@ -1028,13 +1037,13 @@
           <span>Strategy & Storytelling</span>
         </div>
 
-        <div class="mm-stars" aria-label="5 stars">★★★★★</div>
+        <div class="mm-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
       </div>
     </article>
 
 
     <article class="mm-testimonial mm-card-5" data-speed="0.18">
-      <div class="mm-quote">"</div>
+      <div class="mm-quote" aria-hidden="true">"</div>
 
       <p>
         Meaningful Marketing are excellent at what they do and a pleasure
@@ -1048,13 +1057,13 @@
           <span>Ongoing Partnership</span>
         </div>
 
-        <div class="mm-stars" aria-label="5 stars">★★★★★</div>
+        <div class="mm-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
       </div>
     </article>
 
 
     <article class="mm-testimonial mm-card-6" data-speed="0.12">
-      <div class="mm-quote">"</div>
+      <div class="mm-quote" aria-hidden="true">"</div>
 
       <p>
         They took our team's idea, which was really only an idea, and
@@ -1068,7 +1077,7 @@
           <span>Integrated Marketing</span>
         </div>
 
-        <div class="mm-stars" aria-label="5 stars">★★★★★</div>
+        <div class="mm-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
       </div>
     </article>
 
@@ -1081,7 +1090,7 @@
     <p class="cta__prelude reveal-up">Let's make<br><span class="cta__prelude-teal">something</span></p>
     <h2 class="cta__word reveal-up">MEANINGFUL.</h2>
     <div class="cta__schedule reveal-up">
-      <p>Schedule a time that works for you <button class="cta__here js-open-contact">here</button></p>
+      <p>Schedule a time that works for you <button type="button" class="cta__here js-open-contact">here</button></p>
       <svg class="cta__arrow" viewBox="0 0 180 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M 170 8 Q 185 40 140 55 Q 100 68 30 52" stroke="#D4A020" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         <path d="M 38 45 L 28 53 L 40 58" stroke="#D4A020" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1089,6 +1098,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
@@ -1106,8 +1117,8 @@
         <a href="#work">Work</a>
         <a href="#about">About</a>
         <a href="#ai">AI</a>
-        <button class="footer__nav-link js-open-contact">Schedule a Call</button>
-        <button class="footer__nav-link js-open-contact">Contact</button>
+        <button type="button" class="footer__nav-link js-open-contact">Schedule a Call</button>
+        <button type="button" class="footer__nav-link js-open-contact">Contact</button>
       </nav>
     </div>
     <div class="footer__bottom">
@@ -1119,7 +1130,7 @@
 
 <!-- ============ VIDEO LIGHTBOX ============ -->
 <div class="video-overlay" id="videoOverlay" role="dialog" aria-modal="true" aria-label="Video player">
-  <button class="video-overlay__close" id="videoClose" aria-label="Close video">✕</button>
+  <button type="button" class="video-overlay__close" id="videoClose" aria-label="Close video">✕</button>
   <div class="video-overlay__frame">
     <iframe id="videoFrame" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>
     <video id="videoNative" controls hidden playsinline muted></video>
@@ -1129,20 +1140,20 @@
 <!-- ============ CONTACT MODAL ============ -->
 <div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal modal--split">
-    <button class="modal__close" id="modalClose" aria-label="Close">✕</button>
+    <button type="button" class="modal__close" id="modalClose" aria-label="Close">✕</button>
 
     <!-- Mobile chooser screen (shown first on mobile) -->
     <div class="modal__chooser" id="modalChooser">
       <h2 class="modal__heading">Let's connect!</h2>
       <p class="modal__sub">How would you like to reach us?</p>
       <div class="modal__choice-grid">
-        <button class="modal__choice-btn" id="chooseCalendly">
-          <span class="modal__choice-icon">📅</span>
+        <button type="button" class="modal__choice-btn" id="chooseCalendly">
+          <span class="modal__choice-icon" aria-hidden="true">📅</span>
           <span class="modal__choice-title">Schedule a Call</span>
           <span class="modal__choice-desc">Pick a time that works for you — no pressure</span>
         </button>
-        <button class="modal__choice-btn" id="chooseForm">
-          <span class="modal__choice-icon">✉️</span>
+        <button type="button" class="modal__choice-btn" id="chooseForm">
+          <span class="modal__choice-icon" aria-hidden="true">✉️</span>
           <span class="modal__choice-title">Send a Message</span>
           <span class="modal__choice-desc">We'll reply within one business day</span>
         </button>
@@ -1150,7 +1161,7 @@
     </div>
 
     <!-- Back button (mobile panel mode only) -->
-    <button class="modal__back-btn" id="modalBack">← Back</button>
+    <button type="button" class="modal__back-btn" id="modalBack">← Back</button>
 
     <div class="modal__split">
 
@@ -1191,8 +1202,8 @@
           </div>
           <button type="submit" class="btn btn--gold btn--lg contact-form__submit">Send Message →</button>
         </form>
-        <div class="contact-form__success is-hidden" id="formSuccess">
-          <div class="contact-form__success-icon">✓</div>
+        <div class="contact-form__success is-hidden" id="formSuccess" role="status">
+          <div class="contact-form__success-icon" aria-hidden="true">✓</div>
           <h3>Message sent!</h3>
           <p>Thanks for reaching out — we'll be in touch within one business day.</p>
         </div>
@@ -1204,7 +1215,7 @@
 <!-- ============ "WEBSITES THAT WORK" PROMO POP-UP ============ -->
 <div class="web-promo" id="webPromo" role="dialog" aria-modal="true" aria-labelledby="webPromoTitle">
   <div class="web-promo__box">
-    <button class="web-promo__close" id="webPromoClose" aria-label="Close">✕</button>
+    <button type="button" class="web-promo__close" id="webPromoClose" aria-label="Close">✕</button>
     <p class="web-promo__eyebrow">Websites that work</p>
     <h2 id="webPromoTitle">Ready for a website that works for your team?</h2>
     <p>If your website has become expensive, frustrating or hard to update, we can move you to a custom site built around how your organization actually works.</p>
@@ -1222,7 +1233,7 @@
     </div>
     <div class="web-promo__actions">
       <a class="btn btn--gold btn--lg" href="lets-talk-websites.html">See How Website Moves Work →</a>
-      <button class="web-promo__secondary" id="webPromoTalk">Or talk to us</button>
+      <button type="button" class="web-promo__secondary" id="webPromoTalk">Or talk to us</button>
     </div>
   </div>
 </div>
