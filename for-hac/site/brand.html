@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Style Guide — Housing Assistance Council (Concept)</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+  <script src="gate.js"></script>
+  <script src="site.js"></script>
+</head>
+<body>
+<a class="ct-skip" href="#main">Skip to main content</a>
+
+<div class="ct-ribbon">Website concept by Meaningful Marketing House · Sample content for illustration only</div>
+
+<div class="ct-util">
+  <div class="ct-wrap">
+    <div class="ct-util__group" role="group" aria-label="Text size">
+      <span aria-hidden="true">Text size:</span>
+      <button type="button" data-text-size="md" aria-pressed="true" aria-label="Normal text">A</button>
+      <button type="button" data-text-size="lg" aria-pressed="false" aria-label="Larger text" style="font-size:1.1rem">A</button>
+      <button type="button" data-text-size="xl" aria-pressed="false" aria-label="Largest text" style="font-size:1.25rem">A</button>
+      <button type="button" data-contrast aria-pressed="false">High contrast</button>
+    </div>
+    <div class="ct-util__group">
+      <a href="#demo">Rural Data Central</a>
+      <a href="#demo">Newsroom</a>
+      <a href="admin.html">Staff login</a>
+    </div>
+  </div>
+</div>
+
+<header class="ct-head">
+  <div class="ct-wrap">
+    <a class="ct-logo" href="index.html" aria-label="Housing Assistance Council home">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="2" y="2" width="60" height="60" rx="14" fill="#1f4e79"/>
+        <path d="M14 34 L32 18 L50 34 V48 H14 Z" fill="#fff"/>
+        <rect x="27" y="36" width="10" height="12" fill="#e3b04b"/>
+        <path d="M6 54 q13 -6 26 0 t26 0" fill="none" stroke="#8db48e" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <span>Housing Assistance<small>Council</small></span>
+    </a>
+    <button class="ct-menu-btn" id="ctMenuBtn" aria-expanded="false" aria-controls="ctNav">☰ Menu</button>
+    <nav class="ct-nav" id="ctNav" aria-label="Main">
+      <ul>
+        <li><a href="#demo">Loans &amp; Funding</a></li>
+        <li><a href="#demo">Training</a></li>
+        <li><a href="resources.html">Research &amp; Resources</a></li>
+        <li><a href="consulting.html">Consulting</a></li>
+        <li><a href="#demo">About</a></li>
+        <li><a class="ct-btn ct-btn--sun" href="#demo">Need Housing Help?</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="ct-pagehead">
+    <div class="ct-wrap">
+      <nav class="ct-crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="brand.html" aria-current="page">Style Guide</a></li></ol></nav>
+      <h1>HAC website style guide</h1>
+      <p>One simple guide for every staff member who updates the website. These colors, fonts and blocks are built into the editor, so every page looks like HAC. In the real project, we would build this from HAC's existing brand standards.</p>
+    </div>
+  </div>
+
+  <section class="ct-section">
+    <div class="ct-wrap">
+      <h2>Colors</h2>
+      <p class="ct-intro">Concept colors inspired by rural America: navy, wheat and field green. Every text color passes WCAG 2.2 AA contrast (4.5:1 or higher). The numbers below are the real contrast ratios.</p>
+      <div class="bg-swatches">
+        <div class="bg-sw"><span style="background:#1f4e79"></span><b>Navy</b><code>#1F4E79</code><small>Links, buttons, headings · 8.7:1 on white ✓</small></div>
+        <div class="bg-sw"><span style="background:#12304d"></span><b>Deep Navy</b><code>#12304D</code><small>Headings, footer · 13.5:1 on white ✓</small></div>
+        <div class="bg-sw"><span style="background:#e3b04b"></span><b>Wheat</b><code>#E3B04B</code><small>Main action buttons, with dark text · 8.2:1 ✓</small></div>
+        <div class="bg-sw"><span style="background:#8db48e"></span><b>Field Green</b><code>#8DB48E</code><small>Decoration only. Never use for text (2.3:1 ✗)</small></div>
+        <div class="bg-sw"><span style="background:#18212f"></span><b>Ink</b><code>#18212F</code><small>Body text · 16.2:1 on white ✓</small></div>
+        <div class="bg-sw"><span style="background:#4a5568"></span><b>Slate</b><code>#4A5568</code><small>Secondary text · 7.5:1 on white ✓</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ct-section ct-section--soft">
+    <div class="ct-wrap bg-two">
+      <div>
+        <h2>Font</h2>
+        <p class="ct-intro">Atkinson Hyperlegible. It was made by the Braille Institute to be easier to read for people with low vision. Letters that look alike, like I, l and 1, are easy to tell apart.</p>
+        <p style="font-size:2.4rem; margin:0; font-weight:700; color:var(--ct-blue-dark)">Il1 O0 rn m</p>
+        <p style="margin:6px 0 0">Body text is 18px or larger. Lines are kept short and easy to follow.</p>
+      </div>
+      <div>
+        <h2>Buttons</h2>
+        <p class="ct-intro">Three styles only. Every button is at least 48px tall, so it is easy to tap.</p>
+        <p style="display:flex; flex-wrap:wrap; gap:10px">
+          <a class="ct-btn ct-btn--sun" href="#demo">Main action</a>
+          <a class="ct-btn" href="#demo">Next step</a>
+          <a class="ct-btn ct-btn--ghost" href="#demo">Other option</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ct-section">
+    <div class="ct-wrap">
+      <h2>How we write</h2>
+      <p class="ct-intro">The editor checks these rules as staff type.</p>
+      <div class="bg-rules">
+        <div class="ct-card"><h3>Write for every audience</h3><p>Lead with a plain summary. Save the technical detail for further down the page.</p></div>
+        <div class="ct-card"><h3>Every report gets a web page</h3><p>A summary, key findings and an accessible PDF, so people can find it in search.</p></div>
+        <div class="ct-card"><h3>Spell out short forms</h3><p>Write "U.S. Department of Agriculture (USDA)" the first time.</p></div>
+        <div class="ct-card"><h3>Describe every chart</h3><p>Each chart gets a short text summary and a data table.</p></div>
+        <div class="ct-card"><h3>Make links say where they go</h3><p>"Read the full report," not "click here."</p></div>
+        <div class="ct-card"><h3>Tag everything</h3><p>Type, topic and year on every resource, so the library filters work.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+<style>
+  .bg-swatches { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .bg-sw { border:1px solid var(--line); border-radius:var(--radius); padding:14px; display:grid; gap:2px; }
+  .bg-sw span { height:72px; border-radius:10px; margin-bottom:8px; border:1px solid rgba(0,0,0,.08); }
+  .bg-sw code { font-size:.95rem; }
+  .bg-sw small { color:var(--muted); font-size:.95rem; }
+  .bg-two { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  .bg-rules { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media (max-width:860px){ .bg-swatches,.bg-rules{grid-template-columns:1fr 1fr} .bg-two{grid-template-columns:1fr} }
+  @media (max-width:520px){ .bg-swatches,.bg-rules{grid-template-columns:1fr} }
+</style>
+
+<footer class="ct-foot">
+  <div class="ct-wrap">
+    <div class="ct-foot__grid">
+      <div>
+        <h2>Housing Assistance Council</h2>
+        <p>1828 L Street N.W., Suite 505<br>Washington, D.C. 20036</p>
+        <p>(202) 842-8600<br><a href="mailto:hac@ruralhome.org">hac@ruralhome.org</a></p>
+      </div>
+      <div><h2>Our work</h2><ul><li><a href="#demo">Loans and funding</a></li><li><a href="#demo">Training</a></li><li><a href="consulting.html">Consulting</a></li></ul></div>
+      <div><h2>Learn</h2><ul><li><a href="resources.html">Research and resources</a></li><li><a href="#demo">Rural Data Central</a></li><li><a href="#demo">Veterans Data Central</a></li><li><a href="#demo">Heirs Central</a></li></ul></div>
+      <div><h2>About</h2><ul><li><a href="#demo">Mission and impact</a></li><li><a href="brand.html">Style guide</a></li><li><a href="#demo">Accessibility statement</a></li></ul></div>
+    </div>
+    <div class="ct-foot__base"><span>Website concept prepared by Meaningful Marketing House.</span><span>HAC is an equal opportunity provider, employer and lender.</span></div>
+  </div>
+</footer>
+
+<div class="ct-toast" id="ctToast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

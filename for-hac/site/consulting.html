@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consulting — Housing Assistance Council (Concept)</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+  <script src="gate.js"></script>
+  <script src="site.js"></script>
+</head>
+<body>
+<a class="ct-skip" href="#main">Skip to main content</a>
+
+<div class="ct-ribbon">Website concept by Meaningful Marketing House · Sample content for illustration only</div>
+
+<div class="ct-util">
+  <div class="ct-wrap">
+    <div class="ct-util__group" role="group" aria-label="Text size">
+      <span aria-hidden="true">Text size:</span>
+      <button type="button" data-text-size="md" aria-pressed="true" aria-label="Normal text">A</button>
+      <button type="button" data-text-size="lg" aria-pressed="false" aria-label="Larger text" style="font-size:1.1rem">A</button>
+      <button type="button" data-text-size="xl" aria-pressed="false" aria-label="Largest text" style="font-size:1.25rem">A</button>
+      <button type="button" data-contrast aria-pressed="false">High contrast</button>
+    </div>
+    <div class="ct-util__group">
+      <a href="#demo">Rural Data Central</a>
+      <a href="#demo">Newsroom</a>
+      <a href="admin.html">Staff login</a>
+    </div>
+  </div>
+</div>
+
+<header class="ct-head">
+  <div class="ct-wrap">
+    <a class="ct-logo" href="index.html" aria-label="Housing Assistance Council home">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="2" y="2" width="60" height="60" rx="14" fill="#1f4e79"/>
+        <path d="M14 34 L32 18 L50 34 V48 H14 Z" fill="#fff"/>
+        <rect x="27" y="36" width="10" height="12" fill="#e3b04b"/>
+        <path d="M6 54 q13 -6 26 0 t26 0" fill="none" stroke="#8db48e" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <span>Housing Assistance<small>Council</small></span>
+    </a>
+    <button class="ct-menu-btn" id="ctMenuBtn" aria-expanded="false" aria-controls="ctNav">☰ Menu</button>
+    <nav class="ct-nav" id="ctNav" aria-label="Main">
+      <ul>
+        <li><a href="#demo">Loans &amp; Funding</a></li>
+        <li><a href="#demo">Training</a></li>
+        <li><a href="resources.html">Research &amp; Resources</a></li>
+        <li><a href="consulting.html" aria-current="page">Consulting</a></li>
+        <li><a href="#demo">About</a></li>
+        <li><a class="ct-btn ct-btn--sun" href="#demo">Need Housing Help?</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="ct-pagehead">
+    <div class="ct-wrap">
+      <nav class="ct-crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="consulting.html" aria-current="page">Consulting</a></li></ol></nav>
+      <h1>Consulting services</h1>
+      <p>Expert help for rural housing organizations, local governments and partners. Find the right service, then tell us about your project.</p>
+    </div>
+  </div>
+
+  <section class="ct-section">
+    <div class="ct-wrap">
+      <fieldset class="ct-choose">
+        <legend>Who are you?</legend>
+        <div class="ct-choose__opts">
+          <label><input type="radio" name="who" value="all" checked> Show all</label>
+          <label><input type="radio" name="who" value="org"> Housing organization</label>
+          <label><input type="radio" name="who" value="gov"> Local or tribal government</label>
+          <label><input type="radio" name="who" value="funder"> Funder or partner</label>
+        </div>
+      </fieldset>
+      <p id="hcSvcCount" class="ct-find__count" aria-live="polite"></p>
+      <ul class="hc-services" id="hcServices">
+        <li data-who="org gov"><h3>Housing needs assessment</h3><p>Learn what housing your community needs, backed by local data.</p><a class="ct-btn ct-btn--ghost" href="#hcRequest">Request this</a></li>
+        <li data-who="org"><h3>Project feasibility and financing</h3><p>Test whether a project works, and build the funding plan.</p><a class="ct-btn ct-btn--ghost" href="#hcRequest">Request this</a></li>
+        <li data-who="org"><h3>Organizational capacity building</h3><p>Strengthen your board, staff, finances and systems.</p><a class="ct-btn ct-btn--ghost" href="#hcRequest">Request this</a></li>
+        <li data-who="gov funder"><h3>Program design and evaluation</h3><p>Design a housing program, then measure what it achieves.</p><a class="ct-btn ct-btn--ghost" href="#hcRequest">Request this</a></li>
+        <li data-who="org gov"><h3>Custom training for your team</h3><p>Hands-on training built around your projects.</p><a class="ct-btn ct-btn--ghost" href="#hcRequest">Request this</a></li>
+        <li data-who="gov funder"><h3>Custom data and mapping</h3><p>Data and maps for plans, reports and grant applications.</p><a class="ct-btn ct-btn--ghost" href="#hcRequest">Request this</a></li>
+      </ul>
+      <p style="margin-top:14px; color:var(--muted); font-size:1rem">Sample services for illustration. The real hub would list HAC's consulting products, managed by staff.</p>
+    </div>
+  </section>
+
+  <section class="ct-section ct-section--soft" id="hcRequest" aria-labelledby="reqTitle">
+    <div class="ct-wrap">
+      <h2 id="reqTitle">Tell us about your project</h2>
+      <p class="ct-intro">A member of our team will reply within a few business days (sample).</p>
+      <form class="hc-form" onsubmit="event.preventDefault(); var t=document.getElementById('ctToast'); t.textContent='Mockup: in the real site, this request goes straight to the consulting team and is tracked in the staff portal.'; t.hidden=false;">
+        <div><label for="rqName">Your name</label><input id="rqName" autocomplete="name"></div>
+        <div><label for="rqOrg">Organization</label><input id="rqOrg" autocomplete="organization"></div>
+        <div><label for="rqEmail">Email</label><input id="rqEmail" type="email" autocomplete="email"></div>
+        <div><label for="rqSvc">Service you're interested in</label><select id="rqSvc"><option>Not sure yet</option><option>Housing needs assessment</option><option>Project feasibility and financing</option><option>Organizational capacity building</option><option>Program design and evaluation</option><option>Custom training for your team</option><option>Custom data and mapping</option></select></div>
+        <div><label for="rqMsg">Tell us a little about your project</label><textarea id="rqMsg" rows="4"></textarea></div>
+        <div><button class="ct-btn ct-btn--sun" type="submit">Send request</button></div>
+      </form>
+    </div>
+  </section>
+</main>
+<script>
+  (function () {
+    var items = Array.prototype.slice.call(document.querySelectorAll('#hcServices li'));
+    var count = document.getElementById('hcSvcCount');
+    function run(v) {
+      var n = 0;
+      items.forEach(function (li) { var ok = v === 'all' || li.dataset.who.split(' ').indexOf(v) !== -1; li.hidden = !ok; if (ok) n++; });
+      count.textContent = 'Showing ' + n + ' of ' + items.length + ' services';
+    }
+    document.querySelectorAll('input[name="who"]').forEach(function (r) { r.addEventListener('change', function () { run(r.value); }); });
+    run('all');
+    document.querySelectorAll('.hc-services a').forEach(function (a) {
+      a.addEventListener('click', function () { document.getElementById('rqSvc').value = a.parentNode.querySelector('h3').textContent; });
+    });
+  })();
+</script>
+
+
+<footer class="ct-foot">
+  <div class="ct-wrap">
+    <div class="ct-foot__grid">
+      <div>
+        <h2>Housing Assistance Council</h2>
+        <p>1828 L Street N.W., Suite 505<br>Washington, D.C. 20036</p>
+        <p>(202) 842-8600<br><a href="mailto:hac@ruralhome.org">hac@ruralhome.org</a></p>
+      </div>
+      <div><h2>Our work</h2><ul><li><a href="#demo">Loans and funding</a></li><li><a href="#demo">Training</a></li><li><a href="consulting.html">Consulting</a></li></ul></div>
+      <div><h2>Learn</h2><ul><li><a href="resources.html">Research and resources</a></li><li><a href="#demo">Rural Data Central</a></li><li><a href="#demo">Veterans Data Central</a></li><li><a href="#demo">Heirs Central</a></li></ul></div>
+      <div><h2>About</h2><ul><li><a href="#demo">Mission and impact</a></li><li><a href="brand.html">Style guide</a></li><li><a href="#demo">Accessibility statement</a></li></ul></div>
+    </div>
+    <div class="ct-foot__base"><span>Website concept prepared by Meaningful Marketing House.</span><span>HAC is an equal opportunity provider, employer and lender.</span></div>
+  </div>
+</footer>
+
+<div class="ct-toast" id="ctToast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

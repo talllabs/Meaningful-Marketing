@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRDL74J04V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZRDL74J04V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Portfolio for the Housing Assistance Council | Meaningful Marketing</title>
+  <link rel="icon" href="/images/favicon/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png" />
+  <meta name="description" content="Selected website work from Meaningful Marketing, prepared for the Housing Assistance Council." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    /* ============ GATE ============ */
+    .f5-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--off-white, #f4f1ea);
+      padding: 20px;
+    }
+    .f5-gate__box {
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      background: var(--white, #fff);
+      border-radius: var(--radius, 18px);
+      box-shadow: 0 24px 64px rgba(12, 12, 12, 0.14);
+      padding: 40px 32px;
+      border: 1px solid rgba(12, 12, 12, 0.06);
+    }
+    .f5-gate__box h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .f5-gate__box p {
+      margin: 0 0 22px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+    .f5-gate__box input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(12, 12, 12, 0.15);
+      font-family: inherit;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+    .f5-gate__error {
+      display: none;
+      color: #b3261e;
+      font-size: 13px;
+      margin: -6px 0 14px;
+    }
+    body.f5-locked .f5-page-content { display: none; }
+    body:not(.f5-locked) .f5-gate { display: none; }
+
+    /* ============ PAGE ============ */
+    .nav {
+      background: var(--black) !important;
+      opacity: 1 !important;
+      transform: none !important;
+      pointer-events: auto !important;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+    @media (max-width: 768px) {
+      .nav__logo { display: block !important; }
+      .nav__inner { justify-content: space-between !important; }
+    }
+
+    .f5-hero {
+      position: relative;
+      padding: calc(var(--nav-h) + 64px) 0 56px;
+      text-align: center;
+      background:
+        radial-gradient(560px 320px at 14% 0%, rgba(212, 160, 32, 0.1), transparent 60%),
+        radial-gradient(620px 360px at 88% 8%, rgba(30, 138, 134, 0.08), transparent 60%),
+        var(--white);
+      overflow: hidden;
+    }
+    .f5-hero__stripe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--coral) 0 16.6%, var(--amber) 16.6% 33.3%, var(--gold) 33.3% 50%, var(--teal-dark) 50% 66.6%, var(--forest) 66.6% 83.3%, var(--navy) 83.3% 100%);
+    }
+    .f5-hero .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--teal-dark);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .f5-hero .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--gold);
+    }
+    .f5-hero h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: clamp(38px, 5.2vw, 64px);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+      font-weight: 700;
+    }
+    .f5-hero p {
+      margin: 18px 0 0;
+      font-size: clamp(18px, 1.8vw, 21px);
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+    .f5-hero__signoff {
+      margin: 24px 0 0;
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 700;
+      color: var(--text-body);
+    }
+
+    .f5-hero__layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+      text-align: left;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .f5-hero__photo img {
+      display: block;
+      width: 100%;
+    }
+
+    @media (max-width: 780px) {
+      .f5-hero__layout { grid-template-columns: 1fr; text-align: center; }
+      .f5-hero__photo { max-width: 340px; margin: 0 auto; }
+    }
+
+    .f5-case {
+      position: relative;
+      padding: clamp(56px, 7vw, 96px) 0;
+      overflow: hidden;
+    }
+    /* Accent color system: each case gets a distinct brand color */
+    .f5-case--acc-teal   { --f5-accent: var(--teal-dark); --f5-tint: #E7F3F2; }
+    .f5-case--acc-gold    { --f5-accent: var(--gold);      --f5-tint: #FBF3E1; }
+    .f5-case--acc-coral   { --f5-accent: var(--coral);     --f5-tint: #FBEEEC; }
+    .f5-case--acc-forest  { --f5-accent: var(--forest);    --f5-tint: #EAF3EE; }
+    .f5-case--acc-navy    { --f5-accent: var(--navy);      --f5-tint: #E9ECF3; }
+    .f5-case--acc-amber   { --f5-accent: var(--amber);     --f5-tint: #FDF2E4; }
+    .f5-case[class*="f5-case--acc"] { background: var(--f5-tint); }
+
+    .f5-case__num {
+      position: absolute;
+      top: clamp(-10px, -2vw, 10px);
+      right: clamp(-10px, 1vw, 40px);
+      font-size: clamp(140px, 18vw, 260px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      color: var(--f5-accent, var(--teal-dark));
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+      user-select: none;
+    }
+    .f5-case__grid--rev .f5-case__num { right: auto; left: clamp(-10px, 1vw, 40px); }
+
+    .f5-case__grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .f5-case__grid--rev .f5-case__visual { order: 2; }
+    .f5-case__grid--rev .f5-case__info { order: 1; }
+
+    .f5-case__badge {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 7px 15px;
+      border-radius: 999px;
+      background: var(--f5-accent, var(--teal-dark));
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 20px rgba(12, 12, 12, 0.12);
+    }
+    .f5-case__info h3 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 3.6vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+    }
+    .f5-case__sub {
+      display: inline-block;
+      margin: 0 0 18px;
+      padding-left: 14px;
+      border-left: 3px solid var(--f5-accent, var(--teal-dark));
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--f5-accent, var(--teal-dark));
+    }
+    .f5-case__info p {
+      margin: 0 0 14px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+    .f5-case__icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0 20px;
+    }
+    .f5-case__icons span {
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: var(--white);
+      border: 1.5px solid var(--f5-accent, var(--teal-dark));
+      color: var(--f5-accent, var(--teal-dark));
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .f5-case__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .f5-case__links a.btn { text-decoration: none; }
+    .f5-btn--white {
+      background: var(--white) !important;
+      color: var(--black) !important;
+      border-color: var(--white) !important;
+    }
+    .f5-btn--white:hover { background: var(--off-white) !important; }
+
+    .f5-case__nonprofit {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 0 14px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--f5-accent, var(--teal-dark));
+      color: var(--white);
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .f5-case__quote {
+      margin: 4px 0 18px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--f5-accent, var(--teal-dark));
+      background: rgba(255, 255, 255, 0.55);
+      border-radius: 0 12px 12px 0;
+      font-size: 14.5px;
+      line-height: 1.65;
+      font-style: italic;
+      color: var(--text-body);
+    }
+    .f5-case__quote cite {
+      display: block;
+      margin-top: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      font-style: normal;
+      color: var(--f5-accent, var(--teal-dark));
+    }
+
+    /* Browser-chrome mockup for each website */
+    .f5-browser {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 28px 70px rgba(12, 12, 12, 0.22);
+      background: #fff;
+      border-top: 5px solid var(--f5-accent, var(--teal-dark));
+      transition: transform 0.25s var(--ease-out, ease), box-shadow 0.25s ease;
+    }
+    .f5-case__visual:hover .f5-browser {
+      transform: translateY(-6px) rotate(-0.4deg);
+      box-shadow: 0 40px 90px rgba(12, 12, 12, 0.28);
+    }
+    .f5-browser__bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      background: #ececec;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .f5-browser__dots { display: flex; gap: 6px; flex-shrink: 0; }
+    .f5-browser__dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #d6d6d6;
+    }
+    .f5-browser__dots span:nth-child(1) { background: #ec6a5e; }
+    .f5-browser__dots span:nth-child(2) { background: #f4bf4f; }
+    .f5-browser__dots span:nth-child(3) { background: #61c554; }
+    .f5-browser__url {
+      flex: 1;
+      background: #fff;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: #7a7a7a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .f5-browser__body {
+      aspect-ratio: 16 / 11;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .f5-browser__body--photo {
+      padding: 0;
+      align-items: flex-start;
+      background: #f4f4f4;
+      aspect-ratio: auto;
+      height: auto;
+    }
+    .f5-browser__body--photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Two-site mini carousel (Pitcairn tourism + government) */
+    .f5-site-carousel__slide { display: none; }
+    .f5-site-carousel__slide--active { display: block; }
+    .f5-site-carousel__dots {
+      display: flex;
+      gap: 8px;
+      padding: 10px 14px;
+      background: #ececec;
+      border-top: 1px solid rgba(0,0,0,.06);
+    }
+    .f5-site-carousel__dot {
+      border: 0;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(0,0,0,.06);
+      color: var(--text-body);
+      cursor: pointer;
+    }
+    .f5-site-carousel__dot--active {
+      background: var(--teal-dark);
+      color: #fff;
+    }
+
+    /* Side-by-side live compare (Baldrige old vs. new) */
+    .f5-case--compare {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .f5-case__intro {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+    .f5-case__intro .f5-case__badge { margin-left: auto; margin-right: auto; }
+    .f5-case__intro .f5-case__icons,
+    .f5-case__intro .f5-case__links { justify-content: center; }
+    .f5-case__intro p { text-align: left; }
+
+    .f5-compare {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .f5-compare__col { display: flex; flex-direction: column; }
+    .f5-compare__callout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .f5-compare__callout-text {
+      display: inline-block;
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 800;
+      transform: rotate(-1.5deg);
+    }
+    .f5-compare__callout--old .f5-compare__callout-text { background: rgba(69,69,101,.12); color: #454565; }
+    .f5-compare__callout--new .f5-compare__callout-text { background: rgba(30,138,134,.14); color: var(--teal-dark); transform: rotate(1.5deg); }
+    .f5-compare__callout svg { width: 56px; height: 48px; margin-top: 2px; }
+    .f5-compare__pane--btn {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+    }
+    .f5-compare__pane--btn .f5-browser--shot {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .f5-compare__pane--btn:hover .f5-browser--shot {
+      transform: translateY(-4px);
+      box-shadow: 0 36px 80px rgba(12, 12, 12, 0.26);
+    }
+    .f5-browser--shot .f5-browser__bar {
+      flex-wrap: wrap;
+      gap: 8px 10px;
+    }
+    .f5-compare__label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+    .f5-compare__label--old { background: rgba(69,69,101,.14); color: #454565; }
+    .f5-compare__label--new { background: rgba(30,138,134,.14); color: var(--teal-dark); }
+    .f5-compare__shot-wrap {
+      position: relative;
+      overflow: hidden;
+      background: #f4f4f4;
+    }
+    .f5-compare__shot-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .f5-compare__shot-cta {
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: rgba(10, 10, 10, 0.85);
+      color: #fff;
+      font-size: 12.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .f5-compare__pane--btn:hover .f5-compare__shot-cta,
+    .f5-compare__pane--btn:focus-visible .f5-compare__shot-cta {
+      opacity: 1;
+    }
+
+    /* Site-choice modal */
+    .f5-site-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10, 10, 10, 0.82);
+      padding: 24px;
+    }
+    .f5-site-modal.is-open { display: flex; }
+    .f5-site-modal__inner {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      background: var(--white);
+      border-radius: var(--radius, 16px);
+      padding: 40px clamp(24px, 4vw, 40px) 36px;
+      text-align: center;
+    }
+    .f5-site-modal__close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: transparent;
+      border: 0;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+    .f5-site-modal__inner h3 {
+      margin: 6px 0 8px;
+      font-size: clamp(19px, 2.4vw, 24px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .f5-site-modal__inner p {
+      margin: 0 0 22px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .f5-site-modal__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .f5-site-modal__actions .btn { text-decoration: none; }
+
+    /* Proposal summary */
+    .f5-proposal {
+      padding: clamp(64px, 8vw, 100px) 0;
+      background: var(--white);
+      text-align: center;
+    }
+    .f5-proposal .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 14px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .f5-proposal .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--coral);
+    }
+    .f5-proposal h2 {
+      margin: 0 0 40px;
+      font-size: clamp(26px, 3.4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    .f5-proposal__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      text-align: left;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .f5-proposal__card {
+      padding: 26px 24px;
+      border-radius: 16px;
+      background: var(--off-white);
+      border-top: 4px solid var(--gold);
+    }
+    .f5-proposal__card--investment { border-top-color: var(--coral); background: #FBEEEC; }
+    .f5-proposal__label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+    }
+    .f5-proposal__card p {
+      margin: 0;
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+    .f5-proposal__card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-body);
+    }
+    .f5-proposal__card ul li {
+      position: relative;
+      padding-left: 16px;
+    }
+    .f5-proposal__card ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .f5-proposal__dates { font-weight: 700; margin-bottom: 4px !important; }
+    .f5-proposal__phases { font-size: 13px !important; color: var(--text-muted) !important; }
+    .f5-proposal__price {
+      font-size: 26px !important;
+      font-weight: 800;
+      color: var(--coral) !important;
+      line-height: 1.2;
+    }
+    .f5-proposal__price span {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .f5-proposal__price--sm { font-size: 18px !important; margin-top: 10px !important; }
+    .f5-proposal__signoff {
+      margin: 36px 0 0;
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 700;
+      color: var(--text-body);
+    }
+
+    @media (max-width: 800px) {
+      .f5-proposal__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .f5-proposal__grid { grid-template-columns: 1fr; }
+    }
+
+    /* Ask Us Anything trigger + bottom CTA */
+    .f5-ask-btn { background: var(--gold) !important; color: var(--black) !important; }
+    .f5-ask-cta {
+      padding: clamp(56px, 7vw, 88px) 0;
+      background: var(--off-white);
+      text-align: center;
+    }
+    .f5-ask-cta h2 {
+      margin: 0 0 12px;
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .f5-ask-cta p {
+      max-width: 560px;
+      margin: 0 auto 26px;
+      font-size: 15.5px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    /* Ask Us Anything modal */
+    .f5-ask-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9600;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      background: rgba(10, 10, 10, 0.82);
+      padding: 24px;
+      overflow-y: auto;
+    }
+    .f5-ask-modal.is-open { display: flex; }
+    .f5-ask-modal__inner {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      margin: 40px 0;
+      background: var(--white);
+      border-radius: var(--radius, 16px);
+      padding: 40px clamp(24px, 4vw, 40px) 34px;
+      text-align: center;
+    }
+    .f5-ask-modal__close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: transparent;
+      border: 0;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+    .f5-ask-modal__inner h2 {
+      margin: 6px 0 8px;
+      font-size: clamp(20px, 2.6vw, 26px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .f5-ask-modal__sub {
+      margin: 0 0 22px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .f5-ask-form {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .f5-ask-form__input {
+      flex: 1;
+      min-width: 0;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(12, 12, 12, 0.15);
+      font-family: inherit;
+      font-size: 14.5px;
+    }
+    .f5-ask-form__input:focus { outline: 2px solid var(--teal-dark); outline-offset: 1px; }
+    .f5-ask-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 6px;
+    }
+    .f5-ask-chip {
+      border: 1px solid rgba(12, 12, 12, 0.14);
+      background: var(--off-white);
+      color: var(--text-body);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+    }
+    .f5-ask-chip:hover { border-color: var(--teal-dark); color: var(--teal-dark); }
+    .f5-ask-chip[disabled] { opacity: 0.5; cursor: default; }
+    .f5-ask-answer {
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(12, 12, 12, 0.08);
+      text-align: left;
+    }
+    .f5-ask-answer__q {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--teal-dark);
+      margin-bottom: 8px;
+    }
+    .f5-ask-answer__q::before { content: "Q: "; }
+    .f5-ask-answer__a {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--text-body);
+      white-space: pre-line;
+    }
+    .f5-ask-answer__a.is-loading { color: var(--text-muted); font-style: italic; }
+    .f5-ask-answer__a.is-error { color: #b3261e; }
+    .f5-ask-modal__note {
+      margin: 22px 0 0;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 520px) {
+      .f5-ask-form { flex-direction: column; }
+    }
+
+    @media (max-width: 900px) {
+      .f5-compare { grid-template-columns: 1fr; }
+      .f5-case__grid { grid-template-columns: 1fr; }
+      .f5-case__grid--rev .f5-case__visual,
+      .f5-case__grid--rev .f5-case__info { order: initial; }
+    }
+
+    @media (max-width: 760px) {
+      .f5-hero { padding: calc(var(--nav-h) + 32px) 0 28px; }
+    }
+
+    /* ============ "WHY THESE MATTER" ============ */
+    .f5-why {
+      padding: clamp(64px, 8vw, 100px) 0;
+      background: var(--off-white);
+    }
+    .f5-why .container { max-width: 900px; }
+    .f5-why h2 {
+      margin: 0 0 40px;
+      font-size: clamp(26px, 3.4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      text-align: center;
+      color: var(--text-body);
+    }
+    .f5-why p {
+      max-width: 720px;
+      margin: 0 auto 14px;
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+    .f5-why a { color: var(--teal-dark); font-weight: 700; }
+    .f5-why__scroll-cue {
+      max-width: 560px;
+      margin: 36px auto 0 !important;
+      padding-top: 24px;
+      border-top: 1px solid rgba(12, 12, 12, 0.1);
+      text-align: center;
+      font-size: 16px !important;
+      font-weight: 700;
+      color: var(--text-body) !important;
+    }
+
+    /* ============ ASK US ANYTHING MOCKUP ============ */
+    .f5-demo {
+      padding: 72px 0 0;
+      background: var(--white);
+      color: var(--text-body);
+    }
+    .f5-demo__head {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .f5-demo__head .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 14px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .f5-demo__head .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--coral);
+    }
+    .f5-demo__head h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    /* ============ TWO REDESIGN CONCEPTS ============ */
+    .f5-concepts {
+      padding: 48px 0 clamp(56px, 7vw, 96px);
+      background: var(--white);
+    }
+    .f5-concept-feature {
+      max-width: 760px;
+      margin: 0 auto 8px;
+      padding: clamp(32px, 4vw, 44px) clamp(24px, 4vw, 40px);
+      background: var(--off-white);
+      border-radius: 20px;
+      border-top: 6px solid var(--gold);
+      box-shadow: 0 18px 50px rgba(12, 12, 12, 0.08);
+      text-align: center;
+    }
+    .f5-concept-feature h3 {
+      margin: 12px 0 8px;
+      font-size: clamp(22px, 2.8vw, 30px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .f5-concept-feature p {
+      margin: 0 0 20px;
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+    .f5-concept-feature .f5-concept-card__links { justify-content: center; }
+    .f5-concept-feature--wide { max-width: 1140px; }
+
+    .f5-live-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 28px;
+      text-align: left;
+    }
+    .f5-live-demo__pane { display: flex; flex-direction: column; }
+    .f5-live-demo__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-body);
+    }
+    .f5-live-demo__label::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+    .f5-live-demo__pane:nth-child(1) .f5-live-demo__label::before { background: var(--teal-dark); }
+    .f5-live-demo__pane:nth-child(2) .f5-live-demo__label::before { background: var(--coral); }
+    .f5-live-demo__pane:nth-child(1) .f5-browser { border-top: 5px solid var(--teal-dark); }
+    .f5-live-demo__pane:nth-child(2) .f5-browser { border-top: 5px solid var(--coral); }
+    .f5-live-demo .f5-browser { display: flex; flex-direction: column; }
+    .f5-live-demo__frame-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1440 / 900;
+      overflow: hidden;
+      background: #fff;
+    }
+    .f5-live-demo__frame {
+      display: block;
+      width: 1440px;
+      height: 900px;
+      border: 0;
+      background: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scale(var(--f5-frame-scale, 0.34));
+      transform-origin: 0 0;
+    }
+    .f5-live-demo .f5-concept-card__links { margin: 14px 0 0; justify-content: flex-start; }
+
+    @media (max-width: 900px) {
+      .f5-live-demo { grid-template-columns: 1fr; }
+    }
+
+    .f5-concept-card__badge {
+      display: inline-block;
+      padding: 7px 15px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .f5-concept-card__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .f5-concept-card__links a.btn { text-decoration: none; }
+
+    /* Program demos (Kid Builders, EDI, Learning Link) */
+    .f5-programs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; text-align: left; }
+    .f5-program { background: #fff; border-radius: 18px; border-top: 5px solid var(--teal-dark); box-shadow: 0 10px 30px rgba(0,0,0,.08); padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .f5-program:nth-child(2) { border-top-color: var(--coral); }
+    .f5-program:nth-child(3) { border-top-color: var(--gold); }
+    .f5-program h4 { margin: 0; font-size: 20px; }
+    .f5-program p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text-muted); }
+    .f5-program ul { margin: 0; padding-left: 18px; list-style: disc; font-size: 14px; line-height: 1.6; }
+    .f5-program .f5-concept-card__links { margin-top: auto; padding-top: 8px; }
+    @media (max-width: 900px) { .f5-programs { grid-template-columns: 1fr; } }
+
+
+    /* ============ Shared pitch additions ============ */
+    .f5-hero p + p { margin-top: 12px; }
+    .ih-relevant {
+      margin: 4px 0 18px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: var(--white);
+      border: 1.5px dashed var(--f5-accent, var(--teal-dark));
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+    .ih-relevant__label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--f5-accent, var(--teal-dark));
+    }
+    .ih-team {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 22px 0 26px;
+    }
+    .ih-team__card {
+      padding: 20px 22px;
+      border-radius: 16px;
+      background: var(--white);
+      border-top: 4px solid var(--teal-dark);
+      box-shadow: 0 10px 30px rgba(12, 12, 12, 0.06);
+      text-align: left;
+    }
+    .ih-team__card:nth-child(2) { border-top-color: var(--gold); }
+    .ih-team__card strong { display: block; font-size: 20px; margin-bottom: 4px; }
+    .ih-team__card span { font-size: 14.5px; color: var(--text-muted); line-height: 1.55; }
+    a.f5-compare__pane--btn { text-decoration: none; color: inherit; }
+    @media (max-width: 600px) { .ih-team { grid-template-columns: 1fr; } }
+    @media (max-width: 760px) { .f5-compare { grid-template-columns: 1fr; } }
+    /* ============ Westside additions ============ */
+    .f5-case__info em { font-style: italic; }
+    .wr-req { padding: clamp(64px, 8vw, 100px) 0; background: var(--white); text-align: center; }
+    .wr-req .eyebrow, .wr-plain .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px;
+      color: var(--teal-dark); font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    .wr-req .eyebrow::before, .wr-plain .eyebrow::before { content: ""; width: 26px; height: 3px; border-radius: 2px; background: var(--gold); }
+    .wr-req h2, .wr-plain h2 { margin: 0 0 36px; font-size: clamp(26px, 3.4vw, 40px); font-weight: 700; letter-spacing: -0.03em; }
+    .wr-req__grid {
+      list-style: none; counter-reset: req; margin: 0 auto; padding: 0; max-width: 1100px;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; text-align: left;
+    }
+    .wr-req__card {
+      counter-increment: req; position: relative; padding: 22px 20px 20px; border-radius: 16px;
+      background: var(--off-white); border-top: 4px solid var(--teal-dark);
+    }
+    .wr-req__card:nth-child(4n+2) { border-top-color: var(--gold); }
+    .wr-req__card:nth-child(4n+3) { border-top-color: var(--coral); }
+    .wr-req__card:nth-child(4n+4) { border-top-color: var(--navy); }
+    .wr-req__card::before {
+      content: counter(req); display: inline-grid; place-items: center; width: 28px; height: 28px;
+      margin-bottom: 10px; border-radius: 50%; background: var(--black); color: var(--white); font-size: 13px; font-weight: 700;
+    }
+    .wr-req__card b { display: block; font-size: 16px; margin-bottom: 6px; }
+    .wr-req__card p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-muted); }
+    .wr-access {
+      max-width: 1100px; margin: 22px auto 0; padding: 26px 28px; border-radius: 18px; text-align: left;
+      background: #E7F3F2; border-left: 6px solid var(--teal-dark);
+    }
+    .wr-access h3 { margin: 0 0 12px; font-size: clamp(18px, 2vw, 22px); letter-spacing: -0.01em; }
+    .wr-access ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 15px; line-height: 1.6; color: var(--text-body); }
+    .wr-plain { padding: clamp(64px, 8vw, 100px) 0; background: var(--off-white); text-align: center; }
+    .wr-plain__intro { max-width: 640px; margin: -18px auto 28px; font-size: 15.5px; line-height: 1.65; color: var(--text-muted); }
+    .wr-plain__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 1000px; margin: 0 auto; text-align: left; }
+    .wr-plain__card { padding: 26px 24px; border-radius: 18px; background: var(--white); box-shadow: 0 10px 30px rgba(12,12,12,.06); }
+    .wr-plain__card--before { border-top: 5px solid #8a8aa3; }
+    .wr-plain__card--after { border-top: 5px solid var(--forest); }
+    .wr-plain__card p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--text-body); }
+    .wr-plain__card--before p { color: var(--text-muted); }
+    .wr-plain__tag {
+      display: inline-block; margin-bottom: 12px; padding: 5px 12px; border-radius: 999px;
+      font-size: 11.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .wr-plain__card--before .wr-plain__tag { background: rgba(69,69,101,.12); color: #454565; }
+    .wr-plain__card--after .wr-plain__tag { background: #EAF3EE; color: var(--forest); }
+    .wr-plain__note { margin: 24px 0 0; font-weight: 700; color: var(--text-body); }
+    @media (max-width: 960px) { .wr-req__grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .wr-req__grid, .wr-plain__grid { grid-template-columns: 1fr; } }
+  </style>
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="f5-locked">
+
+<!-- ============ PASSWORD GATE ============ -->
+<div class="f5-gate" id="f5Gate">
+  <div class="f5-gate__box">
+    <h1>Website Portfolio for the Housing Assistance Council</h1>
+    <p>Prepared for the Housing Assistance Council. Please enter the password to continue.</p>
+    <form id="f5GateForm" autocomplete="off">
+      <label for="f5GatePw" style="position:absolute;left:-9999px">Password</label>
+      <input type="password" id="f5GatePw" placeholder="Password" autocomplete="off" />
+      <p class="f5-gate__error" id="f5GateError">That password isn't quite right — please try again.</p>
+      <button type="submit" class="btn btn--gold btn--lg" style="width:100%;">Enter →</button>
+    </form>
+  </div>
+</div>
+
+<div class="f5-page-content">
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--visible scrolled" id="nav">
+  <div class="nav__inner container">
+    <a href="/index.html" class="nav__logo">
+      <div class="logo-mark">
+        <span class="logo-mark__top">MEANINGFUL</span>
+        <span class="logo-mark__bot">MARKETING</span>
+      </div>
+    </a>
+    <button class="btn btn--nav f5-ask-btn js-open-ask">Ask Us Anything</button>
+    <button class="btn btn--nav js-open-contact">Contact Us</button>
+    <button class="nav__burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">
+    <span class="mobile-menu__close-label">CLOSE MENU</span>
+    <span class="mobile-menu__close-x">✕</span>
+  </button>
+  <ul>
+    <li>
+      <a href="/index.html" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">GO TO</span>
+        <span class="mobile-nav-stamp__main">HOMEPAGE</span>
+      </a>
+    </li>
+    <li>
+      <a href="#contact" class="mobile-nav-stamp">
+        <span class="mobile-nav-stamp__pre">CONTACT</span>
+        <span class="mobile-nav-stamp__main">US</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="f5-hero">
+  <div class="f5-hero__stripe"></div>
+  <div class="f5-hero__layout">
+    <div class="f5-hero__text">
+      <span class="eyebrow">Prepared for the Housing Assistance Council</span>
+      <h1>Selected Website Portfolio</h1>
+      <p>For more than 15 years, we've helped nonprofits and mission-driven teams build websites that are easy to use, easy to search, and easy for staff to manage.</p>
+      <p>Your RFP is clear: help people find resources quickly, meet WCAG 2.2 AA, load fast on every device, and let staff publish on their own. Below are five projects we think are most relevant to HAC, plus a clickable mockup of a new ruralhome.org, including a searchable Resource Library and a Consulting Hub.</p>
+      <p class="f5-hero__signoff">— Ally &amp; Brad</p>
+    </div>
+    <div class="f5-hero__photo">
+      <img src="/images/ally%20and%20brad.png" alt="Ally and Brad LaBriola, co-founders of Meaningful Marketing" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 BALDRIGE ============ -->
+<section class="f5-case f5-case--acc-navy f5-case--compare" aria-label="The Alliance for Performance Excellence">
+  <span class="f5-case__num" aria-hidden="true">01</span>
+  <div class="f5-case__intro">
+    <span class="f5-case__badge">National Nonprofit · Full Redesign &amp; Staff Portal</span>
+    <br>
+    <span class="f5-case__nonprofit">National Nonprofit</span>
+    <h3>The Alliance for Performance Excellence</h3>
+    <p class="f5-case__sub">Washington, D.C. | From an old WordPress site to a modern website and staff portal</p>
+    <p>This national nonprofit serves many audiences at once: state programs, member organizations, award applicants, and the public. Its WordPress site had become hard to navigate and hard for staff to keep up to date.</p>
+    <p>We reorganized the site around what each audience needs, rebuilt it from the ground up, and migrated all of its content while keeping important links and search visibility. It now includes a national directory, an interactive map, news, events, documents, and simple editing tools for staff.</p>
+    <div class="ih-relevant">
+      <span class="ih-relevant__label">Why it's relevant to HAC</span>
+      Like HAC, the Alliance is a national nonprofit in Washington, D.C. with many audiences and a large library of documents. We reorganized it around what each audience needs, moved everything over, and gave staff tools to publish without a developer.
+    </div>
+    <div class="f5-case__icons">
+      <span>Multi-Audience Navigation</span>
+      <span>Full Content Migration</span>
+      <span>Links &amp; SEO Preserved</span>
+      <span>Staff Editing Tools</span>
+    </div>
+  </div>
+
+  <div class="f5-compare">
+    <div class="f5-compare__col">
+      <div class="f5-compare__callout f5-compare__callout--old">
+        <span class="f5-compare__callout-text">👈 Before: their old WordPress site</span>
+        <svg viewBox="0 0 60 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M 10 4 Q 58 8 42 42" stroke="#454565" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M 30 37 L 40 45 L 50 34" stroke="#454565" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="f5-compare__pane">
+        <div class="f5-browser f5-browser--shot">
+          <div class="f5-browser__bar">
+            <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+            <div class="f5-browser__url">baldrigealliance.org</div>
+            <span class="f5-compare__label f5-compare__label--old">Before</span>
+          </div>
+          <div class="f5-compare__shot-wrap">
+            <img src="/images/baldrige-current-site.webp" alt="The Alliance for Performance Excellence — previous WordPress site" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="f5-compare__col">
+      <div class="f5-compare__callout f5-compare__callout--new">
+        <span class="f5-compare__callout-text">✨ After: rebuilt with a staff portal</span>
+        <svg viewBox="0 0 60 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M 50 4 Q 2 8 18 42" stroke="var(--teal-dark)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M 30 37 L 20 45 L 10 34" stroke="var(--teal-dark)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <a class="f5-compare__pane f5-compare__pane--btn" href="https://baldrigealliance.org/" target="_blank" rel="noopener">
+        <div class="f5-browser f5-browser--shot">
+          <div class="f5-browser__bar">
+            <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+            <div class="f5-browser__url">baldrigealliance.org</div>
+            <span class="f5-compare__label f5-compare__label--new">After</span>
+          </div>
+          <div class="f5-compare__shot-wrap">
+            <img src="/images/baldrige-staging-site.webp" alt="The Alliance for Performance Excellence — new website" loading="lazy">
+            <span class="f5-compare__shot-cta">Visit the New Site →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 SIGMUND ============ -->
+<section class="f5-case f5-case--acc-gold" aria-label="The Sigmund Project">
+  <span class="f5-case__num" aria-hidden="true">02</span>
+  <div class="f5-case__grid f5-case__grid--rev">
+    <div class="f5-case__visual">
+      <div class="f5-browser">
+        <div class="f5-browser__bar">
+          <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+          <div class="f5-browser__url">thesigmundproject.org</div>
+        </div>
+        <div class="f5-browser__body f5-browser__body--photo">
+          <img src="/images/sigmund-home-screenshot.webp" alt="The Sigmund Project — homepage">
+        </div>
+      </div>
+    </div>
+    <div class="f5-case__info">
+      <span class="f5-case__badge">Searchable Resource Hub + Engagement</span>
+      <h3>The Sigmund Project</h3>
+      <p class="f5-case__sub">Marina del Rey, CA | Brand, website, and community since 2020</p>
+      <p>We created The Sigmund Project's brand, website, social media strategy, and online community. It has grown into a network that serves more than 10,000 tourism professionals.</p>
+      <p>We have kept the brand consistent across the website, email, and social media for six years. As the organization grew, we rebuilt its website with searchable resources, membership features, and an RFP Hub.</p>
+      <div class="ih-relevant">
+        <span class="ih-relevant__label">Why it's relevant to HAC</span>
+        HAC's site is a resource hub for practitioners. Sigmund shows how we make a growing library searchable, and turn visitors into newsletter subscribers and repeat users.
+      </div>
+      <blockquote class="f5-case__quote">
+        "We started on Squarespace, but the website was holding us back. Once we moved to Lovable, the possibilities opened up and the organization's momentum really took off."
+        <cite>— Alan Elliott Merschen, Founder, The Sigmund Project</cite>
+      </blockquote>
+      <div class="f5-case__icons">
+        <span>Brand System</span>
+        <span>10,000+ Member Community</span>
+        <span>Searchable Resources</span>
+        <span>6 Years of Partnership</span>
+      </div>
+      <div class="f5-case__links">
+        <a class="btn btn--primary" href="https://www.thesigmundproject.org/" target="_blank" rel="noopener">Visit Site →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 ADVENTURE INTERNATIONAL ============ -->
+<section class="f5-case f5-case--acc-coral" aria-label="Adventure International">
+  <span class="f5-case__num" aria-hidden="true">03</span>
+  <div class="f5-case__grid">
+    <div class="f5-case__visual">
+      <div class="f5-browser">
+        <div class="f5-browser__bar">
+          <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+          <div class="f5-browser__url">adventure-international.com</div>
+        </div>
+        <div class="f5-browser__body f5-browser__body--photo">
+          <img src="/images/adventure-international-home-screenshot.webp" alt="Adventure International — homepage">
+        </div>
+      </div>
+    </div>
+    <div class="f5-case__info">
+      <span class="f5-case__badge">WordPress Migration · Faster Site, Better SEO</span>
+      <h3>Adventure International</h3>
+      <p class="f5-case__sub">Venice Beach, CA | Website migration with nothing lost</p>
+      <p>We moved Adventure International's website off WordPress and kept everything: posts, pages, content, links, page structure, and search rankings. The move was smooth, and nothing was lost.</p>
+      <p>The result is a faster website with better search results. Staff can now update content with confidence, without workarounds or support tickets.</p>
+      <div class="ih-relevant">
+        <span class="ih-relevant__label">Why it's relevant to HAC</span>
+        Your RFP calls out slow pages and search visibility. This migration kept every page, link and ranking, and made the site faster with better search results.
+      </div>
+      <blockquote class="f5-case__quote">
+        "We were amazed by how seamless the WordPress migration was, including the posts, content and SEO. By the end, we did not want to move away from Lovable because it was such a powerful builder and could grow with our organization."
+        <cite>— Frank Castro, Founder, Adventure International</cite>
+      </blockquote>
+      <div class="f5-case__icons">
+        <span>Full Content Migration</span>
+        <span>Links &amp; SEO Preserved</span>
+        <span>Faster Performance</span>
+        <span>Easier Staff Updates</span>
+      </div>
+      <div class="f5-case__links">
+        <a class="btn btn--primary" href="https://www.adventure-international.com/" target="_blank" rel="noopener">Visit Site →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 INSPIRE ============ -->
+<section class="f5-case f5-case--acc-forest" aria-label="Inspire Life Skills">
+  <span class="f5-case__num" aria-hidden="true">04</span>
+  <div class="f5-case__grid f5-case__grid--rev">
+    <div class="f5-case__visual">
+      <div class="f5-browser">
+        <div class="f5-browser__bar">
+          <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+          <div class="f5-browser__url">inspirelifeskills.org</div>
+        </div>
+        <div class="f5-browser__body f5-browser__body--photo">
+          <img src="/images/inspire-home-screenshot.webp" alt="Inspire Life Skills — homepage">
+        </div>
+      </div>
+    </div>
+    <div class="f5-case__info">
+      <span class="f5-case__badge">Housing-Related Nonprofit · Clear, Respectful Writing</span>
+      <br>
+      <span class="f5-case__nonprofit">501(c)(3) Nonprofit</span>
+      <h3>Inspire Life Skills</h3>
+      <p class="f5-case__sub">Corona, CA | Website rebuild and ongoing communications</p>
+      <p>Inspire Life Skills supports young people who have experienced foster care or homelessness. We rebuilt its website, moving it off a hard-to-maintain WordPress install, at about 10% of the original website's cost.</p>
+      <p>We also support its ongoing communications. We share the stories of the young people it serves through the website, video, email, and fundraising campaigns, always in clear, respectful, person-first language.</p>
+      <div class="ih-relevant">
+        <span class="ih-relevant__label">Why it's relevant to HAC</span>
+        Inspire serves young people who have experienced homelessness. We know how to explain housing help clearly and respectfully, and how to keep costs down for a mission-driven team.
+      </div>
+      <div class="f5-case__icons">
+        <span>Human Services</span>
+        <span>~10% of Original Cost</span>
+        <span>Person-First Storytelling</span>
+        <span>Video &amp; Email</span>
+      </div>
+      <div class="f5-case__links">
+        <a class="btn btn--primary" href="https://www.inspirelifeskills.org/" target="_blank" rel="noopener">Visit Site →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 PITCAIRN GOVERNMENT + TOURISM ============ -->
+<section class="f5-case f5-case--acc-teal" aria-label="Pitcairn Islands: Government + Tourism">
+  <span class="f5-case__num" aria-hidden="true">05</span>
+  <div class="f5-case__grid">
+    <div class="f5-case__visual">
+      <div class="f5-browser f5-site-carousel" data-carousel="pitcairn-sites">
+        <div class="f5-site-carousel__slide f5-site-carousel__slide--active" data-slide>
+          <div class="f5-browser__bar">
+            <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+            <div class="f5-browser__url">government.pn</div>
+          </div>
+          <div class="f5-browser__body f5-browser__body--photo">
+            <img src="/images/pitcairn-government-home-screenshot.webp" alt="Government of the Pitcairn Islands — homepage">
+          </div>
+        </div>
+        <div class="f5-site-carousel__slide" data-slide>
+          <div class="f5-browser__bar">
+            <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+            <div class="f5-browser__url">visitpitcairn.pn</div>
+          </div>
+          <div class="f5-browser__body f5-browser__body--photo">
+            <img src="/images/pitcairn-home-screenshot.webp" alt="Pitcairn Islands Tourism — homepage">
+          </div>
+        </div>
+        <div class="f5-site-carousel__dots" role="group" aria-label="Choose which Pitcairn site to show">
+          <button class="f5-site-carousel__dot f5-site-carousel__dot--active" data-index="0">Government</button>
+          <button class="f5-site-carousel__dot" data-index="1">Tourism</button>
+        </div>
+      </div>
+    </div>
+    <div class="f5-case__info">
+      <span class="f5-case__badge">Remote Community · Fast on Slow Connections</span>
+      <h3>Pitcairn Islands: Government + Tourism</h3>
+      <p class="f5-case__sub">Two official government websites | A partnership of more than a decade</p>
+      <p>We built and have helped manage government.pn and visitpitcairn.pn for more than 10 years. Both are run by the Pitcairn Islands Government and give residents and visitors information they rely on: requirements, forms, schedules, bookings, and public updates.</p>
+      <p>We organized a lot of complex information into clear, simple paths. For much of our partnership, the island relied on satellite internet, so the sites had to load quickly on slow connections. Ally also trained young island residents to update the websites themselves.</p>
+      <div class="ih-relevant">
+        <span class="ih-relevant__label">Why it's relevant to HAC</span>
+        Many of HAC's users are in rural places with slow internet. We have spent a decade building sites that work on weak connections, and supporting them long after launch.
+      </div>
+      <blockquote class="f5-case__quote">
+        "Working with Meaningful Marketing is great because they do not propose a solution just to sell it. They give you what you need and grow with you."
+        <cite>— Heather Menzies, Tourism Coordinator, Pitcairn Islands</cite>
+      </blockquote>
+      <div class="f5-case__icons">
+        <span>Two Government Websites</span>
+        <span>Forms &amp; Public Updates</span>
+        <span>Staff Trained to Self-Edit</span>
+        <span>10+ Years of Support</span>
+      </div>
+      <div class="f5-case__links">
+        <a class="btn btn--primary" href="https://www.government.pn/" target="_blank" rel="noopener">Government Site →</a>
+        <a class="btn btn--ghost f5-btn--white" href="https://www.visitpitcairn.pn/" target="_blank" rel="noopener">Tourism Site →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SMALL TEAM. BIG COMMITMENT. ============ -->
+<section class="f5-why">
+  <div class="container">
+    <h2>Small Team. Big Commitment.</h2>
+    <p>When you work with Meaningful Marketing, you work directly with us. No hand-offs, no junior account managers.</p>
+    <div class="ih-team">
+      <div class="ih-team__card">
+        <strong>Ally</strong>
+        <span>Strategy, plain-language writing, content, project management and communications. Your day-to-day contact.</span>
+      </div>
+      <div class="ih-team__card">
+        <strong>Brad</strong>
+        <span>Development, accessibility, technical implementation, testing and launch.</span>
+      </div>
+    </div>
+    <p>We especially enjoy working with teams doing meaningful work across many communities. We understand busy communications staff, funder expectations, and how important it is to have a website your team can confidently manage.</p>
+    <p>We would be honored to help HAC make its 50+ years of rural housing knowledge easier for everyone to find and use.</p>
+    <p style="text-align:center; margin-top:24px;">More of our work: <a href="/index.html" style="color:var(--teal-dark); font-weight:700;">meaningfulmarketinghouse.com</a></p>
+  </div>
+</section>
+
+<!-- ============ HOW WE MEET YOUR REQUIREMENTS ============ -->
+<section class="wr-req">
+  <div class="container">
+    <span class="eyebrow">Built Around Your RFP</span>
+    <h2>Your Goals, and How We'll Measure Them</h2>
+    <ol class="wr-req__grid">
+      <li class="wr-req__card"><b>Find resources quickly</b><p>Navigation built around your audiences, not your org chart. Every report gets a tagged web page, and we test with real users before and after launch.</p></li>
+      <li class="wr-req__card"><b>Meet accessibility requirements</b><p>WCAG 2.2 AA, verified with automated tools and manual testing: keyboard only, screen readers (VoiceOver, NVDA, TalkBack) and zoom.</p></li>
+      <li class="wr-req__card"><b>Perform on all devices</b><p>Light, fast pages designed for phones and slow rural connections, with Core Web Vitals in the "good" range.</p></li>
+      <li class="wr-req__card"><b>Staff publish on their own</b><p>Ready-made blocks for pages, reports, trainings and news, plus hands-on training, a user manual and recorded how-tos.</p></li>
+      <li class="wr-req__card"><b>Credibility with funders</b><p>A polished design built from HAC's brand standards, with your impact front and center.</p></li>
+      <li class="wr-req__card"><b>Grow engagement</b><p>Newsletter sign-ups, training registration and downloads, each tracked in an analytics dashboard against today's baseline.</p></li>
+      <li class="wr-req__card"><b>Lower long-term cost and risk</b><p>A supported, regularly patched platform with documented hosting and maintenance, and no unnecessary plugins.</p></li>
+      <li class="wr-req__card"><b>Adaptable and owned by HAC</b><p>Easy to reorganize as funding and projects change. All deliverables, accounts and content belong to HAC.</p></li>
+    </ol>
+    <div class="wr-access">
+      <h3>New features from your scope of work</h3>
+      <ul>
+        <li><b>Central hub for consulting products:</b> one place to browse services by audience and send a request, tracked for staff.</li>
+        <li><b>Searchable resource library:</b> reports, toolkits and recordings filtered by type, topic and year, with accessible downloads.</li>
+        <li><b>Multimedia:</b> videos with captions and transcripts, and charts with text descriptions and data tables.</li>
+        <li><b>Connected data sites:</b> clear paths to Rural Data Central, Veterans Data Central and Heirs Central.</li>
+        <li><b>Analytics and SEO:</b> dashboard setup, search-friendly pages, and old links redirected so nothing breaks.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TECHNOLOGY + AI ============ -->
+<section class="wr-plain" style="background:var(--white)">
+  <div class="container">
+    <span class="eyebrow">Recommended Technology</span>
+    <h2>Platform, Hosting and Long-Term Cost</h2>
+    <p class="wr-plain__intro">We'll confirm the best fit in Discovery. Both options give HAC a supported, patched platform and full ownership. Our written proposal includes a year-by-year cost of ownership for each.</p>
+    <div class="wr-plain__grid">
+      <div class="wr-plain__card wr-plain__card--after">
+        <span class="wr-plain__tag">Option A · WordPress, done right</span>
+        <p>A clean, custom WordPress theme with the block editor your staff may already know, very few plugins, and managed hosting with automatic security updates.</p>
+      </div>
+      <div class="wr-plain__card wr-plain__card--before" style="border-top-color:var(--navy)">
+        <span class="wr-plain__tag">Option B · Custom site + staff portal</span>
+        <p style="color:var(--text-body)">A modern custom site built with Lovable, like the Alliance's: fast by design, no plugins to patch, and a staff portal made for HAC's content.</p>
+      </div>
+    </div>
+    <div class="wr-access" style="max-width:1000px; text-align:left">
+      <h3>Our use of AI tools</h3>
+      <ul>
+        <li>Your RFP asks vendors to disclose AI use, and we're glad to. We use AI tools to help draft copy, write and check code, and build mockups like the ones on this page. A person reviews everything before it ships.</li>
+        <li>The "Ask Us Anything" helper on this page uses AI, and only answers from this page's content.</li>
+        <li>We will not enter HAC confidential data into any third-party AI tool without HAC's written approval.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAIN LANGUAGE EXAMPLE ============ -->
+<section class="wr-plain">
+  <div class="container">
+    <span class="eyebrow">Content Everyone Can Use</span>
+    <h2>Clear Words for Every Audience</h2>
+    <p class="wr-plain__intro">Researchers want detail, and a small local group wants to know how to apply. We lead with a clear summary and keep the detail below it. Here is an example. (For illustration.)</p>
+    <div class="wr-plain__grid">
+      <div class="wr-plain__card wr-plain__card--before">
+        <span class="wr-plain__tag">Before · Grade 19 reading level</span>
+        <p>"Pursuant to applicable program requirements, eligible entities may leverage HAC loan capital to facilitate predevelopment activities, including site acquisition and infrastructure, in furtherance of affordable housing production."</p>
+      </div>
+      <div class="wr-plain__card wr-plain__card--after">
+        <span class="wr-plain__tag">After · Grade 5 reading level</span>
+        <p>"Local groups that qualify can borrow from HAC to pay early project costs, like buying land or putting in roads and water lines. This helps get affordable homes built."</p>
+      </div>
+    </div>
+    <p class="wr-plain__note">The staff editor in the mockup below checks this automatically. Try it!</p>
+  </div>
+</section>
+
+<!-- ============ MOCKUP HEADER ============ -->
+<section class="f5-demo">
+  <div class="f5-demo__head">
+    <span class="eyebrow">A Mockup of What's Possible</span>
+    <h2>What a New ruralhome.org Could Look Like</h2>
+  </div>
+</section>
+
+<!-- ============ LIVE MOCKUP ============ -->
+<section class="f5-concepts">
+  <div class="f5-concept-feature f5-concept-feature--wide">
+    <span class="f5-concept-card__badge">Live, Clickable Prototype</span>
+    <h3>Explore the Public Site and the Staff Editor</h3>
+    <p>This is just a mockup to show how we would organize the site around HAC's audiences, and how staff would publish pages, reports and trainings while the editor checks wording and accessibility for them, plus the analytics dashboard tied to your goals. Try both below, or open either in a new tab. (Content is sample text, for illustration only.)</p>
+    <div class="f5-live-demo">
+      <div class="f5-live-demo__pane">
+        <div class="f5-live-demo__label">Public Website</div>
+        <div class="f5-browser">
+          <div class="f5-browser__bar">
+            <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+            <div class="f5-browser__url">hac concept · homepage</div>
+          </div>
+          <div class="f5-live-demo__frame-wrap">
+            <iframe class="f5-live-demo__frame" src="/for-hac/site/index.html" loading="lazy" title="HAC public website prototype"></iframe>
+          </div>
+        </div>
+        <div class="f5-concept-card__links">
+          <a class="btn btn--primary" href="/for-hac/site/index.html" target="_blank" rel="noopener">Open in a New Tab →</a>
+        </div>
+      </div>
+      <div class="f5-live-demo__pane">
+        <div class="f5-live-demo__label">Staff Editor</div>
+        <div class="f5-browser">
+          <div class="f5-browser__bar">
+            <div class="f5-browser__dots"><span></span><span></span><span></span></div>
+            <div class="f5-browser__url">hac concept · staff editor</div>
+          </div>
+          <div class="f5-live-demo__frame-wrap">
+            <iframe class="f5-live-demo__frame" src="/for-hac/site/admin.html" loading="lazy" title="HAC staff editor prototype"></iframe>
+          </div>
+        </div>
+        <div class="f5-concept-card__links">
+          <a class="btn btn--primary" href="/for-hac/site/admin.html" target="_blank" rel="noopener">Open in a New Tab →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="f5-concept-feature f5-concept-feature--wide" style="margin-top:32px">
+    <span class="f5-concept-card__badge">Three More Clickable Pages</span>
+    <h3>The Resource Library, the Consulting Hub and the Analytics Dashboard</h3>
+    <p>These show three things your RFP asks for: finding research fast, a central hub for consulting products, and measuring results. Each works on phones too.</p>
+    <div class="f5-programs">
+      <div class="f5-program">
+        <h4>Searchable Resource Library</h4>
+        <p>Search and filter reports, toolkits, policy briefs and recordings by type, topic and year.</p>
+        <ul><li>Every PDF gets a web page</li><li>Links to the Data Central sites</li></ul>
+        <div class="f5-concept-card__links"><a class="btn btn--primary" href="/for-hac/site/resources.html" target="_blank" rel="noopener">Search the Library →</a></div>
+      </div>
+      <div class="f5-program">
+        <h4>Consulting Hub</h4>
+        <p>Pick who you are, see the services that fit, and send a request in one step.</p>
+        <ul><li>Services managed by staff</li><li>Requests tracked in the portal</li></ul>
+        <div class="f5-concept-card__links"><a class="btn btn--primary" href="/for-hac/site/consulting.html" target="_blank" rel="noopener">Browse Consulting →</a></div>
+      </div>
+      <div class="f5-program">
+        <h4>Editor + Analytics</h4>
+        <p>Watch a loan paragraph drop from grade 19 to grade 5, then open the Analytics tab to see each RFP goal tracked.</p>
+        <ul><li>Accessibility checks before publishing</li><li>Goals vs. baseline at a glance</li></ul>
+        <div class="f5-concept-card__links"><a class="btn btn--primary" href="/for-hac/site/admin.html" target="_blank" rel="noopener">Try the Editor →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROPOSAL SUMMARY ============ -->
+<section class="f5-proposal">
+  <div class="container">
+    <span class="eyebrow">Our Proposal, At a Glance</span>
+    <h2>What We're Proposing for HAC</h2>
+    <div class="f5-proposal__grid">
+      <div class="f5-proposal__card">
+        <span class="f5-proposal__label">The Goal</span>
+        <p>A fast, accessible ruralhome.org where every audience finds what they need quickly, and HAC staff publish confidently on their own.</p>
+      </div>
+      <div class="f5-proposal__card">
+        <span class="f5-proposal__label">What We'll Deliver</span>
+        <ul>
+          <li>A fully designed, working website</li>
+          <li>Searchable library and consulting hub</li>
+          <li>Content migration with links redirected</li>
+          <li>WCAG 2.2 AA and Core Web Vitals testing</li>
+          <li>Analytics dashboard and SEO setup</li>
+          <li>User manual, staff training and documentation</li>
+        </ul>
+      </div>
+      <div class="f5-proposal__card">
+        <span class="f5-proposal__label">Timeline</span>
+        <p class="f5-proposal__dates">February 1 – September 30, 2027</p>
+        <p class="f5-proposal__phases">Discover &amp; Test Today's Site → Plan &amp; Design → Build &amp; Migrate → Test → Train &amp; Launch</p>
+      </div>
+      <div class="f5-proposal__card">
+        <span class="f5-proposal__label">The Result</span>
+        <p>A website HAC owns, with measurable gains against today's baseline, full documentation, trained staff and ongoing support.</p>
+      </div>
+      <div class="f5-proposal__card f5-proposal__card--investment">
+        <span class="f5-proposal__label">Platform</span>
+        <p><strong>Option A:</strong> WordPress, done right.</p>
+        <p style="margin-top:10px"><strong>Option B:</strong> a custom site and staff portal. We'll recommend one in Discovery.</p>
+      </div>
+    </div>
+    <p class="f5-proposal__signoff">We'd love to discuss further 🙂</p>
+  </div>
+</section>
+
+<!-- ============ ASK US ANYTHING (BOTTOM) ============ -->
+<section class="f5-ask-cta">
+  <div class="container">
+    <h2>Still Have a Question?</h2>
+    <p>Ask about any project on this page, our approach, or what a new ruralhome.org could look like — you'll get a plain-language answer pulled straight from this page.</p>
+    <button class="btn btn--primary btn--lg js-open-ask">Ask Us Anything →</button>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="contact">
+  <div class="cta__inner">
+    <p class="cta__prelude reveal-up">Let's make<br><span class="cta__prelude-teal">something</span></p>
+    <h2 class="cta__word reveal-up">MEANINGFUL.</h2>
+    <div class="cta__schedule reveal-up">
+      <p>Schedule a time that works for you <button class="cta__here js-open-contact">here</button></p>
+      <svg class="cta__arrow" viewBox="0 0 180 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 170 8 Q 185 40 140 55 Q 100 68 30 52" stroke="#D4A020" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M 38 45 L 28 53 L 40 58" stroke="#D4A020" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="logo-mark logo-mark--sm">
+          <span class="logo-mark__top">MEANINGFUL</span>
+          <span class="logo-mark__bot">MARKETING</span>
+        </div>
+        <p>Serving mission-driven organizations since 2009.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="/index.html">Home</a>
+        <button class="footer__nav-link js-open-contact">Contact</button>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2009–2026 Meaningful Marketing House. All rights reserved.</span>
+      <span>meaningfulmarketinghouse.com</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ VIDEO LIGHTBOX (kept, unused, so js/script.js's global listeners don't error) ============ -->
+<div class="video-overlay" id="videoOverlay" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+  <button class="video-overlay__close" id="videoClose" aria-label="Close video">✕</button>
+  <div class="video-overlay__frame">
+    <iframe id="videoFrame" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>
+    <video id="videoNative" controls hidden playsinline muted></video>
+  </div>
+</div>
+
+<!-- ============ CONTACT MODAL ============ -->
+<div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal modal--split">
+    <button class="modal__close" id="modalClose" aria-label="Close">✕</button>
+
+    <!-- Mobile chooser screen (shown first on mobile) -->
+    <div class="modal__chooser" id="modalChooser">
+      <h2 class="modal__heading">Let's connect!</h2>
+      <p class="modal__sub">How would you like to reach us?</p>
+      <div class="modal__choice-grid">
+        <button class="modal__choice-btn" id="chooseCalendly">
+          <span class="modal__choice-icon">📅</span>
+          <span class="modal__choice-title">Schedule a Call</span>
+          <span class="modal__choice-desc">Pick a time that works for you — no pressure</span>
+        </button>
+        <button class="modal__choice-btn" id="chooseForm">
+          <span class="modal__choice-icon">✉️</span>
+          <span class="modal__choice-title">Send a Message</span>
+          <span class="modal__choice-desc">We'll reply within one business day</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Back button (mobile panel mode only) -->
+    <button class="modal__back-btn" id="modalBack">← Back</button>
+
+    <div class="modal__split">
+
+      <!-- LEFT: Calendly -->
+      <div class="modal__panel modal__panel--calendly">
+        <span class="eyebrow eyebrow--light">Book a Time</span>
+        <h2 class="modal__heading">Schedule an Intro Call</h2>
+        <p class="modal__sub">Pick a time that works for you — no pressure, just a friendly conversation about your goals.</p>
+        <a href="https://calendly.com/ally-labriola" target="_blank" rel="noopener" class="btn btn--gold btn--lg">Open Calendly to Book →</a>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="modal__or"><span>or</span></div>
+
+      <!-- RIGHT: Contact Form -->
+      <div class="modal__panel modal__panel--form">
+        <span class="eyebrow eyebrow--light">Send a Message</span>
+        <h2 class="modal__heading" id="modalTitle">Let's Make Something Meaningful</h2>
+        <p class="modal__sub">Tell us a little about your project and we'll be in touch shortly.</p>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label for="cf-name">Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="contact-form__field">
+              <label for="cf-email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="contact-form__field">
+            <label for="cf-org">Organization</label>
+            <input type="text" id="cf-org" name="organization" placeholder="Your organization" autocomplete="organization" />
+          </div>
+          <div class="contact-form__field">
+            <label for="cf-message">Message <span aria-hidden="true">*</span></label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Tell us about your project or goals…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold btn--lg contact-form__submit">Send Message →</button>
+        </form>
+        <div class="contact-form__success is-hidden" id="formSuccess">
+          <div class="contact-form__success-icon">✓</div>
+          <h3>Message sent!</h3>
+          <p>Thanks for reaching out — we'll be in touch within one business day.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ ASK US ANYTHING MODAL ============ -->
+<div class="f5-ask-modal" id="f5AskModal" role="dialog" aria-modal="true" aria-labelledby="f5AskTitle">
+  <div class="f5-ask-modal__inner">
+    <button class="f5-ask-modal__close" id="f5AskModalClose" aria-label="Close">✕</button>
+    <span class="eyebrow">Ask Us Anything</span>
+    <h2 id="f5AskTitle">What would you like to know?</h2>
+    <p class="f5-ask-modal__sub">Ask in your own words — the answer is pulled from this page's content and written in plain language.</p>
+
+    <form id="f5AskForm" class="f5-ask-form">
+      <input type="text" id="f5AskInput" class="f5-ask-form__input" placeholder="For example, how would you make our research easier to find?" autocomplete="off" />
+      <button type="submit" class="btn btn--primary" id="f5AskSubmit">Ask</button>
+    </form>
+
+    <div class="f5-ask-suggestions" id="f5AskSuggestions">
+      <button type="button" class="f5-ask-chip">How would you make our research easier to find?</button>
+      <button type="button" class="f5-ask-chip">Which platform would you recommend, and why?</button>
+      <button type="button" class="f5-ask-chip">How do you use AI tools?</button>
+      <button type="button" class="f5-ask-chip">How would you measure success?</button>
+    </div>
+
+    <div class="f5-ask-answer" id="f5AskAnswer" aria-live="polite" hidden>
+      <div class="f5-ask-answer__q" id="f5AskAnswerQ"></div>
+      <div class="f5-ask-answer__a" id="f5AskAnswerA"></div>
+    </div>
+
+    <p class="f5-ask-modal__note">This uses AI to answer from this page's content only — always double-check anything important, and reach out directly for specifics.</p>
+  </div>
+</div>
+
+</div><!-- /.f5-page-content -->
+
+<script src="/js/script.js"></script>
+<script>
+  (function () {
+    var CORRECT_PW = 'hac';
+    var body = document.body;
+    var form = document.getElementById('f5GateForm');
+    var input = document.getElementById('f5GatePw');
+    var error = document.getElementById('f5GateError');
+    var STORAGE_KEY = 'hac-page-unlocked';
+
+    try {
+      if (localStorage.getItem(STORAGE_KEY) === 'true') {
+        body.classList.remove('f5-locked');
+      }
+    } catch (e) {}
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if ((input.value || '').trim().toLowerCase() === CORRECT_PW) {
+        body.classList.remove('f5-locked');
+        error.style.display = 'none';
+        try { localStorage.setItem(STORAGE_KEY, 'true'); sessionStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
+      } else {
+        error.style.display = 'block';
+        input.value = '';
+        input.focus();
+      }
+    });
+  })();
+
+  /* ---- Baldrige site-choice modal ---- */
+  (function () {
+    var modal = document.getElementById('f5SiteModal');
+    var closeBtn = document.getElementById('f5SiteModalClose');
+    if (!modal || !closeBtn) return;
+
+    function openModal() {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-site-choice]').forEach(function (btn) {
+      btn.addEventListener('click', openModal);
+    });
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  })();
+
+  /* ---- Ask Us Anything modal ---- */
+  (function () {
+    var modal = document.getElementById('f5AskModal');
+    var closeBtn = document.getElementById('f5AskModalClose');
+    var form = document.getElementById('f5AskForm');
+    var input = document.getElementById('f5AskInput');
+    var submitBtn = document.getElementById('f5AskSubmit');
+    var chips = document.querySelectorAll('.f5-ask-chip');
+    var answerWrap = document.getElementById('f5AskAnswer');
+    var answerQ = document.getElementById('f5AskAnswerQ');
+    var answerA = document.getElementById('f5AskAnswerA');
+    if (!modal || !closeBtn || !form || !input) return;
+
+    function openModal() {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () { input.focus(); }, 50);
+    }
+    function closeModal() {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.js-open-ask').forEach(function (btn) {
+      btn.addEventListener('click', openModal);
+    });
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+
+    function setLoading(isLoading) {
+      submitBtn.disabled = isLoading;
+      chips.forEach(function (chip) { chip.disabled = isLoading; });
+      submitBtn.textContent = isLoading ? 'Asking…' : 'Ask';
+    }
+
+    function askQuestion(question) {
+      question = (question || '').trim();
+      if (!question) return;
+
+      answerWrap.hidden = false;
+      answerQ.textContent = question;
+      answerA.textContent = 'Thinking…';
+      answerA.className = 'f5-ask-answer__a is-loading';
+      setLoading(true);
+
+      fetch('/api/ask-hac', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: question }),
+      })
+        .then(function (res) {
+          return res.json().then(function (data) {
+            if (!res.ok) throw new Error(data && data.error ? data.error : 'Something went wrong.');
+            return data;
+          });
+        })
+        .then(function (data) {
+          answerA.textContent = data.answer || "Sorry, I couldn't come up with an answer to that.";
+          answerA.className = 'f5-ask-answer__a';
+        })
+        .catch(function (err) {
+          answerA.textContent = err && err.message ? err.message : 'Sorry, something went wrong. Please try again or use the contact form.';
+          answerA.className = 'f5-ask-answer__a is-error';
+        })
+        .finally(function () {
+          setLoading(false);
+        });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      askQuestion(input.value);
+    });
+
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        input.value = chip.textContent;
+        askQuestion(chip.textContent);
+      });
+    });
+  })();
+
+  /* ---- Two-site mini carousels (click to switch, no auto-advance) ---- */
+  (function () {
+    document.querySelectorAll('.f5-site-carousel').forEach(function (carousel) {
+      var slides = carousel.querySelectorAll('[data-slide]');
+      var dots = carousel.querySelectorAll('.f5-site-carousel__dot');
+      if (slides.length < 2) return;
+      var current = 0;
+
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          var index = parseInt(dot.dataset.index, 10);
+          slides[current].classList.remove('f5-site-carousel__slide--active');
+          dots[current].classList.remove('f5-site-carousel__dot--active');
+          current = index;
+          slides[current].classList.add('f5-site-carousel__slide--active');
+          dots[current].classList.add('f5-site-carousel__dot--active');
+        });
+      });
+    });
+  })();
+
+  /* ---- Scale desktop-width live-demo iframes to fit their panel ---- */
+  (function () {
+    var wraps = document.querySelectorAll('.f5-live-demo__frame-wrap');
+    if (!wraps.length) return;
+
+    function rescale() {
+      wraps.forEach(function (wrap) {
+        var frame = wrap.querySelector('.f5-live-demo__frame');
+        if (!frame) return;
+        var scale = wrap.getBoundingClientRect().width / frame.offsetWidth;
+        wrap.style.setProperty('--f5-frame-scale', scale);
+      });
+    }
+
+    rescale();
+    window.addEventListener('resize', rescale);
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(rescale);
+      wraps.forEach(function (wrap) { ro.observe(wrap); });
+    }
+  })();
+</script>
+</body>
+</html>
+
