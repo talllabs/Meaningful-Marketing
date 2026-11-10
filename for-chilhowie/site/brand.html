@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Style Guide — Town of Chilhowie (Concept)</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+  <script src="gate.js"></script>
+  <script src="site.js"></script>
+</head>
+<body>
+<a class="ct-skip" href="#main">Skip to main content</a>
+
+<div class="ct-ribbon">Website concept by Meaningful Marketing House · Sample content for illustration only</div>
+
+<!-- Access bar -->
+<div class="ct-util">
+  <div class="ct-wrap">
+    <div class="ct-util__group">
+      <label for="ctLang">Language:</label>
+      <select id="ctLang">
+        <option value="en" selected>English</option>
+        <option value="es" lang="es" data-msg="Esta página está disponible en español.">Español</option>
+      </select>
+    </div>
+    <div class="ct-util__group" role="group" aria-label="Text size">
+      <span aria-hidden="true">Text size:</span>
+      <button type="button" data-text-size="md" aria-pressed="true" aria-label="Normal text">A</button>
+      <button type="button" data-text-size="lg" aria-pressed="false" aria-label="Larger text" style="font-size:1.1rem">A</button>
+      <button type="button" data-text-size="xl" aria-pressed="false" aria-label="Largest text" style="font-size:1.25rem">A</button>
+      <button type="button" data-contrast aria-pressed="false">High contrast</button>
+    </div>
+    <div class="ct-util__group">
+      <a href="tel:+12766463232">Town Hall: (276) 646-3232</a>
+      <a href="admin.html">Staff login</a>
+    </div>
+  </div>
+</div>
+
+<header class="ct-head">
+  <div class="ct-wrap">
+    <a class="ct-logo" href="index.html" aria-label="Town of Chilhowie home">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#fff" stroke="#1d5235" stroke-width="3"/>
+        <path d="M32 9 L49 30 L41 30 L44 52 L32 46 L20 52 L23 30 L15 30 Z" fill="#e8833a" stroke="#0f2e1e" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M26 30 l-3 -6 M26 30 l-5 -3 M38 30 l3 -6 M38 30 l5 -3 M27 31 q5 6 10 0 q-5 9 -10 0z" stroke="#0f2e1e" stroke-width="2" fill="#0f2e1e" stroke-linecap="round"/>
+      </svg>
+      <span>Town of<small>Chilhowie</small></span>
+    </a>
+    <button class="ct-menu-btn" id="ctMenuBtn" aria-expanded="false" aria-controls="ctNav">☰ Menu</button>
+    <nav class="ct-nav" id="ctNav" aria-label="Main">
+      <ul>
+        <li><a href="#demo">Residents</a></li>
+        <li><a href="#demo">Business</a></li>
+        <li><a href="#demo">Government</a></li>
+        <li><a href="departments.html">Departments</a></li>
+        <li><a href="#demo">Events &amp; Recreation</a></li>
+        <li><a class="ct-btn ct-btn--sun" href="#demo">Pay a Bill</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+<main id="main">
+  <div class="ct-pagehead">
+    <div class="ct-wrap">
+      <nav class="ct-crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="brand.html" aria-current="page">Style Guide</a></li></ol></nav>
+      <h1>Chilhowie style guide</h1>
+      <p>One simple guide for every staff member who updates the website. These colors, fonts and blocks are built into the editor, so every page looks like Chilhowie.</p>
+    </div>
+  </div>
+
+  <section class="ct-section">
+    <div class="ct-wrap">
+      <h2>Colors</h2>
+      <p class="ct-intro">Inspired by the town seal and the mountains around it. Every text color passes WCAG 2.2 AA contrast (4.5:1 or higher). The numbers below are the real contrast ratios.</p>
+      <div class="bg-swatches">
+        <div class="bg-sw"><span style="background:#1d5235"></span><b>Mountain Green</b><code>#1D5235</code><small>Links, buttons, headings · 9.1:1 on white ✓</small></div>
+        <div class="bg-sw"><span style="background:#0f2e1e"></span><b>Deep Forest</b><code>#0F2E1E</code><small>Headings, footer · 14.7:1 on white ✓</small></div>
+        <div class="bg-sw"><span style="background:#e8833a"></span><b>Autumn Orange</b><code>#E8833A</code><small>Main action buttons, with dark text · 6.0:1 ✓</small></div>
+        <div class="bg-sw"><span style="background:#7fae95"></span><b>Sage</b><code>#7FAE95</code><small>Decoration only. Never use for text (2.5:1 ✗)</small></div>
+        <div class="bg-sw"><span style="background:#18212f"></span><b>Ink</b><code>#18212F</code><small>Body text · 16.2:1 on white ✓</small></div>
+        <div class="bg-sw"><span style="background:#4a5568"></span><b>Slate</b><code>#4A5568</code><small>Secondary text · 7.5:1 on white ✓</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ct-section ct-section--soft">
+    <div class="ct-wrap bg-two">
+      <div>
+        <h2>Font</h2>
+        <p class="ct-intro">Atkinson Hyperlegible. It was made by the Braille Institute to be easier to read for people with low vision. Letters that look alike, like I, l and 1, are easy to tell apart.</p>
+        <p style="font-size:2.4rem; margin:0; font-weight:700; color:var(--ct-blue-dark)">Il1 O0 rn m</p>
+        <p style="margin:6px 0 0">Body text is 18px or larger. Lines are kept short and easy to follow.</p>
+      </div>
+      <div>
+        <h2>Buttons</h2>
+        <p class="ct-intro">Three styles only. Every button is at least 48px tall, so it is easy to tap.</p>
+        <p style="display:flex; flex-wrap:wrap; gap:10px">
+          <a class="ct-btn ct-btn--sun" href="#demo">Main action</a>
+          <a class="ct-btn" href="#demo">Next step</a>
+          <a class="ct-btn ct-btn--ghost" href="#demo">Other option</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ct-section">
+    <div class="ct-wrap">
+      <h2>How we write</h2>
+      <p class="ct-intro">The editor checks these rules as staff type.</p>
+      <div class="bg-rules">
+        <div class="ct-card"><h3>Write like you talk</h3><p>Short sentences and everyday words. Aim for an 8th grade reading level.</p></div>
+        <div class="ct-card"><h3>Lead with the answer</h3><p>Put the date, the cost or the phone number first.</p></div>
+        <div class="ct-card"><h3>Spell out short forms</h3><p>Write "Virginia Department of Transportation (VDOT)" the first time.</p></div>
+        <div class="ct-card"><h3>Post web pages, not just PDFs</h3><p>If you must post a PDF, the editor checks that it is accessible.</p></div>
+        <div class="ct-card"><h3>Make links say where they go</h3><p>"Read the January agenda," not "click here."</p></div>
+        <div class="ct-card"><h3>Use the ready-made alert</h3><p>One alert banner style for closures, road work and weather.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+<style>
+  .bg-swatches { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .bg-sw { border:1px solid var(--line); border-radius:var(--radius); padding:14px; display:grid; gap:2px; }
+  .bg-sw span { height:72px; border-radius:10px; margin-bottom:8px; border:1px solid rgba(0,0,0,.08); }
+  .bg-sw code { font-size:.95rem; }
+  .bg-sw small { color:var(--muted); font-size:.95rem; }
+  .bg-two { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  .bg-rules { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media (max-width:860px){ .bg-swatches,.bg-rules{grid-template-columns:1fr 1fr} .bg-two{grid-template-columns:1fr} }
+  @media (max-width:520px){ .bg-swatches,.bg-rules{grid-template-columns:1fr} }
+</style>
+
+<footer class="ct-foot">
+  <div class="ct-wrap">
+    <div class="ct-foot__grid">
+      <div>
+        <h2>Town of Chilhowie</h2>
+        <p>325 East Lee Highway<br>P.O. Box 5012<br>Chilhowie, VA 24319</p>
+        <p>Phone: <a href="tel:+12766463232">(276) 646-3232</a><br>Fax: (276) 646-3012</p>
+      </div>
+      <div><h2>Services</h2><ul><li><a href="#demo">Pay a bill</a></li><li><a href="#demo">Report a problem</a></li><li><a href="#demo">Permits</a></li></ul></div>
+      <div><h2>Government</h2><ul><li><a href="#demo">Mayor and Council</a></li><li><a href="#demo">Agendas and minutes</a></li><li><a href="departments.html">Departments</a></li></ul></div>
+      <div><h2>More</h2><ul><li><a href="#demo">Events</a></li><li><a href="brand.html">Style guide</a></li><li><a href="#demo">Accessibility statement</a></li></ul></div>
+    </div>
+    <div class="ct-foot__base"><span>Website concept prepared by Meaningful Marketing House.</span><span>Built to WCAG 2.2 AA.</span></div>
+  </div>
+</footer>
+
+<div class="ct-toast" id="ctToast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

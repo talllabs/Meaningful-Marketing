@@ -128,7 +128,7 @@ h1, h2, h3 { line-height: 1.2; color: var(--wrc-blue-dark); }
 .wrc-hero__art ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
 .wrc-hero__art li { display: flex; gap: 12px; align-items: flex-start; }
 .wrc-hero__art li b { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--wrc-blue); color: #fff; display: grid; place-items: center; font-size: 1rem; }
-.wrc-waves { position: absolute; left: 0; right: 0; bottom: -2px; height: 40px; z-index: 0; }
+.wrc-waves { position: absolute; left: 0; right: 0; width: 100%; bottom: -2px; height: 40px; z-index: 0; }
 @media (max-width: 860px) { .wrc-hero .wrc-wrap { grid-template-columns: 1fr; } }
 
 /* Sections */
