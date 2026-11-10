@@ -58,8 +58,8 @@ FIVE CASE STUDIES SHOWN ON THE PAGE
    They give you what you need and grow with you."
 
 THE TEAM
-- You work directly with Ally and Brad. Ally leads strategy, plain-language
-  writing, content, project management and communications and is the
+- You work directly with Ally and Brad. Ally leads strategy, writing,
+  content, project management and communications and is the
   day-to-day contact. Brad leads development, accessibility, technical
   implementation, testing and launch.
 
@@ -100,27 +100,43 @@ AI DISCLOSURE
   this page. They will not enter HAC confidential data into any third-party AI
   tool without HAC's written approval.
 
-CLEAR WORDS EXAMPLE (for illustration)
-- Before (grade 19): "Pursuant to applicable program requirements, eligible
-  entities may leverage HAC loan capital to facilitate predevelopment
-  activities..." After (grade 5): "Local groups that qualify can borrow from
-  HAC to pay early project costs, like buying land or putting in roads and
-  water lines. This helps get affordable homes built."
+APPROACH, MILESTONES AND DELIVERABLES (HAC staff approve each milestone)
+- Discover (February-March): kickoff Feb 1; interviews with staff and each
+  audience, usability tests and analytics on today's site, content and PDF
+  inventory. Deliverable: findings and baseline measures.
+- Plan (March-April): audience-based navigation, tagging plan for research,
+  CMS and hosting recommendation. Deliverable: sitemap, wireframes,
+  technology plan.
+- Design (April-May): visual design aligned with HAC's brand standards,
+  phones first. Deliverable: approved page designs.
+- Build & Migrate (May-August): site, library, consulting hub and trainings;
+  move content, turn key PDFs into web pages, redirect old links.
+  Deliverable: working site on a staging link.
+- Test (August-September): WCAG 2.2 AA (automated and manual), Core Web
+  Vitals, browsers and devices, usability tests against the baseline.
+  Deliverable: test results.
+- Train & Launch (by September 30): staff training, user manual, analytics
+  dashboard, architecture documentation, launch and support.
 
 MOCKUP (sample content only)
 - Public site: menu with Loans & Funding, Training, Research & Resources,
   Consulting, About, and Need Housing Help?; "How can we help you?" paths for
-  each audience; new research, upcoming trainings, impact, and a HAC News
-  sign-up.
+  each audience; new research; upcoming trainings; a "Watch and explore"
+  section with a captioned video, an infographic with a text version, and
+  interactive data in Rural Data Central; impact; and a HAC News sign-up.
 - Resource Library: search plus filters for type, topic and year; each item
-  has a web page and an accessible PDF, recording with captions, or a link to a
+  has a web page and an accessible PDF, a captioned recording, or a link to a
   Data Central site.
 - Consulting Hub: filter services by who you are, then send a request.
-- Style guide: concept colors (navy, wheat, field green) with real contrast
-  ratios; in the real project it would follow HAC's brand standards.
-- Staff editor: plain-language and accessibility checks with Publish locked
-  until the page passes, ready-made blocks (report summary, training event),
-  and an Analytics tab tracking each RFP goal against a baseline.
+- Trainings: filter upcoming trainings by format and topic, register, and find
+  past recordings with captions, transcripts and slides.
+- Staff portal: build pages from ready-made blocks with search (SEO) settings
+  and a search preview; checks for alt text, button text, video captions and
+  search description must pass before publishing. "Add a resource" turns an
+  uploaded PDF into a tagged library page and checks the PDF's
+  accessibility. An Analytics tab tracks each RFP goal against a baseline
+  (search success, newsletter sign-ups, training registrations, downloads,
+  Core Web Vitals, accessibility errors, pages published by staff).
 
 OUR PROPOSAL (at a glance)
 - Goal: a fast, accessible ruralhome.org where every audience finds what they
@@ -129,8 +145,8 @@ OUR PROPOSAL (at a glance)
   consulting hub; content migration with links redirected; WCAG 2.2 AA and
   Core Web Vitals testing; analytics dashboard and SEO setup; user manual,
   staff training and documentation.
-- Timeline: February 1 to September 30, 2027. Phases: Discover & Test Today's
-  Site, Plan & Design, Build & Migrate, Test, Train & Launch.
+- Timeline: February 1 to September 30, 2027. Phases: Discover, Plan,
+  Design, Build & Migrate, Test, Train & Launch.
 - Result: a website HAC owns, with measurable gains, full documentation,
   trained staff and ongoing support.
 - Pricing is NOT shown on this page; it is in the written proposal. For

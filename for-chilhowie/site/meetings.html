@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meetings and Agendas — Town of Chilhowie (Concept)</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+  <script src="gate.js"></script>
+  <script src="site.js"></script>
+</head>
+<body>
+<a class="ct-skip" href="#main">Skip to main content</a>
+
+<div class="ct-ribbon">Website concept by Meaningful Marketing House · Sample content for illustration only</div>
+
+<div class="ct-util">
+  <div class="ct-wrap">
+    <div class="ct-util__group"><span>Emergencies: call 911</span></div>
+    <div class="ct-util__group">
+      <a href="tel:+12766463232">Town Hall: (276) 646-3232</a>
+      <a href="admin.html">Staff login</a>
+    </div>
+  </div>
+</div>
+
+<header class="ct-head">
+  <div class="ct-wrap">
+    <a class="ct-logo" href="index.html" aria-label="Town of Chilhowie home">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#fff" stroke="#1d5235" stroke-width="3"/>
+        <path d="M32 9 L49 30 L41 30 L44 52 L32 46 L20 52 L23 30 L15 30 Z" fill="#e8833a" stroke="#0f2e1e" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M26 30 l-3 -6 M26 30 l-5 -3 M38 30 l3 -6 M38 30 l5 -3 M27 31 q5 6 10 0 q-5 9 -10 0z" stroke="#0f2e1e" stroke-width="2" fill="#0f2e1e" stroke-linecap="round"/>
+      </svg>
+      <span>Town of<small>Chilhowie</small></span>
+    </a>
+    <button class="ct-menu-btn" id="ctMenuBtn" aria-expanded="false" aria-controls="ctNav">☰ Menu</button>
+    <nav class="ct-nav" id="ctNav" aria-label="Main">
+      <ul>
+        <li><a href="#demo">Residents</a></li>
+        <li><a href="#demo">Business</a></li>
+        <li><a href="visit.html">Visit</a></li>
+        <li><a href="meetings.html" aria-current="page">Meetings &amp; Agendas</a></li>
+        <li><a href="departments.html">Departments</a></li>
+        <li><a class="ct-btn ct-btn--sun" href="#demo">Pay a Bill</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="ct-pagehead">
+    <div class="ct-wrap">
+      <nav class="ct-crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="meetings.html" aria-current="page">Meetings &amp; Agendas</a></li></ol></nav>
+      <h1>Meetings and agendas</h1>
+      <p>Find Town Council and board meetings, read agendas and minutes, and watch past meetings.</p>
+    </div>
+  </div>
+  <section class="ct-section">
+    <div class="ct-wrap">
+      <div class="ct-next">
+        <div>
+          <h2>Next meeting: Town Council, Tuesday, January 12, 7 p.m. (sample)</h2>
+          <p>Town Hall, 325 East Lee Highway. The public is welcome.</p>
+        </div>
+        <a class="ct-btn" href="#demo">Read the agenda</a>
+      </div>
+      <div class="ct-filterbar">
+        <div><label for="mtBody">Meeting</label><select id="mtBody"><option value="">All meetings</option><option>Town Council</option><option>Planning Commission</option><option>Public hearing</option></select></div>
+        <div><label for="mtYear">Year</label><select id="mtYear"><option value="">Any year</option><option>2027</option><option>2026</option></select></div>
+      </div>
+      <p id="mtCount" class="ct-find__count" aria-live="polite"></p>
+      <div class="ct-table-wrap">
+        <table class="ct-table">
+          <caption class="sr-only">Meetings, with links to agendas, minutes and videos</caption>
+          <thead><tr><th scope="col">Date</th><th scope="col">Meeting</th><th scope="col">Agenda</th><th scope="col">Minutes</th><th scope="col">Video</th></tr></thead>
+          <tbody id="mtRows">
+            <tr data-body="Town Council" data-year="2027"><td>Jan 12, 2027</td><th scope="row">Town Council</th><td><a href="#demo">Agenda</a></td><td>Not yet</td><td>After the meeting</td></tr>
+            <tr data-body="Planning Commission" data-year="2027"><td>Jan 15, 2027</td><th scope="row">Planning Commission</th><td><a href="#demo">Agenda</a></td><td>Not yet</td><td>—</td></tr>
+            <tr data-body="Public hearing" data-year="2027"><td>Jan 20, 2027</td><th scope="row">Public hearing: proposed budget</th><td><a href="#demo">Notice</a></td><td>Not yet</td><td>After the meeting</td></tr>
+            <tr data-body="Town Council" data-year="2026"><td>Dec 8, 2026</td><th scope="row">Town Council</th><td><a href="#demo">Agenda</a></td><td><a href="#demo">Minutes</a></td><td><a href="#demo">Watch (captioned)</a></td></tr>
+            <tr data-body="Planning Commission" data-year="2026"><td>Nov 17, 2026</td><th scope="row">Planning Commission</th><td><a href="#demo">Agenda</a></td><td><a href="#demo">Minutes</a></td><td>—</td></tr>
+            <tr data-body="Town Council" data-year="2026"><td>Nov 10, 2026</td><th scope="row">Town Council</th><td><a href="#demo">Agenda</a></td><td><a href="#demo">Minutes</a></td><td><a href="#demo">Watch (captioned)</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:14px; color:var(--muted); font-size:1rem">Sample meetings for illustration. Staff post agendas from the editor, and they appear here, on the calendar and on the homepage at the same time.</p>
+    </div>
+  </section>
+</main>
+<script>
+  (function () {
+    var b = document.getElementById('mtBody'), y = document.getElementById('mtYear');
+    var rows = Array.prototype.slice.call(document.querySelectorAll('#mtRows tr')), c = document.getElementById('mtCount');
+    function run() { var n = 0; rows.forEach(function (r) { var ok = (!b.value || r.dataset.body === b.value) && (!y.value || r.dataset.year === y.value); r.hidden = !ok; if (ok) n++; }); c.textContent = 'Showing ' + n + ' of ' + rows.length + ' meetings'; }
+    b.addEventListener('change', run); y.addEventListener('change', run); run();
+  })();
+</script>
+
+<footer class="ct-foot">
+  <div class="ct-wrap">
+    <div class="ct-foot__grid">
+      <div>
+        <h2>Town of Chilhowie</h2>
+        <p>325 East Lee Highway<br>P.O. Box 5012<br>Chilhowie, VA 24319</p>
+        <p>Phone: <a href="tel:+12766463232">(276) 646-3232</a><br>Fax: (276) 646-3012</p>
+      </div>
+      <div><h2>Services</h2><ul><li><a href="#demo">Pay a bill</a></li><li><a href="#demo">Report a problem</a></li><li><a href="#demo">Permits</a></li></ul></div>
+      <div><h2>Government</h2><ul><li><a href="#demo">Mayor and Council</a></li><li><a href="meetings.html">Agendas and minutes</a></li><li><a href="departments.html">Departments</a></li></ul></div>
+      <div><h2>More</h2><ul><li><a href="visit.html">Visit Chilhowie</a></li><li><a href="#demo">Events</a></li><li><a href="#demo">Accessibility statement</a></li></ul></div>
+    </div>
+    <div class="ct-foot__base"><span>Website concept prepared by Meaningful Marketing House.</span><span>Built to WCAG 2.2 AA.</span></div>
+  </div>
+</footer>
+
+<div class="ct-toast" id="ctToast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

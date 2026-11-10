@@ -1086,6 +1086,8 @@
     .wr-plain__card--after .wr-plain__tag { background: #EAF3EE; color: var(--forest); }
     .wr-plain__note { margin: 24px 0 0; font-weight: 700; color: var(--text-body); }
     @media (max-width: 960px) { .wr-req__grid { grid-template-columns: 1fr 1fr; } }
+    .wr-req__grid--3 { grid-template-columns: repeat(3, 1fr); max-width: 1000px; }
+    @media (max-width: 960px) { .wr-req__grid--3 { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .wr-req__grid, .wr-plain__grid { grid-template-columns: 1fr; } }
   </style>
   <!-- Vercel Web Analytics -->
@@ -1427,7 +1429,7 @@
     <div class="ih-team">
       <div class="ih-team__card">
         <strong>Ally</strong>
-        <span>Strategy, plain-language writing, content, project management and communications. Your day-to-day contact.</span>
+        <span>Strategy, writing, content, project management and communications. Your day-to-day contact.</span>
       </div>
       <div class="ih-team__card">
         <strong>Brad</strong>
@@ -1495,23 +1497,20 @@
   </div>
 </section>
 
-<!-- ============ PLAIN LANGUAGE EXAMPLE ============ -->
+<!-- ============ APPROACH + MILESTONES ============ -->
 <section class="wr-plain">
   <div class="container">
-    <span class="eyebrow">Content Everyone Can Use</span>
-    <h2>Clear Words for Every Audience</h2>
-    <p class="wr-plain__intro">Researchers want detail, and a small local group wants to know how to apply. We lead with a clear summary and keep the detail below it. Here is an example. (For illustration.)</p>
-    <div class="wr-plain__grid">
-      <div class="wr-plain__card wr-plain__card--before">
-        <span class="wr-plain__tag">Before · Grade 19 reading level</span>
-        <p>"Pursuant to applicable program requirements, eligible entities may leverage HAC loan capital to facilitate predevelopment activities, including site acquisition and infrastructure, in furtherance of affordable housing production."</p>
-      </div>
-      <div class="wr-plain__card wr-plain__card--after">
-        <span class="wr-plain__tag">After · Grade 5 reading level</span>
-        <p>"Local groups that qualify can borrow from HAC to pay early project costs, like buying land or putting in roads and water lines. This helps get affordable homes built."</p>
-      </div>
-    </div>
-    <p class="wr-plain__note">The staff editor in the mockup below checks this automatically. Try it!</p>
+    <span class="eyebrow">Approach &amp; Methodology</span>
+    <h2>Milestones and Deliverables, February to September 2027</h2>
+    <p class="wr-plain__intro">We measure first, design around what we learn, and test against your goals before launch. HAC staff review and approve each milestone.</p>
+    <ol class="wr-req__grid wr-req__grid--3">
+      <li class="wr-req__card"><b>Discover · February–March</b><p>Kickoff Feb 1. Interviews with staff and each audience, usability tests and analytics on today's site, and a content and PDF inventory. <em>Deliverable: findings and baseline measures.</em></p></li>
+      <li class="wr-req__card"><b>Plan · March–April</b><p>Audience-based navigation, a tagging plan for research and resources, and the CMS and hosting recommendation. <em>Deliverable: sitemap, wireframes, technology plan.</em></p></li>
+      <li class="wr-req__card"><b>Design · April–May</b><p>Visual design aligned with HAC's brand standards, for phones first. <em>Deliverable: approved page designs.</em></p></li>
+      <li class="wr-req__card"><b>Build &amp; Migrate · May–August</b><p>Build the site, library, consulting hub and trainings. Move content, turn key PDFs into web pages, and redirect old links. <em>Deliverable: working site on a staging link.</em></p></li>
+      <li class="wr-req__card"><b>Test · August–September</b><p>WCAG 2.2 AA (automated and manual), Core Web Vitals, browsers and devices, and usability tests against the baseline. <em>Deliverable: test results.</em></p></li>
+      <li class="wr-req__card"><b>Train &amp; Launch · by September 30</b><p>Staff training, user manual, analytics dashboard, and architecture documentation. Launch, then support. <em>Deliverable: live site and documentation.</em></p></li>
+    </ol>
   </div>
 </section>
 
@@ -1528,7 +1527,7 @@
   <div class="f5-concept-feature f5-concept-feature--wide">
     <span class="f5-concept-card__badge">Live, Clickable Prototype</span>
     <h3>Explore the Public Site and the Staff Editor</h3>
-    <p>This is just a mockup to show how we would organize the site around HAC's audiences, and how staff would publish pages, reports and trainings while the editor checks wording and accessibility for them, plus the analytics dashboard tied to your goals. Try both below, or open either in a new tab. (Content is sample text, for illustration only.)</p>
+    <p>This is just a mockup to show how we would organize the site around HAC's audiences, and how staff would build pages, add resources and track results, with accessibility and SEO checks built in. Try both below, or open either in a new tab. (Content is sample text, for illustration only.)</p>
     <div class="f5-live-demo">
       <div class="f5-live-demo__pane">
         <div class="f5-live-demo__label">Public Website</div>
@@ -1546,11 +1545,11 @@
         </div>
       </div>
       <div class="f5-live-demo__pane">
-        <div class="f5-live-demo__label">Staff Editor</div>
+        <div class="f5-live-demo__label">Staff Portal</div>
         <div class="f5-browser">
           <div class="f5-browser__bar">
             <div class="f5-browser__dots"><span></span><span></span><span></span></div>
-            <div class="f5-browser__url">hac concept · staff editor</div>
+            <div class="f5-browser__url">hac concept · staff portal</div>
           </div>
           <div class="f5-live-demo__frame-wrap">
             <iframe class="f5-live-demo__frame" src="/for-hac/site/admin.html" loading="lazy" title="HAC staff editor prototype"></iframe>
@@ -1565,8 +1564,8 @@
 
   <div class="f5-concept-feature f5-concept-feature--wide" style="margin-top:32px">
     <span class="f5-concept-card__badge">Three More Clickable Pages</span>
-    <h3>The Resource Library, the Consulting Hub and the Analytics Dashboard</h3>
-    <p>These show three things your RFP asks for: finding research fast, a central hub for consulting products, and measuring results. Each works on phones too.</p>
+    <h3>The Resource Library, the Consulting Hub and Trainings</h3>
+    <p>These show what your RFP asks for: research that's easy to find, a central hub for consulting products, and trainings with registration, recordings and materials. Each works on phones too.</p>
     <div class="f5-programs">
       <div class="f5-program">
         <h4>Searchable Resource Library</h4>
@@ -1581,12 +1580,13 @@
         <div class="f5-concept-card__links"><a class="btn btn--primary" href="/for-hac/site/consulting.html" target="_blank" rel="noopener">Browse Consulting →</a></div>
       </div>
       <div class="f5-program">
-        <h4>Editor + Analytics</h4>
-        <p>Watch a loan paragraph drop from grade 19 to grade 5, then open the Analytics tab to see each RFP goal tracked.</p>
-        <ul><li>Accessibility checks before publishing</li><li>Goals vs. baseline at a glance</li></ul>
-        <div class="f5-concept-card__links"><a class="btn btn--primary" href="/for-hac/site/admin.html" target="_blank" rel="noopener">Try the Editor →</a></div>
+        <h4>Trainings</h4>
+        <p>Filter upcoming trainings, register in a few clicks, and find past recordings with captions, transcripts and slides.</p>
+        <ul><li>Registration on every event</li><li>Recordings also in the library</li></ul>
+        <div class="f5-concept-card__links"><a class="btn btn--primary" href="/for-hac/site/trainings.html" target="_blank" rel="noopener">See Trainings →</a></div>
       </div>
     </div>
+    <p style="margin:22px 0 0">In the <a href="/for-hac/site/admin.html" target="_blank" rel="noopener" style="color:var(--teal-dark); font-weight:700;">Staff Portal</a>, try "Add a resource" (a PDF becomes a library page) and the Analytics tab (each RFP goal tracked against a baseline).</p>
   </div>
 </section>
 
@@ -1608,13 +1608,13 @@
           <li>Content migration with links redirected</li>
           <li>WCAG 2.2 AA and Core Web Vitals testing</li>
           <li>Analytics dashboard and SEO setup</li>
-          <li>User manual, staff training and documentation</li>
+          <li>User manual, staff training and architecture documentation</li>
         </ul>
       </div>
       <div class="f5-proposal__card">
         <span class="f5-proposal__label">Timeline</span>
         <p class="f5-proposal__dates">February 1 – September 30, 2027</p>
-        <p class="f5-proposal__phases">Discover &amp; Test Today's Site → Plan &amp; Design → Build &amp; Migrate → Test → Train &amp; Launch</p>
+        <p class="f5-proposal__phases">Discover → Plan → Design → Build &amp; Migrate → Test → Train &amp; Launch</p>
       </div>
       <div class="f5-proposal__card">
         <span class="f5-proposal__label">The Result</span>

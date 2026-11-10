@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="site.css" />
   <script src="gate.js"></script>
   <style>
@@ -53,18 +53,6 @@
     .ad-block__img { height: 84px; border-radius: 8px; background: linear-gradient(135deg, var(--ct-sun-tint), var(--ct-sky-tint)); display: grid; place-items: center; font-size: 2rem; }
     .ad-block small { color: var(--muted); display: block; margin-top: 4px; }
     .ad-check { position: sticky; top: 16px; display: grid; gap: 14px; }
-    .ad-grade { display: flex; align-items: center; gap: 14px; }
-    .ad-grade__num { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; font-size: 1.6rem; font-weight: 700; flex-shrink: 0; border: 6px solid; }
-    .ad-grade__num.is-bad { border-color: #d64545; color: #9b1c1c; }
-    .ad-grade__num.is-mid { border-color: #e0a100; color: #7a4a00; }
-    .ad-grade__num.is-good { border-color: #2e9e5b; color: #155d33; }
-    .ad-grade p { margin: 0; }
-    .ad-flags { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; max-height: 320px; overflow-y: auto; }
-    .ad-flags li { background: #f7f8fb; border-radius: 10px; padding: 10px 12px; font-size: .95rem; }
-    .ad-flags li b { color: #9b1c1c; }
-    .ad-flags li em { font-style: normal; font-weight: 700; color: #155d33; }
-    .ad-flags button, .ad-mini { margin-top: 6px; min-height: 32px; padding: 4px 12px; border-radius: 999px; border: 1.5px solid var(--ct-blue); background: #fff; color: var(--ct-blue); font: inherit; font-size: .9rem; font-weight: 700; cursor: pointer; }
-    .ad-flags button:hover, .ad-mini:hover { background: var(--ct-sky-tint); }
     .ad-a11y { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: .95rem; }
     .ad-a11y li { display: flex; gap: 10px; align-items: flex-start; }
     .ad-a11y .ic { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: .8rem; font-weight: 700; color: #fff; }
@@ -100,25 +88,49 @@
       .ad-main { padding: 18px 16px 32px; }
       .ad-block { grid-template-columns: 1fr; }
     }
+      .ad-preview { border: 10px solid #18212f; border-radius: 28px; overflow: hidden; background: #fff; max-width: 300px; margin: 0 auto; }
+    .ad-preview__bar { background: #12304d; color: #fff; font-size: .8rem; font-weight: 700; padding: 8px 12px; }
+    .ad-preview__body { padding: 14px; font-size: .95rem; min-height: 260px; }
+    .ad-preview__body h3 { margin: 0 0 8px; font-size: 1.15rem; color: #12304d; }
+    .ad-preview__img { height: 90px; border-radius: 8px; background: linear-gradient(135deg, var(--ct-sun-tint), var(--ct-sky-tint)); display: grid; place-items: center; font-size: 1.8rem; margin-bottom: 10px; }
+    .ad-preview__body p { margin: 0 0 8px; white-space: pre-line; }
+    .ad-preview__body a { font-weight: 700; }
+    .ad-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .ad-field select { width: 100%; font: inherit; font-size: 1.05rem; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px; min-height: 48px; }
+    @media (max-width: 700px) { .ad-form-row { grid-template-columns: 1fr; } }
+      .ad-serp { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: #fff; }
+    .ad-serp__url { font-size: .85rem; color: #1a6b3a; margin: 0 0 2px; word-break: break-all; }
+    .ad-serp__title { font-size: 1.1rem; color: #1a0dab; margin: 0 0 4px; font-weight: 700; }
+    .ad-serp__desc { font-size: .92rem; color: #4d5156; margin: 0; }
+    .ad-count { font-size: .85rem; color: var(--muted); margin-top: 4px; display: block; }
+    .ad-blocklist { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 8px; }
+    .ad-blocklist li { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1.5px dashed var(--line); border-radius: 10px; font-size: .95rem; }
+    .ad-blocklist b { color: var(--ct-blue-dark); }
+    .hc-res { border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: #fff; }
+    .hc-res__meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+    .hc-tag { display: inline-block; font-size: .8rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; background: var(--ct-sky-tint); color: var(--ct-blue-dark); }
+    .hc-tag--type { background: var(--ct-sun-tint); }
+    .hc-res h3 { margin: 0 0 4px; font-size: 1.05rem; color: var(--ct-blue); }
+    .hc-res p { margin: 0; font-size: .95rem; color: var(--muted); }
   </style>
 </head>
 <body>
 <a class="ct-skip" href="#adMain">Skip to main content</a>
-<div class="ct-ribbon">Staff editor concept by Meaningful Marketing House · Sample content for illustration only · <a href="index.html">View the public site</a></div>
+<div class="ct-ribbon">Staff portal concept by Meaningful Marketing House · Sample content for illustration only · <a href="index.html">View the public site</a></div>
 
 <div class="ad">
-  <aside class="ad-side" aria-label="Editor menu">
+  <aside class="ad-side" aria-label="Portal menu">
     <div class="ad-side__brand">
       <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#fff"/><path d="M14 34 L32 18 L50 34 V48 H14 Z" fill="#1f4e79"/><rect x="27" y="36" width="10" height="12" fill="#e3b04b"/></svg>
-      <span>HAC<br>Staff Editor</span>
+      <span>HAC<br>Staff Portal</span>
     </div>
-    <nav role="tablist" aria-label="Editor sections">
+    <nav role="tablist" aria-label="Portal sections">
       <button role="tab" id="t-dash" aria-controls="p-dash" aria-selected="false" tabindex="-1">🏠 Dashboard</button>
       <button role="tab" id="t-edit" aria-controls="p-edit" aria-selected="true">✏️ Edit a page</button>
-      <button role="tab" id="t-blocks" aria-controls="p-blocks" aria-selected="false" tabindex="-1">🧱 Brand blocks</button>
-      <button role="tab" id="t-lang" aria-controls="p-lang" aria-selected="false" tabindex="-1">📈 Analytics</button>
+      <button role="tab" id="t-res" aria-controls="p-res" aria-selected="false" tabindex="-1">📄 Add a resource</button>
+      <button role="tab" id="t-stats" aria-controls="p-stats" aria-selected="false" tabindex="-1">📈 Analytics</button>
     </nav>
-    <div class="ad-side__foot">Your brand and accessibility rules are built into the editor, so trained staff can publish without developer help.</div>
+    <div class="ad-side__foot">Built so trained HAC staff can create and update pages without developer help.</div>
   </aside>
 
   <main class="ad-main" id="adMain">
@@ -127,13 +139,12 @@
       <div class="ad-top__who"><b aria-hidden="true">S</b> Signed in as Sample Staff (Editor)</div>
     </div>
 
-    <!-- DASHBOARD -->
     <section class="ad-panel" id="p-dash" role="tabpanel" aria-labelledby="t-dash">
       <div class="ad-stats">
-        <div class="ad-stat"><strong>0</strong><span>Accessibility errors across the site</span></div>
-        <div class="ad-stat"><strong>Grade 7</strong><span>Average reading level</span></div>
-        <div class="ad-stat"><strong>12</strong><span>Resources due for a review</span></div>
-        <div class="ad-stat"><strong>Good</strong><span>Page speed (Core Web Vitals)</span></div>
+        <div class="ad-stat"><strong>0</strong><span>WCAG 2.2 AA errors on the site</span></div>
+        <div class="ad-stat"><strong>Good</strong><span>Core Web Vitals, mobile and desktop</span></div>
+        <div class="ad-stat"><strong>3</strong><span>New consulting requests</span></div>
+        <div class="ad-stat"><strong>All patched</strong><span>Platform and security updates</span></div>
       </div>
       <div class="ad-two">
         <div class="ad-box">
@@ -142,58 +153,53 @@
             <li><span>"Predevelopment loans" was edited</span><span class="ad-pill ad-pill--warn">Draft</span></li>
             <li><span>New report page and accessible PDF were published</span><span class="ad-pill ad-pill--ok">Live</span></li>
             <li><span>March webinar registration was opened</span><span class="ad-pill ad-pill--ok">Live</span></li>
-            <li><span>New consulting request received</span><span class="ad-pill ad-pill--warn">New</span></li>
+            <li><span>Webinar recording added with captions</span><span class="ad-pill ad-pill--ok">Live</span></li>
           </ul>
         </div>
         <div class="ad-box">
           <h2>Quick actions</h2>
           <p style="display:grid; gap:10px; margin:0">
             <button class="ct-btn" type="button" data-goto="t-edit">Edit a page</button>
-            <button class="ct-btn ct-btn--ghost" type="button" data-toast="In the real editor, this opens a new training with registration, captions and a spot for the recording afterward.">Add a training</button>
-            <button class="ct-btn ct-btn--ghost" type="button" data-toast="In the real editor, a new report gets a web page, tags for the library, and an accessibility check on its PDF.">Publish a report</button>
+            <button class="ct-btn ct-btn--ghost" type="button" data-goto="t-res">Add a resource</button>
+            <button class="ct-btn ct-btn--ghost" type="button" data-toast="In the real portal, this opens a new training with registration, captions and a spot for the recording and slides afterward.">Add a training</button>
           </p>
         </div>
       </div>
     </section>
 
-    <!-- EDITOR -->
     <section class="ad-panel is-active" id="p-edit" role="tabpanel" aria-labelledby="t-edit">
       <div class="ad-edit">
         <div class="ad-box">
-          <div class="ad-field">
-            <label for="edTitle">Page title</label>
-            <input type="text" id="edTitle" value="Predevelopment loans" />
-          </div>
+          <div class="ad-field"><label for="edTitle">Page title</label><input type="text" id="edTitle" value="Predevelopment loans" /></div>
+          <p style="margin:0 0 6px; font-weight:700">Page blocks</p>
+          <ul class="ad-blocklist">
+            <li>🧱 <span><b>Page intro</b> · headline and short summary</span></li>
+            <li>🖼️ <span><b>Photo</b> · new homes under construction</span></li>
+            <li>📋 <span><b>Steps</b> · how to apply</span></li>
+            <li>▶️ <span><b>Video</b> · a borrower's story</span></li>
+            <li>🔗 <span><b>Button</b> · start an application</span></li>
+          </ul>
+          <button class="ct-btn ct-btn--ghost" type="button" data-toast="In the real portal, you pick from ready-made blocks: intro, steps, video, report summary, training, quote, button and more. Each one already matches HAC's brand and accessibility rules." style="margin-bottom:18px">+ Add a block</button>
           <div class="ad-block">
             <div class="ad-block__img" aria-hidden="true">🖼️</div>
-            <div class="ad-field" style="margin:0">
-              <label for="edAlt">Image description (alt text)</label>
-              <input type="text" id="edAlt" value="" placeholder="Describe the photo for people who can't see it" />
-              <small>Photo: new-homes-under-construction.jpg</small>
-            </div>
+            <div class="ad-field" style="margin:0"><label for="edAlt">Photo description (alt text)</label><input type="text" id="edAlt" value="" placeholder="Describe the photo for people who can't see it" /></div>
           </div>
-          <div class="ad-field">
-            <label for="edBody">Page text</label>
-            <textarea id="edBody" aria-describedby="edHelp"></textarea>
-            <small id="edHelp" style="color:var(--muted)">Try it: edit the text, or use the suggestions on the right. The checks update as you type.</small>
+          <div class="ad-form-row">
+            <div class="ad-field"><label for="edBtn">Button text</label><input type="text" id="edBtn" value="Click here" /></div>
+            <div class="ad-field"><label for="edCap">Video captions</label><select id="edCap"><option value="no">Not added yet</option><option value="yes">Captions added</option></select></div>
           </div>
-          <label style="display:flex; gap:10px; align-items:center; font-weight:700; min-height:44px">
-            <input type="checkbox" id="edAsl" style="width:22px; height:22px; accent-color:var(--ct-blue)"> The attached loan application is an accessible PDF
-          </label>
+          <h2 style="font-size:1.1rem; margin:10px 0 10px">Search settings (SEO)</h2>
+          <div class="ad-field"><label for="edSeoTitle">Search title</label><input type="text" id="edSeoTitle" value="Predevelopment loans" /><span class="ad-count" id="cntTitle"></span></div>
+          <div class="ad-field"><label for="edSeoDesc">Search description</label><textarea id="edSeoDesc" style="min-height:90px"></textarea><span class="ad-count" id="cntDesc"></span></div>
+          <div class="ad-field"><label for="edSlug">Page address</label><input type="text" id="edSlug" value="loans/predevelopment" /></div>
         </div>
-
         <div class="ad-check">
           <div class="ad-box">
-            <h2>Plain language check</h2>
-            <div class="ad-grade">
-              <div class="ad-grade__num" id="ckGrade" aria-hidden="true">–</div>
-              <p id="ckGradeText" aria-live="polite">Checking…</p>
-            </div>
-            <ul class="ad-flags" id="ckFlags" aria-live="polite"></ul>
-            <button type="button" class="ad-mini" id="ckFixAll">Use all suggestions</button>
+            <h2>Search preview</h2>
+            <div class="ad-serp" aria-live="polite"><p class="ad-serp__url" id="pvUrl"></p><p class="ad-serp__title" id="pvTitle"></p><p class="ad-serp__desc" id="pvDesc"></p></div>
           </div>
           <div class="ad-box">
-            <h2>Accessibility check</h2>
+            <h2>Before you publish</h2>
             <ul class="ad-a11y" id="ckA11y" aria-live="polite"></ul>
           </div>
           <div class="ad-box ad-publish">
@@ -204,21 +210,37 @@
       </div>
     </section>
 
-    <!-- BLOCKS -->
-    <section class="ad-panel" id="p-blocks" role="tabpanel" aria-labelledby="t-blocks">
-      <p style="margin:0 0 16px; max-width:70ch">Staff build pages from these ready-made blocks. Colors, fonts and spacing are locked to the <a href="brand.html">style guide</a>, so every page matches, and every block already meets WCAG 2.2 AA.</p>
-      <div class="ad-blocks">
-        <div class="ad-box"><h3>Page banner</h3><p>Three approved styles. No more one-off colors.</p><span class="ad-lock">🔒 Brand colors</span></div>
-        <div class="ad-box"><h3>Step-by-step</h3><p>Numbered steps, like "How to get services."</p><span class="ad-lock">🔒 Brand colors</span></div>
-        <div class="ad-box"><h3>Task cards</h3><p>Big, easy-to-tap links to the most-used pages.</p><span class="ad-lock">🔒 48px tap targets</span></div>
-        <div class="ad-box"><h3>Report summary</h3><p>Summary, key findings, chart with a text description, and an accessible download.</p><span class="ad-lock">🔒 Chart descriptions required</span></div>
-        <div class="ad-box"><h3>Questions and answers</h3><p>Open-and-close answers that work with a keyboard.</p><span class="ad-lock">🔒 Keyboard ready</span></div>
-        <div class="ad-box"><h3>Training event</h3><p>Date, registration, captions, and the recording and slides added after.</p><span class="ad-lock">🔒 Captions required</span></div>
+    <section class="ad-panel" id="p-res" role="tabpanel" aria-labelledby="t-res">
+      <div class="ad-edit">
+        <div class="ad-box">
+          <p style="margin:0 0 14px; color:var(--muted)">Upload a report and fill in a few fields. It gets its own web page and shows up in the Resource Library search and filters.</p>
+          <div class="ad-block">
+            <div class="ad-block__img" aria-hidden="true">📄</div>
+            <div><b>rural-rental-report.pdf</b><small>Uploaded · <span id="pdfStatus">Checking accessibility…</span></small></div>
+          </div>
+          <div class="ad-field"><label for="rsTitle">Title</label><input type="text" id="rsTitle" value="Keeping rural rental homes affordable" /></div>
+          <div class="ad-form-row">
+            <div class="ad-field"><label for="rsType">Type</label><select id="rsType"><option>Research report</option><option>Toolkit</option><option>Policy brief</option><option>Data snapshot</option><option>Training recording</option></select></div>
+            <div class="ad-field"><label for="rsTopic">Topic</label><select id="rsTopic"><option>Rental housing</option><option>Homeownership</option><option>Veterans</option><option>Heirs' property</option><option>Federal programs</option><option>Disaster recovery</option></select></div>
+          </div>
+          <div class="ad-field"><label for="rsYear">Year</label><select id="rsYear"><option>2027</option><option>2026</option><option>2025</option></select></div>
+          <div class="ad-field"><label for="rsSum">Short summary</label><textarea id="rsSum" style="min-height:90px">What happens when affordability rules end, and what communities can do.</textarea></div>
+          <button class="ct-btn ct-btn--sun" type="button" data-toast="Mockup: published! The report now has its own web page, appears in the library filters, and is ready for search engines.">Publish resource</button>
+        </div>
+        <div class="ad-check">
+          <div class="ad-box">
+            <h2>How it appears in the library</h2>
+            <div class="hc-res" aria-live="polite">
+              <div class="hc-res__meta"><span class="hc-tag hc-tag--type" id="rpType"></span><span class="hc-tag" id="rpTopic"></span><span class="hc-tag" id="rpYear"></span></div>
+              <h3 id="rpTitle"></h3>
+              <p id="rpSum"></p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- TRANSLATIONS -->
-    <section class="ad-panel" id="p-lang" role="tabpanel" aria-labelledby="t-lang">
+    <section class="ad-panel" id="p-stats" role="tabpanel" aria-labelledby="t-stats">
       <div class="ad-box">
         <h2>Goals dashboard</h2>
         <p style="margin:0 0 12px; color:var(--muted)">Each goal from the RFP, measured against the old site's baseline. Sample numbers for illustration.</p>
@@ -245,139 +267,63 @@
 
 <script>
 (function () {
-  /* ---------- Tabs ---------- */
   var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
   var title = document.getElementById('adTitle');
   function select(tab) {
-    tabs.forEach(function (t) {
-      var on = t === tab;
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-      t.tabIndex = on ? 0 : -1;
-      document.getElementById(t.getAttribute('aria-controls')).classList.toggle('is-active', on);
-    });
+    tabs.forEach(function (t) { var on = t === tab; t.setAttribute('aria-selected', on ? 'true' : 'false'); t.tabIndex = on ? 0 : -1; document.getElementById(t.getAttribute('aria-controls')).classList.toggle('is-active', on); });
     title.textContent = tab.textContent.replace(/^\S+\s/, '');
   }
   tabs.forEach(function (t, i) {
     t.addEventListener('click', function () { select(t); });
-    t.addEventListener('keydown', function (e) {
-      var d = (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1 : (e.key === 'ArrowUp' || e.key === 'ArrowLeft') ? -1 : 0;
-      if (!d) return;
-      e.preventDefault();
-      var n = tabs[(i + d + tabs.length) % tabs.length];
-      n.focus(); select(n);
-    });
+    t.addEventListener('keydown', function (e) { var d = (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1 : (e.key === 'ArrowUp' || e.key === 'ArrowLeft') ? -1 : 0; if (!d) return; e.preventDefault(); var n = tabs[(i + d + tabs.length) % tabs.length]; n.focus(); select(n); });
   });
-  document.querySelectorAll('[data-goto]').forEach(function (b) {
-    b.addEventListener('click', function () { select(document.getElementById(b.getAttribute('data-goto'))); });
-  });
+  document.querySelectorAll('[data-goto]').forEach(function (b) { b.addEventListener('click', function () { select(document.getElementById(b.getAttribute('data-goto'))); }); });
+  function toast(msg) { var t = document.getElementById('ctToast'); t.textContent = msg; t.hidden = false; clearTimeout(t._h); t._h = setTimeout(function () { t.hidden = true; }, 5000); }
+  document.querySelectorAll('[data-toast]').forEach(function (b) { b.addEventListener('click', function () { toast(b.getAttribute('data-toast')); }); });
 
-  function toast(msg) {
-    var t = document.getElementById('ctToast');
-    t.textContent = msg; t.hidden = false;
-    clearTimeout(t._h); t._h = setTimeout(function () { t.hidden = true; }, 5000);
-  }
-  document.querySelectorAll('[data-toast]').forEach(function (b) {
-    b.addEventListener('click', function () { toast(b.getAttribute('data-toast')); });
-  });
-
-  /* ---------- Plain language + accessibility checks ---------- */
-  var START = 'Pursuant to applicable program requirements, eligible entities may leverage HAC loan capital to facilitate predevelopment activities, including site acquisition and infrastructure, in furtherance of affordable housing production. Applicants must demonstrate organizational capacity and secure a commitment of permanent financing prior to loan closing. For additional information regarding loan products, click here.';
-
-  // Jargon list: [pattern, plain-language replacement, why]
-  var RULES = [
-    [/Pursuant to applicable program requirements, eligible entities may leverage HAC loan capital to facilitate predevelopment activities/i, 'Local groups that qualify can borrow from HAC to pay early project costs', 'Legal wording and jargon'],
-    [/including site acquisition and infrastructure/i, 'like buying land or putting in roads and water lines', 'Say it in everyday words'],
-    [/, in furtherance of affordable housing production\./i, '. This helps get affordable homes built.', 'Shorter sentences'],
-    [/Applicants must demonstrate organizational capacity and secure a commitment of permanent financing prior to loan closing\./i, 'Before the loan closes, you need to show your group can do the project. You also need a promise of long-term funding.', 'Shorter sentences'],
-    [/For additional information regarding loan products/i, 'To learn more about our loans', 'Simpler words'],
-    [/click here/i, 'read the loan guide', 'Links should say where they go']
-  ];
-  var CLICK_HERE = /click here/i;
-
-  var body = document.getElementById('edBody');
-  var alt = document.getElementById('edAlt');
-  var asl = document.getElementById('edAsl');
-  body.value = START;
-
-  function syllables(w) {
-    w = w.toLowerCase().replace(/[^a-z]/g, '');
-    if (!w) return 0;
-    if (w.length <= 3) return 1;
-    w = w.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '').replace(/^y/, '');
-    var m = w.match(/[aeiouy]{1,2}/g);
-    return m ? m.length : 1;
-  }
-  function grade(text) {
-    var sentences = (text.match(/[^.!?]+[.!?]+/g) || [text]).filter(function (s) { return s.trim(); }).length || 1;
-    var words = text.split(/\s+/).filter(function (w) { return /[a-z]/i.test(w); });
-    if (!words.length) return 0;
-    var syl = words.reduce(function (a, w) { return a + syllables(w); }, 0);
-    var g = 0.39 * (words.length / sentences) + 11.8 * (syl / words.length) - 15.59;
-    return Math.max(1, Math.round(g));
-  }
-
-  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-
+  var $ = function (id) { return document.getElementById(id); };
+  $('edSeoDesc').value = '';
+  var BAD = /^(click here|here|read more|learn more|more)$/i;
   function run() {
-    var text = body.value;
-    var g = grade(text);
-    var gEl = document.getElementById('ckGrade');
-    gEl.textContent = g;
-    gEl.className = 'ad-grade__num ' + (g <= 8 ? 'is-good' : g <= 10 ? 'is-mid' : 'is-bad');
-    document.getElementById('ckGradeText').innerHTML = 'Reading level: <strong>grade ' + g + '</strong>. ' +
-      (g <= 8 ? 'Great! Most people can read this easily.' : 'Our goal is grade 8 or lower.');
-
-    var flags = document.getElementById('ckFlags');
-    flags.innerHTML = '';
-    var found = 0;
-    RULES.forEach(function (r, i) {
-      var m = text.match(r[0]);
-      if (!m) return;
-      found++;
-      var li = document.createElement('li');
-      li.innerHTML = '<b>"' + esc(m[0]) + '"</b> → try <em>"' + esc(r[1]) + '"</em><br><span style="color:var(--muted)">' + r[2] + '</span><br>';
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.textContent = 'Use suggestion';
-      btn.setAttribute('aria-label', 'Replace "' + m[0] + '" with "' + r[1] + '"');
-      btn.addEventListener('click', function () { body.value = body.value.replace(r[0], r[1]); run(); body.focus(); });
-      li.appendChild(btn);
-      flags.appendChild(li);
-    });
-    if (!found) flags.innerHTML = '<li><b style="color:#155d33">No jargon found.</b> Nice work.</li>';
-    document.getElementById('ckFixAll').hidden = !found;
-
-    var a11y = [];
-    var hasClick = CLICK_HERE.test(text);
-    var hasAlt = alt.value.trim().length >= 5;
-    a11y.push(hasAlt ? ['ok', 'Image has a description'] : ['err', 'Image needs a description for screen readers. Add one on the left.']);
-    a11y.push(hasClick ? ['err', 'Link says "click here." Say where it goes, like "read our respite guide."'] : ['ok', 'Link text says where it goes']);
-    a11y.push(['ok', 'Headings are in order']);
-    a11y.push(['ok', 'Colors locked to the style guide (contrast passes)']);
-    a11y.push(asl.checked ? ['ok', 'Loan application is an accessible PDF'] : ['warn', 'Check that the attached loan application is an accessible PDF']);
-    document.getElementById('ckA11y').innerHTML = a11y.map(function (x) {
-      var ic = x[0] === 'ok' ? '✓' : x[0] === 'err' ? '!' : 'i';
-      return '<li><span class="ic ic--' + x[0] + '" aria-hidden="true">' + ic + '</span><span><span class="sr-only">' + (x[0] === 'ok' ? 'Passed: ' : x[0] === 'err' ? 'Problem: ' : 'Tip: ') + '</span>' + x[1] + '</span></li>';
-    }).join('');
-
-    var errors = (hasAlt ? 0 : 1) + (hasClick ? 1 : 0) + (g > 8 ? 1 : 0);
-    var status = document.getElementById('ckStatus');
-    var pub = document.getElementById('ckPublish');
-    status.textContent = errors ? errors + (errors === 1 ? ' thing' : ' things') + ' to fix before publishing' : 'Ready to publish ✓';
-    pub.disabled = !!errors;
+    var t = $('edSeoTitle').value.trim(), d = $('edSeoDesc').value.trim();
+    $('pvUrl').textContent = 'ruralhome.org/' + $('edSlug').value.replace(/^\/+/, '');
+    $('pvTitle').textContent = (t || $('edTitle').value) + ' | Housing Assistance Council';
+    $('pvDesc').textContent = d || 'No description yet. Search engines will guess one from the page.';
+    $('cntTitle').textContent = t.length + ' characters (aim for 30 to 60)';
+    $('cntDesc').textContent = d.length + ' characters (aim for 70 to 160)';
+    var ok = {
+      alt: $('edAlt').value.trim().length >= 5,
+      btn: $('edBtn').value.trim() && !BAD.test($('edBtn').value.trim()),
+      cap: $('edCap').value === 'yes',
+      desc: d.length >= 70 && d.length <= 160
+    };
+    var rows = [
+      ok.alt ? ['ok', 'Photo has alt text'] : ['err', 'Add alt text so screen reader users know what the photo shows.'],
+      ok.btn ? ['ok', 'Button says where it goes'] : ['err', 'Button text should say where it goes, like "Start an application."'],
+      ok.cap ? ['ok', 'Video has captions'] : ['err', 'Add captions to the video (WCAG 2.2 AA).'],
+      ok.desc ? ['ok', 'Search description is a good length'] : ['err', 'Write a search description of 70 to 160 characters.'],
+      ['ok', 'Headings are in order'],
+      ['ok', 'Colors pass contrast (locked to HAC\u2019s brand)'],
+      ['ok', 'Page weight is light (fast on mobile)']
+    ];
+    $('ckA11y').innerHTML = rows.map(function (x) { return '<li><span class="ic ic--' + x[0] + '" aria-hidden="true">' + (x[0] === 'ok' ? '✓' : '!') + '</span><span><span class="sr-only">' + (x[0] === 'ok' ? 'Passed: ' : 'Problem: ') + '</span>' + x[1] + '</span></li>'; }).join('');
+    var errors = rows.filter(function (r) { return r[0] === 'err'; }).length;
+    $('ckStatus').textContent = errors ? errors + (errors === 1 ? ' thing' : ' things') + ' to fix before publishing' : 'Ready to publish ✓';
+    $('ckPublish').disabled = !!errors;
   }
-
-  document.getElementById('ckFixAll').addEventListener('click', function () {
-    var t = body.value;
-    RULES.forEach(function (r) { t = t.replace(r[0], r[1]); });
-    body.value = t; run();
-  });
-  document.getElementById('ckPublish').addEventListener('click', function () {
-    toast('Published! The page is live, and it is listed in site search right away.');
-  });
-  [body, alt].forEach(function (el) { el.addEventListener('input', run); });
-  asl.addEventListener('change', run);
+  ['edTitle', 'edAlt', 'edBtn', 'edSeoTitle', 'edSeoDesc', 'edSlug'].forEach(function (id) { $(id).addEventListener('input', run); });
+  $('edCap').addEventListener('change', run);
+  $('ckPublish').addEventListener('click', function () { toast('Published! The page is live, fast on mobile, and ready for search engines.'); });
   run();
+
+  function preview() {
+    $('rpType').textContent = $('rsType').value; $('rpTopic').textContent = $('rsTopic').value; $('rpYear').textContent = $('rsYear').value;
+    $('rpTitle').textContent = $('rsTitle').value; $('rpSum').textContent = $('rsSum').value;
+  }
+  ['rsTitle', 'rsSum'].forEach(function (id) { $(id).addEventListener('input', preview); });
+  ['rsType', 'rsTopic', 'rsYear'].forEach(function (id) { $(id).addEventListener('change', preview); });
+  preview();
+  setTimeout(function () { $('pdfStatus').textContent = 'Passed the accessibility check ✓'; }, 1200);
 })();
 </script>
 </body>

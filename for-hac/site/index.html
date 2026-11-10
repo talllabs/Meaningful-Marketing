@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="site.css" />
   <script src="gate.js"></script>
   <script src="site.js"></script>
@@ -19,13 +19,7 @@
 
 <div class="ct-util">
   <div class="ct-wrap">
-    <div class="ct-util__group" role="group" aria-label="Text size">
-      <span aria-hidden="true">Text size:</span>
-      <button type="button" data-text-size="md" aria-pressed="true" aria-label="Normal text">A</button>
-      <button type="button" data-text-size="lg" aria-pressed="false" aria-label="Larger text" style="font-size:1.1rem">A</button>
-      <button type="button" data-text-size="xl" aria-pressed="false" aria-label="Largest text" style="font-size:1.25rem">A</button>
-      <button type="button" data-contrast aria-pressed="false">High contrast</button>
-    </div>
+    <div class="ct-util__group"><span>Need housing help? <a href="#demo">Find local help</a></span></div>
     <div class="ct-util__group">
       <a href="#demo">Rural Data Central</a>
       <a href="#demo">Newsroom</a>
@@ -49,7 +43,7 @@
     <nav class="ct-nav" id="ctNav" aria-label="Main">
       <ul>
         <li><a href="#demo">Loans &amp; Funding</a></li>
-        <li><a href="#demo">Training</a></li>
+        <li><a href="trainings.html">Training</a></li>
         <li><a href="resources.html">Research &amp; Resources</a></li>
         <li><a href="consulting.html">Consulting</a></li>
         <li><a href="#demo">About</a></li>
@@ -76,7 +70,7 @@
         <h2>Start here</h2>
         <ul>
           <li><b aria-hidden="true">1</b><div><strong>Building or fixing homes?</strong> <a href="#demo">See loans and funding</a></div></li>
-          <li><b aria-hidden="true">2</b><div><strong>Want to learn?</strong> <a href="#demo">Join a training</a></div></li>
+          <li><b aria-hidden="true">2</b><div><strong>Want to learn?</strong> <a href="trainings.html">Join a training</a></div></li>
           <li><b aria-hidden="true">3</b><div><strong>Need data?</strong> <a href="resources.html">Search 1,000+ resources</a> (sample count)</div></li>
           <li><b aria-hidden="true">4</b><div><strong>Need expert help?</strong> <a href="consulting.html">Browse consulting services</a></div></li>
         </ul>
@@ -91,7 +85,7 @@
       <p class="ct-intro">Choose the option that fits you best.</p>
       <ul class="ct-tasks">
         <li><a class="ct-task" href="#demo"><span class="ct-task__icon" aria-hidden="true">🏘️</span><div><strong>I build or manage housing</strong><span>Loans, grants, technical help and how to apply.</span></div></a></li>
-        <li><a class="ct-task" href="#demo"><span class="ct-task__icon" aria-hidden="true">🎓</span><div><strong>I want training</strong><span>Upcoming trainings, recordings and materials.</span></div></a></li>
+        <li><a class="ct-task" href="trainings.html"><span class="ct-task__icon" aria-hidden="true">🎓</span><div><strong>I want training</strong><span>Upcoming trainings, recordings and materials.</span></div></a></li>
         <li><a class="ct-task" href="resources.html"><span class="ct-task__icon" aria-hidden="true">📊</span><div><strong>I need research or data</strong><span>Reports, data and policy analysis.</span></div></a></li>
         <li><a class="ct-task" href="consulting.html"><span class="ct-task__icon" aria-hidden="true">🧭</span><div><strong>I need expert advice</strong><span>Consulting for housing groups and agencies.</span></div></a></li>
         <li><a class="ct-task" href="#demo"><span class="ct-task__icon" aria-hidden="true">🤝</span><div><strong>I want to partner or fund</strong><span>Our impact, financials and ways to work together.</span></div></a></li>
@@ -112,14 +106,26 @@
     </div>
   </section>
 
-  <section class="ct-section ct-section--soft" aria-labelledby="trainTitle">
+  <section class="ct-section" aria-labelledby="trainTitle">
     <div class="ct-wrap">
       <h2 id="trainTitle">Upcoming trainings</h2>
       <p class="ct-intro">Register in a few clicks. Recordings and slides are posted afterward. Sample events.</p>
       <div class="ct-news">
-        <article><time datetime="2027-03-09">Mar 9</time><h3><a href="#demo">Webinar: Getting started with self-help housing</a></h3><p>Online · Free · Captions provided</p></article>
-        <article><time datetime="2027-04-14">Apr 14</time><h3><a href="#demo">Workshop: Financing small rural rental projects</a></h3><p>In person and online</p></article>
-        <article><time datetime="2027-05-20">May 20</time><h3><a href="#demo">Webinar: Using rural housing data in grant applications</a></h3><p>Online · Free · Recording available</p></article>
+        <article><time datetime="2027-03-09">Mar 9</time><h3><a href="trainings.html">Webinar: Getting started with self-help housing</a></h3><p>Online · Free · Captions provided</p></article>
+        <article><time datetime="2027-04-14">Apr 14</time><h3><a href="trainings.html">Workshop: Financing small rural rental projects</a></h3><p>In person and online</p></article>
+        <article><time datetime="2027-05-20">May 20</time><h3><a href="trainings.html">Webinar: Using rural housing data in grant applications</a></h3><p>Online · Free · Recording available</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ct-section ct-section--soft" aria-labelledby="mediaTitle">
+    <div class="ct-wrap">
+      <h2 id="mediaTitle">Watch and explore</h2>
+      <p class="ct-intro">Videos, infographics and interactive data, built to work with captions, keyboards and screen readers. Samples, for illustration.</p>
+      <div class="hc-media">
+        <article><div class="hc-media__vis" aria-hidden="true">▶️<span>Video · 3 min</span></div><div class="hc-media__body"><h3><a href="#demo">How a self-help housing project comes together</a></h3><p>Captioned, with a full transcript.</p></div></article>
+        <article><div class="hc-media__vis" aria-hidden="true">📊<span>Infographic</span></div><div class="hc-media__body"><h3><a href="#demo">Rural housing at a glance</a></h3><p>Key numbers, with a text version and data table.</p></div></article>
+        <article><div class="hc-media__vis" aria-hidden="true">🗺️<span>Interactive</span></div><div class="hc-media__body"><h3><a href="#demo">Explore data in Rural Data Central</a></h3><p>Look up housing data for any rural county.</p></div></article>
       </div>
     </div>
   </section>
@@ -153,7 +159,6 @@
     </div>
   </section>
 </main>
-
 <footer class="ct-foot">
   <div class="ct-wrap">
     <div class="ct-foot__grid">
@@ -162,9 +167,9 @@
         <p>1828 L Street N.W., Suite 505<br>Washington, D.C. 20036</p>
         <p>(202) 842-8600<br><a href="mailto:hac@ruralhome.org">hac@ruralhome.org</a></p>
       </div>
-      <div><h2>Our work</h2><ul><li><a href="#demo">Loans and funding</a></li><li><a href="#demo">Training</a></li><li><a href="consulting.html">Consulting</a></li></ul></div>
+      <div><h2>Our work</h2><ul><li><a href="#demo">Loans and funding</a></li><li><a href="trainings.html">Training</a></li><li><a href="consulting.html">Consulting</a></li></ul></div>
       <div><h2>Learn</h2><ul><li><a href="resources.html">Research and resources</a></li><li><a href="#demo">Rural Data Central</a></li><li><a href="#demo">Veterans Data Central</a></li><li><a href="#demo">Heirs Central</a></li></ul></div>
-      <div><h2>About</h2><ul><li><a href="#demo">Mission and impact</a></li><li><a href="brand.html">Style guide</a></li><li><a href="#demo">Accessibility statement</a></li></ul></div>
+      <div><h2>About</h2><ul><li><a href="#demo">Mission and impact</a></li><li><a href="#demo">Funders and partners</a></li><li><a href="#demo">Accessibility statement</a></li></ul></div>
     </div>
     <div class="ct-foot__base"><span>Website concept prepared by Meaningful Marketing House.</span><span>HAC is an equal opportunity provider, employer and lender.</span></div>
   </div>

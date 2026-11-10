@@ -1086,6 +1086,8 @@
     .wr-plain__card--after .wr-plain__tag { background: #EAF3EE; color: var(--forest); }
     .wr-plain__note { margin: 24px 0 0; font-weight: 700; color: var(--text-body); }
     @media (max-width: 960px) { .wr-req__grid { grid-template-columns: 1fr 1fr; } }
+    .wr-req__grid--3 { grid-template-columns: repeat(3, 1fr); max-width: 1000px; }
+    @media (max-width: 960px) { .wr-req__grid--3 { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .wr-req__grid, .wr-plain__grid { grid-template-columns: 1fr; } }
   </style>
   <!-- Vercel Web Analytics -->
@@ -1427,7 +1429,7 @@
     <div class="ih-team">
       <div class="ih-team__card">
         <strong>Ally</strong>
-        <span>Strategy, plain-language writing, content, project management and communications. Your day-to-day contact.</span>
+        <span>Strategy, writing, content, project management and communications. Your day-to-day contact.</span>
       </div>
       <div class="ih-team__card">
         <strong>Brad</strong>
@@ -1450,9 +1452,9 @@
       <li class="wr-req__card"><b>ADA compliant</b><p>Built and tested to WCAG 2.2 AA with automated tools and hands-on checks: keyboard only, screen readers, zoom and color contrast.</p></li>
       <li class="wr-req__card"><b>Mobile-responsive</b><p>Designed for phones first, then tested on Chrome, Safari, Edge and Firefox, on iPhone and Android.</p></li>
       <li class="wr-req__card"><b>Easy to navigate</b><p>The things residents do most (pay a bill, report a problem, find a meeting) are one click from the homepage.</p></li>
-      <li class="wr-req__card"><b>Clear town information</b><p>Plain, friendly wording, a "Who do I call?" finder, and a town alert banner for closures and road work.</p></li>
-      <li class="wr-req__card"><b>Residents and visitors</b><p>Separate paths for residents, businesses, visitors and town government, so everyone gets to the right place.</p></li>
-      <li class="wr-req__card"><b>Maintained by Town staff</b><p>Simple editing with ready-made blocks, hands-on training, a written how-to guide and support after launch.</p></li>
+      <li class="wr-req__card"><b>Clear town information</b><p>A "Who do I call?" finder, a Meetings &amp; Agendas page, and a town alert banner for closures and road work.</p></li>
+      <li class="wr-req__card"><b>Residents and visitors</b><p>Clear paths for residents and businesses, plus a Visit Chilhowie section with events, parks and things to do.</p></li>
+      <li class="wr-req__card"><b>Maintained by Town staff</b><p>A simple editor with a phone preview and a built-in ADA check, hands-on training, a how-to guide and support after launch.</p></li>
       <li class="wr-req__card"><b>You own it</b><p>Your domain, your content and your accounts stay with the Town. No long-term lock-in.</p></li>
     </ol>
     <div class="wr-access">
@@ -1467,23 +1469,20 @@
   </div>
 </section>
 
-<!-- ============ PLAIN LANGUAGE EXAMPLE ============ -->
+<!-- ============ APPROACH ============ -->
 <section class="wr-plain">
   <div class="container">
-    <span class="eyebrow">Clear Town Information, Shown</span>
-    <h2>What Plain, Friendly Wording Looks Like</h2>
-    <p class="wr-plain__intro">Here is a typical notice you might find on a town website, and how we would rewrite it. (Example for illustration.)</p>
-    <div class="wr-plain__grid">
-      <div class="wr-plain__card wr-plain__card--before">
-        <span class="wr-plain__tag">Before · Grade 13 reading level</span>
-        <p>"Pursuant to Town Code, all utility accounts are due and payable upon receipt. Accounts remaining delinquent subsequent to the due date shall be subject to a penalty and termination of service in accordance with applicable ordinances."</p>
-      </div>
-      <div class="wr-plain__card wr-plain__card--after">
-        <span class="wr-plain__tag">After · Grade 3 reading level</span>
-        <p>"Your water bill is due when you get it. If your payment is late, you may owe a late fee, and your water service may be turned off. You can pay your bill online anytime."</p>
-      </div>
-    </div>
-    <p class="wr-plain__note">The staff editor in the mockup below checks this automatically. Try it!</p>
+    <span class="eyebrow">Proposed Approach</span>
+    <h2>How We'll Build Chilhowie's New Website</h2>
+    <p class="wr-plain__intro">Six simple steps, with Town staff involved at each one. You'll always know what's next.</p>
+    <ol class="wr-req__grid wr-req__grid--3">
+      <li class="wr-req__card"><b>Discover</b><p>Meet with Town staff, review the current site, and list what residents and visitors look for most.</p></li>
+      <li class="wr-req__card"><b>Organize</b><p>Plan a simple menu and page list so key services are one or two clicks from the homepage.</p></li>
+      <li class="wr-req__card"><b>Design</b><p>A modern, mobile-first design built from the town seal, shared with you for feedback.</p></li>
+      <li class="wr-req__card"><b>Build and move content</b><p>Build the site and carry over pages, agendas, forms and documents, keeping old links working.</p></li>
+      <li class="wr-req__card"><b>Test</b><p>ADA testing (WCAG 2.2 AA), plus checks on phones, tablets and computers in every major browser.</p></li>
+      <li class="wr-req__card"><b>Train and launch</b><p>Hands-on training for Town staff, a written how-to guide, launch, and support afterward.</p></li>
+    </ol>
   </div>
 </section>
 
@@ -1500,7 +1499,7 @@
   <div class="f5-concept-feature f5-concept-feature--wide">
     <span class="f5-concept-card__badge">Live, Clickable Prototype</span>
     <h3>Explore the Public Site and the Staff Editor</h3>
-    <p>This is just a mockup to show how we would organize the site so residents get where they're going faster, and how Town staff would update pages, post alerts and upload agendas while the editor checks wording and accessibility for them. Try both below, or open either in a new tab. Try the text size and high-contrast buttons too. (Content is sample text, for illustration only.)</p>
+    <p>This is just a mockup to show how we would organize the site so residents and visitors get where they're going faster, and how Town staff would update pages, post alerts and upload agendas, with a phone preview and an ADA check built in. Try both below, or open either in a new tab. (Content is sample text, for illustration only.)</p>
     <div class="f5-live-demo">
       <div class="f5-live-demo__pane">
         <div class="f5-live-demo__label">Public Website</div>
@@ -1537,26 +1536,26 @@
 
   <div class="f5-concept-feature f5-concept-feature--wide" style="margin-top:32px">
     <span class="f5-concept-card__badge">Three More Clickable Pages</span>
-    <h3>"Who Do I Call?", the Style Guide and the Plain-Language Checker</h3>
-    <p>These show three things your RFP asks for: easy navigation, a professional look, and a site Town staff can maintain. Each works on phones too.</p>
+    <h3>"Who Do I Call?", Meetings &amp; Agendas and Visit Chilhowie</h3>
+    <p>These show what your RFP asks for: Town information and services that are easy to find, for residents and visitors alike. Each works on phones too.</p>
     <div class="f5-programs">
       <div class="f5-program">
         <h4>"Who Do I Call?" Finder</h4>
-        <p>Type "water bill" or "pothole" and see the right department, with every department listed on one page.</p>
+        <p>Type "water bill" or "pothole" and see the right department, with every department on one page.</p>
         <ul><li>Built from the Town's departments</li><li>Town Hall phone on every page</li></ul>
         <div class="f5-concept-card__links"><a class="btn btn--primary" href="/for-chilhowie/site/departments.html" target="_blank" rel="noopener">Try the Finder →</a></div>
       </div>
       <div class="f5-program">
-        <h4>Chilhowie Style Guide</h4>
-        <p>Colors from the town seal and the mountains, one easy-to-read font, three button styles and simple writing rules.</p>
-        <ul><li>Every text color passes WCAG 2.2 AA</li><li>Built right into the editor</li></ul>
-        <div class="f5-concept-card__links"><a class="btn btn--primary" href="/for-chilhowie/site/brand.html" target="_blank" rel="noopener">View the Style Guide →</a></div>
+        <h4>Meetings &amp; Agendas</h4>
+        <p>The next meeting up top, then every agenda, set of minutes and captioned video, filtered by meeting and year.</p>
+        <ul><li>Posted once by staff, shown everywhere</li><li>Accessible documents</li></ul>
+        <div class="f5-concept-card__links"><a class="btn btn--primary" href="/for-chilhowie/site/meetings.html" target="_blank" rel="noopener">See Meetings →</a></div>
       </div>
       <div class="f5-program">
-        <h4>Plain-Language Checker</h4>
-        <p>Edit a water bill notice and watch the reading level drop from grade 13 to grade 3 as you accept suggestions.</p>
-        <ul><li>Flags legal wording and "click here"</li><li>Publish is locked until the page passes</li></ul>
-        <div class="f5-concept-card__links"><a class="btn btn--primary" href="/for-chilhowie/site/admin.html" target="_blank" rel="noopener">Try the Checker →</a></div>
+        <h4>Visit Chilhowie</h4>
+        <p>A welcoming page for visitors: festivals and events, parks, the outdoors, places to eat and getting here.</p>
+        <ul><li>Events added once, shown site-wide</li><li>Great on a phone while visiting</li></ul>
+        <div class="f5-concept-card__links"><a class="btn btn--primary" href="/for-chilhowie/site/visit.html" target="_blank" rel="noopener">Visit the Page →</a></div>
       </div>
     </div>
   </div>
@@ -1578,7 +1577,7 @@
           <li>Review the current site with Town staff</li>
           <li>Simple, task-first navigation</li>
           <li>Mobile-first design from the town seal</li>
-          <li>Plain-language page writing</li>
+          <li>Refresh key pages so they're clear and current</li>
           <li>Move over pages, agendas and forms</li>
           <li>WCAG 2.2 AA, browser and phone testing</li>
           <li>Staff training and a how-to guide</li>
@@ -1587,15 +1586,15 @@
       <div class="f5-proposal__card">
         <span class="f5-proposal__label">Timeline</span>
         <p class="f5-proposal__dates">January – April 2027</p>
-        <p class="f5-proposal__phases">Discover → Design → Build → Move Content → Test → Train &amp; Launch</p>
+        <p class="f5-proposal__phases">Discover → Organize → Design → Build &amp; Move Content → Test → Train &amp; Launch</p>
       </div>
       <div class="f5-proposal__card">
         <span class="f5-proposal__label">The Result</span>
         <p>A website the Town owns and staff can manage with confidence, with training, written instructions and support after launch.</p>
       </div>
       <div class="f5-proposal__card f5-proposal__card--investment">
-        <span class="f5-proposal__label">Platform</span>
-        <p>We'll recommend the simplest platform your staff can manage, with low yearly costs and no long-term lock-in. The Town owns every account.</p>
+        <span class="f5-proposal__label">Pricing</span>
+        <p>Detailed in our written proposal. We'll recommend the simplest platform your staff can manage, with low yearly costs, and the Town owns every account.</p>
       </div>
     </div>
     <p class="f5-proposal__signoff">We'd love to discuss further 🙂</p>

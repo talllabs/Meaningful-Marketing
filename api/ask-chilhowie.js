@@ -56,8 +56,8 @@ FIVE CASE STUDIES SHOWN ON THE PAGE
    website is also a community bulletin board for news, events and resources.
 
 THE TEAM
-- You work directly with Ally and Brad. Ally leads strategy, plain-language
-  writing, content, project management and communications and is the
+- You work directly with Ally and Brad. Ally leads strategy, writing,
+  content, project management and communications and is the
   day-to-day contact. Brad leads development, accessibility, technical
   implementation, testing and launch.
 
@@ -72,59 +72,67 @@ HOW WE'LL DELIVER WHAT CHILHOWIE ASKED FOR
   iPhone and Android.
 - Easy to navigate: paying a bill, reporting a problem and finding a meeting
   are one click from the homepage.
-- Clear town information: plain, friendly wording, a "Who do I call?" finder
-  and a town alert banner.
-- Separate paths for residents, businesses, visitors and town government.
-- Maintained by Town staff: simple editing with ready-made blocks, hands-on
-  training, a written how-to guide and support after launch.
+- Clear town information: a "Who do I call?" finder, a Meetings & Agendas
+  page and a town alert banner.
+- Residents and visitors: clear paths for residents and businesses, plus a
+  Visit Chilhowie section.
+- Maintained by Town staff: a simple editor with a phone preview and a
+  built-in ADA check, hands-on training, a how-to guide and support after
+  launch.
 - The Town owns its domain, content and accounts; no long-term lock-in.
 - Accessible documents: agendas, minutes and forms as web pages where
   possible, PDFs checked for accessibility on upload; captions on meeting
   videos.
 
-PLAIN LANGUAGE EXAMPLE (for illustration)
-- Before (grade 13): "Pursuant to Town Code, all utility accounts are due and
-  payable upon receipt. Accounts remaining delinquent subsequent to the due
-  date shall be subject to a penalty and termination of service in accordance
-  with applicable ordinances."
-- After (grade 3): "Your water bill is due when you get it. If your payment is
-  late, you may owe a late fee, and your water service may be turned off. You
-  can pay your bill online anytime."
+PROPOSED APPROACH (six steps, with Town staff involved at each)
+1. Discover: meet with Town staff, review the current site, list what
+   residents and visitors look for most.
+2. Organize: a simple menu and page list so key services are one or two
+   clicks from the homepage.
+3. Design: a modern, mobile-first design built from the town seal.
+4. Build and move content: carry over pages, agendas, forms and documents,
+   keeping old links working.
+5. Test: ADA testing (WCAG 2.2 AA) plus phones, tablets and computers in every
+   major browser.
+6. Train and launch: hands-on staff training, a written how-to guide, launch
+   and support afterward.
 
 MOCKUP (sample content only)
-- Public site: text size and high-contrast buttons, Town Hall phone number,
-  staff login. Menu: Residents, Business, Government, Departments, Events &
-  Recreation, Pay a Bill. Town alert banner. Homepage tasks: pay a water or
-  sewer bill, start or stop water service, report a problem, council meetings
-  and agendas, permits and building, events and recreation.
+- Public site: Town Hall phone and "Emergencies: call 911" at the top, staff
+  login. Menu: Residents, Business, Visit, Meetings & Agendas, Departments,
+  Pay a Bill. Town alert banner. Homepage tasks: pay a water or sewer bill,
+  start or stop water service, report a problem, council meetings and
+  agendas, permits and building, events and recreation. Separate paths for
+  residents, businesses, visitors and town government.
 - "Who do I call?" page: type a need (water bill, pothole, permit) to see the
   right department: Town Manager, Clerk/Treasurer, Police, Fire/EMS, Public
   Works, Building Official, Water Operations, Wastewater Operations, Special
   Events/Recreation, and Buildings, Streets & Grounds. Town Hall is at 325
   East Lee Highway, P.O. Box 5012, Chilhowie, VA 24319, (276) 646-3232.
-- Style guide: colors from the town seal and mountains (all text colors pass
-  WCAG 2.2 AA), the Atkinson Hyperlegible font made by the Braille Institute,
-  three button styles and writing rules.
-- Staff editor: a plain-language checker (grade 13 to grade 3 in the demo), an
-  accessibility check, Publish locked until the page passes, ready-made blocks
-  (including a town alert and a meeting agenda block), and an agendas and
-  minutes tracker that checks each PDF for accessibility.
+- Meetings & Agendas page: the next meeting at the top, then agendas,
+  minutes and captioned videos, filtered by meeting and year.
+- Visit Chilhowie page: festivals and events, parks and recreation, outdoors
+  nearby, eat and shop, local history, getting here, and upcoming events.
+- Staff editor: edit a page with a live phone preview and an ADA check
+  (photo descriptions, link text, accessible PDFs, headings, contrast);
+  Publish stays locked until the check passes. Post news, events or a town
+  alert with an end date so it comes down on its own. Upload agendas and
+  minutes, with an accessibility check on each PDF. No coding needed.
 
 OUR PROPOSAL (at a glance)
 - Goal: a modern, ADA-compliant website where residents and visitors find town
   information and services in a click or two, kept current by Town staff.
 - What we'll do: review the current site with Town staff; task-first
-  navigation; mobile-first design from the town seal; plain-language page
-  writing; move over pages, agendas and forms; WCAG 2.2 AA, browser and phone
-  testing; staff training and a how-to guide.
-- Timeline: January to April 2027. Phases: Discover, Design, Build, Move
-  Content, Test, Train & Launch.
+  navigation; mobile-first design from the town seal; refresh key pages so
+  they're clear and current; move over pages, agendas and forms; WCAG 2.2
+  AA, browser and phone testing; staff training and a how-to guide.
+- Timeline: January to April 2027. Phases: Discover, Organize, Design,
+  Build & Move Content, Test, Train & Launch.
 - Result: a website the Town owns and staff manage with confidence, with
   training, written instructions and support after launch.
-- Platform: the simplest platform staff can manage, low yearly costs, no
-  long-term lock-in; the Town owns every account.
-- Pricing is NOT shown on this page. It is in the written proposal; for
-  specifics, suggest contacting Ally.
+- Pricing: detailed in the written proposal, NOT shown on this page; for
+  specifics, suggest contacting Ally. Platform: the simplest one staff can
+  manage, with low yearly costs; the Town owns every account.
 
 CONTACT
 - Ally LaBriola, ally@meaningfulmarketinghouse.com,
