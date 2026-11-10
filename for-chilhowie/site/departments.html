@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who Do I Call? — Town of Chilhowie (Concept)</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+  <script src="gate.js"></script>
+  <script src="site.js"></script>
+</head>
+<body>
+<a class="ct-skip" href="#main">Skip to main content</a>
+
+<div class="ct-ribbon">Website concept by Meaningful Marketing House · Sample content for illustration only</div>
+
+<div class="ct-util">
+  <div class="ct-wrap">
+    <div class="ct-util__group"><span>Emergencies: call 911</span></div>
+    <div class="ct-util__group">
+      <a href="tel:+12766463232">Town Hall: (276) 646-3232</a>
+      <a href="admin.html">Staff login</a>
+    </div>
+  </div>
+</div>
+
+<header class="ct-head">
+  <div class="ct-wrap">
+    <a class="ct-logo" href="index.html" aria-label="Town of Chilhowie home">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#fff" stroke="#1d5235" stroke-width="3"/>
+        <path d="M32 9 L49 30 L41 30 L44 52 L32 46 L20 52 L23 30 L15 30 Z" fill="#e8833a" stroke="#0f2e1e" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M26 30 l-3 -6 M26 30 l-5 -3 M38 30 l3 -6 M38 30 l5 -3 M27 31 q5 6 10 0 q-5 9 -10 0z" stroke="#0f2e1e" stroke-width="2" fill="#0f2e1e" stroke-linecap="round"/>
+      </svg>
+      <span>Town of<small>Chilhowie</small></span>
+    </a>
+    <button class="ct-menu-btn" id="ctMenuBtn" aria-expanded="false" aria-controls="ctNav">☰ Menu</button>
+    <nav class="ct-nav" id="ctNav" aria-label="Main">
+      <ul>
+        <li><a href="#demo">Residents</a></li>
+        <li><a href="#demo">Business</a></li>
+        <li><a href="visit.html">Visit</a></li>
+        <li><a href="meetings.html">Meetings &amp; Agendas</a></li>
+        <li><a href="departments.html" aria-current="page">Departments</a></li>
+        <li><a class="ct-btn ct-btn--sun" href="#demo">Pay a Bill</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="ct-pagehead">
+    <div class="ct-wrap">
+      <nav class="ct-crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="departments.html" aria-current="page">Departments</a></li></ol></nav>
+      <h1>Who do I call?</h1>
+      <p>Tell us what you need, and we'll show you the right department. You can always call Town Hall at <a href="tel:+12766463232">(276) 646-3232</a>.</p>
+    </div>
+  </div>
+
+  <section class="ct-section">
+    <div class="ct-wrap ct-layout">
+      <div>
+        <label for="ctFind" class="ct-find__label">What do you need help with?</label>
+        <input type="search" id="ctFind" class="ct-find" placeholder="For example: water bill, pothole, building permit" autocomplete="off" aria-describedby="ctFindCount">
+        <div class="ct-chips" role="group" aria-label="Common searches">
+          <button type="button" data-q="water bill">Water bill</button>
+          <button type="button" data-q="pothole">Pothole</button>
+          <button type="button" data-q="permit">Building permit</button>
+          <button type="button" data-q="event">Events</button>
+          <button type="button" data-q="sewer">Sewer</button>
+        </div>
+        <p id="ctFindCount" class="ct-find__count" aria-live="polite"></p>
+
+        <ul class="ct-depts" id="ctDepts">
+          <li data-k="town manager administration council budget general questions"><h2>Town Manager</h2><p class="ct-who">Brian Martin</p><p>Day-to-day town business, the budget and general questions.</p></li>
+          <li data-k="clerk treasurer water bill sewer bill pay a bill utility billing taxes business license records"><h2>Clerk / Treasurer</h2><p class="ct-who">Felicia Eller</p><p>Paying water and sewer bills, taxes, business licenses and town records.</p></li>
+          <li data-k="police non-emergency safety crime report"><h2>Police Department</h2><p class="ct-who">Chief Andrew K. Moss</p><p>Non-emergency police help. <strong>For an emergency, call 911.</strong></p></li>
+          <li data-k="fire ems ambulance burn permit smoke detector"><h2>Fire / EMS</h2><p class="ct-who">Chief C. David Haynes</p><p>Fire safety and emergency medical services. <strong>For an emergency, call 911.</strong></p></li>
+          <li data-k="public works pothole road street trash brush pickup snow"><h2>Public Works</h2><p class="ct-who">Tyler Keen, Director</p><p>Roads, potholes, trash and brush pickup, and snow removal.</p></li>
+          <li data-k="building official permit inspection remodel construction zoning"><h2>Building Official</h2><p class="ct-who">Jenna Prater</p><p>Building permits and inspections.</p></li>
+          <li data-k="water operations water leak water pressure start stop water service"><h2>Water Operations</h2><p class="ct-who">Don Cole, II</p><p>Water service, leaks and water pressure.</p></li>
+          <li data-k="wastewater operations sewer backup sewer line"><h2>Wastewater Operations</h2><p class="ct-who">Luke A. Lowe</p><p>Sewer service and sewer problems.</p></li>
+          <li data-k="special events recreation event festival park parade vendor"><h2>Special Events / Recreation</h2><p class="ct-who">Stephen Fields</p><p>Town events, festivals, parks and programs.</p></li>
+          <li data-k="building street grounds streetlight sidewalk park maintenance mowing pothole"><h2>Buildings, Streets &amp; Grounds</h2><p class="ct-who">Christopher Johnson</p><p>Town buildings, sidewalks, streetlights and grounds.</p></li>
+        </ul>
+        <p class="ct-none" id="ctNone" hidden>We couldn't find a match. Please call Town Hall at <a href="tel:+12766463232">(276) 646-3232</a> and we'll point you in the right direction.</p>
+      </div>
+
+      <aside class="ct-aside" aria-label="Town Hall information">
+        <div class="ct-card">
+          <h2>Town Hall</h2>
+          <p>325 East Lee Highway<br>P.O. Box 5012<br>Chilhowie, VA 24319</p>
+          <p>Phone: <a href="tel:+12766463232">(276) 646-3232</a><br>Fax: (276) 646-3012</p>
+          <p style="margin:0">Hours (sample): Monday to Friday, 8 a.m. to 5 p.m.</p>
+        </div>
+        <div class="ct-card">
+          <h2>Mayor and Council</h2>
+          <p style="margin:0">Mayor Gary L. Heninger</p>
+          <p style="margin:6px 0 0">Council: Billy L. Clear, Shannon Donnelly, J. Brent Foster, Bob Jeter, Julie Sturgill and P.J. Wolfe</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+<script>
+  (function () {
+    var input = document.getElementById('ctFind');
+    var items = Array.prototype.slice.call(document.querySelectorAll('#ctDepts li'));
+    var count = document.getElementById('ctFindCount');
+    var none = document.getElementById('ctNone');
+    function filter() {
+      var q = input.value.trim().toLowerCase();
+      var words = q.split(/\s+/).filter(Boolean);
+      var shown = 0;
+      items.forEach(function (li) {
+        var hay = (li.getAttribute('data-k') + ' ' + li.textContent).toLowerCase();
+        var ok = !words.length || words.every(function (w) { return hay.indexOf(w) !== -1; });
+        li.hidden = !ok;
+        if (ok) shown++;
+      });
+      none.hidden = shown !== 0;
+      count.textContent = words.length ? 'Showing ' + shown + ' of ' + items.length + ' departments' : '';
+    }
+    input.addEventListener('input', filter);
+    document.querySelectorAll('[data-q]').forEach(function (b) {
+      b.addEventListener('click', function () { input.value = b.getAttribute('data-q'); filter(); input.focus(); });
+    });
+  })();
+</script>
+
+
+
+<footer class="ct-foot">
+  <div class="ct-wrap">
+    <div class="ct-foot__grid">
+      <div>
+        <h2>Town of Chilhowie</h2>
+        <p>325 East Lee Highway<br>P.O. Box 5012<br>Chilhowie, VA 24319</p>
+        <p>Phone: <a href="tel:+12766463232">(276) 646-3232</a><br>Fax: (276) 646-3012</p>
+      </div>
+      <div><h2>Services</h2><ul><li><a href="#demo">Pay a bill</a></li><li><a href="#demo">Report a problem</a></li><li><a href="#demo">Permits</a></li></ul></div>
+      <div><h2>Government</h2><ul><li><a href="#demo">Mayor and Council</a></li><li><a href="meetings.html">Agendas and minutes</a></li><li><a href="departments.html">Departments</a></li></ul></div>
+      <div><h2>More</h2><ul><li><a href="visit.html">Visit Chilhowie</a></li><li><a href="#demo">Events</a></li><li><a href="#demo">Accessibility statement</a></li></ul></div>
+    </div>
+    <div class="ct-foot__base"><span>Website concept prepared by Meaningful Marketing House.</span><span>Built to WCAG 2.2 AA.</span></div>
+  </div>
+</footer>
+
+<div class="ct-toast" id="ctToast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
