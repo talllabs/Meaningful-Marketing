@@ -19,10 +19,8 @@
     .bar a:hover { color: #f1bf34; }
     .bar strong { font-weight: 700; }
     .controls { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-    .controls button, .controls a.dl { padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #fff; font: 700 13px 'Work Sans', system-ui, sans-serif; cursor: pointer; }
+    .controls button { padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #fff; font: 700 13px 'Work Sans', system-ui, sans-serif; cursor: pointer; }
     .controls button[aria-pressed="true"] { background: #f08519; border-color: #f08519; }
-    .controls a.dl { background: #f1bf34; border-color: #f1bf34; color: #172b37; }
-    .controls a.dl:hover { color: #172b37; background: #ffd36e; }
     .stage { flex: 1; display: flex; justify-content: center; padding: 24px 16px 0; }
     iframe { width: 100%; max-width: 700px; height: 100%; min-height: 70vh; border: 0; background: #f7f2ed; border-radius: 12px 12px 0 0; box-shadow: 0 20px 60px rgba(6,103,152,.15); transition: max-width .3s; }
     body.mobile iframe { max-width: 390px; }
@@ -35,7 +33,6 @@
     <div class="controls">
       <button type="button" data-view="desktop" aria-pressed="true" class="hide-sm">Desktop</button>
       <button type="button" data-view="mobile" aria-pressed="false" class="hide-sm">Mobile</button>
-      <a class="dl" href="/for-ahd/newsletter/email.html" download="ahd-fall-2026-newsletter.html">Download HTML</a>
     </div>
   </div>
   <div class="stage">
