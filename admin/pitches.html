@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Pitch Pages · Admin</title>
+  <style>
+    :root {
+      --ink: #16191f; --muted: #5b6270; --line: #e3e6eb; --bg: #f5f6f8; --card: #fff;
+      --accent: #176f6b; --accent-tint: #e6f2f1; --danger: #b42318; --danger-tint: #fdecea;
+      --gold: #d4a020; --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); font-size: 15px; line-height: 1.5; }
+    a { color: var(--accent); }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    button { font: inherit; cursor: pointer; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--ink); background: var(--ink); color: #fff; font-weight: 600; text-decoration: none; }
+    .btn--ghost { background: #fff; color: var(--ink); border-color: var(--line); }
+    .btn--danger { background: #fff; color: var(--danger); border-color: #f1b8b2; }
+    .btn--danger:hover { background: var(--danger-tint); }
+    .btn[disabled] { opacity: .5; cursor: wait; }
+
+    /* Login */
+    .login { min-height: 100vh; display: grid; place-items: center; padding: 20px; }
+    .login form { width: 100%; max-width: 360px; background: var(--card); border-radius: 18px; padding: 32px 28px; box-shadow: 0 20px 60px rgba(0,0,0,.08); text-align: center; }
+    .login h1 { margin: 0 0 6px; font-size: 22px; }
+    .login p { margin: 0 0 18px; color: var(--muted); }
+    .login input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1.5px solid var(--line); font: inherit; margin-bottom: 12px; }
+    .login .btn { width: 100%; justify-content: center; }
+    .msg { margin: 10px 0 0; min-height: 1.5em; color: var(--danger); font-size: 14px; }
+
+    /* Dashboard */
+    header.top { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+    header.top .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; min-height: 64px; padding-top: 8px; padding-bottom: 8px; }
+    header.top h1 { margin: 0; font-size: 18px; margin-right: auto; }
+    header.top h1 small { color: var(--muted); font-weight: 400; font-size: 14px; margin-left: 6px; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 22px 0 14px; }
+    .toolbar input { flex: 1 1 260px; min-height: 44px; padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--line); font: inherit; background: #fff; }
+    .stats { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 16px; }
+    .stat { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; }
+    .stat b { font-size: 18px; margin-right: 4px; }
+    .note { background: var(--accent-tint); border-radius: 12px; padding: 12px 16px; margin: 0 0 16px; }
+    .note--warn { background: #fff7e0; }
+    .list { display: grid; gap: 12px; margin-bottom: 40px; }
+    .row { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) auto; gap: 14px 22px; align-items: start; }
+    .row[hidden] { display: none; }
+    .row h2 { margin: 0 0 2px; font-size: 16px; }
+    .row .url { display: inline-block; font-weight: 600; word-break: break-all; }
+    .row .desc { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+    .meta { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 14px; margin: 0; }
+    .meta dt { color: var(--muted); }
+    .meta dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+    .pw { display: inline-flex; align-items: center; gap: 6px; }
+    .pw code { background: var(--bg); padding: 1px 8px; border-radius: 6px; font-size: 14px; }
+    .copy { border: 1px solid var(--line); background: #fff; border-radius: 6px; padding: 1px 8px; font-size: 12px; color: var(--muted); }
+    .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--bg); color: var(--muted); }
+    .tag--ok { background: var(--accent-tint); color: #0f4f4c; }
+    .tag--warn { background: #fff1d6; color: #7a4a00; }
+    .actions { display: flex; flex-direction: column; gap: 8px; align-items: stretch; }
+    .empty { text-align: center; color: var(--muted); padding: 40px 0; }
+    @media (max-width: 860px) { .row { grid-template-columns: 1fr; } .actions { flex-direction: row; flex-wrap: wrap; } }
+    .toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); max-width: min(92vw, 560px); background: var(--ink); color: #fff; padding: 12px 18px; border-radius: 12px; z-index: 20; }
+    .toast[hidden] { display: none; }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN (no data on this page until the server accepts the password) -->
+<div class="login" id="login">
+  <form id="loginForm" autocomplete="off">
+    <h1>Admin</h1>
+    <p>Enter your password.</p>
+    <label for="pw" class="sr-only">Password</label>
+    <input type="password" id="pw" autocomplete="current-password" required />
+    <button class="btn" type="submit" id="loginBtn">Sign in</button>
+    <p class="msg" id="loginMsg" role="alert"></p>
+  </form>
+</div>
+
+<!-- DASHBOARD -->
+<div id="app" hidden>
+  <header class="top">
+    <div class="wrap">
+      <h1>Pitch Pages <small id="branchInfo"></small></h1>
+      <a class="btn btn--ghost" href="/admin/index.html">Logos &amp; headshots</a>
+      <button class="btn btn--ghost" type="button" id="refreshBtn">Refresh</button>
+      <button class="btn btn--ghost" type="button" id="logoutBtn">Sign out</button>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="toolbar">
+      <label for="q" class="sr-only">Search pitch pages</label>
+      <input type="search" id="q" placeholder="Search by name, client, password or URL" />
+    </div>
+    <div class="stats" id="stats"></div>
+    <p class="note">Every top-level <code>for-</code> page on the site shows up here automatically. Deleting removes the page's files from the site in one step. The live site updates about a minute later. Deleted pages can still be restored from GitHub history if you ever need one back.</p>
+    <div class="list" id="list" aria-live="polite"><p class="empty">Loading…</p></div>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function () {
+  var KEY = 'mm-admin';
+  var password = '';
+  var pages = [];
+  var $ = function (id) { return document.getElementById(id); };
+
+  function toast(msg, ms) {
+    var t = $('toast'); t.textContent = msg; t.hidden = false;
+    clearTimeout(t._h); t._h = setTimeout(function () { t.hidden = true; }, ms || 4000);
+  }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function size(b) { return b > 1048576 ? (b / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB'; }
+  function when(iso) {
+    if (!iso) return 'Unknown';
+    var d = new Date(iso), days = Math.floor((Date.now() - d) / 86400000);
+    var rel = days <= 0 ? 'today' : days === 1 ? 'yesterday' : days + ' days ago';
+    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) + ' (' + rel + ')';
+  }
+
+  function showLogin(msg) {
+    $('app').hidden = true; $('login').hidden = false;
+    $('loginMsg').textContent = msg || '';
+    $('pw').value = ''; $('pw').focus();
+  }
+
+  function load() {
+    $('loginBtn').disabled = true; $('refreshBtn').disabled = true;
+    return fetch('/api/pitches', { headers: { 'x-admin-password': password }, cache: 'no-store' })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, status: r.status, d: d }; }); })
+      .then(function (x) {
+        if (x.status === 401) { try { sessionStorage.removeItem(KEY); } catch (e) {} showLogin('That password isn’t right.'); return; }
+        if (!x.ok) { showLogin(x.d.error || 'Something went wrong.'); return; }
+        try { sessionStorage.setItem(KEY, password); } catch (e) {}
+        pages = x.d.pages || [];
+        $('branchInfo').textContent = '· ' + pages.length + ' live';
+        $('loginMsg').textContent = '';
+        $('login').hidden = true; $('app').hidden = false;
+        render();
+      })
+      .catch(function () { showLogin('Could not reach the server. Check your connection.'); })
+      .finally(function () { $('loginBtn').disabled = false; $('refreshBtn').disabled = false; });
+  }
+
+  function render() {
+    var withPw = pages.filter(function (p) { return p.password; }).length;
+    var hidden = pages.filter(function (p) { return p.hiddenFromSearch; }).length;
+    var ai = pages.filter(function (p) { return p.aiHelper; }).length;
+    $('stats').innerHTML =
+      '<div class="stat"><b>' + pages.length + '</b> pitch pages</div>' +
+      '<div class="stat"><b>' + withPw + '</b> password-protected</div>' +
+      '<div class="stat"><b>' + hidden + '</b> hidden from search</div>' +
+      '<div class="stat"><b>' + ai + '</b> with an AI helper</div>';
+    if (!pages.length) { $('list').innerHTML = '<p class="empty">No for- pages on the site right now.</p>'; return; }
+    $('list').innerHTML = pages.map(function (p, i) {
+      return '<article class="row" data-i="' + i + '" data-search="' + esc((p.name + ' ' + p.title + ' ' + p.password + ' ' + p.url + ' ' + p.description).toLowerCase()) + '">' +
+        '<div>' +
+          '<h2>' + esc(p.title || p.name) + '</h2>' +
+          '<a class="url" href="' + esc(p.url) + '" target="_blank" rel="noopener noreferrer">' + esc(p.url) + '</a>' +
+          (p.description ? '<p class="desc">' + esc(p.description) + '</p>' : '') +
+        '</div>' +
+        '<dl class="meta">' +
+          '<dt>Password</dt><dd>' + (p.password ? '<span class="pw"><code>' + esc(p.password) + '</code><button type="button" class="copy" data-copy="' + esc(p.password) + '" aria-label="Copy password for ' + esc(p.name) + '">Copy</button></span>' : '<span class="tag tag--warn">None found</span>') + '</dd>' +
+          '<dt>Updated</dt><dd>' + esc(when(p.lastUpdated && p.lastUpdated.date)) + (p.lastUpdated ? '<br><span style="color:var(--muted)">' + esc(p.lastUpdated.message) + '</span>' : '') + '</dd>' +
+          '<dt>Size</dt><dd>' + p.pageCount + ' page' + (p.pageCount === 1 ? '' : 's') + ' · ' + p.fileCount + ' files · ' + size(p.sizeBytes) + '</dd>' +
+          '<dt>Search</dt><dd>' + (p.hiddenFromSearch ? '<span class="tag tag--ok">Hidden from Google</span>' : '<span class="tag tag--warn">Could be indexed</span>') + '</dd>' +
+          '<dt>AI helper</dt><dd>' + (p.aiHelper ? '<span class="tag tag--ok">Yes</span>' : '<span class="tag">No</span>') + '</dd>' +
+          '<dt>Folder</dt><dd><code>' + esc(p.name) + '</code></dd>' +
+          (p.alsoUses && p.alsoUses.length ? '<dt>Also uses</dt><dd>' + p.alsoUses.map(function (d) { return '<code>' + esc(d) + '/</code>'; }).join(' ') + '<br><span style="color:var(--muted)">Separate folders. Delete won\u2019t remove these.</span></dd>' : '') +
+        '</dl>' +
+        '<div class="actions">' +
+          '<a class="btn btn--ghost" href="' + esc(p.url) + '" target="_blank" rel="noopener noreferrer">Open ↗</a>' +
+          '<button type="button" class="btn btn--ghost" data-copy="' + esc(p.url + (p.password ? '\nPassword: ' + p.password : '')) + '">Copy link + password</button>' +
+          '<button type="button" class="btn btn--danger" data-del="' + i + '">Delete</button>' +
+        '</div>' +
+      '</article>';
+    }).join('');
+    filter();
+  }
+
+  function filter() {
+    var q = $('q').value.trim().toLowerCase();
+    document.querySelectorAll('.row').forEach(function (r) { r.hidden = q && r.getAttribute('data-search').indexOf(q) === -1; });
+  }
+
+  function del(i, btn) {
+    var p = pages[i];
+    var extra = p.aiHelper ? '\n• its AI helper (' + p.aiHelper + ')' : '';
+    if (!confirm('Delete ' + p.url + ' from the site?\n\nThis removes:\n• ' + p.fileCount + ' file(s) in ' + p.name + extra + '\n\nThe live site updates in about a minute. It can be restored from GitHub history if needed.')) return;
+    btn.disabled = true; btn.textContent = 'Deleting…';
+    fetch('/api/pitches', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: password, action: 'delete', name: p.name }) })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (x) {
+        if (!x.ok) { toast(x.d.error || 'Delete failed.', 6000); btn.disabled = false; btn.textContent = 'Delete'; return; }
+        pages.splice(i, 1); render();
+        toast('Deleted ' + p.name + '. The live site updates in about a minute.', 6000);
+      })
+      .catch(function () { toast('Could not reach the server.', 6000); btn.disabled = false; btn.textContent = 'Delete'; });
+  }
+
+  $('loginForm').addEventListener('submit', function (e) { e.preventDefault(); password = $('pw').value; load(); });
+  $('refreshBtn').addEventListener('click', load);
+  $('logoutBtn').addEventListener('click', function () { try { sessionStorage.removeItem(KEY); } catch (e) {} password = ''; pages = []; $('list').innerHTML = ''; showLogin(); });
+  $('q').addEventListener('input', filter);
+  $('list').addEventListener('click', function (e) {
+    var c = e.target.closest('[data-copy]');
+    if (c) {
+      var text = c.getAttribute('data-copy');
+      (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(function () { toast('Copied.'); }, function () { prompt('Copy this:', text); });
+      return;
+    }
+    var d = e.target.closest('[data-del]');
+    if (d) del(+d.getAttribute('data-del'), d);
+  });
+
+  try { password = sessionStorage.getItem(KEY) || ''; } catch (e) {}
+  if (password) load(); else showLogin();
+})();
+</script>
+</body>
+</html>
