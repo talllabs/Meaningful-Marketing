@@ -4,7 +4,6 @@ Disallow: /for-landforce/
 Disallow: /for-transcend/
 Disallow: /for-ahd/
 Disallow: /for-westside/
-Disallow: /for-chilhowie/
 Disallow: /for-hac/
 Disallow: /admin/
 
