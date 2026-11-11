@@ -2,7 +2,7 @@
 // (Files starting with "_" are not turned into routes by Vercel.)
 //
 // Needs these Vercel environment variables:
-//   ADMIN_PASSWORD  - the password for /admin
+//   admin_pw        - the admin password (ADMIN_PW or ADMIN_PASSWORD also work)
 //   GITHUB_TOKEN    - a GitHub token with "Contents: read & write" on this repo
 // Optional:
 //   GITHUB_REPO     - defaults to "talllabs/Meaningful-Marketing"
@@ -15,8 +15,13 @@ const REPO = process.env.GITHUB_REPO || 'talllabs/Meaningful-Marketing';
 const PNG_MAGIC = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
 const JPEG_MAGIC = Buffer.from([0xff, 0xd8, 0xff]);
 
+// The admin password, from whichever of these names is set in Vercel.
+function adminPassword() {
+  return process.env.admin_pw || process.env.ADMIN_PW || process.env.ADMIN_PASSWORD || '';
+}
+
 function passwordOk(given) {
-  const real = process.env.ADMIN_PASSWORD;
+  const real = adminPassword();
   if (!real || typeof given !== 'string') return false;
   const a = crypto.createHash('sha256').update(given).digest();
   const b = crypto.createHash('sha256').update(real).digest();
@@ -27,9 +32,9 @@ function passwordOk(given) {
 function authorize(req, res) {
   res.setHeader('Cache-Control', 'no-store');
 
-  if (!process.env.ADMIN_PASSWORD || !process.env.GITHUB_TOKEN) {
+  if (!adminPassword() || !process.env.GITHUB_TOKEN) {
     res.status(500).json({
-      error: 'The admin page is not set up yet: ADMIN_PASSWORD and GITHUB_TOKEN need to be added in Vercel.',
+      error: 'The admin page is not set up yet: admin_pw and GITHUB_TOKEN need to be added in Vercel.',
     });
     return null;
   }
