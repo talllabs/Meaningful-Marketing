@@ -3,119 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Training — Housing Assistance Council (Concept)</title>
+  <meta name="theme-color" content="#173e34" />
+  <title>Training &amp; Events | Housing Assistance Council</title>
+  <meta name="description" content="Upcoming rural housing webinars, workshops and conferences, plus captioned recordings and materials." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="hac.css" />
   <script src="gate.js"></script>
-  <script src="site.js"></script>
+  <script src="hac.js"></script>
 </head>
 <body>
-<a class="ct-skip" href="#main">Skip to main content</a>
-
-<div class="ct-ribbon">Website concept by Meaningful Marketing House · Sample content for illustration only</div>
-
-<div class="ct-util">
-  <div class="ct-wrap">
-    <div class="ct-util__group"><span>Need housing help? <a href="#demo">Find local help</a></span></div>
-    <div class="ct-util__group">
-      <a href="#demo">Rural Data Central</a>
-      <a href="#demo">Newsroom</a>
-      <a href="admin.html">Staff login</a>
-    </div>
-  </div>
-</div>
-
-<header class="ct-head">
-  <div class="ct-wrap">
-    <a class="ct-logo" href="index.html" aria-label="Housing Assistance Council home">
-      <svg viewBox="0 0 64 64" aria-hidden="true">
-        <rect x="2" y="2" width="60" height="60" rx="14" fill="#1f4e79"/>
-        <path d="M14 34 L32 18 L50 34 V48 H14 Z" fill="#fff"/>
-        <rect x="27" y="36" width="10" height="12" fill="#e3b04b"/>
-        <path d="M6 54 q13 -6 26 0 t26 0" fill="none" stroke="#8db48e" stroke-width="4" stroke-linecap="round"/>
-      </svg>
-      <span>Housing Assistance<small>Council</small></span>
-    </a>
-    <button class="ct-menu-btn" id="ctMenuBtn" aria-expanded="false" aria-controls="ctNav">☰ Menu</button>
-    <nav class="ct-nav" id="ctNav" aria-label="Main">
-      <ul>
-        <li><a href="#demo">Loans &amp; Funding</a></li>
-        <li><a href="trainings.html" aria-current="page">Training</a></li>
-        <li><a href="resources.html">Research &amp; Resources</a></li>
-        <li><a href="consulting.html">Consulting</a></li>
-        <li><a href="#demo">About</a></li>
-        <li><a class="ct-btn ct-btn--sun" href="#demo">Need Housing Help?</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
+<a class="skip" href="#main">Skip to main content</a>
+<aside class="topline" aria-label="Utility links"><div class="container"><span>RURAL AMERICA · AFFORDABLE HOMES SINCE 1971</span><nav aria-label="Utility"><a href="#demo">Rural Data Central</a><a href="#demo">Newsroom</a><a href="admin.html">Staff login</a></nav></div></aside>
+<header class="site"><div class="container headerin">
+  <a class="brand" href="index.html" aria-label="Housing Assistance Council home"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#173e34"/><path d="M14 34 L32 18 L50 34 V48 H14 Z" fill="#f8f7f1"/><rect x="27" y="36" width="10" height="12" fill="#edb18d"/><path d="M6 54 q13 -6 26 0 t26 0" fill="none" stroke="#9cc0a4" stroke-width="4" stroke-linecap="round"/></svg><span>Housing Assistance<small>Council</small></span></a>
+  <button class="mobiletoggle" id="menuToggle" aria-expanded="false" aria-controls="mainnav">☰ Menu</button>
+  <nav class="mainnav" id="mainnav" aria-label="Main"><a href="index.html">Home</a><a href="about.html">About &amp; Impact</a><a href="loans.html">Loans &amp; Funding</a><a href="trainings.html" aria-current="page">Training &amp; Events</a><a href="resources.html">Research &amp; Resources</a><a href="consulting.html">Consulting</a><a class="cta" href="about.html#support">Support HAC ↗</a></nav>
+</div></header>
+<aside class="notice" aria-label="Site notice"><div class="container"><span><strong>New research:</strong> what the newest data says about rural housing costs and conditions. <span class="sr-only">(Sample notice.)</span></span><a href="resources.html#featured">Read the findings ↗</a></div></aside>
 <main id="main">
-  <div class="ct-pagehead">
-    <div class="ct-wrap">
-      <nav class="ct-crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="trainings.html" aria-current="page">Training</a></li></ol></nav>
-      <h1>Training and webinars</h1>
-      <p>Find an upcoming training, register in a few clicks, or catch up on past sessions with recordings and materials.</p>
-    </div>
-  </div>
-  <section class="ct-section">
-    <div class="ct-wrap">
-      <h2>Upcoming trainings</h2>
-      <div class="hc-filterbar">
-        <div><label for="trFormat">Format</label><select id="trFormat"><option value="">All formats</option><option>Online</option><option>In person</option></select></div>
-        <div><label for="trTopic">Topic</label><select id="trTopic"><option value="">All topics</option><option>Homeownership</option><option>Rental housing</option><option>Funding and grants</option><option>Data and research</option></select></div>
-      </div>
-      <p id="trCount" class="ct-find__count" aria-live="polite"></p>
-      <ul class="hc-events" id="trList">
-        <li class="hc-event" data-format="Online" data-topic="Homeownership"><div class="hc-event__date">Mar<b>9</b></div><div><h3>Getting started with self-help housing</h3><p>Online webinar · Free · Captions provided</p></div><a class="ct-btn" href="#demo">Register</a></li>
-        <li class="hc-event" data-format="In person" data-topic="Rental housing"><div class="hc-event__date">Apr<b>14</b></div><div><h3>Financing small rural rental projects</h3><p>In-person workshop, also streamed online</p></div><a class="ct-btn" href="#demo">Register</a></li>
-        <li class="hc-event" data-format="Online" data-topic="Data and research"><div class="hc-event__date">May<b>20</b></div><div><h3>Using rural housing data in grant applications</h3><p>Online webinar · Free · Recording available</p></div><a class="ct-btn" href="#demo">Register</a></li>
-        <li class="hc-event" data-format="Online" data-topic="Funding and grants"><div class="hc-event__date">Jun<b>8</b></div><div><h3>Writing a strong grant application</h3><p>Online webinar · Free · Captions provided</p></div><a class="ct-btn" href="#demo">Register</a></li>
-      </ul>
-      <p class="ct-none" id="trNone" hidden>No trainings match. Try another topic, or <a href="#demo">sign up for training alerts</a>.</p>
-    </div>
-  </section>
-  <section class="ct-section ct-section--soft">
-    <div class="ct-wrap">
-      <h2>Past trainings: recordings and materials</h2>
-      <p class="ct-intro">Every recording is captioned and comes with a transcript and slides.</p>
-      <div class="ct-news">
-        <article><span class="hc-tag hc-tag--type">Recording</span><h3><a href="#demo">Heirs' property: where to start</a></h3><p><a href="#demo">Watch (captioned)</a> · <a href="#demo">Transcript</a> · <a href="#demo">Slides</a></p></article>
-        <article><span class="hc-tag hc-tag--type">Recording</span><h3><a href="#demo">Disaster recovery for small communities</a></h3><p><a href="#demo">Watch (captioned)</a> · <a href="#demo">Transcript</a> · <a href="#demo">Slides</a></p></article>
-        <article><span class="hc-tag hc-tag--type">Recording</span><h3><a href="#demo">Federal rural housing programs 101</a></h3><p><a href="#demo">Watch (captioned)</a> · <a href="#demo">Transcript</a> · <a href="#demo">Slides</a></p></article>
-      </div>
-      <p style="margin-top:14px; color:var(--muted); font-size:1rem">Sample trainings for illustration. Recordings also appear in the <a href="resources.html">Resource Library</a>.</p>
-    </div>
-  </section>
+<section class="pagehero photohero" style="background-image:url('images/training-team.webp')" aria-labelledby="pageTitle"><div class="container">
+  <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><span aria-current="page">Training &amp; Events</span></li></ol></nav>
+  <span class="eyebrow">Training &amp; Events</span><h1 id="pageTitle">Learn together.<br>Build together.</h1><p>Webinars, workshops and an annual conference for people building homes in rural communities.</p>
+</div></section>
+
+<section class="section" aria-labelledby="upTitle"><div class="container">
+  <div class="sectionhead"><div><span class="eyebrow">Your training calendar</span><h2 id="upTitle">What's coming up.</h2></div>
+    <div class="viewtoggle" role="group" aria-label="Calendar view"><button type="button" class="filter" id="listBtn" aria-pressed="true">List view</button><button type="button" class="filter" id="monthBtn" aria-pressed="false">Month view</button></div></div>
+  <div class="filters" data-target="#eventList" data-count="#eventCount" data-noun="events" role="group" aria-label="Filter events"><button type="button" class="filter" data-value="all" aria-pressed="true">All events</button><button type="button" class="filter" data-value="online" aria-pressed="false">Online</button><button type="button" class="filter" data-value="inperson" aria-pressed="false">In person</button><button type="button" class="filter" data-value="conference" aria-pressed="false">Conference</button></div>
+  <p class="count" id="eventCount" aria-live="polite"></p>
+  <ul id="eventList" class="date-list"><li class="dateitem" data-type="online"><div class="datebox"><span>Mar</span><strong>09</strong></div><div><span class="tag">Online webinar · Free · Sample</span><h3>Getting started with self-help housing</h3><p>Live captions · Recording and slides afterward</p></div><a class="button outline small" href="trainings.html#register" aria-label="Register: Getting started with self-help housing">Register ↗</a></li>
+<li class="dateitem" data-type="inperson"><div class="datebox"><span>Apr</span><strong>14</strong></div><div><span class="tag">Workshop · In person + streamed · Sample</span><h3>Financing small rural rental projects</h3><p>Washington, D.C. and online</p></div><a class="button outline small" href="trainings.html#register" aria-label="Register: Financing small rural rental projects">Register ↗</a></li>
+<li class="dateitem" data-type="online"><div class="datebox"><span>May</span><strong>20</strong></div><div><span class="tag">Online webinar · Free · Sample</span><h3>Using rural housing data in grant applications</h3><p>Live captions · Recording available</p></div><a class="button outline small" href="trainings.html#register" aria-label="Register: Using rural housing data in grant applications">Register ↗</a></li>
+<li class="dateitem" data-type="online"><div class="datebox"><span>Jun</span><strong>08</strong></div><div><span class="tag">Online webinar · Free · Sample</span><h3>Writing a strong grant application</h3><p>Live captions · Worksheet included</p></div><a class="button outline small" href="trainings.html#register" aria-label="Register: Writing a strong grant application">Register ↗</a></li>
+<li class="dateitem" data-type="conference"><div class="datebox"><span>Jun</span><strong>24</strong></div><div><span class="tag">Conference · Sample</span><h3>National Rural Housing Conference</h3><p>Three days of sessions, field visits and networking</p></div><a class="button outline small" href="trainings.html#register" aria-label="Register: National Rural Housing Conference">Register ↗</a></li></ul>
+  <div id="calendarWrap" class="calendarwrap" hidden><h3>June 2027</h3><div class="calendar" id="calendar"></div><p class="fine" style="margin-top:12px">March to May events appear in the list view.</p></div>
+  <p class="fine" style="margin-top:25px">All events are samples for this concept. The real site would pull approved events from HAC's calendar.</p>
+</div></section>
+
+<section class="section warm" aria-labelledby="pastTitle"><div class="container">
+  <div class="sectionhead"><div><span class="eyebrow">Recordings &amp; materials</span><h2 id="pastTitle">Missed it? Catch up.</h2></div><p>Every recording is captioned and comes with a transcript and slides.</p></div>
+  <ul class="tilegrid">
+    <li class="tile"><img src="images/cabin-field.webp" alt="A small dark cabin with a grass roof on open land" loading="lazy"><div class="tilebody"><span class="tag">Recording · 60 min</span><h3>Heirs' property: where to start</h3><div class="links"><a href="#demo">Watch</a><a href="#demo">Transcript</a><a href="#demo">Slides</a></div></div></li>
+    <li class="tile"><img src="images/helping-neighbor.webp" alt="A volunteer helping an older man with a walker" loading="lazy"><div class="tilebody"><span class="tag">Recording · 45 min</span><h3>Disaster recovery for small communities</h3><div class="links"><a href="#demo">Watch</a><a href="#demo">Transcript</a><a href="#demo">Slides</a></div></div></li>
+    <li class="tile"><img src="images/research-desk.webp" alt="Notebooks and a laptop on a desk" loading="lazy"><div class="tilebody"><span class="tag">Recording · 75 min</span><h3>Federal rural housing programs 101</h3><div class="links"><a href="#demo">Watch</a><a href="#demo">Transcript</a><a href="#demo">Slides</a></div></div></li>
+  </ul>
+</div></section>
+
+<section class="section" id="register" aria-labelledby="regTitle"><div class="container split">
+  <div class="copy"><span class="eyebrow">Register</span><h2 id="regTitle">Save your seat.</h2><p class="intro">Sign up in under a minute. We'll send a calendar invite and the joining link.</p></div>
+  <div class="formpanel"><h3>Training registration</h3><form class="formgrid" data-demo="Concept only: in the real site, this registers you and sends a calendar invite.">
+    <div class="field"><label for="rgName">Full name</label><input id="rgName" autocomplete="name" required></div>
+    <div class="field"><label for="rgEmail">Email</label><input id="rgEmail" type="email" autocomplete="email" required></div>
+    <div class="field full"><label for="rgEvent">Event</label><select id="rgEvent" required><option value="">Choose an event</option><option>Getting started with self-help housing</option><option>Financing small rural rental projects</option><option>Using rural housing data in grant applications</option><option>Writing a strong grant application</option><option>National Rural Housing Conference</option></select></div>
+    <div class="field full"><label for="rgNeeds">Accessibility needs (optional)</label><textarea id="rgNeeds" rows="3" placeholder="For example: ASL interpreter, large-print materials"></textarea></div>
+    <div class="field full"><button class="button" type="submit">Register ↗</button></div>
+  </form></div>
+</div></section>
 </main>
-<script>
-  (function () {
-    var f = document.getElementById('trFormat'), t = document.getElementById('trTopic');
-    var items = Array.prototype.slice.call(document.querySelectorAll('#trList .hc-event')), c = document.getElementById('trCount'), none = document.getElementById('trNone');
-    function run() { var n = 0; items.forEach(function (li) { var ok = (!f.value || li.dataset.format === f.value) && (!t.value || li.dataset.topic === t.value); li.hidden = !ok; if (ok) n++; }); c.textContent = 'Showing ' + n + ' of ' + items.length + ' trainings'; none.hidden = n !== 0; }
-    f.addEventListener('change', run); t.addEventListener('change', run); run();
-  })();
-</script>
-
-<footer class="ct-foot">
-  <div class="ct-wrap">
-    <div class="ct-foot__grid">
-      <div>
-        <h2>Housing Assistance Council</h2>
-        <p>1828 L Street N.W., Suite 505<br>Washington, D.C. 20036</p>
-        <p>(202) 842-8600<br><a href="mailto:hac@ruralhome.org">hac@ruralhome.org</a></p>
-      </div>
-      <div><h2>Our work</h2><ul><li><a href="#demo">Loans and funding</a></li><li><a href="trainings.html">Training</a></li><li><a href="consulting.html">Consulting</a></li></ul></div>
-      <div><h2>Learn</h2><ul><li><a href="resources.html">Research and resources</a></li><li><a href="#demo">Rural Data Central</a></li><li><a href="#demo">Veterans Data Central</a></li><li><a href="#demo">Heirs Central</a></li></ul></div>
-      <div><h2>About</h2><ul><li><a href="#demo">Mission and impact</a></li><li><a href="#demo">Funders and partners</a></li><li><a href="#demo">Accessibility statement</a></li></ul></div>
+<footer class="footer"><div class="container">
+  <div class="footergrid">
+    <div>
+      <a class="brand" href="index.html" aria-label="Housing Assistance Council home"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#173e34"/><path d="M14 34 L32 18 L50 34 V48 H14 Z" fill="#f8f7f1"/><rect x="27" y="36" width="10" height="12" fill="#edb18d"/><path d="M6 54 q13 -6 26 0 t26 0" fill="none" stroke="#9cc0a4" stroke-width="4" stroke-linecap="round"/></svg><span>Housing Assistance<small>Council</small></span></a>
+      <p style="margin-top:20px">Helping build and keep affordable homes in rural communities across the United States since 1971.</p>
+      <p>1828 L Street N.W., Suite 505<br>Washington, D.C. 20036<br>(202) 842-8600 · <a href="mailto:hac@ruralhome.org">hac@ruralhome.org</a></p>
     </div>
-    <div class="ct-foot__base"><span>Website concept prepared by Meaningful Marketing House.</span><span>HAC is an equal opportunity provider, employer and lender.</span></div>
+    <div><h2>Our work</h2><ul><li><a href="loans.html">Loans &amp; funding</a></li><li><a href="trainings.html">Training &amp; events</a></li><li><a href="consulting.html">Consulting</a></li><li><a href="about.html#help">Need housing help?</a></li></ul></div>
+    <div><h2>Learn</h2><ul><li><a href="resources.html">Research &amp; resources</a></li><li><a href="#demo">Rural Data Central</a></li><li><a href="#demo">Veterans Data Central</a></li><li><a href="#demo">Heirs Central</a></li></ul></div>
+    <div><h2>About</h2><ul><li><a href="about.html">Mission &amp; impact</a></li><li><a href="about.html#support">Support &amp; partner</a></li><li><a href="#demo">Accessibility statement</a></li><li><a href="admin.html">Staff login</a></li></ul></div>
   </div>
-</footer>
-
-<div class="ct-toast" id="ctToast" role="status" aria-live="polite" hidden></div>
+  <div class="footbottom"><span>Website concept by Meaningful Marketing House. Sample content and stock photography (Pexels) for illustration.</span><span>HAC is an equal opportunity provider, employer and lender.</span></div>
+</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script>
+(function () {
+  var listBtn = document.getElementById('listBtn'), monthBtn = document.getElementById('monthBtn');
+  var list = document.getElementById('eventList'), wrap = document.getElementById('calendarWrap');
+  function view(month) {
+    list.hidden = month; wrap.hidden = !month;
+    listBtn.setAttribute('aria-pressed', String(!month)); monthBtn.setAttribute('aria-pressed', String(month));
+  }
+  listBtn.addEventListener('click', function () { view(false); });
+  monthBtn.addEventListener('click', function () { view(true); });
+  // June 2027 month view (sample). June 1, 2027 is a Tuesday.
+  var events = { 8: ['Grant writing webinar', 'online'], 24: ['Rural Housing Conference', 'conference'] };
+  var cal = document.getElementById('calendar');
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(function (d) { var x = document.createElement('div'); x.className = 'calday heading'; x.textContent = d; x.setAttribute('aria-hidden', 'true'); cal.appendChild(x); });
+  for (var i = 0; i < 35; i++) {
+    var day = i - 1, x = document.createElement('div');
+    x.className = 'calday' + (day < 1 || day > 30 ? ' blank' : '');
+    if (day >= 1 && day <= 30) {
+      x.textContent = day;
+      if (events[day]) { var e = document.createElement('a'); e.href = '#register'; e.className = 'cal-event'; e.dataset.type = events[day][1]; e.textContent = 'June ' + day + ': ' + events[day][0]; x.appendChild(e); }
+    }
+    cal.appendChild(x);
+  }
+  document.addEventListener('hac:filter', function (ev) {
+    if (ev.detail.target !== '#eventList') return;
+    cal.querySelectorAll('.cal-event').forEach(function (e) { e.hidden = ev.detail.value !== 'all' && e.dataset.type !== ev.detail.value; });
+  });
+})();
+</script>
 </body>
 </html>
