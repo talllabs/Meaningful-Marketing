@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#002048">
 <meta name="description" content="The Lobiko Initiative partners with local changemakers to expand opportunity for children and families in the Democratic Republic of Congo.">
 <title>The Lobiko Initiative | Mockup 1</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#002048">
 <link rel="icon" href="/for-lobiko/images/logo-mark.webp">
 <script src="/for-lobiko/gate.js"></script>
 <script src="/for-lobiko/demo-bar.js" data-design="1"></script>
@@ -43,7 +43,7 @@ img { display: block; max-width: 100%; }
 /* Announcement + header */
 .announcement { display: block; background: var(--navy); color: #fff; text-align: center; padding: 11px 20px; font-size: 15px; font-weight: 600; text-decoration: none; }
 .announcement:hover { text-decoration: underline; }
-header.site { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.97); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }
+body > header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.97); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }
 .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 84px; }
 .brand img { height: 52px; width: auto; }
 .nav-links { display: flex; gap: 4px; }
@@ -94,6 +94,7 @@ header.site { position: sticky; top: 0; z-index: 50; background: rgba(255,255,25
 .film-player .play span { width: 88px; height: 88px; border-radius: 50%; background: var(--yellow); color: var(--navy); display: grid; place-items: center; font-size: 30px; padding-left: 6px; box-shadow: 0 10px 30px rgba(0,0,0,.25); transition: transform .2s; }
 .film-player:hover .play span { transform: scale(1.08); }
 .film-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.film video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 22px; background: var(--navy); box-shadow: 0 24px 60px rgba(0,32,72,.18); object-fit: cover; }
 .film figcaption { margin-top: 12px; font-size: 15px; color: var(--muted); }
 
 /* Programs (commitment + story) */
@@ -160,9 +161,9 @@ footer { background: var(--paper-2); padding: 70px 0 40px; font-size: 16px; }
 <body id="top">
 <a class="skip" href="#main">Skip to content</a>
 <aside aria-label="Announcement"><a class="announcement" href="https://www.lobiko.org/year-end-giving">This giving season, children in the Congo are growing, healing, and finding hope through your partnership. Browse our gift catalog and give today. <span aria-hidden="true">→</span></a></aside>
-<header class="site">
+<header>
   <div class="wrap nav-row">
-    <a class="brand" href="#top" aria-label="The Lobiko Initiative home"><img src="/for-lobiko/images/lobiko-logo.webp" alt="The Lobiko Initiative"></a>
+    <a class="brand" href="index.html" aria-label="The Lobiko Initiative home"><img src="/for-lobiko/images/lobiko-logo.webp" alt="The Lobiko Initiative"></a>
     <nav class="nav-links desktop-nav" aria-label="Main navigation">
       <a href="https://www.lobiko.org/about-us">About Us</a><a href="#our-work">Our Work</a><a href="https://www.lobiko.org/lobiko-champions">Become a Champion</a><a href="#stories">Read Our Blog</a><a href="https://lobikoinitiative-bloom.kindful.com/users/sign_in">Donor Portal</a><a href="https://www.lobiko.org/year-end-giving">Gift Catalog</a>
     </nav>
@@ -179,7 +180,6 @@ footer { background: var(--paper-2); padding: 70px 0 40px; font-size: 16px; }
   <section class="hero paper" aria-labelledby="campaign-title">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">The Lobiko Initiative · Gemena, DR Congo</p>
         <h1 id="campaign-title">Transforming Lives</h1>
         <p class="tagline">Through Hope and Opportunity</p>
         <div class="hero-actions">
@@ -189,7 +189,7 @@ footer { background: var(--paper-2); padding: 70px 0 40px; font-size: 16px; }
       </div>
       <figure class="hero-visual">
         <span class="sun" aria-hidden="true"><i></i><i></i><i></i></span>
-        <div class="photo-frame"><img src="/for-lobiko/images/two-girls.webp" alt="Two girls smiling on a dirt road in Congo, one holding a piece of fruit" fetchpriority="high"></div>
+        <div class="photo-frame"><img src="/for-lobiko/images/two-girls.webp" alt="Two children smiling in a photograph from Lobiko’s work in Congo" fetchpriority="high"></div>
         <span class="leaves" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       </figure>
     </div>
@@ -215,11 +215,8 @@ footer { background: var(--paper-2); padding: 70px 0 40px; font-size: 16px; }
       <a class="button" href="https://www.lobiko.org/year-end-giving">Donate Today <span aria-hidden="true">↗</span></a>
     </div>
     <figure class="film">
-      <button class="film-player" type="button" id="filmBtn" aria-label="Play Lobiko: Our Impact (video)">
-        <img src="/for-lobiko/images/film-poster.webp" alt="" loading="lazy">
-        <span class="play" aria-hidden="true"><span>▶</span></span>
-      </button>
-      <figcaption>Lobiko: Our Impact · <a href="https://www.youtube.com/watch?v=FF2P3AJhZhQ">Watch on YouTube</a></figcaption>
+      <video id="film-video" controls playsinline preload="none" poster="/for-lobiko/images/film-poster.webp" aria-label="The Lobiko Initiative introduction"></video>
+      <figcaption>Lobiko’s introductory film · <a href="https://www.lobiko.org/">View on Lobiko’s website</a></figcaption>
     </figure>
   </section>
   <section class="section programs paper" id="our-work" aria-label="Our commitment and story">
@@ -239,7 +236,6 @@ footer { background: var(--paper-2); padding: 70px 0 40px; font-size: 16px; }
     </div>
   </section>
   <section class="section wrap beliefs" aria-labelledby="beliefs-title">
-    <p class="eyebrow">What drives us</p>
     <h2 id="beliefs-title">We Believe In</h2>
     <div class="belief-grid">
       <article class="story-card">
@@ -258,10 +254,9 @@ footer { background: var(--paper-2); padding: 70px 0 40px; font-size: 16px; }
   </section>
   <section class="section cause paper" aria-labelledby="cause-title">
     <div class="wrap">
-      <p class="eyebrow">Why we serve</p>
       <h2 id="cause-title">What Compels Us to Serve</h2>
       <p>Advances in medicine and technology have improved many lives, yet millions still face violence and poverty. Lobiko describes how war and oppression have claimed more than six million lives in Congo and how the effects continue to shape daily life.</p>
-      <blockquote>Oliver’s story shows what that means for one person and his community.</blockquote>
+      <p>Oliver’s story shows what that means for one person and his community.</p>
       <a class="button" href="https://www.lobiko.org/about-us">Keep Reading <span aria-hidden="true">→</span></a>
     </div>
   </section>
@@ -276,48 +271,46 @@ footer { background: var(--paper-2); padding: 70px 0 40px; font-size: 16px; }
       <a class="story-card" href="https://www.lobiko.org/engaged-and-inspired-blog/2025-benefit-event-highlight"><img src="/for-lobiko/images/blog-benefit-event.webp" alt="" loading="lazy"><div><h3>Lobiko Event: A Day of Community, Generosity, and Impact!</h3><span>Read the event recap →</span></div></a>
     </div>
   </section>
-  <section class="section give" aria-labelledby="give-title">
+  <section class="section give paper" aria-labelledby="give-title">
     <div class="wrap">
       <h2 id="give-title">Join Us</h2>
       <p>Support children and families in Congo through the Gift Catalog, make a donation, or become a Lobiko Champion.</p>
-      <div class="actions"><a class="button" href="https://www.lobiko.org/year-end-giving">Donate Today <span aria-hidden="true">↗</span></a><a class="text-link" href="https://www.lobiko.org/year-end-giving">Browse the Gift Catalog <span aria-hidden="true">→</span></a><a class="text-link" href="https://www.lobiko.org/lobiko-champions">Become a Champion <span aria-hidden="true">→</span></a></div>
+      <div class="actions"><a class="button dark" href="https://www.lobiko.org/year-end-giving">Donate Today <span aria-hidden="true">↗</span></a><a class="text-link" href="https://www.lobiko.org/year-end-giving">Browse the Gift Catalog <span aria-hidden="true">→</span></a><a class="text-link" href="https://www.lobiko.org/lobiko-champions">Become a Champion <span aria-hidden="true">→</span></a></div>
     </div>
   </section>
 </main>
 <footer>
-  <div class="wrap">
-    <div class="footer-row">
-      <div><img class="logo" src="/for-lobiko/images/lobiko-logo.webp" alt="The Lobiko Initiative">
-        <p>Transforming Lives Through Hope &amp; Opportunity</p>
-        <p>Lobiko is a registered 501(c)(3) nonprofit in the United States (Tax ID: 85-2563277) and a registered nonprofit in the Democratic Republic of Congo. U.S. donations are tax-deductible in full or in part.</p>
-        <p>Mailing address<br>39252 Winchester Rd, Ste 107-152<br>Murrieta, CA 92563</p>
-      </div>
-      <div class="footer-links">
-        <nav aria-label="Join us"><strong>Join Us</strong><a href="#top">Home</a><a href="https://www.lobiko.org/year-end-giving">Donate Today</a><a href="https://www.lobiko.org/lobiko-champions">Become a Champion</a><a href="https://www.lobiko.org/contact-us">Contact Lobiko</a></nav>
-        <nav aria-label="Learn more"><strong>Learn More</strong><a href="https://www.lobiko.org/about-us">About Us</a><a href="https://www.lobiko.org/our-work">Our Work</a><a href="https://www.lobiko.org/blog">Our Blog</a><a href="https://www.lobiko.org/engaged-and-inspired-blog/category/Annual+Report">Annual Reports</a></nav>
-        <nav aria-label="Email updates"><strong>Stay Connected</strong><a href="https://www.lobiko.org/join">Sign up for Lobiko emails</a><a href="#top">Back to Top ↑</a></nav>
-      </div>
+  <div class="wrap footer-row">
+    <div><strong>The Lobiko Initiative</strong>
+      <p>Transforming Lives Through Hope &amp; Opportunity</p>
+      <p>Lobiko is a registered 501(c)(3) nonprofit in the United States (Tax ID: 85-2563277) and a registered nonprofit in the Democratic Republic of Congo. U.S. donations are tax-deductible in full or in part.</p>
+      <p>Mailing address<br>39252 Winchester Rd, Ste 107-152<br>Murrieta, CA 92563</p>
     </div>
-    <div class="badges">
-      <img src="/for-lobiko/images/badge-greatnonprofits.webp" alt="GreatNonprofits 2023 Top-Rated Nonprofit" loading="lazy">
-      <img src="/for-lobiko/images/badge-candid.webp" alt="Candid Platinum Transparency 2025" loading="lazy">
-      <img src="/for-lobiko/images/badge-pwi.webp" alt="PWI Partner badge of approval 2023" loading="lazy">
-      <img src="/for-lobiko/images/badge-globalgiving.webp" alt="GlobalGiving Vetted Organization 2024" loading="lazy">
-      <p>Homepage concept by Meaningful Marketing for discussion.</p>
+    <div class="footer-links">
+      <nav aria-label="Join us"><strong>Join Us</strong><a href="#top">Home</a><a href="https://www.lobiko.org/year-end-giving">Donate Today</a><a href="https://www.lobiko.org/lobiko-champions">Become a Champion</a><a href="https://www.lobiko.org/contact-us">Contact Lobiko</a></nav>
+      <nav aria-label="Learn more"><strong>Learn More</strong><a href="https://www.lobiko.org/about-us">About Us</a><a href="https://www.lobiko.org/our-work">Our Work</a><a href="https://www.lobiko.org/blog">Our Blog</a><a href="https://www.lobiko.org/engaged-and-inspired-blog/category/Annual+Report">Annual Reports</a></nav>
+      <nav aria-label="Email updates"><strong>Stay Connected</strong><a href="https://www.lobiko.org/join">Sign up for Lobiko emails</a><a href="#top">Back to Top ↑</a></nav>
     </div>
   </div>
 </footer>
 <script>
-document.getElementById('filmBtn').addEventListener('click', function () {
-  var f = document.createElement('iframe');
-  f.src = 'https://www.youtube-nocookie.com/embed/FF2P3AJhZhQ?autoplay=1&rel=0';
-  f.title = 'Lobiko: Our Impact';
-  f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-  f.allowFullscreen = true;
-  this.replaceWith(f);
-  f.style.cssText = 'width:100%;aspect-ratio:16/9;border:0;border-radius:22px;display:block';
-  f.focus();
-});
+/* Lobiko's introductory film, streamed from Lobiko's Squarespace video library (HLS).
+   hls.js is used wherever supported; native HLS only where hls.js can't run. */
+(function () {
+  var SRC = 'https://video.squarespace-cdn.com/content/v1/5f4b1e6a594e4e310816b164/67bbdbb6-fb6e-4b08-8d37-86ca8e3b477f/playlist.m3u8';
+  var v = document.getElementById('film-video'), started = false;
+  function native() { if (v.canPlayType('application/vnd.apple.mpegurl')) v.src = SRC; }
+  var sc = document.createElement('script');
+  sc.src = '/for-lobiko/vendor/hls-1.5.20.min.js';
+  sc.onerror = native;
+  sc.onload = function () {
+    if (!window.Hls || !window.Hls.isSupported()) { native(); return; }
+    var hls = new window.Hls({ autoStartLoad: false, capLevelToPlayerSize: true });
+    hls.loadSource(SRC); hls.attachMedia(v);
+    v.addEventListener('play', function () { if (!started) { started = true; hls.startLoad(); } });
+  };
+  document.head.appendChild(sc);
+})();
 </script>
 </body>
 </html>

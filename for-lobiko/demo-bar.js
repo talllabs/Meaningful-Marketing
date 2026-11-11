@@ -2,7 +2,7 @@
    Usage: <script src="/for-lobiko/demo-bar.js" data-design="1"></script> */
 (function () {
   var design = (document.currentScript && document.currentScript.getAttribute('data-design')) || '1';
-  var NAMES = { 1: 'Warm & hopeful', 2: 'Logo reveal', 3: 'See your gift' };
+  var NAMES = { 1: 'Warm & hopeful', 2: 'Logo reveal', 3: 'Campaign', 4: 'Her story' };
 
   var style = document.createElement('style');
   style.textContent =
@@ -20,7 +20,7 @@
     var bar = document.createElement('nav');
     bar.className = 'lbk-demo';
     bar.setAttribute('aria-label', 'Concept switcher');
-    var links = [1, 2, 3].map(function (n) {
+    var links = [1, 2, 3, 4].map(function (n) {
       return '<a href="/for-lobiko/design-' + n + '/"' + (String(n) === design ? ' aria-current="page"' : '') + '>Mockup ' + n + '</a>';
     }).join('');
     bar.innerHTML =
