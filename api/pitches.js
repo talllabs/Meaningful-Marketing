@@ -1,5 +1,5 @@
 // Vercel Serverless Function for the private "Pitch Pages" dashboard
-// (admin.meaningfulmarketinghouse.com → /admin/pitches.html).
+// (the "Pitch Pages" tab of /admin).
 //
 // GET  (header x-admin-password)            → list every top-level for-* page
 // POST {password, action: 'delete', name}   → delete one for-* page in one commit

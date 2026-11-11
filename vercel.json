@@ -178,7 +178,7 @@
           "value": "admin.meaningfulmarketinghouse.com"
         }
       ],
-      "destination": "/admin/pitches.html",
+      "destination": "/admin/",
       "permanent": false
     }
   ]
