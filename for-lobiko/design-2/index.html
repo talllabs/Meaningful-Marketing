@@ -5,165 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f8d040">
 <meta name="robots" content="noindex, nofollow">
-<title>The Lobiko Initiative | Mockup 2</title>
-<meta name="description" content="Homepage concept for The Lobiko Initiative with a logo cutout video reveal.">
+<title>The Lobiko Initiative | Transforming Lives Through Hope and Opportunity</title>
+<meta name="description" content="The Lobiko Initiative partners with local changemakers to expand opportunity for children and families in the Democratic Republic of Congo.">
 <link rel="icon" href="/for-lobiko/images/logo-mark.webp">
 <script src="/for-lobiko/gate.js"></script>
 <script src="/for-lobiko/demo-bar.js" data-design="2"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet">
-<style>
-:root { --navy: #002048; --navy-2: #0b3a6e; --orange: #e85820; --orange-dk: #b8410f; --yellow: #f8d040; --teal: #48a8c0; --teal-dk: #1f6f84; --green: #509040;
-  --ink: #18212e; --muted: #4e5868; --line: #e1e5ec; --soft: #f4f7fb; --hh: 80px; }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 19px; line-height: 1.6; color: var(--ink); background: #fff; }
-h1, h2, h3 { font-family: Outfit, system-ui, sans-serif; color: var(--navy); line-height: 1.05; letter-spacing: -.02em; margin: 0; }
-h2 { font-size: clamp(2.3rem, 4.4vw, 4rem); font-weight: 700; }
-p { margin: 0 0 1em; }
-a { color: inherit; }
-img { display: block; max-width: 100%; }
-:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; box-shadow: 0 0 0 6px var(--navy); }
-.wrap { width: min(1240px, calc(100% - 44px)); margin-inline: auto; }
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-.skip { position: absolute; left: 16px; top: -80px; z-index: 300; background: var(--navy); color: #fff; padding: 12px 18px; font-weight: 700; border-radius: 8px; }
-.skip:focus { top: 60px; }
-.kicker { display: inline-block; font-family: Outfit, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--orange-dk); margin-bottom: 16px; }
-.btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font: 700 17px Outfit, sans-serif; text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: transform .2s, background .2s; }
-.btn:hover { transform: translateY(-2px); }
-.btn--yellow { background: var(--yellow); color: var(--navy); }
-.btn--yellow:hover { background: #ffe07a; }
-.btn--ghost { border-color: rgba(255,255,255,.8); color: #fff; }
-.btn--ghost:hover { background: rgba(255,255,255,.14); }
-.btn--navy { background: var(--navy); color: #fff; }
-.btn--navy:hover { background: var(--navy-2); }
-.section { padding: clamp(80px, 10vw, 130px) 0; }
-
-/* Header */
-.site { position: sticky; top: 0; z-index: 100; height: var(--hh); background: rgba(255,255,255,.97); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-.site .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.brand img { height: 50px; width: auto; }
-.mainnav { display: flex; align-items: center; gap: 4px; }
-.mainnav a { text-decoration: none; font: 600 16px Outfit, sans-serif; padding: 10px 13px; border-radius: 999px; color: var(--navy); }
-.mainnav a:hover { background: var(--soft); }
-.mainnav .give { background: var(--orange-dk); color: #fff; padding: 11px 22px; margin-left: 8px; }
-.mainnav .give:hover { background: #9a350b; }
-.menu-btn { display: none; border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 9px 16px; font: 600 16px Outfit, sans-serif; color: var(--navy); }
-
-/* ---------- Logo cutout reveal ---------- */
-.reveal { position: relative; height: 340vh; background: var(--yellow); }
-.reveal__stage { position: sticky; top: var(--hh); height: calc(100vh - var(--hh)); height: calc(100svh - var(--hh)); overflow: hidden; color: #fff; }
-.reveal__media { position: absolute; inset: 0; overflow: hidden; background: #0b1a2c; }
-.reveal__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.reveal__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.reveal__shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,20,48,.88) 0%, rgba(0,20,48,.45) 55%, rgba(0,20,48,.2) 100%); opacity: 0; }
-.reveal__mask { position: absolute; inset: 0; width: 100%; height: 100%; will-change: transform, opacity; }
-.reveal__hint { position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%); font: 700 13px Outfit, sans-serif; letter-spacing: .22em; text-transform: uppercase; color: var(--navy); text-align: center; }
-.reveal__hint span { display: block; width: 2px; height: 40px; background: var(--navy); margin: 12px auto 0; animation: drip 1.8s ease-in-out infinite; transform-origin: top; }
-@keyframes drip { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(0); transform-origin: bottom; } }
-.reveal__copy { position: absolute; left: 0; right: 0; bottom: 0; padding-bottom: clamp(70px, 10vh, 120px); opacity: 0; transform: translateY(32px); }
-.reveal__copy .kicker { color: var(--yellow); }
-.reveal__copy h1 { font-size: clamp(2.6rem, 5.4vw, 5.6rem); font-weight: 700; color: #fff; max-width: 17ch; }
-.cycle { display: grid; color: var(--yellow); }
-.cycle span { grid-area: 1 / 1; transition: opacity .55s ease, transform .55s ease; }
-.cycle span:not(.on) { opacity: 0; transform: translateY(.35em); }
-.reveal__copy p { font-size: clamp(18px, 1.6vw, 22px); max-width: 600px; color: #eef3f9; margin-top: 22px; }
-.reveal__actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
-.pause { position: absolute; right: 24px; bottom: 24px; z-index: 5; display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,.65); background: rgba(0,20,48,.6); color: #fff; border-radius: 999px; padding: 9px 16px; font: 600 14px Outfit, sans-serif; cursor: pointer; }
-.pause:hover { background: rgba(0,20,48,.9); }
-.reveal.is-static { height: auto; }
-.reveal.is-static .reveal__stage { position: relative; top: 0; height: auto; min-height: calc(100svh - var(--hh)); }
-.reveal.is-static .reveal__mask, .reveal.is-static .reveal__hint { display: none; }
-.reveal.is-static .reveal__shade, .reveal.is-static .reveal__copy { opacity: 1; transform: none; }
-.reveal.is-static .reveal__copy { position: relative; padding-top: 30vh; }
-
-/* Impact band */
-.impact { background: var(--navy); color: #fff; padding: 64px 0; }
-.impact__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-.impact strong { display: block; font: 700 clamp(2.6rem, 4.4vw, 3.8rem) Outfit, sans-serif; line-height: 1; margin-bottom: 8px; }
-.impact div:nth-child(1) strong { color: var(--yellow); } .impact div:nth-child(2) strong { color: #ff9a6b; } .impact div:nth-child(3) strong { color: #7fd0e2; } .impact div:nth-child(4) strong { color: #9fd38a; }
-.impact span { color: #dbe5f1; font-size: 17px; }
-
-/* Programs */
-.head { display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; margin-bottom: 44px; }
-.head p { max-width: 440px; color: var(--muted); margin: 0; }
-.progs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; list-style: none; padding: 0; margin: 0; }
-.prog { border-radius: 22px; overflow: hidden; background: var(--soft); }
-.prog img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-.prog__body { padding: 24px 26px 28px; }
-.prog h3 { font-size: 26px; margin: 8px 0 10px; }
-.prog p { color: var(--muted); margin: 0; font-size: 17px; }
-.tag { font: 700 13px Outfit, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--teal-dk); }
-
-/* Campaign + gift slider */
-.campaign { background: var(--soft); }
-.campaign__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.goal { display: flex; gap: 30px; margin: 26px 0; }
-.goal strong { display: block; font: 700 34px Outfit, sans-serif; color: var(--navy); }
-.goal span { color: var(--muted); font-size: 16px; }
-.slider { background: #fff; border-radius: 28px; padding: clamp(26px, 4vw, 44px); box-shadow: 0 20px 50px rgba(0,32,72,.1); }
-.slider label { font: 700 18px Outfit, sans-serif; color: var(--navy); display: block; margin-bottom: 18px; }
-.slider input[type=range] { width: 100%; accent-color: var(--orange-dk); height: 28px; }
-.ticks { display: flex; justify-content: space-between; font-size: 15px; color: var(--muted); margin: 6px 0 22px; }
-.amount { font: 800 clamp(3rem, 6vw, 4.6rem) Outfit, sans-serif; color: var(--orange-dk); line-height: 1; }
-.gift-title { font: 700 26px Outfit, sans-serif; color: var(--navy); margin: 10px 0 8px; }
-.gift-desc { color: var(--muted); min-height: 3.2em; }
-
-/* Stories */
-.stories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; list-style: none; padding: 0; margin: 0; }
-.story { display: flex; flex-direction: column; text-decoration: none; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); height: 100%; transition: transform .2s, box-shadow .2s; }
-.story:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,32,72,.12); }
-.story img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
-.story div { padding: 24px; }
-.story h3 { font-size: 22px; margin-bottom: 10px; }
-.story span { font-weight: 700; color: var(--orange-dk); }
-.quote { background: var(--navy); color: #fff; border-radius: 28px; padding: clamp(30px, 5vw, 60px); margin-top: 50px; display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: center; }
-.quote blockquote { margin: 0; font: 600 clamp(1.4rem, 2.4vw, 2rem) Outfit, sans-serif; line-height: 1.3; }
-.quote p { margin: 14px 0 0; color: #cfdbea; font-size: 17px; }
-.quote__mark { font: 800 120px/0.8 Outfit, sans-serif; color: var(--yellow); }
-
-.badges { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; padding: 50px 0; border-top: 1px solid var(--line); }
-.badges img { height: 84px; width: auto; }
-.foot { background: var(--navy); color: #dbe5f1; padding: 70px 0 34px; font-size: 17px; }
-.foot__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 50px; }
-.foot__logo { background: #fff; border-radius: 16px; padding: 14px 18px; display: inline-block; }
-.foot__logo img { height: 52px; width: auto; }
-.foot h2 { font-size: 14px; letter-spacing: .16em; text-transform: uppercase; color: #fff; margin-bottom: 14px; }
-.foot ul { list-style: none; padding: 0; margin: 0; }
-.foot li a { display: inline-block; padding: 5px 0; color: #dbe5f1; text-decoration: none; }
-.foot li a:hover { text-decoration: underline; }
-.foot__note { border-top: 1px solid #23406a; margin-top: 44px; padding-top: 20px; font-size: 14px; color: #b9c8db; }
-
-@media (max-width: 980px) {
-  :root { --hh: 68px; }
-  .brand img { height: 40px; }
-  .menu-btn { display: block; }
-  .mainnav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; background: #fff; padding: 14px 20px 22px; border-bottom: 1px solid var(--line); }
-  .mainnav.open { display: flex; }
-  .mainnav .give { margin: 6px 0 0; text-align: center; }
-  .impact__grid { grid-template-columns: 1fr 1fr; }
-  .progs, .stories { grid-template-columns: 1fr 1fr; }
-  .campaign__grid, .foot__grid { grid-template-columns: 1fr; gap: 30px; }
-  .pause { right: 14px; bottom: 14px; }
-  .reveal__hint { bottom: 86px; }
-}
-@media (max-width: 640px) { .progs, .stories { grid-template-columns: 1fr; } .quote { grid-template-columns: 1fr; } }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
-</style>
+<link rel="stylesheet" href="site.css">
 </head>
-<body>
-<a class="skip" href="#main">Skip to main content</a>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<aside aria-label="Announcement"><a class="announce" href="gift-catalog.html">This giving season, children in the Congo are growing, healing, and finding hope through your partnership. Browse our gift catalog and give today. <span aria-hidden="true">→</span></a></aside>
 <header class="site"><div class="wrap">
-  <a class="brand" href="#top" aria-label="The Lobiko Initiative home"><img src="/for-lobiko/images/lobiko-logo.webp" alt="The Lobiko Initiative"></a>
+  <a class="brand" href="index.html" aria-label="The Lobiko Initiative home"><img src="/for-lobiko/images/lobiko-logo.webp" alt="The Lobiko Initiative"></a>
   <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainnav">Menu</button>
-  <nav class="mainnav" id="mainnav" aria-label="Main">
-    <a href="#work">Our Work</a><a href="https://www.lobiko.org/about-us">About</a><a href="#stories">Stories</a><a href="https://www.lobiko.org/lobiko-champions">Become a Champion</a><a class="give" href="#give">Give Today</a>
-  </nav>
+  <nav class="mainnav" id="mainnav" aria-label="Main"><a href="about.html">About Us</a><a href="our-work.html">Our Work</a><a href="champions.html">Become A Champion</a><a href="blog.html">Read Our Blog</a><a href="https://lobikoinitiative-bloom.kindful.com/users/sign_in">Donor Portal</a><a href="gift-catalog.html">Gift Catalog</a><a class="give" href="give.html">Give Today</a></nav>
 </div></header>
-
 <main id="main">
-<section class="reveal" id="top" aria-labelledby="heroTitle">
+<section class="reveal" aria-labelledby="heroTitle">
   <div class="reveal__stage" id="stage">
     <div class="reveal__media" aria-hidden="true">
       <img src="/for-lobiko/images/kids-in-tree.webp" alt="" fetchpriority="high">
@@ -171,185 +32,88 @@ img { display: block; max-width: 100%; }
     </div>
     <div class="reveal__shade" id="shade" aria-hidden="true"></div>
     <svg class="reveal__mask" id="maskSvg" aria-hidden="true" focusable="false">
-      <defs>
-        <mask id="logoHole" maskUnits="userSpaceOnUse">
-          <rect x="0" y="0" width="100%" height="100%" fill="#fff"/>
-          <g id="maskLogo" fill="#000"><path fill-rule="evenodd" d="M70.0,445.6C70.0,445.4 75.0,440.2 81.1,433.9C148.2,365.0 196.4,284.5 209.6,219.2C210.6,214.2 211.7,210.0 212.0,210.0C213.0,210.0 215.7,219.6 217.6,229.5C220.6,245.3 219.5,275.2 215.4,291.7C214.8,294.0 214.8,294.0 219.1,292.4C225.1,290.3 237.2,288.0 242.6,288.0L247.0,288.0L251.0,296.7C253.2,301.5 254.7,305.7 254.3,306.0C253.8,306.4 249.9,308.1 245.5,309.9C223.6,318.8 206.8,332.5 199.5,347.5C187.8,371.4 195.2,402.1 221.0,436.9C224.4,441.5 226.9,445.4 226.7,445.6C226.0,446.3 206.2,439.1 199.6,435.8C183.2,427.6 168.3,414.8 162.1,403.8L158.9,398.1L151.2,404.2C130.8,420.4 106.4,433.4 78.2,443.1C73.7,444.6 70.0,445.7 70.0,445.6ZM228.4,395.1C223.2,392.7 217.3,386.8 214.9,381.6C212.2,375.6 212.4,365.9 215.4,359.4C219.4,350.8 229.8,344.0 239.0,344.0C244.3,344.0 251.7,347.0 256.3,351.0C270.5,363.6 267.7,386.0 250.8,394.4C244.3,397.7 234.7,397.9 228.4,395.1ZM282.0,318.5C319.2,311.1 346.5,290.1 355.0,262.5C362.9,236.6 354.6,209.0 331.5,185.1C321.4,174.6 310.7,166.8 296.8,159.5C243.0,131.6 175.3,136.6 140.3,171.1C129.8,181.4 122.6,194.9 120.3,208.1L119.6,212.5L118.8,207.0C117.9,199.9 119.4,186.1 122.1,178.0C131.3,149.9 155.0,128.6 189.2,117.5C207.3,111.6 215.6,110.5 240.5,110.6C260.6,110.6 263.6,110.8 275.5,113.4C329.2,124.7 371.6,154.5 389.6,193.5C397.6,210.9 399.8,232.0 395.1,248.4C392.6,257.4 387.4,268.3 382.4,275.2C376.9,282.7 362.9,295.1 354.2,300.4C334.4,312.2 305.1,320.2 282.5,319.9L275.5,319.8L282.0,318.5ZM158.6,308.5C150.1,282.4 131.8,258.3 108.0,242.1C103.3,238.9 97.5,235.2 95.0,233.9L90.5,231.5L101.4,231.2C114.4,230.9 124.3,233.0 135.9,238.7C141.8,241.6 145.6,244.5 152.8,251.7C163.4,262.2 162.8,262.1 170.1,254.3C176.6,247.3 182.6,239.2 193.0,223.5L202.2,209.5L201.6,214.5C199.8,227.4 192.2,252.7 184.3,272.0C180.2,282.0 165.6,311.5 163.2,314.8C161.4,317.1 161.4,317.0 158.6,308.5ZM122.0,310.4C102.8,305.3 78.9,295.1 64.5,285.8C23.7,259.5 1.4,219.7 5.9,180.9C11.7,129.6 57.1,87.4 124.2,71.0C143.7,66.2 160.3,64.7 184.0,65.4C195.3,65.7 206.5,66.3 209.0,66.8L213.5,67.5L206.7,71.4C196.7,77.0 181.4,88.8 174.0,96.7C167.7,103.3 167.3,103.6 159.5,105.4C140.4,109.9 121.1,118.5 102.2,131.0C81.3,144.8 67.0,160.6 57.4,180.5C51.8,192.0 50.0,199.0 49.3,211.5C47.5,243.1 65.5,273.8 98.3,295.7C104.1,299.6 117.3,306.5 127.0,310.8C130.4,312.3 128.6,312.1 122.0,310.4ZM258.7,295.0C255.6,287.9 255.4,287.0 257.0,287.0C260.4,287.0 274.8,290.1 280.2,291.9C292.9,296.4 293.0,295.8 278.0,299.6C270.6,301.4 264.0,303.0 263.4,303.0C262.8,303.0 260.7,299.4 258.7,295.0ZM227.0,253.2C227.0,244.1 227.2,243.1 228.9,242.5C232.4,241.4 237.9,244.6 239.6,248.5C242.4,255.3 238.5,261.7 231.1,262.7L227.0,263.3L227.0,253.2ZM159.0,237.7C154.0,235.1 150.0,228.7 150.0,223.6C150.0,215.2 158.1,207.1 166.3,207.0C183.5,206.9 189.2,230.1 174.0,237.8C168.4,240.6 164.4,240.6 159.0,237.7ZM403.7,193.6C402.7,190.2 399.9,183.4 397.4,178.5C375.0,133.9 323.7,102.1 262.6,94.9C250.4,93.5 220.5,94.3 210.0,96.4C205.9,97.2 200.9,98.2 199.0,98.6L195.5,99.3L200.0,94.6C202.5,92.0 207.7,87.7 211.5,85.1C243.4,63.1 291.2,57.9 331.7,72.1C368.9,85.1 393.9,111.8 403.7,148.8C405.9,157.2 406.3,161.3 406.8,178.3C407.0,189.3 406.8,198.6 406.3,199.1C405.8,199.6 404.7,197.3 403.7,193.6ZM99.7,61.6C114.1,45.9 134.1,30.3 151.0,21.6C172.4,10.6 188.1,6.6 210.0,6.6C225.8,6.6 238.3,8.7 252.4,13.7C264.0,17.8 284.0,28.6 294.1,36.1C302.7,42.6 313.3,52.0 312.7,52.6C312.5,52.8 308.8,52.3 304.4,51.5C284.1,48.0 264.4,48.7 243.9,53.7L233.2,56.3L221.9,54.1C181.7,46.6 139.9,49.9 104.2,63.3L95.0,66.8L99.7,61.6Z"/><path fill-rule="evenodd" transform="translate(410 0)" d="M59.2,387.0C59.5,365.5 59.8,364.5 65.0,363.8L67.5,363.5L67.8,385.2L68.0,407.0L63.5,407.0L58.9,407.0L59.2,387.0ZM126.0,387.2C126.0,369.2 126.2,367.2 127.8,365.7C131.8,362.1 133.4,363.4 142.2,376.7L150.5,389.4L150.8,376.7L151.1,364.0L155.5,364.0L160.0,364.0L160.0,385.5L160.0,407.0L155.8,407.0L151.5,407.0L143.0,393.8L134.5,380.5L134.2,393.8L133.9,407.0L130.0,407.0L126.0,407.0L126.0,387.2ZM215.2,387.0C215.5,365.5 215.8,364.5 221.0,363.8L223.5,363.5L223.8,385.2L224.0,407.0L219.5,407.0L214.9,407.0L215.2,387.0ZM292.0,389.6L292.0,372.1L287.2,371.8C282.5,371.5 282.5,371.5 282.2,367.8L281.9,364.0L297.0,364.0L312.1,364.0L311.5,366.2C310.5,369.6 307.2,372.0 303.4,372.0L300.0,372.0L300.0,389.5L300.0,407.0L296.0,407.0L292.0,407.0L292.0,389.6ZM365.2,387.0C365.5,365.5 365.8,364.5 371.0,363.8L373.5,363.5L373.8,385.2L374.0,407.0L369.5,407.0L364.9,407.0L365.2,387.0ZM430.6,400.2C432.0,396.5 435.4,387.7 438.0,380.7C440.7,373.6 443.6,367.0 444.6,365.9C445.6,364.8 447.6,364.0 449.6,364.0C452.7,364.0 452.9,364.3 455.6,371.2C457.1,375.2 460.9,384.9 464.1,392.8L469.8,407.0L465.4,407.0C461.2,407.0 460.9,406.8 459.4,403.0C457.9,399.3 457.5,399.0 453.7,399.0C451.3,399.0 448.9,399.7 447.7,400.7C445.9,402.4 445.7,402.4 443.6,399.9L441.3,397.2L439.6,402.1L437.8,407.0L432.9,407.0L428.1,407.0L430.6,400.2ZM526.0,389.5L526.0,372.0L521.0,372.0L516.0,372.0L516.0,368.0L516.0,364.0L530.9,364.0L545.9,364.0L544.8,367.0C543.6,370.5 541.3,372.0 537.1,372.0L534.0,372.0L534.7,389.5L535.3,407.0L530.7,407.0L526.0,407.0L526.0,389.5ZM598.7,388.2C598.4,375.2 598.5,368.8 599.3,367.1C600.6,364.4 605.9,362.4 606.5,364.3C606.7,365.0 607.1,374.8 607.4,386.2L608.0,407.0L603.6,407.0L599.3,407.0L598.7,388.2ZM668.6,386.2C664.4,374.7 661.0,365.0 661.0,364.7C661.0,364.3 663.0,364.0 665.3,364.0L669.7,364.0L675.1,378.6L680.5,393.2L684.7,379.9C689.2,365.7 691.3,362.7 695.9,363.2C697.3,363.4 698.4,363.9 698.4,364.5C698.3,365.1 695.2,374.8 691.4,386.2L684.5,407.0L680.4,407.0L676.3,407.0L668.6,386.2ZM751.8,390.8C751.5,368.4 751.5,368.2 753.5,366.0C755.1,364.3 756.6,364.0 765.7,364.0L776.0,364.0L776.0,368.0L776.0,372.0L768.0,372.0L760.0,372.0L760.0,376.5L760.0,381.0L768.0,381.0C775.7,381.0 776.0,381.1 776.0,383.3C776.0,387.7 773.7,389.3 767.1,389.8L761.0,390.2L761.0,394.6L761.0,399.0L769.0,399.0L777.0,399.0L777.0,403.0L777.0,407.0L764.5,407.0L752.0,407.0L751.8,390.8ZM450.6,391.1L454.7,390.5L452.2,383.7C450.8,380.0 449.4,377.3 449.0,377.7C448.6,378.1 447.1,381.8 445.6,385.9C443.3,392.3 443.2,393.1 444.7,392.5C445.7,392.0 448.3,391.4 450.6,391.1ZM370.0,316.9C363.3,315.7 355.4,312.2 348.9,307.4L344.0,303.8L344.0,309.4L344.0,315.0L330.0,315.0L316.0,315.0L316.0,249.2L316.0,183.4L318.5,178.3C322.6,170.2 330.8,165.0 339.4,165.0L343.9,165.0L344.2,214.8C344.6,259.4 344.8,265.1 346.4,270.0C351.7,286.2 360.4,292.7 375.4,291.8C381.0,291.4 383.9,290.7 387.3,288.7C404.2,278.8 405.9,249.7 390.3,236.0C380.6,227.5 364.2,226.7 353.9,234.2C348.8,237.9 348.0,237.1 348.0,228.4C348.0,223.9 348.7,221.1 350.6,217.2C355.2,208.0 362.9,204.0 375.9,204.0C390.1,204.0 402.0,209.2 412.3,219.9C429.7,237.9 433.9,266.4 422.5,289.5C418.5,297.6 408.5,308.2 401.5,311.8C392.3,316.4 379.5,318.5 370.0,316.9ZM716.5,317.0C689.2,312.1 669.0,289.7 667.3,262.5C666.3,247.3 671.1,235.3 680.3,229.6C684.4,227.1 686.4,226.6 693.3,226.2C703.2,225.7 710.8,228.1 715.9,233.4C718.6,236.2 722.4,243.9 721.5,244.8C721.4,244.9 720.1,244.6 718.6,244.0C714.7,242.5 708.4,242.8 705.0,244.5C703.4,245.3 700.8,247.7 699.3,249.7C696.7,253.1 696.5,254.0 696.5,262.4C696.5,270.6 696.8,272.0 699.5,276.9C704.9,286.6 715.5,291.8 727.6,290.7C738.9,289.6 747.4,284.0 752.1,274.4C754.1,270.3 754.5,268.0 754.5,260.5C754.5,252.9 754.1,250.6 751.9,246.0C746.8,235.0 738.9,229.7 726.8,229.4C720.0,229.1 718.6,228.7 714.9,226.0C710.2,222.6 702.5,220.0 697.0,220.0C693.8,220.0 686.6,221.6 681.5,223.4C678.4,224.6 690.5,213.4 695.6,210.4C712.7,200.4 733.0,199.6 750.8,208.2C764.5,214.8 777.4,231.0 781.5,246.7C783.5,254.3 783.4,269.2 781.4,276.1C775.8,295.0 760.9,309.9 742.1,315.4C735.3,317.4 723.0,318.2 716.5,317.0ZM209.3,315.6C199.3,313.2 191.0,308.2 182.4,299.6C169.6,286.8 164.4,273.6 165.2,256.0C165.8,244.4 168.4,237.8 174.4,232.2C179.6,227.4 184.6,225.6 193.0,225.6C202.2,225.6 209.0,228.2 213.9,233.5C217.6,237.6 219.9,242.4 218.7,243.6C218.4,243.9 216.4,243.6 214.1,243.0C206.9,241.1 199.9,244.2 196.0,251.2C192.7,257.2 192.8,266.8 196.3,274.2C199.3,280.4 200.3,281.7 205.1,285.3C214.8,292.6 232.5,292.0 242.3,283.9C250.4,277.2 254.1,266.0 252.0,254.1C249.2,237.8 239.0,229.0 223.0,229.0C217.8,229.0 215.9,228.6 214.7,227.2C208.8,220.7 194.3,218.2 183.5,221.8L177.5,223.8L184.2,217.4C195.3,206.9 207.6,202.0 223.0,202.0C239.2,202.0 252.4,207.6 263.8,219.3C281.9,238.0 286.1,263.8 274.8,286.9C268.6,299.7 253.4,311.5 238.4,315.4C231.1,317.3 216.7,317.4 209.3,315.6ZM466.0,271.2C466.0,219.9 466.1,218.8 473.3,211.6C478.0,206.9 484.1,204.7 490.5,205.2L494.5,205.5L494.8,260.8L495.0,316.0L480.5,316.0L466.0,316.0L466.0,271.2ZM544.0,249.2L544.0,182.4L546.6,177.1C550.7,169.0 560.1,164.0 568.6,165.6L572.0,166.2L572.2,208.5L572.5,250.8L587.4,233.0C595.6,223.1 604.0,213.7 606.2,212.0C612.2,207.1 618.3,204.9 625.4,204.8C635.2,204.8 640.7,208.5 641.7,215.9C642.2,219.9 642.2,220.0 639.3,220.0C633.8,220.0 627.6,225.3 613.1,242.7L599.1,259.5L601.4,262.0C605.4,266.3 645.6,313.5 646.4,314.8C646.9,315.7 643.2,316.0 630.2,316.0L613.3,316.0L592.7,291.4L572.0,266.9L572.0,291.4L572.0,316.0L558.0,316.0L544.0,316.0L544.0,249.2ZM58.2,249.2L58.5,183.5L61.2,178.3C65.6,170.1 73.6,165.1 82.8,165.0L87.0,165.0L87.0,226.5L87.0,288.0L112.2,288.2L137.5,288.5L137.8,301.8L138.1,315.0L98.0,315.0L57.9,315.0L58.2,249.2ZM467.7,204.3C466.2,201.9 464.8,190.2 465.1,183.2C465.5,174.3 467.0,171.3 473.1,167.2C479.8,162.6 491.0,166.3 494.9,174.4C500.1,185.1 495.8,192.9 481.9,197.5C477.5,199.0 472.6,201.3 471.0,202.6C469.5,204.0 467.9,204.7 467.7,204.3ZM60.0,112.0L60.0,94.0L55.0,94.0L50.0,94.0L50.0,90.0L50.0,86.0L64.9,86.0L79.7,86.0L79.2,88.5C78.6,91.8 75.4,94.0 71.3,94.0L68.0,94.0L68.0,112.0L68.0,130.0L64.0,130.0L60.0,130.0L60.0,112.0ZM127.0,110.2C127.0,88.6 127.6,86.0 132.6,86.0C135.0,86.0 135.0,86.1 135.0,95.0L135.0,104.0L142.5,104.0L150.0,104.0L150.0,95.0L150.0,86.0L154.0,86.0L158.0,86.0L158.0,108.0L158.0,130.0L154.0,130.0L150.0,130.0L150.0,121.0L150.0,112.0L145.4,112.0C140.1,112.0 137.2,110.7 136.0,107.7C135.4,106.2 135.1,109.6 135.1,117.8L135.0,130.0L131.0,130.0L127.0,130.0L127.0,110.2ZM212.0,109.6C212.0,84.8 211.3,86.0 226.2,86.0L236.0,86.0L236.0,90.0L236.0,94.0L228.0,94.0L220.0,94.0L220.0,99.0L220.0,104.0L228.0,104.0C235.3,104.0 236.0,104.2 236.0,106.0C236.0,109.9 232.5,112.0 226.0,112.0L220.0,112.0L220.0,116.5L220.0,121.0L228.0,121.0L236.0,121.0L236.0,125.5L236.0,130.0L224.0,130.0L212.0,130.0L212.0,109.6Z"/></g>
-        </mask>
-      </defs>
+      <defs><mask id="logoHole" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="100%" height="100%" fill="#fff"/><g id="maskLogo" fill="#000"><path fill-rule="evenodd" d="M70.0,445.6C70.0,445.4 75.0,440.2 81.1,433.9C148.2,365.0 196.4,284.5 209.6,219.2C210.6,214.2 211.7,210.0 212.0,210.0C213.0,210.0 215.7,219.6 217.6,229.5C220.6,245.3 219.5,275.2 215.4,291.7C214.8,294.0 214.8,294.0 219.1,292.4C225.1,290.3 237.2,288.0 242.6,288.0L247.0,288.0L251.0,296.7C253.2,301.5 254.7,305.7 254.3,306.0C253.8,306.4 249.9,308.1 245.5,309.9C223.6,318.8 206.8,332.5 199.5,347.5C187.8,371.4 195.2,402.1 221.0,436.9C224.4,441.5 226.9,445.4 226.7,445.6C226.0,446.3 206.2,439.1 199.6,435.8C183.2,427.6 168.3,414.8 162.1,403.8L158.9,398.1L151.2,404.2C130.8,420.4 106.4,433.4 78.2,443.1C73.7,444.6 70.0,445.7 70.0,445.6ZM228.4,395.1C223.2,392.7 217.3,386.8 214.9,381.6C212.2,375.6 212.4,365.9 215.4,359.4C219.4,350.8 229.8,344.0 239.0,344.0C244.3,344.0 251.7,347.0 256.3,351.0C270.5,363.6 267.7,386.0 250.8,394.4C244.3,397.7 234.7,397.9 228.4,395.1ZM282.0,318.5C319.2,311.1 346.5,290.1 355.0,262.5C362.9,236.6 354.6,209.0 331.5,185.1C321.4,174.6 310.7,166.8 296.8,159.5C243.0,131.6 175.3,136.6 140.3,171.1C129.8,181.4 122.6,194.9 120.3,208.1L119.6,212.5L118.8,207.0C117.9,199.9 119.4,186.1 122.1,178.0C131.3,149.9 155.0,128.6 189.2,117.5C207.3,111.6 215.6,110.5 240.5,110.6C260.6,110.6 263.6,110.8 275.5,113.4C329.2,124.7 371.6,154.5 389.6,193.5C397.6,210.9 399.8,232.0 395.1,248.4C392.6,257.4 387.4,268.3 382.4,275.2C376.9,282.7 362.9,295.1 354.2,300.4C334.4,312.2 305.1,320.2 282.5,319.9L275.5,319.8L282.0,318.5ZM158.6,308.5C150.1,282.4 131.8,258.3 108.0,242.1C103.3,238.9 97.5,235.2 95.0,233.9L90.5,231.5L101.4,231.2C114.4,230.9 124.3,233.0 135.9,238.7C141.8,241.6 145.6,244.5 152.8,251.7C163.4,262.2 162.8,262.1 170.1,254.3C176.6,247.3 182.6,239.2 193.0,223.5L202.2,209.5L201.6,214.5C199.8,227.4 192.2,252.7 184.3,272.0C180.2,282.0 165.6,311.5 163.2,314.8C161.4,317.1 161.4,317.0 158.6,308.5ZM122.0,310.4C102.8,305.3 78.9,295.1 64.5,285.8C23.7,259.5 1.4,219.7 5.9,180.9C11.7,129.6 57.1,87.4 124.2,71.0C143.7,66.2 160.3,64.7 184.0,65.4C195.3,65.7 206.5,66.3 209.0,66.8L213.5,67.5L206.7,71.4C196.7,77.0 181.4,88.8 174.0,96.7C167.7,103.3 167.3,103.6 159.5,105.4C140.4,109.9 121.1,118.5 102.2,131.0C81.3,144.8 67.0,160.6 57.4,180.5C51.8,192.0 50.0,199.0 49.3,211.5C47.5,243.1 65.5,273.8 98.3,295.7C104.1,299.6 117.3,306.5 127.0,310.8C130.4,312.3 128.6,312.1 122.0,310.4ZM258.7,295.0C255.6,287.9 255.4,287.0 257.0,287.0C260.4,287.0 274.8,290.1 280.2,291.9C292.9,296.4 293.0,295.8 278.0,299.6C270.6,301.4 264.0,303.0 263.4,303.0C262.8,303.0 260.7,299.4 258.7,295.0ZM227.0,253.2C227.0,244.1 227.2,243.1 228.9,242.5C232.4,241.4 237.9,244.6 239.6,248.5C242.4,255.3 238.5,261.7 231.1,262.7L227.0,263.3L227.0,253.2ZM159.0,237.7C154.0,235.1 150.0,228.7 150.0,223.6C150.0,215.2 158.1,207.1 166.3,207.0C183.5,206.9 189.2,230.1 174.0,237.8C168.4,240.6 164.4,240.6 159.0,237.7ZM403.7,193.6C402.7,190.2 399.9,183.4 397.4,178.5C375.0,133.9 323.7,102.1 262.6,94.9C250.4,93.5 220.5,94.3 210.0,96.4C205.9,97.2 200.9,98.2 199.0,98.6L195.5,99.3L200.0,94.6C202.5,92.0 207.7,87.7 211.5,85.1C243.4,63.1 291.2,57.9 331.7,72.1C368.9,85.1 393.9,111.8 403.7,148.8C405.9,157.2 406.3,161.3 406.8,178.3C407.0,189.3 406.8,198.6 406.3,199.1C405.8,199.6 404.7,197.3 403.7,193.6ZM99.7,61.6C114.1,45.9 134.1,30.3 151.0,21.6C172.4,10.6 188.1,6.6 210.0,6.6C225.8,6.6 238.3,8.7 252.4,13.7C264.0,17.8 284.0,28.6 294.1,36.1C302.7,42.6 313.3,52.0 312.7,52.6C312.5,52.8 308.8,52.3 304.4,51.5C284.1,48.0 264.4,48.7 243.9,53.7L233.2,56.3L221.9,54.1C181.7,46.6 139.9,49.9 104.2,63.3L95.0,66.8L99.7,61.6Z"/><path fill-rule="evenodd" transform="translate(410 0)" d="M59.2,387.0C59.5,365.5 59.8,364.5 65.0,363.8L67.5,363.5L67.8,385.2L68.0,407.0L63.5,407.0L58.9,407.0L59.2,387.0ZM126.0,387.2C126.0,369.2 126.2,367.2 127.8,365.7C131.8,362.1 133.4,363.4 142.2,376.7L150.5,389.4L150.8,376.7L151.1,364.0L155.5,364.0L160.0,364.0L160.0,385.5L160.0,407.0L155.8,407.0L151.5,407.0L143.0,393.8L134.5,380.5L134.2,393.8L133.9,407.0L130.0,407.0L126.0,407.0L126.0,387.2ZM215.2,387.0C215.5,365.5 215.8,364.5 221.0,363.8L223.5,363.5L223.8,385.2L224.0,407.0L219.5,407.0L214.9,407.0L215.2,387.0ZM292.0,389.6L292.0,372.1L287.2,371.8C282.5,371.5 282.5,371.5 282.2,367.8L281.9,364.0L297.0,364.0L312.1,364.0L311.5,366.2C310.5,369.6 307.2,372.0 303.4,372.0L300.0,372.0L300.0,389.5L300.0,407.0L296.0,407.0L292.0,407.0L292.0,389.6ZM365.2,387.0C365.5,365.5 365.8,364.5 371.0,363.8L373.5,363.5L373.8,385.2L374.0,407.0L369.5,407.0L364.9,407.0L365.2,387.0ZM430.6,400.2C432.0,396.5 435.4,387.7 438.0,380.7C440.7,373.6 443.6,367.0 444.6,365.9C445.6,364.8 447.6,364.0 449.6,364.0C452.7,364.0 452.9,364.3 455.6,371.2C457.1,375.2 460.9,384.9 464.1,392.8L469.8,407.0L465.4,407.0C461.2,407.0 460.9,406.8 459.4,403.0C457.9,399.3 457.5,399.0 453.7,399.0C451.3,399.0 448.9,399.7 447.7,400.7C445.9,402.4 445.7,402.4 443.6,399.9L441.3,397.2L439.6,402.1L437.8,407.0L432.9,407.0L428.1,407.0L430.6,400.2ZM526.0,389.5L526.0,372.0L521.0,372.0L516.0,372.0L516.0,368.0L516.0,364.0L530.9,364.0L545.9,364.0L544.8,367.0C543.6,370.5 541.3,372.0 537.1,372.0L534.0,372.0L534.7,389.5L535.3,407.0L530.7,407.0L526.0,407.0L526.0,389.5ZM598.7,388.2C598.4,375.2 598.5,368.8 599.3,367.1C600.6,364.4 605.9,362.4 606.5,364.3C606.7,365.0 607.1,374.8 607.4,386.2L608.0,407.0L603.6,407.0L599.3,407.0L598.7,388.2ZM668.6,386.2C664.4,374.7 661.0,365.0 661.0,364.7C661.0,364.3 663.0,364.0 665.3,364.0L669.7,364.0L675.1,378.6L680.5,393.2L684.7,379.9C689.2,365.7 691.3,362.7 695.9,363.2C697.3,363.4 698.4,363.9 698.4,364.5C698.3,365.1 695.2,374.8 691.4,386.2L684.5,407.0L680.4,407.0L676.3,407.0L668.6,386.2ZM751.8,390.8C751.5,368.4 751.5,368.2 753.5,366.0C755.1,364.3 756.6,364.0 765.7,364.0L776.0,364.0L776.0,368.0L776.0,372.0L768.0,372.0L760.0,372.0L760.0,376.5L760.0,381.0L768.0,381.0C775.7,381.0 776.0,381.1 776.0,383.3C776.0,387.7 773.7,389.3 767.1,389.8L761.0,390.2L761.0,394.6L761.0,399.0L769.0,399.0L777.0,399.0L777.0,403.0L777.0,407.0L764.5,407.0L752.0,407.0L751.8,390.8ZM450.6,391.1L454.7,390.5L452.2,383.7C450.8,380.0 449.4,377.3 449.0,377.7C448.6,378.1 447.1,381.8 445.6,385.9C443.3,392.3 443.2,393.1 444.7,392.5C445.7,392.0 448.3,391.4 450.6,391.1ZM370.0,316.9C363.3,315.7 355.4,312.2 348.9,307.4L344.0,303.8L344.0,309.4L344.0,315.0L330.0,315.0L316.0,315.0L316.0,249.2L316.0,183.4L318.5,178.3C322.6,170.2 330.8,165.0 339.4,165.0L343.9,165.0L344.2,214.8C344.6,259.4 344.8,265.1 346.4,270.0C351.7,286.2 360.4,292.7 375.4,291.8C381.0,291.4 383.9,290.7 387.3,288.7C404.2,278.8 405.9,249.7 390.3,236.0C380.6,227.5 364.2,226.7 353.9,234.2C348.8,237.9 348.0,237.1 348.0,228.4C348.0,223.9 348.7,221.1 350.6,217.2C355.2,208.0 362.9,204.0 375.9,204.0C390.1,204.0 402.0,209.2 412.3,219.9C429.7,237.9 433.9,266.4 422.5,289.5C418.5,297.6 408.5,308.2 401.5,311.8C392.3,316.4 379.5,318.5 370.0,316.9ZM716.5,317.0C689.2,312.1 669.0,289.7 667.3,262.5C666.3,247.3 671.1,235.3 680.3,229.6C684.4,227.1 686.4,226.6 693.3,226.2C703.2,225.7 710.8,228.1 715.9,233.4C718.6,236.2 722.4,243.9 721.5,244.8C721.4,244.9 720.1,244.6 718.6,244.0C714.7,242.5 708.4,242.8 705.0,244.5C703.4,245.3 700.8,247.7 699.3,249.7C696.7,253.1 696.5,254.0 696.5,262.4C696.5,270.6 696.8,272.0 699.5,276.9C704.9,286.6 715.5,291.8 727.6,290.7C738.9,289.6 747.4,284.0 752.1,274.4C754.1,270.3 754.5,268.0 754.5,260.5C754.5,252.9 754.1,250.6 751.9,246.0C746.8,235.0 738.9,229.7 726.8,229.4C720.0,229.1 718.6,228.7 714.9,226.0C710.2,222.6 702.5,220.0 697.0,220.0C693.8,220.0 686.6,221.6 681.5,223.4C678.4,224.6 690.5,213.4 695.6,210.4C712.7,200.4 733.0,199.6 750.8,208.2C764.5,214.8 777.4,231.0 781.5,246.7C783.5,254.3 783.4,269.2 781.4,276.1C775.8,295.0 760.9,309.9 742.1,315.4C735.3,317.4 723.0,318.2 716.5,317.0ZM209.3,315.6C199.3,313.2 191.0,308.2 182.4,299.6C169.6,286.8 164.4,273.6 165.2,256.0C165.8,244.4 168.4,237.8 174.4,232.2C179.6,227.4 184.6,225.6 193.0,225.6C202.2,225.6 209.0,228.2 213.9,233.5C217.6,237.6 219.9,242.4 218.7,243.6C218.4,243.9 216.4,243.6 214.1,243.0C206.9,241.1 199.9,244.2 196.0,251.2C192.7,257.2 192.8,266.8 196.3,274.2C199.3,280.4 200.3,281.7 205.1,285.3C214.8,292.6 232.5,292.0 242.3,283.9C250.4,277.2 254.1,266.0 252.0,254.1C249.2,237.8 239.0,229.0 223.0,229.0C217.8,229.0 215.9,228.6 214.7,227.2C208.8,220.7 194.3,218.2 183.5,221.8L177.5,223.8L184.2,217.4C195.3,206.9 207.6,202.0 223.0,202.0C239.2,202.0 252.4,207.6 263.8,219.3C281.9,238.0 286.1,263.8 274.8,286.9C268.6,299.7 253.4,311.5 238.4,315.4C231.1,317.3 216.7,317.4 209.3,315.6ZM466.0,271.2C466.0,219.9 466.1,218.8 473.3,211.6C478.0,206.9 484.1,204.7 490.5,205.2L494.5,205.5L494.8,260.8L495.0,316.0L480.5,316.0L466.0,316.0L466.0,271.2ZM544.0,249.2L544.0,182.4L546.6,177.1C550.7,169.0 560.1,164.0 568.6,165.6L572.0,166.2L572.2,208.5L572.5,250.8L587.4,233.0C595.6,223.1 604.0,213.7 606.2,212.0C612.2,207.1 618.3,204.9 625.4,204.8C635.2,204.8 640.7,208.5 641.7,215.9C642.2,219.9 642.2,220.0 639.3,220.0C633.8,220.0 627.6,225.3 613.1,242.7L599.1,259.5L601.4,262.0C605.4,266.3 645.6,313.5 646.4,314.8C646.9,315.7 643.2,316.0 630.2,316.0L613.3,316.0L592.7,291.4L572.0,266.9L572.0,291.4L572.0,316.0L558.0,316.0L544.0,316.0L544.0,249.2ZM58.2,249.2L58.5,183.5L61.2,178.3C65.6,170.1 73.6,165.1 82.8,165.0L87.0,165.0L87.0,226.5L87.0,288.0L112.2,288.2L137.5,288.5L137.8,301.8L138.1,315.0L98.0,315.0L57.9,315.0L58.2,249.2ZM467.7,204.3C466.2,201.9 464.8,190.2 465.1,183.2C465.5,174.3 467.0,171.3 473.1,167.2C479.8,162.6 491.0,166.3 494.9,174.4C500.1,185.1 495.8,192.9 481.9,197.5C477.5,199.0 472.6,201.3 471.0,202.6C469.5,204.0 467.9,204.7 467.7,204.3ZM60.0,112.0L60.0,94.0L55.0,94.0L50.0,94.0L50.0,90.0L50.0,86.0L64.9,86.0L79.7,86.0L79.2,88.5C78.6,91.8 75.4,94.0 71.3,94.0L68.0,94.0L68.0,112.0L68.0,130.0L64.0,130.0L60.0,130.0L60.0,112.0ZM127.0,110.2C127.0,88.6 127.6,86.0 132.6,86.0C135.0,86.0 135.0,86.1 135.0,95.0L135.0,104.0L142.5,104.0L150.0,104.0L150.0,95.0L150.0,86.0L154.0,86.0L158.0,86.0L158.0,108.0L158.0,130.0L154.0,130.0L150.0,130.0L150.0,121.0L150.0,112.0L145.4,112.0C140.1,112.0 137.2,110.7 136.0,107.7C135.4,106.2 135.1,109.6 135.1,117.8L135.0,130.0L131.0,130.0L127.0,130.0L127.0,110.2ZM212.0,109.6C212.0,84.8 211.3,86.0 226.2,86.0L236.0,86.0L236.0,90.0L236.0,94.0L228.0,94.0L220.0,94.0L220.0,99.0L220.0,104.0L228.0,104.0C235.3,104.0 236.0,104.2 236.0,106.0C236.0,109.9 232.5,112.0 226.0,112.0L220.0,112.0L220.0,116.5L220.0,121.0L228.0,121.0L236.0,121.0L236.0,125.5L236.0,130.0L224.0,130.0L212.0,130.0L212.0,109.6Z"/></g></mask></defs>
       <rect x="0" y="0" width="100%" height="100%" fill="#f8d040" mask="url(#logoHole)"/>
     </svg>
     <div class="reveal__hint" id="hint" aria-hidden="true">Scroll to see their story<span></span></div>
-    <div class="reveal__copy" id="copy">
-      <div class="wrap">
-        <span class="kicker">The Lobiko Initiative · Gemena, DR Congo</span>
-        <h1 id="heroTitle">Working to bring <span class="cycle" aria-hidden="true"><span class="on">Safe Homes</span><span>Healing Care</span><span>Quality Education</span><span>Nourishing Meals</span><span>Meaningful Work</span></span> to children and families in Congo.</h1>
-        <p class="sr-only">Working to bring safe homes, healing care, quality education, nourishing meals and meaningful work to children and families in Congo.</p>
-        <p>We partner with Congolese changemakers who are already transforming their communities, and give them what they need to do more.</p>
-        <div class="reveal__actions"><a class="btn btn--yellow" href="#give">Give today →</a><a class="btn btn--ghost" href="#work">See our work</a></div>
-      </div>
-    </div>
+    <div class="reveal__copy" id="copy"><div class="wrap">
+      <span class="kicker">The Lobiko Initiative · Gemena, DR Congo</span>
+      <h1 id="heroTitle">Transforming Lives <span class="cycle" aria-hidden="true"><span class="on">Through Hope and Opportunity</span><span>Through Safe Homes</span><span>Through Healing Care</span><span>Through Quality Education</span></span></h1>
+      <p class="sr-only">Through hope and opportunity.</p>
+      <div class="reveal__actions"><a class="btn btn--yellow" href="#impact">Learn more ↓</a><a class="btn btn--ghost" href="give.html">Give Today</a></div>
+    </div></div>
     <button class="pause" type="button" id="pauseBtn" aria-pressed="false">❚❚ <span>Pause motion</span></button>
   </div>
 </section>
-
-<section class="impact" aria-labelledby="impTitle"><div class="wrap">
-  <h2 id="impTitle" class="sr-only">Our impact</h2>
-  <div class="impact__grid">
-    <div><strong>35,000+</strong><span>lives reached in Congo since 2020</span></div>
-    <div><strong>400+</strong><span>children experiencing extreme hardship served daily</span></div>
-    <div><strong>6,000+</strong><span>people accessing life-saving healthcare each year</span></div>
-    <div><strong>93%</strong><span>of donations go directly to program partners and their support</span></div>
-  </div>
-</div></section>
-
-<section class="section" id="work" aria-labelledby="workTitle"><div class="wrap">
-  <div class="head"><div><span class="kicker">Our partners in Gemena</span><h2 id="workTitle">Local leaders.<br>Lasting change.</h2></div><p>Every program is led by Congolese changemakers. Lobiko connects them with the resources to carry out their own plans.</p></div>
-  <ul class="progs"><li class="prog"><img src="/for-lobiko/images/children-bench.webp" alt="Children sitting together on a wooden bench in front of a carved door" loading="lazy"><div class="prog__body"><span class="tag">Home &amp; care</span><h3>Sabuli Children Center</h3><p>75 children have a home, caregivers and daily meals, run by the Sanguma Foundation.</p></div></li>
-<li class="prog"><img src="/for-lobiko/images/woman-two-kids.webp" alt="A smiling woman holding two young children" loading="lazy"><div class="prog__body"><span class="tag">Nutrition</span><h3>Mama Monique Foundation</h3><p>Led by Mama Benie, the nutrition center feeds and cares for about 200 children.</p></div></li>
-<li class="prog"><img src="/for-lobiko/images/eye-exam.webp" alt="A doctor examining a patient’s eyes at a clinic" loading="lazy"><div class="prog__body"><span class="tag">Healthcare</span><h3>Judy Medical Clinic</h3><p>Highly subsidized care for more than 4,000 community members every year.</p></div></li>
-<li class="prog"><img src="/for-lobiko/images/football-academy.webp" alt="A youth football team posing with coaches on a field" loading="lazy"><div class="prog__body"><span class="tag">Sport &amp; mentoring</span><h3>Gemena Football Academy</h3><p>Coach Song builds character through football for more than 200 young people.</p></div></li>
-<li class="prog"><img src="/for-lobiko/images/classroom.webp" alt="Students sitting at desks in a classroom" loading="lazy"><div class="prog__body"><span class="tag">Higher education</span><h3>Ubangi Protestant University</h3><p>The region’s first accredited university, serving 500 students.</p></div></li>
-<li class="prog"><img src="/for-lobiko/images/harvest.webp" alt="A smiling woman in a field holding freshly harvested groundnuts" loading="lazy"><div class="prog__body"><span class="tag">Food &amp; work</span><h3>Sabuli Growing Garden</h3><p>A 120-acre farm that feeds children and employs more than 500 people.</p></div></li></ul>
-  <p style="margin-top:34px"><a class="btn btn--navy" href="https://www.lobiko.org/our-work">Explore all our programs →</a></p>
-</div></section>
-
-<section class="section campaign" id="give" aria-labelledby="giveTitle"><div class="wrap campaign__grid">
-  <div>
-    <span class="kicker">2026 Year-End Giving</span>
-    <h2 id="giveTitle">Care for the whole child.</h2>
-    <p style="margin-top:20px;color:var(--muted)">A child cannot learn when they are hungry, sick or without a safe place to sleep. This season, every gift helps children in Congo stay safe, healthy and in school.</p>
-    <div class="goal"><div><strong>$70,000</strong><span>year-end goal</span></div><div><strong>Nov 1 – Dec 31</strong><span>campaign</span></div></div>
-  </div>
-  <div class="slider">
-    <label for="giftRange">What could your gift make possible?</label>
-    <input type="range" id="giftRange" min="0" max="5" step="1" value="2" aria-valuetext="$250: High school tuition">
-    <div class="ticks" aria-hidden="true"><span>$50</span><span>$100</span><span>$250</span><span>$500</span><span>$1K</span><span>$2.5K</span></div>
-    <div aria-live="polite"><div class="amount" id="giftAmt">$250</div><div class="gift-title" id="giftTitle">High school tuition</div><p class="gift-desc" id="giftDesc">Covers a month of school tuition and academic fees for 23 high school students at the Sabuli Children’s Center.</p></div>
-    <a class="btn btn--navy" id="giftBtn" href="https://www.lobiko.org/year-end-giving">Give $250 →</a>
-  </div>
-</div></section>
-
-<section class="section" id="stories" aria-labelledby="stTitle"><div class="wrap">
-  <div class="head"><div><span class="kicker">Engaged &amp; inspired</span><h2 id="stTitle">Stories of hope.</h2></div><a class="btn btn--navy" href="https://www.lobiko.org/engaged-and-inspired-blog">Visit the blog →</a></div>
-  <ul class="stories">
-    <li><a class="story" href="https://www.lobiko.org/engaged-and-inspired-blog/quietheroes"><img src="/for-lobiko/images/blog-mama-micheline.webp" alt="" loading="lazy"><div><h3>How Mama Micheline helps care for 100 children every day</h3><span>Read her story →</span></div></a></li>
-    <li><a class="story" href="https://www.lobiko.org/engaged-and-inspired-blog/2025-annual-report"><img src="/for-lobiko/images/blog-annual-report.webp" alt="" loading="lazy"><div><h3>2025 Annual Report: Ordinary people, extraordinary impact</h3><span>Read the report →</span></div></a></li>
-    <li><a class="story" href="https://www.lobiko.org/engaged-and-inspired-blog/2025-benefit-event-highlight"><img src="/for-lobiko/images/blog-benefit-event.webp" alt="" loading="lazy"><div><h3>A day of community, generosity and impact</h3><span>Read the recap →</span></div></a></li>
+<div id="impact"></div>
+<section class="section stats5" aria-labelledby="statsTitle"><div class="wrap">
+  <h2 id="statsTitle" class="stats5__lead" style="color:#fff">Since 2020, Lobiko has impacted over <b>35,000 lives in Congo</b> by partnering with individuals and communities located in the most challenging regions of the world.</h2>
+  <ul class="stats5__grid">
+    <li><strong>400+</strong><span>Serving 400+ children experiencing extreme hardship daily.</span></li>
+    <li><strong>6,000+</strong><span>Providing 6,000+ people with access to life-saving healthcare annually.</span></li>
+    <li><strong>400+</strong><span>Empowering 400+ students with access to higher education annually.</span></li>
+    <li><strong>300+</strong><span>Equipping 300+ people with vocational &amp; entrepreneurial training annually.</span></li>
+    <li><strong>93%</strong><span>Sending 93% of Lobiko donations directly to program partners and their support.</span></li>
   </ul>
-  <figure class="quote"><span class="quote__mark" aria-hidden="true">“</span><div><blockquote>Beni lost her parents young. Today she is an assistant teacher in the sewing program, saving her earnings to become a designer.</blockquote><p>From Beni’s Journey: Sewing Dreams Into Reality</p></div></figure>
+  <a class="btn btn--yellow" href="give.html">Click Here To Impact More Lives Today →</a>
 </div></section>
 
-<section class="badges" aria-label="Recognition">
-  <img src="/for-lobiko/images/badge-candid.webp" alt="Candid Platinum Transparency 2025" loading="lazy">
-  <img src="/for-lobiko/images/badge-globalgiving.webp" alt="GlobalGiving Vetted Organization 2024" loading="lazy">
-  <img src="/for-lobiko/images/badge-greatnonprofits.webp" alt="GreatNonprofits 2023 Top-Rated Nonprofit" loading="lazy">
-  <img src="/for-lobiko/images/badge-pwi.webp" alt="PWI Partner badge of approval 2023" loading="lazy">
-</section>
+<section class="section" aria-labelledby="aowTitle"><div class="wrap split">
+  <div><span class="kicker">What we do</span><h2 id="aowTitle">About Our Work</h2>
+    <p class="lead" style="margin-top:18px">We are committed to transforming lives by investing in community changemakers, ordinary people making extraordinary efforts to uplift their communities. By supporting these changemakers, we help create lasting opportunities for individuals facing extreme poverty, particularly children and families. Through education, healthcare, economic empowerment, and social support, we ensure that communities have access to resources needed to break cycles of poverty and violence.</p>
+    <div class="btns"><a class="btn btn--orange" href="give.html">Donate Today</a></div></div>
+  <img class="ph" src="/for-lobiko/images/micheline-03-welcome.webp" alt="Mama Micheline walking along a red-dirt path with a group of children" loading="lazy">
+</div></section>
+<section class="section soft" aria-label="Our commitment and our story"><div class="wrap duo">
+  <article class="panel"><h2>Our Commitment</h2>
+    <p>Due to a brutal history of colonialism, exploitation, and marginalization, Congo continues to grapple with deep-rooted challenges like political instability, armed conflict, and widespread poverty. Despite the nation’s abundant natural wealth, over 70% of the population lives in extreme poverty, while a small portion enjoys access to wealth and the opportunity for a life of well-being.</p>
+    <p>At Lobiko, we are committed to addressing these challenges not by investing in projects but by investing in people and communities to create sustainable change. Instead of providing services directly, we partner with individuals and communities leading efforts to support vulnerable children, youth, and adults in extreme poverty in Congo. Through this people-centered approach, we collaborate with those on the ground to transform their communities and support their success despite a legacy of exploitation and hardship.</p></article>
+  <article class="panel panel--navy"><h2>Our Story</h2>
+    <p>Lobiko builds on the proven experience, lessons learned, and successes of CongoVoice, an organization active in the region from 2012 to 2019. Our founder, a Congolese native and former CongoVoice board member who has led numerous initiatives in Congo, established Lobiko to carry forward this impactful work. With a renewed mission and strategy, Lobiko is dedicated to transformational change, drawing on past successes to achieve even greater impact in the region.</p>
+    <p>Children’s well-being directly contributes to their communities’ social, economic, and cultural fabric. As they grow, they become the architects of a better future, and their success is intricately interwoven with the progress of the places they call home.</p>
+    <a class="btn btn--yellow" href="our-work.html">Learn About Our Programs in Congo</a></article>
+</div></section>
+<section class="section" aria-labelledby="believeTitle"><div class="wrap">
+  <span class="kicker">What drives us</span><h2 id="believeTitle">We believe in</h2>
+  <ul class="cards2" style="margin-top:30px">
+    <li class="card"><img src="/for-lobiko/images/children-bench.webp" alt="Children sitting together on a wooden bench" loading="lazy"><div class="card__body"><h3>A better life in a thriving community.</h3><p>Imagine a world where every child has a safe place to call home, where every family has access to quality healthcare, where every individual has opportunities for meaningful employment, and where every community has the basic resources to thrive. This is the world that Lobiko is working to create.</p><a class="tlink" href="our-work.html">Learn More About Our Work</a></div></li>
+    <li class="card"><img src="/for-lobiko/images/women-community.webp" alt="Women from the community greeting each other" loading="lazy"><div class="card__body"><h3>A better life through partnership.</h3><p>Our approach to transformational change puts people over projects: we build meaningful relationships to understand community needs and potential, identify passionate changemakers, develop intentional partnerships, and connect leaders with resources—driving sustainable, transformative impact.</p><a class="tlink" href="about.html#approach">Learn More About Our Approach</a></div></li>
+  </ul>
+</div></section>
+<section class="section navy" aria-labelledby="compelTitle"><div class="wrap split">
+  <div><span class="kicker" style="color:var(--yellow)">Why we serve</span><h2 id="compelTitle">What Compels Us to Serve</h2>
+    <p style="font-size:19px;margin-top:18px">We live in a world where technological advancement, medical breakthroughs, and various innovations have improved many lives. Yet, millions of people continue to experience harsh (often unimaginable) living conditions due to violence and poverty.</p>
+    <p style="font-size:19px">In Congo, where war and oppression have taken over 6 million lives, the cycle of violence and poverty continues to undermine millions of people's wellbeing.</p></div>
+  <div class="panel panel--yellow"><p class="biglove" style="font-size:clamp(1.8rem,3vw,2.6rem)">Oliver’s story best embodies this reality.</p><div class="btns"><a class="btn btn--navy" href="about.html#oliver">Keep Reading →</a></div></div>
+</div></section>
+<section class="section" aria-labelledby="blogTitle"><div class="wrap">
+  <div class="head"><div><span class="kicker">Engaged &amp; Inspired</span><h2 id="blogTitle">The Latest From Lobiko’s Engaged &amp; Inspired Blog</h2></div></div>
+  <ul class="posts"><li><a class="post" href="https://www.lobiko.org/engaged-and-inspired-blog/2025-annual-report"><img src="/for-lobiko/images/post-2025-annual-report.webp" alt="" loading="lazy"><div class="post__body"><time datetime="2026-03-06">Mar 6, 2026</time><h3>2025 Annual Report</h3><span class="more">Read more →</span></div></a></li><li><a class="post" href="https://www.lobiko.org/engaged-and-inspired-blog/quietheroes"><img src="/for-lobiko/images/post-quietheroes.webp" alt="" loading="lazy"><div class="post__body"><time datetime="2025-08-28">Aug 28, 2025</time><h3>How Mama Micheline Helps Care for 100 Children - Every Day</h3><span class="more">Read more →</span></div></a></li><li><a class="post" href="https://www.lobiko.org/engaged-and-inspired-blog/2025-benefit-event-highlight"><img src="/for-lobiko/images/post-2025-benefit-event-highlight.webp" alt="" loading="lazy"><div class="post__body"><time datetime="2025-06-12">Jun 12, 2025</time><h3>Lobiko Event: A Day of Community, Generosity, and Impact!</h3><span class="more">Read more →</span></div></a></li></ul>
+  <div class="btns"><a class="btn btn--navy" href="blog.html">Read More at Lobiko's ‘Engaged and Inspired’ Blog</a></div>
+</div></section>
 </main>
-
-<footer class="foot"><div class="wrap">
-  <div class="foot__grid">
-    <div><span class="foot__logo"><img src="/for-lobiko/images/lobiko-logo.webp" alt="The Lobiko Initiative"></span><p style="margin-top:20px;max-width:420px">A registered 501(c)(3) nonprofit in the United States (Tax ID: 85-2563277) and a registered nonprofit in the Democratic Republic of Congo.</p></div>
-    <div><h2>Learn more</h2><ul><li><a href="https://www.lobiko.org/about-us">About us</a></li><li><a href="https://www.lobiko.org/our-work">Our work</a></li><li><a href="https://www.lobiko.org/engaged-and-inspired-blog">Blog</a></li><li><a href="https://www.lobiko.org/contact-us">Contact</a></li></ul></div>
-    <div><h2>Join us</h2><ul><li><a href="https://www.lobiko.org/year-end-giving">Donate today</a></li><li><a href="https://www.lobiko.org/lobiko-champions">Become a Champion</a></li><li><a href="https://lobikoinitiative-bloom.kindful.com/users/sign_in">Donor portal</a></li><li><a href="https://www.lobiko.org/join">Email updates</a></li></ul></div>
+<footer class="sitefoot"><div class="wrap">
+  <div class="sitefoot__grid">
+    <nav aria-label="Join us"><h2>Join Us</h2><ul><li><a href="index.html">Home</a></li><li><a href="give.html">Donate Today</a></li><li><a href="champions.html">Become A Champion</a></li><li><a href="https://www.lobiko.org/contact-us">Contact Lobiko</a></li></ul></nav>
+    <nav aria-label="Learn more"><h2>Learn More</h2><ul><li><a href="about.html">About Us</a></li><li><a href="our-work.html">Our Work</a></li><li><a href="blog.html">Our Blog</a></li><li><a href="annual-reports.html">Annual Reports</a></li></ul></nav>
+    <div>
+      <span class="sitefoot__brand"><img src="/for-lobiko/images/lobiko-logo.webp" alt="The Lobiko Initiative"></span>
+      <p><b style="color:#fff">The Lobiko Initiative</b><br>Transforming Lives Through Hope &amp; Opportunity</p>
+      <p>Lobiko is a registered 501(c)(3) nonprofit organization (Tax ID: 85-2563277) in the United States and is also a registered nonprofit organization in the Democratic Republic of Congo. All donations in the United States are tax-deductible in full or in part.</p>
+      <p>Mailing Address:<br>39252 Winchester Rd, Ste 107-152<br>Murrieta, CA 92563</p>
+      <a class="btn btn--yellow" href="give.html">Donate</a>
+    </div>
+    <form data-demo="Concept only: in the real site, this adds you to Lobiko’s email list.">
+      <h2>Contact Information</h2>
+      <div class="row"><div class="field"><label for="fFirst">First Name*</label><input id="fFirst" autocomplete="given-name" required></div><div class="field"><label for="fLast">Last Name*</label><input id="fLast" autocomplete="family-name" required></div></div>
+      <div class="field"><label for="fEmail">Email*</label><input id="fEmail" type="email" autocomplete="email" required></div>
+      <label class="check"><input type="checkbox" checked> I want to receive emails at this address</label>
+      <button class="btn btn--yellow" type="submit">Sign up</button>
+    </form>
   </div>
-  <p class="foot__note">Homepage concept by Meaningful Marketing for discussion. Photos, logo and video from Lobiko; the hero plays a clip from Lobiko’s own homepage video.</p>
+  <div class="sitefoot__base"><span>Website concept by Meaningful Marketing for discussion. Content, photos and video from Lobiko.</span><a href="#top">Back to top ↑</a></div>
 </div></footer>
-
-<script>
-(function () {
-  var reveal = document.querySelector('.reveal'), stage = document.getElementById('stage');
-  var svg = document.getElementById('maskSvg'), logo = document.getElementById('maskLogo');
-  var shade = document.getElementById('shade'), copy = document.getElementById('copy'), hint = document.getElementById('hint');
-  var pauseBtn = document.getElementById('pauseBtn'), video = document.getElementById('heroVideo');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches, paused = false;
-
-  var mb = document.getElementById('menuBtn'), nav = document.getElementById('mainnav');
-  mb.addEventListener('click', function () { var o = nav.classList.toggle('open'); mb.setAttribute('aria-expanded', String(o)); });
-  nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); }); });
-
-  // Gift slider (amounts and descriptions from Lobiko's Gift Catalog)
-  var GIFTS = [{"amt": 50, "title": "A month of medical care", "desc": "Covers a month of medical care for 10 children at the Mama Monique Foundation."}, {"amt": 100, "title": "School fees or a caregiver", "desc": "Covers a month of school tuition and fees for 15 primary school children at the Sabuli Children\u2019s Center, or a caregiver\u2019s monthly salary at the Mama Monique Foundation."}, {"amt": 250, "title": "High school tuition", "desc": "Covers a month of school tuition and academic fees for 23 high school students at the Sabuli Children\u2019s Center."}, {"amt": 500, "title": "A month of meals", "desc": "Covers a month of meals for 22 children at the Mama Monique Foundation."}, {"amt": 1000, "title": "A year of school supplies", "desc": "Covers a year of school supplies for 12 children at the Mama Monique Foundation."}, {"amt": 2500, "title": "Six months of school", "desc": "Covers six months of school tuition and academic fees for 49 students at the Sabuli Children\u2019s Center."}];
-  var range = document.getElementById('giftRange');
-  function fmt(n) { return '$' + n.toLocaleString('en-US'); }
-  function showGift() {
-    var g = GIFTS[+range.value];
-    document.getElementById('giftAmt').textContent = fmt(g.amt);
-    document.getElementById('giftTitle').textContent = g.title;
-    document.getElementById('giftDesc').textContent = g.desc;
-    document.getElementById('giftBtn').textContent = 'Give ' + fmt(g.amt) + ' →';
-    range.setAttribute('aria-valuetext', fmt(g.amt) + ': ' + g.title);
-  }
-  range.addEventListener('input', showGift);
-
-  // Cycling phrase
-  var words = Array.prototype.slice.call(document.querySelectorAll('.cycle span')), wi = 0;
-  setInterval(function () { if (paused || reduce) return; words[wi].classList.remove('on'); wi = (wi + 1) % words.length; words[wi].classList.add('on'); }, 2600);
-
-  // Pause motion: hero video + cycling phrase
-  // Hero video: Lobiko's Squarespace-hosted clip (HLS). Use hls.js wherever the
-  // browser supports it (Chrome, Edge, Firefox, Safari, newer iPhones); fall back to
-  // native HLS only where hls.js can't run. Some Chrome versions report native HLS
-  // support but fail on this stream, so native is never tried first.
-  var SRC = 'https://video.squarespace-cdn.com/content/v1/5f4b1e6a594e4e310816b164/f3e14bca-09e2-461f-a8db-8af59f3ab437/playlist.m3u8';
-  function playVideo() { if (!paused) { var pr = video.play(); if (pr && pr.catch) pr.catch(function () {}); } }
-  function nativeVideo() { if (video.canPlayType('application/vnd.apple.mpegurl')) { video.src = SRC; playVideo(); } }
-  function startVideo() {
-    video.muted = true;
-    var sc = document.createElement('script');
-    sc.src = '/for-lobiko/vendor/hls-1.5.20.min.js';
-    sc.onerror = nativeVideo;
-    sc.onload = function () {
-      if (!window.Hls || !window.Hls.isSupported()) { nativeVideo(); return; }
-      var hls = new window.Hls({ capLevelToPlayerSize: true });
-      hls.loadSource(SRC); hls.attachMedia(video);
-      hls.on(window.Hls.Events.MANIFEST_PARSED, playVideo);
-    };
-    document.head.appendChild(sc);
-  }
-  function setPaused(p) {
-    paused = p;
-    if (p) video.pause(); else playVideo();
-    pauseBtn.setAttribute('aria-pressed', String(p));
-    pauseBtn.innerHTML = p ? '▶ <span>Play motion</span>' : '❚❚ <span>Pause motion</span>';
-  }
-  pauseBtn.addEventListener('click', function () { setPaused(!paused); });
-
-  if (reduce) { reveal.classList.add('is-static'); video.remove(); pauseBtn.hidden = true; return; }
-  startVideo();
-
-  // Cutout geometry
-  function layout() {
-    var w = stage.clientWidth, h = stage.clientHeight;
-    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
-    var logoW = Math.min(w * (w < 700 ? 0.86 : 0.6), 900);
-    var s = logoW / 1200, logoH = 450 * s;
-    var x = (w - logoW) / 2, y = (h - logoH) / 2 - h * 0.03;
-    logo.setAttribute('transform', 'translate(' + x + ' ' + y + ') scale(' + s + ')');
-    svg.style.transformOrigin = (x + 58 * s) + 'px ' + (y + 134 * s) + 'px';   // zoom into the widest arc
-    update();
-  }
-  function clamp(v) { return Math.max(0, Math.min(1, v)); }
-  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
-  var ticking = false;
-  function update() {
-    ticking = false;
-    var total = reveal.offsetHeight - stage.offsetHeight;
-    var p = clamp(-reveal.getBoundingClientRect().top / total);
-    svg.style.transform = 'scale(' + (1 + 7 * ease(clamp(p / 0.55))) + ')';     // up to 8x
-    svg.style.opacity = String(1 - clamp((p - 0.42) / 0.22));                   // overlay fades away
-    hint.style.opacity = String(1 - clamp(p / 0.08));
-    var t = ease(clamp((p - 0.64) / 0.2));
-    copy.style.opacity = String(t);                                              // copy fades in
-    copy.style.transform = 'translateY(' + (32 * (1 - t)) + 'px)';                // and slides up 32px
-    shade.style.opacity = String(t);
-  }
-  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-  window.addEventListener('resize', layout);
-  copy.addEventListener('focusin', function () { window.scrollTo(0, reveal.offsetTop + (reveal.offsetHeight - stage.offsetHeight) * 0.9); });
-  layout();
-})();
-</script>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="site.js" defer></script>
 </body>
 </html>
