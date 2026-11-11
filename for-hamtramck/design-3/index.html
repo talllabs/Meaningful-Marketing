@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffd23f">
+<meta name="robots" content="noindex, nofollow">
+<title>Hamtramck Parks Conservancy | Mockup 3</title>
+<meta name="description" content="Homepage concept for Hamtramck Parks Conservancy: the world in two square miles.">
+<link rel="icon" href="/for-hamtramck/images/hpc-logo.svg">
+<script src="/for-hamtramck/gate.js"></script>
+<script src="/for-hamtramck/demo-bar.js" data-design="3"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@700;800&amp;family=Noto+Sans+Bengali:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #141414; --paper: #fff8ec;
+  --tomato: #ff5a36; --sun: #ffd23f; --grass: #22a45d; --sky: #4d8dff; --pink: #ff8fc7; --lilac: #b9a3ff;
+  --hero: var(--sun);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 18px; line-height: 1.55; }
+h1, h2, h3 { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; line-height: .92; letter-spacing: -.035em; margin: 0; }
+p { margin: 0 0 1em; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; box-shadow: 0 0 0 8px #fff; }
+.wrap { width: min(1320px, calc(100% - 40px)); margin-inline: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: 16px; top: -80px; z-index: 300; background: var(--ink); color: #fff; padding: 12px 18px; font-weight: 700; border-radius: 999px; }
+.skip:focus { top: 60px; }
+.chip { display: inline-block; border: 2.5px solid var(--ink); border-radius: 999px; padding: 6px 14px; font-weight: 700; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; background: #fff; }
+.btn { display: inline-flex; align-items: center; gap: 10px; border: 3px solid var(--ink); border-radius: 999px; padding: 14px 24px; font: 700 17px 'Instrument Sans', sans-serif; text-decoration: none; background: var(--ink); color: #fff; box-shadow: 5px 5px 0 var(--ink); transition: transform .15s, box-shadow .15s; cursor: pointer; }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ink); }
+.btn--white { background: #fff; color: var(--ink); }
+
+/* Header */
+.site { position: sticky; top: 0; z-index: 100; background: var(--paper); border-bottom: 3px solid var(--ink); }
+.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 76px; }
+.brand { display: flex; align-items: center; background: #fff; border: 3px solid var(--ink); border-radius: 999px; padding: 6px 18px 6px 10px; text-decoration: none; }
+.brand img { height: 44px; width: auto; }
+.mainnav { display: flex; gap: 8px; align-items: center; }
+.mainnav a { text-decoration: none; font-weight: 700; font-size: 16px; padding: 9px 15px; border: 2.5px solid transparent; border-radius: 999px; }
+.mainnav a:hover { border-color: var(--ink); background: #fff; }
+.mainnav .give { background: var(--tomato); border-color: var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+.menu-btn { display: none; border: 2.5px solid var(--ink); background: #fff; border-radius: 999px; padding: 9px 16px; font: 700 16px 'Instrument Sans', sans-serif; color: var(--ink); }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; background: var(--hero); transition: background-color .6s ease; overflow: hidden; border-bottom: 3px solid var(--ink); }
+.hero .wrap { position: relative; min-height: calc(100svh - 120px); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; gap: 30px; padding: 60px 0 90px; }
+.hero__top { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 26px; }
+.hello { display: grid; min-height: 1.05em; font-size: clamp(3.6rem, 10.5vw, 11rem); }
+.hello span { grid-area: 1 / 1; transition: opacity .45s ease, transform .45s cubic-bezier(.2,.9,.2,1.2); white-space: nowrap; }
+.hello span:not(.on) { opacity: 0; transform: translateY(.4em) rotate(4deg); }
+.hello [dir="rtl"] { justify-self: start; }
+.hello [lang="ar"] { font-family: 'Noto Sans Arabic', sans-serif; font-size: .78em; }
+.hello [lang="bn"] { font-family: 'Noto Sans Bengali', sans-serif; font-size: .74em; }
+.hello [lang="uk"] { font-size: .5em; white-space: normal; line-height: .95; }
+.hero h1 .to { display: block; font-size: clamp(2rem, 4.6vw, 4.4rem); margin-top: 10px; }
+.hero h1 .to em { font-style: normal; background: #fff; border: 3px solid var(--ink); border-radius: 18px; padding: 0 .18em; box-shadow: 5px 5px 0 var(--ink); display: inline-block; transform: rotate(-1.5deg); }
+.lang-label { margin-top: 22px; font-weight: 700; font-size: 15px; letter-spacing: .08em; text-transform: uppercase; }
+.hero p.lede { font-size: clamp(19px, 1.6vw, 23px); max-width: 520px; margin-top: 18px; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
+.collage { position: relative; height: min(560px, 62vh); }
+.polaroid { position: absolute; background: #fff; border: 3px solid var(--ink); padding: 10px 10px 40px; box-shadow: 8px 8px 0 var(--ink); width: 74%; }
+.polaroid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 2px solid var(--ink); }
+.polaroid figcaption { position: absolute; bottom: 9px; left: 14px; font: 700 15px 'Bricolage Grotesque', sans-serif; }
+.polaroid--a { top: 2%; right: 4%; transform: rotate(5deg); }
+.polaroid--b { bottom: 4%; left: 0; transform: rotate(-6deg); }
+.badge { position: absolute; width: 150px; height: 150px; right: -6px; bottom: 26%; z-index: 3; }
+.badge svg { width: 100%; height: 100%; animation: spin 16s linear infinite; }
+.badge__core { position: absolute; inset: 38px; border-radius: 50%; background: var(--tomato); border: 3px solid var(--ink); display: grid; place-items: center; font-size: 30px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.pause { position: absolute; right: 20px; bottom: 20px; z-index: 5; border: 2.5px solid var(--ink); background: #fff; border-radius: 999px; padding: 8px 15px; font: 700 14px 'Instrument Sans', sans-serif; color: var(--ink); cursor: pointer; }
+body.is-paused .badge svg, body.is-paused .ticker__track { animation-play-state: paused; }
+
+/* Ticker */
+.ticker { background: var(--ink); color: #fff; overflow: hidden; border-bottom: 3px solid var(--ink); }
+.ticker__track { display: flex; width: max-content; animation: slide 38s linear infinite; }
+.ticker__track span { font: 800 clamp(22px, 2.6vw, 34px) 'Bricolage Grotesque', sans-serif; padding: 16px 0; white-space: nowrap; }
+.ticker__track span::after { content: '✦'; color: var(--sun); margin: 0 26px; }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* Sections */
+.section { padding: clamp(70px, 9vw, 130px) 0; border-bottom: 3px solid var(--ink); }
+.section h2 { font-size: clamp(3.2rem, 8vw, 7.6rem); }
+.section__head { display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; margin-bottom: 44px; }
+.section__head p { max-width: 380px; font-size: 19px; margin: 0; }
+
+/* Vibe picker */
+.vibes { background: var(--lilac); }
+.vibe-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
+.vibe-btns button { font: 800 clamp(22px, 2.4vw, 30px) 'Bricolage Grotesque', sans-serif; padding: 12px 26px; border: 3px solid var(--ink); border-radius: 999px; background: #fff; color: var(--ink); cursor: pointer; box-shadow: 4px 4px 0 var(--ink); }
+.vibe-btns button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.vibe { display: grid; grid-template-columns: 1fr 1fr; background: #fff; border: 3px solid var(--ink); border-radius: 30px; overflow: hidden; box-shadow: 10px 10px 0 var(--ink); }
+.vibe img { width: 100%; height: 100%; min-height: 380px; object-fit: cover; border-right: 3px solid var(--ink); }
+.vibe__body { padding: clamp(28px, 4vw, 54px); align-self: center; }
+.vibe__body h3 { font-size: clamp(2.6rem, 5vw, 4.8rem); margin-bottom: 18px; }
+.vibe__body p { font-size: 20px; }
+
+/* Park tickets */
+.tickets-section { background: var(--paper); }
+.tickets { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 8px 4px 30px; list-style: none; margin: 0; }
+.tickets:focus-visible { box-shadow: none; outline-offset: 6px; }
+.ticket { flex: 0 0 min(340px, 80vw); scroll-snap-align: start; background: #fff; border: 3px solid var(--ink); border-radius: 22px; overflow: hidden; box-shadow: 7px 7px 0 var(--ink); transition: transform .2s; position: relative; }
+.ticket:nth-child(odd):hover { transform: rotate(-2deg); }
+.ticket:nth-child(even):hover { transform: rotate(2deg); }
+.ticket img { width: 100%; height: 220px; object-fit: cover; border-bottom: 3px dashed var(--ink); }
+.ticket__body { padding: 20px 22px 24px; }
+.ticket__stub { font-weight: 700; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+.ticket h3 { font-size: 34px; margin: 6px 0 10px; }
+.ticket p { margin: 0; }
+.ticket:nth-child(6n+1) .ticket__body { background: var(--sun); }
+.ticket:nth-child(6n+2) .ticket__body { background: var(--pink); }
+.ticket:nth-child(6n+3) .ticket__body { background: var(--sky); }
+.ticket:nth-child(6n+4) .ticket__body { background: var(--grass); }
+.ticket:nth-child(6n+5) .ticket__body { background: var(--tomato); }
+.ticket:nth-child(6n+6) .ticket__body { background: var(--lilac); }
+.scroll-note { font-weight: 700; font-size: 15px; }
+
+/* Stats */
+.stats { background: var(--sun); overflow-x: clip; }
+.statgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.stat { background: #fff; border: 3px solid var(--ink); border-radius: 24px; padding: 26px; box-shadow: 6px 6px 0 var(--ink); }
+.stat:nth-child(even) { transform: rotate(1.5deg); }
+.stat:nth-child(odd) { transform: rotate(-1.2deg); }
+.stat strong { display: block; font: 800 clamp(3rem, 5.4vw, 5.4rem) 'Bricolage Grotesque', sans-serif; line-height: .95; letter-spacing: -.04em; }
+.stat span { font-weight: 600; font-size: 18px; }
+
+/* Stadium */
+.stadium { background: var(--ink); color: #fff; }
+.stadium__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 50px; align-items: center; }
+.stadium h2 { font-size: clamp(3rem, 7vw, 7rem); }
+.stadium h2 .outline { color: transparent; -webkit-text-stroke: 2px #fff; display: block; }
+.stadium h2 .sun { color: var(--sun); }
+.stadium p { font-size: 20px; max-width: 560px; margin: 24px 0 28px; color: #f2f2f2; }
+.stadium img { border: 3px solid #fff; border-radius: 26px; transform: rotate(2deg); box-shadow: 10px 10px 0 var(--sun); }
+.stadium .btn { background: var(--sun); color: var(--ink); border-color: var(--sun); box-shadow: 5px 5px 0 #fff; }
+
+/* Events */
+.events { background: var(--pink); }
+.evgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; list-style: none; padding: 0; margin: 0; }
+.ev { background: #fff; border: 3px solid var(--ink); border-radius: 22px; padding: 26px; box-shadow: 6px 6px 0 var(--ink); display: flex; flex-direction: column; }
+.ev__date { font: 800 54px 'Bricolage Grotesque', sans-serif; line-height: .9; letter-spacing: -.04em; }
+.ev__date small { display: block; font-size: 16px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px; }
+.ev h3 { font-size: 30px; margin: 18px 0 8px; }
+.ev p { margin-bottom: 18px; }
+.ev .btn { margin-top: auto; align-self: flex-start; padding: 10px 18px; font-size: 15px; box-shadow: 3px 3px 0 var(--ink); }
+
+/* Get involved */
+.involve { padding: 0; }
+.involve__grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.do { padding: clamp(40px, 6vw, 80px) clamp(24px, 4vw, 54px); border-right: 3px solid var(--ink); text-decoration: none; display: block; transition: background-color .2s; }
+.do:last-child { border-right: 0; }
+.do:nth-child(1) { background: var(--grass); }
+.do:nth-child(2) { background: var(--sky); }
+.do:nth-child(3) { background: var(--tomato); }
+.do:hover { background: #fff; }
+.do h2 { font-size: clamp(3.6rem, 7vw, 7rem); }
+.do p { font-size: 20px; font-weight: 600; margin: 18px 0 0; max-width: 300px; }
+.do span { display: inline-block; margin-top: 22px; font-weight: 800; font-size: 20px; }
+
+/* Partners + footer */
+.partners { padding: 50px 0; border-bottom: 3px solid var(--ink); background: #fff; }
+.partners__row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 30px; }
+.partners__row img { height: 54px; width: auto; max-width: 140px; object-fit: contain; }
+.foot { background: var(--sun); padding: 70px 0 34px; }
+.foot__big { font: 800 clamp(3.6rem, 12vw, 12rem) 'Bricolage Grotesque', sans-serif; line-height: .85; letter-spacing: -.05em; margin: 0 0 40px; }
+.foot__row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; align-items: flex-end; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 10px; }
+.foot nav a { border: 2.5px solid var(--ink); border-radius: 999px; padding: 8px 16px; font-weight: 700; text-decoration: none; background: #fff; }
+.foot__note { font-size: 14px; margin-top: 30px; }
+.toast { position: fixed; right: 20px; bottom: 20px; z-index: 200; max-width: 360px; background: #fff; color: var(--ink); border: 3px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); padding: 16px 20px; border-radius: 18px; font-weight: 600; }
+.toast[hidden] { display: none; }
+
+@media (max-width: 980px) {
+  .menu-btn { display: block; }
+  .mainnav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); padding: 14px 20px 22px; border-bottom: 3px solid var(--ink); }
+  .mainnav.open { display: flex; }
+  .hero .wrap { grid-template-columns: 1fr; padding-top: 40px; }
+  .collage { height: 380px; }
+  .badge { width: 120px; height: 120px; bottom: 20%; }
+  .badge__core { inset: 30px; font-size: 24px; }
+  .vibe, .stadium__grid { grid-template-columns: 1fr; }
+  .vibe img { min-height: 260px; border-right: 0; border-bottom: 3px solid var(--ink); }
+  .statgrid { grid-template-columns: 1fr 1fr; }
+  .evgrid, .involve__grid { grid-template-columns: 1fr; }
+  .do { border-right: 0; border-bottom: 3px solid var(--ink); }
+  .brand img { height: 36px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site"><div class="wrap">
+  <a class="brand" href="#top" aria-label="Hamtramck Parks Conservancy home"><img src="/for-hamtramck/images/hpc-logo.svg" alt="Hamtramck Parks Conservancy"></a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainnav">Menu</button>
+  <nav class="mainnav" id="mainnav" aria-label="Main">
+    <a href="#parks">Parks</a><a href="#events">Events</a><a href="#stadium">Stadium</a><a href="#demo">About</a><a href="#involve">Get involved</a><a class="give" href="#involve">Donate ♥</a>
+  </nav>
+</div></header>
+
+<main id="main">
+<section class="hero" id="top" aria-labelledby="heroTitle">
+  <div class="wrap">
+    <div>
+      <div class="hero__top"><span class="chip">Hamtramck, Michigan</span><span class="chip">Parks belong to everyone</span></div>
+      <h1 id="heroTitle">
+        <span class="sr-only">Welcome to the parks of Hamtramck: the world in two square miles.</span>
+        <span class="hello" aria-hidden="true">
+          <span class="on" lang="en" data-color="#ffd23f" data-name="English">Welcome</span>
+          <span lang="pl" data-color="#ff8fc7" data-name="Polish">Witamy</span>
+          <span lang="ar" dir="rtl" data-color="#22a45d" data-name="Arabic">أهلاً وسهلاً</span>
+          <span lang="bn" data-color="#4d8dff" data-name="Bengali">স্বাগতম</span>
+          <span lang="bs" data-color="#ff5a36" data-name="Bosnian">Dobrodošli</span>
+          <span lang="uk" data-color="#b9a3ff" data-name="Ukrainian">Ласкаво просимо</span>
+        </span>
+        <span class="to" aria-hidden="true">to the parks of <em>Hamtramck.</em></span>
+      </h1>
+      <p class="lang-label" aria-hidden="true">That's “welcome” in <span id="langName">English</span></p>
+      <p class="lede">The world in two square miles, and some of its best backyards. Find a park, join a cleanup or help build what's next.</p>
+      <div class="hero__actions"><a class="btn" href="#parks">Find your park →</a><a class="btn btn--white" href="#involve">Get involved</a></div>
+    </div>
+    <div class="collage" aria-hidden="true">
+      <figure class="polaroid polaroid--a"><img src="/for-hamtramck/images/flowers-marker.webp" alt=""><figcaption>Blooms by the marker</figcaption></figure>
+      <figure class="polaroid polaroid--b"><img src="/for-hamtramck/images/playground-build.webp" alt=""><figcaption>Build day!</figcaption></figure>
+      <div class="badge">
+        <svg viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><circle cx="100" cy="100" r="98" fill="#fff" stroke="#141414" stroke-width="5"/><text font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="19" letter-spacing="3" fill="#141414"><textPath href="#circ">PARKS BELONG TO EVERYONE ✦ PARKS BELONG TO EVERYONE ✦</textPath></text></svg>
+        <div class="badge__core">✿</div>
+      </div>
+    </div>
+  </div>
+  <button class="pause" type="button" id="pauseBtn" aria-pressed="false">❚❚ Pause motion</button>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="ticker__track">
+  <span>Picnics</span><span>Pickup soccer</span><span>Cricket</span><span>Tennis at The Wall</span><span>Birthday parties</span><span>Stadium tours</span><span>Spring cleanups</span><span>Swings</span><span>Shade trees</span>
+  <span>Picnics</span><span>Pickup soccer</span><span>Cricket</span><span>Tennis at The Wall</span><span>Birthday parties</span><span>Stadium tours</span><span>Spring cleanups</span><span>Swings</span><span>Shade trees</span>
+</div></div>
+
+<section class="section vibes" aria-labelledby="vibeTitle"><div class="wrap">
+  <div class="section__head"><h2 id="vibeTitle">Pick your vibe.</h2><p>What are you in the mood for today? We'll point you to the right corner of the city.</p></div>
+  <div class="vibe-btns" role="group" aria-label="Choose a vibe">
+    <button type="button" aria-pressed="true" data-vibe="0">Play</button>
+    <button type="button" aria-pressed="false" data-vibe="1">Chill</button>
+    <button type="button" aria-pressed="false" data-vibe="2">Gather</button>
+    <button type="button" aria-pressed="false" data-vibe="3">Help out</button>
+  </div>
+  <div class="vibe" aria-live="polite">
+    <img id="vibeImg" src="/for-hamtramck/images/path-playground.webp" alt="A tree-lined path leading to a playground">
+    <div class="vibe__body"><h3 id="vibeHead">Swings, slides &amp; pickup games.</h3><p id="vibeText">Playgrounds and open fields a short walk from home, with plenty of shade for the grown-ups.</p><a class="btn" href="#parks" id="vibeLink">Find a playground →</a></div>
+  </div>
+</div></section>
+
+<section class="section tickets-section" id="parks" aria-labelledby="parksTitle"><div class="wrap">
+  <div class="section__head"><h2 id="parksTitle">Admit one.<br>Admit all.</h2><p>Every park is free, open to everyone and close to home. <span class="scroll-note">Scroll sideways for more →</span></p></div>
+  <ul class="tickets" tabindex="0" aria-label="Parks and places, scroll sideways">
+    <li class="ticket"><img src="/for-hamtramck/images/path-playground.webp" alt="A tree-lined path leading to a playground" loading="lazy"><div class="ticket__body"><span class="ticket__stub">Admit all · Dawn to dusk</span><h3>Neighborhood parks</h3><p>Paths, shade and swings on every side of town.</p></div></li>
+    <li class="ticket"><img src="/for-hamtramck/images/mural-bleachers.webp" alt="A painted mural wall beside bleachers" loading="lazy"><div class="ticket__body"><span class="ticket__stub">Admit all · Since 1930</span><h3>Hamtramck Stadium</h3><p>A Negro League landmark with a lot of game left.</p></div></li>
+    <li class="ticket"><img src="/for-hamtramck/images/the-wall.webp" alt="A tall green tennis practice wall" loading="lazy"><div class="ticket__body"><span class="ticket__stub">Admit all · Bring a racket</span><h3>The Wall</h3><p>Hit it as hard as you like. It always hits back.</p></div></li>
+    <li class="ticket"><img src="/for-hamtramck/images/pavilion.webp" alt="A picnic pavilion under a shade tree" loading="lazy"><div class="ticket__body"><span class="ticket__stub">Admit all · Bring snacks</span><h3>Pavilions</h3><p>Birthdays, reunions and long summer evenings.</p></div></li>
+    <li class="ticket"><img src="/for-hamtramck/images/playground-build.webp" alt="Volunteers building a new playground" loading="lazy"><div class="ticket__body"><span class="ticket__stub">Admit all · Built by neighbors</span><h3>Playgrounds</h3><p>Some of them were built in a single day.</p></div></li>
+    <li class="ticket"><img src="/for-hamtramck/images/memorial.webp" alt="A stone war memorial in a park" loading="lazy"><div class="ticket__body"><span class="ticket__stub">Admit all · Pause &amp; reflect</span><h3>Memorial grounds</h3><p>Quiet places that hold the city's stories.</p></div></li>
+  </ul>
+</div></section>
+
+<section class="section stats" aria-labelledby="statsTitle"><div class="wrap">
+  <h2 id="statsTitle" class="sr-only">Hamtramck by the numbers</h2>
+  <div class="statgrid">
+    <div class="stat"><strong>2.1</strong><span>square miles. Small city, big backyard.</span></div>
+    <div class="stat"><strong>28K+</strong><span>neighbors sharing every patch of green.</span></div>
+    <div class="stat"><strong>Dozens</strong><span>of languages spoken at the picnic tables.</span></div>
+    <div class="stat"><strong>1</strong><span>historic Negro League ballpark. Ours.</span></div>
+  </div>
+</div></section>
+
+<section class="section stadium" id="stadium" aria-labelledby="stadTitle"><div class="wrap stadium__grid">
+  <div>
+    <h2 id="stadTitle"><span class="outline">Historic</span><span class="sun">Hamtramck</span> Stadium</h2>
+    <p>One of the last remaining Negro League ballparks in the country, and a home field for whatever Hamtramck dreams up next.</p>
+    <a class="btn" href="#demo">Explore the story →</a>
+  </div>
+  <img src="/for-hamtramck/images/mural-bleachers.webp" alt="A colorful mural wall beside the bleachers and open grass" loading="lazy">
+</div></section>
+
+<section class="section events" id="events" aria-labelledby="evTitle"><div class="wrap">
+  <div class="section__head"><h2 id="evTitle">Come out!</h2><p>Sample events for this concept. The real site would pull from the Conservancy's calendar.</p></div>
+  <ul class="evgrid">
+    <li class="ev"><div class="ev__date"><small>Saturday</small>Apr 18</div><h3>Spring park cleanup</h3><p>Gloves, rakes and coffee provided. Bring a friend.</p><a class="btn" href="#demo" aria-label="I'm in: Spring park cleanup">I'm in →</a></li>
+    <li class="ev"><div class="ev__date"><small>Sunday</small>May 10</div><h3>Stadium history walk</h3><p>Stories from the bleachers, told by the people who know them.</p><a class="btn" href="#demo" aria-label="I'm in: Stadium history walk">I'm in →</a></li>
+    <li class="ev"><div class="ev__date"><small>Friday</small>Jun 12</div><h3>Movies under the trees</h3><p>Bring a blanket. We'll bring the popcorn.</p><a class="btn" href="#demo" aria-label="I'm in: Movies under the trees">I'm in →</a></li>
+  </ul>
+</div></section>
+
+<section class="section involve" id="involve" aria-labelledby="invTitle">
+  <h2 id="invTitle" class="sr-only">Get involved</h2>
+  <div class="involve__grid">
+    <a class="do" href="#demo"><h2 aria-hidden="true">Plant.</h2><span class="sr-only">Volunteer:</span><p>Join a cleanup, plant a tree, paint a mural.</p><span>Volunteer →</span></a>
+    <a class="do" href="#demo"><h2 aria-hidden="true">Build.</h2><span class="sr-only">Partner:</span><p>Sponsor a project your whole block will use.</p><span>Partner with us →</span></a>
+    <a class="do" href="#demo"><h2 aria-hidden="true">Give.</h2><span class="sr-only">Donate:</span><p>Every dollar stays in Hamtramck's parks.</p><span>Donate →</span></a>
+  </div>
+</section>
+
+<section class="partners" aria-label="Partners"><div class="wrap partners__row">
+  <img src="/for-hamtramck/images/logo-dcfc.svg" alt="Detroit City FC" loading="lazy">
+  <img src="/for-hamtramck/images/logo-hps.svg" alt="Hamtramck Public Schools" loading="lazy">
+  <img src="/for-hamtramck/images/logo-fhhs.svg" alt="Friends of Historic Hamtramck Stadium" loading="lazy">
+  <img src="/for-hamtramck/images/logo-kresge.webp" alt="The Kresge Foundation" loading="lazy">
+  <img src="/for-hamtramck/images/logo-wdf.webp" alt="William Davidson Foundation" loading="lazy">
+</div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <p class="foot__big">See you<br>outside.</p>
+  <div class="foot__row">
+    <nav aria-label="Footer"><a href="#parks">Parks</a><a href="#events">Events</a><a href="#stadium">Stadium</a><a href="#involve">Volunteer</a><a href="#involve">Donate</a><a href="#demo">Rent a space</a></nav>
+    <img src="/for-hamtramck/images/hpc-logo.svg" alt="Hamtramck Parks Conservancy" style="height:84px;width:auto">
+  </div>
+  <p class="foot__note">Homepage concept by Meaningful Marketing for discussion. Real Conservancy photos and logo; sample events and text.</p>
+</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var paused = reduce;
+  var hero = document.querySelector('.hero');
+
+  function toast(msg) {
+    var t = document.getElementById('toast'); t.textContent = msg; t.hidden = false;
+    clearTimeout(t._h); t._h = setTimeout(function () { t.hidden = true; }, 4500);
+  }
+  document.querySelectorAll('a[href="#demo"]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); toast('This is a homepage concept, so inner pages aren’t built yet.'); });
+  });
+
+  var mb = document.getElementById('menuBtn'), nav = document.getElementById('mainnav');
+  mb.addEventListener('click', function () { var o = nav.classList.toggle('open'); mb.setAttribute('aria-expanded', String(o)); });
+  nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); }); });
+
+  // Multilingual welcome
+  var words = Array.prototype.slice.call(document.querySelectorAll('.hello span')), i = 0;
+  var langName = document.getElementById('langName');
+  function show(n) {
+    words[i].classList.remove('on'); i = n; words[i].classList.add('on');
+    hero.style.setProperty('--hero', words[i].dataset.color);
+    langName.textContent = words[i].dataset.name;
+  }
+  setInterval(function () { if (!paused) show((i + 1) % words.length); }, 2200);
+
+  var pb = document.getElementById('pauseBtn');
+  function setPaused(p) {
+    paused = p; document.body.classList.toggle('is-paused', p);
+    pb.setAttribute('aria-pressed', String(p));
+    pb.textContent = p ? '▶ Play motion' : '❚❚ Pause motion';
+  }
+  pb.addEventListener('click', function () { setPaused(!paused); });
+  if (reduce) setPaused(true);
+
+  // Vibe picker
+  var VIBES = [
+    ['path-playground', 'A tree-lined path leading to a playground', 'Swings, slides &amp; pickup games.', 'Playgrounds and open fields a short walk from home, with plenty of shade for the grown-ups.', 'Find a playground →'],
+    ['flowers-marker', 'White flowers blooming beside a historical marker', 'Benches, blooms &amp; a breather.', 'Quiet corners for a book, a coffee or a phone call to someone far away.', 'Find a quiet spot →'],
+    ['pavilion', 'A picnic pavilion under a large shade tree', 'Pavilions, picnics &amp; parties.', 'Room for the whole family, and the cousins, and the neighbors. Reserve a pavilion in a few clicks.', 'Rent a space →'],
+    ['volunteers', 'Two smiling volunteers at a park cleanup', 'Gloves on. Let’s go.', 'Cleanups, plantings and build days. No experience needed, just bring a friend.', 'Volunteer →']
+  ];
+  var vbtns = document.querySelectorAll('.vibe-btns button');
+  vbtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = VIBES[+b.dataset.vibe];
+      vbtns.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      var img = document.getElementById('vibeImg');
+      img.src = '/for-hamtramck/images/' + v[0] + '.webp'; img.alt = v[1];
+      document.getElementById('vibeHead').innerHTML = v[2];
+      document.getElementById('vibeText').textContent = v[3];
+      document.getElementById('vibeLink').textContent = v[4];
+    });
+  });
+})();
+</script>
+</body>
+</html>
