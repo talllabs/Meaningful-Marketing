@@ -268,6 +268,31 @@
       .hs-layout { grid-template-columns: 1fr; }
       .hs-preview { position: static; max-width: 320px; margin: 0 auto; }
     }
+    /* ---------- Pitch pages ---------- */
+    .pp-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
+    .pp-tools input { flex: 1 1 260px; padding: 11px 14px; border: 1px solid var(--gray-light); border-radius: 8px; background: var(--white); }
+    .pp-stats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .pp-stat { background: var(--white); border: 1px solid var(--gray-light); border-radius: 10px; padding: 8px 14px; font-size: 14px; }
+    .pp-stat b { font-size: 17px; margin-right: 4px; color: var(--navy-dark); }
+    .pp-list { display: grid; gap: 12px; }
+    .pp-row { background: var(--white); border: 1px solid var(--gray-light); border-radius: 12px; padding: 16px 18px; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) auto; gap: 12px 20px; align-items: start; }
+    .pp-row h3 { margin: 0 0 2px; font-size: 16px; color: var(--navy-dark); }
+    .pp-url { font-weight: 600; color: var(--teal-dark); word-break: break-all; }
+    .pp-desc { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+    .pp-meta { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 14px; margin: 0; }
+    .pp-meta dt { color: var(--muted); }
+    .pp-meta dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+    .pp-meta code, .pp-row code { background: var(--off-white); padding: 1px 7px; border-radius: 5px; font-size: 13px; }
+    .pp-copy { border: 1px solid var(--gray-light); background: var(--white); border-radius: 6px; padding: 1px 8px; font-size: 12px; color: var(--muted); cursor: pointer; margin-left: 4px; }
+    .pp-tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--off-white); color: var(--muted); }
+    .pp-tag--ok { background: #e3f3f2; color: #13615e; }
+    .pp-tag--warn { background: #fff1d6; color: #7a4a00; }
+    .pp-actions { display: flex; flex-direction: column; gap: 8px; }
+    .pp-actions .btn { text-align: center; text-decoration: none; }
+    .btn--danger { background: var(--white); color: #b42318; border: 1px solid #f1b8b2; }
+    .btn--danger:hover { background: #fdecea; }
+    .pp-toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); max-width: min(92vw, 560px); background: var(--navy-dark); color: #fff; padding: 12px 18px; border-radius: 10px; z-index: 50; font-size: 14px; }
+    @media (max-width: 860px) { .pp-row { grid-template-columns: 1fr; } .pp-actions { flex-direction: row; flex-wrap: wrap; } }
   </style>
 </head>
 <body>
@@ -276,7 +301,7 @@
   <section class="login" id="login">
     <form class="login__card" id="login-form">
       <h1>Site Manager</h1>
-      <p>Enter the admin password to edit your logos and headshots.</p>
+      <p>Enter the admin password to manage your pitch pages, logos and headshots.</p>
       <input type="password" id="password" placeholder="Password" autocomplete="current-password" required />
       <button class="btn btn--full" type="submit" id="login-btn">Log in</button>
       <div class="error" id="login-error"></div>
@@ -289,18 +314,31 @@
       <div class="topbar__inner">
         <h1>Site Manager</h1>
         <nav class="tabs" role="tablist">
-          <button class="tab is-active" type="button" data-tab="logos" role="tab">Logos</button>
+          <button class="tab is-active" type="button" data-tab="pitches" role="tab">Pitch Pages</button>
+          <button class="tab" type="button" data-tab="logos" role="tab">Logos</button>
           <button class="tab" type="button" data-tab="headshots" role="tab">Headshots</button>
         </nav>
-        <span class="status" id="status"></span>
+        <span class="status" id="status" hidden></span>
         <span class="status" id="hs-status" hidden></span>
         <a href="/" target="_blank" class="status">View site ↗</a>
-        <button class="btn btn--publish" id="publish" disabled>Publish changes</button>
+        <button class="btn btn--publish" id="publish" disabled hidden>Publish changes</button>
         <button class="btn btn--publish" id="hs-publish" disabled hidden>Publish headshots</button>
       </div>
     </header>
 
-    <main id="tab-logos">
+    <main id="tab-pitches">
+      <div class="pp-tools">
+        <label for="pp-q" style="position:absolute;left:-9999px">Search pitch pages</label>
+        <input type="search" id="pp-q" placeholder="Search by name, client, password or URL" />
+        <button class="btn btn--light" type="button" id="pp-refresh">Refresh</button>
+      </div>
+      <div class="pp-stats" id="pp-stats"></div>
+      <p class="help" style="display:block">Every <strong>for-</strong> page on the site shows up here automatically. <strong>Delete</strong> removes that page from the live site (it updates in about a minute). Deleted pages can be restored from GitHub history.</p>
+      <p class="error" id="pp-error"></p>
+      <div class="pp-list" id="pp-list"><p class="empty">Loading…</p></div>
+    </main>
+
+    <main id="tab-logos" hidden>
       <label class="dropzone" id="dropzone">
         <div class="dropzone__icon">⬆️</div>
         <p class="dropzone__big">Drag logos here, or click to choose files</p>
@@ -369,6 +407,7 @@
         $('app').hidden = false;
         render();
         loadHeadshots();
+        loadPitches();
       })
       .catch(() => {
         $('login-btn').disabled = false;
@@ -625,11 +664,13 @@
     tab.addEventListener('click', function () {
       const name = tab.dataset.tab;
       document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('is-active', t === tab));
+      $('tab-pitches').hidden = name !== 'pitches';
       $('tab-logos').hidden = name !== 'logos';
       $('tab-headshots').hidden = name !== 'headshots';
       $('status').hidden = $('publish').hidden = name !== 'logos';
       $('hs-status').hidden = $('hs-publish').hidden = name !== 'headshots';
       if (name === 'headshots') drawPreview();
+      if (name === 'pitches') loadPitches();
     });
   });
 
@@ -938,6 +979,104 @@
         btn.textContent = 'Publish headshots';
         alert('Could not reach the server. Check your internet connection and try again.');
       });
+  });
+
+  // =====================================================
+  //  PITCH PAGES (every top-level for-* page on the site)
+  // =====================================================
+  let pitches = [];
+
+  function ppToast(msg) {
+    let t = $('pp-toast');
+    if (!t) { t = document.createElement('div'); t.id = 'pp-toast'; t.className = 'pp-toast'; t.setAttribute('role', 'status'); document.body.appendChild(t); }
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(t._h); t._h = setTimeout(function () { t.hidden = true; }, 5000);
+  }
+  function ppEsc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+  function ppSize(b) { return b > 1048576 ? (b / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB'; }
+  function ppWhen(iso) {
+    if (!iso) return 'Unknown';
+    const d = new Date(iso), days = Math.floor((Date.now() - d) / 86400000);
+    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) + ' (' + (days <= 0 ? 'today' : days === 1 ? 'yesterday' : days + ' days ago') + ')';
+  }
+
+  function loadPitches() {
+    $('pp-error').textContent = '';
+    $('pp-refresh').disabled = true;
+    fetch('/api/pitches', { headers: { 'x-admin-password': password }, cache: 'no-store' })
+      .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+      .then(({ ok, data }) => {
+        if (!ok) { $('pp-error').textContent = data.error || 'Could not load the pitch pages.'; $('pp-list').innerHTML = ''; return; }
+        pitches = data.pages || [];
+        renderPitches();
+      })
+      .catch(() => { $('pp-error').textContent = 'Could not reach the server. Check your internet connection.'; })
+      .finally(() => { $('pp-refresh').disabled = false; });
+  }
+
+  function renderPitches() {
+    const count = (f) => pitches.filter(f).length;
+    $('pp-stats').innerHTML =
+      '<div class="pp-stat"><b>' + pitches.length + '</b> pitch pages</div>' +
+      '<div class="pp-stat"><b>' + count((p) => p.password) + '</b> password-protected</div>' +
+      '<div class="pp-stat"><b>' + count((p) => p.hiddenFromSearch) + '</b> hidden from search</div>' +
+      '<div class="pp-stat"><b>' + count((p) => p.aiHelper) + '</b> with an AI helper</div>';
+    if (!pitches.length) { $('pp-list').innerHTML = '<p class="empty">No for- pages on the site right now.</p>'; return; }
+    $('pp-list').innerHTML = pitches.map(function (p, i) {
+      const search = (p.name + ' ' + p.title + ' ' + p.password + ' ' + p.url + ' ' + p.description).toLowerCase();
+      return '<article class="pp-row" data-search="' + ppEsc(search) + '">' +
+        '<div><h3>' + ppEsc(p.title || p.name) + '</h3>' +
+          '<a class="pp-url" href="' + ppEsc(p.url) + '" target="_blank" rel="noopener noreferrer">' + ppEsc(p.url) + '</a>' +
+          (p.description ? '<p class="pp-desc">' + ppEsc(p.description) + '</p>' : '') + '</div>' +
+        '<dl class="pp-meta">' +
+          '<dt>Password</dt><dd>' + (p.password ? '<code>' + ppEsc(p.password) + '</code><button type="button" class="pp-copy" data-copy="' + ppEsc(p.password) + '" aria-label="Copy password for ' + ppEsc(p.name) + '">Copy</button>' : '<span class="pp-tag pp-tag--warn">None found</span>') + '</dd>' +
+          '<dt>Updated</dt><dd>' + ppEsc(ppWhen(p.lastUpdated && p.lastUpdated.date)) + (p.lastUpdated ? '<br><span style="color:var(--muted)">' + ppEsc(p.lastUpdated.message) + '</span>' : '') + '</dd>' +
+          '<dt>Size</dt><dd>' + p.pageCount + ' page' + (p.pageCount === 1 ? '' : 's') + ' · ' + p.fileCount + ' files · ' + ppSize(p.sizeBytes) + '</dd>' +
+          '<dt>Search</dt><dd>' + (p.hiddenFromSearch ? '<span class="pp-tag pp-tag--ok">Hidden from Google</span>' : '<span class="pp-tag pp-tag--warn">Could be indexed</span>') + '</dd>' +
+          '<dt>AI helper</dt><dd>' + (p.aiHelper ? '<span class="pp-tag pp-tag--ok">Yes</span>' : '<span class="pp-tag">No</span>') + '</dd>' +
+          '<dt>Folder</dt><dd><code>' + ppEsc(p.name) + '</code></dd>' +
+          (p.alsoUses && p.alsoUses.length ? '<dt>Also uses</dt><dd>' + p.alsoUses.map((d) => '<code>' + ppEsc(d) + '/</code>').join(' ') + '<br><span style="color:var(--muted)">Separate folders. Delete won’t remove these.</span></dd>' : '') +
+        '</dl>' +
+        '<div class="pp-actions">' +
+          '<a class="btn btn--light" href="' + ppEsc(p.url) + '" target="_blank" rel="noopener noreferrer">Open ↗</a>' +
+          '<button type="button" class="btn btn--light" data-copy="' + ppEsc(p.url + (p.password ? '\nPassword: ' + p.password : '')) + '">Copy link + password</button>' +
+          '<button type="button" class="btn btn--danger" data-del="' + i + '">Delete</button>' +
+        '</div></article>';
+    }).join('');
+    filterPitches();
+  }
+
+  function filterPitches() {
+    const q = $('pp-q').value.trim().toLowerCase();
+    document.querySelectorAll('.pp-row').forEach((r) => { r.hidden = !!q && r.dataset.search.indexOf(q) === -1; });
+  }
+
+  function deletePitch(i, btn) {
+    const p = pitches[i];
+    const extra = p.aiHelper ? '\n• its AI helper (' + p.aiHelper + ')' : '';
+    if (!confirm('Delete ' + p.url + ' from the site?\n\nThis removes:\n• ' + p.fileCount + ' file(s) in ' + p.name + extra + '\n\nThe live site updates in about a minute. It can be restored from GitHub history if needed.')) return;
+    btn.disabled = true; btn.textContent = 'Deleting…';
+    fetch('/api/pitches', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password, action: 'delete', name: p.name }) })
+      .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+      .then(({ ok, data }) => {
+        if (!ok) { ppToast(data.error || 'Delete failed.'); btn.disabled = false; btn.textContent = 'Delete'; return; }
+        pitches.splice(i, 1); renderPitches();
+        ppToast('Deleted ' + p.name + '. The live site updates in about a minute.');
+      })
+      .catch(() => { ppToast('Could not reach the server.'); btn.disabled = false; btn.textContent = 'Delete'; });
+  }
+
+  $('pp-q').addEventListener('input', filterPitches);
+  $('pp-refresh').addEventListener('click', loadPitches);
+  $('pp-list').addEventListener('click', function (e) {
+    const c = e.target.closest('[data-copy]');
+    if (c) {
+      const text = c.getAttribute('data-copy');
+      (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(() => ppToast('Copied.'), () => prompt('Copy this:', text));
+      return;
+    }
+    const d = e.target.closest('[data-del]');
+    if (d) deletePitch(+d.getAttribute('data-del'), d);
   });
 })();
 </script>
