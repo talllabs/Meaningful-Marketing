@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8d040">
+<meta name="robots" content="noindex, nofollow">
+<title>The Lobiko Initiative | Mockup 3</title>
+<meta name="description" content="Homepage concept for The Lobiko Initiative: see exactly who your gift helps.">
+<link rel="icon" href="/for-lobiko/images/logo-mark.webp">
+<script src="/for-lobiko/gate.js"></script>
+<script src="/for-lobiko/demo-bar.js" data-design="3"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #002048; --cream: #fff3d6; --paper: #fffaf0;
+  --yellow: #f8d040; --orange: #e85820; --orange-lt: #f28a5c; --orange-dk: #b8410f;
+  --teal: #48a8c0; --teal-lt: #7dc4d6; --green: #509040; --green-lt: #8cc27a; --green-dk: #2f6b25;
+  --gift: var(--yellow);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--navy); font-family: Nunito, system-ui, sans-serif; font-size: 19px; line-height: 1.55; }
+h1, h2, h3 { font-family: Fredoka, system-ui, sans-serif; font-weight: 700; line-height: .95; letter-spacing: -.01em; margin: 0; }
+p { margin: 0 0 1em; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+:focus-visible { outline: 4px solid var(--navy); outline-offset: 3px; box-shadow: 0 0 0 8px #fff; }
+.wrap { width: min(1280px, calc(100% - 40px)); margin-inline: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: 16px; top: -80px; z-index: 300; background: var(--navy); color: #fff; padding: 12px 18px; font-weight: 800; border-radius: 999px; }
+.skip:focus { top: 60px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: 999px; font: 700 19px Fredoka, sans-serif; text-decoration: none; background: var(--navy); color: #fff; border: 3px solid var(--navy); transition: transform .2s; cursor: pointer; }
+.btn:hover { transform: translateY(-3px) rotate(-1deg); }
+.btn--light { background: #fff; color: var(--navy); }
+.section { padding: clamp(80px, 10vw, 140px) 0; }
+.big { font-size: clamp(3.2rem, 8vw, 7.6rem); }
+
+/* Header */
+.site { position: sticky; top: 0; z-index: 100; background: var(--paper); border-bottom: 3px solid var(--navy); }
+.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 80px; }
+.brand img { height: 50px; width: auto; }
+.mainnav { display: flex; align-items: center; gap: 6px; }
+.mainnav a { text-decoration: none; font: 600 17px Fredoka, sans-serif; padding: 9px 15px; border-radius: 999px; }
+.mainnav a:hover { background: var(--cream); }
+.mainnav .give { background: var(--yellow); border: 3px solid var(--navy); }
+.menu-btn { display: none; border: 3px solid var(--navy); background: #fff; border-radius: 999px; padding: 8px 16px; font: 600 17px Fredoka, sans-serif; color: var(--navy); }
+
+/* ---------- Hero: rising arcs ---------- */
+.hero { position: relative; overflow: hidden; background: var(--cream); border-bottom: 3px solid var(--navy); }
+.hero .wrap { position: relative; z-index: 2; min-height: calc(100svh - 120px); display: flex; flex-direction: column; justify-content: center; padding: 70px 0 120px; }
+.hero h1 { font-size: clamp(3.6rem, 10vw, 9.6rem); max-width: 11ch; }
+.hero h1 span { display: block; }
+.hero h1 .w1 { color: var(--orange-dk); } .hero h1 .w2 { color: var(--navy); } .hero h1 .w3 { color: var(--green-dk); }
+.hero p { font-size: clamp(20px, 1.8vw, 24px); max-width: 520px; margin: 28px 0 30px; font-weight: 600; }
+.arcs { position: absolute; z-index: 1; right: -12vw; bottom: -36vw; width: 78vw; aspect-ratio: 1; pointer-events: none; }
+.arcs span { position: absolute; border-radius: 50%; border: clamp(26px, 4.4vw, 64px) solid; border-bottom-color: transparent; border-left-color: transparent; transform: rotate(-45deg); animation: rise 1.4s cubic-bezier(.2,.8,.2,1) both; }
+.arcs span:nth-child(1) { inset: 0; border-top-color: var(--yellow); border-right-color: var(--yellow); }
+.arcs span:nth-child(2) { inset: 9%; border-top-color: var(--orange); border-right-color: var(--orange); animation-delay: .12s; }
+.arcs span:nth-child(3) { inset: 18%; border-top-color: var(--teal); border-right-color: var(--teal); animation-delay: .24s; }
+.arcs span:nth-child(4) { inset: 27%; border-top-color: var(--green); border-right-color: var(--green); animation-delay: .36s; }
+@keyframes rise { from { transform: rotate(-135deg); opacity: 0; } to { transform: rotate(-45deg); opacity: 1; } }
+.hero__figure { position: absolute; z-index: 1; right: 12vw; bottom: 0; width: clamp(140px, 17vw, 260px); }
+.hero__photo { position: absolute; z-index: 2; right: max(20px, calc((100vw - 1280px)/2)); top: 60px; width: clamp(180px, 22vw, 330px); aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 6px solid var(--navy); box-shadow: 10px 10px 0 var(--navy); }
+.hero__photo img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- See your gift ---------- */
+.gift { background: var(--gift); transition: background-color .5s ease; border-bottom: 3px solid var(--navy); }
+.gift__head { display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; margin-bottom: 36px; }
+.gift__head p { max-width: 420px; font-weight: 700; margin: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+.chips button { font: 700 clamp(22px, 2.6vw, 34px) Fredoka, sans-serif; padding: 10px 26px; border-radius: 999px; border: 3px solid var(--navy); background: #fff; color: var(--navy); cursor: pointer; box-shadow: 5px 5px 0 var(--navy); transition: transform .15s; }
+.chips button:hover { transform: translate(-2px, -2px); }
+.chips button[aria-pressed="true"] { background: var(--navy); color: #fff; }
+.gift__card { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; background: #fff; border: 3px solid var(--navy); border-radius: 36px; padding: clamp(26px, 4vw, 50px); box-shadow: 12px 12px 0 var(--navy); }
+.gift__eq { font: 700 clamp(2.6rem, 6vw, 5.4rem) Fredoka, sans-serif; line-height: .95; }
+.gift__eq b { display: block; color: var(--orange-dk); }
+.gift__what { font: 600 clamp(22px, 2.2vw, 30px) Fredoka, sans-serif; margin: 18px 0 10px; }
+.gift__desc { font-weight: 600; }
+.kids { display: grid; grid-template-columns: repeat(auto-fill, minmax(38px, 1fr)); gap: 8px 6px; align-content: start; list-style: none; padding: 0; margin: 0; }
+.kids li { aspect-ratio: 40 / 48; animation: pop .45s cubic-bezier(.3,1.6,.5,1) both; }
+.kids svg { width: 100%; height: 100%; display: block; }
+@keyframes pop { from { transform: scale(0) translateY(20px); opacity: 0; } to { transform: none; opacity: 1; } }
+.kids__label { aspect-ratio: auto !important; grid-column: 1 / -1; font: 700 18px Fredoka, sans-serif; margin-top: 8px; }
+
+/* ---------- Pillars ---------- */
+.pillars { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 3px solid var(--navy); }
+.pillar { padding: clamp(36px, 5vw, 64px) clamp(22px, 3vw, 40px); border-right: 3px solid var(--navy); }
+.pillar:last-child { border-right: 0; }
+.pillar:nth-child(1) { background: var(--yellow); } .pillar:nth-child(2) { background: var(--orange-lt); } .pillar:nth-child(3) { background: var(--teal-lt); } .pillar:nth-child(4) { background: var(--green-lt); }
+.pillar span { font: 700 18px Fredoka, sans-serif; }
+.pillar h3 { font-size: clamp(2rem, 3.4vw, 3.2rem); margin: 10px 0 14px; }
+.pillar p { font-weight: 600; margin: 0; }
+
+/* ---------- Changemakers ---------- */
+.makers__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; list-style: none; padding: 0; margin: 40px 0 0; }
+.maker { background: #fff; border: 3px solid var(--navy); border-radius: 30px; overflow: hidden; box-shadow: 8px 8px 0 var(--navy); transition: transform .2s; }
+.maker:nth-child(1) { transform: rotate(-1.5deg); } .maker:nth-child(2) { transform: rotate(1deg); } .maker:nth-child(3) { transform: rotate(-.6deg); }
+.maker:hover { transform: rotate(0) translateY(-4px); }
+.maker img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-bottom: 3px solid var(--navy); }
+.maker div { padding: 24px 26px 28px; }
+.maker h3 { font-size: 34px; margin-bottom: 8px; }
+.maker .role { font: 600 17px Fredoka, sans-serif; color: var(--orange-dk); margin-bottom: 10px; }
+.maker p { font-weight: 600; margin: 0; }
+
+/* ---------- Numbers ---------- */
+.numbers { background: var(--navy); color: #fff; border-bottom: 3px solid var(--navy); }
+.numbers h2 { color: var(--yellow); }
+.numgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+.num { aspect-ratio: 1; border-radius: 50%; display: grid; place-content: center; text-align: center; padding: 30px; color: var(--navy); }
+.num:nth-child(1) { background: var(--yellow); } .num:nth-child(2) { background: var(--teal-lt); } .num:nth-child(3) { background: var(--orange-lt); }
+.num strong { font: 700 clamp(3rem, 6.6vw, 6rem) Fredoka, sans-serif; line-height: 1; }
+.num span { font-weight: 700; font-size: clamp(16px, 1.5vw, 20px); max-width: 240px; margin: 10px auto 0; }
+
+/* ---------- Road strip ---------- */
+.road__strip { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 40px 0 0; padding: 6px 4px 30px; }
+.road__strip:focus-visible { box-shadow: none; outline-offset: 6px; }
+.road__strip li { flex: 0 0 min(380px, 82vw); scroll-snap-align: start; }
+.road__strip figure { margin: 0; border: 3px solid var(--navy); border-radius: 28px; overflow: hidden; background: #fff; }
+.road__strip img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.road__strip figcaption { padding: 16px 20px; font: 600 20px Fredoka, sans-serif; }
+
+/* ---------- Final call ---------- */
+.final { background: var(--orange-lt); text-align: center; border-bottom: 3px solid var(--navy); position: relative; overflow: hidden; }
+.final h2 { font-size: clamp(3.4rem, 9vw, 8.4rem); }
+.final p { font-size: 22px; font-weight: 700; max-width: 640px; margin: 24px auto 34px; }
+.final .goal { display: inline-flex; gap: 28px; flex-wrap: wrap; justify-content: center; background: #fff; border: 3px solid var(--navy); border-radius: 999px; padding: 12px 28px; margin-bottom: 34px; font: 600 20px Fredoka, sans-serif; }
+
+.badges { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 36px; padding: 44px 20px; background: #fff; border-bottom: 3px solid var(--navy); }
+.badges img { height: 78px; width: auto; }
+.foot { background: var(--cream); padding: 60px 0 34px; }
+.foot__row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 30px; }
+.foot__row img { height: 64px; width: auto; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 10px; }
+.foot nav a { border: 3px solid var(--navy); border-radius: 999px; padding: 7px 16px; font: 600 17px Fredoka, sans-serif; text-decoration: none; background: #fff; }
+.foot p { font-size: 15px; margin-top: 28px; }
+
+@media (max-width: 980px) {
+  .menu-btn { display: block; }
+  .mainnav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--paper); padding: 14px 20px 22px; border-bottom: 3px solid var(--navy); }
+  .mainnav.open { display: flex; }
+  .brand img { height: 40px; }
+  .hero__photo { position: relative; right: auto; top: auto; margin-top: 30px; width: 200px; order: 3; }
+  .hero__figure { display: none; }
+  .arcs { width: 130vw; right: -50vw; bottom: -70vw; }
+  .gift__card { grid-template-columns: 1fr; }
+  .pillars { grid-template-columns: 1fr 1fr; }
+  .pillar:nth-child(2) { border-right: 0; }
+  .pillar:nth-child(-n+2) { border-bottom: 3px solid var(--navy); }
+  .makers__grid { grid-template-columns: 1fr; }
+  .numgrid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
+}
+@media (max-width: 560px) { .pillars { grid-template-columns: 1fr; } .pillar { border-right: 0; border-bottom: 3px solid var(--navy); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site"><div class="wrap">
+  <a class="brand" href="#top" aria-label="The Lobiko Initiative home"><img src="/for-lobiko/images/lobiko-logo.webp" alt="The Lobiko Initiative"></a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainnav">Menu</button>
+  <nav class="mainnav" id="mainnav" aria-label="Main">
+    <a href="#gift">Your gift</a><a href="#makers">Changemakers</a><a href="#road">Gemena</a><a href="https://www.lobiko.org/about-us">About</a><a class="give" href="#give">Give ♥</a>
+  </nav>
+</div></header>
+
+<main id="main">
+<section class="hero" id="top" aria-labelledby="heroTitle">
+  <div class="arcs" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <div class="hero__photo"><img src="/for-lobiko/images/two-girls.webp" alt="Two girls smiling on a dirt road in Congo" fetchpriority="high"></div>
+  <div class="wrap">
+    <h1 id="heroTitle"><span class="w1">Safe.</span><span class="w2">Healthy.</span><span class="w3">Learning.</span></h1>
+    <p>Lobiko cares for the whole child in Congo, through Congolese leaders who already know their community best. Pick a gift and see exactly who it helps.</p>
+    <div><a class="btn" href="#gift">See your gift ↓</a></div>
+  </div>
+</section>
+
+<section class="section gift" id="gift" aria-labelledby="giftTitle"><div class="wrap">
+  <div class="gift__head"><h2 id="giftTitle" class="big">See your gift.</h2><p>Real gifts from Lobiko’s Gift Catalog. Every figure below is one child or student your gift reaches.</p></div>
+  <div class="chips" role="group" aria-label="Choose a gift amount">
+    <button type="button" data-i="0" aria-pressed="false">$50</button>
+    <button type="button" data-i="1" aria-pressed="false">$100</button>
+    <button type="button" data-i="2" aria-pressed="true">$250</button>
+    <button type="button" data-i="3" aria-pressed="false">$500</button>
+    <button type="button" data-i="4" aria-pressed="false">$1,000</button>
+    <button type="button" data-i="5" aria-pressed="false">$2,500</button>
+  </div>
+  <div class="gift__card">
+    <div aria-live="polite">
+      <div class="gift__eq"><span id="gAmt">$250</span> <b id="gCount">= 23 students</b></div>
+      <p class="gift__what" id="gWhat">A month of high school tuition</p>
+      <p class="gift__desc" id="gDesc">Covers a month of school tuition and academic fees for 23 high school students at the Sabuli Children’s Center.</p>
+      <a class="btn" id="gBtn" href="https://www.lobiko.org/year-end-giving">Give $250 →</a>
+    </div>
+    <ul class="kids" id="kids" aria-hidden="true"></ul>
+  </div>
+</div></section>
+
+<section class="pillars" aria-label="How we care for the whole child">
+  <div class="pillar"><span>01</span><h3>Safe to learn</h3><p>At the Sabuli Children’s Center, 75 children have a home, caregivers and daily meals.</p></div>
+  <div class="pillar"><span>02</span><h3>Healthy to learn</h3><p>The Judy Medical Clinic and Mama Monique Foundation keep about 200 children healthy and fed.</p></div>
+  <div class="pillar"><span>03</span><h3>Learning &amp; growing</h3><p>School fees, supplies and the Gemena Football Academy build minds and character.</p></div>
+  <div class="pillar"><span>04</span><h3>Ready for what’s next</h3><p>A transition home and university support help young adults step into independence.</p></div>
+</section>
+
+<section class="section" id="makers" aria-labelledby="makersTitle"><div class="wrap">
+  <h2 id="makersTitle" class="big">The changemakers.</h2>
+  <p style="max-width:620px;font-weight:700;margin-top:20px">Lobiko doesn’t run programs from far away. We back Congolese leaders who were already doing the work.</p>
+  <ul class="makers__grid">
+    <li class="maker"><img src="/for-lobiko/images/football-academy.webp" alt="Young footballers from the academy posing on a field" loading="lazy"><div><h3>Coach Song</h3><p class="role">Gemena Football Academy</p><p>Football training, games and mentoring for more than 200 young people.</p></div></li>
+    <li class="maker"><img src="/for-lobiko/images/children-bench.webp" alt="A row of young children sitting together on a wooden bench" loading="lazy"><div><h3>Mama Benie</h3><p class="role">Mama Monique Foundation</p><p>A nutrition center that feeds 150 to 200 children and teaches caregivers.</p></div></li>
+    <li class="maker"><img src="/for-lobiko/images/classroom.webp" alt="Students at desks in a classroom" loading="lazy"><div><h3>Beni</h3><p class="role">Sewing program assistant teacher</p><p>She lost her parents young. Now she teaches, and saves to become a designer.</p></div></li>
+  </ul>
+</div></section>
+
+<section class="section numbers" aria-labelledby="numTitle"><div class="wrap">
+  <h2 id="numTitle" class="big">Since 2020.</h2>
+  <div class="numgrid">
+    <div class="num"><strong>35K+</strong><span>lives reached in Congo</span></div>
+    <div class="num"><strong>6,000+</strong><span>people accessing healthcare each year</span></div>
+    <div class="num"><strong>93%</strong><span>of donations go straight to program partners</span></div>
+  </div>
+</div></section>
+
+<section class="section" id="road" aria-labelledby="roadTitle"><div class="wrap">
+  <h2 id="roadTitle" class="big">Welcome to Gemena.</h2>
+  <p style="max-width:640px;font-weight:700;margin-top:20px">The capital of Sud-Ubangi Province, home to more than a million people, and full of potential. Scroll sideways to look around →</p>
+  <ul class="road__strip" tabindex="0" aria-label="Photos from Gemena, scroll sideways">
+    <li><figure><img src="/for-lobiko/images/red-road.webp" alt="A red dirt road at sunset lined with palm trees" loading="lazy"><figcaption>The road home</figcaption></figure></li>
+    <li><figure><img src="/for-lobiko/images/market.webp" alt="A market stall piled with watermelons, carrots and tomatoes" loading="lazy"><figcaption>Market day</figcaption></figure></li>
+    <li><figure><img src="/for-lobiko/images/medical-clinic.webp" alt="A two-story medical building with a motorbike passing" loading="lazy"><figcaption>Care close to home</figcaption></figure></li>
+    <li><figure><img src="/for-lobiko/images/harvest.webp" alt="A woman in a field holding freshly harvested groundnuts" loading="lazy"><figcaption>From the growing garden</figcaption></figure></li>
+    <li><figure><img src="/for-lobiko/images/kids-in-tree.webp" alt="Children climbing in a tree and laughing" loading="lazy"><figcaption>Room to be a kid</figcaption></figure></li>
+    <li><figure><img src="/for-lobiko/images/aerial.webp" alt="Aerial view of green countryside and dirt paths" loading="lazy"><figcaption>Sud-Ubangi from above</figcaption></figure></li>
+  </ul>
+</div></section>
+
+<section class="section final" id="give" aria-labelledby="giveTitle"><div class="wrap">
+  <h2 id="giveTitle">Care for the<br>whole child.</h2>
+  <p>Every gift this season helps children in Congo stay safe, healthy and in school.</p>
+  <div class="goal"><span>$70,000 goal</span><span>Nov 1 – Dec 31</span></div>
+  <div><a class="btn" href="https://www.lobiko.org/year-end-giving">Give today →</a></div>
+</div></section>
+
+<section class="badges" aria-label="Recognition">
+  <img src="/for-lobiko/images/badge-candid.webp" alt="Candid Platinum Transparency 2025" loading="lazy">
+  <img src="/for-lobiko/images/badge-globalgiving.webp" alt="GlobalGiving Vetted Organization 2024" loading="lazy">
+  <img src="/for-lobiko/images/badge-greatnonprofits.webp" alt="GreatNonprofits 2023 Top-Rated Nonprofit" loading="lazy">
+  <img src="/for-lobiko/images/badge-pwi.webp" alt="PWI Partner badge of approval 2023" loading="lazy">
+</section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <div class="foot__row">
+    <img src="/for-lobiko/images/lobiko-logo.webp" alt="The Lobiko Initiative">
+    <nav aria-label="Footer"><a href="https://www.lobiko.org/about-us">About</a><a href="https://www.lobiko.org/our-work">Our work</a><a href="https://www.lobiko.org/engaged-and-inspired-blog">Blog</a><a href="https://www.lobiko.org/lobiko-champions">Champions</a><a href="https://www.lobiko.org/contact-us">Contact</a></nav>
+  </div>
+  <p>Lobiko is a registered 501(c)(3) nonprofit (Tax ID: 85-2563277) and a registered nonprofit in the DR Congo. Homepage concept by Meaningful Marketing for discussion; photos and gift details from Lobiko.</p>
+</div></footer>
+
+<script>
+(function () {
+  var mb = document.getElementById('menuBtn'), nav = document.getElementById('mainnav');
+  mb.addEventListener('click', function () { var o = nav.classList.toggle('open'); mb.setAttribute('aria-expanded', String(o)); });
+  nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); }); });
+
+  // Gifts from Lobiko's 2026 Gift Catalog: amount, number reached, who, colour
+  var GIFTS = [
+    { amt: 50, n: 10, who: 'children', what: 'A month of medical care', desc: 'Covers a month of medical care for 10 children at the Mama Monique Foundation.', bg: '#7dc4d6' },
+    { amt: 100, n: 15, who: 'children', what: 'A month of primary school', desc: 'Covers a month of school tuition and academic fees for 15 primary school children at the Sabuli Children’s Center (or a caregiver’s monthly salary at the Mama Monique Foundation).', bg: '#8cc27a' },
+    { amt: 250, n: 23, who: 'students', what: 'A month of high school tuition', desc: 'Covers a month of school tuition and academic fees for 23 high school students at the Sabuli Children’s Center.', bg: '#f8d040' },
+    { amt: 500, n: 22, who: 'children', what: 'A month of meals', desc: 'Covers a month of meals for 22 children at the Mama Monique Foundation.', bg: '#f28a5c' },
+    { amt: 1000, n: 12, who: 'children', what: 'A year of school supplies', desc: 'Covers a year of school supplies for 12 children at the Mama Monique Foundation.', bg: '#7dc4d6' },
+    { amt: 2500, n: 49, who: 'students', what: 'Six months of school', desc: 'Covers six months of school tuition and academic fees for 49 students at the Sabuli Children’s Center.', bg: '#8cc27a' }
+  ];
+  var COLORS = ['#e85820', '#48a8c0', '#509040', '#f8d040', '#002048'];
+  var KID = '<svg viewBox="0 0 40 48"><circle cx="20" cy="8" r="7" fill="#002048"/><path fill="COL" stroke="#002048" stroke-width="2" stroke-linejoin="round" d="M4 15 L20 25 L36 15 L38 20 L25 30 L28 46 L21 46 L20 37 L19 46 L12 46 L15 30 L2 20 Z"/></svg>';
+  var gift = document.getElementById('gift'), kids = document.getElementById('kids');
+  var chips = document.querySelectorAll('.chips button');
+  function money(n) { return '$' + n.toLocaleString('en-US'); }
+  function show(i) {
+    var g = GIFTS[i];
+    chips.forEach(function (c) { c.setAttribute('aria-pressed', String(+c.dataset.i === i)); });
+    gift.style.setProperty('--gift', g.bg);
+    document.getElementById('gAmt').textContent = money(g.amt);
+    document.getElementById('gCount').textContent = '= ' + g.n + ' ' + g.who;
+    document.getElementById('gWhat').textContent = g.what;
+    document.getElementById('gDesc').textContent = g.desc;
+    document.getElementById('gBtn').textContent = 'Give ' + money(g.amt) + ' →';
+    var html = '';
+    for (var k = 0; k < g.n; k++) html += '<li style="animation-delay:' + (k * 0.03).toFixed(2) + 's">' + KID.replace('COL', COLORS[k % COLORS.length]) + '</li>';
+    kids.innerHTML = html + '<li class="kids__label" style="animation:none">' + g.n + ' ' + g.who + ', one gift.</li>';
+  }
+  chips.forEach(function (c) { c.addEventListener('click', function () { show(+c.dataset.i); }); });
+  show(2);
+})();
+</script>
+</body>
+</html>
