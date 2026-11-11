@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fall 2026 Newsletter Mockup | Andean Health &amp; Development</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/for-ahd/images/ahd-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@500;700&display=swap" rel="stylesheet">
+  <script src="/for-ahd/gate.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; display: flex; flex-direction: column; font-family: 'Work Sans', system-ui, sans-serif; background: #f7f2ed; color: #172e3a; }
+    .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 10px clamp(16px, 3vw, 28px); background: #066798; color: #fff; font-size: 14px; font-weight: 500; }
+    .bar a { color: #fff; text-decoration: none; }
+    .bar a:hover { color: #f1bf34; }
+    .bar strong { font-weight: 700; }
+    .controls { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+    .controls button, .controls a.dl { padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #fff; font: 700 13px 'Work Sans', system-ui, sans-serif; cursor: pointer; }
+    .controls button[aria-pressed="true"] { background: #f08519; border-color: #f08519; }
+    .controls a.dl { background: #f1bf34; border-color: #f1bf34; color: #172b37; }
+    .controls a.dl:hover { color: #172b37; background: #ffd36e; }
+    .stage { flex: 1; display: flex; justify-content: center; padding: 24px 16px 0; }
+    iframe { width: 100%; max-width: 700px; height: 100%; min-height: 70vh; border: 0; background: #f7f2ed; border-radius: 12px 12px 0 0; box-shadow: 0 20px 60px rgba(6,103,152,.15); transition: max-width .3s; }
+    body.mobile iframe { max-width: 390px; }
+    @media (max-width: 600px) { .hide-sm { display: none; } .stage { padding: 0; } iframe { border-radius: 0; box-shadow: none; } }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <a href="/for-ahd/">← <strong>Fall 2026 Newsletter</strong> <span class="hide-sm">· email mockup</span></a>
+    <div class="controls">
+      <button type="button" data-view="desktop" aria-pressed="true" class="hide-sm">Desktop</button>
+      <button type="button" data-view="mobile" aria-pressed="false" class="hide-sm">Mobile</button>
+      <a class="dl" href="/for-ahd/newsletter/email.html" download="ahd-fall-2026-newsletter.html">Download HTML</a>
+    </div>
+  </div>
+  <div class="stage">
+    <iframe src="/for-ahd/newsletter/email.html" title="Fall 2026 newsletter email preview"></iframe>
+  </div>
+  <script>
+    document.querySelectorAll('[data-view]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.body.classList.toggle('mobile', btn.dataset.view === 'mobile');
+        document.querySelectorAll('[data-view]').forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+      });
+    });
+  </script>
+</body>
+</html>

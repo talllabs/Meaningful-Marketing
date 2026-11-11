@@ -1,8 +1,8 @@
-/* Password gate for the Andean Health & Development website concept.
+/* Password gate for the Andean Health & Development pages (password: ahd).
    Unlocking once unlocks every page, and the browser remembers it. */
 (function () {
-  var KEY = 'ahd-mockup-unlocked';
-  var PW = 'mockup';
+  var KEY = 'ahd-unlocked';
+  var PW = 'ahd';
   var unlocked = false;
   try { unlocked = localStorage.getItem(KEY) === 'true'; } catch (e) {}
   if (unlocked) return;
@@ -31,11 +31,11 @@
     gate.innerHTML =
       '<form autocomplete="off">' +
       '<img src="/for-ahd/images/ahd-logo.png" alt="Andean Health &amp; Development">' +
-      '<h1>A new website for Andean Health</h1>' +
-      '<p>A website concept prepared by Meaningful Marketing. Please enter the password to continue.</p>' +
+      '<h1>For Andean Health &amp; Development</h1>' +
+      '<p>Prepared by Meaningful Marketing. Please enter the password to continue.</p>' +
       '<input type="password" placeholder="Password" aria-label="Password">' +
       '<p class="err">That password isn’t quite right. Please try again.</p>' +
-      '<button type="submit">View the concept →</button>' +
+      '<button type="submit">Continue →</button>' +
       '</form>';
     document.body.appendChild(gate);
     var form = gate.querySelector('form');
