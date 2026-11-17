@@ -1,14 +1,43 @@
 /* Homepage hero: ATTA compass-globe cutout reveal.
-   A white layer covers the hero photo with the ATTA mark cut out of it.
-   Scrolling zooms into the mark (through the Atlantic) until the photo
-   fills the screen, then the headline and buttons fade in. */
+   A white layer covers ATTA's YouTube video with the ATTA mark cut out of it.
+   Scrolling zooms into the mark (through the Atlantic) until the video
+   fills the screen, then it crossfades to the member photo as the headline
+   and buttons fade in. */
 (function () {
   var reveal = document.querySelector('.reveal');
   if (!reveal) return;
   var stage = document.getElementById('stage'), svg = document.getElementById('maskSvg'), logo = document.getElementById('maskLogo');
   var shade = document.getElementById('shade'), copy = document.getElementById('copy'), hint = document.getElementById('hint');
 
+  var photo = document.getElementById('heroPhoto'), videoBox = document.getElementById('heroVideo'), pauseBtn = document.getElementById('pauseBtn');
+
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { reveal.classList.add('is-static'); return; }
+
+  // Hero video: ATTA's YouTube film, muted and looping behind the logo cutout.
+  // The video's own thumbnail sits underneath until it starts, and the frame fades
+  // in after a moment so YouTube's title bar never shows.
+  var frame = null, paused = false;
+  if (videoBox && videoBox.dataset.youtube) {
+    var id = videoBox.dataset.youtube;
+    frame = document.createElement('iframe');
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&mute=1&loop=1&playlist=' + id +
+      '&controls=0&disablekb=1&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&fs=0&enablejsapi=1';
+    frame.title = 'ATTA background video';
+    frame.setAttribute('tabindex', '-1');
+    frame.setAttribute('allow', 'autoplay; encrypted-media');
+    frame.addEventListener('load', function () { setTimeout(function () { videoBox.classList.add('is-on'); }, 2500); });
+    videoBox.appendChild(frame);
+    pauseBtn.hidden = false;
+  }
+  function command(func) {
+    if (frame && frame.contentWindow) frame.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: [] }), '*');
+  }
+  if (pauseBtn) pauseBtn.addEventListener('click', function () {
+    paused = !paused;
+    command(paused ? 'pauseVideo' : 'playVideo');
+    pauseBtn.setAttribute('aria-pressed', String(paused));
+    pauseBtn.innerHTML = paused ? '▶ <span>Play video</span>' : '❚❚ <span>Pause video</span>';
+  });
 
   var MARK = 221;                 // the mark's own size (221 x 221 units)
   var ZOOM_X = 110, ZOOM_Y = 165; // open Atlantic between South America and Africa
@@ -49,6 +78,11 @@
     copy.style.transform = 'translateY(' + (32 * (1 - t)) + 'px)';
     copy.style.pointerEvents = t > 0.5 ? 'auto' : 'none';
     shade.style.opacity = String(t);
+    photo.style.opacity = String(t);                                            // video crossfades to the photo behind the headline
+    if (pauseBtn) {
+      pauseBtn.style.opacity = String(1 - t);
+      pauseBtn.style.visibility = t > 0.95 ? 'hidden' : 'visible';
+    }
   }
 
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
