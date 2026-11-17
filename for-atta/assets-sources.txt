@@ -1,8 +1,106 @@
-Logo and brand colors: https://www.adventuretravel.biz/
-Gathering photograph: https://cdn-content.adventuretravel.biz/uploads/2022/03/392362314921251aa-large.jpg
-Field image: https://cdn-content.adventuretravel.biz/2022/04/65396260a3526ac7f.jpg
-Original membership collage: https://cdn-content.adventuretravel.biz/2023/06/1542649f60e0e8b1d.jpg
-ATTA retains ownership of its branding and photography. Concept for review only.
-tour.jpg: https://cdn-content.adventuretravel.biz/uploads/2022/03/15616222720c29794-large.jpg
-chile.jpg: https://cdn-content.adventuretravel.biz/uploads/2024/09/194966eb5e66ccd48-hero.jpg
-quebec.jpg: https://cdn-content.adventuretravel.biz/2026/10/88886ae2661e883ce.jpg
+Original ATTA logo: SVG extracted from https://www.adventuretravel.biz/
+All photographs sourced from ATTA live pages. Each image appears once across the prototype.
+
+real-20.jpg
+Used on: summit.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2024/09/194966eb5e66ccd48-hero.jpg
+
+gathering.jpg
+Used on: summit.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/03/392362314921251aa-large.jpg
+
+extra-01.jpg
+Used on: seattle.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/04/7188625701ee26b39-large.jpg
+
+real-07.jpg
+Used on: join.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/10/486063486d383e72e-large.jpg
+
+real-17.jpg
+Used on: case-studies.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/04/6837625f8666a31c5-large.jpg
+
+real-09.png
+Used on: index.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2021/11/65096181be4687933-large.png
+
+real-05.jpg
+Used on: index.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/03/58036222b3928c9eb-large.jpg
+
+real-06.jpg
+Used on: index.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/03/68396222b395415e2-large.jpg
+
+real-13.jpg
+Used on: index.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/03/472623df7baa9524-large.jpg
+
+real-04.jpg
+Used on: index.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/03/14026222b36436526-large.jpg
+
+real-00.jpg
+Used on: membership.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/03/36776221418db803c-large.jpg
+
+real-01.jpg
+Used on: membership.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/03/31996222b42a5a65e-large.jpg
+
+real-03.jpg
+Used on: membership.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2025/01/9884678aacc937c29-large.jpg
+
+real-22.jpg
+Used on: wrap-up.html
+Source: https://cdn-content.adventuretravel.biz/2026/10/88886ae2661e883ce.jpg
+
+real-23.png
+Used on: wrap-up.html
+Source: https://cdn-content.adventuretravel.biz/2026/10/64436ae26708547b5.png
+
+real-24.png
+Used on: wrap-up.html
+Source: https://cdn-content.adventuretravel.biz/2026/10/25826ae26a741e506.png
+
+real-25.png
+Used on: wrap-up.html
+Source: https://cdn-content.adventuretravel.biz/2026/11/7536afb3602aa625.png
+
+real-10.jpg
+Used on: tour-operator.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2021/11/49336181be4b77553-large.jpg
+
+real-11.jpg
+Used on: tour-operator.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2021/11/69756181be5040c0f-large.jpg
+
+real-14.jpg
+Used on: tour-operator.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/03/4430623df8e009f53-large.jpg
+
+real-15.jpg
+Used on: tour-operator.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/03/3737623df7c62310d-large.jpg
+
+real-16.jpg
+Used on: faqs.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/04/524262477c79a4706-large.jpg
+
+real-02.jpg
+Used on: registration.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/03/36496222b434bcbd9-large.jpg
+
+extra-00.jpg
+Used on: registration.html
+Source: https://cdn-content.adventuretravel.biz/2026/10/86486ac693201de29.jpg
+
+real-12.png
+Used on: hub.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/04/746162477c2ba3d91-large.png
+
+extra-02.jpg
+Used on: renewal.html
+Source: https://cdn-content.adventuretravel.biz/uploads/2022/06/656762a8114389ee3-large.jpg
