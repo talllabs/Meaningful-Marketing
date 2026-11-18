@@ -279,7 +279,7 @@ select,input{font:inherit}
 .story p{color:var(--muted)}
 
 /* Collage */
-.collage{position:relative;height:120vh;min-height:760px;background:var(--navy);overflow:hidden}
+.collage{position:relative;height:95vh;min-height:640px;background:var(--navy);overflow:hidden}
 .collage__words{position:absolute;inset:0;display:grid;place-items:center;z-index:4;pointer-events:none}
 .collage__words p{font-size:clamp(56px,10vw,150px);font-weight:900;line-height:.95;letter-spacing:-.04em;text-align:center;color:#fff;text-shadow:0 10px 40px rgba(0,0,0,.45);margin:0}
 .collage__words em{color:var(--sun)}
@@ -289,7 +289,7 @@ select,input{font:inherit}
 .c2{right:5%;top:4%;width:24vw;height:30vh}
 .c3{left:10%;bottom:6%;width:22vw;height:30vh}
 .c4{right:12%;bottom:10%;width:30vw;height:36vh}
-.c5{left:40%;top:36%;width:20vw;height:26vh;opacity:.55}
+.c5{left:40%;top:34%;width:20vw;height:28vh}
 
 /* FAQ */
 .faq{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,6vw,90px);align-items:start}
