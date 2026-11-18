@@ -170,11 +170,15 @@
   }
 
   /* ---------- Join form: buttons anywhere pre-fill it ---------- */
-  var mode = $('#mode'), category = $('#category');
+  var mode = $('#mode'), category = $('#category'), joinBtn = $('#joinBtn');
+  // The button always says what will happen next.
+  var labels = { join: 'Join ATTA', create: 'Create free account', renew: 'Renew membership' };
+  function labelButton() { if (joinBtn) joinBtn.textContent = labels[mode.value]; }
+  if (mode) { mode.addEventListener('change', labelButton); labelButton(); }
   if (category) category.value = safeGet('atta-category') || 'tour-operator';
   $$('a[href="#join"][data-mode], a[href="#join"][data-category]').forEach(function (a) {
     a.addEventListener('click', function () {
-      if (a.dataset.mode) mode.value = a.dataset.mode;
+      if (a.dataset.mode) { mode.value = a.dataset.mode; labelButton(); }
       if (a.dataset.category) { category.value = a.dataset.category; safeSet('atta-category', a.dataset.category); }
     });
   });
