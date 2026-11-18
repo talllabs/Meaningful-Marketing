@@ -30,10 +30,11 @@
   }
 
   /* ---------- Reveal on scroll + photo wipes + count-ups ---------- */
+  function fmt(el, n) { return (el.dataset.prefix || '') + n.toLocaleString('en-US') + (el.dataset.suffix || ''); }
   function countUp(el) {
     var end = +el.dataset.count, t0 = null;
-    if (reduce) { el.textContent = end; return; }
-    function step(ts) { if (!t0) t0 = ts; var p = Math.min(1, (ts - t0) / 1400); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); }
+    if (reduce) { el.textContent = fmt(el, end); return; }
+    function step(ts) { if (!t0) t0 = ts; var p = Math.min(1, (ts - t0) / 1600); el.textContent = fmt(el, Math.round(end * (1 - Math.pow(1 - p, 3)))); if (p < 1) requestAnimationFrame(step); }
     requestAnimationFrame(step);
   }
   // Photo wipes start fully clipped, which IntersectionObserver treats as invisible,
@@ -41,7 +42,7 @@
   var revealEls = $$('[data-reveal], [data-count]');
   if (!('IntersectionObserver' in window) || reduce) {
     $$('[data-wipe]').forEach(function (el) { el.classList.add('is-in'); });
-    revealEls.forEach(function (el) { el.classList.add('is-in'); if (el.dataset.count) el.textContent = el.dataset.count; });
+    revealEls.forEach(function (el) { el.classList.add('is-in'); if (el.dataset.count) el.textContent = fmt(el, +el.dataset.count); });
   } else {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -51,7 +52,7 @@
         if (en.target.dataset.count) countUp(en.target);
         io.unobserve(en.target);
       });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0 });
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
@@ -61,7 +62,8 @@
   var events = $('#events'), rail = $('#rail'), pinned = false, railMax = 0;
 
   function setupRail() {
-    var wide = window.innerWidth >= 900 && !reduce;
+    // Pin the rail only where the cards fit on screen; elsewhere it's a swipeable row.
+    var wide = window.innerWidth >= 900 && window.innerHeight >= 800 && !reduce;
     pinned = wide;
     events.classList.toggle('is-pinned', wide);
     if (!wide) { events.style.height = ''; rail.style.transform = ''; return; }
@@ -172,8 +174,12 @@
   /* ---------- Join form: buttons anywhere pre-fill it ---------- */
   var mode = $('#mode'), category = $('#category'), joinBtn = $('#joinBtn');
   // The button always says what will happen next.
-  var labels = { join: 'Join ATTA', create: 'Create free account', renew: 'Renew membership' };
-  function labelButton() { if (joinBtn) joinBtn.textContent = labels[mode.value]; }
+  var labels = { join: 'Join ATTA', create: 'Create free account', renew: 'Renew membership', ask: 'Send message' };
+  var msgBox = $('.joinform__msg');
+  function labelButton() {
+    if (joinBtn) joinBtn.textContent = labels[mode.value];
+    if (msgBox) msgBox.hidden = mode.value !== 'ask';
+  }
   if (mode) { mode.addEventListener('change', labelButton); labelButton(); }
   if (category) category.value = safeGet('atta-category') || 'tour-operator';
   $$('a[href="#join"][data-mode], a[href="#join"][data-category]').forEach(function (a) {
@@ -190,7 +196,8 @@
     var msg = {
       join: 'Welcome aboard! Check your inbox to set up your free account, then finish joining as a ' + who + '.',
       create: 'You’re in! Check your inbox to finish setting up your free ATTA account.',
-      renew: 'Welcome back! Check your inbox for a secure sign-in link to your HUB and renewal summary.'
+      renew: 'Welcome back! Check your inbox for a secure sign-in link to your HUB and renewal summary.',
+      ask: 'Thanks! A member of the ATTA Membership Team will reply by email.'
     }[mode.value];
     $('#joinStatus').textContent = msg;
   });
