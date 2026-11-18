@@ -50,8 +50,11 @@
     svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
     // Centre the mark in the space visible below the header when the page first opens,
     // and sit the "Scroll to explore" hint just underneath it.
+    // (If the header scrolls away, the stage starts underneath it, so subtract it;
+    // a sticky header already sits above the stage.)
     var header = document.querySelector('header');
-    var avail = h - (header ? header.offsetHeight : 0);
+    var sticky = header && getComputedStyle(header).position === 'sticky';
+    var avail = h - (header && !sticky ? header.offsetHeight : 0);
     var size = Math.min(w * (w < 700 ? 0.72 : 0.42), avail * 0.6, 560);
     var s = size / MARK;
     var x = (w - size) / 2, y = Math.max(16, (avail - size) / 2 - 20);
