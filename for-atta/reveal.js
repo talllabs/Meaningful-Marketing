@@ -10,6 +10,7 @@
   var shade = document.getElementById('shade'), copy = document.getElementById('copy'), hint = document.getElementById('hint');
 
   var photo = document.getElementById('heroPhoto'), videoBox = document.getElementById('heroVideo'), pauseBtn = document.getElementById('pauseBtn');
+  var soundBtn = document.getElementById('soundBtn'), controls = document.getElementById('videoControls'), soundOn = false;
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { reveal.classList.add('is-static'); return; }
 
@@ -27,11 +28,20 @@
     frame.setAttribute('allow', 'autoplay; encrypted-media');
     frame.addEventListener('load', function () { setTimeout(function () { videoBox.classList.add('is-on'); }, 2500); });
     videoBox.appendChild(frame);
-    pauseBtn.hidden = false;
+    controls.hidden = false;
   }
-  function command(func) {
-    if (frame && frame.contentWindow) frame.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: [] }), '*');
+  function command(func, args) {
+    if (frame && frame.contentWindow) frame.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: args || [] }), '*');
   }
+  // Sound starts off (browsers only autoplay muted video). One click turns it on.
+  function setSound(on) {
+    soundOn = on;
+    command(on ? 'unMute' : 'mute');
+    if (on) { command('setVolume', [80]); if (!paused) command('playVideo'); }
+    soundBtn.setAttribute('aria-pressed', String(on));
+    soundBtn.innerHTML = on ? '🔊 <span>Turn sound off</span>' : '🔇 <span>Turn sound on</span>';
+  }
+  if (soundBtn) soundBtn.addEventListener('click', function () { setSound(!soundOn); });
   if (pauseBtn) pauseBtn.addEventListener('click', function () {
     paused = !paused;
     command(paused ? 'pauseVideo' : 'playVideo');
@@ -82,9 +92,11 @@
     copy.style.pointerEvents = t > 0.5 ? 'auto' : 'none';
     shade.style.opacity = String(t);
     photo.style.opacity = String(t);                                            // video crossfades to the photo behind the headline
-    if (pauseBtn) {
-      pauseBtn.style.opacity = String(1 - t);
-      pauseBtn.style.visibility = t > 0.95 ? 'hidden' : 'visible';
+    if (controls) {
+      controls.style.opacity = String(1 - t);
+      controls.style.visibility = t > 0.95 ? 'hidden' : 'visible';
+      // Once the photo takes over behind the headline, the video's sound goes quiet too.
+      if (t > 0.95 && soundOn) setSound(false);
     }
   }
 
