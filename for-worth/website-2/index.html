@@ -414,6 +414,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 <div class="announce"><a href="#summit">WORTH Leadership Summit · March 5, 2027 · Vancouver</a></div>
 <header class="header" id="top">
 <div class="wrap">
+<a class="header-logo" href="#top" aria-label="WORTH Association, back to top" tabindex="-1"><img src="/for-worth/assets/photos/worth-badge-dark.webp" alt="WORTH Association" width="255" height="199"></a>
 
 <nav class="nav" aria-label="Main navigation"><a href="#resource-hub">Resource Hub</a><a href="#programs">Programs</a><a href="#careers">Careers</a><a href="#events">Events</a><a href="#get-involved">Get Involved</a><a href="#about">About</a><a class="action" href="https://www.worthassociation.com/donate">Donate</a></nav>
 <details class="mobile-nav"><summary>Menu</summary><nav class="nav" aria-label="Mobile navigation"><a href="#resource-hub">Resource Hub</a><a href="#programs">Programs</a><a href="#careers">Careers</a><a href="#events">Events</a><a href="#get-involved">Get Involved</a><a href="#about">About</a><a class="action" href="https://www.worthassociation.com/donate">Donate</a></nav></details>
@@ -677,6 +678,33 @@ if ('IntersectionObserver' in window) {
   syncPhotoMotion();
 }
 
+</script>
+<style>
+/* Sticky-nav logo: appears once the opening section has scrolled away */
+.header .wrap{justify-content:space-between!important}
+.header-logo{display:block;flex:none;width:62px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s ease,transform .25s ease,visibility 0s linear .25s}
+.header-logo img{width:100%;height:auto}
+.header.has-logo .header-logo{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .25s ease}
+@media(max-width:760px){.header-logo{width:52px}}
+@media(prefers-reduced-motion:reduce){.header-logo{transition:none}}
+</style>
+<script>
+(function () {
+  var header = document.querySelector('.header');
+  var hero = document.querySelector('.hero-intro') || document.querySelector('.hero');
+  var link = header.querySelector('.header-logo');
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var past = hero.getBoundingClientRect().bottom <= header.offsetHeight + 1;
+    header.classList.toggle('has-logo', past);
+    link.tabIndex = past ? 0 : -1;
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
 </script>
 <a href="/for-worth/" style="position:fixed;left:16px;bottom:16px;z-index:60;background:#171717;color:#fff;text-decoration:none;font:700 .85rem system-ui,sans-serif;padding:10px 16px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.25)">← Back to logo ideas</a>
 </body>
