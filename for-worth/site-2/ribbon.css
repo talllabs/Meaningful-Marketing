@@ -78,4 +78,19 @@
 .foot__ribbon{display:block;width:180px;height:26px;margin:-10px 0 6px}
 .foot__ribbon path{fill:none;stroke-width:6;stroke-linecap:round}
 
+
+/* Photos (from WORTH's own events) */
+.hero-pic{position:relative;margin:clamp(36px,5vw,56px) 0 0;border-radius:var(--radius);overflow:hidden;aspect-ratio:21/9}
+.hero-pic img{width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.hero-pic::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background:var(--ribbon)}
+.program--pic .program__pic{margin:-30px -26px 22px;width:calc(100% + 52px);max-width:none;height:190px;object-fit:cover;object-position:center 30%}
+.program--pic .program__num{margin-bottom:14px}
+.summit__pic{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32;filter:grayscale(.2)}
+.summit::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,20,.2),rgba(20,16,20,.92) 70%)}
+.summit__label,.summit h3,.summit dl,.summit .btn{z-index:1}
+.summit__ribbon{z-index:1}
+.about-pic{margin:clamp(36px,5vw,56px) 0 0;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/7}
+.about-pic img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+@media(max-width:640px){.hero-pic{aspect-ratio:4/3}.about-pic{aspect-ratio:4/3}}
+
 @media(prefers-reduced-motion:reduce){.weave__ribbon path,.thread path{stroke-dashoffset:0;animation:none}}
