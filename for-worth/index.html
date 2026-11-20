@@ -26,7 +26,20 @@ h1,h2,h3{font-family:Georgia,serif;font-weight:700;letter-spacing:-.03em;line-he
 
 /* Intro */
 .intro{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem 2.5rem;flex-wrap:wrap;padding-block:clamp(16px,2.6vh,28px) clamp(12px,2vh,20px)}
-.intro h1{font-size:clamp(1.9rem,3.6vw,2.8rem)}
+.intro__title{font-size:clamp(1.6rem,2.8vw,2.2rem)}
+.intro{border-top:1px solid var(--line)}
+/* Letter + team */
+.letter{padding-block:clamp(18px,3vh,30px) clamp(10px,2vh,18px)}
+.letter h1{font-size:clamp(1.9rem,3.6vw,2.8rem);margin-bottom:10px}
+.letter__copy p{margin:0 0 6px;max-width:80ch;font-size:1rem}
+.letter__lead{font-weight:700;margin-top:12px!important}
+.team{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.person{display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+.person img{width:76px;height:76px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff,0 0 0 5px #f0d3db}
+.person h3{font-size:1.1rem;margin-bottom:2px}
+.person__role{margin:0 0 6px;color:var(--pink);font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.person p:last-child{margin:0;color:var(--muted);font-size:.86rem;line-height:1.5}
+@media(max-width:1000px){.team{grid-template-columns:1fr}}
 .intro p{margin:0;max-width:64ch;color:var(--muted)}
 
 main{flex:1;display:flex;flex-direction:column;gap:clamp(14px,2.4vh,24px);padding-bottom:clamp(16px,3vh,28px)}
@@ -93,8 +106,42 @@ dialog[open]{display:grid;grid-template-columns:1.25fr 1fr}
 <body>
 <header class="bar"><div class="wrap"><strong>Meaningful Marketing</strong><span>Prepared for WORTH Association</span></div></header>
 
+<section class="wrap letter" aria-labelledby="hello-title">
+  <div class="letter__copy">
+    <h1 id="hello-title">Hello Paige and the WORTH team!</h1>
+    <p>We were excited to see this RFP come through because it’s what we do at Meaningful Marketing, day in and day out, and you’re just the type of client we love to work with. (For real, this is not AI written, we mean it!)</p>
+    <p class="letter__lead">Our background is well suited for working with WORTH:</p>
+  </div>
+  <ul class="team">
+    <li class="person">
+      <img src="/for-worth/assets/team/ally.webp" alt="Ally Stoltz LaBriola" width="240" height="240">
+      <div>
+        <h3>Ally Stoltz LaBriola</h3>
+        <p class="person__role">Main point of contact · Lead designer &amp; web developer</p>
+        <p>I’ve spent my career in tourism, seven years at MMGY/Myriad, where I represented the tourism boards of Australia’s Outback, Papua New Guinea, the Cook Islands and Samoa. At Meaningful Marketing, I’ve worked with USTOA, PATA, AAA, Adventure International and Untours. I’ll be your main point of contact and lead designer and web developer.</p>
+      </div>
+    </li>
+    <li class="person">
+      <img src="/for-worth/assets/team/brad.webp" alt="Brad LaBriola" width="240" height="240">
+      <div>
+        <h3>Brad LaBriola</h3>
+        <p class="person__role">Storytelling, video &amp; technical lead</p>
+        <p>Brad has worked with nonprofits across five continents, helping them tell their stories through video and social media. He’s worked with TOMS, the United Nations Foundation, World Vision and Andean Health &amp; Development. He’s the techy, details guy and a seasoned storyteller.</p>
+      </div>
+    </li>
+    <li class="person">
+      <img src="/for-worth/assets/team/tara.webp" alt="Tara McCallum" width="200" height="200">
+      <div>
+        <h3>Tara McCallum</h3>
+        <p class="person__role">Toronto-based partner · Kickoff workshop lead</p>
+        <p>Our Toronto-based partner, Tara McCallum, is the former Head of Marketing at Intrepid Travel for Canada and the U.S. She brings experience in Canadian tourism, hospitality and nonprofits and will lead the kickoff workshop with your team to shape the direction of the new website.</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
 <div class="wrap intro">
-  <h1>Some creative ideas from us</h1>
+  <h2 class="intro__title">Some creative ideas from us</h2>
   <p>These are early sketches to show you how we think and work. They aren’t a proposed brand refresh or a new website design. That work begins when we meet with you and listen to what WORTH needs. Until then, here are a few ideas to get the conversation started.</p>
 </div>
 
@@ -117,7 +164,7 @@ dialog[open]{display:grid;grid-template-columns:1.25fr 1fr}
         </div>
       </a>
       <a class="site" href="/for-worth/website-2/">
-        <div class="site__shot"><img src="/for-worth/assets/preview-idea-2.webp" alt="" width="640" height="372"></div>
+        <div class="site__shot"><img src="/for-worth/assets/preview-idea-2.webp" alt="" width="640" height="372" style="object-position:left top"></div>
         <div class="site__copy">
           <p class="label">Website idea #2</p>
           <h3>Photo-led homepage</h3>
