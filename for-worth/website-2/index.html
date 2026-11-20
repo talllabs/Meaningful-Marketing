@@ -680,12 +680,25 @@ if ('IntersectionObserver' in window) {
 
 </script>
 <style>
-/* Sticky-nav logo: appears once the opening section has scrolled away */
-.header .wrap{justify-content:space-between!important}
-.header-logo{display:block;flex:none;width:62px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s ease,transform .25s ease,visibility 0s linear .25s}
-.header-logo img{width:100%;height:auto}
-.header.has-logo .header-logo{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .25s ease}
-@media(max-width:760px){.header-logo{width:52px}}
+/* Sticky-nav logo: centered, appears once the opening section has scrolled away */
+.header .wrap{position:relative;justify-content:space-between!important}
+.header .wrap > .nav{flex:1;justify-content:space-between}
+.header .wrap > .nav > a:nth-child(4){margin-right:auto}
+.header .wrap > .nav > a:nth-child(5){margin-left:auto}
+.header-logo{position:absolute;left:50%;top:6px;width:210px;height:210px;margin-left:-105px;border-radius:50%;background:#fff;box-shadow:0 10px 30px rgba(23,23,23,.16);display:grid;place-items:center;z-index:2;
+  opacity:0;visibility:hidden;transform:translateY(-12px) scale(.92);transition:opacity .3s ease,transform .3s ease,visibility 0s linear .3s}
+.header-logo img{width:186px;height:auto}
+.header.has-logo .header-logo{opacity:1;visibility:visible;transform:none;transition:opacity .3s ease,transform .3s ease}
+@media(max-width:1120px){
+  .header .wrap > .nav{display:none}
+  .mobile-nav{display:block;position:relative;margin-left:auto}
+  .mobile-nav summary{cursor:pointer;font-weight:800;padding:.7rem}
+  .mobile-nav .nav{display:grid;position:absolute;right:0;top:100%;min-width:210px;background:white;padding:1rem;border:1px solid var(--line);box-shadow:0 8px 24px #17171726;z-index:3}
+}
+@media(max-width:760px){
+  .header-logo{width:164px;height:164px;margin-left:-82px;top:4px}
+  .header-logo img{width:146px}
+}
 @media(prefers-reduced-motion:reduce){.header-logo{transition:none}}
 </style>
 <script>
