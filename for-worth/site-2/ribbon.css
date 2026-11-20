@@ -1,0 +1,81 @@
+/* WORTH homepage mockup 2: brand concept 04 (Bold Ribbon).
+   Loads after /for-worth/site/site.css and changes only what differs. */
+:root{
+  --paper:#ffffff;--blush:#f6f1ee;--plum:#141014;--ink:#141014;--line:#e8e1dd;
+  --ribbon:linear-gradient(90deg,#F97502 0%,#FA2F36 38%,#F0147A 68%,#F800A8 100%);
+  --grad:var(--ribbon);
+  --grad-deep:linear-gradient(100deg,#c25200 0%,#c8102e 45%,#b0005e 100%);
+  --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 12'%3E%3Cdefs%3E%3ClinearGradient id='g'%3E%3Cstop offset='0' stop-color='%23F97502'/%3E%3Cstop offset='.5' stop-color='%23FA2F36'/%3E%3Cstop offset='1' stop-color='%23F800A8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M2 8C8 0 12 12 18 5s6-2 8-1' fill='none' stroke='url(%23g)' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  --wave-white:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120' preserveAspectRatio='none'%3E%3Cpath d='M-10 84C80 10 160 130 250 60s130-40 160-10' fill='none' stroke='white' stroke-opacity='.5' stroke-width='16' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* Kicker: a little ribbon instead of the two-tone dot */
+.kicker::before{width:28px;height:12px;border-radius:0;background:var(--wave) no-repeat center/contain}
+
+/* Highlighted words: black lettering with a wavy ribbon underline */
+.hl{background:none;color:inherit;-webkit-text-fill-color:currentColor;text-decoration:underline wavy #F0147A;text-decoration-thickness:.07em;text-underline-offset:.2em;text-decoration-skip-ink:none}
+.section--plum .hl,.news .hl{text-decoration-color:#ff7ab8}
+.program__num.hl{text-decoration:none;background:var(--ribbon);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* Header */
+.top{background:rgba(255,255,255,.94)}
+.top__logo img{height:46px}
+.top__nav a:not(.btn)::after{background:var(--ribbon)}
+.announce{background:var(--ribbon)}
+.announce a,.announce b{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+
+/* Hero: the ribbon weaves through the headline, like the logo */
+.hero--ribbon{text-align:center;padding-top:clamp(56px,8vw,110px)}
+.hero--ribbon .kicker{justify-content:center}
+.hero--ribbon .lede{margin:0 auto 32px}
+.hero--ribbon .actions{justify-content:center}
+.hero--ribbon .paths{text-align:left}
+.weave{position:relative;margin:0 auto 28px;max-width:1000px}
+.weave h1{position:relative;z-index:1;font-size:clamp(3.6rem,11vw,9.4rem);line-height:.9;letter-spacing:-.045em;font-weight:900;margin:0}
+.weave__ribbon{position:absolute;top:50%;left:calc(50% - 50vw);width:100vw;height:62%;transform:translateY(-38%);overflow:visible;pointer-events:none}
+.weave__ribbon--back{z-index:0}
+.weave__ribbon--front{z-index:2}
+.weave__ribbon path{fill:none;stroke-width:clamp(14px,2.2vw,28px);stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.2s .3s cubic-bezier(.6,.1,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* Pathway cards: a ribbon in the corner instead of a ring */
+.path::after{border:0;border-radius:0;width:260px;height:90px;right:-30px;bottom:18px;opacity:1;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 90'%3E%3Cdefs%3E%3ClinearGradient id='g'%3E%3Cstop offset='0' stop-color='%23F97502'/%3E%3Cstop offset='.5' stop-color='%23FA2F36'/%3E%3Cstop offset='1' stop-color='%23F800A8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M8 70C60 10 110 90 160 45s70-30 92-20' fill='none' stroke='url(%23g)' stroke-width='12' stroke-linecap='round' opacity='.22'/%3E%3C/svg%3E") no-repeat center/contain}
+.path--dark::after{filter:saturate(1.2);opacity:1}
+.path:hover::after{transform:translateX(-12px)}
+
+/* Resource cards: ribbon art */
+.t-advocacy .card__art{background:linear-gradient(110deg,#FA2F36,#F800A8)}
+.t-career .card__art{background:var(--ribbon)}
+.t-health .card__art{background:linear-gradient(110deg,#F97502,#FA2F36)}
+.card__art::before{width:auto;height:auto;inset:0;right:0;top:0;border:0;border-radius:0;background:var(--wave-white) no-repeat center/100% 100%}
+.card__art::after{display:none}
+.card{background:#fff}
+
+/* Ribbon threads between sections */
+.thread{display:block;height:clamp(60px,9vw,110px);margin:-1px 0;overflow:visible}
+.thread svg{display:block;width:100%;height:100%;overflow:visible}
+.thread path{fill:none;stroke-width:clamp(8px,1.2vw,14px);stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s cubic-bezier(.6,.1,.2,1)}
+.js .thread[data-reveal]{opacity:1;transform:none}
+.thread.is-in path,html:not(.js) .thread path{stroke-dashoffset:0}
+
+/* Summit: the ribbon sweeps across the card */
+.summit__ribbon{position:absolute;left:-10%;right:-10%;top:30px;width:120%;height:200px;overflow:visible}
+.summit__ribbon path{fill:none;stroke-width:22;stroke-linecap:round}
+
+/* Get involved */
+.inv__icon{background:var(--ribbon)}
+
+/* Impact */
+.stat:nth-child(odd) b{color:#d1005f}
+
+/* Land acknowledgement */
+.land{border-left:0;border-image:none;position:relative;padding-left:34px}
+.land::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;border-radius:6px;background:linear-gradient(180deg,#F97502,#F800A8)}
+
+/* Footer wordmark */
+.foot__mark span{font-weight:900;letter-spacing:-.02em}
+.foot__ribbon{display:block;width:180px;height:26px;margin:-10px 0 6px}
+.foot__ribbon path{fill:none;stroke-width:6;stroke-linecap:round}
+
+@media(prefers-reduced-motion:reduce){.weave__ribbon path,.thread path{stroke-dashoffset:0;animation:none}}

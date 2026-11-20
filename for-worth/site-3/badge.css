@@ -1,0 +1,91 @@
+/* WORTH homepage mockup 3: brand concept 01 (Refined Badge).
+   Loads after /for-worth/site/site.css and changes only what differs. */
+:root{
+  --paper:#fdf8f2;--blush:#f9ece4;--plum:#171415;--ink:#171415;--line:#ebdfd6;--muted:#5d5157;
+  --brush:url("/for-worth/assets/brush.svg");
+  --grad:linear-gradient(110deg,#F98A2A 0%,#F92760 55%,#E5108F 100%);
+  --grad-deep:linear-gradient(110deg,#c4560f 0%,#c8103f 55%,#ab0a6b 100%);
+  --display:"Montserrat",system-ui,sans-serif;--script:"Caveat",cursive;
+}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+h2{font-size:clamp(2.1rem,4.4vw,3.5rem)}
+h3{letter-spacing:-.015em}
+.hero h1{font-size:clamp(3rem,6.6vw,5.8rem);letter-spacing:-.045em;line-height:1}
+
+/* Kicker: a small ring, like the badge */
+.kicker{color:var(--ink);letter-spacing:.2em}
+.kicker::before{width:14px;height:14px;background:none;border:2.5px solid #F92760;box-shadow:0 0 0 3px var(--paper),0 0 0 4.5px var(--ink)}
+.section--white .kicker::before{box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--ink)}
+.section--plum .kicker::before{box-shadow:0 0 0 3px var(--plum),0 0 0 4.5px #fff}
+.kicker--light{color:#fff}
+
+/* Highlighted words: handwriting on a painted brushstroke */
+.hl{font-family:var(--script);font-weight:700;font-size:1.22em;letter-spacing:0;color:#fff;-webkit-text-fill-color:#fff;
+  background:var(--brush) no-repeat center/100% 88%;padding:0 .22em .02em;-webkit-box-decoration-break:clone;box-decoration-break:clone;line-height:1.1}
+.program__num.hl{background:none}
+
+/* Header */
+.top{background:rgba(253,248,242,.94)}
+.top__in{min-height:88px}
+.top__logo img{height:68px}
+@media(max-width:980px){.top__logo img{height:54px}}
+.top__nav a:not(.btn)::after{background:var(--grad);height:3px;border-radius:3px}
+.announce{background:var(--ink)}
+.announce b{color:#ffb38a}
+
+/* Hero: the badge with a turning ring of words */
+.hero__art{aspect-ratio:1}
+.badge-art{position:relative;width:100%;height:100%}
+.badge-art__ring{position:absolute;inset:0;width:100%;height:100%;animation:turn 50s linear infinite}
+.badge-art__ring text{font:700 19px var(--sans);letter-spacing:.32em;fill:var(--ink);text-transform:uppercase}
+.badge-art__logo{position:absolute;inset:15%;width:70%;height:70%;object-fit:contain;mix-blend-mode:multiply;animation:pop .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes turn{to{transform:rotate(360deg)}}
+@keyframes pop{from{transform:scale(.85) rotate(-8deg);opacity:0}to{transform:none;opacity:1}}
+.chip b{font-family:var(--display)}
+.chip{border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+
+/* Pathway cards: concentric rings */
+.path::after{border:2px solid var(--ink);opacity:.12;box-shadow:0 0 0 14px transparent,0 0 0 16px rgba(23,20,21,.9);width:170px;height:170px}
+.path--dark::after{border-color:#fff;box-shadow:0 0 0 14px transparent,0 0 0 16px #fff;opacity:.16}
+
+/* Resource cards: a painted swatch on cream */
+.card{background:#fff}
+.card__art{background:#fbeee6!important}
+.card__art::before{width:78%;height:56%;left:11%;top:22%;right:auto;border:0;border-radius:0;background:var(--brush) no-repeat center/100% 100%}
+.card__art::after{width:84px;height:84px;left:auto;right:18px;bottom:auto;top:18px;background:none;border:2px solid var(--ink);opacity:.18}
+.t-advocacy .card__art::before{transform:rotate(-3deg)}
+.t-career .card__art::before{transform:rotate(2deg) scaleX(-1)}
+.t-health .card__art::before{transform:rotate(-1deg);filter:hue-rotate(-18deg)}
+
+/* Program numbers inside rings */
+.program__num{display:grid;place-items:center;width:72px;height:72px;border-radius:50%;border:2px solid var(--ink);box-shadow:0 0 0 5px #fff,0 0 0 7px #F92760;
+  font-family:var(--script)!important;font-size:2.2rem!important;font-weight:700;color:var(--ink)!important;-webkit-text-fill-color:var(--ink)!important;background:none!important;padding:0!important}
+.program::before{background:var(--grad)}
+
+/* Summit: brushstroke behind the title, badge ring in the corner */
+.summit__ring{position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;border:2px solid rgba(255,255,255,.35);box-shadow:0 0 0 18px transparent,0 0 0 20px rgba(255,255,255,.2)}
+.summit h3{display:inline-block;align-self:flex-start;background:var(--brush) no-repeat center/100% 100%;padding:.12em .3em .18em;margin-left:-.2em}
+
+/* Get involved */
+.inv__icon{background:none;border:2px solid #fff;box-shadow:0 0 0 4px var(--plum),0 0 0 6px #F92760}
+.inv--feature .inv__icon{border-color:var(--ink);box-shadow:0 0 0 4px #fff,0 0 0 6px #F92760}
+.inv--feature .inv__icon svg{color:var(--ink)}
+
+/* Impact numbers as badges */
+.stats{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(14px,2.5vw,32px);border-top:0}
+.stat,.stat + .stat{padding:0;border:0;display:grid;place-items:center;text-align:center;width:clamp(150px,17vw,200px);aspect-ratio:1;border-radius:50%;border:2px solid var(--ink);box-shadow:0 0 0 7px #fff,0 0 0 9px var(--line);align-content:center;gap:4px}
+.stat b{font-size:clamp(2rem,3.4vw,2.8rem);margin:0}
+.stat span{font-size:.88rem;max-width:12ch;line-height:1.25}
+.stat:nth-child(odd) b{color:#c8103f}
+.impact-foot{justify-content:center;text-align:center;flex-direction:column}
+@media(max-width:900px){.stat:last-child{grid-column:auto}}
+
+/* Land acknowledgement */
+.land{border-left-color:#F92760}
+
+/* Footer wordmark: handwriting on the brushstroke */
+.foot__mark{display:inline-block}
+.foot__mark span{font:700 3.4rem/1 var(--script);color:#fff;background:var(--brush) no-repeat center/100% 92%;padding:.05em .35em .12em;letter-spacing:.02em}
+.foot__mark small{letter-spacing:.3em;padding-left:.4em}
+
+@media(prefers-reduced-motion:reduce){.badge-art__ring,.badge-art__logo{animation:none}}
