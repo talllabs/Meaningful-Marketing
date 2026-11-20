@@ -93,4 +93,12 @@
 .about-pic img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
 @media(max-width:640px){.hero-pic{aspect-ratio:4/3}.about-pic{aspect-ratio:4/3}}
 
+
+/* Resource cards with real WORTH photos */
+.card__art--photo{height:170px;background:#eee!important}
+.card__art--photo::before,.card__art--photo::after{display:none}
+.card__art--photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;transition:transform .5s ease}
+.card:hover .card__art--photo img{transform:scale(1.04)}
+.card__art--photo{border-bottom:5px solid transparent;border-image:var(--ribbon) 1}
+
 @media(prefers-reduced-motion:reduce){.weave__ribbon path,.thread path{stroke-dashoffset:0;animation:none}}

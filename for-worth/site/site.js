@@ -29,6 +29,7 @@
     { t: 'The Leadership Working Mothers Carry Before the Workday Begins', topic: 'Career', d: 'A look at the skills working mothers bring from caregiving into the workplace.', u: 'https://www.worthassociation.com/resources/the-leadership-working-mothers-carry-before-the-workday-begins' },
     { t: 'NetWORTH: Lessons From Women in Finance', topic: 'Health & Wellbeing', d: 'Career and money lessons from WORTH’s conversation with women in finance.', u: 'https://www.worthassociation.com/resources/networth-lessons-from-women-in-finance' }
   ];
+  var IMG = window.WORTH_RES_IMG || {}; /* optional photos, keyed by article URL */
   var CLASS = { 'Advocacy': 't-advocacy', 'Career': 't-career', 'Health & Wellbeing': 't-health' };
   var cards = document.getElementById('hubCards');
   var search = document.getElementById('hubSearch');
@@ -46,7 +47,7 @@
     });
     cards.innerHTML = list.length ? list.map(function (r) {
       return '<a class="card ' + (CLASS[r.topic] || 't-leadership') + '" href="' + r.u + '">' +
-        '<div class="card__art" aria-hidden="true"></div>' +
+        (IMG[r.u] ? '<div class="card__art card__art--photo"><img src="' + IMG[r.u].src + '" alt="' + esc(IMG[r.u].alt) + '" loading="lazy"></div>' : '<div class="card__art" aria-hidden="true"></div>') +
         '<div class="card__body"><span class="tag">' + esc(r.topic) + '</span>' +
         '<h3>' + esc(r.t) + '</h3><p>' + esc(r.d) + '</p><span class="arrow">Read more</span></div></a>';
     }).join('') : '<div class="empty">No featured resources match that yet. Try another topic, or search the full library of 182 resources.</div>';
